@@ -1,7 +1,10 @@
 {
-    "name": "zvs-uikit-lib",
+    "name": "@kiyotakkkka/zvs-uikit-lib",
     "author": "KiyotakkkkA",
-    "repository": "https://github.com/KiyotakkkkA/ZVSUiKitLib",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/KiyotakkkkA/ZVSUiKitLib.git"
+    },
     "private": false,
     "version": "1.1.0",
     "type": "module",
