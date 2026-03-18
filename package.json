@@ -1,7 +1,9 @@
 {
     "name": "zvs-uikit-lib",
+    "author": "KiyotakkkkA",
+    "repository": "https://github.com/KiyotakkkkA/ZVSUiKitLib",
     "private": false,
-    "version": "1.0.0",
+    "version": "1.1.0",
     "type": "module",
     "main": "./dist/index.js",
     "module": "./dist/index.js",
