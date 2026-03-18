@@ -18,3 +18,4 @@ export * from "./Card";
 export * from "./Badge";
 export * from "./Alert";
 export * from "./Separator";
+export * from "./SlidedPanel";
