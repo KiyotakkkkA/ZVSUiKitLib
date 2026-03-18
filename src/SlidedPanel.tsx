@@ -50,10 +50,6 @@ export function SlidedPanel({
         return () => window.removeEventListener("keydown", onEscape);
     }, [open, onClose]);
 
-    if (!open) {
-        return null;
-    }
-
     const onOverlayClick = (event: MouseEvent<HTMLDivElement>) => {
         if (event.target === event.currentTarget && closeOnOverlayClick) {
             onClose();
@@ -75,18 +71,26 @@ export function SlidedPanel({
 
     return createPortal(
         <div
-            className="fixed inset-0 z-50 flex animate-in justify-end bg-black/60 backdrop-blur-sm fade-in duration-200"
+            className={cn(
+                "fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-sm transition-opacity duration-260",
+                open
+                    ? "pointer-events-auto opacity-100"
+                    : "pointer-events-none opacity-0",
+            )}
             onClick={onOverlayClick}
             onKeyDown={onOverlayKeyDown}
             tabIndex={-1}
             aria-modal
             role="dialog"
+            aria-hidden={!open}
         >
             <section
                 className={cn(
-                    "flex h-full flex-col overflow-hidden border-l border-main-600/70",
+                    "flex h-full flex-col overflow-hidden border-l border-main-600/70 transition-all duration-260 ease-out",
                     "bg-main-900/95 shadow-[-16px_0_60px_rgba(0,0,0,0.5)] backdrop-blur-md",
-                    "animate-in slide-in-from-right duration-200",
+                    open
+                        ? "translate-x-0 opacity-100"
+                        : "translate-x-full opacity-0",
                     widthClassName,
                     className,
                 )}
