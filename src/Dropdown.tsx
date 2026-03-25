@@ -7,7 +7,6 @@ import {
     useState,
     type Ref,
     type ReactNode,
-    type CSSProperties,
 } from "react";
 import { Button } from "./Button";
 import { InputSmall } from "./InputSmall";
@@ -72,7 +71,6 @@ export function Dropdown({
 }: DropdownProps) {
     const [open, setOpen] = useState(false);
     const [query, setQuery] = useState("");
-    const [menuWidth, setMenuWidth] = useState<number>();
     const rootRef = useRef<HTMLDivElement>(null);
     const triggerRef = useRef<HTMLButtonElement>(null);
     const menuId = useId();
@@ -124,10 +122,6 @@ export function Dropdown({
         }
         setOpen((current) => {
             if (!current) {
-                const width = triggerRef.current?.offsetWidth;
-                if (width) {
-                    setMenuWidth(width);
-                }
                 setQuery("");
             }
             return !current;
@@ -144,11 +138,6 @@ export function Dropdown({
         }
     };
 
-    const menuStyle: CSSProperties | undefined =
-        matchTriggerWidth && menuWidth
-            ? { minWidth: `${menuWidth}px`, width: `${menuWidth}px` }
-            : undefined;
-
     const menuPositionClassName =
         menuPlacement === "top"
             ? `bottom-full mb-2 origin-bottom ${
@@ -163,7 +152,14 @@ export function Dropdown({
               }`;
 
     return (
-        <div ref={rootRef} className={cn("relative min-w-0", className)}>
+        <div
+            ref={rootRef}
+            className={cn(
+                "relative min-w-0",
+                matchTriggerWidth ? "w-full" : "",
+                className,
+            )}
+        >
             {renderTrigger ? (
                 renderTrigger({
                     open,
@@ -188,7 +184,7 @@ export function Dropdown({
                     disabled={disabled}
                     onClick={toggleOpen}
                     className={cn(
-                        "min-h-10 min-w-34 justify-between gap-3 rounded-xl border-transparent px-3 py-2 text-main-100",
+                        "min-h-10 w-full min-w-0 justify-between gap-3 rounded-xl border-transparent px-3 py-2 text-main-100",
                         triggerClassName,
                     )}
                 >
@@ -210,9 +206,9 @@ export function Dropdown({
                 id={menuId}
                 role="listbox"
                 tabIndex={-1}
-                style={menuStyle}
                 className={cn(
-                    "absolute left-0 z-30 rounded-xl bg-main-800 p-1.5 transition-all duration-180",
+                    "absolute z-30 rounded-xl bg-main-800 p-1.5 transition-all duration-180",
+                    matchTriggerWidth ? "left-0 right-0" : "left-0 min-w-34",
                     menuPositionClassName,
                     menuClassName,
                 )}

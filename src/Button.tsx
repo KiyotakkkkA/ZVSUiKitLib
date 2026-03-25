@@ -2,6 +2,7 @@ import { forwardRef, type ReactNode } from "react";
 import { cn } from "./lib/utils";
 
 type ButtonVariants =
+    | "ghost"
     | "primary"
     | "secondary"
     | "danger"
@@ -25,6 +26,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variants: Record<ButtonVariants, string> = {
+    ghost: "bg-transparent border-transparent text-white",
     primary:
         "bg-white hover:opacity-80 border-transparent text-black transition-opacity",
     secondary: "bg-main-700 hover:bg-main-600 border-transparent text-white",

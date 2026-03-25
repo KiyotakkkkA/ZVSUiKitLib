@@ -195,7 +195,7 @@ export const AutoFillSelector = ({
 
             <div
                 className={cn(
-                    "absolute left-0 right-0 z-30 mt-2 overflow-hidden rounded-xl border border-main-700",
+                    "absolute top-full left-0 right-0 z-30 mt-2 overflow-hidden rounded-xl border border-main-700",
                     "bg-main-800 transition-all duration-200",
                     isOpen
                         ? "max-h-64 opacity-100"
