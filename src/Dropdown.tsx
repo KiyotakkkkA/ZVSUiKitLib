@@ -1,5 +1,6 @@
 import { Icon } from "@iconify/react";
 import {
+    useCallback,
     useEffect,
     useId,
     useMemo,
@@ -72,8 +73,11 @@ export function Dropdown({
     const [open, setOpen] = useState(false);
     const [query, setQuery] = useState("");
     const rootRef = useRef<HTMLDivElement>(null);
-    const triggerRef = useRef<HTMLButtonElement>(null);
     const menuId = useId();
+    const [, setTriggerElement] = useState<HTMLButtonElement | null>(null);
+    const setTriggerRef = useCallback((node: HTMLButtonElement | null) => {
+        setTriggerElement(node);
+    }, []);
 
     const selectedOption = useMemo(
         () => options.find((item) => item.value === value),
@@ -164,7 +168,7 @@ export function Dropdown({
                 renderTrigger({
                     open,
                     toggleOpen,
-                    triggerRef,
+                    triggerRef: setTriggerRef,
                     disabled,
                     ariaProps: {
                         "aria-haspopup": "listbox",
@@ -176,7 +180,7 @@ export function Dropdown({
             ) : (
                 <Button
                     variant=""
-                    ref={triggerRef}
+                    ref={setTriggerRef}
                     aria-haspopup="listbox"
                     aria-expanded={open}
                     aria-controls={menuId}
