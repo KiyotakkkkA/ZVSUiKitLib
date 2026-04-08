@@ -1,5 +1,6 @@
 import {
     Children,
+    useEffect,
     isValidElement,
     useMemo,
     useRef,
@@ -65,6 +66,7 @@ const VirtualizedChildrenList = ({
         getScrollElement: () => scrollElementRef.current,
         estimateSize: () => estimateSize,
         overscan,
+        useAnimationFrameWithResizeObserver: true,
         getItemKey: (index) => {
             const item = items[index];
             return isValidElement(item) && item.key != null
@@ -72,6 +74,13 @@ const VirtualizedChildrenList = ({
                 : index;
         },
     });
+
+    useEffect(() => {
+        virtualizer.shouldAdjustScrollPositionOnItemSizeChange = () => false;
+        return () => {
+            virtualizer.shouldAdjustScrollPositionOnItemSizeChange = undefined;
+        };
+    }, [virtualizer]);
 
     if (items.length === 0) {
         return null;
@@ -92,7 +101,7 @@ const VirtualizedChildrenList = ({
                         key={virtualItem.key}
                         ref={virtualizer.measureElement}
                         data-index={virtualItem.index}
-                        className="absolute left-0 top-0 w-full pb-1"
+                        className={cn("absolute left-0 top-0 w-full pb-1")}
                         style={{
                             transform: `translateY(${virtualItem.start}px)`,
                         }}
@@ -160,7 +169,7 @@ const TreeViewCatalog = ({
                     height={16}
                     className={cn(
                         "shrink-0 text-main-300 transition-transform",
-                        isOpen ? "rotate-90" : "",
+                        isOpen && "rotate-90",
                     )}
                 />
                 <Icon
@@ -187,7 +196,9 @@ const TreeViewCatalog = ({
                         {children}
                     </VirtualizedChildrenList>
                 ) : (
-                    <div className="mt-1 space-y-1 pl-7">{children}</div>
+                    <div className={cn("mt-1 pl-7", "space-y-1")}>
+                        {children}
+                    </div>
                 )
             ) : null}
         </div>
@@ -195,14 +206,10 @@ const TreeViewCatalog = ({
 };
 
 const TreeViewElement = ({
-    label,
-    description,
     children,
     className = "",
     onClick,
 }: TreeViewElementProps) => {
-    const hasCustomContent = children !== undefined && children !== null;
-
     return (
         <button
             type="button"
@@ -213,28 +220,7 @@ const TreeViewElement = ({
             onClick={onClick}
         >
             <div className="flex items-start gap-2">
-                <Icon
-                    icon="mdi:cog-outline"
-                    width={14}
-                    height={14}
-                    className="mt-0.5 shrink-0 text-main-400"
-                />
-                {hasCustomContent ? (
-                    <div className="min-w-0 flex-1 text-left">{children}</div>
-                ) : (
-                    <div className="min-w-0 flex-1">
-                        {label ? (
-                            <p className="truncate text-xs font-medium text-main-200 text-left">
-                                {label}
-                            </p>
-                        ) : null}
-                        {description ? (
-                            <p className="line-clamp-2 text-[11px] text-main-400 text-left">
-                                {description}
-                            </p>
-                        ) : null}
-                    </div>
-                )}
+                <div className="min-w-0 flex-1 text-left">{children}</div>
             </div>
         </button>
     );
