@@ -7,10 +7,15 @@ export default defineConfig({
     build: {
         copyPublicDir: false,
         lib: {
-            entry: resolve(__dirname, "src/ui/index.ts"),
+            entry: {
+                index: resolve(__dirname, "src/index.ts"),
+                ui: resolve(__dirname, "src/ui/index.ts"),
+                hooks: resolve(__dirname, "src/hooks/index.ts"),
+                providers: resolve(__dirname, "src/providers/index.ts"),
+            },
             name: "ZvsUiKit",
             formats: ["es"],
-            fileName: () => "index.js",
+            fileName: (_format, entryName) => `${entryName}.js`,
         },
         rollupOptions: {
             external: [
