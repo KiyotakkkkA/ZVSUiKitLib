@@ -1,17 +1,17 @@
 import { Icon } from "@iconify/react";
 import type { HTMLAttributes, ReactNode } from "react";
-import { cn } from "./lib/utils";
+import { cn } from "../lib/utils";
 
-type AlertTone = "neutral" | "success" | "warning" | "danger" | "info";
+type AlertVariant = "neutral" | "success" | "warning" | "danger" | "info";
 
 type AlertProps = HTMLAttributes<HTMLDivElement> & {
-    tone?: AlertTone;
+    variant?: AlertVariant;
     title?: ReactNode;
     icon?: ReactNode;
 };
 
-const toneStyles: Record<
-    AlertTone,
+const variantStyles: Record<
+    AlertVariant,
     { box: string; icon: string; defaultIcon: string }
 > = {
     neutral: {
@@ -42,28 +42,32 @@ const toneStyles: Record<
 };
 
 export function Alert({
-    tone = "neutral",
+    variant = "neutral",
     title,
     icon,
     className,
     children,
     ...props
 }: AlertProps) {
-    const toneStyle = toneStyles[tone];
+    const variantStyle = variantStyles[variant];
 
     return (
         <div
             role="status"
             className={cn(
                 "flex items-start gap-3 rounded-xl border px-3 py-2.5",
-                toneStyle.box,
+                variantStyle.box,
                 className,
             )}
             {...props}
         >
-            <span className={cn("mt-0.5 shrink-0", toneStyle.icon)}>
+            <span className={cn("mt-0.5 shrink-0", variantStyle.icon)}>
                 {icon ?? (
-                    <Icon icon={toneStyle.defaultIcon} width="16" height="16" />
+                    <Icon
+                        icon={variantStyle.defaultIcon}
+                        width="16"
+                        height="16"
+                    />
                 )}
             </span>
             <div className="min-w-0">

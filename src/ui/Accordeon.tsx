@@ -5,7 +5,7 @@ import {
     useRef,
     useState,
 } from "react";
-import { cn } from "./lib/utils";
+import { cn } from "../lib/utils";
 
 type AccordeonProps = PropsWithChildren<{
     title: string;
@@ -13,8 +13,6 @@ type AccordeonProps = PropsWithChildren<{
     defaultOpen?: boolean;
     className?: string;
     titleIcon?: ReactNode;
-    variant?: "default" | "thinking" | "tool" | "plan";
-    compact?: boolean;
     headerClassName?: string;
     contentClassName?: string;
     rightSlot?: ReactNode;
@@ -26,8 +24,6 @@ export function Accordeon({
     defaultOpen = false,
     className = "",
     titleIcon,
-    variant = "default",
-    compact = false,
     headerClassName = "",
     contentClassName = "",
     rightSlot,
@@ -36,19 +32,6 @@ export function Accordeon({
     const [isOpen, setIsOpen] = useState(defaultOpen);
     const contentRef = useRef<HTMLDivElement>(null);
     const [contentHeight, setContentHeight] = useState(0);
-
-    const variantClasses: Record<
-        NonNullable<AccordeonProps["variant"]>,
-        string
-    > = {
-        default: "border-main-700/70 bg-main-900/50",
-        thinking: "border-main-700/70 bg-main-900/55",
-        tool: "border-main-700/70 bg-main-900/55",
-        plan: "border-main-700/70 bg-main-900/55",
-    };
-
-    const headerPaddingClass = compact ? "px-2.5 py-2" : "px-3 py-2";
-    const contentPaddingClass = compact ? "px-2.5 py-2.5" : "px-3 py-3";
 
     useEffect(() => {
         if (!contentRef.current) {
@@ -61,16 +44,14 @@ export function Accordeon({
     return (
         <div
             className={cn(
-                "rounded-xl border",
-                variantClasses[variant],
+                "rounded-xl border border-main-700/70 bg-main-900/50",
                 className,
             )}
         >
             <button
                 type="button"
                 className={cn(
-                    "w-full cursor-pointer",
-                    headerPaddingClass,
+                    "w-full cursor-pointer px-2.5 py-2",
                     headerClassName,
                 )}
                 onClick={() => setIsOpen((prev) => !prev)}
@@ -125,8 +106,7 @@ export function Accordeon({
                 <div
                     ref={contentRef}
                     className={cn(
-                        "border-t border-main-700/70",
-                        contentPaddingClass,
+                        "border-t border-main-700/70 px-2.5 py-2",
                         contentClassName,
                     )}
                 >

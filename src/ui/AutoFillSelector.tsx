@@ -1,7 +1,15 @@
 import type React from "react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
+import {
+    useCallback,
+    useEffect,
+    useMemo,
+    useRef,
+    useState,
+    type CSSProperties,
+} from "react";
 import { Icon } from "@iconify/react";
-import { cn } from "./lib/utils";
+import { cn } from "../lib/utils";
 
 export type AutoFillOption = {
     value: string;
@@ -21,6 +29,7 @@ type AutoFillSelectorProps = Omit<
 };
 
 const EMPTY_VALUE: string[] = [];
+const SELECTOR_MENU_GAP = 8;
 
 export const AutoFillSelector = ({
     options,
@@ -33,8 +42,26 @@ export const AutoFillSelector = ({
 }: AutoFillSelectorProps) => {
     const [isOpen, setIsOpen] = useState(false);
     const [query, setQuery] = useState("");
+    const [menuStyle, setMenuStyle] = useState<CSSProperties>({});
     const rootRef = useRef<HTMLDivElement | null>(null);
+    const triggerRef = useRef<HTMLDivElement | null>(null);
+    const menuRef = useRef<HTMLDivElement | null>(null);
     const inputRef = useRef<HTMLInputElement | null>(null);
+
+    const updateMenuPosition = useCallback(() => {
+        const triggerElement = triggerRef.current;
+        if (!triggerElement) {
+            return;
+        }
+
+        const rect = triggerElement.getBoundingClientRect();
+        setMenuStyle({
+            left: rect.left,
+            position: "fixed",
+            top: rect.bottom + SELECTOR_MENU_GAP,
+            width: rect.width,
+        });
+    }, []);
 
     const selectedSet = useMemo(() => new Set(value), [value]);
 
@@ -60,12 +87,16 @@ export const AutoFillSelector = ({
             return;
         }
 
-        const handleClickOutside = (event: MouseEvent) => {
-            if (!rootRef.current) {
+        const handleClickOutside = (event: PointerEvent) => {
+            const target = event.target;
+            if (!(target instanceof Node)) {
                 return;
             }
 
-            if (rootRef.current.contains(event.target as Node)) {
+            if (
+                rootRef.current?.contains(target) ||
+                menuRef.current?.contains(target)
+            ) {
                 return;
             }
 
@@ -76,6 +107,26 @@ export const AutoFillSelector = ({
         return () =>
             window.removeEventListener("pointerdown", handleClickOutside);
     }, [isOpen]);
+
+    useEffect(() => {
+        if (!isOpen) {
+            return;
+        }
+
+        updateMenuPosition();
+
+        const onViewportChange = () => {
+            updateMenuPosition();
+        };
+
+        window.addEventListener("resize", onViewportChange);
+        window.addEventListener("scroll", onViewportChange, true);
+
+        return () => {
+            window.removeEventListener("resize", onViewportChange);
+            window.removeEventListener("scroll", onViewportChange, true);
+        };
+    }, [isOpen, updateMenuPosition]);
 
     const toggleValue = (nextValue: string) => {
         const next = new Set(value);
@@ -100,6 +151,7 @@ export const AutoFillSelector = ({
             {...props}
         >
             <div
+                ref={triggerRef}
                 className={cn(
                     "flex min-h-10 w-full flex-wrap items-center gap-2 rounded-xl border border-main-700/70",
                     "bg-main-800/70 px-3 py-2 text-sm text-main-100 transition-colors duration-200",
@@ -173,6 +225,7 @@ export const AutoFillSelector = ({
                     onFocus={() => {
                         if (!disabled) {
                             setIsOpen(true);
+                            updateMenuPosition();
                         }
                     }}
                     onKeyDown={(event) => {
@@ -193,62 +246,67 @@ export const AutoFillSelector = ({
                 />
             </div>
 
-            <div
-                className={cn(
-                    "absolute top-full left-0 right-0 z-30 mt-2 overflow-hidden rounded-xl border border-main-700",
-                    "bg-main-800 transition-all duration-200",
-                    isOpen
-                        ? "max-h-64 opacity-100"
-                        : "pointer-events-none max-h-0 opacity-0",
-                )}
-            >
-                <div className="max-h-64 overflow-auto py-1">
-                    {filteredOptions.length === 0 ? (
-                        <div className="px-3 py-2 text-sm text-main-500">
-                            Ничего не найдено
-                        </div>
-                    ) : null}
+            {createPortal(
+                <div
+                    ref={menuRef}
+                    style={menuStyle}
+                    className={cn(
+                        "fixed z-60 overflow-hidden rounded-xl border border-main-700",
+                        "bg-main-800 transition-all duration-200",
+                        isOpen
+                            ? "max-h-64 opacity-100"
+                            : "pointer-events-none max-h-0 opacity-0",
+                    )}
+                >
+                    <div className="max-h-64 overflow-auto py-1">
+                        {filteredOptions.length === 0 ? (
+                            <div className="px-3 py-2 text-sm text-main-500">
+                                Ничего не найдено
+                            </div>
+                        ) : null}
 
-                    {filteredOptions.map((option) => {
-                        const isSelected = selectedSet.has(option.value);
+                        {filteredOptions.map((option) => {
+                            const isSelected = selectedSet.has(option.value);
 
-                        return (
-                            <button
-                                key={option.value}
-                                type="button"
-                                onClick={() => {
-                                    toggleValue(option.value);
-                                    setQuery("");
-                                }}
-                                className={cn(
-                                    "flex w-full cursor-pointer items-start justify-between gap-3 px-3 py-2",
-                                    "text-left text-sm transition-colors",
-                                    isSelected
-                                        ? "bg-main-700 text-main-100"
-                                        : "text-main-300 hover:bg-main-700 hover:text-main-100",
-                                )}
-                            >
-                                <span className="min-w-0">
-                                    <span className="block truncate font-medium">
-                                        {option.label}
-                                    </span>
-                                    {option.description ? (
-                                        <span className="mt-0.5 block text-xs text-main-500">
-                                            {option.description}
+                            return (
+                                <button
+                                    key={option.value}
+                                    type="button"
+                                    onClick={() => {
+                                        toggleValue(option.value);
+                                        setQuery("");
+                                    }}
+                                    className={cn(
+                                        "flex w-full cursor-pointer items-start justify-between gap-3 px-3 py-2",
+                                        "text-left text-sm transition-colors",
+                                        isSelected
+                                            ? "bg-main-700 text-main-100"
+                                            : "text-main-300 hover:bg-main-700 hover:text-main-100",
+                                    )}
+                                >
+                                    <span className="min-w-0">
+                                        <span className="block truncate font-medium">
+                                            {option.label}
                                         </span>
+                                        {option.description ? (
+                                            <span className="mt-0.5 block text-xs text-main-500">
+                                                {option.description}
+                                            </span>
+                                        ) : null}
+                                    </span>
+                                    {isSelected ? (
+                                        <Icon
+                                            icon="mdi:check"
+                                            className="mt-0.5 h-4 w-4 shrink-0 text-main-200"
+                                        />
                                     ) : null}
-                                </span>
-                                {isSelected ? (
-                                    <Icon
-                                        icon="mdi:check"
-                                        className="mt-0.5 h-4 w-4 shrink-0 text-main-200"
-                                    />
-                                ) : null}
-                            </button>
-                        );
-                    })}
-                </div>
-            </div>
+                                </button>
+                            );
+                        })}
+                    </div>
+                </div>,
+                document.body,
+            )}
         </div>
     );
 };

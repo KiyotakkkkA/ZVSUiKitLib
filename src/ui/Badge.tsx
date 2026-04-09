@@ -1,13 +1,13 @@
 import type { HTMLAttributes } from "react";
-import { cn } from "./lib/utils";
+import { cn } from "../lib/utils";
 
-type BadgeTone = "neutral" | "success" | "warning" | "danger" | "info";
+type BadgeVariant = "neutral" | "success" | "warning" | "danger" | "info";
 
 type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
-    tone?: BadgeTone;
+    variant?: BadgeVariant;
 };
 
-const toneClasses: Record<BadgeTone, string> = {
+const variantClasses: Record<BadgeVariant, string> = {
     neutral: "border-main-600/70 bg-main-700/60 text-main-100",
     success: "border-emerald-600/60 bg-emerald-700/40 text-emerald-100",
     warning: "border-amber-600/60 bg-amber-700/35 text-amber-100",
@@ -16,7 +16,7 @@ const toneClasses: Record<BadgeTone, string> = {
 };
 
 export function Badge({
-    tone = "neutral",
+    variant = "neutral",
     className,
     children,
     ...props
@@ -25,7 +25,7 @@ export function Badge({
         <span
             className={cn(
                 "inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium",
-                toneClasses[tone],
+                variantClasses[variant],
                 className,
             )}
             {...props}

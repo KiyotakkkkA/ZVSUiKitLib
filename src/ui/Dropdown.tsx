@@ -1,4 +1,5 @@
 import { Icon } from "@iconify/react";
+import { createPortal } from "react-dom";
 import {
     useCallback,
     useEffect,
@@ -6,12 +7,13 @@ import {
     useMemo,
     useRef,
     useState,
+    type CSSProperties,
     type Ref,
     type ReactNode,
 } from "react";
 import { Button } from "./Button";
 import { InputSmall } from "./InputSmall";
-import { cn } from "./lib/utils";
+import { cn } from "../lib/utils";
 
 type DropdownOption = {
     value: string;
@@ -51,6 +53,32 @@ type DropdownProps = {
     }) => ReactNode;
 };
 
+const DROPDOWN_MENU_GAP = 8;
+
+const getMenuStyle = (
+    triggerElement: HTMLButtonElement,
+    menuPlacement: "bottom" | "top",
+    matchTriggerWidth: boolean,
+): CSSProperties => {
+    const rect = triggerElement.getBoundingClientRect();
+    const style: CSSProperties = {
+        left: rect.left,
+        position: "fixed",
+    };
+
+    if (menuPlacement === "top") {
+        style.bottom = window.innerHeight - rect.top + DROPDOWN_MENU_GAP;
+    } else {
+        style.top = rect.bottom + DROPDOWN_MENU_GAP;
+    }
+
+    if (matchTriggerWidth) {
+        style.width = rect.width;
+    }
+
+    return style;
+};
+
 export function Dropdown({
     value,
     options,
@@ -72,12 +100,25 @@ export function Dropdown({
 }: DropdownProps) {
     const [open, setOpen] = useState(false);
     const [query, setQuery] = useState("");
+    const [menuStyle, setMenuStyle] = useState<CSSProperties>({});
+    const [triggerElement, setTriggerElement] =
+        useState<HTMLButtonElement | null>(null);
     const rootRef = useRef<HTMLDivElement>(null);
+    const menuRef = useRef<HTMLDivElement | null>(null);
     const menuId = useId();
-    const [, setTriggerElement] = useState<HTMLButtonElement | null>(null);
     const setTriggerRef = useCallback((node: HTMLButtonElement | null) => {
         setTriggerElement(node);
     }, []);
+
+    const updateMenuPosition = useCallback(() => {
+        if (!triggerElement) {
+            return;
+        }
+
+        setMenuStyle(
+            getMenuStyle(triggerElement, menuPlacement, matchTriggerWidth),
+        );
+    }, [matchTriggerWidth, menuPlacement, triggerElement]);
 
     const selectedOption = useMemo(
         () => options.find((item) => item.value === value),
@@ -102,10 +143,21 @@ export function Dropdown({
             return;
         }
         const onOutsidePointer = (event: PointerEvent) => {
-            if (!rootRef.current?.contains(event.target as Node)) {
-                setOpen(false);
+            const target = event.target;
+            if (!(target instanceof Node)) {
+                return;
             }
+
+            if (
+                rootRef.current?.contains(target) ||
+                menuRef.current?.contains(target)
+            ) {
+                return;
+            }
+
+            setOpen(false);
         };
+
         const onEscape = (event: KeyboardEvent) => {
             if (event.key === "Escape") {
                 setOpen(false);
@@ -119,6 +171,29 @@ export function Dropdown({
             window.removeEventListener("keydown", onEscape);
         };
     }, [open]);
+
+    useEffect(() => {
+        if (!open) {
+            return;
+        }
+
+        const rafId = window.requestAnimationFrame(() => {
+            updateMenuPosition();
+        });
+
+        const onViewportChange = () => {
+            updateMenuPosition();
+        };
+
+        window.addEventListener("resize", onViewportChange);
+        window.addEventListener("scroll", onViewportChange, true);
+
+        return () => {
+            window.cancelAnimationFrame(rafId);
+            window.removeEventListener("resize", onViewportChange);
+            window.removeEventListener("scroll", onViewportChange, true);
+        };
+    }, [open, updateMenuPosition]);
 
     const toggleOpen = () => {
         if (disabled) {
@@ -144,22 +219,97 @@ export function Dropdown({
 
     const menuPositionClassName =
         menuPlacement === "top"
-            ? `bottom-full mb-2 origin-bottom ${
+            ? `origin-bottom ${
                   open
                       ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
                       : "pointer-events-none translate-y-1 scale-98 opacity-0"
               }`
-            : `top-full mt-2 origin-top ${
+            : `origin-top ${
                   open
                       ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
                       : "pointer-events-none -translate-y-1 scale-98 opacity-0"
               }`;
 
+    const menuNode = (
+        <div
+            id={menuId}
+            role="listbox"
+            tabIndex={-1}
+            ref={menuRef}
+            style={menuStyle}
+            className={cn(
+                "fixed z-60 rounded-xl bg-main-800 p-1.5 transition-all duration-180",
+                matchTriggerWidth ? "" : "min-w-34",
+                menuPositionClassName,
+                menuClassName,
+            )}
+        >
+            <div className="space-y-1.5 overflow-x-hidden rounded-lg">
+                {searchable ? (
+                    <InputSmall
+                        value={query}
+                        onChange={(event) => setQuery(event.target.value)}
+                        placeholder={searchPlaceholder}
+                        className="h-8 w-full"
+                    />
+                ) : null}
+
+                <div className="max-h-72 space-y-1 overflow-y-auto overflow-x-hidden rounded-lg pr-1">
+                    {filteredOptions.length === 0 ? (
+                        <p className="px-3 py-2 text-sm text-main-500">
+                            {emptyMessage}
+                        </p>
+                    ) : null}
+
+                    {filteredOptions.map((option) => {
+                        const active = option.value === value;
+                        return (
+                            <Button
+                                key={option.value}
+                                role="option"
+                                aria-selected={active}
+                                onClick={() => onSelect(option.value)}
+                                className={cn(
+                                    "w-full min-w-0 justify-between space-x-2 rounded-lg border border-transparent",
+                                    "px-3 py-2 text-left text-sm",
+                                    active
+                                        ? "bg-main-700/60 text-main-100"
+                                        : "bg-transparent text-main-300 hover:bg-main-700/80 hover:text-main-100",
+                                    optionClassName,
+                                )}
+                            >
+                                <span className="flex min-w-0 items-center gap-2 truncate">
+                                    {option.icon ? (
+                                        <span className="shrink-0 text-main-300">
+                                            {option.icon}
+                                        </span>
+                                    ) : null}
+                                    <span className="min-w-0 truncate">
+                                        {option.label}
+                                    </span>
+                                </span>
+                                <span className="shrink-0">
+                                    {active ? (
+                                        <Icon
+                                            icon="mdi:check"
+                                            className="text-main-200"
+                                            aria-hidden
+                                        />
+                                    ) : null}
+                                </span>
+                            </Button>
+                        );
+                    })}
+                </div>
+            </div>
+        </div>
+    );
+
     return (
         <div
             ref={rootRef}
             className={cn(
-                "relative min-w-0",
+                "min-w-0",
                 matchTriggerWidth ? "w-full" : "",
                 className,
             )}
@@ -206,76 +356,7 @@ export function Dropdown({
                 </Button>
             )}
 
-            <div
-                id={menuId}
-                role="listbox"
-                tabIndex={-1}
-                className={cn(
-                    "absolute z-30 rounded-xl bg-main-800 p-1.5 transition-all duration-180",
-                    matchTriggerWidth ? "left-0 right-0" : "left-0 min-w-34",
-                    menuPositionClassName,
-                    menuClassName,
-                )}
-            >
-                <div className="space-y-1.5 overflow-x-hidden rounded-lg">
-                    {searchable ? (
-                        <InputSmall
-                            value={query}
-                            onChange={(event) => setQuery(event.target.value)}
-                            placeholder={searchPlaceholder}
-                            className="h-8 w-full"
-                        />
-                    ) : null}
-
-                    <div className="max-h-72 space-y-1 overflow-y-auto overflow-x-hidden rounded-lg pr-1">
-                        {filteredOptions.length === 0 ? (
-                            <p className="px-3 py-2 text-sm text-main-500">
-                                {emptyMessage}
-                            </p>
-                        ) : null}
-
-                        {filteredOptions.map((option) => {
-                            const active = option.value === value;
-                            return (
-                                <Button
-                                    key={option.value}
-                                    role="option"
-                                    aria-selected={active}
-                                    onClick={() => onSelect(option.value)}
-                                    className={cn(
-                                        "w-full min-w-0 justify-between space-x-2 rounded-lg border border-transparent",
-                                        "px-3 py-2 text-left text-sm",
-                                        active
-                                            ? "bg-main-700/60 text-main-100"
-                                            : "bg-transparent text-main-300 hover:bg-main-700/80 hover:text-main-100",
-                                        optionClassName,
-                                    )}
-                                >
-                                    <span className="flex min-w-0 items-center gap-2 truncate">
-                                        {option.icon ? (
-                                            <span className="shrink-0 text-main-300">
-                                                {option.icon}
-                                            </span>
-                                        ) : null}
-                                        <span className="min-w-0 truncate">
-                                            {option.label}
-                                        </span>
-                                    </span>
-                                    <span className="shrink-0">
-                                        {active ? (
-                                            <Icon
-                                                icon="mdi:check"
-                                                className="text-main-200"
-                                                aria-hidden
-                                            />
-                                        ) : null}
-                                    </span>
-                                </Button>
-                            );
-                        })}
-                    </div>
-                </div>
-            </div>
+            {createPortal(menuNode, document.body)}
         </div>
     );
 }

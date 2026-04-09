@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
 import { forwardRef, useState, type InputHTMLAttributes } from "react";
-import { cn } from "./lib/utils";
+import { cn } from "../lib/utils";
 
 type InputSmallProps = InputHTMLAttributes<HTMLInputElement>;
 

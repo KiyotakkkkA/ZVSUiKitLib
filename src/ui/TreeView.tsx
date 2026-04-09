@@ -9,7 +9,7 @@ import {
 } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { Icon } from "@iconify/react";
-import { cn } from "./lib/utils";
+import { cn } from "../lib/utils";
 
 type TreeViewVirtualizationProps = {
     virtualized?: boolean;

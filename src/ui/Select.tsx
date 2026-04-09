@@ -1,5 +1,5 @@
 import { Dropdown } from "./Dropdown";
-import { cn } from "./lib/utils";
+import { cn } from "../lib/utils";
 
 type SelectOption = {
     value: string;

@@ -8,7 +8,7 @@ import {
 import { createPortal } from "react-dom";
 import { Icon } from "@iconify/react";
 import { Button } from "./Button";
-import { cn } from "./lib/utils";
+import { cn } from "../lib/utils";
 
 type ModalProps = PropsWithChildren<{
     open: boolean;
