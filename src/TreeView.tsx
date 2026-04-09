@@ -1,13 +1,29 @@
-import { useState, type ReactNode } from "react";
+import {
+    Children,
+    useEffect,
+    isValidElement,
+    useMemo,
+    useRef,
+    useState,
+    type ReactNode,
+} from "react";
+import { useVirtualizer } from "@tanstack/react-virtual";
 import { Icon } from "@iconify/react";
 import { cn } from "./lib/utils";
 
-type TreeViewProps = {
+type TreeViewVirtualizationProps = {
+    virtualized?: boolean;
+    height?: number;
+    estimateSize?: number;
+    overscan?: number;
+};
+
+type TreeViewProps = TreeViewVirtualizationProps & {
     children: ReactNode;
     className?: string;
 };
 
-type TreeViewCatalogProps = {
+type TreeViewCatalogProps = TreeViewVirtualizationProps & {
     title: string;
     children?: ReactNode;
     defaultOpen?: boolean;
@@ -15,13 +31,97 @@ type TreeViewCatalogProps = {
 };
 
 type TreeViewElementProps = {
-    label: string;
+    label?: string;
     description?: string;
+    children?: ReactNode;
     className?: string;
     onClick?: () => void;
 };
 
-const TreeViewBase = ({ children, className = "" }: TreeViewProps) => {
+type VirtualizedChildrenListProps = {
+    children?: ReactNode;
+    className?: string;
+    height: number;
+    estimateSize: number;
+    overscan: number;
+};
+
+const DEFAULT_VIRTUAL_HEIGHT = 360;
+const DEFAULT_VIRTUAL_ITEM_SIZE = 34;
+const DEFAULT_VIRTUAL_OVERSCAN = 8;
+
+const VirtualizedChildrenList = ({
+    children,
+    className = "",
+    height,
+    estimateSize,
+    overscan,
+}: VirtualizedChildrenListProps) => {
+    const scrollElementRef = useRef<HTMLDivElement>(null);
+    const items = useMemo(() => Children.toArray(children), [children]);
+
+    // eslint-disable-next-line react-hooks/incompatible-library
+    const virtualizer = useVirtualizer({
+        count: items.length,
+        getScrollElement: () => scrollElementRef.current,
+        estimateSize: () => estimateSize,
+        overscan,
+        useAnimationFrameWithResizeObserver: true,
+        getItemKey: (index) => {
+            const item = items[index];
+            return isValidElement(item) && item.key != null
+                ? String(item.key)
+                : index;
+        },
+    });
+
+    useEffect(() => {
+        virtualizer.shouldAdjustScrollPositionOnItemSizeChange = () => false;
+        return () => {
+            virtualizer.shouldAdjustScrollPositionOnItemSizeChange = undefined;
+        };
+    }, [virtualizer]);
+
+    if (items.length === 0) {
+        return null;
+    }
+
+    return (
+        <div
+            ref={scrollElementRef}
+            className={cn("overflow-y-auto", className)}
+            style={{ height }}
+        >
+            <div
+                className="relative w-full"
+                style={{ height: virtualizer.getTotalSize() }}
+            >
+                {virtualizer.getVirtualItems().map((virtualItem) => (
+                    <div
+                        key={virtualItem.key}
+                        ref={virtualizer.measureElement}
+                        data-index={virtualItem.index}
+                        className={cn("absolute left-0 top-0 w-full pb-1")}
+                        style={{
+                            transform: `translateY(${virtualItem.start}px)`,
+                        }}
+                    >
+                        {items[virtualItem.index]}
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+const TreeViewBase = ({
+    children,
+    className = "",
+    virtualized = false,
+    height = DEFAULT_VIRTUAL_HEIGHT,
+    estimateSize = DEFAULT_VIRTUAL_ITEM_SIZE,
+    overscan = DEFAULT_VIRTUAL_OVERSCAN,
+}: TreeViewProps) => {
     return (
         <div
             className={cn(
@@ -29,7 +129,17 @@ const TreeViewBase = ({ children, className = "" }: TreeViewProps) => {
                 className,
             )}
         >
-            <div className="space-y-1">{children}</div>
+            {virtualized ? (
+                <VirtualizedChildrenList
+                    height={height}
+                    estimateSize={estimateSize}
+                    overscan={overscan}
+                >
+                    {children}
+                </VirtualizedChildrenList>
+            ) : (
+                <div className="space-y-1">{children}</div>
+            )}
         </div>
     );
 };
@@ -39,6 +149,10 @@ const TreeViewCatalog = ({
     children,
     defaultOpen = false,
     className = "",
+    virtualized = false,
+    height = DEFAULT_VIRTUAL_HEIGHT,
+    estimateSize = DEFAULT_VIRTUAL_ITEM_SIZE,
+    overscan = DEFAULT_VIRTUAL_OVERSCAN,
 }: TreeViewCatalogProps) => {
     const [isOpen, setIsOpen] = useState(defaultOpen);
 
@@ -55,7 +169,7 @@ const TreeViewCatalog = ({
                     height={16}
                     className={cn(
                         "shrink-0 text-main-300 transition-transform",
-                        isOpen ? "rotate-90" : "",
+                        isOpen && "rotate-90",
                     )}
                 />
                 <Icon
@@ -72,15 +186,27 @@ const TreeViewCatalog = ({
             </button>
 
             {isOpen ? (
-                <div className="mt-1 space-y-1 pl-7">{children}</div>
+                virtualized ? (
+                    <VirtualizedChildrenList
+                        className="mt-1 pl-7"
+                        height={height}
+                        estimateSize={estimateSize}
+                        overscan={overscan}
+                    >
+                        {children}
+                    </VirtualizedChildrenList>
+                ) : (
+                    <div className={cn("mt-1 pl-7", "space-y-1")}>
+                        {children}
+                    </div>
+                )
             ) : null}
         </div>
     );
 };
 
 const TreeViewElement = ({
-    label,
-    description,
+    children,
     className = "",
     onClick,
 }: TreeViewElementProps) => {
@@ -94,22 +220,7 @@ const TreeViewElement = ({
             onClick={onClick}
         >
             <div className="flex items-start gap-2">
-                <Icon
-                    icon="mdi:cog-outline"
-                    width={14}
-                    height={14}
-                    className="mt-0.5 shrink-0 text-main-400"
-                />
-                <div className="min-w-0">
-                    <p className="truncate text-xs font-medium text-main-200 text-left">
-                        {label}
-                    </p>
-                    {description ? (
-                        <p className="line-clamp-2 text-[11px] text-main-400 text-left">
-                            {description}
-                        </p>
-                    ) : null}
-                </div>
+                <div className="min-w-0 flex-1 text-left">{children}</div>
             </div>
         </button>
     );
