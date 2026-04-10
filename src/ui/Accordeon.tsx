@@ -34,12 +34,22 @@ export function Accordeon({
     const [contentHeight, setContentHeight] = useState(0);
 
     useEffect(() => {
-        if (!contentRef.current) {
-            return;
-        }
+        if (!contentRef.current) return;
 
-        setContentHeight(contentRef.current.scrollHeight);
-    }, [children, isOpen]);
+        const el = contentRef.current;
+
+        const updateHeight = () => {
+            const next = el.scrollHeight;
+            setContentHeight((prev) => (prev === next ? prev : next));
+        };
+
+        updateHeight();
+
+        const observer = new ResizeObserver(updateHeight);
+        observer.observe(el);
+
+        return () => observer.disconnect();
+    }, [isOpen]);
 
     return (
         <div
