@@ -28,8 +28,8 @@ export function Select({
     searchPlaceholder,
     emptyMessage,
     disabled,
-    className = "",
-    wrapperClassName = "",
+    className,
+    wrapperClassName,
 }: SelectProps) {
     return (
         <div
@@ -47,7 +47,7 @@ export function Select({
                 searchPlaceholder={searchPlaceholder}
                 emptyMessage={emptyMessage}
                 disabled={disabled}
-                triggerClassName={cn(className)}
+                triggerClassName={className}
             />
         </div>
     );

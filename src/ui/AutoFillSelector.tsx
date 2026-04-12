@@ -57,9 +57,11 @@ export const AutoFillSelector = ({
         const rect = triggerElement.getBoundingClientRect();
         setMenuStyle({
             left: rect.left,
+            maxWidth: "calc(100vw - 2rem)",
+            minWidth: rect.width,
             position: "fixed",
             top: rect.bottom + SELECTOR_MENU_GAP,
-            width: rect.width,
+            width: "max-content",
         });
     }, []);
 
@@ -144,6 +146,10 @@ export const AutoFillSelector = ({
         onChange?.(value.filter((item) => item !== removeValue));
     };
 
+    const inputPlaceholder = value.length
+        ? ""
+        : (placeholder ?? "Введите для поиска");
+
     return (
         <div
             ref={rootRef}
@@ -191,7 +197,7 @@ export const AutoFillSelector = ({
                             className="inline-flex items-center gap-1 rounded-full border border-main-600/70 bg-main-700/70 px-2 py-0.5 text-xs text-main-100"
                         >
                             {option?.label ?? item}
-                            {!disabled ? (
+                            {!disabled && (
                                 <button
                                     type="button"
                                     className="text-main-400 transition-colors hover:text-main-100"
@@ -206,7 +212,7 @@ export const AutoFillSelector = ({
                                         className="h-3.5 w-3.5"
                                     />
                                 </button>
-                            ) : null}
+                            )}
                         </span>
                     );
                 })}
@@ -237,11 +243,7 @@ export const AutoFillSelector = ({
                             removeValue(value[value.length - 1]);
                         }
                     }}
-                    placeholder={
-                        value.length
-                            ? ""
-                            : (placeholder ?? "Введите для поиска")
-                    }
+                    placeholder={inputPlaceholder}
                     className="min-w-35 flex-1 bg-transparent text-sm text-main-100 placeholder:text-main-500 outline-none"
                 />
             </div>
@@ -259,11 +261,11 @@ export const AutoFillSelector = ({
                     )}
                 >
                     <div className="max-h-64 overflow-auto py-1">
-                        {filteredOptions.length === 0 ? (
+                        {filteredOptions.length === 0 && (
                             <div className="px-3 py-2 text-sm text-main-500">
                                 Ничего не найдено
                             </div>
-                        ) : null}
+                        )}
 
                         {filteredOptions.map((option) => {
                             const isSelected = selectedSet.has(option.value);
@@ -277,29 +279,29 @@ export const AutoFillSelector = ({
                                         setQuery("");
                                     }}
                                     className={cn(
-                                        "flex w-full cursor-pointer items-start justify-between gap-3 px-3 py-2",
+                                        "flex w-auto min-w-full cursor-pointer items-start justify-between gap-3 px-3 py-2",
                                         "text-left text-sm transition-colors",
                                         isSelected
                                             ? "bg-main-700 text-main-100"
                                             : "text-main-300 hover:bg-main-700 hover:text-main-100",
                                     )}
                                 >
-                                    <span className="min-w-0">
-                                        <span className="block truncate font-medium">
+                                    <span>
+                                        <span className="block whitespace-nowrap font-medium">
                                             {option.label}
                                         </span>
-                                        {option.description ? (
-                                            <span className="mt-0.5 block text-xs text-main-500">
+                                        {option.description && (
+                                            <span className="mt-0.5 block whitespace-nowrap text-xs text-main-500">
                                                 {option.description}
                                             </span>
-                                        ) : null}
+                                        )}
                                     </span>
-                                    {isSelected ? (
+                                    {isSelected && (
                                         <Icon
                                             icon="mdi:check"
                                             className="mt-0.5 h-4 w-4 shrink-0 text-main-200"
                                         />
-                                    ) : null}
+                                    )}
                                 </button>
                             );
                         })}

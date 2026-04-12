@@ -24,7 +24,7 @@ export function Modal({
     title,
     onClose,
     footer,
-    className = "",
+    className,
     children,
     closeOnOverlayClick = true,
 }: ModalProps) {
@@ -48,21 +48,19 @@ export function Modal({
     }
 
     const onOverlayClick = (event: MouseEvent<HTMLDivElement>) => {
-        if (event.target === event.currentTarget && closeOnOverlayClick) {
+        if (closeOnOverlayClick && event.target === event.currentTarget) {
             onClose();
         }
     };
 
     const onOverlayKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
-        if (!closeOnOverlayClick) {
-            return;
-        }
-
-        if (event.key === "Enter" || event.key === " ") {
-            if (event.target === event.currentTarget) {
-                event.preventDefault();
-                onClose();
-            }
+        if (
+            closeOnOverlayClick &&
+            (event.key === "Enter" || event.key === " ") &&
+            event.target === event.currentTarget
+        ) {
+            event.preventDefault();
+            onClose();
         }
     };
 
@@ -100,11 +98,11 @@ export function Modal({
                     {children}
                 </div>
 
-                {footer ? (
+                {footer && (
                     <div className="flex items-center justify-end gap-2 border-t border-main-700/80 px-5 py-4">
                         {footer}
                     </div>
-                ) : null}
+                )}
             </div>
         </div>,
         document.body,

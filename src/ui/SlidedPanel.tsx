@@ -51,21 +51,19 @@ export function SlidedPanel({
     }, [open, onClose]);
 
     const onOverlayClick = (event: MouseEvent<HTMLDivElement>) => {
-        if (event.target === event.currentTarget && closeOnOverlayClick) {
+        if (closeOnOverlayClick && event.target === event.currentTarget) {
             onClose();
         }
     };
 
     const onOverlayKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
-        if (!closeOnOverlayClick) {
-            return;
-        }
-
-        if (event.key === "Enter" || event.key === " ") {
-            if (event.target === event.currentTarget) {
-                event.preventDefault();
-                onClose();
-            }
+        if (
+            closeOnOverlayClick &&
+            (event.key === "Enter" || event.key === " ") &&
+            event.target === event.currentTarget
+        ) {
+            event.preventDefault();
+            onClose();
         }
     };
 
@@ -100,11 +98,11 @@ export function SlidedPanel({
                         <p className="truncate text-base font-semibold text-main-100">
                             {title}
                         </p>
-                        {subtitle ? (
+                        {subtitle && (
                             <p className="truncate text-xs text-main-400">
                                 {subtitle}
                             </p>
-                        ) : null}
+                        )}
                     </div>
 
                     <button

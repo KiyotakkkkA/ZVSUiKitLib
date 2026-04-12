@@ -185,8 +185,8 @@ const TreeViewCatalog = ({
                 <span className="truncate text-sm font-medium">{title}</span>
             </button>
 
-            {isOpen ? (
-                virtualized ? (
+            {isOpen &&
+                (virtualized ? (
                     <VirtualizedChildrenList
                         className="mt-1 pl-7"
                         height={height}
@@ -196,11 +196,8 @@ const TreeViewCatalog = ({
                         {children}
                     </VirtualizedChildrenList>
                 ) : (
-                    <div className={cn("mt-1 pl-7", "space-y-1")}>
-                        {children}
-                    </div>
-                )
-            ) : null}
+                    <div className="mt-1 space-y-1 pl-7">{children}</div>
+                ))}
         </div>
     );
 };

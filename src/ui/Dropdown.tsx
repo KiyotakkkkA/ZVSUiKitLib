@@ -38,7 +38,6 @@ type DropdownProps = {
     ariaLabel?: string;
     menuPlacement?: "bottom" | "top";
     closeOnSelect?: boolean;
-    matchTriggerWidth?: boolean;
     renderTrigger?: (args: {
         open: boolean;
         toggleOpen: () => void;
@@ -58,7 +57,6 @@ const DROPDOWN_MENU_GAP = 8;
 const getMenuStyle = (
     triggerElement: HTMLButtonElement,
     menuPlacement: "bottom" | "top",
-    matchTriggerWidth: boolean,
 ): CSSProperties => {
     const rect = triggerElement.getBoundingClientRect();
     const style: CSSProperties = {
@@ -70,10 +68,6 @@ const getMenuStyle = (
         style.bottom = window.innerHeight - rect.top + DROPDOWN_MENU_GAP;
     } else {
         style.top = rect.bottom + DROPDOWN_MENU_GAP;
-    }
-
-    if (matchTriggerWidth) {
-        style.width = rect.width;
     }
 
     return style;
@@ -95,7 +89,6 @@ export function Dropdown({
     ariaLabel,
     menuPlacement = "bottom",
     closeOnSelect = true,
-    matchTriggerWidth = true,
     renderTrigger,
 }: DropdownProps) {
     const [open, setOpen] = useState(false);
@@ -115,10 +108,8 @@ export function Dropdown({
             return;
         }
 
-        setMenuStyle(
-            getMenuStyle(triggerElement, menuPlacement, matchTriggerWidth),
-        );
-    }, [matchTriggerWidth, menuPlacement, triggerElement]);
+        setMenuStyle(getMenuStyle(triggerElement, menuPlacement));
+    }, [menuPlacement, triggerElement]);
 
     const selectedOption = useMemo(
         () => options.find((item) => item.value === value),
@@ -239,27 +230,31 @@ export function Dropdown({
             style={menuStyle}
             className={cn(
                 "fixed z-60 rounded-xl bg-main-800 p-1.5 transition-all duration-180",
-                matchTriggerWidth ? "" : "min-w-34",
+                "w-max min-w-34 max-w-[calc(100vw-2rem)]",
                 menuPositionClassName,
                 menuClassName,
             )}
         >
-            <div className="space-y-1.5 overflow-x-hidden rounded-lg">
-                {searchable ? (
+            <div className={cn("space-y-1.5 rounded-lg")}>
+                {searchable && (
                     <InputSmall
                         value={query}
                         onChange={(event) => setQuery(event.target.value)}
                         placeholder={searchPlaceholder}
                         className="h-8 w-full"
                     />
-                ) : null}
+                )}
 
-                <div className="max-h-72 space-y-1 overflow-y-auto overflow-x-hidden rounded-lg pr-1">
-                    {filteredOptions.length === 0 ? (
+                <div
+                    className={cn(
+                        "max-h-72 space-y-1 overflow-y-auto rounded-lg pr-1",
+                    )}
+                >
+                    {filteredOptions.length === 0 && (
                         <p className="px-3 py-2 text-sm text-main-500">
                             {emptyMessage}
                         </p>
-                    ) : null}
+                    )}
 
                     {filteredOptions.map((option) => {
                         const active = option.value === value;
@@ -270,7 +265,8 @@ export function Dropdown({
                                 aria-selected={active}
                                 onClick={() => onSelect(option.value)}
                                 className={cn(
-                                    "w-full min-w-0 justify-between space-x-2 rounded-lg border border-transparent",
+                                    "justify-between space-x-2 rounded-lg border border-transparent",
+                                    "w-auto min-w-full",
                                     "px-3 py-2 text-left text-sm",
                                     active
                                         ? "bg-main-700/60 text-main-100"
@@ -278,24 +274,29 @@ export function Dropdown({
                                     optionClassName,
                                 )}
                             >
-                                <span className="flex min-w-0 items-center gap-2 truncate">
-                                    {option.icon ? (
+                                <span
+                                    className={cn(
+                                        "flex items-center gap-2",
+                                        "whitespace-nowrap",
+                                    )}
+                                >
+                                    {option.icon && (
                                         <span className="shrink-0 text-main-300">
                                             {option.icon}
                                         </span>
-                                    ) : null}
-                                    <span className="min-w-0 truncate">
+                                    )}
+                                    <span className={cn("whitespace-nowrap")}>
                                         {option.label}
                                     </span>
                                 </span>
                                 <span className="shrink-0">
-                                    {active ? (
+                                    {active && (
                                         <Icon
                                             icon="mdi:check"
                                             className="text-main-200"
                                             aria-hidden
                                         />
-                                    ) : null}
+                                    )}
                                 </span>
                             </Button>
                         );
@@ -306,14 +307,7 @@ export function Dropdown({
     );
 
     return (
-        <div
-            ref={rootRef}
-            className={cn(
-                "min-w-0",
-                matchTriggerWidth ? "w-full" : "",
-                className,
-            )}
-        >
+        <div ref={rootRef} className={cn("min-w-0", className)}>
             {renderTrigger ? (
                 renderTrigger({
                     open,

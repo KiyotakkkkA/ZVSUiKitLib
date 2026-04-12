@@ -16,7 +16,7 @@ export const Switcher = ({
     value,
     options,
     onChange,
-    className = "",
+    className,
 }: SwitcherProps) => {
     return (
         <div

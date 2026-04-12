@@ -22,10 +22,10 @@ export function Accordeon({
     title,
     subtitle,
     defaultOpen = false,
-    className = "",
+    className,
     titleIcon,
-    headerClassName = "",
-    contentClassName = "",
+    headerClassName,
+    contentClassName,
     rightSlot,
     children,
 }: AccordeonProps) {
@@ -69,23 +69,23 @@ export function Accordeon({
                 <div className="flex items-center justify-between gap-3">
                     <div className="flex flex-col items-start">
                         <div className="flex items-center gap-2">
-                            {titleIcon ? (
+                            {titleIcon && (
                                 <span className="text-main-300">
                                     {titleIcon}
                                 </span>
-                            ) : null}
+                            )}
                             <p className="text-xs font-semibold text-main-100">
                                 {title}
                             </p>
                         </div>
-                        {subtitle ? (
+                        {subtitle && (
                             <p className="mt-1 text-[11px] text-main-400 text-left">
                                 {subtitle}
                             </p>
-                        ) : null}
+                        )}
                     </div>
                     <span className="flex items-center gap-2">
-                        {rightSlot ? rightSlot : null}
+                        {rightSlot}
                         <span
                             className={cn(
                                 "text-main-400 transition-transform duration-300",

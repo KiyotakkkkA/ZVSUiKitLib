@@ -138,11 +138,11 @@ const ToastCard = ({ item, onDone }: ToastCardProps) => {
                     <p className="text-sm font-semibold text-main-100">
                         {item.title}
                     </p>
-                    {item.description ? (
+                    {item.description && (
                         <p className="mt-1 text-xs text-main-300">
                             {item.description}
                         </p>
-                    ) : null}
+                    )}
                 </div>
             </div>
 

@@ -9,19 +9,24 @@ interface PrettyBRProps {
 }
 
 export const PrettyBR = (props: PrettyBRProps) => {
+    const {
+        icon = "mdi:script",
+        label = "New Section",
+        size = 16,
+        className,
+    } = props;
+
     return (
-        <div
-            className={cn("my-3 flex items-center gap-3 px-1", props.className)}
-        >
+        <div className={cn("my-3 flex items-center gap-3 px-1", className)}>
             <div className="h-px flex-1 bg-main-600/70" />
             <Icon
-                icon={props.icon || "mdi:script"}
-                width={props.size || 16}
-                height={props.size || 16}
+                icon={icon}
+                width={size}
+                height={size}
                 className="text-main-400"
             />
             <p className="text-[10px] uppercase tracking-[0.2em] text-main-400">
-                {props.label || "New Section"}
+                {label}
             </p>
             <div className="h-px flex-1 bg-main-600/70" />
         </div>

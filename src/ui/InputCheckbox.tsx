@@ -12,7 +12,7 @@ export const InputCheckbox = ({
     checked,
     onChange,
     disabled = false,
-    className = "",
+    className,
 }: InputCheckboxProps) => {
     return (
         <button

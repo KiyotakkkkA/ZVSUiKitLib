@@ -30,25 +30,25 @@ export function Card({
             )}
             {...props}
         >
-            {title || subtitle ? (
+            {(title || subtitle) && (
                 <header
                     className={cn(
                         "border-b border-main-700/70 px-4 py-3",
                         headerClassName,
                     )}
                 >
-                    {title ? (
+                    {title && (
                         <h3 className="text-sm font-semibold">{title}</h3>
-                    ) : null}
-                    {subtitle ? (
+                    )}
+                    {subtitle && (
                         <p className="mt-1 text-xs text-main-400">{subtitle}</p>
-                    ) : null}
+                    )}
                 </header>
-            ) : null}
+            )}
 
             <div className={cn("px-4 py-3", bodyClassName)}>{children}</div>
 
-            {footer ? (
+            {footer && (
                 <footer
                     className={cn(
                         "border-t border-main-700/70 px-4 py-3",
@@ -57,7 +57,7 @@ export function Card({
                 >
                     {footer}
                 </footer>
-            ) : null}
+            )}
         </section>
     );
 }

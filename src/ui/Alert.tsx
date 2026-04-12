@@ -71,12 +71,10 @@ export function Alert({
                 )}
             </span>
             <div className="min-w-0">
-                {title ? (
-                    <p className="text-sm font-semibold">{title}</p>
-                ) : null}
-                {children ? (
+                {title && <p className="text-sm font-semibold">{title}</p>}
+                {children && (
                     <div className="text-sm opacity-95">{children}</div>
-                ) : null}
+                )}
             </div>
         </div>
     );

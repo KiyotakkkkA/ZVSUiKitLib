@@ -22,8 +22,8 @@ export function Floating({
     children,
     content,
     anchor = "top-right",
-    className = "",
-    panelClassName = "",
+    className,
+    panelClassName,
 }: FloatingProps) {
     return (
         <div className={cn("group relative inline-flex w-fit", className)}>

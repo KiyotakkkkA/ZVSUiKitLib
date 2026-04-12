@@ -9,17 +9,11 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
         const isPassword = type === "password";
         const [passwordVisible, setPasswordVisible] = useState(false);
 
-        const togglePasswordVisibility = () => {
-            setPasswordVisible((prev) => !prev);
-        };
-
         const inputType = isPassword
             ? passwordVisible
                 ? "text"
                 : "password"
             : type;
-
-        const readonlyStyles = "read-only:cursor-not-allowed";
 
         return (
             <div className="relative">
@@ -30,7 +24,7 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
                         "h-9 w-full rounded-lg border border-main-700 bg-main-800 px-3 text-sm text-main-100",
                         "outline-none transition-colors duration-200 placeholder:text-main-500",
                         "focus-visible:border-main-500/70 focus-visible:ring-2 focus-visible:ring-main-500/25",
-                        readonlyStyles,
+                        "read-only:cursor-not-allowed",
                         isPassword ? "pr-10" : "",
                         className,
                     )}
@@ -40,7 +34,7 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
                     <Icon
                         icon={passwordVisible ? "mdi:eye-off" : "mdi:eye"}
                         className="absolute top-2.5 right-3 cursor-pointer text-main-200 transition-opacity hover:opacity-50"
-                        onClick={togglePasswordVisibility}
+                        onClick={() => setPasswordVisible((prev) => !prev)}
                     />
                 )}
             </div>
