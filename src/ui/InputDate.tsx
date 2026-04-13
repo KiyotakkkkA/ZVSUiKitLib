@@ -29,7 +29,7 @@ type InputDateProps = {
     closeOnSelect?: boolean;
     clearable?: boolean;
     menuPlacement?: "bottom" | "top";
-    menuWidth?: number;
+    menuWidth?: number | "auto";
     className?: string;
     triggerClassName?: string;
     menuClassName?: string;
@@ -42,13 +42,18 @@ const INPUT_DATE_MENU_GAP = 8;
 function getMenuStyle(
     triggerElement: HTMLButtonElement,
     menuPlacement: "bottom" | "top",
-    menuWidth: number,
+    menuWidth: number | "auto",
 ): CSSProperties {
     const rect = triggerElement.getBoundingClientRect();
     const viewportPadding = 8;
     const resolvedLeft = Math.max(
         viewportPadding,
-        Math.min(rect.left, window.innerWidth - menuWidth - viewportPadding),
+        Math.min(
+            rect.left,
+            window.innerWidth -
+                (typeof menuWidth === "number" ? menuWidth : 0) -
+                viewportPadding,
+        ),
     );
 
     const style: CSSProperties = {
@@ -82,7 +87,7 @@ export function InputDate({
     closeOnSelect = false,
     clearable = false,
     menuPlacement = "bottom",
-    menuWidth = 348,
+    menuWidth = 300,
     className,
     triggerClassName,
     menuClassName,
@@ -216,7 +221,7 @@ export function InputDate({
                 tabIndex={-1}
                 style={menuStyle}
                 className={cn(
-                    "z-40 rounded-xl border border-main-700 bg-main-900 p-1 shadow-2xl",
+                    "z-40 rounded-xl border border-main-700 bg-main-900 shadow-2xl",
                     "max-w-[calc(100vw-1rem)] transition-all duration-150",
                     open
                         ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
