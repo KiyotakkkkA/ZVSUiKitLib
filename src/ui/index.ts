@@ -19,3 +19,7 @@ export * from "./Badge";
 export * from "./Alert";
 export * from "./Separator";
 export * from "./SlidedPanel";
+export * from "./Table";
+export * from "./ScrollArea";
+export * from "./Calendar";
+export * from "./InputDate";

@@ -1,0 +1,37 @@
+# Switcher
+
+## Purpose
+
+Segmented control for switching between fixed options.
+
+## Props
+
+| Prop      | Type                                 | Default | Description                 |
+| --------- | ------------------------------------ | ------- | --------------------------- |
+| value     | string                               | -       | Active value.               |
+| options   | `{ value: string; label: string }[]` | -       | Segments list.              |
+| onChange  | `(value: string) => void`            | -       | Called on selection change. |
+| className | string                               | -       | Extra wrapper classes.      |
+
+## Example
+
+```tsx
+import { Switcher } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { useState } from "react";
+
+export function DemoSwitcher() {
+    const [tab, setTab] = useState("all");
+
+    return (
+        <Switcher
+            value={tab}
+            onChange={setTab}
+            options={[
+                { value: "all", label: "All" },
+                { value: "active", label: "Active" },
+                { value: "done", label: "Done" },
+            ]}
+        />
+    );
+}
+```

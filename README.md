@@ -1,17 +1,16 @@
-# Установка UI-набора
+# UI Kit Installation
 
-### Шаг 1 - Установка в проект
+## Step 1 - Install package
 
 ```bash
 npm i @kiyotakkkka/zvs-uikit-lib
 ```
 
-### Шаг 2 - Настройка компонентов
+## Step 2 - Configure Tailwind scanning
 
-<details><summary><b>Настройка для Tailwind 4</b></summary>
+<details><summary><b>Tailwind 4 setup</b></summary>
 
-По умолчанию Tailwind 4 не смотрит директорию <b>node_modules</b> поэтому чтобы стилизация работала, нужно добавить в <b>.css</b> с объявлением директивы <b>@import "tailwindcss"</b>
-строку:
+Tailwind 4 does not scan `node_modules` by default. Add this line to the CSS file where you import Tailwind (`@import "tailwindcss"`):
 
 ```css
 @source "../node_modules/@kiyotakkkka/zvs-uikit-lib/dist/**/*.{js,cjs,mjs,ts,tsx,jsx}";
@@ -19,25 +18,25 @@ npm i @kiyotakkkka/zvs-uikit-lib
 
 </details>
 
-<details><summary><b>Настройка для Tailwind 3</b></summary>
+<details><summary><b>Tailwind 3 setup</b></summary>
 
-Если вы используете Tailwind 3, то нужно добавить в конфигурацию `tailwind.config.js` следующую строку:
+Add the package path to `content` in `tailwind.config.js`:
 
 ```js
 module.exports = {
     content: [
-        "../node_modules/@kiyotakkkka/zvs-uikit-lib/dist/**/*.{js,cjs,mjs,ts,tsx,jsx}";,
-        // другие пути...
+        "../node_modules/@kiyotakkkka/zvs-uikit-lib/dist/**/*.{js,cjs,mjs,ts,tsx,jsx}",
+        // other paths...
     ],
-    // остальные настройки...
+    // other config...
 };
 ```
 
 </details>
 
-### Шаг 3 - Цветовая палитра
+## Step 3 - Color palette
 
-Для корректного отображения компонентов, рекомендуется <b>ИСПОЛЬЗОВАТЬ СУЩЕСТВУЮЩУЮ ПАЛИТРУ НИЖЕ</b> или <b>ПЕРЕЗАПИСАТЬ СООТВЕТСТВУЮЩИЕ ПЕРЕМЕННЫЕ ПАЛИТРЫ</b>:
+For correct component rendering, use this palette (or override the same tokens):
 
 ```css
 @theme {
@@ -56,73 +55,75 @@ module.exports = {
 
 ---
 
-## Каталог компонентов и API
+## Component Catalog & API
 
 <a id="readme-nav"></a>
 
-### Навигация
+### Navigation
 
-- [Компоненты](#components)
-- [Хуки](#hooks)
-- [Провайдеры](#providers)
+- [Components](#components)
+- [Hooks](#hooks)
+- [Providers](#providers)
 
 <a id="components"></a>
 
-### Компоненты (@kiyotakkkka/zvs-uikit-lib/ui)
+### Components (@kiyotakkkka/zvs-uikit-lib/ui)
 
-### Компоненты: Ввод и управление формами
+### Components: Input & Form Controls
 
-| Компонент          | Назначение                                                        |
-| ------------------ | ----------------------------------------------------------------- |
-| `Button`           | Базовая кнопка с вариантами цвета и формы.                        |
-| `InputSmall`       | Однострочное поле ввода с сокрытием пароля для `type="password"`. |
-| `InputBig`         | Многострочное поле ввода                                          |
-| `InputCheckbox`    | Переключатель `True / False`                                      |
-| `Select`           | Одиночный селектор                                                |
-| `Dropdown`         | Выпадающее меню                                                   |
-| `AutoFillSelector` | Множественный селектор с автозаполнением                          |
-| `Switcher`         | Переключатель между несколькими вариантами.                       |
+| Component          | Purpose                                                                  | Documentation                                           |
+| ------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------- |
+| `Button`           | Base button with variants and shape options.                             | [Button](docs/components/Button.md)                     |
+| `InputSmall`       | Single-line input with password visibility toggle for `type="password"`. | [InputSmall](docs/components/InputSmall.md)             |
+| `InputDate`        | Date input with calendar popup.                                          | [InputDate](docs/components/InputDate.md)               |
+| `InputBig`         | Multiline text input.                                                    | [InputBig](docs/components/InputBig.md)                 |
+| `InputCheckbox`    | `true/false` switch control.                                             | [InputCheckbox](docs/components/InputCheckbox.md)       |
+| `Select`           | Single-value select control.                                             | [Select](docs/components/Select.md)                     |
+| `Dropdown`         | Generic dropdown menu.                                                   | [Dropdown](docs/components/Dropdown.md)                 |
+| `AutoFillSelector` | Multi-select with search/autocomplete.                                   | [AutoFillSelector](docs/components/AutoFillSelector.md) |
+| `Calendar`         | Date calendar with constraints and custom day rendering.                 | [Calendar](docs/components/Calendar.md)                 |
+| `Switcher`         | Segmented switch between options.                                        | [Switcher](docs/components/Switcher.md)                 |
 
-### Компоненты: Оверлеи и всплывающие элементы
+### Components: Overlays & Floating UI
 
-| Компонент     | Назначение                                  |
-| ------------- | ------------------------------------------- |
-| `Modal`       | Модальное окно.                             |
-| `SlidedPanel` | Боковая панель.                             |
-| `Floating`    | Ховер/фокус-панель, привязанная к элементу. |
+| Component     | Purpose                                            | Documentation                                 |
+| ------------- | -------------------------------------------------- | --------------------------------------------- |
+| `Modal`       | Modal dialog window.                               | [Modal](docs/components/Modal.md)             |
+| `SlidedPanel` | Slide-in side panel (drawer).                      | [SlidedPanel](docs/components/SlidedPanel.md) |
+| `Floating`    | Hover/focus floating panel attached to an element. | [Floating](docs/components/Floating.md)       |
 
-### Компоненты: Структура и композиция
+### Components: Structure & Composition
 
-| Компонент          | Назначение                                                    |
-| ------------------ | ------------------------------------------------------------- |
-| `Card`             | Контейнер с header/body/footer для карточек и секций.         |
-| `Accordeon`        | Раскрывающаяся секция с кастомизируемым заголовком.           |
-| `TreeView`         | Иерархический список, поддерживает виртуализацию.             |
-| `TreeView.Catalog` | Раскрываемый каталог внутри `TreeView`.                       |
-| `TreeView.Element` | Элемент внутри `TreeView`/`Catalog`.                          |
-| `Separator`        | Горизонтальный/вертикальный разделитель.                      |
-| `PrettyBR`         | Декоративный горизонтальный разделитель с иконкой и подписью. |
+| Component    | Purpose                                              | Documentation                               |
+| ------------ | ---------------------------------------------------- | ------------------------------------------- |
+| `Card`       | Container with optional header/body/footer sections. | [Card](docs/components/Card.md)             |
+| `Accordeon`  | Expandable section with animated height.             | [Accordeon](docs/components/Accordeon.md)   |
+| `TreeView`   | Hierarchical list with optional virtualization.      | [TreeView](docs/components/TreeView.md)     |
+| `Table`      | Typed table with compound parts and sorting modes.   | [Table](docs/components/Table.md)           |
+| `Separator`  | Horizontal/vertical separator.                       | [Separator](docs/components/Separator.md)   |
+| `ScrollArea` | Styled scroll container.                             | [ScrollArea](docs/components/ScrollArea.md) |
+| `PrettyBR`   | Decorative horizontal divider with icon and label.   | [PrettyBR](docs/components/PrettyBR.md)     |
 
-### Компоненты: Статусы и индикация
+### Components: Status & Feedback
 
-| Компонент | Назначение                    |
-| --------- | ----------------------------- |
-| `Badge`   | Компактный индикатор статуса. |
-| `Alert`   | Блок уведомления.             |
-| `Loader`  | Индикатор загрузки.           |
+| Component | Purpose                   | Documentation                       |
+| --------- | ------------------------- | ----------------------------------- |
+| `Badge`   | Compact status indicator. | [Badge](docs/components/Badge.md)   |
+| `Alert`   | Alert/notification block. | [Alert](docs/components/Alert.md)   |
+| `Loader`  | Loading spinner.          | [Loader](docs/components/Loader.md) |
 
 <a id="hooks"></a>
 
-### Хуки (@kiyotakkkka/zvs-uikit-lib/hooks)
+### Hooks (@kiyotakkkka/zvs-uikit-lib/hooks)
 
-| Хук         | Назначение                                                             | Возвращает                                                                                |
-| ----------- | ---------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
-| `useToasts` | Хук доступа к toast-контексту. Работает только внутри `ToastProvider`. | `ToastContextValue` с методами: `push`, `normal`, `info`, `warning`, `success`, `danger`. |
+| Hook        | Purpose                                                      | Documentation                        | Returns                                                                             |
+| ----------- | ------------------------------------------------------------ | ------------------------------------ | ----------------------------------------------------------------------------------- |
+| `useToasts` | Access toast context API. Works only inside `ToastProvider`. | [useToasts](docs/hooks/useToasts.md) | `ToastContextValue` with: `push`, `normal`, `info`, `warning`, `success`, `danger`. |
 
 <a id="providers"></a>
 
-### Провайдеры (@kiyotakkkka/zvs-uikit-lib/providers)
+### Providers (@kiyotakkkka/zvs-uikit-lib/providers)
 
-| Провайдер       | Назначение                         |
-| --------------- | ---------------------------------- |
-| `ToastProvider` | Глобальный стек toast-уведомлений. |
+| Provider        | Purpose                           |
+| --------------- | --------------------------------- |
+| `ToastProvider` | Global toast notifications stack. |

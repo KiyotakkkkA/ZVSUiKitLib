@@ -42,6 +42,7 @@
         "dev": "vite",
         "build": "vite build && npm run build:types",
         "build:types": "tsc -p tsconfig.build.json",
+        "typecheck": "tsc --noEmit && tsc --project tsconfig.node.json --noEmit",
         "lint": "eslint .",
         "preview": "vite preview"
     },

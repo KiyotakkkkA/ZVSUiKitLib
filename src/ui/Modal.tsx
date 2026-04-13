@@ -8,6 +8,7 @@ import {
 import { createPortal } from "react-dom";
 import { Icon } from "@iconify/react";
 import { Button } from "./Button";
+import { ScrollArea } from "./ScrollArea";
 import { cn } from "../lib/utils";
 
 type ModalProps = PropsWithChildren<{
@@ -94,9 +95,9 @@ export function Modal({
                     </Button>
                 </div>
 
-                <div className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden px-5 py-5">
+                <ScrollArea className="min-h-0 flex-1 px-5 py-5">
                     {children}
-                </div>
+                </ScrollArea>
 
                 {footer && (
                     <div className="flex items-center justify-end gap-2 border-t border-main-700/80 px-5 py-4">

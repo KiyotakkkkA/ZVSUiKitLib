@@ -11,9 +11,9 @@ import {
     type Ref,
     type ReactNode,
 } from "react";
-import { Button } from "./Button";
-import { InputSmall } from "./InputSmall";
 import { cn } from "../lib/utils";
+import { ScrollArea } from "./ScrollArea";
+import { Button, InputSmall } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 type DropdownOption = {
     value: string;
@@ -33,6 +33,7 @@ type DropdownProps = {
     className?: string;
     triggerClassName?: string;
     menuClassName?: string;
+    menuWidth?: number | string;
     optionClassName?: string;
     disabled?: boolean;
     ariaLabel?: string;
@@ -57,11 +58,25 @@ const DROPDOWN_MENU_GAP = 8;
 const getMenuStyle = (
     triggerElement: HTMLButtonElement,
     menuPlacement: "bottom" | "top",
+    menuWidth: number | string,
 ): CSSProperties => {
     const rect = triggerElement.getBoundingClientRect();
+    const viewportPadding = 8;
+    const widthValue = typeof menuWidth === "number" ? menuWidth : null;
+
+    let left = rect.left;
+
+    if (widthValue !== null) {
+        left = Math.max(
+            viewportPadding,
+            Math.min(left, window.innerWidth - widthValue - viewportPadding),
+        );
+    }
+
     const style: CSSProperties = {
-        left: rect.left,
+        left,
         position: "fixed",
+        width: menuWidth,
     };
 
     if (menuPlacement === "top") {
@@ -84,6 +99,7 @@ export function Dropdown({
     className = "",
     triggerClassName = "",
     menuClassName = "",
+    menuWidth,
     optionClassName = "",
     disabled = false,
     ariaLabel,
@@ -103,13 +119,29 @@ export function Dropdown({
         setTriggerElement(node);
     }, []);
 
+    const resolvedMenuWidth = useMemo(() => {
+        if (menuWidth !== undefined) {
+            return menuWidth;
+        }
+
+        const longestLabelLength = options.reduce(
+            (maxLength, option) => Math.max(maxLength, option.label.length),
+            0,
+        );
+
+        const estimatedWidth = longestLabelLength * 9 + 72;
+        return Math.min(320, Math.max(120, estimatedWidth));
+    }, [menuWidth, options]);
+
     const updateMenuPosition = useCallback(() => {
         if (!triggerElement) {
             return;
         }
 
-        setMenuStyle(getMenuStyle(triggerElement, menuPlacement));
-    }, [menuPlacement, triggerElement]);
+        setMenuStyle(
+            getMenuStyle(triggerElement, menuPlacement, resolvedMenuWidth),
+        );
+    }, [menuPlacement, resolvedMenuWidth, triggerElement]);
 
     const selectedOption = useMemo(
         () => options.find((item) => item.value === value),
@@ -230,7 +262,7 @@ export function Dropdown({
             style={menuStyle}
             className={cn(
                 "fixed z-60 rounded-xl bg-main-800 p-1.5 transition-all duration-180",
-                "w-max min-w-34 max-w-[calc(100vw-2rem)]",
+                "max-w-[calc(100vw-1rem)]",
                 menuPositionClassName,
                 menuClassName,
             )}
@@ -245,69 +277,69 @@ export function Dropdown({
                     />
                 )}
 
-                <div
-                    className={cn(
-                        "max-h-72 space-y-1 overflow-y-auto rounded-lg pr-1",
-                    )}
-                >
-                    {filteredOptions.length === 0 && (
-                        <p className="px-3 py-2 text-sm text-main-500">
-                            {emptyMessage}
-                        </p>
-                    )}
+                <ScrollArea className={cn("max-h-72 rounded-lg pr-1")}>
+                    <div className="flex flex-col gap-1">
+                        {filteredOptions.length === 0 && (
+                            <p className="px-3 py-2 text-sm text-main-500">
+                                {emptyMessage}
+                            </p>
+                        )}
 
-                    {filteredOptions.map((option) => {
-                        const active = option.value === value;
-                        return (
-                            <Button
-                                key={option.value}
-                                role="option"
-                                aria-selected={active}
-                                onClick={() => onSelect(option.value)}
-                                className={cn(
-                                    "justify-between space-x-2 rounded-lg border border-transparent",
-                                    "w-auto min-w-full",
-                                    "px-3 py-2 text-left text-sm",
-                                    active
-                                        ? "bg-main-700/60 text-main-100"
-                                        : "bg-transparent text-main-300 hover:bg-main-700/80 hover:text-main-100",
-                                    optionClassName,
-                                )}
-                            >
-                                <span
+                        {filteredOptions.map((option) => {
+                            const active = option.value === value;
+                            return (
+                                <Button
+                                    key={option.value}
+                                    role="option"
+                                    aria-selected={active}
+                                    onClick={() => onSelect(option.value)}
                                     className={cn(
-                                        "flex items-center gap-2",
-                                        "whitespace-nowrap",
+                                        "justify-between space-x-2 rounded-lg border border-transparent",
+                                        "w-fix min-w-full",
+                                        "px-3 py-2 text-left text-sm",
+                                        active
+                                            ? "bg-main-700/60 text-main-100"
+                                            : "bg-transparent text-main-300 hover:bg-main-700/80 hover:text-main-100",
+                                        optionClassName,
                                     )}
                                 >
-                                    {option.icon && (
-                                        <span className="shrink-0 text-main-300">
-                                            {option.icon}
+                                    <span
+                                        className={cn(
+                                            "flex items-center gap-2",
+                                            "whitespace-nowrap",
+                                        )}
+                                    >
+                                        {option.icon && (
+                                            <span className="shrink-0 text-main-300">
+                                                {option.icon}
+                                            </span>
+                                        )}
+                                        <span
+                                            className={cn("whitespace-nowrap")}
+                                        >
+                                            {option.label}
                                         </span>
-                                    )}
-                                    <span className={cn("whitespace-nowrap")}>
-                                        {option.label}
                                     </span>
-                                </span>
-                                <span className="shrink-0">
-                                    {active && (
-                                        <Icon
-                                            icon="mdi:check"
-                                            className="text-main-200"
-                                            aria-hidden
-                                        />
-                                    )}
-                                </span>
-                            </Button>
-                        );
-                    })}
-                </div>
+                                    <span className="shrink-0">
+                                        {active && (
+                                            <Icon
+                                                icon="mdi:check"
+                                                className="text-main-200"
+                                                aria-hidden
+                                            />
+                                        )}
+                                    </span>
+                                </Button>
+                            );
+                        })}
+                    </div>
+                </ScrollArea>
             </div>
         </div>
     );
 
     return (
-        <div ref={rootRef} className={cn("min-w-0", className)}>
+        <div ref={rootRef} className={cn("min-w-0 w-fix", className)}>
             {renderTrigger ? (
                 renderTrigger({
                     open,
@@ -332,7 +364,7 @@ export function Dropdown({
                     disabled={disabled}
                     onClick={toggleOpen}
                     className={cn(
-                        "min-h-10 w-full min-w-0 justify-between gap-3 rounded-xl border-transparent px-3 py-2 text-main-100",
+                        "min-h-10 justify-between gap-3 rounded-xl border-transparent px-3 py-2 text-main-100",
                         triggerClassName,
                     )}
                 >

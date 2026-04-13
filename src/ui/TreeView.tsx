@@ -9,6 +9,7 @@ import {
 } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { Icon } from "@iconify/react";
+import { ScrollArea } from "./ScrollArea";
 import { cn } from "../lib/utils";
 
 type TreeViewVirtualizationProps = {
@@ -87,9 +88,9 @@ const VirtualizedChildrenList = ({
     }
 
     return (
-        <div
+        <ScrollArea
             ref={scrollElementRef}
-            className={cn("overflow-y-auto", className)}
+            className={className}
             style={{ height }}
         >
             <div
@@ -110,7 +111,7 @@ const VirtualizedChildrenList = ({
                     </div>
                 ))}
             </div>
-        </div>
+        </ScrollArea>
     );
 };
 
