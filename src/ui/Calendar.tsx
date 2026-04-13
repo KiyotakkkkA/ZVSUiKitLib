@@ -417,9 +417,14 @@ export function Calendar({
                                 day.isCurrentMonth
                                     ? "text-main-100"
                                     : "text-main-500",
-                                day.isToday && "border-main-500/70",
+                                day.isToday &&
+                                    !day.isSelected &&
+                                    "border-main-400/80 bg-main-700/35 font-semibold text-main-50",
                                 day.isSelected &&
                                     "bg-main-100 font-semibold text-main-900",
+                                day.isToday &&
+                                    day.isSelected &&
+                                    "ring-2 ring-main-400/75 ring-offset-1 ring-offset-main-900",
                                 !day.isSelected &&
                                     !day.isDisabled &&
                                     "hover:bg-main-700/30",
@@ -447,6 +452,7 @@ export function Calendar({
                             }}
                             disabled={day.isDisabled}
                             aria-pressed={day.isSelected}
+                            aria-current={day.isToday ? "date" : undefined}
                             aria-label={day.date.toLocaleDateString(locale)}
                         >
                             {renderDay ? renderDay(day) : day.date.getDate()}

@@ -23,6 +23,8 @@ Collapsible section with compound API and animated content height.
 | className | string    | -       | Header button classes.    |
 | children  | ReactNode | -       | Clickable header content. |
 
+`Accordeon.Summary` автоматически показывает шеврон справа и поворачивает его при открытии/закрытии.
+
 ## Child Component: Accordeon.Content
 
 ### Props
@@ -40,9 +42,8 @@ import { Accordeon } from "@kiyotakkkka/zvs-uikit-lib/ui";
 export function DemoAccordeon() {
     return (
         <Accordeon defaultOpen>
-            <Accordeon.Summary className="flex items-center justify-between gap-2 text-main-100">
+            <Accordeon.Summary className="text-main-100">
                 <span className="text-xs font-semibold">Настройки</span>
-                <span className="text-main-400">v</span>
             </Accordeon.Summary>
 
             <Accordeon.Content>Содержимое секции</Accordeon.Content>

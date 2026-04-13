@@ -10,6 +10,7 @@ import {
     type ReactNode,
 } from "react";
 import { cn } from "../lib/utils";
+import { Icon } from "@iconify/react";
 
 type AccordeonProps = PropsWithChildren<{
     defaultOpen?: boolean;
@@ -65,15 +66,27 @@ function AccordeonRoot({
 }
 
 function AccordeonSummary({ className, children }: AccordeonSummaryProps) {
-    const { setIsOpen } = useAccordeonContext();
+    const { isOpen, setIsOpen } = useAccordeonContext();
 
     return (
         <button
             type="button"
-            className={cn("w-full cursor-pointer px-2.5 py-2", className)}
+            className={cn(
+                "flex w-full cursor-pointer items-center justify-between gap-2 px-2.5 py-2 text-left",
+                className,
+            )}
             onClick={() => setIsOpen((prev) => !prev)}
         >
-            {children}
+            <span className="min-w-0 flex-1">{children}</span>
+            <span
+                className={cn(
+                    "shrink-0 text-main-400 transition-transform duration-300",
+                    isOpen ? "rotate-180" : "rotate-0",
+                )}
+                aria-hidden
+            >
+                <Icon icon="mdi:chevron-down" width={16} height={16} />
+            </span>
         </button>
     );
 }
