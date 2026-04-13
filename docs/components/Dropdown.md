@@ -18,7 +18,7 @@ Flexible dropdown menu with search, custom trigger, and controllable width/place
 | className         | string                                                                       | `""`              | Outer wrapper classes.            |
 | triggerClassName  | string                                                                       | `""`              | Trigger button classes.           |
 | menuClassName     | string                                                                       | `""`              | Popup menu classes.               |
-| menuWidth         | number \| string                                                             | auto              | Popup width (fixed or css value). |
+| menuWidth         | number \| string                                                             | 300               | Popup width (fixed or css value). |
 | optionClassName   | string                                                                       | `""`              | Option item classes.              |
 | disabled          | boolean                                                                      | `false`           | Disables component.               |
 | ariaLabel         | string                                                                       | -                 | `aria-label` value.               |
