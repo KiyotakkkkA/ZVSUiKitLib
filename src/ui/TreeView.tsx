@@ -22,6 +22,10 @@ type TreeViewVirtualizationProps = {
 type TreeViewProps = TreeViewVirtualizationProps & {
     children: ReactNode;
     className?: string;
+    classNames?: {
+        list?: string;
+        virtualList?: string;
+    };
 };
 
 type TreeViewCatalogProps = TreeViewVirtualizationProps & {
@@ -29,6 +33,13 @@ type TreeViewCatalogProps = TreeViewVirtualizationProps & {
     children?: ReactNode;
     defaultOpen?: boolean;
     className?: string;
+    classNames?: {
+        trigger?: string;
+        title?: string;
+        nested?: string;
+        chevronIcon?: string;
+        folderIcon?: string;
+    };
 };
 
 type TreeViewElementProps = {
@@ -37,11 +48,18 @@ type TreeViewElementProps = {
     children?: ReactNode;
     className?: string;
     onClick?: () => void;
+    classNames?: {
+        content?: string;
+    };
 };
 
 type VirtualizedChildrenListProps = {
     children?: ReactNode;
     className?: string;
+    classNames?: {
+        content?: string;
+        item?: string;
+    };
     height: number;
     estimateSize: number;
     overscan: number;
@@ -53,7 +71,8 @@ const DEFAULT_VIRTUAL_OVERSCAN = 8;
 
 const VirtualizedChildrenList = ({
     children,
-    className = "",
+    className,
+    classNames,
     height,
     estimateSize,
     overscan,
@@ -94,7 +113,7 @@ const VirtualizedChildrenList = ({
             style={{ height }}
         >
             <div
-                className="relative w-full"
+                className={cn("relative w-full", classNames?.content)}
                 style={{ height: virtualizer.getTotalSize() }}
             >
                 {virtualizer.getVirtualItems().map((virtualItem) => (
@@ -102,7 +121,10 @@ const VirtualizedChildrenList = ({
                         key={virtualItem.key}
                         ref={virtualizer.measureElement}
                         data-index={virtualItem.index}
-                        className={cn("absolute left-0 top-0 w-full pb-1")}
+                        className={cn(
+                            "absolute left-0 top-0 w-full pb-1",
+                            classNames?.item,
+                        )}
                         style={{
                             transform: `translateY(${virtualItem.start}px)`,
                         }}
@@ -117,7 +139,8 @@ const VirtualizedChildrenList = ({
 
 const TreeViewBase = ({
     children,
-    className = "",
+    className,
+    classNames,
     virtualized = false,
     height = DEFAULT_VIRTUAL_HEIGHT,
     estimateSize = DEFAULT_VIRTUAL_ITEM_SIZE,
@@ -132,6 +155,7 @@ const TreeViewBase = ({
         >
             {virtualized ? (
                 <VirtualizedChildrenList
+                    className={classNames?.virtualList}
                     height={height}
                     estimateSize={estimateSize}
                     overscan={overscan}
@@ -139,7 +163,9 @@ const TreeViewBase = ({
                     {children}
                 </VirtualizedChildrenList>
             ) : (
-                <div className="space-y-1">{children}</div>
+                <div className={cn("space-y-1", classNames?.list)}>
+                    {children}
+                </div>
             )}
         </div>
     );
@@ -149,7 +175,8 @@ const TreeViewCatalog = ({
     title,
     children,
     defaultOpen = false,
-    className = "",
+    className,
+    classNames,
     virtualized = false,
     height = DEFAULT_VIRTUAL_HEIGHT,
     estimateSize = DEFAULT_VIRTUAL_ITEM_SIZE,
@@ -161,7 +188,10 @@ const TreeViewCatalog = ({
         <div className={cn("rounded-xl", className)}>
             <button
                 type="button"
-                className="flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left text-main-100 hover:bg-main-800/60 cursor-pointer"
+                className={cn(
+                    "flex w-full cursor-pointer items-center gap-2 rounded-lg px-2 py-1.5 text-left text-main-100 hover:bg-main-800/60",
+                    classNames?.trigger,
+                )}
                 onClick={() => setIsOpen((prev) => !prev)}
             >
                 <Icon
@@ -171,6 +201,7 @@ const TreeViewCatalog = ({
                     className={cn(
                         "shrink-0 text-main-300 transition-transform",
                         isOpen && "rotate-90",
+                        classNames?.chevronIcon,
                     )}
                 />
                 <Icon
@@ -181,15 +212,25 @@ const TreeViewCatalog = ({
                     }
                     width={16}
                     height={16}
-                    className="shrink-0 text-main-300"
+                    className={cn(
+                        "shrink-0 text-main-300",
+                        classNames?.folderIcon,
+                    )}
                 />
-                <span className="truncate text-sm font-medium">{title}</span>
+                <span
+                    className={cn(
+                        "truncate text-sm font-medium",
+                        classNames?.title,
+                    )}
+                >
+                    {title}
+                </span>
             </button>
 
             {isOpen &&
                 (virtualized ? (
                     <VirtualizedChildrenList
-                        className="mt-1 pl-7"
+                        className={cn("mt-1 pl-7", classNames?.nested)}
                         height={height}
                         estimateSize={estimateSize}
                         overscan={overscan}
@@ -197,7 +238,14 @@ const TreeViewCatalog = ({
                         {children}
                     </VirtualizedChildrenList>
                 ) : (
-                    <div className="mt-1 space-y-1 pl-7">{children}</div>
+                    <div
+                        className={cn(
+                            "mt-1 space-y-1 pl-7",
+                            classNames?.nested,
+                        )}
+                    >
+                        {children}
+                    </div>
                 ))}
         </div>
     );
@@ -205,8 +253,9 @@ const TreeViewCatalog = ({
 
 const TreeViewElement = ({
     children,
-    className = "",
+    className,
     onClick,
+    classNames,
 }: TreeViewElementProps) => {
     return (
         <button
@@ -218,7 +267,14 @@ const TreeViewElement = ({
             onClick={onClick}
         >
             <div className="flex items-start gap-2">
-                <div className="min-w-0 flex-1 text-left">{children}</div>
+                <div
+                    className={cn(
+                        "min-w-0 flex-1 text-left",
+                        classNames?.content,
+                    )}
+                >
+                    {children}
+                </div>
             </div>
         </button>
     );

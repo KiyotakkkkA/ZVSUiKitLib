@@ -6,13 +6,20 @@ Hover/focus panel attached to an anchor element.
 
 ## Props
 
-| Prop           | Type                                                           | Default       | Description                        |
-| -------------- | -------------------------------------------------------------- | ------------- | ---------------------------------- |
-| children       | ReactNode                                                      | -             | Anchor element.                    |
-| content        | ReactNode                                                      | -             | Floating panel content.            |
-| anchor         | `"top-left" \| "top-right" \| "bottom-left" \| "bottom-right"` | `"top-right"` | Panel position relative to anchor. |
-| className      | string                                                         | -             | Wrapper classes.                   |
-| panelClassName | string                                                         | -             | Floating panel classes.            |
+| Prop       | Type                                                           | Default       | Description                                   |
+| ---------- | -------------------------------------------------------------- | ------------- | --------------------------------------------- |
+| children   | ReactNode                                                      | -             | Anchor element.                               |
+| content    | ReactNode                                                      | -             | Floating panel content.                       |
+| anchor     | `"top-left" \| "top-right" \| "bottom-left" \| "bottom-right"` | `"top-right"` | Panel position relative to anchor.            |
+| className  | string                                                         | -             | Wrapper classes.                              |
+| classNames | object                                                         | -             | Classes for internal slots (see table below). |
+
+### classNames slots
+
+| Slot    | Description                  |
+| ------- | ---------------------------- |
+| panel   | Floating panel classes.      |
+| content | Inner content wrapper class. |
 
 ## Example
 

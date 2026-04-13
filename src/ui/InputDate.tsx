@@ -31,9 +31,14 @@ type InputDateProps = {
     menuPlacement?: "bottom" | "top";
     menuWidth?: number | "auto";
     className?: string;
-    triggerClassName?: string;
-    menuClassName?: string;
-    calendarClassName?: string;
+    classNames?: {
+        trigger?: string;
+        menu?: string;
+        calendar?: string;
+        value?: string;
+        controls?: string;
+        clearButton?: string;
+    };
     formatLabel?: (date: Date) => string;
 };
 
@@ -87,11 +92,9 @@ export function InputDate({
     closeOnSelect = false,
     clearable = false,
     menuPlacement = "bottom",
-    menuWidth = 300,
+    menuWidth = "auto",
     className,
-    triggerClassName,
-    menuClassName,
-    calendarClassName,
+    classNames,
     formatLabel,
 }: InputDateProps) {
     const [open, setOpen] = useState(false);
@@ -226,7 +229,7 @@ export function InputDate({
                     open
                         ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
                         : "pointer-events-none -translate-y-1 scale-98 opacity-0",
-                    menuClassName,
+                    classNames?.menu,
                 )}
             >
                 <Calendar
@@ -241,18 +244,17 @@ export function InputDate({
                     showOutsideDays={showOutsideDays}
                     className={cn(
                         "max-w-none border-0 bg-main-900 p-2.5",
-                        calendarClassName,
+                        classNames?.calendar,
                     )}
                 />
             </div>
         ),
         [
             allowDeselect,
-            calendarClassName,
+            classNames,
             disabledDates,
             locale,
             maxDate,
-            menuClassName,
             menuId,
             menuStyle,
             minDate,
@@ -277,25 +279,34 @@ export function InputDate({
                 className={cn(
                     "h-11 w-full justify-between rounded-xl border border-main-700 bg-main-900 px-3 text-main-100",
                     "hover:bg-main-800",
-                    triggerClassName,
+                    classNames?.trigger,
                 )}
             >
                 <span
                     className={cn(
                         "min-w-0 truncate text-left text-sm",
                         selectedDate ? "text-main-100" : "text-main-400",
+                        classNames?.value,
                     )}
                 >
                     {resolvedLabel}
                 </span>
 
-                <span className="ml-2 flex shrink-0 items-center gap-1">
+                <span
+                    className={cn(
+                        "ml-2 flex shrink-0 items-center gap-1",
+                        classNames?.controls,
+                    )}
+                >
                     {clearable && selectedDate && (
                         <span
                             role="button"
                             tabIndex={0}
                             aria-label="Очистить дату"
-                            className="inline-flex h-6 w-6 items-center justify-center rounded-md text-main-400 transition-colors hover:bg-main-700/70 hover:text-main-100"
+                            className={cn(
+                                "inline-flex h-6 w-6 items-center justify-center rounded-md text-main-400 transition-colors hover:bg-main-700/70 hover:text-main-100",
+                                classNames?.clearButton,
+                            )}
                             onClick={(event) => {
                                 event.preventDefault();
                                 event.stopPropagation();

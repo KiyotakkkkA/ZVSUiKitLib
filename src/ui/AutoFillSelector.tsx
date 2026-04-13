@@ -27,6 +27,18 @@ type AutoFillSelectorProps = Omit<
     value?: string[];
     onChange?: (value: string[]) => void;
     disabled?: boolean;
+    classNames?: {
+        trigger?: string;
+        tag?: string;
+        tagRemove?: string;
+        input?: string;
+        menu?: string;
+        empty?: string;
+        option?: string;
+        optionLabel?: string;
+        optionDescription?: string;
+        optionIcon?: string;
+    };
 };
 
 const EMPTY_VALUE: string[] = [];
@@ -39,6 +51,7 @@ export const AutoFillSelector = ({
     disabled,
     value = EMPTY_VALUE,
     onChange,
+    classNames,
     ...props
 }: AutoFillSelectorProps) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -164,6 +177,7 @@ export const AutoFillSelector = ({
                     "bg-main-800/70 px-3 py-2 text-sm text-main-100 transition-colors duration-200",
                     "focus-within:border-main-500/70",
                     disabled ? "cursor-not-allowed opacity-60" : "cursor-text",
+                    classNames?.trigger,
                 )}
                 role="button"
                 tabIndex={disabled ? -1 : 0}
@@ -195,13 +209,19 @@ export const AutoFillSelector = ({
                     return (
                         <span
                             key={item}
-                            className="inline-flex items-center gap-1 rounded-full border border-main-600/70 bg-main-700/70 px-2 py-0.5 text-xs text-main-100"
+                            className={cn(
+                                "inline-flex items-center gap-1 rounded-full border border-main-600/70 bg-main-700/70 px-2 py-0.5 text-xs text-main-100",
+                                classNames?.tag,
+                            )}
                         >
                             {option?.label ?? item}
                             {!disabled && (
                                 <button
                                     type="button"
-                                    className="text-main-400 transition-colors hover:text-main-100"
+                                    className={cn(
+                                        "text-main-400 transition-colors hover:text-main-100",
+                                        classNames?.tagRemove,
+                                    )}
                                     onClick={(event) => {
                                         event.stopPropagation();
                                         removeValue(item);
@@ -245,7 +265,10 @@ export const AutoFillSelector = ({
                         }
                     }}
                     placeholder={inputPlaceholder}
-                    className="min-w-35 flex-1 bg-transparent text-sm text-main-100 placeholder:text-main-500 outline-none"
+                    className={cn(
+                        "min-w-35 flex-1 bg-transparent text-sm text-main-100 placeholder:text-main-500 outline-none",
+                        classNames?.input,
+                    )}
                 />
             </div>
 
@@ -259,11 +282,17 @@ export const AutoFillSelector = ({
                         isOpen
                             ? "max-h-64 opacity-100"
                             : "pointer-events-none max-h-0 opacity-0",
+                        classNames?.menu,
                     )}
                 >
                     <ScrollArea orientation="both" className="max-h-64 py-1">
                         {filteredOptions.length === 0 && (
-                            <div className="px-3 py-2 text-sm text-main-500">
+                            <div
+                                className={cn(
+                                    "px-3 py-2 text-sm text-main-500",
+                                    classNames?.empty,
+                                )}
+                            >
                                 Ничего не найдено
                             </div>
                         )}
@@ -285,14 +314,25 @@ export const AutoFillSelector = ({
                                         isSelected
                                             ? "bg-main-700 text-main-100"
                                             : "text-main-300 hover:bg-main-700 hover:text-main-100",
+                                        classNames?.option,
                                     )}
                                 >
                                     <span>
-                                        <span className="block whitespace-nowrap font-medium">
+                                        <span
+                                            className={cn(
+                                                "block whitespace-nowrap font-medium",
+                                                classNames?.optionLabel,
+                                            )}
+                                        >
                                             {option.label}
                                         </span>
                                         {option.description && (
-                                            <span className="mt-0.5 block whitespace-nowrap text-xs text-main-500">
+                                            <span
+                                                className={cn(
+                                                    "mt-0.5 block whitespace-nowrap text-xs text-main-500",
+                                                    classNames?.optionDescription,
+                                                )}
+                                            >
                                                 {option.description}
                                             </span>
                                         )}
@@ -300,7 +340,10 @@ export const AutoFillSelector = ({
                                     {isSelected && (
                                         <Icon
                                             icon="mdi:check"
-                                            className="mt-0.5 h-4 w-4 shrink-0 text-main-200"
+                                            className={cn(
+                                                "mt-0.5 h-4 w-4 shrink-0 text-main-200",
+                                                classNames?.optionIcon,
+                                            )}
                                         />
                                     )}
                                 </button>

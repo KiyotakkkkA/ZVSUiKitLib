@@ -8,10 +8,18 @@ Compact single-line input. For `type="password"`, it includes a built-in show/hi
 
 Supports all standard `input` props (`value`, `onChange`, `placeholder`, `type`, etc.).
 
-| Prop      | Type   | Default | Description                                            |
-| --------- | ------ | ------- | ------------------------------------------------------ |
-| className | string | `""`    | Extra classes for input element.                       |
-| type      | string | -       | Input type. `password` enables visibility toggle icon. |
+| Prop       | Type   | Default | Description                                            |
+| ---------- | ------ | ------- | ------------------------------------------------------ |
+| className  | string | -       | Extra classes for input element.                       |
+| classNames | object | -       | Classes for internal slots.                            |
+| type       | string | -       | Input type. `password` enables visibility toggle icon. |
+
+### classNames slots
+
+| Slot    | Description                 |
+| ------- | --------------------------- |
+| wrapper | Outer wrapper classes.      |
+| icon    | Password toggle icon class. |
 
 ## Example
 

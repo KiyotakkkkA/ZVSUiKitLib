@@ -14,12 +14,18 @@ type SlidedPanelProps = PropsWithChildren<{
     title: ReactNode;
     subtitle?: ReactNode;
     onClose: () => void;
-    closeOnOverlayClick?: boolean;
-    classes?: {
+    className?: string;
+    classNames?: {
+        overlay?: string;
+        panel?: string;
         width?: string;
-        main?: string;
+        header?: string;
+        title?: string;
+        subtitle?: string;
+        closeButton?: string;
         content?: string;
     };
+    closeOnOverlayClick?: boolean;
 }>;
 
 export function SlidedPanel({
@@ -28,11 +34,8 @@ export function SlidedPanel({
     subtitle,
     onClose,
     children,
-    classes: {
-        width: widthClassName = "w-96",
-        main: className,
-        content: bodyClassName,
-    } = {},
+    className,
+    classNames,
     closeOnOverlayClick = true,
 }: SlidedPanelProps) {
     useEffect(() => {
@@ -74,6 +77,7 @@ export function SlidedPanel({
                 open
                     ? "pointer-events-auto opacity-100"
                     : "pointer-events-none opacity-0",
+                classNames?.overlay,
             )}
             onClick={onOverlayClick}
             onKeyDown={onOverlayKeyDown}
@@ -89,17 +93,33 @@ export function SlidedPanel({
                     open
                         ? "translate-x-0 opacity-100"
                         : "translate-x-full opacity-0",
-                    widthClassName,
+                    classNames?.width ?? "w-96",
+                    classNames?.panel,
                     className,
                 )}
             >
-                <header className="flex items-center justify-between border-b border-main-700/70 bg-linear-to-r from-main-800/70 via-main-800/45 to-main-900/35 px-4 py-3">
+                <header
+                    className={cn(
+                        "flex items-center justify-between border-b border-main-700/70 bg-linear-to-r from-main-800/70 via-main-800/45 to-main-900/35 px-4 py-3",
+                        classNames?.header,
+                    )}
+                >
                     <div className="min-w-0">
-                        <p className="truncate text-base font-semibold text-main-100">
+                        <p
+                            className={cn(
+                                "truncate text-base font-semibold text-main-100",
+                                classNames?.title,
+                            )}
+                        >
                             {title}
                         </p>
                         {subtitle && (
-                            <p className="truncate text-xs text-main-400">
+                            <p
+                                className={cn(
+                                    "truncate text-xs text-main-400",
+                                    classNames?.subtitle,
+                                )}
+                            >
                                 {subtitle}
                             </p>
                         )}
@@ -108,14 +128,17 @@ export function SlidedPanel({
                     <button
                         type="button"
                         aria-label="Закрыть панель"
-                        className="rounded-md p-1 text-main-300 transition-colors hover:bg-main-700/70 hover:text-main-100"
+                        className={cn(
+                            "rounded-md p-1 text-main-300 transition-colors hover:bg-main-700/70 hover:text-main-100",
+                            classNames?.closeButton,
+                        )}
                         onClick={onClose}
                     >
                         <Icon icon="mdi:close" width={18} height={18} />
                     </button>
                 </header>
 
-                <div className={cn("min-h-0 flex-1 p-4", bodyClassName)}>
+                <div className={cn("min-h-0 flex-1 p-4", classNames?.content)}>
                     {children}
                 </div>
             </section>

@@ -8,15 +8,23 @@ Container with optional header/body/footer sections.
 
 Extends `HTMLAttributes<HTMLDivElement>`.
 
-| Prop            | Type      | Default | Description     |
-| --------------- | --------- | ------- | --------------- |
-| title           | ReactNode | -       | Card title.     |
-| subtitle        | ReactNode | -       | Card subtitle.  |
-| footer          | ReactNode | -       | Footer content. |
-| headerClassName | string    | -       | Header classes. |
-| bodyClassName   | string    | -       | Body classes.   |
-| footerClassName | string    | -       | Footer classes. |
-| className       | string    | -       | Root classes.   |
+| Prop       | Type      | Default | Description                                   |
+| ---------- | --------- | ------- | --------------------------------------------- |
+| title      | ReactNode | -       | Card title.                                   |
+| subtitle   | ReactNode | -       | Card subtitle.                                |
+| footer     | ReactNode | -       | Footer content.                               |
+| className  | string    | -       | Root classes.                                 |
+| classNames | object    | -       | Classes for internal slots (see table below). |
+
+### classNames slots
+
+| Slot     | Description             |
+| -------- | ----------------------- |
+| header   | Header wrapper classes. |
+| body     | Body wrapper classes.   |
+| footer   | Footer wrapper classes. |
+| title    | Title classes.          |
+| subtitle | Subtitle classes.       |
 
 ## Example
 

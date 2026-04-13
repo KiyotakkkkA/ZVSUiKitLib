@@ -16,8 +16,19 @@ Single-value selector built on top of `Dropdown`.
 | searchPlaceholder | string                               | -       | Search input placeholder.              |
 | emptyMessage      | string                               | -       | Message for empty search result.       |
 | disabled          | boolean                              | -       | Disables selector.                     |
-| className         | string                               | -       | Classes for trigger button.            |
-| wrapperClassName  | string                               | -       | Classes for outer wrapper.             |
+| className         | string                               | -       | Outer wrapper classes.                 |
+| classNames        | object                               | -       | Classes for internal dropdown slots.   |
+
+### classNames slots
+
+| Slot        | Description                  |
+| ----------- | ---------------------------- |
+| trigger     | Trigger button classes.      |
+| menu        | Popup menu classes.          |
+| search      | Search input classes.        |
+| option      | Option button classes.       |
+| optionLabel | Option label text classes.   |
+| optionIcon  | Option icon wrapper classes. |
 
 ## Example
 

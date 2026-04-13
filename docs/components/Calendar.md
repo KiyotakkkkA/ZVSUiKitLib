@@ -22,8 +22,22 @@ Calendar component with date selection, date limits, and custom day rendering.
 | locale           | string                              | `"ru-RU"` | Locale for labels and formatting.            |
 | weekStartsOn     | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6`   | `1`       | First day of week.                           |
 | className        | string                              | -         | Root classes.                                |
-| dayClassName     | `(meta) => string \| undefined`     | -         | Custom classes for day cell.                 |
+| classNames       | object                              | -         | Classes for internal slots.                  |
 | renderDay        | `(meta) => ReactNode`               | -         | Custom day content renderer.                 |
+
+### classNames slots
+
+| Slot        | Description                                           |
+| ----------- | ----------------------------------------------------- |
+| header      | Top row wrapper classes.                              |
+| navButton   | Previous/next month button classes.                   |
+| selectors   | Month/year selects wrapper classes.                   |
+| monthSelect | Month select trigger classes.                         |
+| yearSelect  | Year select trigger classes.                          |
+| weekdays    | Weekday labels row classes.                           |
+| weekday     | Single weekday label classes.                         |
+| days        | Days grid classes.                                    |
+| day         | Day button classes or `(meta) => className` function. |
 
 ## Example
 

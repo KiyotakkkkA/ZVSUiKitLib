@@ -13,8 +13,21 @@ Portal-based modal dialog with Escape and overlay-click closing support.
 | onClose             | `() => void` | -       | Close handler.               |
 | footer              | ReactNode    | -       | Optional footer content.     |
 | className           | string       | -       | Modal container classes.     |
+| classNames          | object       | -       | Classes for internal slots.  |
 | closeOnOverlayClick | boolean      | `true`  | Close when clicking overlay. |
 | children            | ReactNode    | -       | Modal content.               |
+
+### classNames slots
+
+| Slot        | Description                   |
+| ----------- | ----------------------------- |
+| overlay     | Overlay classes.              |
+| content     | Main modal container classes. |
+| header      | Header wrapper classes.       |
+| title       | Title text classes.           |
+| closeButton | Close button classes.         |
+| body        | Body scroll area classes.     |
+| footer      | Footer wrapper classes.       |
 
 ## Example
 

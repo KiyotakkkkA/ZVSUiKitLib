@@ -2,21 +2,35 @@
 
 ## Purpose
 
-Collapsible section with animated content height.
+Collapsible section with compound API and animated content height.
 
-## Props
+## Main Component: Accordeon
 
-| Prop             | Type      | Default | Description                   |
-| ---------------- | --------- | ------- | ----------------------------- |
-| title            | string    | -       | Section title.                |
-| subtitle         | string    | -       | Optional subtitle.            |
-| defaultOpen      | boolean   | `false` | Initial expanded state.       |
-| className        | string    | -       | Root classes.                 |
-| titleIcon        | ReactNode | -       | Icon before title.            |
-| headerClassName  | string    | -       | Header button classes.        |
-| contentClassName | string    | -       | Content wrapper classes.      |
-| rightSlot        | ReactNode | -       | Right-side content in header. |
-| children         | ReactNode | -       | Section content.              |
+### Props
+
+| Prop        | Type      | Default | Description             |
+| ----------- | --------- | ------- | ----------------------- |
+| defaultOpen | boolean   | `false` | Initial expanded state. |
+| className   | string    | -       | Root classes.           |
+| children    | ReactNode | -       | Summary/content blocks. |
+
+## Child Component: Accordeon.Summary
+
+### Props
+
+| Prop      | Type      | Default | Description               |
+| --------- | --------- | ------- | ------------------------- |
+| className | string    | -       | Header button classes.    |
+| children  | ReactNode | -       | Clickable header content. |
+
+## Child Component: Accordeon.Content
+
+### Props
+
+| Prop      | Type      | Default | Description                 |
+| --------- | --------- | ------- | --------------------------- |
+| className | string    | -       | Expandable content classes. |
+| children  | ReactNode | -       | Content inside the section. |
 
 ## Example
 
@@ -25,8 +39,13 @@ import { Accordeon } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 export function DemoAccordeon() {
     return (
-        <Accordeon title="Settings" subtitle="Expand for details" defaultOpen>
-            Section content
+        <Accordeon defaultOpen>
+            <Accordeon.Summary className="flex items-center justify-between gap-2 text-main-100">
+                <span className="text-xs font-semibold">Настройки</span>
+                <span className="text-main-400">v</span>
+            </Accordeon.Summary>
+
+            <Accordeon.Content>Содержимое секции</Accordeon.Content>
         </Accordeon>
     );
 }

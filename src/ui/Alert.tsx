@@ -8,6 +8,12 @@ type AlertProps = HTMLAttributes<HTMLDivElement> & {
     variant?: AlertVariant;
     title?: ReactNode;
     icon?: ReactNode;
+    classNames?: {
+        icon?: string;
+        content?: string;
+        title?: string;
+        body?: string;
+    };
 };
 
 const variantStyles: Record<
@@ -46,6 +52,7 @@ export function Alert({
     title,
     icon,
     className,
+    classNames,
     children,
     ...props
 }: AlertProps) {
@@ -61,7 +68,13 @@ export function Alert({
             )}
             {...props}
         >
-            <span className={cn("mt-0.5 shrink-0", variantStyle.icon)}>
+            <span
+                className={cn(
+                    "mt-0.5 shrink-0",
+                    variantStyle.icon,
+                    classNames?.icon,
+                )}
+            >
                 {icon ?? (
                     <Icon
                         icon={variantStyle.defaultIcon}
@@ -70,10 +83,21 @@ export function Alert({
                     />
                 )}
             </span>
-            <div className="min-w-0">
-                {title && <p className="text-sm font-semibold">{title}</p>}
+            <div className={cn("min-w-0", classNames?.content)}>
+                {title && (
+                    <p
+                        className={cn(
+                            "text-sm font-semibold",
+                            classNames?.title,
+                        )}
+                    >
+                        {title}
+                    </p>
+                )}
                 {children && (
-                    <div className="text-sm opacity-95">{children}</div>
+                    <div className={cn("text-sm opacity-95", classNames?.body)}>
+                        {children}
+                    </div>
                 )}
             </div>
         </div>

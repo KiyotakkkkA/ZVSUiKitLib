@@ -31,10 +31,15 @@ type DropdownProps = {
     searchPlaceholder?: string;
     emptyMessage?: string;
     className?: string;
-    triggerClassName?: string;
-    menuClassName?: string;
     menuWidth?: number | string;
-    optionClassName?: string;
+    classNames?: {
+        trigger?: string;
+        menu?: string;
+        search?: string;
+        option?: string;
+        optionLabel?: string;
+        optionIcon?: string;
+    };
     disabled?: boolean;
     ariaLabel?: string;
     menuPlacement?: "bottom" | "top";
@@ -96,11 +101,9 @@ export function Dropdown({
     searchable = false,
     searchPlaceholder = "Поиск...",
     emptyMessage = "Ничего не найдено",
-    className = "",
-    triggerClassName = "",
-    menuClassName = "",
+    className,
     menuWidth,
-    optionClassName = "",
+    classNames,
     disabled = false,
     ariaLabel,
     menuPlacement = "bottom",
@@ -264,7 +267,7 @@ export function Dropdown({
                 "fixed z-60 rounded-xl bg-main-800 p-1.5 transition-all duration-180",
                 "max-w-[calc(100vw-1rem)]",
                 menuPositionClassName,
-                menuClassName,
+                classNames?.menu,
             )}
         >
             <div className={cn("space-y-1.5 rounded-lg")}>
@@ -273,7 +276,7 @@ export function Dropdown({
                         value={query}
                         onChange={(event) => setQuery(event.target.value)}
                         placeholder={searchPlaceholder}
-                        className="h-8 w-full"
+                        className={cn("h-8 w-full", classNames?.search)}
                     />
                 )}
 
@@ -300,7 +303,7 @@ export function Dropdown({
                                         active
                                             ? "bg-main-700/60 text-main-100"
                                             : "bg-transparent text-main-300 hover:bg-main-700/80 hover:text-main-100",
-                                        optionClassName,
+                                        classNames?.option,
                                     )}
                                 >
                                     <span
@@ -310,12 +313,20 @@ export function Dropdown({
                                         )}
                                     >
                                         {option.icon && (
-                                            <span className="shrink-0 text-main-300">
+                                            <span
+                                                className={cn(
+                                                    "shrink-0 text-main-300",
+                                                    classNames?.optionIcon,
+                                                )}
+                                            >
                                                 {option.icon}
                                             </span>
                                         )}
                                         <span
-                                            className={cn("whitespace-nowrap")}
+                                            className={cn(
+                                                "whitespace-nowrap",
+                                                classNames?.optionLabel,
+                                            )}
                                         >
                                             {option.label}
                                         </span>
@@ -365,7 +376,7 @@ export function Dropdown({
                     onClick={toggleOpen}
                     className={cn(
                         "min-h-10 justify-between gap-3 rounded-xl border-transparent px-3 py-2 text-main-100",
-                        triggerClassName,
+                        classNames?.trigger,
                     )}
                 >
                     <span className="min-w-0 truncate text-left">

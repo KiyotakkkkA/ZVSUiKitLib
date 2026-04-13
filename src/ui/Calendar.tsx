@@ -27,7 +27,17 @@ type CalendarProps = {
     locale?: string;
     weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
     className?: string;
-    dayClassName?: (meta: DayMeta) => string | undefined;
+    classNames?: {
+        header?: string;
+        navButton?: string;
+        selectors?: string;
+        monthSelect?: string;
+        yearSelect?: string;
+        weekdays?: string;
+        weekday?: string;
+        days?: string;
+        day?: string | ((meta: DayMeta) => string | undefined);
+    };
     renderDay?: (meta: DayMeta) => ReactNode;
 };
 
@@ -101,7 +111,7 @@ export function Calendar({
     locale = "ru-RU",
     weekStartsOn = 1,
     className,
-    dayClassName,
+    classNames,
     renderDay,
 }: CalendarProps) {
     const [innerValue, setInnerValue] = useState<CalendarDate>(defaultValue);
@@ -274,10 +284,18 @@ export function Calendar({
                 className,
             )}
         >
-            <div className="grid grid-cols-[auto_1fr_auto] items-center gap-2">
+            <div
+                className={cx(
+                    "grid grid-cols-[auto_1fr_auto] items-center gap-2",
+                    classNames?.header,
+                )}
+            >
                 <Button
                     variant="secondary"
-                    className="h-8 w-8 rounded-lg p-0 transition-transform duration-150 hover:scale-105"
+                    className={cx(
+                        "h-8 w-8 rounded-lg p-0 transition-transform duration-150 hover:scale-105",
+                        classNames?.navButton,
+                    )}
                     onClick={() =>
                         setViewMonth(
                             new Date(
@@ -292,7 +310,12 @@ export function Calendar({
                     {"<"}
                 </Button>
 
-                <div className="grid grid-cols-[minmax(0,1fr)_6.25rem] gap-2">
+                <div
+                    className={cx(
+                        "grid grid-cols-[minmax(0,1fr)_6.25rem] gap-2",
+                        classNames?.selectors,
+                    )}
+                >
                     <Select
                         value={String(activeViewDate.getMonth())}
                         onChange={(nextMonth) =>
@@ -305,8 +328,13 @@ export function Calendar({
                             )
                         }
                         options={monthOptions}
-                        className="bg-main-800 text-sm"
-                        wrapperClassName="relative z-70"
+                        className="relative z-70"
+                        classNames={{
+                            trigger: cx(
+                                "bg-main-800 text-sm",
+                                classNames?.monthSelect,
+                            ),
+                        }}
                     />
                     <Select
                         value={String(activeViewDate.getFullYear())}
@@ -320,14 +348,22 @@ export function Calendar({
                             )
                         }
                         options={yearOptions}
-                        className="w-25 bg-main-800 text-sm"
-                        wrapperClassName="relative z-70"
+                        className="relative z-70"
+                        classNames={{
+                            trigger: cx(
+                                "w-25 bg-main-800 text-sm",
+                                classNames?.yearSelect,
+                            ),
+                        }}
                     />
                 </div>
 
                 <Button
                     variant="secondary"
-                    className="h-8 w-8 rounded-lg p-0 transition-transform duration-150 hover:scale-105"
+                    className={cx(
+                        "h-8 w-8 rounded-lg p-0 transition-transform duration-150 hover:scale-105",
+                        classNames?.navButton,
+                    )}
                     onClick={() =>
                         setViewMonth(
                             new Date(
@@ -343,18 +379,23 @@ export function Calendar({
                 </Button>
             </div>
 
-            <div className="mt-3 grid grid-cols-7">
+            <div className={cx("mt-3 grid grid-cols-7", classNames?.weekdays)}>
                 {weekdayLabels.map((label) => (
                     <span
                         key={label}
-                        className="text-center text-xs capitalize text-main-400"
+                        className={cx(
+                            "text-center text-xs capitalize text-main-400",
+                            classNames?.weekday,
+                        )}
                     >
                         {label}
                     </span>
                 ))}
             </div>
 
-            <div className="mt-2 grid grid-cols-7 gap-1">
+            <div
+                className={cx("mt-2 grid grid-cols-7 gap-1", classNames?.days)}
+            >
                 {dayCells.map((day) => {
                     if (!showOutsideDays && !day.isCurrentMonth) {
                         return (
@@ -384,7 +425,9 @@ export function Calendar({
                                     "hover:bg-main-700/30",
                                 day.isDisabled &&
                                     "cursor-not-allowed opacity-35",
-                                dayClassName?.(day),
+                                typeof classNames?.day === "function"
+                                    ? classNames.day(day)
+                                    : classNames?.day,
                             )}
                             onClick={() => {
                                 if (day.isDisabled) {

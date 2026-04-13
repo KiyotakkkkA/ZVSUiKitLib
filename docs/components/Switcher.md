@@ -6,12 +6,19 @@ Segmented control for switching between fixed options.
 
 ## Props
 
-| Prop      | Type                                 | Default | Description                 |
-| --------- | ------------------------------------ | ------- | --------------------------- |
-| value     | string                               | -       | Active value.               |
-| options   | `{ value: string; label: string }[]` | -       | Segments list.              |
-| onChange  | `(value: string) => void`            | -       | Called on selection change. |
-| className | string                               | -       | Extra wrapper classes.      |
+| Prop       | Type                                 | Default | Description                 |
+| ---------- | ------------------------------------ | ------- | --------------------------- |
+| value      | string                               | -       | Active value.               |
+| options    | `{ value: string; label: string }[]` | -       | Segments list.              |
+| onChange   | `(value: string) => void`            | -       | Called on selection change. |
+| className  | string                               | -       | Extra wrapper classes.      |
+| classNames | object                               | -       | Classes for internal slots. |
+
+### classNames slots
+
+| Slot | Description            |
+| ---- | ---------------------- |
+| tab  | Segment button classes |
 
 ## Example
 

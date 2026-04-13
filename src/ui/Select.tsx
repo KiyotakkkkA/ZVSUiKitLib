@@ -16,7 +16,14 @@ type SelectProps = {
     emptyMessage?: string;
     disabled?: boolean;
     className?: string;
-    wrapperClassName?: string;
+    classNames?: {
+        trigger?: string;
+        menu?: string;
+        search?: string;
+        option?: string;
+        optionLabel?: string;
+        optionIcon?: string;
+    };
 };
 
 export function Select({
@@ -29,13 +36,13 @@ export function Select({
     emptyMessage,
     disabled,
     className,
-    wrapperClassName,
+    classNames,
 }: SelectProps) {
     return (
         <div
             className={cn(
                 "flex items-center gap-2 text-sm text-main-200",
-                wrapperClassName,
+                className,
             )}
         >
             <Dropdown
@@ -47,7 +54,7 @@ export function Select({
                 searchPlaceholder={searchPlaceholder}
                 emptyMessage={emptyMessage}
                 disabled={disabled}
-                triggerClassName={className}
+                classNames={classNames}
             />
         </div>
     );

@@ -8,14 +8,30 @@ Multi-select with search, selected tags, and dropdown option list.
 
 Extends `HTMLAttributes<HTMLDivElement>` (except `onChange`).
 
-| Prop        | Type                                                       | Default            | Description                    |
-| ----------- | ---------------------------------------------------------- | ------------------ | ------------------------------ |
-| options     | `{ value: string; label: string; description?: string }[]` | -                  | Option list.                   |
-| value       | string[]                                                   | `[]`               | Selected values.               |
-| onChange    | `(value: string[]) => void`                                | -                  | Called when selection changes. |
-| placeholder | string                                                     | `"Type to search"` | Search input placeholder.      |
-| disabled    | boolean                                                    | -                  | Disables interactions.         |
-| className   | string                                                     | -                  | Wrapper classes.               |
+| Prop        | Type                                                       | Default                | Description                    |
+| ----------- | ---------------------------------------------------------- | ---------------------- | ------------------------------ |
+| options     | `{ value: string; label: string; description?: string }[]` | -                      | Option list.                   |
+| value       | string[]                                                   | `[]`                   | Selected values.               |
+| onChange    | `(value: string[]) => void`                                | -                      | Called when selection changes. |
+| placeholder | string                                                     | `"Введите для поиска"` | Search input placeholder.      |
+| disabled    | boolean                                                    | -                      | Disables interactions.         |
+| className   | string                                                     | -                      | Wrapper classes.               |
+| classNames  | object                                                     | -                      | Classes for internal slots.    |
+
+### classNames slots
+
+| Slot              | Description                    |
+| ----------------- | ------------------------------ |
+| trigger           | Input trigger wrapper classes. |
+| tag               | Selected tag classes.          |
+| tagRemove         | Tag remove button classes.     |
+| input             | Search input classes.          |
+| menu              | Dropdown menu classes.         |
+| empty             | Empty state text classes.      |
+| option            | Option button classes.         |
+| optionLabel       | Option label classes.          |
+| optionDescription | Option description classes.    |
+| optionIcon        | Option icon classes.           |
 
 ## Example
 

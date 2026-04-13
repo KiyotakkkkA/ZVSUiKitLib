@@ -18,13 +18,25 @@ type TableRecord = Record<string, unknown>;
 
 type Align = "left" | "center" | "right";
 
+type TableClassNames = {
+    table?: string;
+    header?: string;
+    body?: string;
+    row?: string;
+    cell?: string;
+    footer?: string;
+    sortButton?: string;
+};
+
 type TableSchemaItem<T extends TableRecord> = {
     key: Extract<keyof T, string>;
     label: ReactNode;
     align?: Align;
     width?: number | string;
-    className?: string;
-    headerClassName?: string;
+    classNames?: {
+        cell?: string;
+        header?: string;
+    };
     render?: (
         value: T[Extract<keyof T, string>],
         row: T,
@@ -50,7 +62,7 @@ type TableProps<T extends TableRecord> = {
     children?: ReactNode;
     rowKey?: (row: T, index: number) => string;
     className?: string;
-    tableClassName?: string;
+    classNames?: TableClassNames;
     compact?: boolean;
     striped?: boolean;
     hoverable?: boolean;
@@ -58,6 +70,12 @@ type TableProps<T extends TableRecord> = {
 
 type TableHeaderProps<T extends TableRecord> = {
     className?: string;
+    classNames?: {
+        root?: string;
+        row?: string;
+        cell?: string;
+        sortButton?: string;
+    };
     sortModes?: TableSortModes<T>;
     defaultSortMode?: string;
     defaultSortColumn?: Extract<keyof T, string>;
@@ -65,6 +83,11 @@ type TableHeaderProps<T extends TableRecord> = {
 
 type TableBodyProps = {
     className?: string;
+    classNames?: {
+        root?: string;
+        row?: string;
+        empty?: string;
+    };
     emptyState?: ReactNode;
     children?: ReactNode;
 };
@@ -91,6 +114,11 @@ type TableColumnProps<
 
 type TableFooterProps = {
     className?: string;
+    classNames?: {
+        root?: string;
+        row?: string;
+        cell?: string;
+    };
     children?: ReactNode;
 };
 
@@ -102,6 +130,7 @@ type TableContextValue<T extends TableRecord> = {
     sortState: SortState<T>;
     sortModeKeys: string[];
     sortModes: TableSortModes<T>;
+    classNames?: TableClassNames;
     toggleSortByColumn: (columnKey: Extract<keyof T, string>) => void;
 };
 
@@ -178,7 +207,7 @@ function TableRoot<T extends TableRecord>({
     children,
     rowKey,
     className,
-    tableClassName,
+    classNames,
     compact,
     striped,
     hoverable,
@@ -272,6 +301,7 @@ function TableRoot<T extends TableRecord>({
             sortState,
             sortModeKeys,
             sortModes,
+            classNames,
             toggleSortByColumn,
         }),
         [
@@ -282,6 +312,7 @@ function TableRoot<T extends TableRecord>({
             sortState,
             sortModeKeys,
             sortModes,
+            classNames,
             toggleSortByColumn,
         ],
     );
@@ -301,7 +332,7 @@ function TableRoot<T extends TableRecord>({
                     className={cx(
                         "w-full min-w-xl border-collapse text-sm text-main-100",
                         compact && "text-[13px]",
-                        tableClassName,
+                        classNames?.table,
                     )}
                 >
                     <TableHeaderRenderer config={headerConfig} />
@@ -325,8 +356,19 @@ function TableHeaderRenderer<T extends TableRecord>({
     const table = useTypedTableContext<T>();
 
     return (
-        <thead className={config?.className}>
-            <tr className="border-b border-main-700/60">
+        <thead
+            className={cx(
+                config?.className,
+                config?.classNames?.root,
+                table.classNames?.header,
+            )}
+        >
+            <tr
+                className={cx(
+                    "border-b border-main-700/60",
+                    config?.classNames?.row,
+                )}
+            >
                 {table.schema.map((column) => {
                     const columnAlign = column.align ?? "left";
                     const isSortable = table.sortModeKeys.length > 0;
@@ -342,7 +384,8 @@ function TableHeaderRenderer<T extends TableRecord>({
                             className={cx(
                                 "px-4 py-3 text-[12px] uppercase tracking-[0.08em] text-main-300",
                                 ALIGN_CLASS[columnAlign],
-                                column.headerClassName,
+                                config?.classNames?.cell,
+                                column.classNames?.header,
                             )}
                             style={{ width: column.width }}
                         >
@@ -360,6 +403,8 @@ function TableHeaderRenderer<T extends TableRecord>({
                                         isActive
                                             ? "text-main-100"
                                             : "text-main-300 hover:text-main-100",
+                                        config?.classNames?.sortButton,
+                                        table.classNames?.sortButton,
                                     )}
                                     onClick={() =>
                                         table.toggleSortByColumn(column.key)
@@ -398,10 +443,25 @@ function TableBodyRenderer<T extends TableRecord>({
 
     if (table.sortedRows.length === 0) {
         return (
-            <tbody className={config?.className}>
-                <tr className="border-b border-main-700/50">
+            <tbody
+                className={cx(
+                    config?.className,
+                    config?.classNames?.root,
+                    table.classNames?.body,
+                )}
+            >
+                <tr
+                    className={cx(
+                        "border-b border-main-700/50",
+                        config?.classNames?.row,
+                        table.classNames?.row,
+                    )}
+                >
                     <td
-                        className="px-4 py-4 text-center text-main-400"
+                        className={cx(
+                            "px-4 py-4 text-center text-main-400",
+                            config?.classNames?.empty,
+                        )}
                         colSpan={table.schema.length}
                     >
                         {config?.emptyState ?? "Нет данных"}
@@ -413,10 +473,25 @@ function TableBodyRenderer<T extends TableRecord>({
 
     if (rowTemplateNodes.length === 0) {
         return (
-            <tbody className={config?.className}>
-                <tr className="border-b border-main-700/50">
+            <tbody
+                className={cx(
+                    config?.className,
+                    config?.classNames?.root,
+                    table.classNames?.body,
+                )}
+            >
+                <tr
+                    className={cx(
+                        "border-b border-main-700/50",
+                        config?.classNames?.row,
+                        table.classNames?.row,
+                    )}
+                >
                     <td
-                        className="px-4 py-4 text-center text-main-400"
+                        className={cx(
+                            "px-4 py-4 text-center text-main-400",
+                            config?.classNames?.empty,
+                        )}
                         colSpan={table.schema.length}
                     >
                         Передайте Table.Row и Table.Column внутрь Table.Body
@@ -427,7 +502,13 @@ function TableBodyRenderer<T extends TableRecord>({
     }
 
     return (
-        <tbody className={config?.className}>
+        <tbody
+            className={cx(
+                config?.className,
+                config?.classNames?.root,
+                table.classNames?.body,
+            )}
+        >
             {table.sortedRows.map((row, index) => (
                 <RowContext.Provider
                     key={table.rowKey(row, index)}
@@ -450,6 +531,8 @@ function TableBodyRenderer<T extends TableRecord>({
                             className: cx(
                                 striped && index % 2 === 1 && "bg-main-800/25",
                                 hoverable && "hover:bg-main-700/25",
+                                config?.classNames?.row,
+                                table.classNames?.row,
                                 typedChild.props.className,
                             ),
                         });
@@ -528,7 +611,8 @@ function TableColumn<
             className={cx(
                 "px-4 py-3 align-middle text-main-100",
                 schema?.align && ALIGN_CLASS[schema.align],
-                schema?.className,
+                table.classNames?.cell,
+                schema?.classNames?.cell,
                 className,
             )}
             {...rest}
@@ -550,10 +634,24 @@ function TableFooterRenderer<T extends TableRecord>({
     }
 
     return (
-        <tfoot className={config.className}>
-            <tr className="border-t border-main-700/60">
+        <tfoot
+            className={cx(
+                config.className,
+                config.classNames?.root,
+                table.classNames?.footer,
+            )}
+        >
+            <tr
+                className={cx(
+                    "border-t border-main-700/60",
+                    config.classNames?.row,
+                )}
+            >
                 <td
-                    className="px-4 py-3 text-main-300"
+                    className={cx(
+                        "px-4 py-3 text-main-300",
+                        config.classNames?.cell,
+                    )}
                     colSpan={table.schema.length}
                 >
                     {config.children}

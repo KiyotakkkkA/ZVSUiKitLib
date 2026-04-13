@@ -6,6 +6,9 @@ type InputCheckboxProps = {
     disabled?: boolean;
     type?: "slided";
     className?: string;
+    classNames?: {
+        thumb?: string;
+    };
 };
 
 export const InputCheckbox = ({
@@ -13,6 +16,7 @@ export const InputCheckbox = ({
     onChange,
     disabled = false,
     className,
+    classNames,
 }: InputCheckboxProps) => {
     return (
         <button
@@ -33,6 +37,7 @@ export const InputCheckbox = ({
                 className={cn(
                     "inline-block h-4 w-4 transform rounded-full bg-main-100 transition-transform duration-200",
                     checked ? "translate-x-6" : "translate-x-1",
+                    classNames?.thumb,
                 )}
             />
         </button>

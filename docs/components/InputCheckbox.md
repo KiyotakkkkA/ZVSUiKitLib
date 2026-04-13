@@ -6,13 +6,20 @@ Boolean switch-style checkbox (`true/false`).
 
 ## Props
 
-| Prop      | Type                         | Default | Description                                        |
-| --------- | ---------------------------- | ------- | -------------------------------------------------- |
-| checked   | boolean                      | -       | Current value.                                     |
-| onChange  | `(checked: boolean) => void` | -       | Triggered on toggle.                               |
-| disabled  | boolean                      | `false` | Disables interaction.                              |
-| type      | `"slided"`                   | -       | Reserved prop (currently does not change visuals). |
-| className | string                       | -       | Extra classes.                                     |
+| Prop       | Type                         | Default | Description                                        |
+| ---------- | ---------------------------- | ------- | -------------------------------------------------- |
+| checked    | boolean                      | -       | Current value.                                     |
+| onChange   | `(checked: boolean) => void` | -       | Triggered on toggle.                               |
+| disabled   | boolean                      | `false` | Disables interaction.                              |
+| type       | `"slided"`                   | -       | Reserved prop (currently does not change visuals). |
+| className  | string                       | -       | Extra classes.                                     |
+| classNames | object                       | -       | Classes for internal slots.                        |
+
+### classNames slots
+
+| Slot  | Description           |
+| ----- | --------------------- |
+| thumb | Switch thumb classes. |
 
 ## Example
 

@@ -8,7 +8,10 @@ type FloatingProps = {
     content: ReactNode;
     anchor?: FloatingAnchor;
     className?: string;
-    panelClassName?: string;
+    classNames?: {
+        panel?: string;
+        content?: string;
+    };
 };
 
 const panelPositionByAnchor: Record<FloatingAnchor, string> = {
@@ -23,7 +26,7 @@ export function Floating({
     content,
     anchor = "top-right",
     className,
-    panelClassName,
+    classNames,
 }: FloatingProps) {
     return (
         <div className={cn("group relative inline-flex w-fit", className)}>
@@ -34,10 +37,10 @@ export function Floating({
                     "bg-main-900/95 p-3 opacity-0 transition-all duration-150",
                     "group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100",
                     panelPositionByAnchor[anchor],
-                    panelClassName,
+                    classNames?.panel,
                 )}
             >
-                {content}
+                <div className={classNames?.content}>{content}</div>
             </div>
         </div>
     );

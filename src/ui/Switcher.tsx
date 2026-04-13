@@ -10,6 +10,9 @@ type SwitcherProps = {
     options: SwitcherOption[];
     onChange: (value: string) => void;
     className?: string;
+    classNames?: {
+        tab?: string;
+    };
 };
 
 export const Switcher = ({
@@ -17,6 +20,7 @@ export const Switcher = ({
     options,
     onChange,
     className,
+    classNames,
 }: SwitcherProps) => {
     return (
         <div
@@ -42,6 +46,7 @@ export const Switcher = ({
                             isActive
                                 ? "bg-main-700/80 text-main-100"
                                 : "text-main-300 hover:bg-main-800/70 hover:text-main-100",
+                            classNames?.tab,
                         )}
                     >
                         {option.label}

@@ -8,17 +8,40 @@ Typed table with compound API and sortable columns.
 
 ### Props
 
-| Prop           | Type                                | Default | Description                                              |
-| -------------- | ----------------------------------- | ------- | -------------------------------------------------------- |
-| data           | `T[]`                               | -       | Row data.                                                |
-| schema         | `TableSchemaItem<T>[]`              | -       | Column schema.                                           |
-| children       | ReactNode                           | -       | `Table.Header`, `Table.Body`, and `Table.Footer` blocks. |
-| rowKey         | `(row: T, index: number) => string` | `index` | Row key resolver.                                        |
-| className      | string                              | -       | Outer wrapper classes.                                   |
-| tableClassName | string                              | -       | `<table>` classes.                                       |
-| compact        | boolean                             | -       | Smaller text mode.                                       |
-| striped        | boolean                             | -       | Zebra row styles.                                        |
-| hoverable      | boolean                             | -       | Hover row styles.                                        |
+| Prop       | Type                                | Default | Description                                              |
+| ---------- | ----------------------------------- | ------- | -------------------------------------------------------- |
+| data       | `T[]`                               | -       | Row data.                                                |
+| schema     | `TableSchemaItem<T>[]`              | -       | Column schema.                                           |
+| children   | ReactNode                           | -       | `Table.Header`, `Table.Body`, and `Table.Footer` blocks. |
+| rowKey     | `(row: T, index: number) => string` | `index` | Row key resolver.                                        |
+| className  | string                              | -       | Outer scroll wrapper classes.                            |
+| classNames | object                              | -       | Classes for internal table slots.                        |
+| compact    | boolean                             | -       | Smaller text mode.                                       |
+| striped    | boolean                             | -       | Zebra row styles.                                        |
+| hoverable  | boolean                             | -       | Hover row styles.                                        |
+
+### Table classNames slots
+
+| Slot       | Description             |
+| ---------- | ----------------------- |
+| table      | Main `<table>` classes. |
+| header     | `<thead>` classes.      |
+| body       | `<tbody>` classes.      |
+| row        | Row classes.            |
+| cell       | Body cell classes.      |
+| footer     | `<tfoot>` classes.      |
+| sortButton | Sort button classes.    |
+
+### TableSchemaItem fields
+
+| Field      | Type                                  | Description                           |
+| ---------- | ------------------------------------- | ------------------------------------- |
+| key        | `Extract<keyof T, string>`            | Column key.                           |
+| label      | ReactNode                             | Header label.                         |
+| align      | `"left" \| "center" \| "right"`       | Text alignment for header/body cells. |
+| width      | number \| string                      | Column width.                         |
+| classNames | `{ cell?: string; header?: string }`  | Per-column classes for cell/header.   |
+| render     | `(value, row, rowIndex) => ReactNode` | Custom cell renderer.                 |
 
 ## Child Component: Table.Header
 
@@ -27,19 +50,38 @@ Typed table with compound API and sortable columns.
 | Prop              | Type                                   | Default | Description               |
 | ----------------- | -------------------------------------- | ------- | ------------------------- |
 | className         | string                                 | -       | `thead` classes.          |
+| classNames        | object                                 | -       | Header slot classes.      |
 | sortModes         | `Record<string, { sortFn; sortIcon }>` | -       | Sorting mode map.         |
 | defaultSortMode   | string                                 | -       | Initial sorting mode key. |
 | defaultSortColumn | `Extract<keyof T, string>`             | -       | Initial sorting column.   |
+
+### Table.Header classNames slots
+
+| Slot       | Description               |
+| ---------- | ------------------------- |
+| root       | `thead` classes.          |
+| row        | Header row classes.       |
+| cell       | Header cell classes.      |
+| sortButton | Header sort button class. |
 
 ## Child Component: Table.Body
 
 ### Props
 
-| Prop       | Type      | Default     | Description                                        |
-| ---------- | --------- | ----------- | -------------------------------------------------- |
-| className  | string    | -           | `tbody` classes.                                   |
-| emptyState | ReactNode | `"No data"` | Content when data is empty.                        |
-| children   | ReactNode | -           | Row template using `Table.Row` and `Table.Column`. |
+| Prop       | Type      | Default        | Description                                        |
+| ---------- | --------- | -------------- | -------------------------------------------------- |
+| className  | string    | -              | `tbody` classes.                                   |
+| classNames | object    | -              | Body slot classes.                                 |
+| emptyState | ReactNode | `"Нет данных"` | Content when data is empty.                        |
+| children   | ReactNode | -              | Row template using `Table.Row` and `Table.Column`. |
+
+### Table.Body classNames slots
+
+| Slot  | Description               |
+| ----- | ------------------------- |
+| root  | `tbody` classes.          |
+| row   | Row classes in body.      |
+| empty | Empty-state cell classes. |
 
 ## Child Component: Table.Row
 
@@ -68,10 +110,19 @@ Extends `TdHTMLAttributes<HTMLTableCellElement>` (except `children`).
 
 ### Props
 
-| Prop      | Type      | Default | Description      |
-| --------- | --------- | ------- | ---------------- |
-| className | string    | -       | `tfoot` classes. |
-| children  | ReactNode | -       | Footer content.  |
+| Prop       | Type      | Default | Description          |
+| ---------- | --------- | ------- | -------------------- |
+| className  | string    | -       | `tfoot` classes.     |
+| classNames | object    | -       | Footer slot classes. |
+| children   | ReactNode | -       | Footer content.      |
+
+### Table.Footer classNames slots
+
+| Slot | Description          |
+| ---- | -------------------- |
+| root | `tfoot` classes.     |
+| row  | Footer row classes.  |
+| cell | Footer cell classes. |
 
 ## Example
 

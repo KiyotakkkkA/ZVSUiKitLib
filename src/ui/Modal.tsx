@@ -17,6 +17,15 @@ type ModalProps = PropsWithChildren<{
     onClose: () => void;
     footer?: ReactNode;
     className?: string;
+    classNames?: {
+        overlay?: string;
+        content?: string;
+        header?: string;
+        title?: string;
+        closeButton?: string;
+        body?: string;
+        footer?: string;
+    };
     closeOnOverlayClick?: boolean;
 }>;
 
@@ -26,6 +35,7 @@ export function Modal({
     onClose,
     footer,
     className,
+    classNames,
     children,
     closeOnOverlayClick = true,
 }: ModalProps) {
@@ -67,7 +77,10 @@ export function Modal({
 
     return createPortal(
         <div
-            className="fixed inset-0 z-50 flex animate-in items-center justify-center bg-black/60 px-4 py-6 backdrop-blur-sm fade-in duration-200"
+            className={cn(
+                "fixed inset-0 z-50 flex animate-in items-center justify-center bg-black/60 px-4 py-6 backdrop-blur-sm fade-in duration-200",
+                classNames?.overlay,
+            )}
             onClick={onOverlayClick}
             onKeyDown={onOverlayKeyDown}
             tabIndex={-1}
@@ -78,16 +91,30 @@ export function Modal({
                 className={cn(
                     "flex max-h-[88vh] w-full max-w-5xl flex-col rounded-2xl border border-main-700/90",
                     "bg-main-900/95 shadow-2xl animate-in zoom-in-95 slide-in-from-bottom-2 duration-220",
+                    classNames?.content,
                     className,
                 )}
             >
-                <div className="flex items-center justify-between border-b border-main-700/80 px-5 py-4">
-                    <h3 className="text-base font-semibold text-main-100">
+                <div
+                    className={cn(
+                        "flex items-center justify-between border-b border-main-700/80 px-5 py-4",
+                        classNames?.header,
+                    )}
+                >
+                    <h3
+                        className={cn(
+                            "text-base font-semibold text-main-100",
+                            classNames?.title,
+                        )}
+                    >
                         {title}
                     </h3>
                     <Button
                         variant="secondary"
-                        className="h-8 w-8 border-main-600 bg-main-700/70 hover:bg-main-600/80"
+                        className={cn(
+                            "h-8 w-8 border-main-600 bg-main-700/70 hover:bg-main-600/80",
+                            classNames?.closeButton,
+                        )}
                         onClick={onClose}
                         aria-label="Закрыть окно"
                     >
@@ -95,12 +122,19 @@ export function Modal({
                     </Button>
                 </div>
 
-                <ScrollArea className="min-h-0 flex-1 px-5 py-5">
+                <ScrollArea
+                    className={cn("min-h-0 flex-1 px-5 py-5", classNames?.body)}
+                >
                     {children}
                 </ScrollArea>
 
                 {footer && (
-                    <div className="flex items-center justify-end gap-2 border-t border-main-700/80 px-5 py-4">
+                    <div
+                        className={cn(
+                            "flex items-center justify-end gap-2 border-t border-main-700/80 px-5 py-4",
+                            classNames?.footer,
+                        )}
+                    >
                         {footer}
                     </div>
                 )}

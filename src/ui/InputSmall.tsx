@@ -2,10 +2,15 @@ import { Icon } from "@iconify/react";
 import { forwardRef, useState, type InputHTMLAttributes } from "react";
 import { cn } from "../lib/utils";
 
-type InputSmallProps = InputHTMLAttributes<HTMLInputElement>;
+type InputSmallProps = InputHTMLAttributes<HTMLInputElement> & {
+    classNames?: {
+        wrapper?: string;
+        icon?: string;
+    };
+};
 
 export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
-    function InputSmall({ className = "", type, ...props }, ref) {
+    function InputSmall({ className, classNames, type, ...props }, ref) {
         const isPassword = type === "password";
         const [passwordVisible, setPasswordVisible] = useState(false);
 
@@ -16,7 +21,7 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
             : type;
 
         return (
-            <div className="relative">
+            <div className={cn("relative", classNames?.wrapper)}>
                 <input
                     ref={ref}
                     type={inputType}
@@ -33,7 +38,10 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
                 {isPassword && (
                     <Icon
                         icon={passwordVisible ? "mdi:eye-off" : "mdi:eye"}
-                        className="absolute top-2.5 right-3 cursor-pointer text-main-200 transition-opacity hover:opacity-50"
+                        className={cn(
+                            "absolute top-2.5 right-3 cursor-pointer text-main-200 transition-opacity hover:opacity-50",
+                            classNames?.icon,
+                        )}
                         onClick={() => setPasswordVisible((prev) => !prev)}
                     />
                 )}
