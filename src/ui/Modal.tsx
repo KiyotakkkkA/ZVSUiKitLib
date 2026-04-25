@@ -1,41 +1,97 @@
 import {
+    createContext,
     useEffect,
+    useContext,
     type PropsWithChildren,
-    type ReactNode,
     type KeyboardEvent as ReactKeyboardEvent,
     type MouseEvent,
 } from "react";
 import { createPortal } from "react-dom";
 import { Icon } from "@iconify/react";
-import { Button } from "./Button";
-import { ScrollArea } from "./ScrollArea";
+import { Button, ScrollArea } from "@kiyotakkkka/zvs-uikit-lib/ui";
 import { cn } from "../lib/utils";
 
 type ModalProps = PropsWithChildren<{
     open: boolean;
-    title: ReactNode;
     onClose: () => void;
-    footer?: ReactNode;
     className?: string;
-    classNames?: {
-        overlay?: string;
-        content?: string;
-        header?: string;
-        title?: string;
-        closeButton?: string;
-        body?: string;
-        footer?: string;
-    };
+    overlayClassName?: string;
     closeOnOverlayClick?: boolean;
 }>;
 
-export function Modal({
-    open,
-    title,
-    onClose,
-    footer,
+type ModalSectionProps = PropsWithChildren<{
+    className?: string;
+}>;
+
+type ModalHeaderProps = ModalSectionProps & {
+    closeButtonClassName?: string;
+    closeButtonAriaLabel?: string;
+    showCloseButton?: boolean;
+};
+
+const ModalContext = createContext<{ onClose: () => void } | null>(null);
+
+function ModalHeader({
+    children,
     className,
-    classNames,
+    closeButtonClassName,
+    closeButtonAriaLabel = "Закрыть окно",
+    showCloseButton = true,
+}: ModalHeaderProps) {
+    const modalContext = useContext(ModalContext);
+
+    return (
+        <div
+            className={cn(
+                "flex items-center gap-3 border-b border-main-700/80 px-5 py-4",
+                className,
+            )}
+        >
+            <div className="min-w-0 flex-1">{children}</div>
+
+            {showCloseButton && (
+                <Button
+                    variant="secondary"
+                    className={cn(
+                        "h-8 w-8 border-main-600 bg-main-700/70 hover:bg-main-600/80",
+                        closeButtonClassName,
+                    )}
+                    onClick={modalContext?.onClose}
+                    aria-label={closeButtonAriaLabel}
+                >
+                    <Icon icon="mdi:close" width="16" height="16" />
+                </Button>
+            )}
+        </div>
+    );
+}
+
+function ModalContent({ children, className }: ModalSectionProps) {
+    return (
+        <ScrollArea className={cn("min-h-0 flex-1 px-5 py-5", className)}>
+            {children}
+        </ScrollArea>
+    );
+}
+
+function ModalFooter({ children, className }: ModalSectionProps) {
+    return (
+        <div
+            className={cn(
+                "flex items-center justify-end gap-2 border-t border-main-700/80 px-5 py-4",
+                className,
+            )}
+        >
+            {children}
+        </div>
+    );
+}
+
+function ModalRoot({
+    open,
+    onClose,
+    className,
+    overlayClassName,
     children,
     closeOnOverlayClick = true,
 }: ModalProps) {
@@ -79,7 +135,7 @@ export function Modal({
         <div
             className={cn(
                 "fixed inset-0 z-50 flex animate-in items-center justify-center bg-black/60 px-4 py-6 backdrop-blur-sm fade-in duration-200",
-                classNames?.overlay,
+                overlayClassName,
             )}
             onClick={onOverlayClick}
             onKeyDown={onOverlayKeyDown}
@@ -87,59 +143,24 @@ export function Modal({
             aria-modal
             role="dialog"
         >
-            <div
-                className={cn(
-                    "flex max-h-[88vh] w-full max-w-5xl flex-col rounded-2xl border border-main-700/90",
-                    "bg-main-900/95 shadow-2xl animate-in zoom-in-95 slide-in-from-bottom-2 duration-220",
-                    classNames?.content,
-                    className,
-                )}
-            >
+            <ModalContext.Provider value={{ onClose }}>
                 <div
                     className={cn(
-                        "flex items-center justify-between border-b border-main-700/80 px-5 py-4",
-                        classNames?.header,
+                        "flex max-h-[88vh] w-full max-w-5xl flex-col rounded-2xl border border-main-700/90",
+                        "bg-main-900/95 shadow-2xl animate-in zoom-in-95 slide-in-from-bottom-2 duration-220",
+                        className,
                     )}
                 >
-                    <h3
-                        className={cn(
-                            "text-base font-semibold text-main-100",
-                            classNames?.title,
-                        )}
-                    >
-                        {title}
-                    </h3>
-                    <Button
-                        variant="secondary"
-                        className={cn(
-                            "h-8 w-8 border-main-600 bg-main-700/70 hover:bg-main-600/80",
-                            classNames?.closeButton,
-                        )}
-                        onClick={onClose}
-                        aria-label="Закрыть окно"
-                    >
-                        <Icon icon="mdi:close" width="16" height="16" />
-                    </Button>
-                </div>
-
-                <ScrollArea
-                    className={cn("min-h-0 flex-1 px-5 py-5", classNames?.body)}
-                >
                     {children}
-                </ScrollArea>
-
-                {footer && (
-                    <div
-                        className={cn(
-                            "flex items-center justify-end gap-2 border-t border-main-700/80 px-5 py-4",
-                            classNames?.footer,
-                        )}
-                    >
-                        {footer}
-                    </div>
-                )}
-            </div>
+                </div>
+            </ModalContext.Provider>
         </div>,
         document.body,
     );
 }
+
+export const Modal = Object.assign(ModalRoot, {
+    Header: ModalHeader,
+    Content: ModalContent,
+    Footer: ModalFooter,
+});
