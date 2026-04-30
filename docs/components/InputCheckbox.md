@@ -1,35 +1,38 @@
-# InputCheckbox
+# InputCheckBox
 
 ## Purpose
 
-Boolean switch-style checkbox (`true/false`).
+Boolean checkbox control (`true/false`).
 
 ## Props
 
-| Prop       | Type                         | Default | Description                                        |
-| ---------- | ---------------------------- | ------- | -------------------------------------------------- |
-| checked    | boolean                      | -       | Current value.                                     |
-| onChange   | `(checked: boolean) => void` | -       | Triggered on toggle.                               |
-| disabled   | boolean                      | `false` | Disables interaction.                              |
-| type       | `"slided"`                   | -       | Reserved prop (currently does not change visuals). |
-| className  | string                       | -       | Extra classes.                                     |
-| classNames | object                       | -       | Classes for internal slots.                        |
+Supports standard `input` props except `type`, `checked`, `onChange`, and `className`.
+
+| Prop       | Type                         | Default | Description                 |
+| ---------- | ---------------------------- | ------- | --------------------------- |
+| checked    | boolean                      | -       | Current value.              |
+| onChange   | `(checked: boolean) => void` | -       | Triggered on toggle.        |
+| disabled   | boolean                      | `false` | Disables interaction.       |
+| className  | string                       | -       | Extra wrapper classes.      |
+| classNames | object                       | -       | Classes for internal slots. |
 
 ### classNames slots
 
-| Slot  | Description           |
-| ----- | --------------------- |
-| thumb | Switch thumb classes. |
+| Slot      | Description              |
+| --------- | ------------------------ |
+| input     | Native input classes.    |
+| indicator | Checkbox frame classes.  |
+| mark      | Checked mark classes.    |
 
 ## Example
 
 ```tsx
-import { InputCheckbox } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputCheckBox } from "@kiyotakkkka/zvs-uikit-lib/ui";
 import { useState } from "react";
 
-export function DemoInputCheckbox() {
-    const [enabled, setEnabled] = useState(true);
+export function DemoInputCheckBox() {
+    const [checked, setChecked] = useState(false);
 
-    return <InputCheckbox checked={enabled} onChange={setEnabled} />;
+    return <InputCheckBox checked={checked} onChange={setChecked} />;
 }
 ```

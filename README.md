@@ -77,7 +77,9 @@ For correct component rendering, use this palette (or override the same tokens):
 | `InputSmall`       | Single-line input with password visibility toggle for `type="password"`. | [InputSmall](docs/components/InputSmall.md)             |
 | `InputDate`        | Date input with calendar popup.                                          | [InputDate](docs/components/InputDate.md)               |
 | `InputBig`         | Multiline text input.                                                    | [InputBig](docs/components/InputBig.md)                 |
-| `InputCheckbox`    | `true/false` switch control.                                             | [InputCheckbox](docs/components/InputCheckbox.md)       |
+| `InputCheckBox`    | `true/false` checkbox control.                                           | [InputCheckBox](docs/components/InputCheckBox.md)       |
+| `InputCheckSlided` | `true/false` switch control.                                             | [InputCheckSlided](docs/components/InputCheckSlided.md) |
+| `InputRadio`       | Radio control for selecting one option from a group.                     | [InputRadio](docs/components/InputRadio.md)             |
 | `Select`           | Single-value select control.                                             | [Select](docs/components/Select.md)                     |
 | `Dropdown`         | Generic dropdown menu.                                                   | [Dropdown](docs/components/Dropdown.md)                 |
 | `AutoFillSelector` | Multi-select with search/autocomplete.                                   | [AutoFillSelector](docs/components/AutoFillSelector.md) |
@@ -91,26 +93,32 @@ For correct component rendering, use this palette (or override the same tokens):
 | `Modal`       | Modal dialog window.                               | [Modal](docs/components/Modal.md)             |
 | `SlidedPanel` | Slide-in side panel (drawer).                      | [SlidedPanel](docs/components/SlidedPanel.md) |
 | `Floating`    | Hover/focus floating panel attached to an element. | [Floating](docs/components/Floating.md)       |
+| `ContextMenu` | Right-click menu with items and submenus.          | [ContextMenu](docs/components/ContextMenu.md) |
 
 ### Components: Structure & Composition
 
-| Component    | Purpose                                              | Documentation                               |
-| ------------ | ---------------------------------------------------- | ------------------------------------------- |
-| `Card`       | Container with optional header/body/footer sections. | [Card](docs/components/Card.md)             |
-| `Accordeon`  | Expandable section with animated height.             | [Accordeon](docs/components/Accordeon.md)   |
-| `TreeView`   | Hierarchical list with optional virtualization.      | [TreeView](docs/components/TreeView.md)     |
-| `Table`      | Typed table with compound parts and sorting modes.   | [Table](docs/components/Table.md)           |
-| `Separator`  | Horizontal/vertical separator.                       | [Separator](docs/components/Separator.md)   |
-| `ScrollArea` | Styled scroll container.                             | [ScrollArea](docs/components/ScrollArea.md) |
-| `PrettyBR`   | Decorative horizontal divider with icon and label.   | [PrettyBR](docs/components/PrettyBR.md)     |
+| Component        | Purpose                                              | Documentation                                     |
+| ---------------- | ---------------------------------------------------- | ------------------------------------------------- |
+| `Card`           | Container with optional header/body/footer sections. | [Card](docs/components/Card.md)                   |
+| `Accordeon`      | Expandable section with animated height.             | [Accordeon](docs/components/Accordeon.md)         |
+| `Breadcrumbs`    | Navigation trail for current page location.          | [Breadcrumbs](docs/components/Breadcrumbs.md)     |
+| `DataDisplay`    | Compact list for displaying labeled data rows.       | [DataDisplay](docs/components/DataDisplay.md)     |
+| `ResizablePanel` | Layout with resizable sidebar and content area.      | [ResizablePanel](docs/components/ResizablePanel.md) |
+| `TreeView`       | Hierarchical list with optional virtualization.      | [TreeView](docs/components/TreeView.md)           |
+| `Table`          | Typed table with compound parts and sorting modes.   | [Table](docs/components/Table.md)                 |
+| `Separator`      | Horizontal/vertical separator.                       | [Separator](docs/components/Separator.md)         |
+| `ScrollArea`     | Styled scroll container.                             | [ScrollArea](docs/components/ScrollArea.md)       |
+| `PrettyBR`       | Decorative horizontal divider with icon and label.   | [PrettyBR](docs/components/PrettyBR.md)           |
 
 ### Components: Status & Feedback
 
-| Component | Purpose                   | Documentation                       |
-| --------- | ------------------------- | ----------------------------------- |
-| `Badge`   | Compact status indicator. | [Badge](docs/components/Badge.md)   |
-| `Alert`   | Alert/notification block. | [Alert](docs/components/Alert.md)   |
-| `Loader`  | Loading spinner.          | [Loader](docs/components/Loader.md) |
+| Component     | Purpose                                             | Documentation                                 |
+| ------------- | --------------------------------------------------- | --------------------------------------------- |
+| `Badge`       | Compact status indicator.                          | [Badge](docs/components/Badge.md)             |
+| `Alert`       | Alert/notification block.                          | [Alert](docs/components/Alert.md)             |
+| `EmptyState`  | Placeholder for empty or first-run states.         | [EmptyState](docs/components/EmptyState.md)   |
+| `Loader`      | Loading spinner.                                   | [Loader](docs/components/Loader.md)           |
+| `ProgressBar` | Progress indicator with optional label and value.  | [ProgressBar](docs/components/ProgressBar.md) |
 
 <a id="hooks"></a>
 

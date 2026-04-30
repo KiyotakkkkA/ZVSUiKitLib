@@ -1,5 +1,14 @@
 {
     "name": "@kiyotakkkka/zvs-uikit-lib",
+    "description": "React UI kit with Tailwind CSS components and hooks",
+    "keywords": [
+        "react",
+        "ui-kit",
+        "component-library",
+        "typescript",
+        "tailwind",
+        "vite"
+    ],
     "author": "KiyotakkkkA",
     "repository": {
         "type": "git",
