@@ -9,27 +9,32 @@ import {
     useState,
     type CSSProperties,
 } from "react";
-import { Button } from "./Button";
-import { Calendar, type CalendarDate, type CalendarProps } from "./Calendar";
 import { cn } from "../lib/utils";
+import { Button, Calendar, type CalendarDate, type CalendarProps } from ".";
 
 type InputDateProps = {
     value?: CalendarDate;
     defaultValue?: CalendarDate;
     onChange?: (date: CalendarDate) => void;
+
     placeholder?: string;
     locale?: string;
     weekStartsOn?: CalendarProps["weekStartsOn"];
+
     minDate?: Date;
     maxDate?: Date;
     disabledDates?: CalendarProps["disabledDates"];
+
     allowDeselect?: boolean;
     showOutsideDays?: boolean;
     disabled?: boolean;
+
     closeOnSelect?: boolean;
     clearable?: boolean;
+
     menuPlacement?: "bottom" | "top";
     menuWidth?: number | "auto";
+
     className?: string;
     classNames?: {
         trigger?: string;
@@ -39,10 +44,12 @@ type InputDateProps = {
         controls?: string;
         clearButton?: string;
     };
+
     formatLabel?: (date: Date) => string;
 };
 
 const INPUT_DATE_MENU_GAP = 8;
+const VIEWPORT_PADDING = 8;
 
 function getMenuStyle(
     triggerElement: HTMLButtonElement,
@@ -50,21 +57,21 @@ function getMenuStyle(
     menuWidth: number | "auto",
 ): CSSProperties {
     const rect = triggerElement.getBoundingClientRect();
-    const viewportPadding = 8;
+
+    const resolvedWidth = menuWidth === "auto" ? rect.width : menuWidth;
+
     const resolvedLeft = Math.max(
-        viewportPadding,
+        VIEWPORT_PADDING,
         Math.min(
             rect.left,
-            window.innerWidth -
-                (typeof menuWidth === "number" ? menuWidth : 0) -
-                viewportPadding,
+            window.innerWidth - resolvedWidth - VIEWPORT_PADDING,
         ),
     );
 
     const style: CSSProperties = {
-        left: resolvedLeft,
         position: "fixed",
-        width: menuWidth,
+        left: resolvedLeft,
+        width: resolvedWidth,
     };
 
     if (menuPlacement === "top") {
@@ -80,33 +87,43 @@ export function InputDate({
     value,
     defaultValue = null,
     onChange,
+
     placeholder = "Выберите дату",
     locale = "ru-RU",
     weekStartsOn = 1,
+
     minDate,
     maxDate,
     disabledDates,
+
     allowDeselect,
     showOutsideDays,
     disabled = false,
+
     closeOnSelect = false,
     clearable = false,
+
     menuPlacement = "bottom",
     menuWidth = "auto",
+
     className,
     classNames,
+
     formatLabel,
 }: InputDateProps) {
     const [open, setOpen] = useState(false);
     const [menuStyle, setMenuStyle] = useState<CSSProperties>({});
     const [innerValue, setInnerValue] = useState<CalendarDate>(defaultValue);
-    const [triggerElement, setTriggerElement] =
-        useState<HTMLButtonElement | null>(null);
+
     const rootRef = useRef<HTMLDivElement>(null);
+    const triggerRef = useRef<HTMLButtonElement | null>(null);
     const menuRef = useRef<HTMLDivElement | null>(null);
+
     const menuId = useId();
 
-    const selectedDate = value !== undefined ? value : innerValue;
+    const isControlled = value !== undefined;
+    const selectedDate = isControlled ? value : innerValue;
+
     const resolvedLabel = useMemo(() => {
         if (!selectedDate) {
             return placeholder;
@@ -124,28 +141,76 @@ export function InputDate({
     }, [formatLabel, locale, placeholder, selectedDate]);
 
     const updateMenuPosition = useCallback(() => {
-        if (!triggerElement) {
+        if (!triggerRef.current) {
             return;
         }
 
-        setMenuStyle(getMenuStyle(triggerElement, menuPlacement, menuWidth));
-    }, [menuPlacement, menuWidth, triggerElement]);
+        setMenuStyle(
+            getMenuStyle(triggerRef.current, menuPlacement, menuWidth),
+        );
+    }, [menuPlacement, menuWidth]);
+
+    const closeMenu = useCallback(() => {
+        setOpen(false);
+    }, []);
+
+    const toggleMenu = useCallback(() => {
+        if (disabled) {
+            return;
+        }
+
+        setOpen((prev) => !prev);
+    }, [disabled]);
+
+    const handleCalendarChange = useCallback(
+        (nextDate: CalendarDate) => {
+            if (!isControlled) {
+                setInnerValue(nextDate);
+            }
+
+            onChange?.(nextDate);
+
+            if (closeOnSelect && nextDate) {
+                closeMenu();
+            }
+        },
+        [closeMenu, closeOnSelect, isControlled, onChange],
+    );
+
+    const clearDate = useCallback(() => {
+        handleCalendarChange(null);
+    }, [handleCalendarChange]);
 
     useEffect(() => {
         if (!open) {
             return;
         }
 
-        const onOutsidePointer = (event: PointerEvent) => {
-            const target = event.target;
-            if (!(target instanceof Node)) {
-                return;
-            }
+        const frameId = window.requestAnimationFrame(updateMenuPosition);
 
-            if (
-                target instanceof Element &&
-                target.closest('[role="listbox"]')
-            ) {
+        const handleViewportChange = () => {
+            updateMenuPosition();
+        };
+
+        window.addEventListener("resize", handleViewportChange);
+        window.addEventListener("scroll", handleViewportChange, true);
+
+        return () => {
+            window.cancelAnimationFrame(frameId);
+            window.removeEventListener("resize", handleViewportChange);
+            window.removeEventListener("scroll", handleViewportChange, true);
+        };
+    }, [open, updateMenuPosition]);
+
+    useEffect(() => {
+        if (!open) {
+            return;
+        }
+
+        const handlePointerDown = (event: PointerEvent) => {
+            const target = event.target;
+
+            if (!(target instanceof Node)) {
                 return;
             }
 
@@ -156,129 +221,38 @@ export function InputDate({
                 return;
             }
 
-            setOpen(false);
+            closeMenu();
         };
 
-        const onEscape = (event: KeyboardEvent) => {
+        const handleKeyDown = (event: KeyboardEvent) => {
             if (event.key === "Escape") {
-                setOpen(false);
+                closeMenu();
             }
         };
 
-        window.addEventListener("pointerdown", onOutsidePointer);
-        window.addEventListener("keydown", onEscape);
-        return () => {
-            window.removeEventListener("pointerdown", onOutsidePointer);
-            window.removeEventListener("keydown", onEscape);
-        };
-    }, [open]);
-
-    useEffect(() => {
-        if (!open) {
-            return;
-        }
-
-        const rafId = window.requestAnimationFrame(() => {
-            updateMenuPosition();
-        });
-
-        const onViewportChange = () => {
-            updateMenuPosition();
-        };
-
-        window.addEventListener("resize", onViewportChange);
-        window.addEventListener("scroll", onViewportChange, true);
+        window.addEventListener("pointerdown", handlePointerDown);
+        window.addEventListener("keydown", handleKeyDown);
 
         return () => {
-            window.cancelAnimationFrame(rafId);
-            window.removeEventListener("resize", onViewportChange);
-            window.removeEventListener("scroll", onViewportChange, true);
+            window.removeEventListener("pointerdown", handlePointerDown);
+            window.removeEventListener("keydown", handleKeyDown);
         };
-    }, [open, updateMenuPosition]);
-
-    const onCalendarChange = useCallback(
-        (nextDate: CalendarDate) => {
-            if (value === undefined) {
-                setInnerValue(nextDate);
-            }
-
-            onChange?.(nextDate);
-
-            if (closeOnSelect && nextDate) {
-                setOpen(false);
-            }
-        },
-        [closeOnSelect, onChange, value],
-    );
-
-    const clearDate = useCallback(() => {
-        onCalendarChange(null);
-    }, [onCalendarChange]);
-
-    const menuNode = useMemo(
-        () => (
-            <div
-                id={menuId}
-                ref={menuRef}
-                role="dialog"
-                tabIndex={-1}
-                style={menuStyle}
-                className={cn(
-                    "z-40 rounded-xl border border-main-700 bg-main-900 shadow-2xl",
-                    "max-w-[calc(100vw-1rem)] transition-all duration-150",
-                    open
-                        ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
-                        : "pointer-events-none -translate-y-1 scale-98 opacity-0",
-                    classNames?.menu,
-                )}
-            >
-                <Calendar
-                    value={selectedDate}
-                    onChange={onCalendarChange}
-                    locale={locale}
-                    weekStartsOn={weekStartsOn}
-                    minDate={minDate}
-                    maxDate={maxDate}
-                    disabledDates={disabledDates}
-                    allowDeselect={allowDeselect}
-                    showOutsideDays={showOutsideDays}
-                    className={cn(
-                        "max-w-none border-0 bg-main-900 p-2.5",
-                        classNames?.calendar,
-                    )}
-                />
-            </div>
-        ),
-        [
-            allowDeselect,
-            classNames,
-            disabledDates,
-            locale,
-            maxDate,
-            menuId,
-            menuStyle,
-            minDate,
-            onCalendarChange,
-            open,
-            selectedDate,
-            showOutsideDays,
-            weekStartsOn,
-        ],
-    );
+    }, [closeMenu, open]);
 
     return (
         <div ref={rootRef} className={cn("w-full", className)}>
             <Button
-                ref={setTriggerElement}
+                ref={triggerRef}
                 variant=""
                 disabled={disabled}
                 aria-haspopup="dialog"
                 aria-expanded={open}
-                aria-controls={menuId}
-                onClick={() => setOpen((prev) => !prev)}
+                aria-controls={open ? menuId : undefined}
+                onClick={toggleMenu}
                 className={cn(
                     "h-11 w-full justify-between rounded-xl border border-main-700 bg-main-900 px-3 text-main-100",
                     "hover:bg-main-800",
+                    "focus-visible:ring-2 focus-visible:ring-main-300/50",
                     classNames?.trigger,
                 )}
             >
@@ -298,13 +272,14 @@ export function InputDate({
                         classNames?.controls,
                     )}
                 >
-                    {clearable && selectedDate && (
+                    {clearable && selectedDate && !disabled && (
                         <span
                             role="button"
                             tabIndex={0}
                             aria-label="Очистить дату"
                             className={cn(
-                                "inline-flex h-6 w-6 items-center justify-center rounded-md text-main-400 transition-colors hover:bg-main-700/70 hover:text-main-100",
+                                "inline-flex h-6 w-6 items-center justify-center rounded-md text-main-400 transition-colors",
+                                "hover:bg-main-700/70 hover:text-main-100",
                                 classNames?.clearButton,
                             )}
                             onClick={(event) => {
@@ -337,14 +312,46 @@ export function InputDate({
                         icon="mdi:chevron-down"
                         className={cn(
                             "text-main-400 transition-transform duration-150",
-                            open ? "rotate-180" : "",
+                            open && "rotate-180",
                         )}
                         aria-hidden
                     />
                 </span>
             </Button>
 
-            {createPortal(menuNode, document.body)}
+            {open &&
+                typeof document !== "undefined" &&
+                createPortal(
+                    <div
+                        id={menuId}
+                        ref={menuRef}
+                        role="dialog"
+                        tabIndex={-1}
+                        style={menuStyle}
+                        className={cn(
+                            "z-40 rounded-xl border border-main-700 bg-main-900 shadow-2xl",
+                            "max-w-[calc(100vw-1rem)]",
+                            classNames?.menu,
+                        )}
+                    >
+                        <Calendar
+                            value={selectedDate}
+                            onChange={handleCalendarChange}
+                            locale={locale}
+                            weekStartsOn={weekStartsOn}
+                            minDate={minDate}
+                            maxDate={maxDate}
+                            disabledDates={disabledDates}
+                            allowDeselect={allowDeselect}
+                            showOutsideDays={showOutsideDays}
+                            className={cn(
+                                "max-w-none border-0 bg-main-900 p-2.5",
+                                classNames?.calendar,
+                            )}
+                        />
+                    </div>,
+                    document.body,
+                )}
         </div>
     );
 }
