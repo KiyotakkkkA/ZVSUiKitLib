@@ -31,3 +31,5 @@ export * from "./Table";
 export * from "./ScrollArea";
 export * from "./Calendar";
 export * from "./InputDate";
+export * from "./Chart";
+export * from "./CodeView";

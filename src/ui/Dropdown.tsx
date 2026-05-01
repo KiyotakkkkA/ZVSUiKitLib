@@ -8,49 +8,39 @@ import {
     useRef,
     useState,
     type CSSProperties,
-    type Ref,
     type ReactNode,
+    type Ref,
 } from "react";
 import { cn } from "../lib/utils";
-import { ScrollArea } from "./ScrollArea";
-import { Button, InputSmall } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Button } from "./Button";
 
-type DropdownOption = {
-    value: string;
-    label: string;
-    icon?: ReactNode;
-    onClick?: () => void;
+type DropdownRenderArgs = {
+    open: boolean;
+    close: () => void;
 };
 
 type DropdownProps = {
-    value?: string;
-    options: DropdownOption[];
-    onChange?: (nextValue: string) => void;
+    children: ReactNode | ((args: DropdownRenderArgs) => ReactNode);
+    label?: ReactNode;
     placeholder?: string;
-    searchable?: boolean;
-    searchPlaceholder?: string;
-    emptyMessage?: string;
     className?: string;
     menuWidth?: number | string;
     classNames?: {
         trigger?: string;
         menu?: string;
-        search?: string;
-        option?: string;
-        optionLabel?: string;
-        optionIcon?: string;
     };
     disabled?: boolean;
     ariaLabel?: string;
     menuPlacement?: "bottom" | "top";
-    closeOnSelect?: boolean;
+    menuRole?: "menu" | "listbox";
+    onOpenChange?: (open: boolean) => void;
     renderTrigger?: (args: {
         open: boolean;
         toggleOpen: () => void;
         triggerRef: Ref<HTMLButtonElement>;
         disabled: boolean;
         ariaProps: {
-            "aria-haspopup": "listbox";
+            "aria-haspopup": "menu" | "listbox";
             "aria-expanded": boolean;
             "aria-controls": string;
             "aria-label"?: string;
@@ -94,75 +84,43 @@ const getMenuStyle = (
 };
 
 export function Dropdown({
-    value,
-    options,
-    onChange,
-    placeholder,
-    searchable = false,
-    searchPlaceholder = "Поиск...",
-    emptyMessage = "Ничего не найдено",
+    children,
+    label,
+    placeholder = "Открыть",
     className,
-    menuWidth,
+    menuWidth = 220,
     classNames,
     disabled = false,
     ariaLabel,
     menuPlacement = "bottom",
-    closeOnSelect = true,
+    menuRole = "menu",
+    onOpenChange,
     renderTrigger,
 }: DropdownProps) {
     const [open, setOpen] = useState(false);
-    const [query, setQuery] = useState("");
     const [menuStyle, setMenuStyle] = useState<CSSProperties>({});
     const [triggerElement, setTriggerElement] =
         useState<HTMLButtonElement | null>(null);
     const rootRef = useRef<HTMLDivElement>(null);
     const menuRef = useRef<HTMLDivElement | null>(null);
     const menuId = useId();
+    const popupRole = menuRole === "listbox" ? "listbox" : "menu";
+
     const setTriggerRef = useCallback((node: HTMLButtonElement | null) => {
         setTriggerElement(node);
     }, []);
-
-    const resolvedMenuWidth = useMemo(() => {
-        if (menuWidth !== undefined) {
-            return menuWidth;
-        }
-
-        const longestLabelLength = options.reduce(
-            (maxLength, option) => Math.max(maxLength, option.label.length),
-            0,
-        );
-
-        const estimatedWidth = longestLabelLength * 9 + 72;
-        return Math.min(320, Math.max(120, estimatedWidth));
-    }, [menuWidth, options]);
 
     const updateMenuPosition = useCallback(() => {
         if (!triggerElement) {
             return;
         }
 
-        setMenuStyle(
-            getMenuStyle(triggerElement, menuPlacement, resolvedMenuWidth),
-        );
-    }, [menuPlacement, resolvedMenuWidth, triggerElement]);
+        setMenuStyle(getMenuStyle(triggerElement, menuPlacement, menuWidth));
+    }, [menuPlacement, menuWidth, triggerElement]);
 
-    const selectedOption = useMemo(
-        () => options.find((item) => item.value === value),
-        [options, value],
-    );
-
-    const filteredOptions = useMemo(() => {
-        if (!searchable) {
-            return options;
-        }
-        const normalizedQuery = query.trim().toLocaleLowerCase();
-        if (!normalizedQuery) {
-            return options;
-        }
-        return options.filter((option) =>
-            option.label.toLocaleLowerCase().includes(normalizedQuery),
-        );
-    }, [options, query, searchable]);
+    useEffect(() => {
+        onOpenChange?.(open);
+    }, [onOpenChange, open]);
 
     useEffect(() => {
         if (!open) {
@@ -225,23 +183,20 @@ export function Dropdown({
         if (disabled) {
             return;
         }
-        setOpen((current) => {
-            if (!current) {
-                setQuery("");
-            }
-            return !current;
-        });
+        setOpen((current) => !current);
     };
 
-    const onSelect = (nextValue: string) => {
-        const selected = options.find((item) => item.value === nextValue);
-        onChange?.(nextValue);
-        selected?.onClick?.();
-        setQuery("");
-        if (closeOnSelect) {
-            setOpen(false);
+    const close = useCallback(() => {
+        setOpen(false);
+    }, []);
+
+    const content = useMemo(() => {
+        if (typeof children === "function") {
+            return children({ open, close });
         }
-    };
+
+        return children;
+    }, [children, close, open]);
 
     const menuPositionClassName =
         menuPlacement === "top"
@@ -259,7 +214,7 @@ export function Dropdown({
     const menuNode = (
         <div
             id={menuId}
-            role="listbox"
+            role={menuRole}
             tabIndex={-1}
             ref={menuRef}
             style={menuStyle}
@@ -270,82 +225,7 @@ export function Dropdown({
                 classNames?.menu,
             )}
         >
-            <div className={cn("space-y-1.5 rounded-lg")}>
-                {searchable && (
-                    <InputSmall
-                        value={query}
-                        onChange={(event) => setQuery(event.target.value)}
-                        placeholder={searchPlaceholder}
-                        className={cn("h-8 w-full", classNames?.search)}
-                    />
-                )}
-
-                <ScrollArea className={cn("max-h-72 rounded-lg pr-1")}>
-                    <div className="flex flex-col gap-1">
-                        {filteredOptions.length === 0 && (
-                            <p className="px-3 py-2 text-sm text-main-500">
-                                {emptyMessage}
-                            </p>
-                        )}
-
-                        {filteredOptions.map((option) => {
-                            const active = option.value === value;
-                            return (
-                                <Button
-                                    key={option.value}
-                                    role="option"
-                                    aria-selected={active}
-                                    onClick={() => onSelect(option.value)}
-                                    className={cn(
-                                        "justify-between space-x-2 rounded-lg border border-transparent",
-                                        "w-fix min-w-full",
-                                        "px-3 py-2 text-left text-sm",
-                                        active
-                                            ? "bg-main-700/60 text-main-100"
-                                            : "bg-transparent text-main-300 hover:bg-main-700/80 hover:text-main-100",
-                                        classNames?.option,
-                                    )}
-                                >
-                                    <span
-                                        className={cn(
-                                            "flex items-center gap-2",
-                                            "whitespace-nowrap",
-                                        )}
-                                    >
-                                        {option.icon && (
-                                            <span
-                                                className={cn(
-                                                    "shrink-0 text-main-300",
-                                                    classNames?.optionIcon,
-                                                )}
-                                            >
-                                                {option.icon}
-                                            </span>
-                                        )}
-                                        <span
-                                            className={cn(
-                                                "whitespace-nowrap",
-                                                classNames?.optionLabel,
-                                            )}
-                                        >
-                                            {option.label}
-                                        </span>
-                                    </span>
-                                    <span className="shrink-0">
-                                        {active && (
-                                            <Icon
-                                                icon="mdi:check"
-                                                className="text-main-200"
-                                                aria-hidden
-                                            />
-                                        )}
-                                    </span>
-                                </Button>
-                            );
-                        })}
-                    </div>
-                </ScrollArea>
-            </div>
+            {content}
         </div>
     );
 
@@ -358,7 +238,7 @@ export function Dropdown({
                     triggerRef: setTriggerRef,
                     disabled,
                     ariaProps: {
-                        "aria-haspopup": "listbox",
+                        "aria-haspopup": popupRole,
                         "aria-expanded": open,
                         "aria-controls": menuId,
                         "aria-label": ariaLabel,
@@ -368,7 +248,7 @@ export function Dropdown({
                 <Button
                     variant=""
                     ref={setTriggerRef}
-                    aria-haspopup="listbox"
+                    aria-haspopup={popupRole}
                     aria-expanded={open}
                     aria-controls={menuId}
                     aria-label={ariaLabel}
@@ -380,7 +260,7 @@ export function Dropdown({
                     )}
                 >
                     <span className="min-w-0 truncate text-left">
-                        {selectedOption?.label ?? placeholder ?? "Выберите"}
+                        {label ?? placeholder}
                     </span>
                     <Icon
                         icon="mdi:chevron-down"

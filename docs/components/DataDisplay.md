@@ -32,6 +32,7 @@ Extends `HTMLAttributes<HTMLDivElement>`.
 ## Example
 
 ```tsx
+import { Icon } from "@iconify/react";
 import { DataDisplay } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 export function DemoDataDisplay() {
