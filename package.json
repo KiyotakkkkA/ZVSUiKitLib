@@ -8,7 +8,7 @@
         "typescript",
         "tailwind",
         "vite",
-        "reacharts",
+        "recharts",
         "code-highlighting"
     ],
     "author": "KiyotakkkkA",
