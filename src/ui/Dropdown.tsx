@@ -1,58 +1,92 @@
 import { Icon } from "@iconify/react";
-import { createPortal } from "react-dom";
 import {
+    createContext,
     useCallback,
+    useContext,
     useEffect,
     useId,
     useMemo,
     useRef,
     useState,
+    type ButtonHTMLAttributes,
     type CSSProperties,
+    type HTMLAttributes,
+    type KeyboardEvent,
     type ReactNode,
     type Ref,
 } from "react";
+import { createPortal } from "react-dom";
 import { cn } from "../lib/utils";
 import { Button } from "./Button";
 
-type DropdownRenderArgs = {
+type DropdownMenuPlacement = "bottom" | "top";
+
+type DropdownMenuRole = "menu" | "listbox";
+
+type DropdownContextValue = {
     open: boolean;
+    disabled: boolean;
+    menuId: string;
+    menuRole: DropdownMenuRole;
+    popupRole: DropdownMenuRole;
+    toggleOpen: () => void;
     close: () => void;
+    setTriggerRef: Ref<HTMLButtonElement>;
+    setMenuRef: Ref<HTMLDivElement>;
+    menuStyle: CSSProperties;
+    menuPlacement: DropdownMenuPlacement;
 };
 
 type DropdownProps = {
-    children: ReactNode | ((args: DropdownRenderArgs) => ReactNode);
-    label?: ReactNode;
-    placeholder?: string;
+    children: ReactNode;
     className?: string;
-    menuWidth?: number | string;
-    classNames?: {
-        trigger?: string;
-        menu?: string;
-    };
     disabled?: boolean;
-    ariaLabel?: string;
-    menuPlacement?: "bottom" | "top";
-    menuRole?: "menu" | "listbox";
+    menuWidth?: number | string;
+    menuPlacement?: DropdownMenuPlacement;
+    menuRole?: DropdownMenuRole;
     onOpenChange?: (open: boolean) => void;
-    renderTrigger?: (args: {
+};
+
+type DropdownTriggerProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+    placeholder?: ReactNode;
+    icon?: ReactNode;
+};
+
+type DropdownMenuProps = HTMLAttributes<HTMLDivElement>;
+
+type DropdownItemProps = ButtonHTMLAttributes<HTMLButtonElement> & {
+    closeOnClick?: boolean;
+    active?: boolean;
+    icon?: ReactNode;
+};
+
+type DropdownRenderProps = {
+    children: (args: {
         open: boolean;
+        close: () => void;
         toggleOpen: () => void;
-        triggerRef: Ref<HTMLButtonElement>;
-        disabled: boolean;
-        ariaProps: {
-            "aria-haspopup": "menu" | "listbox";
-            "aria-expanded": boolean;
-            "aria-controls": string;
-            "aria-label"?: string;
-        };
     }) => ReactNode;
 };
 
 const DROPDOWN_MENU_GAP = 8;
 
+const DropdownContext = createContext<DropdownContextValue | null>(null);
+
+function useDropdownContext() {
+    const context = useContext(DropdownContext);
+
+    if (!context) {
+        throw new Error(
+            "Dropdown.Trigger, Dropdown.Menu и Dropdown.Item должны использоваться внутри Dropdown.",
+        );
+    }
+
+    return context;
+}
+
 const getMenuStyle = (
     triggerElement: HTMLButtonElement,
-    menuPlacement: "bottom" | "top",
+    menuPlacement: DropdownMenuPlacement,
     menuWidth: number | string,
 ): CSSProperties => {
     const rect = triggerElement.getBoundingClientRect();
@@ -83,83 +117,89 @@ const getMenuStyle = (
     return style;
 };
 
-export function Dropdown({
+function DropdownRoot({
     children,
-    label,
-    placeholder = "Открыть",
     className,
-    menuWidth = 220,
-    classNames,
     disabled = false,
-    ariaLabel,
+    menuWidth = 220,
     menuPlacement = "bottom",
     menuRole = "menu",
     onOpenChange,
-    renderTrigger,
 }: DropdownProps) {
     const [open, setOpen] = useState(false);
     const [menuStyle, setMenuStyle] = useState<CSSProperties>({});
     const [triggerElement, setTriggerElement] =
         useState<HTMLButtonElement | null>(null);
+
     const rootRef = useRef<HTMLDivElement>(null);
-    const menuRef = useRef<HTMLDivElement | null>(null);
+    const menuElementRef = useRef<HTMLDivElement | null>(null);
     const menuId = useId();
+
     const popupRole = menuRole === "listbox" ? "listbox" : "menu";
 
     const setTriggerRef = useCallback((node: HTMLButtonElement | null) => {
         setTriggerElement(node);
     }, []);
 
+    const setMenuRef = useCallback((node: HTMLDivElement | null) => {
+        menuElementRef.current = node;
+    }, []);
+
     const updateMenuPosition = useCallback(() => {
-        if (!triggerElement) {
-            return;
-        }
+        if (!triggerElement) return;
 
         setMenuStyle(getMenuStyle(triggerElement, menuPlacement, menuWidth));
     }, [menuPlacement, menuWidth, triggerElement]);
+
+    const toggleOpen = useCallback(() => {
+        if (disabled) return;
+
+        setOpen((current) => !current);
+    }, [disabled]);
+
+    const close = useCallback(() => {
+        setOpen(false);
+    }, []);
 
     useEffect(() => {
         onOpenChange?.(open);
     }, [onOpenChange, open]);
 
     useEffect(() => {
-        if (!open) {
-            return;
-        }
+        if (!open) return;
+
         const onOutsidePointer = (event: PointerEvent) => {
             const target = event.target;
-            if (!(target instanceof Node)) {
-                return;
-            }
+
+            if (!(target instanceof Node)) return;
 
             if (
                 rootRef.current?.contains(target) ||
-                menuRef.current?.contains(target)
+                menuElementRef.current?.contains(target)
             ) {
                 return;
             }
 
-            setOpen(false);
+            close();
         };
 
-        const onEscape = (event: KeyboardEvent) => {
+        const onEscape = (event: globalThis.KeyboardEvent) => {
             if (event.key === "Escape") {
-                setOpen(false);
+                close();
             }
         };
 
         window.addEventListener("pointerdown", onOutsidePointer);
         window.addEventListener("keydown", onEscape);
+
         return () => {
             window.removeEventListener("pointerdown", onOutsidePointer);
             window.removeEventListener("keydown", onEscape);
         };
-    }, [open]);
+    }, [close, open]);
 
     useEffect(() => {
-        if (!open) {
-            return;
-        }
+        if (!open) return;
 
         const rafId = window.requestAnimationFrame(() => {
             updateMenuPosition();
@@ -179,101 +219,218 @@ export function Dropdown({
         };
     }, [open, updateMenuPosition]);
 
-    const toggleOpen = () => {
-        if (disabled) {
-            return;
-        }
-        setOpen((current) => !current);
-    };
+    const contextValue = useMemo<DropdownContextValue>(
+        () => ({
+            open,
+            disabled,
+            menuId,
+            menuRole,
+            popupRole,
+            toggleOpen,
+            close,
+            setTriggerRef,
+            setMenuRef,
+            menuStyle,
+            menuPlacement,
+        }),
+        [
+            open,
+            disabled,
+            menuId,
+            menuRole,
+            popupRole,
+            toggleOpen,
+            close,
+            setTriggerRef,
+            setMenuRef,
+            menuStyle,
+            menuPlacement,
+        ],
+    );
 
-    const close = useCallback(() => {
-        setOpen(false);
-    }, []);
+    return (
+        <DropdownContext.Provider value={contextValue}>
+            <div ref={rootRef} className={cn("min-w-0 w-fix", className)}>
+                {children}
+            </div>
+        </DropdownContext.Provider>
+    );
+}
 
-    const content = useMemo(() => {
-        if (typeof children === "function") {
-            return children({ open, close });
-        }
+function DropdownTrigger({
+    children,
+    className,
+    placeholder = "Открыть",
+    icon,
+    disabled: disabledProp,
+    onClick,
+    ...props
+}: DropdownTriggerProps) {
+    const { open, disabled, menuId, popupRole, toggleOpen, setTriggerRef } =
+        useDropdownContext();
 
-        return children;
-    }, [children, close, open]);
+    const isDisabled = disabled || disabledProp;
+
+    return (
+        <Button
+            variant=""
+            ref={setTriggerRef}
+            aria-haspopup={popupRole}
+            aria-expanded={open}
+            aria-controls={menuId}
+            disabled={isDisabled}
+            onClick={(event) => {
+                onClick?.(event);
+
+                if (!event.defaultPrevented) {
+                    toggleOpen();
+                }
+            }}
+            className={cn(
+                "min-h-10 justify-between gap-3 rounded-xl border-transparent px-3 py-2 text-main-100",
+                className,
+            )}
+            {...props}
+        >
+            <span className="min-w-0 truncate text-left">
+                {children ?? placeholder}
+            </span>
+
+            {icon ?? (
+                <Icon
+                    icon="mdi:chevron-down"
+                    className={cn(
+                        "shrink-0 text-main-400 transition-transform duration-200",
+                        open ? "rotate-180" : "",
+                    )}
+                    aria-hidden
+                />
+            )}
+        </Button>
+    );
+}
+
+function DropdownMenu({ children, className, ...props }: DropdownMenuProps) {
+    const { open, menuId, menuRole, setMenuRef, menuStyle, menuPlacement } =
+        useDropdownContext();
 
     const menuPositionClassName =
         menuPlacement === "top"
-            ? `origin-bottom ${
+            ? cn(
+                  "origin-bottom",
                   open
                       ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
-                      : "pointer-events-none translate-y-1 scale-98 opacity-0"
-              }`
-            : `origin-top ${
+                      : "pointer-events-none translate-y-1 scale-98 opacity-0",
+              )
+            : cn(
+                  "origin-top",
                   open
                       ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
-                      : "pointer-events-none -translate-y-1 scale-98 opacity-0"
-              }`;
+                      : "pointer-events-none -translate-y-1 scale-98 opacity-0",
+              );
 
-    const menuNode = (
+    return createPortal(
         <div
             id={menuId}
             role={menuRole}
             tabIndex={-1}
-            ref={menuRef}
+            ref={setMenuRef}
             style={menuStyle}
             className={cn(
                 "fixed z-60 rounded-xl bg-main-800 p-1.5 transition-all duration-180",
                 "max-w-[calc(100vw-1rem)]",
                 menuPositionClassName,
-                classNames?.menu,
+                className,
             )}
+            {...props}
         >
-            {content}
-        </div>
-    );
-
-    return (
-        <div ref={rootRef} className={cn("min-w-0 w-fix", className)}>
-            {renderTrigger ? (
-                renderTrigger({
-                    open,
-                    toggleOpen,
-                    triggerRef: setTriggerRef,
-                    disabled,
-                    ariaProps: {
-                        "aria-haspopup": popupRole,
-                        "aria-expanded": open,
-                        "aria-controls": menuId,
-                        "aria-label": ariaLabel,
-                    },
-                })
-            ) : (
-                <Button
-                    variant=""
-                    ref={setTriggerRef}
-                    aria-haspopup={popupRole}
-                    aria-expanded={open}
-                    aria-controls={menuId}
-                    aria-label={ariaLabel}
-                    disabled={disabled}
-                    onClick={toggleOpen}
-                    className={cn(
-                        "min-h-10 justify-between gap-3 rounded-xl border-transparent px-3 py-2 text-main-100",
-                        classNames?.trigger,
-                    )}
-                >
-                    <span className="min-w-0 truncate text-left">
-                        {label ?? placeholder}
-                    </span>
-                    <Icon
-                        icon="mdi:chevron-down"
-                        className={cn(
-                            "shrink-0 text-main-400 transition-transform duration-200",
-                            open ? "rotate-180" : "",
-                        )}
-                        aria-hidden
-                    />
-                </Button>
-            )}
-
-            {createPortal(menuNode, document.body)}
-        </div>
+            {children}
+        </div>,
+        document.body,
     );
 }
+
+function DropdownItem({
+    children,
+    className,
+    closeOnClick = true,
+    active = false,
+    icon,
+    onClick,
+    onKeyDown,
+    type = "button",
+    ...props
+}: DropdownItemProps) {
+    const { close, menuRole } = useDropdownContext();
+
+    const itemRole = menuRole === "listbox" ? "option" : "menuitem";
+
+    const handleKeyDown = (event: KeyboardEvent<HTMLButtonElement>) => {
+        onKeyDown?.(event);
+
+        if (event.defaultPrevented) return;
+
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            event.currentTarget.click();
+        }
+    };
+
+    return (
+        <button
+            type={type}
+            role={itemRole}
+            aria-selected={menuRole === "listbox" ? active : undefined}
+            onClick={(event) => {
+                onClick?.(event);
+
+                if (!event.defaultPrevented && closeOnClick) {
+                    close();
+                }
+            }}
+            onKeyDown={handleKeyDown}
+            className={cn(
+                "flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-sm",
+                "text-main-200 transition-colors hover:bg-main-700/70 hover:text-main-50",
+                "focus-visible:bg-main-700/70 focus-visible:text-main-50 focus-visible:outline-none",
+                active && "bg-main-700/70 text-main-50",
+                className,
+            )}
+            {...props}
+        >
+            {icon && <span className="shrink-0 text-main-400">{icon}</span>}
+            <span className="min-w-0 flex-1 truncate">{children}</span>
+        </button>
+    );
+}
+
+function DropdownRender({ children }: DropdownRenderProps) {
+    const { open, close, toggleOpen } = useDropdownContext();
+
+    return children({ open, close, toggleOpen });
+}
+
+type DropdownCompound = {
+    (props: DropdownProps): ReactNode;
+    Trigger: (props: DropdownTriggerProps) => ReactNode;
+    Menu: (props: DropdownMenuProps) => ReactNode;
+    Item: (props: DropdownItemProps) => ReactNode;
+    Render: (props: DropdownRenderProps) => ReactNode;
+};
+
+export const Dropdown = Object.assign(DropdownRoot, {
+    Trigger: DropdownTrigger,
+    Menu: DropdownMenu,
+    Item: DropdownItem,
+    Render: DropdownRender,
+}) as DropdownCompound;
+
+export type {
+    DropdownProps,
+    DropdownTriggerProps,
+    DropdownMenuProps,
+    DropdownItemProps,
+    DropdownRenderProps,
+    DropdownMenuPlacement,
+    DropdownMenuRole,
+};

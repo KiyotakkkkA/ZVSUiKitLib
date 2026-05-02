@@ -2,29 +2,22 @@
 
 ## Purpose
 
-Container with optional header/body/footer sections.
+Composable container with optional header, content, and footer sections.
 
-## Props
+## API
 
-Extends `HTMLAttributes<HTMLDivElement>`.
+`Card` is a compound component. Use the root component as the outer container and compose the internal slots only when you need them.
 
-| Prop       | Type      | Default | Description                                   |
-| ---------- | --------- | ------- | --------------------------------------------- |
-| title      | ReactNode | -       | Card title.                                   |
-| subtitle   | ReactNode | -       | Card subtitle.                                |
-| footer     | ReactNode | -       | Footer content.                               |
-| className  | string    | -       | Root classes.                                 |
-| classNames | object    | -       | Classes for internal slots (see table below). |
+| Component       | Extends                           | Description                    |
+| --------------- | --------------------------------- | ------------------------------ |
+| `Card`          | `HTMLAttributes<HTMLElement>`     | Root card container.           |
+| `Card.Header`   | `HTMLAttributes<HTMLElement>`     | Header section.                |
+| `Card.Title`    | `HTMLAttributes<HTMLHeadingElement>` | Heading inside the header.     |
+| `Card.Subtitle` | `HTMLAttributes<HTMLParagraphElement>` | Secondary header text.      |
+| `Card.Content`  | `HTMLAttributes<HTMLDivElement>`  | Main content section.          |
+| `Card.Footer`   | `HTMLAttributes<HTMLElement>`     | Footer section.                |
 
-### classNames slots
-
-| Slot     | Description             |
-| -------- | ----------------------- |
-| header   | Header wrapper classes. |
-| body     | Body wrapper classes.   |
-| footer   | Footer wrapper classes. |
-| title    | Title classes.          |
-| subtitle | Subtitle classes.       |
+All parts accept `children`, `className`, and the native HTML attributes for their rendered element.
 
 ## Example
 
@@ -33,12 +26,19 @@ import { Card, Button } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 export function DemoCard() {
     return (
-        <Card
-            title="Profile"
-            subtitle="Basic information"
-            footer={<Button>Save</Button>}
-        >
-            Card body content
+        <Card className="max-w-sm">
+            <Card.Header>
+                <Card.Title>Profile</Card.Title>
+                <Card.Subtitle>Basic information</Card.Subtitle>
+            </Card.Header>
+
+            <Card.Content>
+                Card body content
+            </Card.Content>
+
+            <Card.Footer className="flex justify-end">
+                <Button>Save</Button>
+            </Card.Footer>
         </Card>
     );
 }

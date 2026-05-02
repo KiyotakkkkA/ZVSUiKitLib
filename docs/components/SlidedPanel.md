@@ -2,39 +2,35 @@
 
 ## Purpose
 
-Slide-in side panel (drawer) with title and optional subtitle.
+Slide-in side panel (drawer) with overlay, Escape closing, optional overlay-click closing, and composable header/content/footer sections.
 
-## Props
+## Root props
 
 | Prop                | Type         | Default | Description                  |
 | ------------------- | ------------ | ------- | ---------------------------- |
 | open                | boolean      | -       | Controls panel visibility.   |
-| title               | ReactNode    | -       | Panel title.                 |
-| subtitle            | ReactNode    | -       | Optional subtitle.           |
 | onClose             | `() => void` | -       | Close handler.               |
-| className           | string       | -       | Panel root classes.          |
-| classNames          | object       | -       | Classes for internal slots.  |
 | closeOnOverlayClick | boolean      | `true`  | Close when clicking overlay. |
-| children            | ReactNode    | -       | Panel content.               |
+| className           | string       | -       | Panel container classes.     |
+| children            | ReactNode    | -       | Panel sections/content.      |
 
-### classNames slots
+## Compound parts
 
-| Slot        | Description                        |
-| ----------- | ---------------------------------- |
-| overlay     | Overlay classes.                   |
-| panel       | Panel container classes.           |
-| width       | Width class for panel (`w-96` etc) |
-| header      | Header wrapper classes.            |
-| title       | Title text classes.                |
-| subtitle    | Subtitle text classes.             |
-| closeButton | Close button classes.              |
-| content     | Content wrapper classes.           |
+| Component               | Extends                              | Description                                      |
+| ----------------------- | ------------------------------------ | ------------------------------------------------ |
+| `SlidedPanel.Header`    | `HTMLAttributes<HTMLElement>`        | Header section with built-in close button.       |
+| `SlidedPanel.Title`     | `HTMLAttributes<HTMLParagraphElement>` | Header title text.                             |
+| `SlidedPanel.Subtitle`  | `HTMLAttributes<HTMLParagraphElement>` | Header subtitle text.                          |
+| `SlidedPanel.Content`   | `HTMLAttributes<HTMLDivElement>`     | Flexible main content section.                   |
+| `SlidedPanel.Footer`    | `HTMLAttributes<HTMLElement>`        | Footer section.                                  |
+
+All compound parts must be rendered inside `SlidedPanel`. They accept `children`, `className`, and the native HTML attributes for their rendered element.
 
 ## Example
 
 ```tsx
-import { SlidedPanel, Button } from "@kiyotakkkka/zvs-uikit-lib/ui";
 import { useState } from "react";
+import { SlidedPanel, Button } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 export function DemoSlidedPanel() {
     const [open, setOpen] = useState(false);
@@ -42,13 +38,23 @@ export function DemoSlidedPanel() {
     return (
         <>
             <Button onClick={() => setOpen(true)}>Open panel</Button>
-            <SlidedPanel
-                open={open}
-                onClose={() => setOpen(false)}
-                title="Filters"
-                subtitle="Adjust parameters"
-            >
-                Panel content
+
+            <SlidedPanel open={open} onClose={() => setOpen(false)}>
+                <SlidedPanel.Header>
+                    <SlidedPanel.Title>Filters</SlidedPanel.Title>
+                    <SlidedPanel.Subtitle>Adjust parameters</SlidedPanel.Subtitle>
+                </SlidedPanel.Header>
+
+                <SlidedPanel.Content>
+                    Panel content
+                </SlidedPanel.Content>
+
+                <SlidedPanel.Footer className="flex justify-end gap-2">
+                    <Button variant="ghost" onClick={() => setOpen(false)}>
+                        Cancel
+                    </Button>
+                    <Button onClick={() => setOpen(false)}>Apply</Button>
+                </SlidedPanel.Footer>
             </SlidedPanel>
         </>
     );

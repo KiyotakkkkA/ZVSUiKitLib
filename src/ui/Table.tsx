@@ -63,7 +63,6 @@ type TableProps<T extends TableRecord> = {
     rowKey?: (row: T, index: number) => string;
     className?: string;
     classNames?: TableClassNames;
-    compact?: boolean;
     striped?: boolean;
     hoverable?: boolean;
 };
@@ -208,7 +207,6 @@ function TableRoot<T extends TableRecord>({
     rowKey,
     className,
     classNames,
-    compact,
     striped,
     hoverable,
 }: TableProps<T>) {
@@ -331,7 +329,6 @@ function TableRoot<T extends TableRecord>({
                 <table
                     className={cx(
                         "w-full min-w-xl border-collapse text-sm text-main-100",
-                        compact && "text-[13px]",
                         classNames?.table,
                     )}
                 >

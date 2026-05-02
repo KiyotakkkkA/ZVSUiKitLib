@@ -1,5 +1,8 @@
 import {
+    createContext,
+    useContext,
     useEffect,
+    type HTMLAttributes,
     type PropsWithChildren,
     type ReactNode,
     type KeyboardEvent as ReactKeyboardEvent,
@@ -11,37 +14,49 @@ import { cn } from "../lib/utils";
 
 type SlidedPanelProps = PropsWithChildren<{
     open: boolean;
-    title: ReactNode;
-    subtitle?: ReactNode;
     onClose: () => void;
-    className?: string;
-    classNames?: {
-        overlay?: string;
-        panel?: string;
-        width?: string;
-        header?: string;
-        title?: string;
-        subtitle?: string;
-        closeButton?: string;
-        content?: string;
-    };
     closeOnOverlayClick?: boolean;
+    className?: string;
 }>;
 
-export function SlidedPanel({
+type SlidedPanelHeaderProps = HTMLAttributes<HTMLElement>;
+
+type SlidedPanelTitleProps = HTMLAttributes<HTMLParagraphElement>;
+
+type SlidedPanelSubtitleProps = HTMLAttributes<HTMLParagraphElement>;
+
+type SlidedPanelContentProps = HTMLAttributes<HTMLDivElement>;
+
+type SlidedPanelFooterProps = HTMLAttributes<HTMLElement>;
+
+type SlidedPanelContextValue = {
+    open: boolean;
+    onClose: () => void;
+};
+
+const SlidedPanelContext = createContext<SlidedPanelContextValue | null>(null);
+
+function useSlidedPanelContext() {
+    const context = useContext(SlidedPanelContext);
+
+    if (!context) {
+        throw new Error(
+            "SlidedPanel.Header, SlidedPanel.Title, SlidedPanel.Subtitle, SlidedPanel.Content и SlidedPanel.Footer должны использоваться внутри SlidedPanel.",
+        );
+    }
+
+    return context;
+}
+
+function SlidedPanelRoot({
     open,
-    title,
-    subtitle,
     onClose,
     children,
     className,
-    classNames,
     closeOnOverlayClick = true,
 }: SlidedPanelProps) {
     useEffect(() => {
-        if (!open) {
-            return;
-        }
+        if (!open) return;
 
         const onEscape = (event: globalThis.KeyboardEvent) => {
             if (event.key === "Escape") {
@@ -71,78 +86,150 @@ export function SlidedPanel({
     };
 
     return createPortal(
-        <div
-            className={cn(
-                "fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-sm transition-opacity duration-260",
-                open
-                    ? "pointer-events-auto opacity-100"
-                    : "pointer-events-none opacity-0",
-                classNames?.overlay,
-            )}
-            onClick={onOverlayClick}
-            onKeyDown={onOverlayKeyDown}
-            tabIndex={-1}
-            aria-modal
-            role="dialog"
-            aria-hidden={!open}
-        >
-            <section
+        <SlidedPanelContext.Provider value={{ open, onClose }}>
+            <div
                 className={cn(
-                    "flex h-full flex-col overflow-hidden border-l border-main-600/70 transition-all duration-260 ease-out",
-                    "bg-main-900/95 shadow-[-16px_0_60px_rgba(0,0,0,0.5)] backdrop-blur-md",
+                    "fixed inset-0 z-50 flex justify-end bg-black/60 backdrop-blur-sm transition-opacity duration-260",
                     open
-                        ? "translate-x-0 opacity-100"
-                        : "translate-x-full opacity-0",
-                    classNames?.width ?? "w-96",
-                    classNames?.panel,
-                    className,
+                        ? "pointer-events-auto opacity-100"
+                        : "pointer-events-none opacity-0",
                 )}
+                onClick={onOverlayClick}
+                onKeyDown={onOverlayKeyDown}
+                tabIndex={-1}
+                aria-modal
+                role="dialog"
+                aria-hidden={!open}
             >
-                <header
+                <section
                     className={cn(
-                        "flex items-center justify-between border-b border-main-700/70 bg-linear-to-r from-main-800/70 via-main-800/45 to-main-900/35 px-4 py-3",
-                        classNames?.header,
+                        "flex h-full w-96 flex-col overflow-hidden border-l border-main-600/70 transition-all duration-260 ease-out",
+                        "bg-main-900/95 shadow-[-16px_0_60px_rgba(0,0,0,0.5)] backdrop-blur-md",
+                        open
+                            ? "translate-x-0 opacity-100"
+                            : "translate-x-full opacity-0",
+                        className,
                     )}
                 >
-                    <div className="min-w-0">
-                        <p
-                            className={cn(
-                                "truncate text-base font-semibold text-main-100",
-                                classNames?.title,
-                            )}
-                        >
-                            {title}
-                        </p>
-                        {subtitle && (
-                            <p
-                                className={cn(
-                                    "truncate text-xs text-main-400",
-                                    classNames?.subtitle,
-                                )}
-                            >
-                                {subtitle}
-                            </p>
-                        )}
-                    </div>
-
-                    <button
-                        type="button"
-                        aria-label="Закрыть панель"
-                        className={cn(
-                            "rounded-md p-1 text-main-300 transition-colors hover:bg-main-700/70 hover:text-main-100",
-                            classNames?.closeButton,
-                        )}
-                        onClick={onClose}
-                    >
-                        <Icon icon="mdi:close" width={18} height={18} />
-                    </button>
-                </header>
-
-                <div className={cn("min-h-0 flex-1 p-4", classNames?.content)}>
                     {children}
-                </div>
-            </section>
-        </div>,
+                </section>
+            </div>
+        </SlidedPanelContext.Provider>,
         document.body,
     );
 }
+
+function SlidedPanelHeader({
+    className,
+    children,
+    ...props
+}: SlidedPanelHeaderProps) {
+    const { onClose } = useSlidedPanelContext();
+
+    return (
+        <header
+            className={cn(
+                "flex items-center justify-between border-b border-main-700/70 bg-linear-to-r from-main-800/70 via-main-800/45 to-main-900/35 px-4 py-3",
+                className,
+            )}
+            {...props}
+        >
+            <div className="min-w-0 flex-1">{children}</div>
+
+            <button
+                type="button"
+                aria-label="Закрыть панель"
+                className="ml-3 shrink-0 rounded-md p-1 text-main-300 transition-colors hover:bg-main-700/70 hover:text-main-100"
+                onClick={onClose}
+            >
+                <Icon icon="mdi:close" width={18} height={18} />
+            </button>
+        </header>
+    );
+}
+
+function SlidedPanelTitle({
+    className,
+    children,
+    ...props
+}: SlidedPanelTitleProps) {
+    return (
+        <p
+            className={cn(
+                "truncate text-base font-semibold text-main-100",
+                className,
+            )}
+            {...props}
+        >
+            {children}
+        </p>
+    );
+}
+
+function SlidedPanelSubtitle({
+    className,
+    children,
+    ...props
+}: SlidedPanelSubtitleProps) {
+    return (
+        <p
+            className={cn("truncate text-xs text-main-400", className)}
+            {...props}
+        >
+            {children}
+        </p>
+    );
+}
+
+function SlidedPanelContent({
+    className,
+    children,
+    ...props
+}: SlidedPanelContentProps) {
+    return (
+        <div className={cn("min-h-0 flex-1 p-4", className)} {...props}>
+            {children}
+        </div>
+    );
+}
+
+function SlidedPanelFooter({
+    className,
+    children,
+    ...props
+}: SlidedPanelFooterProps) {
+    return (
+        <footer
+            className={cn("border-t border-main-700/70 px-4 py-3", className)}
+            {...props}
+        >
+            {children}
+        </footer>
+    );
+}
+
+type SlidedPanelCompound = {
+    (props: SlidedPanelProps): ReactNode;
+    Header: (props: SlidedPanelHeaderProps) => ReactNode;
+    Title: (props: SlidedPanelTitleProps) => ReactNode;
+    Subtitle: (props: SlidedPanelSubtitleProps) => ReactNode;
+    Content: (props: SlidedPanelContentProps) => ReactNode;
+    Footer: (props: SlidedPanelFooterProps) => ReactNode;
+};
+
+export const SlidedPanel = Object.assign(SlidedPanelRoot, {
+    Header: SlidedPanelHeader,
+    Title: SlidedPanelTitle,
+    Subtitle: SlidedPanelSubtitle,
+    Content: SlidedPanelContent,
+    Footer: SlidedPanelFooter,
+}) as SlidedPanelCompound;
+
+export type {
+    SlidedPanelProps,
+    SlidedPanelHeaderProps,
+    SlidedPanelTitleProps,
+    SlidedPanelSubtitleProps,
+    SlidedPanelContentProps,
+    SlidedPanelFooterProps,
+};

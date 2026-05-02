@@ -16,7 +16,6 @@ Typed table with compound API and sortable columns.
 | rowKey     | `(row: T, index: number) => string` | `index` | Row key resolver.                                        |
 | className  | string                              | -       | Outer scroll wrapper classes.                            |
 | classNames | object                              | -       | Classes for internal table slots.                        |
-| compact    | boolean                             | -       | Smaller text mode.                                       |
 | striped    | boolean                             | -       | Zebra row styles.                                        |
 | hoverable  | boolean                             | -       | Hover row styles.                                        |
 

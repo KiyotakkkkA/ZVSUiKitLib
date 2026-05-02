@@ -53,6 +53,12 @@ Code viewer with syntax highlighting, optional copy/download actions, and scroll
 | maxHeight       | string    | -       | Max height override.     |
 | className       | string    | -       | Content wrapper classes. |
 
+## Notes
+
+- Language aliases are normalized before highlighting: `js`, `ts`, `py`, `sh`, `md`, and `yml` map to their Shiki language ids.
+- `copyable`, `downloadable`, and `defaultActions` control the built-in header actions.
+- Use `CodeView.Header` and `CodeView.Content` as children when you need a custom header layout but want to keep the shared context.
+
 ## Example
 
 ```tsx
