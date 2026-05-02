@@ -152,13 +152,23 @@ export function Select({
                                             key={option.value}
                                             active={active}
                                             closeOnClick={closeOnSelect}
-                                            icon={option.icon}
+                                            icon={
+                                                active ? (
+                                                    <Icon
+                                                        icon="mdi:check"
+                                                        className="text-main-200"
+                                                        aria-hidden
+                                                    />
+                                                ) : (
+                                                    option.icon
+                                                )
+                                            }
                                             onClick={() => {
                                                 onChange(option.value);
                                                 option.onClick?.();
                                             }}
                                             className={cn(
-                                                "justify-between whitespace-nowrap",
+                                                "whitespace-nowrap cursor-pointer",
                                                 active
                                                     ? "bg-main-700/60 text-main-100"
                                                     : "text-main-300",
@@ -173,14 +183,6 @@ export function Select({
                                             >
                                                 {option.label}
                                             </span>
-
-                                            {active && (
-                                                <Icon
-                                                    icon="mdi:check"
-                                                    className="ml-auto shrink-0 text-main-200"
-                                                    aria-hidden
-                                                />
-                                            )}
                                         </Dropdown.Item>
                                     );
                                 })}
