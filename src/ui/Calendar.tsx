@@ -329,12 +329,6 @@ export function Calendar({
                         }
                         options={monthOptions}
                         className="relative z-70"
-                        classNames={{
-                            trigger: cx(
-                                "bg-main-800 text-sm",
-                                classNames?.monthSelect,
-                            ),
-                        }}
                     />
                     <Select
                         value={String(activeViewDate.getFullYear())}
@@ -349,12 +343,6 @@ export function Calendar({
                         }
                         options={yearOptions}
                         className="relative z-70"
-                        classNames={{
-                            trigger: cx(
-                                "w-25 bg-main-800 text-sm",
-                                classNames?.yearSelect,
-                            ),
-                        }}
                     />
                 </div>
 
