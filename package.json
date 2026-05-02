@@ -17,7 +17,7 @@
         "url": "https://github.com/KiyotakkkkA/ZVSUiKitLib.git"
     },
     "private": false,
-    "version": "3.3.1",
+    "version": "3.4.0",
     "type": "module",
     "main": "./dist/index.js",
     "module": "./dist/index.js",
