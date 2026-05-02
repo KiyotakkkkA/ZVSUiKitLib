@@ -12,6 +12,14 @@ type SelectOption = {
     onClick?: () => void;
 };
 
+type ClassNamesProps = {
+    trigger?: string;
+    menu?: string;
+    search?: string;
+    option?: string;
+    optionLabel?: string;
+};
+
 type SelectProps = {
     value: string;
     onChange: (value: string) => void;
@@ -22,11 +30,7 @@ type SelectProps = {
     emptyMessage?: string;
     disabled?: boolean;
     className?: string;
-    triggerClassName?: string;
-    menuClassName?: string;
-    searchClassName?: string;
-    optionClassName?: string;
-    optionLabelClassName?: string;
+    classNames?: ClassNamesProps;
     menuWidth?: number | string;
     menuPlacement?: "bottom" | "top";
     closeOnSelect?: boolean;
@@ -59,11 +63,7 @@ export function Select({
     emptyMessage = "Ничего не найдено",
     disabled = false,
     className,
-    triggerClassName,
-    menuClassName,
-    searchClassName,
-    optionClassName,
-    optionLabelClassName,
+    classNames,
     menuWidth,
     menuPlacement = "bottom",
     closeOnSelect = true,
@@ -118,12 +118,12 @@ export function Select({
             >
                 <Dropdown.Trigger
                     placeholder={placeholder}
-                    className={triggerClassName}
+                    className={classNames?.trigger}
                 >
                     {selectedOption?.label}
                 </Dropdown.Trigger>
 
-                <Dropdown.Menu className={menuClassName}>
+                <Dropdown.Menu className={classNames?.menu}>
                     <div className="space-y-1.5 rounded-lg">
                         {searchable && (
                             <InputSmall
@@ -132,7 +132,7 @@ export function Select({
                                     setQuery(event.target.value)
                                 }
                                 placeholder={searchPlaceholder}
-                                className={cn("h-8 w-full", searchClassName)}
+                                className={cn("h-8 w-full", classNames?.search)}
                             />
                         )}
 
@@ -172,13 +172,13 @@ export function Select({
                                                 active
                                                     ? "bg-main-700/60 text-main-100"
                                                     : "text-main-300",
-                                                optionClassName,
+                                                classNames?.option,
                                             )}
                                         >
                                             <span
                                                 className={cn(
                                                     "whitespace-nowrap",
-                                                    optionLabelClassName,
+                                                    classNames?.optionLabel,
                                                 )}
                                             >
                                                 {option.label}

@@ -24,14 +24,13 @@ Single-value selector built on top of `Dropdown`. `Select` owns option rendering
 
 ### classNames slots
 
-| Slot        | Description                  |
-| ----------- | ---------------------------- |
-| trigger     | Trigger button classes.      |
-| menu        | Popup menu classes.          |
-| search      | Search input classes.        |
-| option      | Option button classes.       |
-| optionLabel | Option label text classes.   |
-| optionIcon  | Option icon wrapper classes. |
+| Slot        | Description                |
+| ----------- | -------------------------- |
+| trigger     | Trigger button classes.    |
+| menu        | Popup menu classes.        |
+| search      | Search input classes.      |
+| option      | Option button classes.     |
+| optionLabel | Option label text classes. |
 
 ## Example
 
