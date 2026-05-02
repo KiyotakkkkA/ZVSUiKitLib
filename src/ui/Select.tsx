@@ -2,7 +2,6 @@ import { Icon } from "@iconify/react";
 import { useCallback, useMemo, useState, type ReactNode } from "react";
 import { Dropdown } from "./Dropdown";
 import { cn } from "../lib/utils";
-import { Button } from "./Button";
 import { InputSmall } from "./InputSmall";
 import { ScrollArea } from "./ScrollArea";
 
@@ -23,17 +22,14 @@ type SelectProps = {
     emptyMessage?: string;
     disabled?: boolean;
     className?: string;
+    triggerClassName?: string;
+    menuClassName?: string;
+    searchClassName?: string;
+    optionClassName?: string;
+    optionLabelClassName?: string;
     menuWidth?: number | string;
     menuPlacement?: "bottom" | "top";
     closeOnSelect?: boolean;
-    classNames?: {
-        trigger?: string;
-        menu?: string;
-        search?: string;
-        option?: string;
-        optionLabel?: string;
-        optionIcon?: string;
-    };
 };
 
 const getSelectMenuWidth = (
@@ -57,16 +53,20 @@ export function Select({
     value,
     onChange,
     options,
-    placeholder,
+    placeholder = "Выберите",
     searchable = false,
     searchPlaceholder = "Поиск...",
     emptyMessage = "Ничего не найдено",
-    disabled,
+    disabled = false,
     className,
+    triggerClassName,
+    menuClassName,
+    searchClassName,
+    optionClassName,
+    optionLabelClassName,
     menuWidth,
-    menuPlacement,
+    menuPlacement = "bottom",
     closeOnSelect = true,
-    classNames,
 }: SelectProps) {
     const [query, setQuery] = useState("");
 
@@ -79,10 +79,13 @@ export function Select({
         if (!searchable) {
             return options;
         }
+
         const normalizedQuery = query.trim().toLocaleLowerCase();
+
         if (!normalizedQuery) {
             return options;
         }
+
         return options.filter((option) =>
             option.label.toLocaleLowerCase().includes(normalizedQuery),
         );
@@ -107,118 +110,84 @@ export function Select({
             )}
         >
             <Dropdown
-                label={selectedOption?.label}
-                placeholder={placeholder ?? "Выберите"}
                 menuWidth={resolvedMenuWidth}
                 menuRole="listbox"
                 menuPlacement={menuPlacement}
                 disabled={disabled}
                 onOpenChange={handleOpenChange}
-                classNames={{
-                    trigger: classNames?.trigger,
-                    menu: classNames?.menu,
-                }}
             >
-                {({ close }) => {
-                    const onSelect = (nextValue: string) => {
-                        const selected = options.find(
-                            (item) => item.value === nextValue,
-                        );
+                <Dropdown.Trigger
+                    placeholder={placeholder}
+                    className={triggerClassName}
+                >
+                    {selectedOption?.label}
+                </Dropdown.Trigger>
 
-                        onChange(nextValue);
-                        selected?.onClick?.();
+                <Dropdown.Menu className={menuClassName}>
+                    <div className="space-y-1.5 rounded-lg">
+                        {searchable && (
+                            <InputSmall
+                                value={query}
+                                onChange={(event) =>
+                                    setQuery(event.target.value)
+                                }
+                                placeholder={searchPlaceholder}
+                                className={cn("h-8 w-full", searchClassName)}
+                            />
+                        )}
 
-                        if (closeOnSelect) {
-                            close();
-                        }
-                    };
+                        <ScrollArea className="max-h-72 rounded-lg pr-1">
+                            <div className="flex flex-col gap-1">
+                                {filteredOptions.length === 0 && (
+                                    <p className="px-3 py-2 text-sm text-main-500">
+                                        {emptyMessage}
+                                    </p>
+                                )}
 
-                    return (
-                        <div className={cn("space-y-1.5 rounded-lg")}>
-                            {searchable && (
-                                <InputSmall
-                                    value={query}
-                                    onChange={(event) =>
-                                        setQuery(event.target.value)
-                                    }
-                                    placeholder={searchPlaceholder}
-                                    className={cn(
-                                        "h-8 w-full",
-                                        classNames?.search,
-                                    )}
-                                />
-                            )}
+                                {filteredOptions.map((option) => {
+                                    const active = option.value === value;
 
-                            <ScrollArea className="max-h-72 rounded-lg pr-1">
-                                <div className="flex flex-col gap-1">
-                                    {filteredOptions.length === 0 && (
-                                        <p className="px-3 py-2 text-sm text-main-500">
-                                            {emptyMessage}
-                                        </p>
-                                    )}
-
-                                    {filteredOptions.map((option) => {
-                                        const active = option.value === value;
-                                        return (
-                                            <Button
-                                                key={option.value}
-                                                role="option"
-                                                aria-selected={active}
-                                                onClick={() =>
-                                                    onSelect(option.value)
-                                                }
+                                    return (
+                                        <Dropdown.Item
+                                            key={option.value}
+                                            active={active}
+                                            closeOnClick={closeOnSelect}
+                                            icon={option.icon}
+                                            onClick={() => {
+                                                onChange(option.value);
+                                                option.onClick?.();
+                                            }}
+                                            className={cn(
+                                                "justify-between whitespace-nowrap",
+                                                active
+                                                    ? "bg-main-700/60 text-main-100"
+                                                    : "text-main-300",
+                                                optionClassName,
+                                            )}
+                                        >
+                                            <span
                                                 className={cn(
-                                                    "justify-between space-x-2 rounded-lg border border-transparent",
-                                                    "w-fix min-w-full",
-                                                    "px-3 py-2 text-left text-sm",
-                                                    active
-                                                        ? "bg-main-700/60 text-main-100"
-                                                        : "bg-transparent text-main-300 hover:bg-main-700/80 hover:text-main-100",
-                                                    classNames?.option,
+                                                    "whitespace-nowrap",
+                                                    optionLabelClassName,
                                                 )}
                                             >
-                                                <span
-                                                    className={cn(
-                                                        "flex items-center gap-2",
-                                                        "whitespace-nowrap",
-                                                    )}
-                                                >
-                                                    {option.icon && (
-                                                        <span
-                                                            className={cn(
-                                                                "shrink-0 text-main-300",
-                                                                classNames?.optionIcon,
-                                                            )}
-                                                        >
-                                                            {option.icon}
-                                                        </span>
-                                                    )}
-                                                    <span
-                                                        className={cn(
-                                                            "whitespace-nowrap",
-                                                            classNames?.optionLabel,
-                                                        )}
-                                                    >
-                                                        {option.label}
-                                                    </span>
-                                                </span>
-                                                <span className="shrink-0">
-                                                    {active && (
-                                                        <Icon
-                                                            icon="mdi:check"
-                                                            className="text-main-200"
-                                                            aria-hidden
-                                                        />
-                                                    )}
-                                                </span>
-                                            </Button>
-                                        );
-                                    })}
-                                </div>
-                            </ScrollArea>
-                        </div>
-                    );
-                }}
+                                                {option.label}
+                                            </span>
+
+                                            {active && (
+                                                <Icon
+                                                    icon="mdi:check"
+                                                    className="ml-auto shrink-0 text-main-200"
+                                                    aria-hidden
+                                                />
+                                            )}
+                                        </Dropdown.Item>
+                                    );
+                                })}
+                            </div>
+                        </ScrollArea>
+                    </div>
+                </Dropdown.Menu>
             </Dropdown>
         </div>
     );
