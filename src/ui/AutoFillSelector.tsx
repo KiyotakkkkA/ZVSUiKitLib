@@ -128,8 +128,8 @@ function AutoFillSelectorRoot({
         });
     }, [options, query]);
 
-    const toggleValue = useCallback(() => {
-        return (nextValue: string) => {
+    const toggleValue = useCallback(
+        (nextValue: string) => {
             const next = new Set(value);
 
             if (next.has(nextValue)) {
@@ -139,14 +139,16 @@ function AutoFillSelectorRoot({
             }
 
             onChange?.(Array.from(next));
-        };
-    }, [value, onChange]);
+        },
+        [value, onChange],
+    );
 
-    const removeValue = useCallback(() => {
-        return (removedValue: string) => {
+    const removeValue = useCallback(
+        (removedValue: string) => {
             onChange?.(value.filter((item) => item !== removedValue));
-        };
-    }, [value, onChange]);
+        },
+        [value, onChange],
+    );
 
     const contextValue = useMemo<AutoFillSelectorContextValue>(
         () => ({
