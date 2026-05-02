@@ -30,8 +30,9 @@ type DropdownContextValue = {
     menuRole: DropdownMenuRole;
     popupRole: DropdownMenuRole;
     toggleOpen: () => void;
+    openMenu: () => void;
     close: () => void;
-    setTriggerRef: Ref<HTMLButtonElement>;
+    setTriggerRef: Ref<HTMLElement>;
     setMenuRef: Ref<HTMLDivElement>;
     menuStyle: CSSProperties;
     menuPlacement: DropdownMenuPlacement;
@@ -52,6 +53,10 @@ type DropdownTriggerProps = ButtonHTMLAttributes<HTMLButtonElement> & {
     icon?: ReactNode;
 };
 
+type DropdownAnchorProps = HTMLAttributes<HTMLDivElement> & {
+    focusInputOnOpen?: () => void;
+};
+
 type DropdownMenuProps = HTMLAttributes<HTMLDivElement>;
 
 type DropdownItemProps = ButtonHTMLAttributes<HTMLButtonElement> & {
@@ -65,6 +70,7 @@ type DropdownRenderProps = {
         open: boolean;
         close: () => void;
         toggleOpen: () => void;
+        openMenu: () => void;
     }) => ReactNode;
 };
 
@@ -77,7 +83,7 @@ function useDropdownContext() {
 
     if (!context) {
         throw new Error(
-            "Dropdown.Trigger, Dropdown.Menu и Dropdown.Item должны использоваться внутри Dropdown.",
+            "Dropdown.Trigger, Dropdown.Anchor, Dropdown.Menu, Dropdown.Item и Dropdown.Render должны использоваться внутри Dropdown.",
         );
     }
 
@@ -85,7 +91,7 @@ function useDropdownContext() {
 }
 
 const getMenuStyle = (
-    triggerElement: HTMLButtonElement,
+    triggerElement: HTMLElement,
     menuPlacement: DropdownMenuPlacement,
     menuWidth: number | string,
 ): CSSProperties => {
@@ -128,8 +134,9 @@ function DropdownRoot({
 }: DropdownProps) {
     const [open, setOpen] = useState(false);
     const [menuStyle, setMenuStyle] = useState<CSSProperties>({});
-    const [triggerElement, setTriggerElement] =
-        useState<HTMLButtonElement | null>(null);
+    const [triggerElement, setTriggerElement] = useState<HTMLElement | null>(
+        null,
+    );
 
     const rootRef = useRef<HTMLDivElement>(null);
     const menuElementRef = useRef<HTMLDivElement | null>(null);
@@ -137,7 +144,7 @@ function DropdownRoot({
 
     const popupRole = menuRole === "listbox" ? "listbox" : "menu";
 
-    const setTriggerRef = useCallback((node: HTMLButtonElement | null) => {
+    const setTriggerRef = useCallback((node: HTMLElement | null) => {
         setTriggerElement(node);
     }, []);
 
@@ -150,6 +157,12 @@ function DropdownRoot({
 
         setMenuStyle(getMenuStyle(triggerElement, menuPlacement, menuWidth));
     }, [menuPlacement, menuWidth, triggerElement]);
+
+    const openMenu = useCallback(() => {
+        if (disabled) return;
+
+        setOpen(true);
+    }, [disabled]);
 
     const toggleOpen = useCallback(() => {
         if (disabled) return;
@@ -227,6 +240,7 @@ function DropdownRoot({
             menuRole,
             popupRole,
             toggleOpen,
+            openMenu,
             close,
             setTriggerRef,
             setMenuRef,
@@ -240,6 +254,7 @@ function DropdownRoot({
             menuRole,
             popupRole,
             toggleOpen,
+            openMenu,
             close,
             setTriggerRef,
             setMenuRef,
@@ -274,7 +289,7 @@ function DropdownTrigger({
     return (
         <Button
             variant=""
-            ref={setTriggerRef}
+            ref={setTriggerRef as Ref<HTMLButtonElement>}
             aria-haspopup={popupRole}
             aria-expanded={open}
             aria-controls={menuId}
@@ -307,6 +322,53 @@ function DropdownTrigger({
                 />
             )}
         </Button>
+    );
+}
+
+function DropdownAnchor({
+    children,
+    className,
+    focusInputOnOpen,
+    onClick,
+    onKeyDown,
+    ...props
+}: DropdownAnchorProps) {
+    const { open, disabled, menuId, popupRole, openMenu, setTriggerRef } =
+        useDropdownContext();
+
+    return (
+        <div
+            ref={setTriggerRef as Ref<HTMLDivElement>}
+            role="button"
+            tabIndex={disabled ? -1 : 0}
+            aria-haspopup={popupRole}
+            aria-expanded={open}
+            aria-controls={menuId}
+            aria-disabled={disabled}
+            className={className}
+            onClick={(event) => {
+                onClick?.(event);
+
+                if (event.defaultPrevented || disabled) return;
+
+                openMenu();
+                focusInputOnOpen?.();
+            }}
+            onKeyDown={(event) => {
+                onKeyDown?.(event);
+
+                if (event.defaultPrevented || disabled) return;
+
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    openMenu();
+                    focusInputOnOpen?.();
+                }
+            }}
+            {...props}
+        >
+            {children}
+        </div>
     );
 }
 
@@ -399,20 +461,22 @@ function DropdownItem({
             {...props}
         >
             {icon && <span className="shrink-0 text-main-400">{icon}</span>}
+
             <span className="min-w-0 flex-1 truncate">{children}</span>
         </button>
     );
 }
 
 function DropdownRender({ children }: DropdownRenderProps) {
-    const { open, close, toggleOpen } = useDropdownContext();
+    const { open, close, toggleOpen, openMenu } = useDropdownContext();
 
-    return children({ open, close, toggleOpen });
+    return children({ open, close, toggleOpen, openMenu });
 }
 
 type DropdownCompound = {
     (props: DropdownProps): ReactNode;
     Trigger: (props: DropdownTriggerProps) => ReactNode;
+    Anchor: (props: DropdownAnchorProps) => ReactNode;
     Menu: (props: DropdownMenuProps) => ReactNode;
     Item: (props: DropdownItemProps) => ReactNode;
     Render: (props: DropdownRenderProps) => ReactNode;
@@ -420,6 +484,7 @@ type DropdownCompound = {
 
 export const Dropdown = Object.assign(DropdownRoot, {
     Trigger: DropdownTrigger,
+    Anchor: DropdownAnchor,
     Menu: DropdownMenu,
     Item: DropdownItem,
     Render: DropdownRender,
@@ -428,6 +493,7 @@ export const Dropdown = Object.assign(DropdownRoot, {
 export type {
     DropdownProps,
     DropdownTriggerProps,
+    DropdownAnchorProps,
     DropdownMenuProps,
     DropdownItemProps,
     DropdownRenderProps,

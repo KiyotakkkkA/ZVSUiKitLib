@@ -17,13 +17,13 @@ Progress indicator with optional label and percentage value.
 
 ### classNames slots
 
-| Slot      | Description                |
-| --------- | -------------------------- |
-| header    | Label/value row classes.   |
-| label     | Label text classes.        |
-| value     | Percentage text classes.   |
-| track     | Progress track classes.    |
-| indicator | Filled indicator classes.  |
+| Slot      | Description               |
+| --------- | ------------------------- |
+| header    | Label/value row classes.  |
+| label     | Label text classes.       |
+| value     | Percentage text classes.  |
+| track     | Progress track classes.   |
+| indicator | Filled indicator classes. |
 
 ## Example
 

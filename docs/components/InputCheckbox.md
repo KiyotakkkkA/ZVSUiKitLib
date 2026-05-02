@@ -18,11 +18,11 @@ Supports standard `input` props except `type`, `checked`, `onChange`, and `class
 
 ### classNames slots
 
-| Slot      | Description              |
-| --------- | ------------------------ |
-| input     | Native input classes.    |
-| indicator | Checkbox frame classes.  |
-| mark      | Checked mark classes.    |
+| Slot      | Description             |
+| --------- | ----------------------- |
+| input     | Native input classes.   |
+| indicator | Checkbox frame classes. |
+| mark      | Checked mark classes.   |
 
 ## Example
 

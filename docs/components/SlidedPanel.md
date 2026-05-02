@@ -16,13 +16,13 @@ Slide-in side panel (drawer) with overlay, Escape closing, optional overlay-clic
 
 ## Compound parts
 
-| Component               | Extends                              | Description                                      |
-| ----------------------- | ------------------------------------ | ------------------------------------------------ |
-| `SlidedPanel.Header`    | `HTMLAttributes<HTMLElement>`        | Header section with built-in close button.       |
-| `SlidedPanel.Title`     | `HTMLAttributes<HTMLParagraphElement>` | Header title text.                             |
-| `SlidedPanel.Subtitle`  | `HTMLAttributes<HTMLParagraphElement>` | Header subtitle text.                          |
-| `SlidedPanel.Content`   | `HTMLAttributes<HTMLDivElement>`     | Flexible main content section.                   |
-| `SlidedPanel.Footer`    | `HTMLAttributes<HTMLElement>`        | Footer section.                                  |
+| Component              | Extends                                | Description                                |
+| ---------------------- | -------------------------------------- | ------------------------------------------ |
+| `SlidedPanel.Header`   | `HTMLAttributes<HTMLElement>`          | Header section with built-in close button. |
+| `SlidedPanel.Title`    | `HTMLAttributes<HTMLParagraphElement>` | Header title text.                         |
+| `SlidedPanel.Subtitle` | `HTMLAttributes<HTMLParagraphElement>` | Header subtitle text.                      |
+| `SlidedPanel.Content`  | `HTMLAttributes<HTMLDivElement>`       | Flexible main content section.             |
+| `SlidedPanel.Footer`   | `HTMLAttributes<HTMLElement>`          | Footer section.                            |
 
 All compound parts must be rendered inside `SlidedPanel`. They accept `children`, `className`, and the native HTML attributes for their rendered element.
 
@@ -42,12 +42,12 @@ export function DemoSlidedPanel() {
             <SlidedPanel open={open} onClose={() => setOpen(false)}>
                 <SlidedPanel.Header>
                     <SlidedPanel.Title>Filters</SlidedPanel.Title>
-                    <SlidedPanel.Subtitle>Adjust parameters</SlidedPanel.Subtitle>
+                    <SlidedPanel.Subtitle>
+                        Adjust parameters
+                    </SlidedPanel.Subtitle>
                 </SlidedPanel.Header>
 
-                <SlidedPanel.Content>
-                    Panel content
-                </SlidedPanel.Content>
+                <SlidedPanel.Content>Panel content</SlidedPanel.Content>
 
                 <SlidedPanel.Footer className="flex justify-end gap-2">
                     <Button variant="ghost" onClick={() => setOpen(false)}>

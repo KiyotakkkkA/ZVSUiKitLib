@@ -17,12 +17,12 @@ Centered placeholder for empty lists, missing content, or first-run states.
 
 ### classNames slots
 
-| Slot        | Description              |
-| ----------- | ------------------------ |
-| icon        | Icon wrapper classes.    |
-| title       | Title classes.           |
-| description | Description classes.     |
-| action      | Action wrapper classes.  |
+| Slot        | Description             |
+| ----------- | ----------------------- |
+| icon        | Icon wrapper classes.   |
+| title       | Title classes.          |
+| description | Description classes.    |
+| action      | Action wrapper classes. |
 
 ## Example
 
