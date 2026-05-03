@@ -4,6 +4,12 @@
 
 Progress indicator with optional label and percentage value.
 
+## Import
+
+```tsx
+import { ProgressBar } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
 | Prop       | Type    | Default | Description                                   |
@@ -15,7 +21,7 @@ Progress indicator with optional label and percentage value.
 | className  | string  | -       | Root classes.                                 |
 | classNames | object  | -       | Classes for internal slots.                   |
 
-### classNames slots
+### `classNames` slots
 
 | Slot      | Description               |
 | --------- | ------------------------- |

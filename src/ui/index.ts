@@ -7,6 +7,7 @@ export * from "./InputBig";
 export * from "./InputSmall";
 export * from "./DataDisplay";
 export * from "./InputCheckSlided";
+export * from "./InputSlider";
 export * from "./InputRadio";
 export * from "./InputCheckBox";
 export * from "./EmptyState";

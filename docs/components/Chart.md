@@ -6,6 +6,12 @@ Reusable line/area/bar chart wrapper around Recharts with a consistent UI shell.
 
 `Chart` expects Recharts to be available through the package dependencies and renders inside `ResponsiveContainer`, so the parent element must have a measurable width.
 
+## Import
+
+```tsx
+import { Chart } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
 ### `Chart` (root)
@@ -57,7 +63,7 @@ Reusable line/area/bar chart wrapper around Recharts with a consistent UI shell.
 - `data`, `series`, and `xKey` are required together: `xKey` points to the X axis field, while each `series.key` points to a numeric field.
 - If `data` or `series` is empty, `emptyState` is rendered instead of an empty Recharts canvas.
 
-### `Chart` classNames slots
+### `Chart` `classNames` slots
 
 | Slot         | Description                |
 | ------------ | -------------------------- |

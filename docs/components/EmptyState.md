@@ -4,6 +4,12 @@
 
 Centered placeholder for empty lists, missing content, or first-run states.
 
+## Import
+
+```tsx
+import { EmptyState } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
 | Prop        | Type      | Default | Description                 |
@@ -15,7 +21,7 @@ Centered placeholder for empty lists, missing content, or first-run states.
 | className   | string    | -       | Root classes.               |
 | classNames  | object    | -       | Classes for internal slots. |
 
-### classNames slots
+### `classNames` slots
 
 | Slot        | Description             |
 | ----------- | ----------------------- |

@@ -4,6 +4,12 @@
 
 Multiline text input based on `textarea`.
 
+## Import
+
+```tsx
+import { InputBig } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
 Supports all standard `textarea` props (`value`, `onChange`, `rows`, `placeholder`, etc.).

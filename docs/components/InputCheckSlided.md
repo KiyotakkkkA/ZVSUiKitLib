@@ -4,6 +4,12 @@
 
 Boolean switch-style checkbox (`true/false`).
 
+## Import
+
+```tsx
+import { InputCheckSlided } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
 | Prop       | Type                         | Default | Description                                        |
@@ -15,7 +21,7 @@ Boolean switch-style checkbox (`true/false`).
 | className  | string                       | -       | Extra classes.                                     |
 | classNames | object                       | -       | Classes for internal slots.                        |
 
-### classNames slots
+### `classNames` slots
 
 | Slot  | Description           |
 | ----- | --------------------- |

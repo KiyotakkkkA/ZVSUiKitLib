@@ -4,6 +4,12 @@
 
 Segmented control for switching between fixed options.
 
+## Import
+
+```tsx
+import { Switcher } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
 | Prop       | Type                                 | Default | Description                 |
@@ -14,7 +20,7 @@ Segmented control for switching between fixed options.
 | className  | string                               | -       | Extra wrapper classes.      |
 | classNames | object                               | -       | Classes for internal slots. |
 
-### classNames slots
+### `classNames` slots
 
 | Slot | Description            |
 | ---- | ---------------------- |

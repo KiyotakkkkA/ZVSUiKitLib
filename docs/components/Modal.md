@@ -4,6 +4,12 @@
 
 A compound modal component rendered through a portal with support for closing by `Escape` and overlay interaction.
 
+## Import
+
+```tsx
+import { Modal } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
 ### `Modal` (root)
@@ -41,7 +47,7 @@ A compound modal component rendered through a portal with support for closing by
 | className | string    | -       | Footer wrapper classes.          |
 | children  | ReactNode | -       | Footer actions, usually buttons. |
 
-## Behavior
+## Notes
 
 - Renders into `document.body` via `createPortal`.
 - Adds `role="dialog"` and `aria-modal` to overlay.

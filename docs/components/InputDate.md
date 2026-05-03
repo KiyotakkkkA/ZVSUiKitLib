@@ -4,6 +4,12 @@
 
 Date input with popup calendar, clear action, and controlled/uncontrolled modes.
 
+## Import
+
+```tsx
+import { InputDate } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
 | Prop            | Type                             | Default           | Description                              |
@@ -28,7 +34,7 @@ Date input with popup calendar, clear action, and controlled/uncontrolled modes.
 | classNames      | object                           | -                 | Classes for internal slots.              |
 | formatLabel     | `(date: Date) => string`         | -                 | Custom trigger label formatting.         |
 
-### classNames slots
+### `classNames` slots
 
 | Slot        | Description                     |
 | ----------- | ------------------------------- |

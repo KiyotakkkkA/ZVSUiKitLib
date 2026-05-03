@@ -4,6 +4,12 @@
 
 Notification block with variant, title, and content.
 
+## Import
+
+```tsx
+import { Alert } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
 Extends `HTMLAttributes<HTMLDivElement>`.
@@ -17,7 +23,7 @@ Extends `HTMLAttributes<HTMLDivElement>`.
 | classNames | object                                                      | -           | Classes for internal slots.          |
 | children   | ReactNode                                                   | -           | Alert body content.                  |
 
-### classNames slots
+### `classNames` slots
 
 | Slot    | Description                |
 | ------- | -------------------------- |

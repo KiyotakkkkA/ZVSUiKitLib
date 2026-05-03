@@ -4,9 +4,15 @@
 
 Compound layout with a resizable sidebar and flexible content area.
 
+## Import
+
+```tsx
+import { ResizablePanel } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
-### ResizablePanel
+### `ResizablePanel`
 
 Extends `HTMLAttributes<HTMLDivElement>`.
 

@@ -4,7 +4,13 @@
 
 Composable multi-select with search, selected tags, filtered options, and a dropdown listbox.
 
-## Option type
+## Import
+
+```tsx
+import { AutoFillSelector } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
+## Types
 
 ```ts
 type AutoFillOption = {
@@ -15,7 +21,7 @@ type AutoFillOption = {
 };
 ```
 
-## Root props
+## Props
 
 Extends `HTMLAttributes<HTMLDivElement>` except `onChange`.
 
@@ -45,7 +51,7 @@ The search query is cleared automatically when the dropdown closes.
 
 All compound parts must be rendered inside `AutoFillSelector`.
 
-## Tags props
+### `AutoFillSelector.Tags` props
 
 | Prop               | Type   | Default | Description                |
 | ------------------ | ------ | ------- | -------------------------- |
@@ -53,7 +59,7 @@ All compound parts must be rendered inside `AutoFillSelector`.
 | tagRemoveClassName | string | -       | Tag remove button classes. |
 | className          | string | -       | Tags wrapper classes.      |
 
-## Input props
+### `AutoFillSelector.Input` props
 
 `AutoFillSelector.Input` accepts native input props except `value`, `onChange`, and `disabled`.
 
@@ -64,14 +70,14 @@ All compound parts must be rendered inside `AutoFillSelector`.
 
 Backspace removes the last selected value when the query is empty.
 
-## Menu props
+### `AutoFillSelector.Menu` props
 
 | Prop            | Type   | Default | Description                   |
 | --------------- | ------ | ------- | ----------------------------- |
 | scrollClassName | string | -       | Internal scroll area classes. |
 | className       | string | -       | Dropdown menu classes.        |
 
-## Options props
+### `AutoFillSelector.Options` props
 
 | Prop                       | Type   | Default | Description                 |
 | -------------------------- | ------ | ------- | --------------------------- |
@@ -81,7 +87,7 @@ Backspace removes the last selected value when the query is empty.
 | optionIconClassName        | string | -       | Option icon/check classes.  |
 | className                  | string | -       | Options wrapper classes.    |
 
-## Empty props
+### `AutoFillSelector.Empty` props
 
 | Prop      | Type      | Default               | Description          |
 | --------- | --------- | --------------------- | -------------------- |

@@ -4,6 +4,12 @@
 
 Minimal loading spinner.
 
+## Import
+
+```tsx
+import { Loader } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
 | Prop      | Type   | Default | Description                           |

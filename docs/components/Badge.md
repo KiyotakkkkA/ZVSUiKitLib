@@ -4,6 +4,12 @@
 
 Compact status indicator.
 
+## Import
+
+```tsx
+import { Badge } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
 Extends `HTMLAttributes<HTMLSpanElement>`.

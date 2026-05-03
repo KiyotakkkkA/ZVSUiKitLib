@@ -4,9 +4,15 @@
 
 Navigation trail for showing the current page location.
 
+## Import
+
+```tsx
+import { Breadcrumbs } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
-### Breadcrumbs
+### `Breadcrumbs`
 
 Extends `HTMLAttributes<HTMLElement>`.
 
@@ -21,15 +27,14 @@ Extends `HTMLAttributes<HTMLElement>`.
 | Part                    | Description                       |
 | ----------------------- | --------------------------------- |
 | `Breadcrumbs.Nav`       | Button breadcrumb item.           |
-| `Breadcrumbs.Link`      | Anchor breadcrumb item.           |
 | `Breadcrumbs.Separator` | Custom separator inside the root. |
 
-### Item props
+### Part props
 
-| Part               | Props                                       |
-| ------------------ | ------------------------------------------- |
-| `Breadcrumbs.Nav`  | `label`, `active`, standard `button` props. |
-| `Breadcrumbs.Link` | `label`, `active`, standard `a` props.      |
+| Part                    | Props                                       |
+| ----------------------- | ------------------------------------------- |
+| `Breadcrumbs.Nav`       | `label`, `active`, standard `button` props. |
+| `Breadcrumbs.Separator` | `children`, standard `span` props.          |
 
 ## Example
 

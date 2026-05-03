@@ -4,6 +4,12 @@
 
 Calendar component with date selection, date limits, and custom day rendering.
 
+## Import
+
+```tsx
+import { Calendar } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
 | Prop             | Type                                | Default   | Description                                  |
@@ -25,7 +31,7 @@ Calendar component with date selection, date limits, and custom day rendering.
 | classNames       | object                              | -         | Classes for internal slots.                  |
 | renderDay        | `(meta) => ReactNode`               | -         | Custom day content renderer.                 |
 
-### classNames slots
+### `classNames` slots
 
 | Slot        | Description                                           |
 | ----------- | ----------------------------------------------------- |

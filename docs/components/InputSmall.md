@@ -4,6 +4,12 @@
 
 Compact single-line input. For `type="password"`, it includes a built-in show/hide toggle.
 
+## Import
+
+```tsx
+import { InputSmall } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
 Supports all standard `input` props (`value`, `onChange`, `placeholder`, `type`, etc.).
@@ -14,7 +20,7 @@ Supports all standard `input` props (`value`, `onChange`, `placeholder`, `type`,
 | classNames | object | -       | Classes for internal slots.                            |
 | type       | string | -       | Input type. `password` enables visibility toggle icon. |
 
-### classNames slots
+### `classNames` slots
 
 | Slot    | Description                 |
 | ------- | --------------------------- |

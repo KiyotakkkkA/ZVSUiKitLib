@@ -4,6 +4,12 @@
 
 Hover/focus panel attached to an anchor element.
 
+## Import
+
+```tsx
+import { Floating } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
 | Prop       | Type                                                           | Default       | Description                                   |
@@ -14,7 +20,7 @@ Hover/focus panel attached to an anchor element.
 | className  | string                                                         | -             | Wrapper classes.                              |
 | classNames | object                                                         | -             | Classes for internal slots (see table below). |
 
-### classNames slots
+### `classNames` slots
 
 | Slot    | Description                  |
 | ------- | ---------------------------- |

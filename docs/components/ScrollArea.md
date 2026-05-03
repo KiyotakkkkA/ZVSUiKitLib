@@ -4,6 +4,12 @@
 
 Scrollable container with unified custom scrollbar styles for the UI kit.
 
+## Import
+
+```tsx
+import { ScrollArea } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
 Extends `HTMLAttributes<HTMLDivElement>`.

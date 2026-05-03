@@ -4,6 +4,12 @@
 
 Horizontal or vertical visual separator.
 
+## Import
+
+```tsx
+import { Separator } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
 Extends `HTMLAttributes<HTMLDivElement>`.

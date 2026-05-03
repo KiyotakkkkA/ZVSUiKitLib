@@ -4,6 +4,12 @@
 
 Radio control for selecting one option from a group.
 
+## Import
+
+```tsx
+import { InputRadio } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
 Supports standard `input` props except `type`, `checked`, `onChange`, and `className`.
@@ -16,7 +22,7 @@ Supports standard `input` props except `type`, `checked`, `onChange`, and `class
 | className  | string                       | -       | Extra wrapper classes.      |
 | classNames | object                       | -       | Classes for internal slots. |
 
-### classNames slots
+### `classNames` slots
 
 | Slot      | Description           |
 | --------- | --------------------- |

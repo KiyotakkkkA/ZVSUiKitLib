@@ -4,30 +4,28 @@
 
 Hierarchical list with optional virtualization mode.
 
-## Main Component: TreeView
+## Import
 
-### Props
+```tsx
+import { TreeView } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
+## API
+
+### `TreeView`
+
 
 | Prop         | Type      | Default | Description                           |
 | ------------ | --------- | ------- | ------------------------------------- |
 | children     | ReactNode | -       | Tree content.                         |
 | className    | string    | -       | Root classes.                         |
-| classNames   | object    | -       | Root internal slot classes.           |
 | virtualized  | boolean   | `false` | Enables virtualized rendering.        |
 | height       | number    | `360`   | Height of virtualized viewport.       |
 | estimateSize | number    | `34`    | Estimated row height for virtualizer. |
 | overscan     | number    | `8`     | Overscan rows for virtualizer.        |
 
-### TreeView classNames slots
+### `TreeView.Catalog`
 
-| Slot        | Description                         |
-| ----------- | ----------------------------------- |
-| list        | Non-virtual list wrapper classes.   |
-| virtualList | Virtualized scroll wrapper classes. |
-
-## Child Component: TreeView.Catalog
-
-### Props
 
 | Prop         | Type      | Default | Description                    |
 | ------------ | --------- | ------- | ------------------------------ |
@@ -41,7 +39,7 @@ Hierarchical list with optional virtualization mode.
 | estimateSize | number    | `34`    | Estimated item size.           |
 | overscan     | number    | `8`     | Virtualizer overscan.          |
 
-### TreeView.Catalog classNames slots
+### `TreeView.Catalog` `classNames` slots
 
 | Slot        | Description                    |
 | ----------- | ------------------------------ |
@@ -51,9 +49,16 @@ Hierarchical list with optional virtualization mode.
 | chevronIcon | Chevron icon classes.          |
 | folderIcon  | Folder icon classes.           |
 
-## Child Component: TreeView.Element
+Additional catalog slots:
 
-### Props
+| Slot           | Description                         |
+| -------------- | ----------------------------------- |
+| rightSlot      | Right-side slot classes.            |
+| virtualContent | Virtualized content wrapper classes. |
+| virtualItem    | Virtualized item wrapper classes.    |
+
+### `TreeView.Element`
+
 
 | Prop       | Type         | Default | Description             |
 | ---------- | ------------ | ------- | ----------------------- |
@@ -62,11 +67,25 @@ Hierarchical list with optional virtualization mode.
 | classNames | object       | -       | Element slot classes.   |
 | onClick    | `() => void` | -       | Click handler.          |
 
-### TreeView.Element classNames slots
+### `TreeView.Element` `classNames` slots
 
 | Slot    | Description            |
 | ------- | ---------------------- |
 | content | Inner content wrapper. |
+
+Additional element slots:
+
+| Slot        | Description               |
+| ----------- | ------------------------- |
+| icon        | Leading icon classes.     |
+| label       | Label text classes.       |
+| description | Description text classes. |
+| rightSlot   | Right-side slot classes.  |
+
+## Notes
+
+- Root `TreeView` styles only the root wrapper through `className`.
+- Internal catalog/element styling belongs to `TreeView.Catalog classNames` and `TreeView.Element classNames`.
 
 ## Example
 

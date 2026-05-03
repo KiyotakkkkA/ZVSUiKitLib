@@ -79,9 +79,9 @@ For correct component rendering, use this palette (or override the same tokens):
 | `InputBig`         | Multiline text input.                                                    | [InputBig](docs/components/InputBig.md)                 |
 | `InputCheckBox`    | `true/false` checkbox control.                                           | [InputCheckBox](docs/components/InputCheckBox.md)       |
 | `InputCheckSlided` | `true/false` switch control.                                             | [InputCheckSlided](docs/components/InputCheckSlided.md) |
+| `InputSlider`      | Numeric range slider with optional value label.                          | [InputSlider](docs/components/InputSlider.md)           |
 | `InputRadio`       | Radio control for selecting one option from a group.                     | [InputRadio](docs/components/InputRadio.md)             |
 | `Select`           | Single-value select control with options and optional search.            | [Select](docs/components/Select.md)                     |
-| `Dropdown`         | Generic dropdown popup container.                                        | [Dropdown](docs/components/Dropdown.md)                 |
 | `AutoFillSelector` | Multi-select with search/autocomplete.                                   | [AutoFillSelector](docs/components/AutoFillSelector.md) |
 | `Calendar`         | Date calendar with constraints and custom day rendering.                 | [Calendar](docs/components/Calendar.md)                 |
 | `Switcher`         | Segmented switch between options.                                        | [Switcher](docs/components/Switcher.md)                 |
@@ -90,10 +90,11 @@ For correct component rendering, use this palette (or override the same tokens):
 
 | Component     | Purpose                                            | Documentation                                 |
 | ------------- | -------------------------------------------------- | --------------------------------------------- |
+| `ContextMenu` | Right-click menu with items and submenus.          | [ContextMenu](docs/components/ContextMenu.md) |
+| `Dropdown`    | Generic dropdown popup container.                  | [Dropdown](docs/components/Dropdown.md)       |
+| `Floating`    | Hover/focus floating panel attached to an element. | [Floating](docs/components/Floating.md)       |
 | `Modal`       | Modal dialog window.                               | [Modal](docs/components/Modal.md)             |
 | `SlidedPanel` | Slide-in side panel (drawer).                      | [SlidedPanel](docs/components/SlidedPanel.md) |
-| `Floating`    | Hover/focus floating panel attached to an element. | [Floating](docs/components/Floating.md)       |
-| `ContextMenu` | Right-click menu with items and submenus.          | [ContextMenu](docs/components/ContextMenu.md) |
 
 ### Components: Structure & Composition
 

@@ -4,6 +4,12 @@
 
 Decorative horizontal separator with icon and center label.
 
+## Import
+
+```tsx
+import { PrettyBR } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
 | Prop       | Type   | Default         | Description                 |
@@ -14,7 +20,7 @@ Decorative horizontal separator with icon and center label.
 | className  | string | -               | Extra classes.              |
 | classNames | object | -               | Classes for internal slots. |
 
-### classNames slots
+### `classNames` slots
 
 | Slot    | Description                |
 | ------- | -------------------------- |

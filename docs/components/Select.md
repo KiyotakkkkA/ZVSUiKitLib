@@ -4,6 +4,12 @@
 
 Single-value selector built on top of `Dropdown`. `Select` owns option rendering, search filtering, empty state, selected check mark, and close-on-select behavior.
 
+## Import
+
+```tsx
+import { Select } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
 | Prop              | Type                                                                         | Default               | Description                                               |
@@ -22,7 +28,7 @@ Single-value selector built on top of `Dropdown`. `Select` owns option rendering
 | closeOnSelect     | boolean                                                                      | `true`                | Close popup after selecting an option.                    |
 | classNames        | object                                                                       | -                     | Classes for internal slots.                               |
 
-### classNames slots
+### `classNames` slots
 
 | Slot        | Description                |
 | ----------- | -------------------------- |

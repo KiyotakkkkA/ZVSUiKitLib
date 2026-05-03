@@ -4,6 +4,12 @@
 
 Code viewer with syntax highlighting, optional copy/download actions, and scrollable content.
 
+## Import
+
+```tsx
+import { CodeView } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
 ### `CodeView` (root)
@@ -22,18 +28,6 @@ Code viewer with syntax highlighting, optional copy/download actions, and scroll
 | onCopy           | `(code) => void \| Promise<void>` | -           | Copy callback after clipboard write.             |
 | onDownload       | `(code) => void`                  | -           | Custom download handler.                         |
 | className        | string                            | -           | Root wrapper classes.                            |
-| classNames       | object                            | -           | Slot class overrides.                            |
-
-### `CodeView` classNames slots
-
-| Slot     | Description          |
-| -------- | -------------------- |
-| header   | Header wrapper.      |
-| content  | Content wrapper.     |
-| loading  | Loading placeholder. |
-| action   | Action button.       |
-| language | Language badge.      |
-| fileName | File name label.     |
 
 ### `CodeView.Header`
 
@@ -57,7 +51,7 @@ Code viewer with syntax highlighting, optional copy/download actions, and scroll
 
 - Language aliases are normalized before highlighting: `js`, `ts`, `py`, `sh`, `md`, and `yml` map to their Shiki language ids.
 - `copyable`, `downloadable`, and `defaultActions` control the built-in header actions.
-- Use `CodeView.Header` and `CodeView.Content` as children when you need a custom header layout but want to keep the shared context.
+- Use `CodeView.Header` with custom content and `<CodeView.Content />` as children when you need a custom header layout but want to keep the shared context.
 
 ## Example
 

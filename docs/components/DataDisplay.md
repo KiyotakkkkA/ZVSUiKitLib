@@ -4,9 +4,15 @@
 
 Compact list for displaying labeled data rows.
 
+## Import
+
+```tsx
+import { DataDisplay } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
-### DataDisplay
+### `DataDisplay`
 
 Extends `HTMLAttributes<HTMLDivElement>`.
 
@@ -16,7 +22,7 @@ Extends `HTMLAttributes<HTMLDivElement>`.
 | bordered  | boolean   | `true`  | Adds border and background.    |
 | className | string    | -       | Root classes.                  |
 
-### DataDisplay.Item
+### `DataDisplay.Item`
 
 Extends `HTMLAttributes<HTMLDivElement>`.
 

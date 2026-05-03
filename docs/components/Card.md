@@ -4,6 +4,12 @@
 
 Composable container with optional header, content, and footer sections.
 
+## Import
+
+```tsx
+import { Card } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## API
 
 `Card` is a compound component. Use the root component as the outer container and compose the internal slots only when you need them.

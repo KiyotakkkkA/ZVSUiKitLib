@@ -4,9 +4,15 @@
 
 Compound context menu opened from a right-click trigger.
 
+## Import
+
+```tsx
+import { ContextMenu } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
 ## Props
 
-### ContextMenu
+### `ContextMenu`
 
 | Prop     | Type      | Default | Description |
 | -------- | --------- | ------- | ----------- |
@@ -24,7 +30,7 @@ Compound context menu opened from a right-click trigger.
 | `ContextMenu.SubTrigger` | Item that opens a submenu. |
 | `ContextMenu.SubContent` | Floating submenu content.  |
 
-### Common part props
+### Part props
 
 | Part         | Props                                                                 |
 | ------------ | --------------------------------------------------------------------- |

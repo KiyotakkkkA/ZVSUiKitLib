@@ -4,7 +4,13 @@
 
 Slide-in side panel (drawer) with overlay, Escape closing, optional overlay-click closing, and composable header/content/footer sections.
 
-## Root props
+## Import
+
+```tsx
+import { SlidedPanel } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
+## Props
 
 | Prop                | Type         | Default | Description                  |
 | ------------------- | ------------ | ------- | ---------------------------- |

@@ -6,7 +6,13 @@ Generic dropdown popup container with positioning, outside-click handling, Escap
 
 `Dropdown` does not render search or selection logic by itself. Use `Select` when you need a single-value selector with searchable options.
 
-## Root props
+## Import
+
+```tsx
+import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
+## Props
 
 | Prop          | Type                      | Default    | Description                               |
 | ------------- | ------------------------- | ---------- | ----------------------------------------- |
@@ -28,7 +34,7 @@ Generic dropdown popup container with positioning, outside-click handling, Escap
 | `Dropdown.Item`    | `ButtonHTMLAttributes<HTMLButtonElement>` | Menu item button.                      |
 | `Dropdown.Render`  | custom render prop                        | Access to dropdown state and helpers.  |
 
-## Trigger props
+### `Dropdown.Trigger` props
 
 | Prop        | Type      | Default     | Description                          |
 | ----------- | --------- | ----------- | ------------------------------------ |
@@ -38,7 +44,7 @@ Generic dropdown popup container with positioning, outside-click handling, Escap
 | disabled    | boolean   | -           | Disables only this trigger.          |
 | className   | string    | -           | Trigger button classes.              |
 
-## Anchor props
+### `Dropdown.Anchor` props
 
 `Dropdown.Anchor` renders a `div` with button-like ARIA attributes. Use it when the clickable area is not a button, for example a custom input wrapper.
 
@@ -48,7 +54,7 @@ Generic dropdown popup container with positioning, outside-click handling, Escap
 | focusInputOnOpen | `() => void` | -       | Called after opening by click, Enter, or Space. |
 | className        | string       | -       | Anchor classes.                                 |
 
-## Item props
+### `Dropdown.Item` props
 
 | Prop         | Type      | Default | Description                                          |
 | ------------ | --------- | ------- | ---------------------------------------------------- |
@@ -58,7 +64,7 @@ Generic dropdown popup container with positioning, outside-click handling, Escap
 | icon         | ReactNode | -       | Leading item icon.                                   |
 | className    | string    | -       | Item button classes.                                 |
 
-## Render args
+### `Dropdown.Render` args
 
 | Field      | Type         | Description               |
 | ---------- | ------------ | ------------------------- |
@@ -91,7 +97,7 @@ export function DemoDropdown() {
 }
 ```
 
-## Anchor example
+### Anchor example
 
 ```tsx
 import { useRef } from "react";
@@ -123,7 +129,7 @@ export function DemoDropdownAnchor() {
 }
 ```
 
-## Render example
+### Render example
 
 ```tsx
 import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib/ui";

@@ -4,9 +4,15 @@
 
 Collapsible section with compound API and animated content height.
 
-## Main Component: Accordeon
+## Import
 
-### Props
+```tsx
+import { Accordeon } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
+## API
+
+### `Accordeon`
 
 | Prop        | Type      | Default | Description             |
 | ----------- | --------- | ------- | ----------------------- |
@@ -14,9 +20,7 @@ Collapsible section with compound API and animated content height.
 | className   | string    | -       | Root classes.           |
 | children    | ReactNode | -       | Summary/content blocks. |
 
-## Child Component: Accordeon.Summary
-
-### Props
+### `Accordeon.Summary`
 
 | Prop      | Type      | Default | Description               |
 | --------- | --------- | ------- | ------------------------- |
@@ -25,9 +29,7 @@ Collapsible section with compound API and animated content height.
 
 `Accordeon.Summary` автоматически показывает шеврон справа и поворачивает его при открытии/закрытии.
 
-## Child Component: Accordeon.Content
-
-### Props
+### `Accordeon.Content`
 
 | Prop      | Type      | Default | Description                 |
 | --------- | --------- | ------- | --------------------------- |
