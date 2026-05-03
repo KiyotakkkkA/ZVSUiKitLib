@@ -71,7 +71,7 @@ import { Table } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | emptyState | ReactNode | `"Нет данных"` | Content when data is empty.                        |
 | children   | ReactNode | -              | Row template using `Table.Row` and `Table.Column`. |
 
-### `Table.Body` `classNames` slots
+#### `Table.Body` `classNames` slots
 
 | Slot  | Description               |
 | ----- | ------------------------- |
