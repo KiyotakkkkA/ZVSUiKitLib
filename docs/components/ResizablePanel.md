@@ -12,8 +12,6 @@ import { ResizablePanel } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ## Props
 
-### `ResizablePanel`
-
 Extends `HTMLAttributes<HTMLDivElement>`.
 
 | Prop        | Type      | Default | Description                      |
@@ -24,13 +22,33 @@ Extends `HTMLAttributes<HTMLDivElement>`.
 | maxSize     | number    | `520`   | Maximum sidebar width in pixels. |
 | className   | string    | -       | Root classes.                    |
 
-### Compound parts
+## Compound parts
 
 | Part                     | Description                  |
 | ------------------------ | ---------------------------- |
 | `ResizablePanel.Sidebar` | Resizable sidebar container. |
 | `ResizablePanel.Handle`  | Drag handle between areas.   |
 | `ResizablePanel.Content` | Flexible main content area.  |
+
+### `ResizablePanel.Sidebar` props
+
+| Prop      | Type      | Default | Description                 |
+| --------- | --------- | ------- | --------------------------- |
+| className | string    | -       | Sidebar wrapper classes.    |
+| children  | ReactNode | -       | Content inside the sidebar. |
+
+### `ResizablePanel.Handle` props
+
+| Prop      | Type   | Default | Description             |
+| --------- | ------ | ------- | ----------------------- |
+| className | string | -       | Handle wrapper classes. |
+
+### `ResizablePanel.Content` props
+
+| Prop      | Type      | Default | Description                      |
+| --------- | --------- | ------- | -------------------------------- |
+| className | string    | -       | Content wrapper classes.         |
+| children  | ReactNode | -       | Content inside the content area. |
 
 ## Example
 

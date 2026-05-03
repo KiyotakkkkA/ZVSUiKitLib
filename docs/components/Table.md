@@ -10,10 +10,7 @@ Typed table with compound API and sortable columns.
 import { Table } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ```
 
-## API
-
-### `Table`
-
+## Props
 
 | Prop      | Type                                | Default | Description                                              |
 | --------- | ----------------------------------- | ------- | -------------------------------------------------------- |
@@ -36,8 +33,17 @@ import { Table } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | classNames | `{ cell?: string; header?: string }`  | Per-column classes for cell/header.   |
 | render     | `(value, row, rowIndex) => ReactNode` | Custom cell renderer.                 |
 
-### `Table.Header`
+## Compound parts
 
+| Component      | Extends                                                      | Description                        |
+| -------------- | ------------------------------------------------------------ | ---------------------------------- |
+| `Table.Header` | `HTMLAttributes<HTMLTableSectionElement>`                    | Table header section.              |
+| `Table.Body`   | `HTMLAttributes<HTMLTableSectionElement>`                    | Table body section.                |
+| `Table.Row`    | `HTMLAttributes<HTMLTableRowElement>`                        | Table row, used in body template.  |
+| `Table.Column` | `TdHTMLAttributes<HTMLTableCellElement>` (except `children`) | Table cell, used in body template. |
+| `Table.Footer` | `HTMLAttributes<HTMLTableSectionElement>`                    | Table footer section.              |
+
+### `Table.Header` props
 
 | Prop              | Type                                   | Default | Description               |
 | ----------------- | -------------------------------------- | ------- | ------------------------- |
@@ -47,7 +53,7 @@ import { Table } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | defaultSortMode   | string                                 | -       | Initial sorting mode key. |
 | defaultSortColumn | `Extract<keyof T, string>`             | -       | Initial sorting column.   |
 
-### `Table.Header` `classNames` slots
+#### `Table.Header` `classNames` slots
 
 | Slot       | Description               |
 | ---------- | ------------------------- |
@@ -56,8 +62,7 @@ import { Table } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | cell       | Header cell classes.      |
 | sortButton | Header sort button class. |
 
-### `Table.Body`
-
+### `Table.Body` props
 
 | Prop       | Type      | Default        | Description                                        |
 | ---------- | --------- | -------------- | -------------------------------------------------- |
@@ -76,7 +81,6 @@ import { Table } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ### `Table.Row`
 
-
 Extends `HTMLAttributes<HTMLTableRowElement>`.
 
 | Prop      | Type   | Default | Description                                                 |
@@ -86,7 +90,6 @@ Extends `HTMLAttributes<HTMLTableRowElement>`.
 
 ### `Table.Column`
 
-
 Extends `TdHTMLAttributes<HTMLTableCellElement>` (except `children`).
 
 | Prop      | Type                                    | Default | Description                             |
@@ -95,8 +98,7 @@ Extends `TdHTMLAttributes<HTMLTableCellElement>` (except `children`).
 | children  | `ReactNode \| ((context) => ReactNode)` | -       | Static cell content or render function. |
 | className | string                                  | -       | `td` classes.                           |
 
-### `Table.Footer`
-
+### `Table.Footer` props
 
 | Prop       | Type      | Default | Description          |
 | ---------- | --------- | ------- | -------------------- |
@@ -104,7 +106,7 @@ Extends `TdHTMLAttributes<HTMLTableCellElement>` (except `children`).
 | classNames | object    | -       | Footer slot classes. |
 | children   | ReactNode | -       | Footer content.      |
 
-### `Table.Footer` `classNames` slots
+#### `Table.Footer` `classNames` slots
 
 | Slot | Description          |
 | ---- | -------------------- |
@@ -115,42 +117,129 @@ Extends `TdHTMLAttributes<HTMLTableCellElement>` (except `children`).
 ## Example
 
 ```tsx
-import { Table } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import {
+    Badge,
+    Table,
+    type TableSchemaItem,
+} from "@kiyotakkkka/zvs-uikit-lib/ui";
 
-type User = { id: string; name: string; age: number };
+type InvoiceRow = {
+    name: string;
+    status: "Paid" | "Review" | "Draft";
+    amount: number;
+    owner: string;
+};
 
-const schema = [
-    { key: "name", label: "Name" },
-    { key: "age", label: "Age", align: "right" as const },
+const rows: InvoiceRow[] = [
+    { name: "Aurora UI", status: "Paid", amount: 1240, owner: "Design" },
+    { name: "Atlas CRM", status: "Review", amount: 860, owner: "Product" },
+    { name: "Northwind", status: "Draft", amount: 430, owner: "Platform" },
 ];
 
-const rows: User[] = [
-    { id: "1", name: "Anna", age: 24 },
-    { id: "2", name: "Ivan", age: 31 },
+const schema: TableSchemaItem<InvoiceRow>[] = [
+    { key: "name" as const, label: "Project" },
+    {
+        key: "status" as const,
+        label: "Status",
+    },
+    { key: "owner" as const, label: "Owner" },
+    {
+        key: "amount" as const,
+        label: "Amount",
+        align: "right" as const,
+    },
 ];
 
-export function DemoTable() {
+const compareColumn = (
+    left: InvoiceRow,
+    right: InvoiceRow,
+    key: Extract<keyof InvoiceRow, string>,
+) => {
+    if (key === "amount") {
+        return Number(left[key]) - Number(right[key]);
+    }
+
+    return String(left[key]).localeCompare(String(right[key]), "en");
+};
+
+type TablePreviewProps = {
+    striped?: boolean;
+    hoverable?: boolean;
+};
+
+export function TablePreview({
+    striped = true,
+    hoverable = true,
+}: TablePreviewProps) {
     return (
-        <Table data={rows} schema={schema} rowKey={(row) => row.id} striped hoverable>
-            <Table.Header
-                sortModes={{
-                    asc: {
-                        sortIcon: "↑",
-                        sortFn: (a, b, key) => String(a[key]).localeCompare(String(b[key])),
-                    },
-                    desc: {
-                        sortIcon: "↓",
-                        sortFn: (a, b, key) => String(b[key]).localeCompare(String(a[key])),
-                    },
-                }}
-            />
-            <Table.Body>
-                <Table.Row>
-                    <Table.Column<User, "name">{({ row }) => row?.name}</Table.Column>
-                    <Table.Column<User, "age">{({ row }) => row?.age}</Table.Column>
-                </Table.Row>
-            </Table.Body>
-        </Table>
+        <div className="w-full">
+            <Table
+                data={rows}
+                schema={schema}
+                striped={striped}
+                hoverable={hoverable}
+            >
+                <Table.Header<InvoiceRow>
+                    defaultSortColumn="name"
+                    defaultSortMode="asc"
+                    sortModes={{
+                        asc: {
+                            sortIcon: "↑",
+                            sortFn: (left, right, key) =>
+                                compareColumn(left, right, key),
+                        },
+                        desc: {
+                            sortIcon: "↓",
+                            sortFn: (left, right, key) =>
+                                compareColumn(right, left, key),
+                        },
+                    }}
+                />
+                <Table.Body emptyState="No invoices">
+                    <Table.Row<InvoiceRow>>
+                        <Table.Column<InvoiceRow> field="name">
+                            {(context) => (
+                                <div className="min-w-0">
+                                    <p className="truncate text-sm font-medium text-main-100">
+                                        {context.row?.name}
+                                    </p>
+                                </div>
+                            )}
+                        </Table.Column>
+                        <Table.Column<InvoiceRow> field="status">
+                            {(context) => (
+                                <Badge
+                                    variant={
+                                        context.row?.status === "Paid"
+                                            ? "success"
+                                            : "warning"
+                                    }
+                                >
+                                    {context.row?.status}
+                                </Badge>
+                            )}
+                        </Table.Column>
+                        <Table.Column<InvoiceRow> field="owner">
+                            {(context) => (
+                                <span className="rounded-md border border-main-600/70 bg-main-800/80 px-2 py-0.5 text-xs text-main-200">
+                                    {context.row?.owner}
+                                </span>
+                            )}
+                        </Table.Column>
+                        <Table.Column<InvoiceRow> field="amount" align="right">
+                            {(context) => (
+                                <code className="rounded-md bg-main-800/90 px-2 py-1 text-xs text-main-200">
+                                    $
+                                    {context.row?.amount.toLocaleString(
+                                        "en-US",
+                                    )}
+                                </code>
+                            )}
+                        </Table.Column>
+                    </Table.Row>
+                </Table.Body>
+            </Table>
+        </div>
     );
 }
 ```

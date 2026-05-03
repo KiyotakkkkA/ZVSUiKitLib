@@ -10,9 +10,13 @@ Composable container with optional header, content, and footer sections.
 import { Card } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ```
 
-## API
+## Props
 
-`Card` is a compound component. Use the root component as the outer container and compose the internal slots only when you need them.
+| Prop      | Type   | Default | Description   |
+| --------- | ------ | ------- | ------------- |
+| className | string | -       | Root classes. |
+
+## Compound parts
 
 | Component       | Extends                                | Description                |
 | --------------- | -------------------------------------- | -------------------------- |
@@ -23,7 +27,40 @@ import { Card } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | `Card.Content`  | `HTMLAttributes<HTMLDivElement>`       | Main content section.      |
 | `Card.Footer`   | `HTMLAttributes<HTMLElement>`          | Footer section.            |
 
-All parts accept `children`, `className`, and the native HTML attributes for their rendered element.
+### `Card.Header` props
+
+| Prop      | Type      | Default | Description             |
+| --------- | --------- | ------- | ----------------------- |
+| className | string    | -       | Header wrapper classes. |
+| children  | ReactNode | -       | Header content.         |
+
+### `Card.Title` props
+
+| Prop      | Type      | Default | Description    |
+| --------- | --------- | ------- | -------------- |
+| className | string    | -       | Title classes. |
+| children  | ReactNode | -       | Title content. |
+
+### `Card.Subtitle` props
+
+| Prop      | Type      | Default | Description                  |
+| --------- | --------- | ------- | ---------------------------- |
+| className | string    | -       | Subtitle classes.            |
+| children  | ReactNode | -       | Subtitle content (optional). |
+
+### `Card.Content` props
+
+| Prop      | Type      | Default | Description               |
+| --------- | --------- | ------- | ------------------------- |
+| className | string    | -       | Content wrapper classes.  |
+| children  | ReactNode | -       | Main content of the card. |
+
+### `Card.Footer` props
+
+| Prop      | Type      | Default | Description             |
+| --------- | --------- | ------- | ----------------------- |
+| className | string    | -       | Footer wrapper classes. |
+| children  | ReactNode | -       | Footer content.         |
 
 ## Example
 

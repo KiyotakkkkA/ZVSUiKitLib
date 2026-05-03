@@ -10,10 +10,7 @@ Hierarchical list with optional virtualization mode.
 import { TreeView } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ```
 
-## API
-
-### `TreeView`
-
+## Props
 
 | Prop         | Type      | Default | Description                           |
 | ------------ | --------- | ------- | ------------------------------------- |
@@ -24,8 +21,14 @@ import { TreeView } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | estimateSize | number    | `34`    | Estimated row height for virtualizer. |
 | overscan     | number    | `8`     | Overscan rows for virtualizer.        |
 
-### `TreeView.Catalog`
+## Compound parts
 
+| Component          | Extends                       | Description                                     |
+| ------------------ | ----------------------------- | ----------------------------------------------- |
+| `TreeView.Catalog` | `HTMLAttributes<HTMLElement>` | Catalog section with toggleable nested content. |
+| `TreeView.Element` | `HTMLAttributes<HTMLElement>` | Individual tree item/element.                   |
+
+### `TreeView.Catalog` props
 
 | Prop         | Type      | Default | Description                    |
 | ------------ | --------- | ------- | ------------------------------ |
@@ -39,7 +42,7 @@ import { TreeView } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | estimateSize | number    | `34`    | Estimated item size.           |
 | overscan     | number    | `8`     | Virtualizer overscan.          |
 
-### `TreeView.Catalog` `classNames` slots
+#### `TreeView.Catalog` `classNames` slots
 
 | Slot        | Description                    |
 | ----------- | ------------------------------ |
@@ -51,14 +54,13 @@ import { TreeView } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 Additional catalog slots:
 
-| Slot           | Description                         |
-| -------------- | ----------------------------------- |
-| rightSlot      | Right-side slot classes.            |
+| Slot           | Description                          |
+| -------------- | ------------------------------------ |
+| rightSlot      | Right-side slot classes.             |
 | virtualContent | Virtualized content wrapper classes. |
 | virtualItem    | Virtualized item wrapper classes.    |
 
-### `TreeView.Element`
-
+### `TreeView.Element` props
 
 | Prop       | Type         | Default | Description             |
 | ---------- | ------------ | ------- | ----------------------- |
@@ -67,7 +69,7 @@ Additional catalog slots:
 | classNames | object       | -       | Element slot classes.   |
 | onClick    | `() => void` | -       | Click handler.          |
 
-### `TreeView.Element` `classNames` slots
+#### `TreeView.Element` `classNames` slots
 
 | Slot    | Description            |
 | ------- | ---------------------- |

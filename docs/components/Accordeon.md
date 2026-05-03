@@ -10,15 +10,20 @@ Collapsible section with compound API and animated content height.
 import { Accordeon } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ```
 
-## API
-
-### `Accordeon`
+## Props
 
 | Prop        | Type      | Default | Description             |
 | ----------- | --------- | ------- | ----------------------- |
 | defaultOpen | boolean   | `false` | Initial expanded state. |
 | className   | string    | -       | Root classes.           |
 | children    | ReactNode | -       | Summary/content blocks. |
+
+## Compound parts
+
+| Component           | Description                            |
+| ------------------- | -------------------------------------- |
+| `Accordeon.Summary` | Clickable header that toggles content. |
+| `Accordeon.Content` | Expandable content section.            |
 
 ### `Accordeon.Summary`
 

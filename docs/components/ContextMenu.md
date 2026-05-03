@@ -12,13 +12,11 @@ import { ContextMenu } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ## Props
 
-### `ContextMenu`
-
 | Prop     | Type      | Default | Description |
 | -------- | --------- | ------- | ----------- |
 | children | ReactNode | -       | Menu parts. |
 
-### Compound parts
+## Compound parts
 
 | Part                     | Description                |
 | ------------------------ | -------------------------- |

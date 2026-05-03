@@ -12,8 +12,6 @@ import { CodeView } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ## Props
 
-### `CodeView` (root)
-
 | Prop             | Type                              | Default     | Description                                      |
 | ---------------- | --------------------------------- | ----------- | ------------------------------------------------ |
 | code             | string                            | -           | Source code to render.                           |
@@ -29,7 +27,14 @@ import { CodeView } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | onDownload       | `(code) => void`                  | -           | Custom download handler.                         |
 | className        | string                            | -           | Root wrapper classes.                            |
 
-### `CodeView.Header`
+## Compound parts
+
+| Component          | Description                                       |
+| ------------------ | ------------------------------------------------- |
+| `CodeView.Header`  | Custom header layout with shared context.         |
+| `CodeView.Content` | Scrollable content area with syntax highlighting. |
+
+### `CodeView.Header` props
 
 | Prop         | Type      | Default | Description                                 |
 | ------------ | --------- | ------- | ------------------------------------------- |
@@ -39,7 +44,7 @@ import { CodeView } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | className    | string    | -       | Header wrapper classes.                     |
 | children     | ReactNode | -       | Extra content placed near labels.           |
 
-### `CodeView.Content`
+### `CodeView.Content` props
 
 | Prop            | Type      | Default | Description              |
 | --------------- | --------- | ------- | ------------------------ |

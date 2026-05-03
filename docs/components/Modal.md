@@ -12,8 +12,6 @@ import { Modal } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ## Props
 
-### `Modal` (root)
-
 | Prop                | Type         | Default | Description                                               |
 | ------------------- | ------------ | ------- | --------------------------------------------------------- |
 | open                | boolean      | -       | Controls modal visibility.                                |
@@ -22,6 +20,14 @@ import { Modal } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | overlayClassName    | string       | -       | Classes for the overlay element.                          |
 | closeOnOverlayClick | boolean      | `true`  | Closes when clicking overlay (and `Enter`/`Space` on it). |
 | children            | ReactNode    | -       | `Modal.Header`, `Modal.Content`, `Modal.Footer` blocks.   |
+
+## Compound parts
+
+| Component       | Description                                |
+| --------------- | ------------------------------------------ |
+| `Modal.Header`  | Header section with optional close button. |
+| `Modal.Content` | Scrollable content area.                   |
+| `Modal.Footer`  | Footer section, usually for actions.       |
 
 ### `Modal.Header`
 

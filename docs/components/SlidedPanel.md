@@ -30,7 +30,40 @@ import { SlidedPanel } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | `SlidedPanel.Content`  | `HTMLAttributes<HTMLDivElement>`       | Flexible main content section.             |
 | `SlidedPanel.Footer`   | `HTMLAttributes<HTMLElement>`          | Footer section.                            |
 
-All compound parts must be rendered inside `SlidedPanel`. They accept `children`, `className`, and the native HTML attributes for their rendered element.
+### `SlidedPanel.Header` props
+
+| Prop      | Type      | Default | Description                       |
+| --------- | --------- | ------- | --------------------------------- |
+| className | string    | -       | Header wrapper classes.           |
+| children  | ReactNode | -       | Header content (title, subtitle). |
+
+### `SlidedPanel.Title` props
+
+| Prop      | Type      | Default | Description         |
+| --------- | --------- | ------- | ------------------- |
+| className | string    | -       | Title text classes. |
+| children  | ReactNode | -       | Title text content. |
+
+### `SlidedPanel.Subtitle` props
+
+| Prop      | Type      | Default | Description            |
+| --------- | --------- | ------- | ---------------------- |
+| className | string    | -       | Subtitle text classes. |
+| children  | ReactNode | -       | Subtitle text content. |
+
+### `SlidedPanel.Content` props
+
+| Prop      | Type      | Default | Description              |
+| --------- | --------- | ------- | ------------------------ |
+| className | string    | -       | Content wrapper classes. |
+| children  | ReactNode | -       | Main content of panel.   |
+
+### `SlidedPanel.Footer` props
+
+| Prop      | Type      | Default | Description               |
+| --------- | --------- | ------- | ------------------------- |
+| className | string    | -       | Footer wrapper classes.   |
+| children  | ReactNode | -       | Footer content (buttons). |
 
 ## Example
 

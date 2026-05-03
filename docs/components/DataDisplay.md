@@ -12,19 +12,19 @@ import { DataDisplay } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ## Props
 
-### `DataDisplay`
-
-Extends `HTMLAttributes<HTMLDivElement>`.
-
 | Prop      | Type      | Default | Description                    |
 | --------- | --------- | ------- | ------------------------------ |
 | children  | ReactNode | -       | `DataDisplay.Item` components. |
 | bordered  | boolean   | `true`  | Adds border and background.    |
 | className | string    | -       | Root classes.                  |
 
-### `DataDisplay.Item`
+## Compound parts
 
-Extends `HTMLAttributes<HTMLDivElement>`.
+| Component          | Description                  |
+| ------------------ | ---------------------------- |
+| `DataDisplay.Item` | Individual labeled data row. |
+
+### `DataDisplay.Item` props
 
 | Prop        | Type      | Default | Description             |
 | ----------- | --------- | ------- | ----------------------- |

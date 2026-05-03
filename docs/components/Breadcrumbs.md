@@ -12,29 +12,26 @@ import { Breadcrumbs } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ## Props
 
-### `Breadcrumbs`
-
-Extends `HTMLAttributes<HTMLElement>`.
-
 | Prop      | Type      | Default | Description              |
 | --------- | --------- | ------- | ------------------------ |
 | separator | ReactNode | `"/"`   | Separator between items. |
 | children  | ReactNode | -       | Breadcrumb items.        |
 | className | string    | -       | Root classes.            |
 
-### Compound parts
+## Compound parts
 
-| Part                    | Description                       |
-| ----------------------- | --------------------------------- |
-| `Breadcrumbs.Nav`       | Button breadcrumb item.           |
-| `Breadcrumbs.Separator` | Custom separator inside the root. |
+| Part              | Description             |
+| ----------------- | ----------------------- |
+| `Breadcrumbs.Nav` | Button breadcrumb item. |
 
-### Part props
+### `Breadcrumbs.Nav` props
 
-| Part                    | Props                                       |
-| ----------------------- | ------------------------------------------- |
-| `Breadcrumbs.Nav`       | `label`, `active`, standard `button` props. |
-| `Breadcrumbs.Separator` | `children`, standard `span` props.          |
+| Prop      | Type         | Default | Description                        |
+| --------- | ------------ | ------- | ---------------------------------- |
+| label     | string       | -       | Text content of the breadcrumb.    |
+| active    | boolean      | `false` | Active state (non-clickable item). |
+| onClick   | `() => void` | -       | Click handler for navigation.      |
+| className | string       | -       | Breadcrumb item classes.           |
 
 ## Example
 
