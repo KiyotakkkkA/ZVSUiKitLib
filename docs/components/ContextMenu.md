@@ -28,16 +28,58 @@ import { ContextMenu } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | `ContextMenu.SubTrigger` | Item that opens a submenu. |
 | `ContextMenu.SubContent` | Floating submenu content.  |
 
-### Part props
+### `ContextMenu.Trigger` props
 
-| Part         | Props                                                                 |
-| ------------ | --------------------------------------------------------------------- |
-| `Trigger`    | `disabled`, standard `div` props.                                     |
-| `Content`    | Standard `div` props.                                                 |
-| `Item`       | `inset`, `variant`, `leftSlot`, `rightSlot`, standard `button` props. |
-| `Sub`        | `fixable`, `closeDelay`, `className`.                                 |
-| `SubTrigger` | `inset`, `leftSlot`, `rightSlot`, standard `button` props.            |
-| `SubContent` | `sideOffset`, standard `div` props.                                   |
+| Prop      | Type      | Default | Description           |
+| --------- | --------- | ------- | --------------------- |
+| disabled  | boolean   | `false` | Disables the trigger. |
+| className | string    | -       | Trigger classes.      |
+| children  | ReactNode | -       | Trigger content.      |
+
+### `ContextMenu.Content` props
+
+| Prop      | Type      | Default | Description           |
+| --------- | --------- | ------- | --------------------- |
+| className | string    | -       | Content classes.      |
+| children  | ReactNode | -       | Menu items and parts. |
+
+### `ContextMenu.Item` props
+
+| Prop      | Type                  | Default   | Description             |
+| --------- | --------------------- | --------- | ----------------------- |
+| variant   | "default" \| "danger" | `default` | Item style              |
+| inset     | boolean               | `false`   | Adds left padding.      |
+| leftSlot  | ReactNode             | -         | Optional leading slot.  |
+| rightSlot | ReactNode             | -         | Optional trailing slot. |
+| className | string                | -         | Item classes.           |
+| children  | ReactNode             | -         | Item content.           |
+
+### `ContextMenu.Sub` props
+
+| Prop       | Type      | Default | Description                              |
+| ---------- | --------- | ------- | ---------------------------------------- |
+| fixable    | boolean   | `false` | Keeps submenu open when clicking inside. |
+| closeDelay | number    | `0`     | Delay in ms before closing submenu.      |
+| className  | string    | -       | Submenu wrapper classes.                 |
+| children   | ReactNode | -       | `SubTrigger` and `SubContent` parts.     |
+
+### `ContextMenu.SubTrigger` props
+
+| Prop      | Type      | Default | Description             |
+| --------- | --------- | ------- | ----------------------- |
+| inset     | boolean   | `false` | Adds left padding.      |
+| leftSlot  | ReactNode | -       | Optional leading slot.  |
+| rightSlot | ReactNode | -       | Optional trailing slot. |
+| className | string    | -       | Trigger classes.        |
+| children  | ReactNode | -       | Trigger content.        |
+
+### `ContextMenu.SubContent` props
+
+| Prop       | Type      | Default | Description              |
+| ---------- | --------- | ------- | ------------------------ |
+| sideOffset | number    | `0`     | Distance from trigger.   |
+| className  | string    | -       | Submenu content classes. |
+| children   | ReactNode | -       | Submenu items and parts. |
 
 ## Example
 
