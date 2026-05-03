@@ -6,7 +6,7 @@ export type CodeViewProps = Omit<
     "children"
 > & {
     code: string;
-    language?: BundledLanguage;
+    language?: BundledLanguage | string;
     theme?: BundledTheme;
     fileName?: string;
     children?: ReactNode;

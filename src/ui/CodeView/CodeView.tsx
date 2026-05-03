@@ -101,6 +101,7 @@ const notifyCache = (key: string) => {
 };
 
 let highlighterPromise: ReturnType<typeof createHighlighter> | null = null;
+const themeLoadPromises = new Map<string, Promise<void>>();
 
 const getHighlighter = () => {
     highlighterPromise ??= createHighlighter({
@@ -108,6 +109,25 @@ const getHighlighter = () => {
         langs: SUPPORTED_LANGUAGES,
     });
     return highlighterPromise;
+};
+
+const ensureThemeLoaded = async (
+    highlighter: Awaited<ReturnType<typeof createHighlighter>>,
+    theme: BundledTheme,
+) => {
+    if (highlighter.getLoadedThemes().includes(theme)) return;
+
+    const key = String(theme);
+    let promise = themeLoadPromises.get(key);
+
+    if (!promise) {
+        promise = highlighter.loadTheme(theme).finally(() => {
+            themeLoadPromises.delete(key);
+        });
+        themeLoadPromises.set(key, promise);
+    }
+
+    await promise;
 };
 
 const hashString = (str: string): string => {
@@ -158,6 +178,8 @@ const highlightCode = async ({
 
     try {
         const highlighter = await getHighlighter();
+        await ensureThemeLoaded(highlighter, theme);
+
         const loaded = highlighter.getLoadedLanguages().map(String);
         const lang = loaded.includes(normalizedLanguage)
             ? normalizedLanguage
@@ -261,7 +283,7 @@ const CodeViewRoot = ({
     ...props
 }: CodeViewProps) => {
     const generatedId = useId();
-    const normalizedLanguage = normalizeLanguage(language);
+    const normalizedLanguage = normalizeLanguage(language as BundledLanguage);
 
     const cacheKey = useMemo(
         () => makeCacheKey(theme, normalizedLanguage, code),
