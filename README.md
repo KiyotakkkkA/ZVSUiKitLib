@@ -127,9 +127,10 @@ For correct component rendering, use this palette (or override the same tokens):
 
 ### Hooks (@kiyotakkkka/zvs-uikit-lib/hooks)
 
-| Hook        | Purpose                                                      | Documentation                        | Returns                                                                             |
-| ----------- | ------------------------------------------------------------ | ------------------------------------ | ----------------------------------------------------------------------------------- |
-| `useToasts` | Access toast context API. Works only inside `ToastProvider`. | [useToasts](docs/hooks/useToasts.md) | `ToastContextValue` with: `push`, `normal`, `info`, `warning`, `success`, `danger`. |
+| Hook        | Purpose                                                         | Documentation                        | Returns                                                                             |
+| ----------- | --------------------------------------------------------------- | ------------------------------------ | ----------------------------------------------------------------------------------- |
+| `useToasts` | Access toast context API. Works only inside `ToastProvider`.    | [useToasts](docs/hooks/useToasts.md) | `ToastContextValue` with: `push`, `normal`, `info`, `warning`, `success`, `danger`. |
+| `useStyle`  | Access style management API. Works only inside `StyleProvider`. | [useStyle](docs/hooks/useStyle.md)   | Object with method: `changeTheme(palette: StyleThemePalette) => void`.              |
 
 <a id="providers"></a>
 
@@ -138,3 +139,4 @@ For correct component rendering, use this palette (or override the same tokens):
 | Provider        | Purpose                           |
 | --------------- | --------------------------------- |
 | `ToastProvider` | Global toast notifications stack. |
+| `StyleProvider` | Global style management.          |

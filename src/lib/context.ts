@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import type { StyleThemePalette } from "../providers/StyleProvider";
 
 export type ToastType = "normal" | "info" | "warning" | "success" | "danger";
 
@@ -17,4 +18,9 @@ export type ToastContextValue = {
     danger: (input: ToastInput) => void;
 };
 
+type StyleContextValue = {
+    changeTheme: (palette: StyleThemePalette) => void;
+};
+
+export const StyleContext = createContext<StyleContextValue | null>(null);
 export const ToastContext = createContext<ToastContextValue | null>(null);
