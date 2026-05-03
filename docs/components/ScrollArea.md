@@ -14,11 +14,12 @@ import { ScrollArea } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 Extends `HTMLAttributes<HTMLDivElement>`.
 
-| Prop        | Type                                   | Default      | Description            |
-| ----------- | -------------------------------------- | ------------ | ---------------------- |
-| orientation | `"horizontal" \| "vertical" \| "both"` | `"vertical"` | Scroll direction mode. |
-| className   | string                                 | -            | Extra classes.         |
-| children    | ReactNode                              | -            | Scrollable content.    |
+| Prop          | Type                                   | Default      | Description             |
+| ------------- | -------------------------------------- | ------------ | ----------------------- |
+| orientation   | `"horizontal" \| "vertical" \| "both"` | `"vertical"` | Scroll direction mode.  |
+| showScrollbar | boolean                                | `true`       | Show or hide scrollbar. |
+| className     | string                                 | -            | Extra classes.          |
+| children      | ReactNode                              | -            | Scrollable content.     |
 
 ## Example
 

@@ -3,7 +3,16 @@ import { cn } from "../../lib/utils";
 import type { ScrollAreaProps } from "./types";
 
 export const ScrollArea = forwardRef<HTMLDivElement, ScrollAreaProps>(
-    ({ orientation = "vertical", className, children, ...props }, ref) => {
+    (
+        {
+            orientation = "vertical",
+            showScrollbar = true,
+            className,
+            children,
+            ...props
+        },
+        ref,
+    ) => {
         const overflowClassName =
             orientation === "horizontal"
                 ? "overflow-x-auto overflow-y-hidden"
@@ -17,7 +26,7 @@ export const ScrollArea = forwardRef<HTMLDivElement, ScrollAreaProps>(
                 className={cn(
                     overflowClassName,
                     "[scrollbar-width:thin]",
-                    "[scrollbar-color:rgba(160,161,165,0.4)_transparent]",
+                    `${showScrollbar ? "[scrollbar-color:rgba(160,161,165,0.4)_transparent]" : "[scrollbar-color:rgba(0,0,0,0)_transparent]"}`,
                     "[&::-webkit-scrollbar]:w-2",
                     "[&::-webkit-scrollbar]:h-2",
                     "[&::-webkit-scrollbar-thumb]:rounded-full",
