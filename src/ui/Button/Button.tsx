@@ -27,7 +27,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             children,
             label,
             variant = "secondary",
-            shape = "rounded-full",
+            shape = "rounded-md",
             className,
             ...props
         }: ButtonProps,

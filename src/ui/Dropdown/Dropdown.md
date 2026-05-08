@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Generic dropdown popup container with positioning, outside-click handling, Escape closing, trigger state, and composable trigger/anchor/menu/item parts.
+Generic dropdown popup container based on the native HTML popover API, with trigger state, viewport-aware positioning, and composable trigger/anchor/menu/item parts.
 
 `Dropdown` does not render search or selection logic by itself. Use `Select` when you need a single-value selector with searchable options.
 
@@ -19,8 +19,8 @@ import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | children      | ReactNode                                                      | -          | Dropdown parts and optional render block. |
 | className     | string                                                         | -          | Outer wrapper classes.                    |
 | disabled      | boolean                                                        | `false`    | Disables the dropdown trigger.            |
-| menuWidth     | number \| string                                               | `220`      | Popup width.                              |
-| menuPlacement | `"top-left" \| "top-right" \| "bottom-left" \| "bottom-right"` | `"bottom"` | Popup placement relative to the trigger.  |
+| menuWidth     | number \| string                                               | `220`      | Popup width. Use `"auto"` to match trigger width. |
+| menuPlacement | `"top-left" \| "top-right" \| "bottom-left" \| "bottom-right"` | `"bottom-left"` | Popup placement relative to the trigger.  |
 | onOpenChange  | `(open: boolean) => void`                                      | -          | Called when open state changes.           |
 
 ## Compound parts
@@ -29,7 +29,7 @@ import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | ------------------ | ----------------------------------------- | -------------------------------------- |
 | `Dropdown.Trigger` | `ButtonHTMLAttributes<HTMLButtonElement>` | Trigger button.                        |
 | `Dropdown.Anchor`  | `HTMLAttributes<HTMLDivElement>`          | Custom div anchor that opens the menu. |
-| `Dropdown.Menu`    | `HTMLAttributes<HTMLDivElement>`          | Portaled popup menu.                   |
+| `Dropdown.Menu`    | `HTMLAttributes<HTMLDivElement>`          | Native popover popup menu.             |
 | `Dropdown.Item`    | `ButtonHTMLAttributes<HTMLButtonElement>` | Menu item button.                      |
 | `Dropdown.Render`  | custom render prop                        | Access to dropdown state and helpers.  |
 
@@ -59,7 +59,7 @@ import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | ------------ | --------- | ------- | ---------------------------------------------------- |
 | children     | ReactNode | -       | Item label.                                          |
 | closeOnClick | boolean   | `true`  | Close dropdown after click when not prevented.       |
-| active       | boolean   | `false` | Active visual state and `aria-selected` for listbox. |
+| active       | boolean   | `false` | Active visual state.                                |
 | icon         | ReactNode | -       | Leading item icon.                                   |
 | className    | string    | -       | Item button classes.                                 |
 

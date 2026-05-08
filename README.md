@@ -73,55 +73,55 @@ For correct component rendering, use this palette (or override the same tokens):
 
 | Component          | Purpose                                                                  | Documentation                                           |
 | ------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------- |
-| `Button`           | Base button with variants and shape options.                             | [Button](docs/components/Button.md)                     |
-| `InputSmall`       | Single-line input with password visibility toggle for `type="password"`. | [InputSmall](docs/components/InputSmall.md)             |
-| `InputDate`        | Date input with calendar popup.                                          | [InputDate](docs/components/InputDate.md)               |
-| `InputBig`         | Multiline text input.                                                    | [InputBig](docs/components/InputBig.md)                 |
-| `InputCheckBox`    | `true/false` checkbox control.                                           | [InputCheckBox](docs/components/InputCheckBox.md)       |
-| `InputCheckSlided` | `true/false` switch control.                                             | [InputCheckSlided](docs/components/InputCheckSlided.md) |
-| `InputSlider`      | Numeric range slider with optional value label.                          | [InputSlider](docs/components/InputSlider.md)           |
-| `InputRadio`       | Radio control for selecting one option from a group.                     | [InputRadio](docs/components/InputRadio.md)             |
-| `Select`           | Single-value select control with options and optional search.            | [Select](docs/components/Select.md)                     |
-| `AutoFillSelector` | Multi-select with search/autocomplete.                                   | [AutoFillSelector](docs/components/AutoFillSelector.md) |
-| `Calendar`         | Date calendar with constraints and custom day rendering.                 | [Calendar](docs/components/Calendar.md)                 |
-| `Switcher`         | Segmented switch between options.                                        | [Switcher](docs/components/Switcher.md)                 |
+| `Button`           | Base button with variants and shape options.                             | [Button](src/ui/Button/Button.md)                             |
+| `InputSmall`       | Single-line input with password visibility toggle for `type="password"`. | [InputSmall](src/ui/InputSmall/InputSmall.md)                 |
+| `InputDate`        | Date input with calendar popup.                                          | [InputDate](src/ui/InputDate/InputDate.md)                   |
+| `InputBig`         | Multiline text input.                                                    | [InputBig](src/ui/InputBig/InputBig.md)                       |
+| `InputCheckBox`    | `true/false` checkbox control.                                           | [InputCheckBox](src/ui/InputCheckBox/InputCheckBox.md)       |
+| `InputCheckSlided` | `true/false` switch control.                                             | [InputCheckSlided](src/ui/InputCheckSlided/InputCheckSlided.md) |
+| `InputSlider`      | Numeric range slider with optional value label.                          | [InputSlider](src/ui/InputSlider/InputSlider.md)             |
+| `InputRadio`       | Radio control for selecting one option from a group.                     | [InputRadio](src/ui/InputRadio/InputRadio.md)                 |
+| `Select`           | Single-value select control with options and optional search.            | [Select](src/ui/Select/Select.md)                             |
+| `AutoFillSelector` | Multi-select with search/autocomplete.                                   | [AutoFillSelector](src/ui/AutoFillSelector/AutoFillSelector.md) |
+| `Calendar`         | Date calendar with constraints and custom day rendering.                 | [Calendar](src/ui/Calendar/Calendar.md)                       |
+| `Switcher`         | Segmented switch between options.                                        | [Switcher](src/ui/Switcher/Switcher.md)                       |
 
 ### Components: Overlays & Floating UI
 
 | Component     | Purpose                                            | Documentation                                 |
 | ------------- | -------------------------------------------------- | --------------------------------------------- |
-| `ContextMenu` | Right-click menu with items and submenus.          | [ContextMenu](docs/components/ContextMenu.md) |
-| `Dropdown`    | Generic dropdown popup container.                  | [Dropdown](docs/components/Dropdown.md)       |
-| `Floating`    | Hover/focus floating panel attached to an element. | [Floating](docs/components/Floating.md)       |
-| `Modal`       | Modal dialog window.                               | [Modal](docs/components/Modal.md)             |
-| `SlidedPanel` | Slide-in side panel (drawer).                      | [SlidedPanel](docs/components/SlidedPanel.md) |
+| `ContextMenu` | Right-click menu with items and submenus.          | [ContextMenu](src/ui/ContextMenu/ContextMenu.md) |
+| `Dropdown`    | Generic dropdown popup container.                  | [Dropdown](src/ui/Dropdown/Dropdown.md)          |
+| `Floating`    | Hover/focus floating panel attached to an element. | [Floating](src/ui/Floating/Floating.md)          |
+| `Modal`       | Modal dialog window.                               | [Modal](src/ui/Modal/Modal.md)                   |
+| `SlidedPanel` | Slide-in side panel (drawer).                      | [SlidedPanel](src/ui/SlidedPanel/SlidedPanel.md) |
 
 ### Components: Structure & Composition
 
 | Component        | Purpose                                                                   | Documentation                                       |
 | ---------------- | ------------------------------------------------------------------------- | --------------------------------------------------- |
-| `Card`           | Container with optional header/body/footer sections.                      | [Card](docs/components/Card.md)                     |
-| `Accordeon`      | Expandable section with animated height.                                  | [Accordeon](docs/components/Accordeon.md)           |
-| `Breadcrumbs`    | Navigation trail for current page location.                               | [Breadcrumbs](docs/components/Breadcrumbs.md)       |
-| `DataDisplay`    | Compact list for displaying labeled data rows.                            | [DataDisplay](docs/components/DataDisplay.md)       |
-| `ResizablePanel` | Layout with resizable sidebar and content area.                           | [ResizablePanel](docs/components/ResizablePanel.md) |
-| `TreeView`       | Hierarchical list with optional virtualization.                           | [TreeView](docs/components/TreeView.md)             |
-| `Table`          | Typed table with compound parts and sorting modes.                        | [Table](docs/components/Table.md)                   |
-| `Separator`      | Horizontal/vertical separator.                                            | [Separator](docs/components/Separator.md)           |
-| `ScrollArea`     | Styled scroll container.                                                  | [ScrollArea](docs/components/ScrollArea.md)         |
-| `PrettyBR`       | Decorative horizontal divider with icon and label.                        | [PrettyBR](docs/components/PrettyBR.md)             |
-| `CodeView`       | Code block with syntax highlighting and copy button.                      | [CodeView](docs/components/CodeView.md)             |
-| `Chart`          | Line/bar chart with multiple series and custom styling based on Recharts. | [Chart](docs/components/Chart.md)                   |
+| `Card`           | Container with optional header/body/footer sections.                      | [Card](src/ui/Card/Card.md)                         |
+| `Accordeon`      | Expandable section with animated height.                                  | [Accordeon](src/ui/Accordeon/Accordeon.md)          |
+| `Breadcrumbs`    | Navigation trail for current page location.                               | [Breadcrumbs](src/ui/Breadcrumbs/Breadcrumbs.md)    |
+| `DataDisplay`    | Compact list for displaying labeled data rows.                            | [DataDisplay](src/ui/DataDisplay/DataDisplay.md)    |
+| `ResizablePanel` | Layout with resizable sidebar and content area.                           | [ResizablePanel](src/ui/ResizablePanel/ResizablePanel.md) |
+| `TreeView`       | Hierarchical list with optional virtualization.                           | [TreeView](src/ui/TreeView/TreeView.md)             |
+| `Table`          | Typed table with compound parts and sorting modes.                        | [Table](src/ui/Table/Table.md)                      |
+| `Separator`      | Horizontal/vertical separator.                                            | [Separator](src/ui/Separator/Separator.md)          |
+| `ScrollArea`     | Styled scroll container.                                                  | [ScrollArea](src/ui/ScrollArea/ScrollArea.md)       |
+| `PrettyBR`       | Decorative horizontal divider with icon and label.                        | [PrettyBR](src/ui/PrettyBR/PrettyBR.md)             |
+| `CodeView`       | Code block with syntax highlighting and copy button.                      | [CodeView](src/ui/CodeView/CodeView.md)             |
+| `Chart`          | Line/bar chart with multiple series and custom styling based on Recharts. | [Chart](src/ui/Chart/Chart.md)                      |
 
 ### Components: Status & Feedback
 
 | Component     | Purpose                                           | Documentation                                 |
 | ------------- | ------------------------------------------------- | --------------------------------------------- |
-| `Badge`       | Compact status indicator.                         | [Badge](docs/components/Badge.md)             |
-| `Alert`       | Alert/notification block.                         | [Alert](docs/components/Alert.md)             |
-| `EmptyState`  | Placeholder for empty or first-run states.        | [EmptyState](docs/components/EmptyState.md)   |
-| `Loader`      | Loading spinner.                                  | [Loader](docs/components/Loader.md)           |
-| `ProgressBar` | Progress indicator with optional label and value. | [ProgressBar](docs/components/ProgressBar.md) |
+| `Badge`       | Compact status indicator.                         | [Badge](src/ui/Badge/Badge.md)                |
+| `Alert`       | Alert/notification block.                         | [Alert](src/ui/Alert/Alert.md)                |
+| `EmptyState`  | Placeholder for empty or first-run states.        | [EmptyState](src/ui/EmptyState/EmptyState.md) |
+| `Loader`      | Loading spinner.                                  | [Loader](src/ui/Loader/Loader.md)             |
+| `ProgressBar` | Progress indicator with optional label and value. | [ProgressBar](src/ui/ProgressBar/ProgressBar.md) |
 
 <a id="hooks"></a>
 
@@ -129,8 +129,8 @@ For correct component rendering, use this palette (or override the same tokens):
 
 | Hook        | Purpose                                                         | Documentation                        | Returns                                                                             |
 | ----------- | --------------------------------------------------------------- | ------------------------------------ | ----------------------------------------------------------------------------------- |
-| `useToasts` | Access toast context API. Works only inside `ToastProvider`.    | [useToasts](docs/hooks/useToasts.md) | `ToastContextValue` with: `push`, `normal`, `info`, `warning`, `success`, `danger`. |
-| `useStyle`  | Access style management API. Works only inside `StyleProvider`. | [useStyle](docs/hooks/useStyle.md)   | Object with method: `changeTheme(palette: StyleThemePalette) => void`.              |
+| `useToasts` | Access toast context API. Works only inside `ToastProvider`.    | [useToasts](src/hooks/useToasts.md) | `ToastContextValue` with: `push`, `normal`, `info`, `warning`, `success`, `danger`. |
+| `useStyle`  | Access style management API. Works only inside `StyleProvider`. | [useStyle](src/hooks/useStyle.md)   | Object with method: `changeTheme(palette: StyleThemePalette) => void`.              |
 
 <a id="providers"></a>
 
