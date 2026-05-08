@@ -6,7 +6,11 @@ export type ButtonVariants =
     | "secondary"
     | "danger"
     | "success"
-    | "warning";
+    | "warning"
+    | "primary-outline"
+    | "danger-outline"
+    | "success-outline"
+    | "warning-outline";
 
 export type ButtonShape =
     | "rounded-none"

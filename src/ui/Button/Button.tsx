@@ -3,13 +3,22 @@ import { cn } from "../../lib/utils";
 import type { ButtonVariants, ButtonProps } from "./types";
 
 const variants: Record<ButtonVariants, string> = {
-    ghost: "bg-transparent border-transparent text-white",
+    ghost: "bg-transparent border-transparent text-main-50",
     primary:
-        "bg-white hover:opacity-80 border-transparent text-black transition-opacity",
-    secondary: "bg-main-700 hover:bg-main-600 border-transparent text-white",
-    danger: "bg-red-500 hover:bg-red-600 border-transparent text-white",
-    success: "bg-green-500 hover:bg-green-600 border-transparent text-white",
-    warning: "bg-yellow-500 hover:bg-yellow-600 border-transparent text-white",
+        "bg-main-50 hover:opacity-80 border-transparent text-main-900 transition-opacity",
+    secondary: "bg-main-700 hover:bg-main-600 border-transparent text-main-50",
+    danger: "bg-red-500 hover:bg-red-600 border-transparent text-main-50",
+    success: "bg-green-500 hover:bg-green-600 border-transparent text-main-50",
+    warning:
+        "bg-yellow-500 hover:bg-yellow-600 border-transparent text-main-50",
+    "primary-outline":
+        "bg-transparent hover:bg-main-50 hover:text-main-900 border-main-50 text-main-50",
+    "danger-outline":
+        "bg-transparent hover:bg-red-500 hover:text-main-900 border-red-500 text-red-500",
+    "success-outline":
+        "bg-transparent hover:bg-green-500 hover:text-main-900 border-green-500 text-green-500",
+    "warning-outline":
+        "bg-transparent hover:bg-yellow-500 hover:text-main-900 border-yellow-500 text-yellow-500",
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
