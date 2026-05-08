@@ -74,11 +74,6 @@ import { TreeView } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | description | Description text classes. |
 | rightSlot   | Right-side slot classes.  |
 
-## Notes
-
-- Root `TreeView` styles only the root wrapper through `className`.
-- Internal catalog/element styling belongs to `TreeView.Catalog classNames` and `TreeView.Element classNames`.
-
 ## Example
 
 ```tsx

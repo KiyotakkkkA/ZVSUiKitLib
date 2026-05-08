@@ -1,12 +1,16 @@
+"use client";
+
 import {
     createContext,
     useCallback,
     useContext,
     useEffect,
+    useId,
     useMemo,
     useRef,
     useState,
 } from "react";
+import { createPortal } from "react-dom";
 import { cn } from "../../lib/utils";
 import type {
     ContextMenuContentProps,
@@ -20,10 +24,19 @@ import type {
     ContextMenuTriggerProps,
 } from "./types";
 
+const CONTEXT_MENU_VIEWPORT_PADDING = 8;
+
 type ContextMenuContextValue = {
     state: ContextMenuState;
     setState: (state: ContextMenuState) => void;
     close: () => void;
+
+    activeSubIds: string[];
+    pinnedSubIds: string[];
+
+    openSubId: (id: string, depth: number) => void;
+    closeSubId: (id: string, depth: number) => void;
+    togglePinnedSubId: (id: string, depth: number) => void;
 };
 
 const ContextMenuContext = createContext<ContextMenuContextValue | null>(null);
@@ -47,11 +60,58 @@ const ContextMenuRoot = ({ children }: ContextMenuProps) => {
         y: 0,
     });
 
+    const [activeSubIds, setActiveSubIds] = useState<string[]>([]);
+    const [pinnedSubIds, setPinnedSubIds] = useState<string[]>([]);
+
     const close = useCallback(() => {
-        setState((prev) => ({
-            ...prev,
-            open: false,
-        }));
+        setState((prev) => ({ ...prev, open: false }));
+        setActiveSubIds([]);
+        setPinnedSubIds([]);
+    }, []);
+
+    const openSubId = useCallback((id: string, depth: number) => {
+        setActiveSubIds((prev) => {
+            const next = prev.slice(0, depth);
+            next[depth] = id;
+            return next;
+        });
+    }, []);
+
+    const closeSubId = useCallback((id: string, depth: number) => {
+        setActiveSubIds((prev) => {
+            if (prev[depth] !== id) return prev;
+            return prev.slice(0, depth);
+        });
+
+        setPinnedSubIds((prev) => {
+            if (prev[depth] !== id) return prev;
+            return prev.slice(0, depth);
+        });
+    }, []);
+
+    const togglePinnedSubId = useCallback((id: string, depth: number) => {
+        setPinnedSubIds((prev) => {
+            const isPinned = prev[depth] === id;
+
+            if (isPinned) {
+                setActiveSubIds((activePrev) => {
+                    if (activePrev[depth] !== id) return activePrev;
+                    return activePrev.slice(0, depth);
+                });
+
+                return prev.slice(0, depth);
+            }
+
+            setActiveSubIds((activePrev) => {
+                const next = activePrev.slice(0, depth);
+                next[depth] = id;
+                return next;
+            });
+
+            const next = prev.slice(0, depth);
+            next[depth] = id;
+            return next;
+        });
     }, []);
 
     const value = useMemo(
@@ -59,8 +119,23 @@ const ContextMenuRoot = ({ children }: ContextMenuProps) => {
             state,
             setState,
             close,
+
+            activeSubIds,
+            pinnedSubIds,
+
+            openSubId,
+            closeSubId,
+            togglePinnedSubId,
         }),
-        [state, close],
+        [
+            state,
+            close,
+            activeSubIds,
+            pinnedSubIds,
+            openSubId,
+            closeSubId,
+            togglePinnedSubId,
+        ],
     );
 
     return (
@@ -114,9 +189,45 @@ const ContextMenuContent = ({
     const contentRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (!state.open) {
-            return;
-        }
+        if (!state.open) return;
+
+        const frameId = requestAnimationFrame(() => {
+            const node = contentRef.current;
+
+            if (!node) return;
+
+            const rect = node.getBoundingClientRect();
+
+            const maxX =
+                window.innerWidth - rect.width - CONTEXT_MENU_VIEWPORT_PADDING;
+
+            const maxY =
+                window.innerHeight -
+                rect.height -
+                CONTEXT_MENU_VIEWPORT_PADDING;
+
+            const nextX = Math.min(
+                Math.max(CONTEXT_MENU_VIEWPORT_PADDING, state.x),
+                Math.max(CONTEXT_MENU_VIEWPORT_PADDING, maxX),
+            );
+
+            const nextY = Math.min(
+                Math.max(CONTEXT_MENU_VIEWPORT_PADDING, state.y),
+                Math.max(CONTEXT_MENU_VIEWPORT_PADDING, maxY),
+            );
+
+            node.style.left = `${nextX}px`;
+            node.style.top = `${nextY}px`;
+            node.style.visibility = "visible";
+        });
+
+        return () => {
+            cancelAnimationFrame(frameId);
+        };
+    }, [state.open, state.x, state.y]);
+
+    useEffect(() => {
+        if (!state.open) return;
 
         const handlePointerDown = (event: PointerEvent) => {
             if (!contentRef.current?.contains(event.target as Node)) {
@@ -143,7 +254,7 @@ const ContextMenuContent = ({
         return null;
     }
 
-    return (
+    return createPortal(
         <div
             {...props}
             ref={contentRef}
@@ -153,13 +264,15 @@ const ContextMenuContent = ({
                 className,
             )}
             style={{
+                ...style,
                 left: state.x,
                 top: state.y,
-                ...style,
+                visibility: "hidden",
             }}
         >
             {children}
-        </div>
+        </div>,
+        document.body,
     );
 };
 
@@ -228,12 +341,11 @@ const ContextMenuSeparator = ({
 };
 
 type ContextMenuSubContextValue = {
+    subId: string;
+    depth: number;
     open: boolean;
     pinned: boolean;
-    setOpen: (open: boolean) => void;
-    setPinned: (pinned: boolean) => void;
     openSub: () => void;
-    closeSub: () => void;
     scheduleClose: () => void;
     togglePinned: () => void;
 };
@@ -260,14 +372,26 @@ const ContextMenuSub = ({
     closeDelay = 140,
     className,
 }: ContextMenuSubProps) => {
-    const [open, setOpen] = useState(false);
-    const [pinned, setPinned] = useState(false);
+    const subId = useId();
+
+    const {
+        activeSubIds,
+        pinnedSubIds,
+        openSubId,
+        closeSubId,
+        togglePinnedSubId,
+    } = useContextMenu();
+
+    const parentSub = useContext(ContextMenuSubContext);
+    const depth = parentSub ? parentSub.depth + 1 : 0;
+
     const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+    const open = activeSubIds[depth] === subId;
+    const pinned = pinnedSubIds[depth] === subId;
+
     const clearCloseTimeout = useCallback(() => {
-        if (!closeTimeoutRef.current) {
-            return;
-        }
+        if (!closeTimeoutRef.current) return;
 
         clearTimeout(closeTimeoutRef.current);
         closeTimeoutRef.current = null;
@@ -275,49 +399,48 @@ const ContextMenuSub = ({
 
     const openSub = useCallback(() => {
         clearCloseTimeout();
-        setOpen(true);
-    }, [clearCloseTimeout]);
 
-    const closeSub = useCallback(() => {
-        clearCloseTimeout();
-
-        if (pinned) {
+        if (pinnedSubIds[depth] && pinnedSubIds[depth] !== subId) {
             return;
         }
 
-        setOpen(false);
-    }, [clearCloseTimeout, pinned]);
+        openSubId(subId, depth);
+    }, [clearCloseTimeout, pinnedSubIds, depth, subId, openSubId]);
 
     const scheduleClose = useCallback(() => {
         clearCloseTimeout();
 
-        if (pinned) {
-            return;
-        }
+        if (pinned) return;
 
         closeTimeoutRef.current = setTimeout(() => {
-            setOpen(false);
+            closeSubId(subId, depth);
         }, closeDelay);
-    }, [clearCloseTimeout, pinned, closeDelay]);
+    }, [clearCloseTimeout, pinned, closeDelay, closeSubId, subId, depth]);
 
     const togglePinned = useCallback(() => {
+        clearCloseTimeout();
+
         if (!fixable) {
-            setOpen((prev) => !prev);
+            if (open) {
+                closeSubId(subId, depth);
+            } else {
+                openSubId(subId, depth);
+            }
+
             return;
         }
 
-        setPinned((prev) => {
-            const nextPinned = !prev;
-
-            if (nextPinned) {
-                setOpen(true);
-            } else {
-                setOpen(false);
-            }
-
-            return nextPinned;
-        });
-    }, [fixable]);
+        togglePinnedSubId(subId, depth);
+    }, [
+        clearCloseTimeout,
+        fixable,
+        open,
+        openSubId,
+        closeSubId,
+        togglePinnedSubId,
+        subId,
+        depth,
+    ]);
 
     useEffect(() => {
         return () => {
@@ -327,16 +450,15 @@ const ContextMenuSub = ({
 
     const value = useMemo(
         () => ({
+            subId,
+            depth,
             open,
             pinned,
-            setOpen,
-            setPinned,
             openSub,
-            closeSub,
             scheduleClose,
             togglePinned,
         }),
-        [open, pinned, openSub, closeSub, scheduleClose, togglePinned],
+        [subId, depth, open, pinned, openSub, scheduleClose, togglePinned],
     );
 
     return (
