@@ -14,15 +14,14 @@ import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ## Props
 
-| Prop          | Type                      | Default    | Description                               |
-| ------------- | ------------------------- | ---------- | ----------------------------------------- |
-| children      | ReactNode                 | -          | Dropdown parts and optional render block. |
-| className     | string                    | -          | Outer wrapper classes.                    |
-| disabled      | boolean                   | `false`    | Disables the dropdown trigger.            |
-| menuWidth     | number \| string          | `220`      | Popup width.                              |
-| menuPlacement | `"bottom" \| "top"`       | `"bottom"` | Popup placement relative to the trigger.  |
-| menuRole      | `"menu" \| "listbox"`     | `"menu"`   | ARIA role for the popup and items.        |
-| onOpenChange  | `(open: boolean) => void` | -          | Called when open state changes.           |
+| Prop          | Type                                                           | Default    | Description                               |
+| ------------- | -------------------------------------------------------------- | ---------- | ----------------------------------------- |
+| children      | ReactNode                                                      | -          | Dropdown parts and optional render block. |
+| className     | string                                                         | -          | Outer wrapper classes.                    |
+| disabled      | boolean                                                        | `false`    | Disables the dropdown trigger.            |
+| menuWidth     | number \| string                                               | `220`      | Popup width.                              |
+| menuPlacement | `"top-left" \| "top-right" \| "bottom-left" \| "bottom-right"` | `"bottom"` | Popup placement relative to the trigger.  |
+| onOpenChange  | `(open: boolean) => void`                                      | -          | Called when open state changes.           |
 
 ## Compound parts
 

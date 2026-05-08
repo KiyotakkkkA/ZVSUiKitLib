@@ -1,26 +1,27 @@
 import type {
     ButtonHTMLAttributes,
-    CSSProperties,
     HTMLAttributes,
+    MutableRefObject,
     ReactNode,
     Ref,
 } from "react";
 
-export type DropdownMenuPlacement = "bottom" | "top";
-export type DropdownMenuRole = "menu" | "listbox";
+export type DropdownMenuPlacement =
+    | "top-right"
+    | "top-left"
+    | "bottom-right"
+    | "bottom-left";
 
 export type DropdownContextValue = {
     open: boolean;
     disabled: boolean;
     menuId: string;
-    menuRole: DropdownMenuRole;
-    popupRole: DropdownMenuRole;
     toggleOpen: () => void;
     openMenu: () => void;
     close: () => void;
     setTriggerRef: Ref<HTMLElement>;
     setMenuRef: Ref<HTMLDivElement>;
-    menuStyle: CSSProperties;
+    ignoreNextTriggerClickRef: MutableRefObject<boolean>;
     menuPlacement: DropdownMenuPlacement;
 };
 
@@ -30,7 +31,6 @@ export type DropdownProps = {
     disabled?: boolean;
     menuWidth?: number | string;
     menuPlacement?: DropdownMenuPlacement;
-    menuRole?: DropdownMenuRole;
     onOpenChange?: (open: boolean) => void;
 };
 

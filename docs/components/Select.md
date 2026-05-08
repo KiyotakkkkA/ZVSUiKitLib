@@ -24,7 +24,7 @@ import { Select } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | disabled          | boolean                                                                      | -                     | Disables selector.                                        |
 | className         | string                                                                       | -                     | Outer wrapper classes.                                    |
 | menuWidth         | number \| string                                                             | auto                  | Popup width. Auto-calculated from option labels if empty. |
-| menuPlacement     | `"bottom" \| "top"`                                                          | `"bottom"`            | Popup placement.                                          |
+| menuPlacement     | `"bottom-left" \| "bottom-right" \| "top-left" \| "top-right"`               | `"bottom-left"`       | Popup placement.                                          |
 | closeOnSelect     | boolean                                                                      | `true`                | Close popup after selecting an option.                    |
 | classNames        | object                                                                       | -                     | Classes for internal slots.                               |
 

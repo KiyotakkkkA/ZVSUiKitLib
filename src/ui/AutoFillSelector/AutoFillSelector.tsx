@@ -126,7 +126,6 @@ function AutoFillSelectorRoot({
             <div className={cn("relative min-w-0", className)} {...props}>
                 <Dropdown
                     disabled={disabled}
-                    menuRole="listbox"
                     menuWidth={menuWidth}
                     onOpenChange={(open) => {
                         if (!open) {

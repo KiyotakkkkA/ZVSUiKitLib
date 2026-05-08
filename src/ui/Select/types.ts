@@ -1,4 +1,5 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { DropdownMenuPlacement } from "../Dropdown/types";
 
 type DivClassName = ComponentPropsWithoutRef<"div">["className"];
 type ButtonClassName = ComponentPropsWithoutRef<"button">["className"];
@@ -32,6 +33,6 @@ export type SelectProps = {
     className?: DivClassName;
     classNames?: SelectClassNames;
     menuWidth?: number | string;
-    menuPlacement?: "bottom" | "top";
+    menuPlacement?: DropdownMenuPlacement;
     closeOnSelect?: boolean;
 };

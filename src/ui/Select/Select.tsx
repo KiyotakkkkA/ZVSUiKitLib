@@ -35,7 +35,7 @@ export function Select({
     className,
     classNames,
     menuWidth,
-    menuPlacement = "bottom",
+    menuPlacement = "bottom-left",
     closeOnSelect = true,
 }: SelectProps) {
     const [query, setQuery] = useState("");
@@ -81,7 +81,6 @@ export function Select({
         >
             <Dropdown
                 menuWidth={resolvedMenuWidth}
-                menuRole="listbox"
                 menuPlacement={menuPlacement}
                 disabled={disabled}
                 onOpenChange={handleOpenChange}
