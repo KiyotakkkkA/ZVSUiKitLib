@@ -12,8 +12,6 @@ import { InputBig } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ## Props
 
-Supports all standard `textarea` props (`value`, `onChange`, `rows`, `placeholder`, etc.).
-
 | Prop      | Type   | Default | Description    |
 | --------- | ------ | ------- | -------------- |
 | className | string | -       | Extra classes. |

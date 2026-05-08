@@ -12,8 +12,6 @@ import { InputSmall } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ## Props
 
-Supports all standard `input` props (`value`, `onChange`, `placeholder`, `type`, etc.).
-
 | Prop       | Type   | Default | Description                                            |
 | ---------- | ------ | ------- | ------------------------------------------------------ |
 | className  | string | -       | Extra classes for input element.                       |

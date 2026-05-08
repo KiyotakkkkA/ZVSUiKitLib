@@ -23,8 +23,6 @@ type AutoFillOption = {
 
 ## Props
 
-Extends `HTMLAttributes<HTMLDivElement>` except `onChange`.
-
 | Prop         | Type                        | Default         | Description                              |
 | ------------ | --------------------------- | --------------- | ---------------------------------------- |
 | options      | `AutoFillOption[]`          | -               | Option list.                             |

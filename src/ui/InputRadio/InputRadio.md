@@ -12,8 +12,6 @@ import { InputRadio } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ## Props
 
-Supports standard `input` props except `type`, `checked`, `onChange`, and `className`.
-
 | Prop       | Type                         | Default | Description                 |
 | ---------- | ---------------------------- | ------- | --------------------------- |
 | checked    | boolean                      | -       | Current selected state.     |

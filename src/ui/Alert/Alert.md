@@ -12,8 +12,6 @@ import { Alert } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ## Props
 
-Extends `HTMLAttributes<HTMLDivElement>`.
-
 | Prop       | Type                                                        | Default     | Description                          |
 | ---------- | ----------------------------------------------------------- | ----------- | ------------------------------------ |
 | variant    | `"neutral" \| "success" \| "warning" \| "danger" \| "info"` | `"neutral"` | Alert visual style.                  |

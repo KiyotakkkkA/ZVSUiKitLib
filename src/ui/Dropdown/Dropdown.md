@@ -4,8 +4,6 @@
 
 Generic dropdown popup container based on the native HTML popover API, with trigger state, viewport-aware positioning, and composable trigger/anchor/menu/item parts.
 
-`Dropdown` does not render search or selection logic by itself. Use `Select` when you need a single-value selector with searchable options.
-
 ## Import
 
 ```tsx
@@ -14,14 +12,14 @@ import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ## Props
 
-| Prop          | Type                                                           | Default    | Description                               |
-| ------------- | -------------------------------------------------------------- | ---------- | ----------------------------------------- |
-| children      | ReactNode                                                      | -          | Dropdown parts and optional render block. |
-| className     | string                                                         | -          | Outer wrapper classes.                    |
-| disabled      | boolean                                                        | `false`    | Disables the dropdown trigger.            |
-| menuWidth     | number \| string                                               | `220`      | Popup width. Use `"auto"` to match trigger width. |
-| menuPlacement | `"top-left" \| "top-right" \| "bottom-left" \| "bottom-right"` | `"bottom-left"` | Popup placement relative to the trigger.  |
-| onOpenChange  | `(open: boolean) => void`                                      | -          | Called when open state changes.           |
+| Prop          | Type                                                           | Default         | Description                                       |
+| ------------- | -------------------------------------------------------------- | --------------- | ------------------------------------------------- |
+| children      | ReactNode                                                      | -               | Dropdown parts and optional render block.         |
+| className     | string                                                         | -               | Outer wrapper classes.                            |
+| disabled      | boolean                                                        | `false`         | Disables the dropdown trigger.                    |
+| menuWidth     | number \| string                                               | `220`           | Popup width. Use `"auto"` to match trigger width. |
+| menuPlacement | `"top-left" \| "top-right" \| "bottom-left" \| "bottom-right"` | `"bottom-left"` | Popup placement relative to the trigger.          |
+| onOpenChange  | `(open: boolean) => void`                                      | -               | Called when open state changes.                   |
 
 ## Compound parts
 
@@ -55,13 +53,13 @@ import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ### `Dropdown.Item` props
 
-| Prop         | Type      | Default | Description                                          |
-| ------------ | --------- | ------- | ---------------------------------------------------- |
-| children     | ReactNode | -       | Item label.                                          |
-| closeOnClick | boolean   | `true`  | Close dropdown after click when not prevented.       |
-| active       | boolean   | `false` | Active visual state.                                |
-| icon         | ReactNode | -       | Leading item icon.                                   |
-| className    | string    | -       | Item button classes.                                 |
+| Prop         | Type      | Default | Description                                    |
+| ------------ | --------- | ------- | ---------------------------------------------- |
+| children     | ReactNode | -       | Item label.                                    |
+| closeOnClick | boolean   | `true`  | Close dropdown after click when not prevented. |
+| active       | boolean   | `false` | Active visual state.                           |
+| icon         | ReactNode | -       | Leading item icon.                             |
+| className    | string    | -       | Item button classes.                           |
 
 ### `Dropdown.Render` args
 

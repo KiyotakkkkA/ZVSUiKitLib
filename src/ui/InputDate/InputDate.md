@@ -29,7 +29,7 @@ import { InputDate } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | closeOnSelect   | boolean                                                        | `false`           | Close popup after selecting date.        |
 | clearable       | boolean                                                        | `false`           | Show clear button when date is selected. |
 | menuPlacement   | `"top-left" \| "top-right" \| "bottom-left" \| "bottom-right"` | `"bottom-left"`   | Popup placement.                         |
-| menuWidth       | number \| `"auto"`                                             | `"auto"`          | Popup width.                             |
+| menuWidth       | number                                                         | `300`             | Popup width.                             |
 | className       | string                                                         | -                 | Root classes.                            |
 | classNames      | object                                                         | -                 | Classes for internal slots.              |
 | formatLabel     | `(date: Date) => string`                                       | -                 | Custom trigger label formatting.         |

@@ -44,18 +44,13 @@ import { TreeView } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 #### `TreeView.Catalog` `classNames` slots
 
-| Slot        | Description                    |
-| ----------- | ------------------------------ |
-| trigger     | Catalog header button classes. |
-| title       | Catalog title classes.         |
-| nested      | Nested list wrapper classes.   |
-| chevronIcon | Chevron icon classes.          |
-| folderIcon  | Folder icon classes.           |
-
-Additional catalog slots:
-
 | Slot           | Description                          |
 | -------------- | ------------------------------------ |
+| trigger        | Catalog header button classes.       |
+| title          | Catalog title classes.               |
+| nested         | Nested list wrapper classes.         |
+| chevronIcon    | Chevron icon classes.                |
+| folderIcon     | Folder icon classes.                 |
 | rightSlot      | Right-side slot classes.             |
 | virtualContent | Virtualized content wrapper classes. |
 | virtualItem    | Virtualized item wrapper classes.    |
@@ -71,14 +66,9 @@ Additional catalog slots:
 
 #### `TreeView.Element` `classNames` slots
 
-| Slot    | Description            |
-| ------- | ---------------------- |
-| content | Inner content wrapper. |
-
-Additional element slots:
-
 | Slot        | Description               |
 | ----------- | ------------------------- |
+| content     | Inner content wrapper.    |
 | icon        | Leading icon classes.     |
 | label       | Label text classes.       |
 | description | Description text classes. |

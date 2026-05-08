@@ -57,12 +57,6 @@ import { Chart } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | strokeWidth          | number | Line/area stroke width.            |
 | className            | string | Classes for the series element.    |
 
-## Notes
-
-- Use `type="line"`, `type="area"`, or `type="bar"` to switch the renderer without changing the data shape.
-- `data`, `series`, and `xKey` are required together: `xKey` points to the X axis field, while each `series.key` points to a numeric field.
-- If `data` or `series` is empty, `emptyState` is rendered instead of an empty Recharts canvas.
-
 ### `Chart` `classNames` slots
 
 | Slot         | Description                |
@@ -78,6 +72,12 @@ import { Chart } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | tooltipRow   | Tooltip row wrapper.       |
 | tooltipKey   | Tooltip series name.       |
 | tooltipValue | Tooltip value.             |
+
+## Notes
+
+- Use `type="line"`, `type="area"`, or `type="bar"` to switch the renderer without changing the data shape.
+- `data`, `series`, and `xKey` are required together: `xKey` points to the X axis field, while each `series.key` points to a numeric field.
+- If `data` or `series` is empty, `emptyState` is rendered instead of an empty Recharts canvas.
 
 ## Example
 

@@ -27,7 +27,7 @@ export function InputDate({
     clearable = false,
 
     menuPlacement = "bottom-left",
-    menuWidth = "auto",
+    menuWidth = 300,
 
     className,
     classNames,

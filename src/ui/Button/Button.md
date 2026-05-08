@@ -12,8 +12,6 @@ import { Button } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ## Props
 
-Supports all standard `button` props (`onClick`, `disabled`, `type`, etc.).
-
 | Prop      | Type                                                                                                                             | Default          | Description                                                 |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ----------------------------------------------------------- |
 | children  | ReactNode                                                                                                                        | -                | Button content.                                             |

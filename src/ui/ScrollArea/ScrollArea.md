@@ -12,8 +12,6 @@ import { ScrollArea } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ## Props
 
-Extends `HTMLAttributes<HTMLDivElement>`.
-
 | Prop          | Type                                   | Default      | Description             |
 | ------------- | -------------------------------------- | ------------ | ----------------------- |
 | orientation   | `"horizontal" \| "vertical" \| "both"` | `"vertical"` | Scroll direction mode.  |

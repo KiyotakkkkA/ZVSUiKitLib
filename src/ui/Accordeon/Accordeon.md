@@ -32,8 +32,6 @@ import { Accordeon } from "@kiyotakkkka/zvs-uikit-lib/ui";
 | className | string    | -       | Header button classes.    |
 | children  | ReactNode | -       | Clickable header content. |
 
-`Accordeon.Summary` автоматически показывает шеврон справа и поворачивает его при открытии/закрытии.
-
 ### `Accordeon.Content`
 
 | Prop      | Type      | Default | Description                 |
