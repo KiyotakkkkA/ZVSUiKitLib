@@ -26,7 +26,7 @@ import type {
   DropdownRenderProps,
 } from "./types";
 import "./Dropdown.css";
-import { Button } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Button } from "../Button/Button";
 
 const DROPDOWN_MENU_GAP = 8;
 const DROPDOWN_VIEWPORT_PADDING = 8;

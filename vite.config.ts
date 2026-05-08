@@ -1,10 +1,28 @@
 import { resolve } from "node:path";
+import { createRequire } from "node:module";
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+
+const require = createRequire(import.meta.url);
+const pkg = require("./package.json") as {
+    dependencies?: Record<string, string>;
+    peerDependencies?: Record<string, string>;
+};
+
+const externalPackages = [
+    ...Object.keys(pkg.dependencies ?? {}),
+    ...Object.keys(pkg.peerDependencies ?? {}),
+];
+
+const isExternal = (id: string) =>
+    externalPackages.some(
+        (pkgName) => id === pkgName || id.startsWith(`${pkgName}/`),
+    );
 
 export default defineConfig({
     plugins: [react()],
     build: {
+        emptyOutDir: true,
         copyPublicDir: false,
         lib: {
             entry: {
@@ -18,15 +36,7 @@ export default defineConfig({
             fileName: (_format, entryName) => `${entryName}.js`,
         },
         rollupOptions: {
-            external: [
-                "react",
-                "react-dom",
-                "react/jsx-runtime",
-                "react/jsx-dev-runtime",
-                "@iconify/react",
-                "clsx",
-                "tailwind-merge",
-            ],
+            external: isExternal,
         },
     },
 });
