@@ -10,6 +10,7 @@ import { Icon } from "@iconify/react";
 import { Button } from "../Button/Button";
 import { ScrollArea } from "../ScrollArea/ScrollArea";
 import { cn } from "../../lib/utils";
+import { usePortalContainer } from "../../hooks/usePortalContainer";
 import type { ModalProps, ModalSectionProps, ModalHeaderProps } from "./types";
 
 const ModalContext = createContext<{ onClose: () => void } | null>(null);
@@ -78,6 +79,8 @@ function ModalRoot({
     children,
     closeOnOverlayClick = true,
 }: ModalProps) {
+    const portalContainer = usePortalContainer();
+
     useEffect(() => {
         if (!open) {
             return;
@@ -93,7 +96,7 @@ function ModalRoot({
         return () => window.removeEventListener("keydown", onEscape);
     }, [open, onClose]);
 
-    if (!open) {
+    if (!open || !portalContainer) {
         return null;
     }
 
@@ -138,7 +141,7 @@ function ModalRoot({
                 </div>
             </ModalContext.Provider>
         </div>,
-        document.body,
+        portalContainer,
     );
 }
 

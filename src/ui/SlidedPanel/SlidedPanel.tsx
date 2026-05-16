@@ -8,6 +8,7 @@ import {
 import { createPortal } from "react-dom";
 import { Icon } from "@iconify/react";
 import { cn } from "../../lib/utils";
+import { usePortalContainer } from "../../hooks/usePortalContainer";
 import type {
     SlidedPanelProps,
     SlidedPanelHeaderProps,
@@ -39,6 +40,8 @@ function SlidedPanelRoot({
     className,
     closeOnOverlayClick = true,
 }: SlidedPanelProps) {
+    const portalContainer = usePortalContainer();
+
     useEffect(() => {
         if (!open) return;
 
@@ -68,6 +71,10 @@ function SlidedPanelRoot({
             onClose();
         }
     };
+
+    if (!portalContainer) {
+        return null;
+    }
 
     return createPortal(
         <SlidedPanelContext.Provider value={{ open, onClose }}>
@@ -99,7 +106,7 @@ function SlidedPanelRoot({
                 </section>
             </div>
         </SlidedPanelContext.Provider>,
-        document.body,
+        portalContainer,
     );
 }
 

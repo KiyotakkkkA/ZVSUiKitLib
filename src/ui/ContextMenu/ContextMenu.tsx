@@ -12,6 +12,7 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import { cn } from "../../lib/utils";
+import { usePortalContainer } from "../../hooks/usePortalContainer";
 import type {
     ContextMenuContentProps,
     ContextMenuItemProps,
@@ -187,6 +188,7 @@ const ContextMenuContent = ({
 }: ContextMenuContentProps) => {
     const { state, close } = useContextMenu();
     const contentRef = useRef<HTMLDivElement>(null);
+    const portalContainer = usePortalContainer();
 
     useEffect(() => {
         if (!state.open) return;
@@ -250,7 +252,7 @@ const ContextMenuContent = ({
         };
     }, [state.open, close]);
 
-    if (!state.open) {
+    if (!state.open || !portalContainer) {
         return null;
     }
 
@@ -272,7 +274,7 @@ const ContextMenuContent = ({
         >
             {children}
         </div>,
-        document.body,
+        portalContainer,
     );
 };
 
