@@ -1,3 +1,4 @@
+export { CodeBlock } from "./code-block";
 export { DocumentationPage } from "./documentation-page";
 export { SectionAPI } from "./section-api";
 export { SectionCode } from "./section-code";
