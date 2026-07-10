@@ -1,0 +1,43 @@
+# InputPins
+
+## Purpose
+
+Segmented input for PIN, OTP, or short confirmation codes.
+
+## Import
+
+```tsx
+import { InputPins } from "@kiyotakkkka/zvs-uikit-lib/ui";
+```
+
+## Props
+
+| Prop       | Type              | Default           | Description                       |
+| ---------- | ----------------- | ----------------- | --------------------------------- |
+| value      | string            | -                 | Current PIN value.                |
+| onChange   | `(value) => void` | -                 | Called with the joined value.     |
+| length     | number            | `4`               | Number of input cells.            |
+| label      | string            | -                 | Optional label under the cells.   |
+| disabled   | boolean           | `false`           | Disables all cells.               |
+| mask       | boolean           | `false`           | Uses password inputs.             |
+| className  | string            | -                 | Wrapper classes.                  |
+| classNames | object            | -                 | Internal slot classes.            |
+
+## Example
+
+```tsx
+import { useState } from "react";
+import { InputPins } from "@kiyotakkkka/zvs-uikit-lib/ui";
+
+export function DemoInputPins() {
+    const [pin, setPin] = useState("");
+
+    return (
+        <InputPins
+            value={pin}
+            onChange={setPin}
+            label="Pin Input"
+        />
+    );
+}
+```
