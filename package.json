@@ -2,7 +2,8 @@
     "name": "zvs-uikit-lib-monorepo",
     "private": true,
     "workspaces": [
-        "package"
+        "package",
+        "preview"
     ],
     "engines": {
         "node": ">=20.19.0",
@@ -10,15 +11,26 @@
     },
     "packageManager": "npm@11.6.1",
     "scripts": {
-        "dev": "vite package --config package/vite.config.ts",
-        "build": "npm run build:bundle && npm run build:types",
+        "dev": "npm run build:package && npm run dev:preview",
+        "dev:preview": "next dev preview",
+        "dev:package": "vite build package --config package/vite.config.ts --watch",
+        "build": "npm run build:package && npm run build:preview",
+        "build:package": "npm run build:bundle && npm run build:types",
+        "build:preview": "next build preview",
         "build:bundle": "vite build package --config package/vite.config.ts",
         "build:types": "tsc --project package/tsconfig.build.json",
-        "typecheck": "tsc --project package/tsconfig.app.json --noEmit && tsc --project package/tsconfig.node.json --noEmit",
-        "lint": "eslint --config package/eslint.config.js package/src package/vite.config.ts",
-        "lint:fix": "npm run lint -- --fix",
+        "typecheck": "npm run typecheck:package && npm run typecheck:preview",
+        "typecheck:package": "tsc --project package/tsconfig.app.json --noEmit && tsc --project package/tsconfig.node.json --noEmit",
+        "typecheck:preview": "tsc --project preview/tsconfig.json --noEmit",
+        "lint": "npm run lint:package && npm run lint:preview",
+        "lint:package": "eslint --config package/eslint.config.js package/src package/vite.config.ts",
+        "lint:preview": "eslint --config preview/eslint.config.mjs preview/app preview/next.config.ts",
+        "lint:fix": "npm run lint:fix:package && npm run lint:fix:preview",
+        "lint:fix:package": "npm run lint:package -- --fix",
+        "lint:fix:preview": "npm run lint:preview -- --fix",
         "check": "npm run typecheck && npm run lint && npm run build",
-        "preview": "vite preview package --config package/vite.config.ts",
-        "pack:check": "npm run check && npm pack ./package --dry-run"
+        "start": "next start preview",
+        "preview:package": "vite preview package --config package/vite.config.ts",
+        "pack:check": "npm run typecheck:package && npm run lint:package && npm run build:package && npm pack ./package --dry-run"
     }
 }

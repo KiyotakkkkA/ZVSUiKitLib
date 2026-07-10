@@ -1,64 +1,142 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ArrowRightIcon, BoxIcon, CopyIcon } from "./ui/icons";
+import { SiteHeader } from "./ui/site-header";
+
+const features = [
+  {
+    number: "01",
+    title: "Accessible by default",
+    text: "Thoughtful focus states, keyboard behavior, and semantic foundations are built into every primitive.",
+  },
+  {
+    number: "02",
+    title: "Designed to compose",
+    text: "Predictable APIs and compound patterns let small pieces grow into confident product interfaces.",
+  },
+  {
+    number: "03",
+    title: "Built for real teams",
+    text: "Typed exports, lean ESM output, and direct styling hooks keep delivery fast from prototype to production.",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <div className="landing-shell">
+      <SiteHeader />
+
+      <main>
+        <section className="hero">
+          <div className="hero-grid" aria-hidden="true" />
+          <div className="hero-orbit hero-orbit-one" aria-hidden="true" />
+          <div className="hero-orbit hero-orbit-two" aria-hidden="true" />
+
+          <div className="hero-copy">
+            <div className="eyebrow">
+              <span /> React 19 ready · TypeScript first
+            </div>
+            <h1>
+              Interfaces with
+              <span>less noise.</span>
+            </h1>
+            <p>
+              A precise React component library for teams who care about
+              craft, speed, and a design system that stays out of the way.
+            </p>
+            <div className="hero-actions">
+              <Link className="button button-primary" href="/components/input-small">
+                Explore components <ArrowRightIcon />
+              </Link>
+              <a
+                className="button button-secondary"
+                href="https://github.com/KiyotakkkkA/ZVSUiKitLib"
+              >
+                View on GitHub
+              </a>
+            </div>
+            <div className="install-command" aria-label="Install command">
+              <span>$</span>
+              <code>npm i @kiyotakkkka/zvs-uikit-lib</code>
+              <CopyIcon />
+            </div>
+          </div>
+
+          <div className="hero-showcase" aria-label="Component preview composition">
+            <div className="showcase-window">
+              <div className="window-bar">
+                <div><i /><i /><i /></div>
+                <span>account-settings.tsx</span>
+                <span className="window-status">Live</span>
+              </div>
+              <div className="window-content">
+                <div className="avatar-row">
+                  <div className="avatar">ZK</div>
+                  <div>
+                    <strong>Profile details</strong>
+                    <span>Visible to your workspace</span>
+                  </div>
+                  <span className="verified">Verified</span>
+                </div>
+                <div className="fake-field">
+                  <label>Display name</label>
+                  <div>Zahar Kirilenko</div>
+                </div>
+                <div className="fake-field">
+                  <label>Work email</label>
+                  <div>hello@zvs-ui.dev</div>
+                </div>
+                <div className="preference-row">
+                  <div>
+                    <strong>Product updates</strong>
+                    <span>Receive new component announcements.</span>
+                  </div>
+                  <div className="fake-switch"><span /></div>
+                </div>
+                <button className="save-button">Save changes</button>
+              </div>
+            </div>
+            <div className="floating-token token-radius">
+              <span>radius</span><strong>8px</strong>
+            </div>
+            <div className="floating-token token-color">
+              <i /><span>main-400</span><strong>#a3a3a3</strong>
+            </div>
+          </div>
+        </section>
+
+        <section className="signal-strip" aria-label="Library highlights">
+          <span>48+ components</span>
+          <i />
+          <span>6.2 kB styles gzip</span>
+          <i />
+          <span>Tree-shakeable ESM</span>
+          <i />
+          <span>MIT licensed</span>
+        </section>
+
+        <section className="principles">
+          <div className="section-heading">
+            <span className="section-index">[01]</span>
+            <div>
+              <p>THE FOUNDATION</p>
+              <h2>Built to feel inevitable.</h2>
+            </div>
+            <p>
+              Strong defaults, subtle motion, and APIs that read like the
+              interface they produce.
+            </p>
+          </div>
+          <div className="feature-grid">
+            {features.map((feature) => (
+              <article key={feature.number} className="feature-card">
+                <span>{feature.number}</span>
+                <BoxIcon />
+                <h3>{feature.title}</h3>
+                <p>{feature.text}</p>
+              </article>
+            ))}
+          </div>
+        </section>
       </main>
     </div>
   );
