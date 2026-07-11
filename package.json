@@ -32,5 +32,6 @@
         "start": "next start preview",
         "preview:package": "vite preview package --config package/vite.config.ts",
         "pack:check": "npm run typecheck:package && npm run lint:package && npm run build:package && npm pack ./package --dry-run"
-    }
+    },
+    "version": "0.0.1"
 }
