@@ -11,6 +11,9 @@
     },
     "packageManager": "npm@11.6.1",
     "scripts": {
+        "version:package:patch": "npm version patch --workspace=package",
+        "version:package:minor": "npm version minor --workspace=package",
+        "version:package:major": "npm version major --workspace=package",
         "dev": "npm run build:package && npm run dev:preview",
         "dev:preview": "next dev preview",
         "dev:package": "vite build package --config package/vite.config.ts --watch",
@@ -32,6 +35,5 @@
         "start": "next start preview",
         "preview:package": "vite preview package --config package/vite.config.ts",
         "pack:check": "npm run typecheck:package && npm run lint:package && npm run build:package && npm pack ./package --dry-run"
-    },
-    "version": "0.0.1"
+    }
 }

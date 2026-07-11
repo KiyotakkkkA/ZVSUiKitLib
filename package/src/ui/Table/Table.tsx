@@ -99,10 +99,7 @@ export function Table<T extends TableRecord>({
 
     return (
         <table
-            className={cn(
-                "w-full border-collapse text-left",
-                classNames?.root,
-            )}
+            className={cn("w-full border-collapse text-left", classNames?.root)}
         >
             <thead className={classNames?.header}>
                 <tr

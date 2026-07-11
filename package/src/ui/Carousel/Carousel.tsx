@@ -5,7 +5,9 @@ import type { CarouselImageProps, CarouselProps } from "./types";
 
 function CarouselImage({ children, className }: CarouselImageProps) {
     return (
-        <div className={cn("h-full w-full shrink-0 overflow-hidden", className)}>
+        <div
+            className={cn("h-full w-full shrink-0 overflow-hidden", className)}
+        >
             {children}
         </div>
     );
@@ -69,7 +71,13 @@ function CarouselRoot({
         const timeout = window.setTimeout(goToNext, autoScrollTimeout);
 
         return () => window.clearTimeout(timeout);
-    }, [activeSlideIndex, autoScroll, autoScrollTimeout, goToNext, hasMultipleSlides]);
+    }, [
+        activeSlideIndex,
+        autoScroll,
+        autoScrollTimeout,
+        goToNext,
+        hasMultipleSlides,
+    ]);
 
     const isPreviousDisabled = !loop && activeSlideIndex === 0;
     const isNextDisabled = !loop && activeSlideIndex === maxSlideIndex;
@@ -143,7 +151,9 @@ function CarouselRoot({
                                 )}
                                 aria-label={`Go to slide ${index + 1}`}
                                 aria-current={
-                                    activeSlideIndex === index ? "true" : undefined
+                                    activeSlideIndex === index
+                                        ? "true"
+                                        : undefined
                                 }
                                 onClick={() => goToSlide(index)}
                             />

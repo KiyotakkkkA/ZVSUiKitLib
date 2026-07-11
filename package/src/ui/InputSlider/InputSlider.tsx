@@ -51,7 +51,11 @@ export const InputSlider = ({
             0,
             1,
         );
-        const nextValue = snapToStep(min + pointerPercent * (max - min), min, step);
+        const nextValue = snapToStep(
+            min + pointerPercent * (max - min),
+            min,
+            step,
+        );
 
         onChange(clamp(nextValue, min, max));
     };
@@ -76,21 +80,27 @@ export const InputSlider = ({
                     updateValueFromPointer(event);
                 }}
                 onPointerMove={(event) => {
-                    if (!event.currentTarget.hasPointerCapture(event.pointerId)) {
+                    if (
+                        !event.currentTarget.hasPointerCapture(event.pointerId)
+                    ) {
                         return;
                     }
 
                     updateValueFromPointer(event);
                 }}
                 onPointerUp={(event) => {
-                    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+                    if (
+                        event.currentTarget.hasPointerCapture(event.pointerId)
+                    ) {
                         event.currentTarget.releasePointerCapture(
                             event.pointerId,
                         );
                     }
                 }}
                 onPointerCancel={(event) => {
-                    if (event.currentTarget.hasPointerCapture(event.pointerId)) {
+                    if (
+                        event.currentTarget.hasPointerCapture(event.pointerId)
+                    ) {
                         event.currentTarget.releasePointerCapture(
                             event.pointerId,
                         );
@@ -123,8 +133,8 @@ export const InputSlider = ({
                     <div
                         className={cn(
                             "h-full rounded-full bg-main-500/70 transition-colors duration-200",
-                        classNames?.fill,
-                    )}
+                            classNames?.fill,
+                        )}
                         style={{ width: `${percent}%` }}
                     />
                 </div>

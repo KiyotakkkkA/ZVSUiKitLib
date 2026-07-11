@@ -12,13 +12,13 @@ import { Timeline } from "@kiyotakkkka/zvs-uikit-lib";
 
 ## Components
 
-| Component               | Props                            | Description            |
-| ----------------------- | -------------------------------- | ---------------------- |
-| `Timeline`              | `className`, `children`          | Root timeline wrapper. |
-| `Timeline.Item`         | `icon`, `className`, `children`  | Timeline event row.    |
-| `Timeline.ItemTitle`    | `className`, `children`          | Event title.           |
-| `Timeline.ItemSubTitle` | `className`, `children`          | Event subtitle/date.   |
-| `Timeline.ItemContent`  | `className`, `children`          | Event body content.    |
+| Component               | Props                           | Description            |
+| ----------------------- | ------------------------------- | ---------------------- |
+| `Timeline`              | `className`, `children`         | Root timeline wrapper. |
+| `Timeline.Item`         | `icon`, `className`, `children` | Timeline event row.    |
+| `Timeline.ItemTitle`    | `className`, `children`         | Event title.           |
+| `Timeline.ItemSubTitle` | `className`, `children`         | Event subtitle/date.   |
+| `Timeline.ItemContent`  | `className`, `children`         | Event body content.    |
 
 ## Example
 
@@ -33,7 +33,8 @@ export function DemoTimeline() {
                 <Timeline.ItemTitle>Product Shipped</Timeline.ItemTitle>
                 <Timeline.ItemSubTitle>13th May 2021</Timeline.ItemSubTitle>
                 <Timeline.ItemContent>
-                    We shipped your product and it should arrive within 3-5 business days.
+                    We shipped your product and it should arrive within 3-5
+                    business days.
                 </Timeline.ItemContent>
             </Timeline.Item>
 

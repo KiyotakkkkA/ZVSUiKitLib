@@ -5,10 +5,7 @@ import type { PaginationPageItem, PaginationProps } from "./types";
 
 const siblingCount = 1;
 
-function getVisiblePages(
-    page: number,
-    lastPage: number,
-): PaginationPageItem[] {
+function getVisiblePages(page: number, lastPage: number): PaginationPageItem[] {
     if (lastPage <= 7) {
         return Array.from({ length: lastPage }, (_, index) => index + 1);
     }

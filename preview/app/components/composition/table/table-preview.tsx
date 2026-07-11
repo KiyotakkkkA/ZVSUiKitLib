@@ -10,9 +10,27 @@ type InvoiceRow = {
 };
 
 const rows: InvoiceRow[] = [
-    { id: "1", name: "Aurora UI", status: "Paid", amount: 1240, owner: "Design" },
-    { id: "2", name: "Atlas CRM", status: "Review", amount: 860, owner: "Product" },
-    { id: "3", name: "Northwind", status: "Draft", amount: 430, owner: "Platform" },
+    {
+        id: "1",
+        name: "Aurora UI",
+        status: "Paid",
+        amount: 1240,
+        owner: "Design",
+    },
+    {
+        id: "2",
+        name: "Atlas CRM",
+        status: "Review",
+        amount: 860,
+        owner: "Product",
+    },
+    {
+        id: "3",
+        name: "Northwind",
+        status: "Draft",
+        amount: 430,
+        owner: "Platform",
+    },
 ];
 
 const columns: TableColumn<InvoiceRow>[] = [
@@ -24,12 +42,14 @@ const columns: TableColumn<InvoiceRow>[] = [
             {
                 key: "asc",
                 icon: "↑",
-                sortFn: (left, right) => left.name.localeCompare(right.name, "en"),
+                sortFn: (left, right) =>
+                    left.name.localeCompare(right.name, "en"),
             },
             {
                 key: "desc",
                 icon: "↓",
-                sortFn: (left, right) => right.name.localeCompare(left.name, "en"),
+                sortFn: (left, right) =>
+                    right.name.localeCompare(left.name, "en"),
             },
         ],
     },

@@ -8,7 +8,8 @@ export function DemoTimeline() {
                 <Timeline.ItemTitle>Product Shipped</Timeline.ItemTitle>
                 <Timeline.ItemSubTitle>13th May 2021</Timeline.ItemSubTitle>
                 <Timeline.ItemContent>
-                    We shipped your product and it should arrive within 3-5 business days.
+                    We shipped your product and it should arrive within 3-5
+                    business days.
                 </Timeline.ItemContent>
             </Timeline.Item>
 

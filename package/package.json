@@ -19,7 +19,7 @@
         "directory": "package"
     },
     "private": false,
-    "version": "4.0.1",
+    "version": "4.1.0",
     "type": "module",
     "main": "./dist/index.js",
     "module": "./dist/index.js",

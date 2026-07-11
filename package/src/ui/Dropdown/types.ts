@@ -7,10 +7,7 @@ import type {
 } from "react";
 
 export type DropdownMenuPlacement =
-    | "top-right"
-    | "top-left"
-    | "bottom-right"
-    | "bottom-left";
+    "top-right" | "top-left" | "bottom-right" | "bottom-left";
 
 export type DropdownContextValue = {
     open: boolean;

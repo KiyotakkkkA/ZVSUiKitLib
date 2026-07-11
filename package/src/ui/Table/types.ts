@@ -3,8 +3,7 @@ import type { ReactNode } from "react";
 export type TableRecord = Record<string, unknown>;
 
 export type TableClassNameResolver<T> =
-    | string
-    | ((item: T, index: number) => string);
+    string | ((item: T, index: number) => string);
 
 export type TableSortMode<T extends TableRecord> = {
     icon: string;

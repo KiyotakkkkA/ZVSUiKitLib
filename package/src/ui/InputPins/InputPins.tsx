@@ -21,7 +21,10 @@ export function InputPins({
 }: InputPinsProps) {
     const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
     const normalizedValue = normalizePinValue(value, length);
-    const values = Array.from({ length }, (_, index) => normalizedValue[index] ?? "");
+    const values = Array.from(
+        { length },
+        (_, index) => normalizedValue[index] ?? "",
+    );
 
     const focusInput = (index: number) => {
         inputRefs.current[index]?.focus();
@@ -87,7 +90,9 @@ export function InputPins({
     };
 
     return (
-        <div className={cn("inline-flex flex-col items-center gap-6", className)}>
+        <div
+            className={cn("inline-flex flex-col items-center gap-6", className)}
+        >
             <div className={cn("flex items-center gap-2", classNames?.group)}>
                 {values.map((item, index) => (
                     <input
