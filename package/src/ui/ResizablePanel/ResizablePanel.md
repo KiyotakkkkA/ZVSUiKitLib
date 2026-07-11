@@ -53,6 +53,7 @@ Extends `HTMLAttributes<HTMLDivElement>`.
 ## Example
 
 ```tsx
+"use client";
 import { ResizablePanel } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoResizablePanel() {

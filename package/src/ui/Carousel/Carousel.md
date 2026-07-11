@@ -38,6 +38,7 @@ import { Carousel } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { Carousel } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function CarouselPreview() {

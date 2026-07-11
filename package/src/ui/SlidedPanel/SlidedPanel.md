@@ -71,6 +71,7 @@ import { SlidedPanel } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { useState } from "react";
 import { SlidedPanel, Button } from "@kiyotakkkka/zvs-uikit-lib";
 

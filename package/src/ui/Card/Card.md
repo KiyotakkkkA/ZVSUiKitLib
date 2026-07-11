@@ -65,6 +65,7 @@ import { Card } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { Card, Button } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoCard() {

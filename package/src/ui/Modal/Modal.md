@@ -63,6 +63,7 @@ import { Modal } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { Modal, Button } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 

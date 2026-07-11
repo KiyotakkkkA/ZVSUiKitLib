@@ -42,6 +42,7 @@ import { Accordion } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { Accordion } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoAccordion() {

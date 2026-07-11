@@ -25,6 +25,7 @@ Native select attributes like `value`, `defaultValue`, `disabled`, and `name` ar
 ## Example
 
 ```tsx
+"use client";
 import { useState } from "react";
 import { SelectNative } from "@kiyotakkkka/zvs-uikit-lib";
 

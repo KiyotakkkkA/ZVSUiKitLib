@@ -24,6 +24,7 @@ Also accepts native `div` attributes.
 ## Example
 
 ```tsx
+"use client";
 import { Skeleton } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoSkeleton() {

@@ -31,6 +31,7 @@ import { PrettyBR } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { PrettyBR } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoPrettyBR() {

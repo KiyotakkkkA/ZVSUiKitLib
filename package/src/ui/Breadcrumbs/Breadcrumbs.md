@@ -36,6 +36,7 @@ import { Breadcrumbs } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { Breadcrumbs } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function BreadcrumbsPreview() {

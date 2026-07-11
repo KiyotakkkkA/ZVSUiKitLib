@@ -91,7 +91,7 @@ For correct component rendering, use this palette (or override the same tokens):
 | `Switcher`         | Segmented switch between options.                                        | [Switcher](package/src/ui/Switcher/Switcher.md)                         |
 | `Tabs`             | Line-style tabs for switching between related views.                     | [Tabs](package/src/ui/Tabs/Tabs.md)                                     |
 
-### Components: Overlays & Floating UI
+### Components: Overlays
 
 | Component     | Purpose                                            | Documentation                                            |
 | ------------- | -------------------------------------------------- | -------------------------------------------------------- |

@@ -5,7 +5,67 @@ export type ComponentDoc = {
     status?: "new";
 };
 
-export const inputComponents: ComponentDoc[] = [
+export type ComponentDocSection = {
+    title: string;
+    prefix: string;
+    components: ComponentDoc[];
+};
+
+export const overlayComponents: ComponentDocSection = {
+    title: "Overlays",
+    prefix: "overlays",
+    components: [
+        {
+            slug: "context-menu",
+            name: "ContextMenu",
+            summary: "Contextual actions with nested menus.",
+        },
+        {
+            slug: "dropdown",
+            name: "Dropdown",
+            summary: "Composable anchored menu and selectable items.",
+        },
+        {
+            slug: "floating",
+            name: "Floating",
+            summary: "Hover and focus anchored floating content.",
+        },
+        { slug: "modal", name: "Modal", summary: "Compound modal dialog." },
+        {
+            slug: "slided-panel",
+            name: "SlidedPanel",
+            summary: "Compound edge drawer.",
+        },
+        { slug: "tooltip", name: "Tooltip", summary: "Hover and focus hint." },
+    ],
+};
+
+export const compositionComponents: ComponentDocSection = {
+    title: "Composition",
+    prefix: "composition",
+    components: [
+        { slug: "accordion", name: "Accordion", summary: "Collapsible content section." },
+        { slug: "breadcrumbs", name: "Breadcrumbs", summary: "Navigation trail for the current location." },
+        { slug: "card", name: "Card", summary: "Structured compound content surface." },
+        { slug: "carousel", name: "Carousel", summary: "Slide viewport with navigation controls." },
+        { slug: "chart", name: "Chart", summary: "Responsive line, area, and bar charts." },
+        { slug: "code-view", name: "CodeView", summary: "Syntax-highlighted code viewer." },
+        { slug: "data-display", name: "DataDisplay", summary: "Structured labeled values and metadata." },
+        { slug: "pagination", name: "Pagination", summary: "Page and page-size navigation." },
+        { slug: "pretty-br", name: "PrettyBR", summary: "Labeled visual section divider." },
+        { slug: "resizable-panel", name: "ResizablePanel", summary: "Resizable sidebar and content layout." },
+        { slug: "scroll-area", name: "ScrollArea", summary: "Styled overflow container." },
+        { slug: "separator", name: "Separator", summary: "Horizontal or vertical divider." },
+        { slug: "table", name: "Table", summary: "Typed sortable data table." },
+        { slug: "timeline", name: "Timeline", summary: "Compound chronological content." },
+        { slug: "tree-view", name: "TreeView", summary: "Hierarchical and virtualized tree." },
+    ],
+};
+
+export const inputComponents: ComponentDocSection = {
+    title: "Inputs",
+    prefix: "inputs",
+    components: [
     {
         slug: "input-small",
         name: "InputSmall",
@@ -16,80 +76,16 @@ export const inputComponents: ComponentDoc[] = [
         name: "InputDate",
         summary: "Date input paired with a calendar popup.",
     },
-    {
-        slug: "accordion",
-        name: "Accordion",
-        summary: "Collapsible content section.",
-    },
-    {
-        slug: "alert",
-        name: "Alert",
-        summary: "Status message with optional icon and title.",
-    },
+    { slug: "calendar", name: "Calendar", summary: "Date calendar with constraints and custom rendering." },
     {
         slug: "auto-fill-selector",
         name: "AutoFillSelector",
         summary: "Searchable multi-select.",
     },
     {
-        slug: "badge",
-        name: "Badge",
-        summary: "Small status indicator.",
-    },
-    {
-        slug: "breadcrumbs",
-        name: "Breadcrumbs",
-        summary: "Navigation aid showing the current page's location.",
-    },
-    {
         slug: "button",
         name: "Button",
         summary: "Action control with variants and loading state.",
-    },
-    {
-        slug: "card",
-        name: "Card",
-        summary: "Structured compound content surface.",
-    },
-    {
-        slug: "carousel",
-        name: "Carousel",
-        summary: "Slide viewport with navigation controls.",
-    },
-    {
-        slug: "chart",
-        name: "Chart",
-        summary: "Responsive line, area, and bar charts.",
-    },
-    {
-        slug: "code-view",
-        name: "CodeView",
-        summary: "Syntax-highlighted code viewer.",
-    },
-    {
-        slug: "context-menu",
-        name: "ContextMenu",
-        summary: "Contextual actions with nested menus.",
-    },
-    {
-        slug: "data-display",
-        name: "DataDisplay",
-        summary: "Structured labeled values and metadata.",
-    },
-    {
-        slug: "dropdown",
-        name: "Dropdown",
-        summary: "Composable anchored menu and selectable items.",
-    },
-    {
-        slug: "empty-state",
-        name: "EmptyState",
-        summary: "Empty-content message with optional action.",
-    },
-    {
-        slug: "floating",
-        name: "Floating",
-        summary: "Hover and focus anchored floating content.",
     },
     {
         slug: "input-big",
@@ -131,33 +127,6 @@ export const inputComponents: ComponentDoc[] = [
         name: "InputSlider",
         summary: "Pointer-driven numeric slider.",
     },
-    { slug: "loader", name: "Loader", summary: "Compact loading spinner." },
-    { slug: "modal", name: "Modal", summary: "Compound modal dialog." },
-    {
-        slug: "pagination",
-        name: "Pagination",
-        summary: "Page and page-size navigation.",
-    },
-    {
-        slug: "pretty-br",
-        name: "PrettyBR",
-        summary: "Labeled visual section divider.",
-    },
-    {
-        slug: "progress-bar",
-        name: "ProgressBar",
-        summary: "Labeled progress indicator.",
-    },
-    {
-        slug: "resizable-panel",
-        name: "ResizablePanel",
-        summary: "Resizable sidebar and content layout.",
-    },
-    {
-        slug: "scroll-area",
-        name: "ScrollArea",
-        summary: "Styled overflow container.",
-    },
     {
         slug: "select",
         name: "Select",
@@ -169,36 +138,23 @@ export const inputComponents: ComponentDoc[] = [
         summary: "Styled native select.",
     },
     {
-        slug: "separator",
-        name: "Separator",
-        summary: "Horizontal or vertical divider.",
-    },
-    {
-        slug: "skeleton",
-        name: "Skeleton",
-        summary: "Animated loading placeholder.",
-    },
-    {
-        slug: "slided-panel",
-        name: "SlidedPanel",
-        summary: "Compound edge drawer.",
-    },
-    {
         slug: "switcher",
         name: "Switcher",
         summary: "Compact segmented switcher.",
     },
-    { slug: "table", name: "Table", summary: "Typed sortable data table." },
     { slug: "tabs", name: "Tabs", summary: "Controlled tab navigation." },
-    {
-        slug: "timeline",
-        name: "Timeline",
-        summary: "Compound chronological content.",
-    },
-    { slug: "tooltip", name: "Tooltip", summary: "Hover and focus hint." },
-    {
-        slug: "tree-view",
-        name: "TreeView",
-        summary: "Hierarchical and virtualized tree.",
-    },
-];
+    ],
+};
+
+export const feedbackComponents: ComponentDocSection = {
+    title: "Feedback",
+    prefix: "feedback",
+    components: [
+        { slug: "alert", name: "Alert", summary: "Status message with optional icon and title." },
+        { slug: "badge", name: "Badge", summary: "Small status indicator." },
+        { slug: "empty-state", name: "EmptyState", summary: "Empty-content message with optional action." },
+        { slug: "loader", name: "Loader", summary: "Compact loading spinner." },
+        { slug: "progress-bar", name: "ProgressBar", summary: "Labeled progress indicator." },
+        { slug: "skeleton", name: "Skeleton", summary: "Animated loading placeholder." },
+    ],
+};

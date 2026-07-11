@@ -22,6 +22,7 @@ Extends `HTMLAttributes<HTMLDivElement>`.
 ## Example
 
 ```tsx
+"use client";
 import { Separator } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoSeparator() {

@@ -34,6 +34,7 @@ import { ProgressBar } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { ProgressBar } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoProgressBar() {

@@ -44,6 +44,7 @@ The root also accepts standard `HTMLAttributes<HTMLDivElement>`.
 ## Example
 
 ```tsx
+"use client";
 import { Floating, Button } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoFloating() {

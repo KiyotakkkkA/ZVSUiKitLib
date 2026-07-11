@@ -82,6 +82,7 @@ import { Chart } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { Chart } from "@kiyotakkkka/zvs-uikit-lib";
 
 const weeklyActivityData = [

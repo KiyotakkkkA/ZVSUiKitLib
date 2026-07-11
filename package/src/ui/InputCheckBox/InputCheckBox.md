@@ -31,6 +31,7 @@ import { InputCheckBox } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { InputCheckBox } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 

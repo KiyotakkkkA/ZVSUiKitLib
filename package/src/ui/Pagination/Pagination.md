@@ -28,6 +28,7 @@ import { Pagination } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { useState } from "react";
 import { Pagination } from "@kiyotakkkka/zvs-uikit-lib";
 

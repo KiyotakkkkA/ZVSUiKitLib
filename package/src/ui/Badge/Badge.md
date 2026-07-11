@@ -21,6 +21,7 @@ import { Badge } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { Badge } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoBadge() {

@@ -77,6 +77,7 @@ import { TreeView } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { TreeView } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoTreeView() {

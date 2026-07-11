@@ -32,6 +32,7 @@ import { Button } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { Button } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoButton() {

@@ -28,6 +28,7 @@ import { InputSmall } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { InputSmall } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 

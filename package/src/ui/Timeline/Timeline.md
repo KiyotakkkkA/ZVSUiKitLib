@@ -23,6 +23,7 @@ import { Timeline } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { Timeline } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoTimeline() {

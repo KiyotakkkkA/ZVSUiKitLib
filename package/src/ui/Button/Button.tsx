@@ -52,7 +52,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 disabled={isDisabled}
                 className={cn(
                     "inline-flex items-center justify-center gap-2 border transition-colors",
-                    "cursor-pointer disabled:cursor-not-allowed disabled:opacity-70",
+                    "cursor-pointer disabled:cursor-not-allowed disabled:opacity-70 p-1",
                     shape,
                     variant ? variants[variant] : "",
                     className,

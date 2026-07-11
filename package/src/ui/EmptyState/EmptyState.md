@@ -33,6 +33,7 @@ import { EmptyState } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { Button, EmptyState } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoEmptyState() {

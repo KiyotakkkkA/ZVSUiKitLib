@@ -84,6 +84,7 @@ import { ContextMenu } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { ContextMenu } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoContextMenu() {

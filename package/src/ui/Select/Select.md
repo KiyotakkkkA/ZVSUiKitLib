@@ -41,6 +41,7 @@ import { Select } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { Icon } from "@iconify/react";
 import { Select } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";

@@ -30,6 +30,7 @@ import { InputCheckSlided } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { InputCheckSlided } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 

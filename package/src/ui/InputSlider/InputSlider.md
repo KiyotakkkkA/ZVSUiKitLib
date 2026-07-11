@@ -38,6 +38,7 @@ import { InputSlider } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { useState } from "react";
 import { InputSlider } from "@kiyotakkkka/zvs-uikit-lib";
 

@@ -1,8 +1,14 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { inputComponents } from "../lib/components";
+import {
+    compositionComponents,
+    feedbackComponents,
+    inputComponents,
+    overlayComponents,
+} from "../lib/components";
 import { SiteHeader } from "../ui/site-header";
 import { SidebarScrollArea } from "../molecules/sidebar-scroll-area";
+import { SidebarNavigationSection } from "../molecules";
 
 export default function ComponentsLayout({
     children,
@@ -27,17 +33,18 @@ export default function ComponentsLayout({
                                 className="component-nav"
                                 aria-label="Input components"
                             >
-                                {inputComponents.map((component) => (
-                                    <Link
-                                        key={component.slug}
-                                        href={`/components/${component.slug}`}
-                                    >
-                                        <span>{component.name}</span>
-                                        {component.status === "new" && (
-                                            <i>New</i>
-                                        )}
-                                    </Link>
-                                ))}
+                                <SidebarNavigationSection
+                                    docSection={inputComponents}
+                                />
+                                <SidebarNavigationSection
+                                    docSection={overlayComponents}
+                                />
+                                <SidebarNavigationSection
+                                    docSection={compositionComponents}
+                                />
+                                <SidebarNavigationSection
+                                    docSection={feedbackComponents}
+                                />
                             </nav>
                         </div>
                     </div>

@@ -22,6 +22,7 @@ import { Tooltip } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { Button, Tooltip } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoTooltip() {

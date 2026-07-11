@@ -33,6 +33,7 @@ import { Alert } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { Alert } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoAlert() {

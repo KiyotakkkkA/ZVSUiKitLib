@@ -38,6 +38,7 @@ import { DataDisplay } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { Icon } from "@iconify/react";
 import { DataDisplay } from "@kiyotakkkka/zvs-uikit-lib";
 

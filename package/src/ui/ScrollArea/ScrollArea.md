@@ -22,6 +22,7 @@ import { ScrollArea } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { ScrollArea } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoScrollArea() {

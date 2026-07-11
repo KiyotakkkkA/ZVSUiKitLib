@@ -19,6 +19,7 @@ import { Loader } from "@kiyotakkkka/zvs-uikit-lib";
 ## Example
 
 ```tsx
+"use client";
 import { Loader } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoLoader() {

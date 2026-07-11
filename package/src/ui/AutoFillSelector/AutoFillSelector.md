@@ -95,6 +95,7 @@ Backspace removes the last selected value when the query is empty.
 ## Example
 
 ```tsx
+"use client";
 import { useState } from "react";
 import { AutoFillSelector } from "@kiyotakkkka/zvs-uikit-lib";
 

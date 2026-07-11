@@ -59,6 +59,7 @@ Only one column can be sorted at a time. Clicking a sortable column cycles throu
 ## Example
 
 ```tsx
+"use client";
 import { Badge, Table, type TableColumn } from "@kiyotakkkka/zvs-uikit-lib";
 
 type InvoiceRow = {
