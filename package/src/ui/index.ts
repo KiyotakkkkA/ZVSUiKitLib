@@ -19,7 +19,7 @@ export * from "./SelectNative";
 export * from "./Dropdown";
 export * from "./Floating";
 export * from "./Tooltip";
-export * from "./Accordeon";
+export * from "./Accordion";
 export * from "./AutoFillSelector";
 export * from "./TreeView";
 export * from "./Switcher";

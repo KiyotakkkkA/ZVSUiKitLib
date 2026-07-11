@@ -125,7 +125,7 @@ For correct component rendering, use this palette (or override the same tokens):
 
 | Component        | Purpose                                                                   | Documentation                                                     |
 | ---------------- | ------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `Accordeon`      | Expandable section with animated height.                                  | [Accordeon](package/src/ui/Accordeon/Accordeon.md)                |
+| `Accordion`      | Expandable section with animated height.                                  | [Accordion](package/src/ui/Accordion/Accordion.md)                |
 | `Breadcrumbs`    | Navigation trail for current page location.                               | [Breadcrumbs](package/src/ui/Breadcrumbs/Breadcrumbs.md)          |
 | `Card`           | Container with optional header/body/footer sections.                      | [Card](package/src/ui/Card/Card.md)                               |
 | `Carousel`       | Image or content carousel with navigation and optional auto-scroll.       | [Carousel](package/src/ui/Carousel/Carousel.md)                   |

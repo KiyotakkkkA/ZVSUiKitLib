@@ -202,20 +202,6 @@ export default function InputDatePage() {
                         />
                     </SectionAPI.Table>
                 </SectionAPI.Group>
-
-                <SectionAPI.Group
-                    title="Compound structures"
-                    badge="Supported pattern"
-                    description="For compound components, add one Group per public member, for example Dropdown.Trigger or Dropdown.Menu."
-                >
-                    <SectionAPI.Table>
-                        <SectionAPI.Prop
-                            name="Member props"
-                            type="ComponentProps"
-                            description="Each compound member keeps an independent typed table."
-                        />
-                    </SectionAPI.Table>
-                </SectionAPI.Group>
             </SectionAPI>
         </DocumentationPage>
     );

@@ -2,35 +2,35 @@ import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 import { cn } from "../../lib/utils";
 import type {
-    AccordeonContentProps,
-    AccordeonContextValue,
-    AccordeonProps,
-    AccordeonSummaryProps,
+    AccordionContentProps,
+    AccordionContextValue,
+    AccordionProps,
+    AccordionSummaryProps,
 } from "./types";
 
-const AccordeonContext = createContext<AccordeonContextValue | null>(null);
+const AccordionContext = createContext<AccordionContextValue | null>(null);
 
-function useAccordeonContext() {
-    const context = useContext(AccordeonContext);
+function useAccordionContext() {
+    const context = useContext(AccordionContext);
 
     if (!context) {
         throw new Error(
-            "Accordeon.Summary и Accordeon.Content должны использоваться внутри Accordeon.",
+            "Accordion.Summary и Accordion.Content должны использоваться внутри Accordion.",
         );
     }
 
     return context;
 }
 
-function AccordeonRoot({
+function AccordionRoot({
     defaultOpen = false,
     className,
     children,
-}: AccordeonProps) {
+}: AccordionProps) {
     const [isOpen, setIsOpen] = useState(defaultOpen);
 
     return (
-        <AccordeonContext.Provider value={{ isOpen, setIsOpen }}>
+        <AccordionContext.Provider value={{ isOpen, setIsOpen }}>
             <div
                 className={cn(
                     "rounded-xl border border-main-700/70 bg-main-900/50",
@@ -39,12 +39,12 @@ function AccordeonRoot({
             >
                 {children}
             </div>
-        </AccordeonContext.Provider>
+        </AccordionContext.Provider>
     );
 }
 
-function AccordeonSummary({ className, children }: AccordeonSummaryProps) {
-    const { isOpen, setIsOpen } = useAccordeonContext();
+function AccordionSummary({ className, children }: AccordionSummaryProps) {
+    const { isOpen, setIsOpen } = useAccordionContext();
 
     return (
         <button
@@ -69,8 +69,8 @@ function AccordeonSummary({ className, children }: AccordeonSummaryProps) {
     );
 }
 
-function AccordeonContent({ className, children }: AccordeonContentProps) {
-    const { isOpen } = useAccordeonContext();
+function AccordionContent({ className, children }: AccordionContentProps) {
+    const { isOpen } = useAccordionContext();
     const contentRef = useRef<HTMLDivElement>(null);
     const [contentHeight, setContentHeight] = useState(0);
 
@@ -110,7 +110,7 @@ function AccordeonContent({ className, children }: AccordeonContentProps) {
     );
 }
 
-export const Accordeon = Object.assign(AccordeonRoot, {
-    Summary: AccordeonSummary,
-    Content: AccordeonContent,
+export const Accordion = Object.assign(AccordionRoot, {
+    Summary: AccordionSummary,
+    Content: AccordionContent,
 });

@@ -1,4 +1,4 @@
-# Accordeon
+# Accordion
 
 ## Purpose
 
@@ -7,7 +7,7 @@ Collapsible section with compound API and animated content height.
 ## Import
 
 ```tsx
-import { Accordeon } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Accordion } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ```
 
 ## Props
@@ -22,17 +22,17 @@ import { Accordeon } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 | Component           | Description                            |
 | ------------------- | -------------------------------------- |
-| `Accordeon.Summary` | Clickable header that toggles content. |
-| `Accordeon.Content` | Expandable content section.            |
+| `Accordion.Summary` | Clickable header that toggles content. |
+| `Accordion.Content` | Expandable content section.            |
 
-### `Accordeon.Summary`
+### `Accordion.Summary`
 
 | Prop      | Type      | Default | Description               |
 | --------- | --------- | ------- | ------------------------- |
 | className | string    | -       | Header button classes.    |
 | children  | ReactNode | -       | Clickable header content. |
 
-### `Accordeon.Content`
+### `Accordion.Content`
 
 | Prop      | Type      | Default | Description                 |
 | --------- | --------- | ------- | --------------------------- |
@@ -42,17 +42,17 @@ import { Accordeon } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { Accordeon } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Accordion } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
-export function DemoAccordeon() {
+export function DemoAccordion() {
     return (
-        <Accordeon defaultOpen>
-            <Accordeon.Summary className="text-main-100">
+        <Accordion defaultOpen>
+            <Accordion.Summary className="text-main-100">
                 <span className="text-xs font-semibold">Настройки</span>
-            </Accordeon.Summary>
+            </Accordion.Summary>
 
-            <Accordeon.Content>Содержимое секции</Accordeon.Content>
-        </Accordeon>
+            <Accordion.Content>Содержимое секции</Accordion.Content>
+        </Accordion>
     );
 }
 ```

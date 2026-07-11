@@ -8,20 +8,20 @@ import type {
 type DivClassName = ComponentPropsWithoutRef<"div">["className"];
 type ButtonClassName = ComponentPropsWithoutRef<"button">["className"];
 
-export type AccordeonProps = PropsWithChildren<{
+export type AccordionProps = PropsWithChildren<{
     defaultOpen?: boolean;
     className?: DivClassName;
 }>;
 
-export type AccordeonSummaryProps = PropsWithChildren<{
+export type AccordionSummaryProps = PropsWithChildren<{
     className?: ButtonClassName;
 }>;
 
-export type AccordeonContentProps = PropsWithChildren<{
+export type AccordionContentProps = PropsWithChildren<{
     className?: DivClassName;
 }>;
 
-export type AccordeonContextValue = {
+export type AccordionContextValue = {
     isOpen: boolean;
     setIsOpen: Dispatch<SetStateAction<boolean>>;
 };
