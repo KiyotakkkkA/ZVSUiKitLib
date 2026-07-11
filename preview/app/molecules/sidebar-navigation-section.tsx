@@ -8,7 +8,7 @@ export function SidebarNavigationSection({
 }) {
     return (
         <div className="sidebar-section ml-2 mt-2">
-            <span className="sidebar-label text-lime-400! font-medium">
+            <span className="sidebar-label text-accent-medium! font-medium">
                 {docSection.title}
             </span>
             {docSection.components.map((component) => (

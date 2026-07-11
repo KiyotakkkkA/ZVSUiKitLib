@@ -4,10 +4,12 @@ export type ButtonVariants =
     | "ghost"
     | "primary"
     | "secondary"
+    | "tertiary"
     | "danger"
     | "success"
     | "warning"
     | "primary-outline"
+    | "tertiary-outline"
     | "danger-outline"
     | "success-outline"
     | "warning-outline";

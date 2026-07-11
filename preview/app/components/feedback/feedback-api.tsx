@@ -22,7 +22,7 @@ const groups: Record<string, P[]> = {
     Alert: [
         p(
             "variant",
-            '"neutral" | "success" | "warning" | "danger" | "info"',
+            '"neutral" | "tertiary" | "success" | "warning" | "danger" | "info"',
             "Visual status variant.",
             "neutral",
         ),

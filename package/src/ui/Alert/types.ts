@@ -9,7 +9,7 @@ type ParagraphClassName = ComponentPropsWithoutRef<"p">["className"];
 type SpanClassName = ComponentPropsWithoutRef<"span">["className"];
 
 export type AlertVariant =
-    "neutral" | "success" | "warning" | "danger" | "info";
+    "neutral" | "tertiary" | "success" | "warning" | "danger" | "info";
 
 export type AlertClassNames = {
     icon?: SpanClassName;

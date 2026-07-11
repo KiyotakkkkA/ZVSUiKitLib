@@ -8,12 +8,16 @@ const variants: Record<ButtonVariants, string> = {
     primary:
         "bg-main-50 hover:opacity-80 border-transparent text-main-900 transition-opacity",
     secondary: "bg-main-700 hover:bg-main-600 border-transparent text-main-50",
+    tertiary:
+        "bg-accent-medium hover:bg-accent-dark border-transparent text-main-900",
     danger: "bg-red-500 hover:bg-red-600 border-transparent text-main-50",
     success: "bg-green-500 hover:bg-green-600 border-transparent text-main-50",
     warning:
         "bg-yellow-500 hover:bg-yellow-600 border-transparent text-main-50",
     "primary-outline":
         "bg-transparent hover:bg-main-50 hover:text-main-900 border-main-50 text-main-50",
+    "tertiary-outline":
+        "bg-transparent hover:bg-accent-medium hover:text-main-900 border-accent-medium text-accent-medium",
     "danger-outline":
         "bg-transparent hover:bg-red-500 hover:text-main-900 border-red-500 text-red-500",
     "success-outline":

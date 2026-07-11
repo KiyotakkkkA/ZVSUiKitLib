@@ -123,15 +123,6 @@ export default function Home() {
                                 </button>
                             </div>
                         </div>
-                        <div className="floating-token token-radius">
-                            <span>radius</span>
-                            <strong>8px</strong>
-                        </div>
-                        <div className="floating-token token-color">
-                            <i />
-                            <span>main-400</span>
-                            <strong>#a3a3a3</strong>
-                        </div>
                     </div>
                 </section>
 

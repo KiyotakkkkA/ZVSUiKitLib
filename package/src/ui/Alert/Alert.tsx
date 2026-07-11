@@ -11,6 +11,11 @@ const variantStyles: Record<
         icon: "text-main-300",
         defaultIcon: "mdi:information-outline",
     },
+    tertiary: {
+        box: "border-accent-dark/50 bg-accent-medium/10 text-accent-light",
+        icon: "text-accent-medium",
+        defaultIcon: "mdi:sparkles-outline",
+    },
     success: {
         box: "border-emerald-700/50 bg-emerald-900/25 text-emerald-100",
         icon: "text-emerald-300",
