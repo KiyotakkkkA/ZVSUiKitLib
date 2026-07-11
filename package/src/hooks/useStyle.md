@@ -37,7 +37,7 @@ const draculaPalette = {
 # Example
 
 ```tsx
-import { Button } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Button } from "@kiyotakkkka/zvs-uikit-lib";
 
 const draculaPalette = {
     50: "rgb(248 248 242)",

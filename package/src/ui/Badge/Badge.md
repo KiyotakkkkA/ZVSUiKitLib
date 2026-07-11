@@ -7,7 +7,7 @@ Compact status indicator.
 ## Import
 
 ```tsx
-import { Badge } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Badge } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -21,7 +21,7 @@ import { Badge } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { Badge } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Badge } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoBadge() {
     return <Badge variant="success">Active</Badge>;

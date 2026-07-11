@@ -7,7 +7,7 @@ Boolean checkbox control (`true/false`).
 ## Import
 
 ```tsx
-import { InputCheckBox } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputCheckBox } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -31,7 +31,7 @@ import { InputCheckBox } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { InputCheckBox } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputCheckBox } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 
 export function DemoInputCheckBox() {

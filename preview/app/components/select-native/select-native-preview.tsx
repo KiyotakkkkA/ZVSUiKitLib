@@ -1,4 +1,4 @@
-import { SelectNative } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { SelectNative } from "@kiyotakkkka/zvs-uikit-lib";
 export function SelectNativePreview() {
     return (
         <div className="w-full p-6">

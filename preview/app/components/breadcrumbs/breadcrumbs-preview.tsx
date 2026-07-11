@@ -1,5 +1,5 @@
 "use client";
-import { Breadcrumbs } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Breadcrumbs } from "@kiyotakkkka/zvs-uikit-lib";
 export function BreadcrumbsPreview() {
     return (
         <Breadcrumbs>

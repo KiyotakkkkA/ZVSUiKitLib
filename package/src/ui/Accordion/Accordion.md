@@ -7,7 +7,7 @@ Collapsible section with compound API and animated content height.
 ## Import
 
 ```tsx
-import { Accordion } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Accordion } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -42,7 +42,7 @@ import { Accordion } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { Accordion } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Accordion } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoAccordion() {
     return (

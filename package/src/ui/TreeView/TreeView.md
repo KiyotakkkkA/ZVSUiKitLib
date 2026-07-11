@@ -7,7 +7,7 @@ Hierarchical list with optional virtualization mode.
 ## Import
 
 ```tsx
-import { TreeView } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { TreeView } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -77,7 +77,7 @@ import { TreeView } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { TreeView } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { TreeView } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoTreeView() {
     return (

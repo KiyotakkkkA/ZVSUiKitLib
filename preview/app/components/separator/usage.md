@@ -1,5 +1,5 @@
 ```tsx
-import { Separator } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Separator } from "@kiyotakkkka/zvs-uikit-lib";
 export function SeparatorExample() {
     return (
         <div className="w-96">

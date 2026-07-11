@@ -1,5 +1,5 @@
 "use client";
-import { Button, Modal } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Button, Modal } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 export function ModalPreview() {
     const [open, setOpen] = useState(false);

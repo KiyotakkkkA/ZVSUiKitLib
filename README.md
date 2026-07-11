@@ -1,24 +1,5 @@
 # UI Kit Installation
 
-## Monorepo development
-
-Install dependencies and run the documentation site from the repository root:
-
-```bash
-npm install
-npm run dev
-```
-
-The root scripts orchestrate both workspaces:
-
-```bash
-npm run dev:package  # watch the library bundle
-npm run typecheck    # validate the library and documentation app
-npm run lint         # lint both workspaces
-npm run build        # build the package and production documentation app
-npm run check        # run the complete CI validation pipeline
-```
-
 ## Step 1 - Install package
 
 ```bash
@@ -86,7 +67,7 @@ For correct component rendering, use this palette (or override the same tokens):
 
 <a id="components"></a>
 
-### Components (@kiyotakkkka/zvs-uikit-lib/ui)
+### Components (@kiyotakkkka/zvs-uikit-lib)
 
 ### Components: Input & Form Controls
 
@@ -152,9 +133,26 @@ For correct component rendering, use this palette (or override the same tokens):
 | `ProgressBar` | Progress indicator with optional label and value. | [ProgressBar](package/src/ui/ProgressBar/ProgressBar.md) |
 | `Skeleton`    | Placeholder block for loading content.            | [Skeleton](package/src/ui/Skeleton/Skeleton.md)          |
 
+While using Next.js you can import some components like SSR-friendly from `@kiyotakkkka/zvs-uikit-lib/server`:
+
+List of SSR-friendly components:
+
+- Badge
+- Button
+- Card
+- DataDisplay
+- EmptyState
+- InputBig
+- Loader
+- ProgressBar
+- ScrollArea
+- Separator
+- Skeleton
+- Tooltip
+
 <a id="hooks"></a>
 
-### Hooks (@kiyotakkkka/zvs-uikit-lib/hooks)
+### Hooks (@kiyotakkkka/zvs-uikit-lib)
 
 | Hook        | Purpose                                                         | Documentation                               | Returns                                                                             |
 | ----------- | --------------------------------------------------------------- | ------------------------------------------- | ----------------------------------------------------------------------------------- |
@@ -163,7 +161,7 @@ For correct component rendering, use this palette (or override the same tokens):
 
 <a id="providers"></a>
 
-### Providers (@kiyotakkkka/zvs-uikit-lib/providers)
+### Providers (@kiyotakkkka/zvs-uikit-lib)
 
 | Provider        | Purpose                           |
 | --------------- | --------------------------------- |

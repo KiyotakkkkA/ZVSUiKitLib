@@ -7,7 +7,7 @@ Composable container with optional header, content, and footer sections.
 ## Import
 
 ```tsx
-import { Card } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Card } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -65,7 +65,7 @@ import { Card } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { Card, Button } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Card, Button } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoCard() {
     return (

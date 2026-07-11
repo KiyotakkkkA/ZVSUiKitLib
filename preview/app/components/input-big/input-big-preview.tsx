@@ -1,5 +1,5 @@
 "use client";
-import { InputBig } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputBig } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 export function InputBigPreview() {
     const [v, setV] = useState("");

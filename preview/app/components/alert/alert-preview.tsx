@@ -1,5 +1,5 @@
 "use client";
-import { Alert } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Alert } from "@kiyotakkkka/zvs-uikit-lib";
 export function AlertPreview() {
     return (
         <div style={{ display: "grid", gap: 12 }}>

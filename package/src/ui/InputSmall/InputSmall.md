@@ -7,7 +7,7 @@ Compact single-line input. For `type="password"`, it includes a built-in show/hi
 ## Import
 
 ```tsx
-import { InputSmall } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputSmall } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -28,7 +28,7 @@ import { InputSmall } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { InputSmall } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputSmall } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 
 export function DemoInputSmall() {

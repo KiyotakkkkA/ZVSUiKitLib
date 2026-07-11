@@ -7,7 +7,7 @@ Base button with color variants and shape options.
 ## Import
 
 ```tsx
-import { Button } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Button } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -32,7 +32,7 @@ import { Button } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { Button } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Button } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoButton() {
     return (

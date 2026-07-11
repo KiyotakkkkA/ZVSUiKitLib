@@ -1,5 +1,5 @@
 "use client";
-import { Button, EmptyState } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Button, EmptyState } from "@kiyotakkkka/zvs-uikit-lib";
 export function EmptyStatePreview() {
     return (
         <EmptyState

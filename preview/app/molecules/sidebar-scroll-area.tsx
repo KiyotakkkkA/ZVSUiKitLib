@@ -1,6 +1,6 @@
 "use client";
 
-import { ScrollArea } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { ScrollArea } from "@kiyotakkkka/zvs-uikit-lib";
 import type { ReactNode } from "react";
 
 export function SidebarScrollArea({

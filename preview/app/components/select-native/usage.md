@@ -1,5 +1,5 @@
 ```tsx
-import { SelectNative } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { SelectNative } from "@kiyotakkkka/zvs-uikit-lib";
 export function SelectNativeExample() {
     return (
         <SelectNative

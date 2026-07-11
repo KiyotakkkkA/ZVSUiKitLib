@@ -1,4 +1,4 @@
-import { Separator } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Separator } from "@kiyotakkkka/zvs-uikit-lib";
 export function SeparatorPreview() {
     return (
         <div className="w-full p-6">

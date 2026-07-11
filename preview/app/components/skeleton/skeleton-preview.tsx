@@ -1,4 +1,4 @@
-import { Skeleton } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Skeleton } from "@kiyotakkkka/zvs-uikit-lib";
 export function SkeletonPreview() {
     return (
         <div className="w-full p-6">

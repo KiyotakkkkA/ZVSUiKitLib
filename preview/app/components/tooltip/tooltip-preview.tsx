@@ -1,4 +1,4 @@
-import { Tooltip, Button } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Tooltip, Button } from "@kiyotakkkka/zvs-uikit-lib";
 export function TooltipPreview() {
     return (
         <div className="w-full p-6">

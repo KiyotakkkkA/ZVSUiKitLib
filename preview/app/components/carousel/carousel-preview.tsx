@@ -1,5 +1,5 @@
 "use client";
-import { Carousel } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Carousel } from "@kiyotakkkka/zvs-uikit-lib";
 const colors = ["#0f766e", "#7c3aed", "#be123c"];
 export function CarouselPreview() {
     return (

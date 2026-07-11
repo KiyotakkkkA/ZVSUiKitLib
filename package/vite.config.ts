@@ -20,23 +20,42 @@ const isExternal = (id: string) =>
     );
 
 export default defineConfig({
-    plugins: [react()],
     build: {
         emptyOutDir: true,
         copyPublicDir: false,
         lib: {
             entry: {
                 index: resolve(__dirname, "src/index.ts"),
-                ui: resolve(__dirname, "src/ui/index.ts"),
-                hooks: resolve(__dirname, "src/hooks/index.ts"),
-                providers: resolve(__dirname, "src/providers/index.ts"),
+                server: resolve(__dirname, "src/server.ts"),
+                styles: resolve(__dirname, "src/styles.ts"),
             },
             name: "ZvsUiKit",
             formats: ["es"],
             fileName: (_format, entryName) => `${entryName}.js`,
+            cssFileName: "zvs-uikit-lib",
         },
         rollupOptions: {
             external: isExternal,
+            output: {
+                entryFileNames: "[name].js",
+            },
         },
     },
+    plugins: [
+        react(),
+        {
+            name: "preserve-client-boundary",
+            enforce: "post",
+            renderChunk(code, chunk) {
+                if (chunk.isEntry && chunk.name === "index") {
+                    return {
+                        code: `"use client";\n${code}`,
+                        map: null,
+                    };
+                }
+
+                return null;
+            },
+        },
+    ],
 });

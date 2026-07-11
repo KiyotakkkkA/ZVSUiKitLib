@@ -1,6 +1,6 @@
 ```tsx
 "use client";
-import { Tabs } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Tabs } from "@kiyotakkkka/zvs-uikit-lib";
 export function TabsExample() {
     return (
         <Tabs

@@ -7,7 +7,7 @@ Multiline text input based on `textarea`.
 ## Import
 
 ```tsx
-import { InputBig } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputBig } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -19,7 +19,7 @@ import { InputBig } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { InputBig } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputBig } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 
 export function DemoInputBig() {

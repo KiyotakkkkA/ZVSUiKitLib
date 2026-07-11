@@ -7,7 +7,7 @@ Centered placeholder for empty lists, missing content, or first-run states.
 ## Import
 
 ```tsx
-import { EmptyState } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { EmptyState } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -33,7 +33,7 @@ import { EmptyState } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { Button, EmptyState } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Button, EmptyState } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoEmptyState() {
     return (

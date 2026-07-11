@@ -1,5 +1,5 @@
 "use client";
-import { ContextMenu } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { ContextMenu } from "@kiyotakkkka/zvs-uikit-lib";
 export function ContextMenuPreview() {
     return (
         <ContextMenu>

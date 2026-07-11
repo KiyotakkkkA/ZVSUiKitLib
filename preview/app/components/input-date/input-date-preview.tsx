@@ -1,6 +1,6 @@
 "use client";
 
-import { InputDate } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputDate } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 
 export function InputDatePreview() {

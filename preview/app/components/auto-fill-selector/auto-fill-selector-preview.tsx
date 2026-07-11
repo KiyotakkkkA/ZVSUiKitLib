@@ -1,5 +1,5 @@
 "use client";
-import { AutoFillSelector } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { AutoFillSelector } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 const options = [
     { value: "react", label: "React", description: "UI library" },

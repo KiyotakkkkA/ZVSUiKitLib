@@ -7,7 +7,7 @@ Date input with popup calendar, clear action, and controlled/uncontrolled modes.
 ## Import
 
 ```tsx
-import { InputDate } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputDate } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -48,7 +48,7 @@ import { InputDate } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { InputDate } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputDate } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 
 export function DemoInputDate() {

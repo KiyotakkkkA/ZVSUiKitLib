@@ -1,5 +1,3 @@
-import "./index.css";
-
 export * from "./Button";
 export * from "./Breadcrumbs";
 export * from "./ContextMenu";

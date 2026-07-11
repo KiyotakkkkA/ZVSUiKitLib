@@ -7,7 +7,7 @@ Compact list for displaying labeled data rows.
 ## Import
 
 ```tsx
-import { DataDisplay } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { DataDisplay } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -39,7 +39,7 @@ import { DataDisplay } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ```tsx
 import { Icon } from "@iconify/react";
-import { DataDisplay } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { DataDisplay } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoDataDisplay() {
     return (

@@ -1,5 +1,5 @@
 "use client";
-import { InputCheckBox } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputCheckBox } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 export function InputCheckBoxPreview() {
     const [v, setV] = useState(true);

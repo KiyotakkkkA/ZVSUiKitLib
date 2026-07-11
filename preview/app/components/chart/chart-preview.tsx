@@ -1,5 +1,5 @@
 "use client";
-import { Chart } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Chart } from "@kiyotakkkka/zvs-uikit-lib";
 
 const weeklyActivityData = [
     { date: "Mon", users: 120, requests: 340 },

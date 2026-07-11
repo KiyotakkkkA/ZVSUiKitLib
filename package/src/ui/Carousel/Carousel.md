@@ -7,7 +7,7 @@ Image or content carousel with arrow navigation, dot navigation, optional loopin
 ## Import
 
 ```tsx
-import { Carousel } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Carousel } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -38,7 +38,7 @@ import { Carousel } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { Carousel } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Carousel } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function CarouselPreview() {
     return (

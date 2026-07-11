@@ -7,7 +7,7 @@ Composable multi-select with search, selected tags, filtered options, and a drop
 ## Import
 
 ```tsx
-import { AutoFillSelector } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { AutoFillSelector } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Types
@@ -96,7 +96,7 @@ Backspace removes the last selected value when the query is empty.
 
 ```tsx
 import { useState } from "react";
-import { AutoFillSelector } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { AutoFillSelector } from "@kiyotakkkka/zvs-uikit-lib";
 
 const options = [
     { value: "react", label: "React", description: "UI library" },

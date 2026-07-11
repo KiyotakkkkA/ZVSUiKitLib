@@ -1,5 +1,5 @@
 "use client";
-import { DataDisplay, Badge } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { DataDisplay, Badge } from "@kiyotakkkka/zvs-uikit-lib";
 export function DataDisplayPreview() {
     return (
         <DataDisplay>

@@ -1,5 +1,5 @@
 "use client";
-import { InputDropZone } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputDropZone } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 export function InputDropZonePreview() {
     const [file, setFile] = useState<File | null>(null);

@@ -1,6 +1,6 @@
 ```tsx
 "use client";
-import { Select } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Select } from "@kiyotakkkka/zvs-uikit-lib";
 export function SelectExample() {
     return (
         <Select

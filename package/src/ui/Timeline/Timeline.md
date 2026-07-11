@@ -7,7 +7,7 @@ Compound timeline for ordered events with icon markers.
 ## Import
 
 ```tsx
-import { Timeline } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Timeline } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Components
@@ -23,7 +23,7 @@ import { Timeline } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { Timeline } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Timeline } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoTimeline() {
     return (

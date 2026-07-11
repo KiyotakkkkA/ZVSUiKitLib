@@ -1,6 +1,6 @@
 ```tsx
 "use client";
-import { SlidedPanel } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { SlidedPanel } from "@kiyotakkkka/zvs-uikit-lib";
 export function SlidedPanelExample() {
     return (
         <SlidedPanel open={false} onClose={() => {}}>

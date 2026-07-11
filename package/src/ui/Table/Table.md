@@ -7,7 +7,7 @@ Typed table with column-based rendering and per-column sorting modes.
 ## Import
 
 ```tsx
-import { Table } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Table } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -59,7 +59,7 @@ Only one column can be sorted at a time. Clicking a sortable column cycles throu
 ## Example
 
 ```tsx
-import { Badge, Table, type TableColumn } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Badge, Table, type TableColumn } from "@kiyotakkkka/zvs-uikit-lib";
 
 type InvoiceRow = {
     id: string;

@@ -7,7 +7,7 @@ Calendar component with date selection, date limits, and custom day rendering.
 ## Import
 
 ```tsx
-import { Calendar } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Calendar } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -48,7 +48,7 @@ import { Calendar } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { Calendar } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Calendar } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 
 export function DemoCalendar() {

@@ -7,7 +7,7 @@ Segmented input for PIN, OTP, or short confirmation codes.
 ## Import
 
 ```tsx
-import { InputPins } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputPins } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -27,7 +27,7 @@ import { InputPins } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ```tsx
 import { useState } from "react";
-import { InputPins } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputPins } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoInputPins() {
     const [pin, setPin] = useState("");

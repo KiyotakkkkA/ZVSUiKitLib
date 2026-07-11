@@ -7,7 +7,7 @@ Notification block with variant, title, and content.
 ## Import
 
 ```tsx
-import { Alert } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Alert } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -33,7 +33,7 @@ import { Alert } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { Alert } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Alert } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoAlert() {
     return (

@@ -1,5 +1,5 @@
 ```tsx
-import { TreeView } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { TreeView } from "@kiyotakkkka/zvs-uikit-lib";
 export function TreeViewExample() {
     return (
         <TreeView>

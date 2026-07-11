@@ -1,5 +1,5 @@
 "use client";
-import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib";
 export function DropdownPreview() {
     return (
         <Dropdown>

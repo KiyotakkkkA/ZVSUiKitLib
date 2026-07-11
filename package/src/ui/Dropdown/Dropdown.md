@@ -7,7 +7,7 @@ Generic dropdown popup container based on the native HTML popover API, with trig
 ## Import
 
 ```tsx
-import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -73,7 +73,7 @@ import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoDropdown() {
     return (
@@ -98,7 +98,7 @@ export function DemoDropdown() {
 
 ```tsx
 import { useRef } from "react";
-import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoDropdownAnchor() {
     const inputRef = useRef<HTMLInputElement>(null);
@@ -129,7 +129,7 @@ export function DemoDropdownAnchor() {
 ### Render example
 
 ```tsx
-import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoDropdownState() {
     return (

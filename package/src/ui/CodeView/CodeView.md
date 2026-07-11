@@ -7,7 +7,7 @@ Code viewer with syntax highlighting, optional copy/download actions, and scroll
 ## Import
 
 ```tsx
-import { CodeView } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { CodeView } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -61,7 +61,7 @@ import { CodeView } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { CodeView } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { CodeView } from "@kiyotakkkka/zvs-uikit-lib";
 
 const code = `function sum(a, b) {\n  return a + b;\n}`;
 

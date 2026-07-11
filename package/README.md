@@ -1,6 +1,6 @@
 # @kiyotakkkka/zvs-uikit-lib
 
-React UI kit with TypeScript, Tailwind CSS components, hooks, and providers.
+React UI kit with TypeScript components, hooks, and providers.
 
 ## Installation
 
@@ -8,32 +8,27 @@ React UI kit with TypeScript, Tailwind CSS components, hooks, and providers.
 npm install @kiyotakkkka/zvs-uikit-lib
 ```
 
-Import components and the generated stylesheet:
+Import client components and the generated stylesheet:
 
 ```tsx
-import { Button } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Calendar } from "@kiyotakkkka/zvs-uikit-lib";
 import "@kiyotakkkka/zvs-uikit-lib/styles.css";
 ```
 
-React and React DOM are peer dependencies and must be provided by the consuming
-application.
+The root entry is a React client boundary and exports all components, hooks,
+and providers. React and React DOM are peer dependencies and must be provided
+by the consuming application.
 
-## Tailwind CSS 4
+Server Components can import the server-safe component subset separately:
 
-Tailwind does not scan dependencies by default. Add the library output as a
-source in the CSS file that imports Tailwind:
-
-```css
-@import "tailwindcss";
-@source "../node_modules/@kiyotakkkka/zvs-uikit-lib/dist/**/*.{js,cjs,mjs,ts,tsx,jsx}";
+```tsx
+import { Badge, Button, Card } from "@kiyotakkkka/zvs-uikit-lib/server";
 ```
 
 Available entry points:
 
 - `@kiyotakkkka/zvs-uikit-lib`
-- `@kiyotakkkka/zvs-uikit-lib/ui`
-- `@kiyotakkkka/zvs-uikit-lib/hooks`
-- `@kiyotakkkka/zvs-uikit-lib/providers`
+- `@kiyotakkkka/zvs-uikit-lib/server`
 - `@kiyotakkkka/zvs-uikit-lib/styles.css`
 
 ## License

@@ -1,4 +1,4 @@
-import { Timeline } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Timeline } from "@kiyotakkkka/zvs-uikit-lib";
 export function TimelinePreview() {
     return (
         <div className="w-full p-6">

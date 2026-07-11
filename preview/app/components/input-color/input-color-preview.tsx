@@ -1,5 +1,5 @@
 "use client";
-import { InputColor } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputColor } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 export function InputColorPreview() {
     const [v, setV] = useState("#6366F1");

@@ -9,7 +9,7 @@ Reusable line/area/bar chart wrapper around Recharts with a consistent UI shell.
 ## Import
 
 ```tsx
-import { Chart } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Chart } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -82,7 +82,7 @@ import { Chart } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { Chart } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Chart } from "@kiyotakkkka/zvs-uikit-lib";
 
 const weeklyActivityData = [
     { date: "Mon", users: 120, requests: 340 },

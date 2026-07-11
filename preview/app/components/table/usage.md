@@ -1,5 +1,5 @@
 ```tsx
-import { Table } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Table } from "@kiyotakkkka/zvs-uikit-lib";
 export function TableExample() {
     return (
         <Table

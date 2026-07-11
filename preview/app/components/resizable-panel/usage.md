@@ -1,5 +1,5 @@
 ```tsx
-import { ResizablePanel } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { ResizablePanel } from "@kiyotakkkka/zvs-uikit-lib";
 export function ResizablePanelExample() {
     return (
         <ResizablePanel defaultSize={220} className="h-64 w-full border">

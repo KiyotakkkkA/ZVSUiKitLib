@@ -7,7 +7,7 @@ Line-style tabs for switching between related views.
 ## Import
 
 ```tsx
-import { Tabs } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Tabs } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -25,7 +25,7 @@ import { Tabs } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ```tsx
 import { useState } from "react";
-import { Tabs } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Tabs } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoTabs() {
     const [tab, setTab] = useState("account");

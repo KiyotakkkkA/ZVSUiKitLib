@@ -7,7 +7,7 @@ Small hover/focus label attached to a wrapped element.
 ## Import
 
 ```tsx
-import { Tooltip } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Tooltip } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -22,7 +22,7 @@ import { Tooltip } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { Button, Tooltip } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Button, Tooltip } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoTooltip() {
     return (

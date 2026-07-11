@@ -7,7 +7,7 @@ Placeholder block for content that is loading.
 ## Import
 
 ```tsx
-import { Skeleton } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Skeleton } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -24,7 +24,7 @@ Also accepts native `div` attributes.
 ## Example
 
 ```tsx
-import { Skeleton } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Skeleton } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoSkeleton() {
     return (

@@ -7,7 +7,7 @@ Decorative horizontal separator with icon and center label.
 ## Import
 
 ```tsx
-import { PrettyBR } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { PrettyBR } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -31,7 +31,7 @@ import { PrettyBR } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { PrettyBR } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { PrettyBR } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoPrettyBR() {
     return <PrettyBR label="Main block" icon="mdi:star-outline" />;

@@ -1,5 +1,5 @@
 "use client";
-import { Button, Floating } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Button, Floating } from "@kiyotakkkka/zvs-uikit-lib";
 export function FloatingPreview() {
     return (
         <Floating anchor="bottom-center">

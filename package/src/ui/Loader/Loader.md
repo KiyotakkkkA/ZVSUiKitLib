@@ -7,7 +7,7 @@ Minimal loading spinner.
 ## Import
 
 ```tsx
-import { Loader } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Loader } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -19,7 +19,7 @@ import { Loader } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { Loader } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Loader } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoLoader() {
     return <Loader className="h-6 w-6" />;

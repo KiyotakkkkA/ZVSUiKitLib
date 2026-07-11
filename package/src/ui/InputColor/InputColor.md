@@ -7,7 +7,7 @@ Custom color picker with a saturation/brightness area, hue and alpha sliders, sc
 ## Import
 
 ```tsx
-import { InputColor } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputColor } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -55,7 +55,7 @@ The selected value is submitted through an underlying hidden input. Compatible n
 
 ```tsx
 import { useState } from "react";
-import { InputColor } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputColor } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoInputColor() {
     const [color, setColor] = useState("#8B5CF6");

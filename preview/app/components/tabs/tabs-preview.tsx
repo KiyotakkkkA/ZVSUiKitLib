@@ -1,5 +1,5 @@
 "use client";
-import { Tabs } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Tabs } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 export function TabsPreview() {
     const [value, setValue] = useState("account");

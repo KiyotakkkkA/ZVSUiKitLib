@@ -1,5 +1,5 @@
 "use client";
-import { Select } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Select } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 export function SelectPreview() {
     const [value, setValue] = useState("design");

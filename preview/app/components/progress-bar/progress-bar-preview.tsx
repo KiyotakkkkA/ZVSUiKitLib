@@ -1,4 +1,4 @@
-import { ProgressBar } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { ProgressBar } from "@kiyotakkkka/zvs-uikit-lib";
 export function ProgressBarPreview() {
     return (
         <div className="w-full p-6">

@@ -1,5 +1,5 @@
 "use client";
-import { Button } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Button } from "@kiyotakkkka/zvs-uikit-lib";
 export function ButtonPreview() {
     return (
         <div className="min-w-150 p-4 space-y-2">

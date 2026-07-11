@@ -7,7 +7,7 @@ Styled native `select` control for cases where browser-native behavior is prefer
 ## Import
 
 ```tsx
-import { SelectNative } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { SelectNative } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -26,7 +26,7 @@ Native select attributes like `value`, `defaultValue`, `disabled`, and `name` ar
 
 ```tsx
 import { useState } from "react";
-import { SelectNative } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { SelectNative } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoSelectNative() {
     const [value, setValue] = useState("gray");

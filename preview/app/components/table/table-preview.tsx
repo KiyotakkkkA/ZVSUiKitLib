@@ -1,4 +1,4 @@
-import { Table } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Table } from "@kiyotakkkka/zvs-uikit-lib";
 export function TablePreview() {
     return (
         <div className="w-full p-6">

@@ -7,7 +7,7 @@ Horizontal or vertical visual separator.
 ## Import
 
 ```tsx
-import { Separator } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Separator } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -22,7 +22,7 @@ Extends `HTMLAttributes<HTMLDivElement>`.
 ## Example
 
 ```tsx
-import { Separator } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Separator } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoSeparator() {
     return <Separator className="my-4" />;

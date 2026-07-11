@@ -1,5 +1,5 @@
 ```tsx
-import { ScrollArea } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { ScrollArea } from "@kiyotakkkka/zvs-uikit-lib";
 export function ScrollAreaExample() {
     return (
         <ScrollArea className="h-48 w-full border p-4">

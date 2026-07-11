@@ -1,5 +1,5 @@
 "use client";
-import { InputRadio } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputRadio } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 export function InputRadioPreview() {
     const [v, setV] = useState("one");

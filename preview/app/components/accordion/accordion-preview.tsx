@@ -1,5 +1,5 @@
 "use client";
-import { Accordion } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Accordion } from "@kiyotakkkka/zvs-uikit-lib";
 export function AccordionPreview() {
     return (
         <Accordion defaultOpen>

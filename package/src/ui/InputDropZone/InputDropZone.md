@@ -7,7 +7,7 @@ File drop zone with click selection, drag-and-drop, preview rendering, and singl
 ## Import
 
 ```tsx
-import { InputDropZone } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputDropZone } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -40,7 +40,7 @@ import { InputDropZone } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ```tsx
 import { useState } from "react";
-import { InputDropZone } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputDropZone } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function InputDropZonePreview() {
     const [file, setFile] = useState<File | null>(null);
@@ -63,7 +63,7 @@ export function InputDropZonePreview() {
 
 ```tsx
 import { useState } from "react";
-import { InputDropZone } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputDropZone } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function MultipleInputDropZonePreview() {
     const [files, setFiles] = useState<File[]>([]);

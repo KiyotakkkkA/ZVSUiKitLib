@@ -1,5 +1,5 @@
 "use client";
-import { Switcher } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Switcher } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 export function SwitcherPreview() {
     const [value, setValue] = useState("all");

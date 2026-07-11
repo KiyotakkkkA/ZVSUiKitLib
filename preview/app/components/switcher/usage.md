@@ -1,6 +1,6 @@
 ```tsx
 "use client";
-import { Switcher } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Switcher } from "@kiyotakkkka/zvs-uikit-lib";
 export function SwitcherExample() {
     return (
         <Switcher

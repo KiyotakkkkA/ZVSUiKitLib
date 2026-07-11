@@ -1,5 +1,5 @@
 ```tsx
-import { Skeleton } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Skeleton } from "@kiyotakkkka/zvs-uikit-lib";
 export function SkeletonExample() {
     return (
         <div className="w-96 space-y-3">

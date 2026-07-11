@@ -7,7 +7,7 @@ Compound context menu opened from a right-click trigger.
 ## Import
 
 ```tsx
-import { ContextMenu } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { ContextMenu } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -84,7 +84,7 @@ import { ContextMenu } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { ContextMenu } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { ContextMenu } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoContextMenu() {
     return (

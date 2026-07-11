@@ -7,7 +7,7 @@ Slide-in edge panel (drawer) with four placements, overlay, Escape closing, opti
 ## Import
 
 ```tsx
-import { SlidedPanel } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { SlidedPanel } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -72,7 +72,7 @@ import { SlidedPanel } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ```tsx
 import { useState } from "react";
-import { SlidedPanel, Button } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { SlidedPanel, Button } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoSlidedPanel() {
     const [open, setOpen] = useState(false);

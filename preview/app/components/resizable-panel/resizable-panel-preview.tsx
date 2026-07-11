@@ -1,4 +1,4 @@
-import { ResizablePanel } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { ResizablePanel } from "@kiyotakkkka/zvs-uikit-lib";
 export function ResizablePanelPreview() {
     return (
         <div className="w-full p-6">

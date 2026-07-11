@@ -7,7 +7,7 @@ Progress indicator with optional label and percentage value.
 ## Import
 
 ```tsx
-import { ProgressBar } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { ProgressBar } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -34,7 +34,7 @@ import { ProgressBar } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { ProgressBar } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { ProgressBar } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoProgressBar() {
     return <ProgressBar label="Upload" value={64} showValue />;

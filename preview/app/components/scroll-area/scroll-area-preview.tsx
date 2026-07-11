@@ -1,4 +1,4 @@
-import { ScrollArea } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { ScrollArea } from "@kiyotakkkka/zvs-uikit-lib";
 export function ScrollAreaPreview() {
     return (
         <div className="w-full p-6">

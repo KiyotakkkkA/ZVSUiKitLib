@@ -7,7 +7,7 @@ Controlled range input with a styled track, fill, thumb, and optional value labe
 ## Import
 
 ```tsx
-import { InputSlider } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputSlider } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -39,7 +39,7 @@ import { InputSlider } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ```tsx
 import { useState } from "react";
-import { InputSlider } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputSlider } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoInputSlider() {
     const [value, setValue] = useState(40);

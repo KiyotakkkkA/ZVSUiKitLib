@@ -7,7 +7,7 @@ Navigation trail for showing the current page location.
 ## Import
 
 ```tsx
-import { Breadcrumbs } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Breadcrumbs } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -36,7 +36,7 @@ import { Breadcrumbs } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { Breadcrumbs } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Breadcrumbs } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function BreadcrumbsPreview() {
     return (

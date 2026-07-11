@@ -1,5 +1,5 @@
 ```tsx
-import { InputSmall } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputSmall } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 
 export function EmailField() {

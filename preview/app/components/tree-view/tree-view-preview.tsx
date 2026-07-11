@@ -1,4 +1,4 @@
-import { TreeView } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { TreeView } from "@kiyotakkkka/zvs-uikit-lib";
 export function TreeViewPreview() {
     return (
         <div className="w-full p-6">

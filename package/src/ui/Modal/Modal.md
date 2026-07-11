@@ -7,7 +7,7 @@ A compound modal component rendered through a portal with support for closing by
 ## Import
 
 ```tsx
-import { Modal } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Modal } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -63,7 +63,7 @@ import { Modal } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { Modal, Button } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Modal, Button } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 
 export function DemoModal() {

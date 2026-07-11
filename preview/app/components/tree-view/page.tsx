@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+"use client";
 import {
     DocumentationPage,
     SectionAPI,
@@ -8,10 +8,7 @@ import {
 } from "../../molecules";
 import { TreeViewPreview } from "./tree-view-preview";
 import usage from "./usage.md";
-export const metadata: Metadata = {
-    title: "TreeView",
-    description: "Hierarchical and virtualized tree.",
-};
+
 export default function Page() {
     return (
         <DocumentationPage>

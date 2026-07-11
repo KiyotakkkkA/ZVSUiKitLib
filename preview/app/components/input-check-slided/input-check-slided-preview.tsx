@@ -1,5 +1,5 @@
 "use client";
-import { InputCheckSlided } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputCheckSlided } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 export function InputCheckSlidedPreview() {
     const [v, setV] = useState(true);

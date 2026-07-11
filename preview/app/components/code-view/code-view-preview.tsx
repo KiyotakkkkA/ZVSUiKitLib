@@ -1,5 +1,5 @@
 "use client";
-import { CodeView } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { CodeView } from "@kiyotakkkka/zvs-uikit-lib";
 export function CodeViewPreview() {
     return (
         <CodeView

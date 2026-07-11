@@ -7,7 +7,7 @@ Boolean switch-style checkbox (`true/false`).
 ## Import
 
 ```tsx
-import { InputCheckSlided } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputCheckSlided } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -30,7 +30,7 @@ import { InputCheckSlided } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { InputCheckSlided } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputCheckSlided } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 
 export function DemoInputCheckSlided() {

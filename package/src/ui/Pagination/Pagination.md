@@ -7,7 +7,7 @@ Pagination control for server-side or externally managed lists, with page naviga
 ## Import
 
 ```tsx
-import { Pagination } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Pagination } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -29,7 +29,7 @@ import { Pagination } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ```tsx
 import { useState } from "react";
-import { Pagination } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Pagination } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function PaginationPreview() {
     const [page, setPage] = useState(1);

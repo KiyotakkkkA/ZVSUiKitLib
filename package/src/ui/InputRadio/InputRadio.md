@@ -7,7 +7,7 @@ Radio control for selecting one option from a group.
 ## Import
 
 ```tsx
-import { InputRadio } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputRadio } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -31,7 +31,7 @@ import { InputRadio } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { InputRadio } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputRadio } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 
 export function DemoInputRadio() {

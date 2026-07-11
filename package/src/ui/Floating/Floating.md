@@ -7,7 +7,7 @@ Compound hover/focus panel attached to a trigger element.
 ## Import
 
 ```tsx
-import { Floating } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Floating } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -44,7 +44,7 @@ The root also accepts standard `HTMLAttributes<HTMLDivElement>`.
 ## Example
 
 ```tsx
-import { Floating, Button } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Floating, Button } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoFloating() {
     return (

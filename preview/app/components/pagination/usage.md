@@ -1,6 +1,6 @@
 ```tsx
 "use client";
-import { Pagination } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Pagination } from "@kiyotakkkka/zvs-uikit-lib";
 export function PaginationExample() {
     return (
         <Pagination

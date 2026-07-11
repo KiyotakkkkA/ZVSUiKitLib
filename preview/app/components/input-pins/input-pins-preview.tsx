@@ -1,5 +1,5 @@
 "use client";
-import { InputPins } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { InputPins } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 export function InputPinsPreview() {
     const [v, setV] = useState("");

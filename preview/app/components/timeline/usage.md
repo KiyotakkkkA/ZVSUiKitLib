@@ -1,5 +1,5 @@
 ```tsx
-import { Timeline } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Timeline } from "@kiyotakkkka/zvs-uikit-lib";
 export function TimelineExample() {
     return (
         <Timeline>

@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Button, SlidedPanel } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Button, SlidedPanel } from "@kiyotakkkka/zvs-uikit-lib";
 export function SlidedPanelPreview() {
     const [open, setOpen] = useState(false);
     return (

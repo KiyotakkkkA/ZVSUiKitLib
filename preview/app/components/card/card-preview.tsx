@@ -1,5 +1,5 @@
 "use client";
-import { Card, Button } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Card, Button } from "@kiyotakkkka/zvs-uikit-lib";
 export function CardPreview() {
     return (
         <Card>

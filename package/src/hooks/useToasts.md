@@ -30,9 +30,9 @@ Object with methods:
 ## Example
 
 ```tsx
-import { useToasts } from "@kiyotakkkka/zvs-uikit-lib/hooks";
-import { ToastProvider } from "@kiyotakkkka/zvs-uikit-lib/providers";
-import { Button } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { useToasts } from "@kiyotakkkka/zvs-uikit-lib";
+import { ToastProvider } from "@kiyotakkkka/zvs-uikit-lib";
+import { Button } from "@kiyotakkkka/zvs-uikit-lib";
 
 function SaveButton() {
     const toasts = useToasts();

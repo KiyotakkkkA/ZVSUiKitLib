@@ -7,7 +7,7 @@ Single-value selector built on top of `Dropdown`. `Select` owns option rendering
 ## Import
 
 ```tsx
-import { Select } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Select } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -42,7 +42,7 @@ import { Select } from "@kiyotakkkka/zvs-uikit-lib/ui";
 
 ```tsx
 import { Icon } from "@iconify/react";
-import { Select } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Select } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 
 export function DemoSelect() {

@@ -7,7 +7,7 @@ Segmented control for switching between fixed options.
 ## Import
 
 ```tsx
-import { Switcher } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Switcher } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
@@ -29,7 +29,7 @@ import { Switcher } from "@kiyotakkkka/zvs-uikit-lib/ui";
 ## Example
 
 ```tsx
-import { Switcher } from "@kiyotakkkka/zvs-uikit-lib/ui";
+import { Switcher } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 
 export function DemoSwitcher() {
