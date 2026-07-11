@@ -87,6 +87,7 @@ For correct component rendering, use this palette (or override the same tokens):
 | `InputDropZone`    | File drop zone with previews and single/multiple modes.                  | [InputDropZone](package/src/ui/InputDropZone/InputDropZone.md)          |
 | `InputPins`        | Segmented input for PIN, OTP, or short confirmation codes.               | [InputPins](package/src/ui/InputPins/InputPins.md)                      |
 | `InputRadio`       | Radio control for selecting one option from a group.                     | [InputRadio](package/src/ui/InputRadio/InputRadio.md)                   |
+| `InputRange`       | Controlled range input for selecting a pair of numeric boundaries.       | [InputRange](package/src/ui/InputRange/InputRange.md)                   |
 | `InputSlider`      | Numeric range slider with optional value label.                          | [InputSlider](package/src/ui/InputSlider/InputSlider.md)                |
 | `InputSmall`       | Single-line input with password visibility toggle for `type="password"`. | [InputSmall](package/src/ui/InputSmall/InputSmall.md)                   |
 | `Select`           | Single-value select control with options and optional search.            | [Select](package/src/ui/Select/Select.md)                               |
