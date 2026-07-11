@@ -184,6 +184,11 @@ export const inputComponents: ComponentDocSection = {
             summary: "Controlled radio input.",
         },
         {
+            slug: "input-range",
+            name: "InputRange",
+            summary: "Two-thumb numeric range input.",
+        },
+        {
             slug: "input-slider",
             name: "InputSlider",
             summary: "Pointer-driven numeric slider.",

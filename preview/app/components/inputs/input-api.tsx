@@ -469,6 +469,37 @@ const groups: Record<string, G[]> = {
             ],
         },
     ],
+    InputRange: [
+        {
+            title: "InputRange",
+            description: "Forwards supported native range attributes.",
+            props: [
+                p("value", "[number, number]", "Controlled range boundaries."),
+                p(
+                    "onChange",
+                    "(value: [number, number]) => void",
+                    "Range callback.",
+                ),
+                p("min / max / step", "number", "Numeric range configuration."),
+                p("disabled", "boolean", "Disables interaction."),
+                p("showValue", "boolean", "Displays both boundaries."),
+                p(
+                    "valueFormatter",
+                    "(value: number) => string",
+                    "Boundary formatter.",
+                ),
+                p("className", "string", "Root classes."),
+                c("InputRangeClassNames", [
+                    "track",
+                    "fill",
+                    "thumb",
+                    "input",
+                    "value",
+                ]),
+                native("input"),
+            ],
+        },
+    ],
     InputSmall: [
         {
             title: "InputSmall",
