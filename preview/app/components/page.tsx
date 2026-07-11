@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
 
 export default function ComponentsPage() {
-  redirect("/components/input-small");
+    redirect("/components/input-small");
 }

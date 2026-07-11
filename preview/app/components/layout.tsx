@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import { inputComponents } from "../lib/components";
 import { SiteHeader } from "../ui/site-header";
+import { SidebarScrollArea } from "../molecules/sidebar-scroll-area";
 
 export default function ComponentsLayout({
     children,
@@ -12,7 +13,7 @@ export default function ComponentsLayout({
         <div className="docs-shell">
             <SiteHeader />
             <div className="docs-frame">
-                <aside className="docs-sidebar">
+                <SidebarScrollArea className="docs-sidebar">
                     <div className="sidebar-inner">
                         <div className="sidebar-section">
                             <span className="sidebar-label">
@@ -22,10 +23,6 @@ export default function ComponentsLayout({
                         </div>
                         <div className="sidebar-section">
                             <span className="sidebar-label">Components</span>
-                            <div className="sidebar-group-title">
-                                <span>Inputs</span>
-                                <span>{inputComponents.length}</span>
-                            </div>
                             <nav
                                 className="component-nav"
                                 aria-label="Input components"
@@ -44,7 +41,7 @@ export default function ComponentsLayout({
                             </nav>
                         </div>
                     </div>
-                </aside>
+                </SidebarScrollArea>
                 {children}
             </div>
         </div>

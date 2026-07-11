@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRightIcon, BoxIcon, CopyIcon } from "./ui/icons";
 import { SiteHeader } from "./ui/site-header";

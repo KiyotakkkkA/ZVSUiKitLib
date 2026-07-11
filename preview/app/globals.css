@@ -667,8 +667,6 @@ input {
     line-height: 1.65;
 }
 
-/* Documentation */
-
 .docs-frame {
     display: grid;
     grid-template-columns: 280px minmax(0, 1fr) 250px;
@@ -683,6 +681,44 @@ input {
     border-right: 1px solid var(--line);
 }
 
+.docs-sidebar {
+    position: fixed;
+    top: var(--header-height);
+    left: max(0px, calc((100vw - 1600px) / 2));
+    width: 280px;
+    height: calc(100vh - var(--header-height));
+    background: #080b09;
+    scrollbar-color: #343a36 #080b09;
+}
+
+.docs-content {
+    grid-column: 2;
+}
+
+.toc-sidebar {
+    grid-column: 3;
+}
+
+.docs-sidebar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.docs-sidebar::-webkit-scrollbar-track {
+    background: #080b09;
+}
+
+.docs-sidebar::-webkit-scrollbar-thumb {
+    border: 2px solid #080b09;
+    border-radius: 999px;
+    background: #343a36;
+}
+
+.docs-sidebar::-webkit-scrollbar-button {
+    display: none;
+    width: 0;
+    height: 0;
+}
+
 .sidebar-inner,
 .toc-sidebar > div {
     position: sticky;
@@ -692,6 +728,9 @@ input {
 }
 
 .sidebar-inner {
+    position: static;
+    max-height: none;
+    overflow: visible;
     padding: 31px 24px 50px;
 }
 
@@ -724,30 +763,6 @@ input {
     background: rgba(255, 255, 255, 0.035);
 }
 
-.sidebar-group-title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 7px;
-    padding: 8px 9px;
-    border-radius: 6px;
-    background: var(--acid-soft);
-    color: var(--acid);
-    font-size: 14px;
-    font-weight: 600;
-}
-
-.sidebar-group-title span:last-child {
-    display: grid;
-    width: 20px;
-    height: 20px;
-    place-items: center;
-    border-radius: 5px;
-    background: rgba(183, 243, 74, 0.12);
-    font-family: var(--font-geist-mono), monospace;
-    font-size: 10px;
-}
-
 .component-nav {
     display: grid;
 }
@@ -756,7 +771,7 @@ input {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 7px 9px 7px 15px;
+    padding: 7px 9px 7px 10px;
     border-radius: 6px;
     color: #89928c;
     font-family: var(--font-geist-mono), monospace;
@@ -1303,7 +1318,8 @@ input {
 
     .docs-sidebar {
         position: static;
-        overflow-x: auto;
+        width: auto;
+        height: auto;
         border-right: 0;
         border-bottom: 1px solid var(--line);
     }
@@ -1320,18 +1336,10 @@ input {
 
     .sidebar-section:first-child,
     .sidebar-label,
-    .sidebar-group-title span:last-child {
-        display: none;
-    }
-
     .sidebar-section + .sidebar-section {
         display: flex;
         align-items: center;
         gap: 6px;
-        margin: 0;
-    }
-
-    .sidebar-group-title {
         margin: 0;
     }
 

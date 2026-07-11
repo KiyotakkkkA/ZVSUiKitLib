@@ -1,33 +1,36 @@
 .zvs-dropdown-popover {
-  opacity: 0;
-  pointer-events: none;
-  transform: translateY(-4px) scale(0.98);
-  transform-origin: top;
-  transition-property: opacity, transform, display, overlay;
-  transition-duration: 180ms;
-  transition-timing-function: ease;
-  transition-behavior: allow-discrete;
+    box-sizing: border-box;
+    max-width: calc(100vw - 1rem);
+    overflow: visible;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-4px) scale(0.98);
+    transform-origin: top;
+    transition-property: opacity, transform, display, overlay;
+    transition-duration: 180ms;
+    transition-timing-function: ease;
+    transition-behavior: allow-discrete;
 }
 
 .zvs-dropdown-popover[data-placement^="top"] {
-  transform: translateY(4px) scale(0.98);
-  transform-origin: bottom;
+    transform: translateY(4px) scale(0.98);
+    transform-origin: bottom;
 }
 
 .zvs-dropdown-popover:popover-open {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateY(0) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
 }
 
 @starting-style {
-  .zvs-dropdown-popover:popover-open {
-    opacity: 0;
-    transform: translateY(-4px) scale(0.98);
-  }
+    .zvs-dropdown-popover:popover-open {
+        opacity: 0;
+        transform: translateY(-4px) scale(0.98);
+    }
 
-  .zvs-dropdown-popover[data-placement^="top"]:popover-open {
-    opacity: 0;
-    transform: translateY(4px) scale(0.98);
-  }
+    .zvs-dropdown-popover[data-placement^="top"]:popover-open {
+        opacity: 0;
+        transform: translateY(4px) scale(0.98);
+    }
 }

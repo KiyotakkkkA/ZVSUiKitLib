@@ -1,17 +1,17 @@
 import type { ReactNode } from "react";
 
 export type SectionNavigation = {
-  id: string;
-  title: string;
+    id: string;
+    title: string;
 };
 
 export type SectionProps = {
-  className?: string;
-  children: ReactNode;
-  nav: SectionNavigation;
+    className?: string;
+    children: ReactNode;
+    nav: SectionNavigation;
 };
 
 export type SlotProps = {
-  className?: string;
-  children: ReactNode;
+    className?: string;
+    children: ReactNode;
 };

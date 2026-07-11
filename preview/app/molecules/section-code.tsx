@@ -25,7 +25,7 @@ export function SectionCode({
             <CodeBlock
                 code={normalizeCode(children)}
                 fileName={label}
-                language="typescript"
+                language="tsx"
             />
         </section>
     );
