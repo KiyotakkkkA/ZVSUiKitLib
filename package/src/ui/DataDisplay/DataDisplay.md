@@ -26,6 +26,7 @@ import { DataDisplay } from "@kiyotakkkka/zvs-uikit-lib";
 | `DataDisplay.Item`                   | Structured data row.                |
 | `DataDisplay.ItemTopTitle`           | Small uppercase label.              |
 | `DataDisplay.ItemTopSubTitle`        | Primary value below the label.      |
+| `DataDisplay.ItemTopBadge`           | Badge in the top-right corner.      |
 | `DataDisplay.ItemContentTitle`       | Optional additional content title.  |
 | `DataDisplay.ItemContentDescription` | Supporting description.             |
 | `DataDisplay.ItemContentIcon`        | Leading icon container.             |
@@ -46,6 +47,9 @@ export function DemoDataDisplay() {
         <DataDisplay>
             <DataDisplay.Item>
                 <DataDisplay.ItemTopTitle>Status</DataDisplay.ItemTopTitle>
+                <DataDisplay.ItemTopBadge>
+                    <span className="text-xs text-main-500">live</span>
+                </DataDisplay.ItemTopBadge>
                 <DataDisplay.ItemTopSubTitle>Active</DataDisplay.ItemTopSubTitle>
             </DataDisplay.Item>
 

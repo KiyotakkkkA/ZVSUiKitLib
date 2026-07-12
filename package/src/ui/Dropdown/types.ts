@@ -32,6 +32,7 @@ export type DropdownProps = {
 export type DropdownTriggerProps = ButtonHTMLAttributes<HTMLButtonElement> & {
     placeholder?: ReactNode;
     icon?: ReactNode;
+    rounded?: RoundVariants | "";
 };
 
 export type DropdownAnchorProps = HTMLAttributes<HTMLDivElement> & {

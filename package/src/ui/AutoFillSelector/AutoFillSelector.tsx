@@ -295,9 +295,9 @@ function AutoFillSelectorMenu({
     return (
         <Dropdown.Menu
             aria-multiselectable
+            rounded={rounded}
             className={cn(
-                "overflow-hidden border border-main-700 bg-main-800 p-1 shadow-lg",
-                `zvs-${rounded}`,
+                "border-main-700 bg-main-800 p-1 shadow-lg",
                 className,
             )}
             {...props}

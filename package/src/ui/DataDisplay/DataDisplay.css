@@ -1,0 +1,55 @@
+.zvs-data-display-item {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+        "top-title top-badge"
+        "top-subtitle badge"
+        "content-title badge"
+        "description description";
+    column-gap: 0.75rem;
+    align-items: start;
+}
+
+.zvs-data-display-item:has(> .zvs-data-display-item__icon) {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+        "top-title top-title top-badge"
+        "icon top-subtitle badge"
+        "icon content-title badge"
+        "icon description description";
+}
+
+.zvs-data-display-item__top-title {
+    grid-area: top-title;
+    margin-bottom: 0.25rem;
+}
+
+.zvs-data-display-item__top-subtitle {
+    grid-area: top-subtitle;
+    align-self: center;
+}
+
+.zvs-data-display-item__top-badge {
+    grid-area: top-badge;
+    align-self: start;
+}
+
+.zvs-data-display-item__icon {
+    grid-area: icon;
+    align-self: start;
+}
+
+.zvs-data-display-item__content-title {
+    grid-area: content-title;
+    margin-top: 0.125rem;
+}
+
+.zvs-data-display-item__description {
+    grid-area: description;
+    margin-top: 0.125rem;
+}
+
+.zvs-data-display-item__badge {
+    grid-area: badge;
+    align-self: start;
+    margin-top: 0.125rem;
+}

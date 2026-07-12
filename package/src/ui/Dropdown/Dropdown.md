@@ -39,6 +39,7 @@ import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib";
 | placeholder | ReactNode | `"Открыть"` | Text shown when `children` is empty. |
 | icon        | ReactNode | chevron     | Custom trailing icon.                |
 | disabled    | boolean   | -           | Disables only this trigger.          |
+| rounded     | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-2xl"` | Trigger border radius. |
 | className   | string    | -           | Trigger button classes.              |
 
 ### `Dropdown.Anchor` props

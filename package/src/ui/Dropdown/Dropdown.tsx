@@ -280,6 +280,7 @@ function DropdownTrigger({
     className,
     placeholder = "Открыть",
     icon,
+    rounded = "rounded-2xl",
     disabled: disabledProp,
     onClick,
     onPointerDown,
@@ -299,6 +300,7 @@ function DropdownTrigger({
     return (
         <Button
             variant=""
+            rounded=""
             ref={setTriggerRef as Ref<HTMLButtonElement>}
             aria-expanded={open}
             aria-controls={menuId}
@@ -325,7 +327,9 @@ function DropdownTrigger({
                 }
             }}
             className={cn(
-                "min-h-10 justify-between gap-3 rounded-xl border-transparent px-3 py-2 text-main-100",
+                "h-10 w-full justify-between gap-3 border border-main-700 bg-main-800 px-4 py-2 text-sm text-main-100",
+                "hover:border-main-600 focus-visible:border-main-500/70 focus-visible:ring-2 focus-visible:ring-main-500/25",
+                rounded && `zvs-${rounded}`,
                 className,
             )}
             {...props}
@@ -432,7 +436,7 @@ function DropdownMenu({
             popover="auto"
             data-placement={menuPlacement}
             className={cn(
-                "zvs-dropdown-popover fixed z-60 border-0 bg-main-800 p-1.5",
+                "zvs-dropdown-popover fixed z-60 isolate overflow-hidden border border-main-700 bg-main-800 p-1.5 shadow-xl",
                 `zvs-${rounded}`,
                 "max-w-[calc(100vw-1rem)]",
                 className,

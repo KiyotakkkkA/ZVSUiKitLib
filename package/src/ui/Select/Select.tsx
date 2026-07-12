@@ -130,12 +130,8 @@ function SelectTrigger({
     return (
         <Dropdown.Trigger
             placeholder={placeholder}
-            className={cn(
-                "h-10 w-full border border-main-700 bg-main-800 px-4 py-2 text-sm",
-                "hover:border-main-600 focus-visible:border-main-500/70 focus-visible:ring-2 focus-visible:ring-main-500/25",
-                rounded && `zvs-${rounded}`,
-                className,
-            )}
+            rounded={rounded}
+            className={cn(className)}
         >
             {selectedOption?.label}
         </Dropdown.Trigger>
@@ -145,7 +141,7 @@ function SelectTrigger({
 function SelectMenu({
     children,
     className,
-    rounded = "rounded-4xl",
+    rounded = "rounded-3xl",
 }: SelectMenuProps) {
     const {
         query,
@@ -160,7 +156,7 @@ function SelectMenu({
     return (
         <Dropdown.Menu
             rounded={rounded}
-            className={cn("overflow-hidden bg-main-800 p-1.5", className)}
+            className={cn("bg-main-800", className)}
         >
             {searchable && (
                 <InputSmall
@@ -208,7 +204,11 @@ function SelectOptionComponent({
             closeOnClick={context.closeOnSelect}
             icon={
                 active ? (
-                    <Icon icon="mdi:check" className="text-main-200" aria-hidden />
+                    <Icon
+                        icon="mdi:check"
+                        className="text-main-200"
+                        aria-hidden
+                    />
                 ) : (
                     icon
                 )

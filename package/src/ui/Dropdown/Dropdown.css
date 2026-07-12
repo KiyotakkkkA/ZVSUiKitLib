@@ -1,7 +1,7 @@
 .zvs-dropdown-popover {
     box-sizing: border-box;
     max-width: calc(100vw - 1rem);
-    overflow: visible;
+    overflow: hidden;
     opacity: 0;
     pointer-events: none;
     transform: translateY(-4px) scale(0.98);

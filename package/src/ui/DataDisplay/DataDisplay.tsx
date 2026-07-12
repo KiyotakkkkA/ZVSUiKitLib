@@ -1,4 +1,5 @@
 import { cn } from "../../lib/utils";
+import "./DataDisplay.css";
 import type {
     DataDisplayItemPartProps,
     DataDisplayItemProps,
@@ -34,7 +35,7 @@ const DataDisplayItem = ({
 }: DataDisplayItemProps) => (
     <div
         className={cn(
-            "grid min-w-0 grid-cols-[auto_minmax(0,1fr)_auto] gap-x-3 rounded-lg px-2 py-2",
+            "zvs-data-display-item grid min-w-0 rounded-lg px-2 py-2",
             "transition-colors hover:bg-main-800/40",
             className,
         )}
@@ -51,7 +52,7 @@ const DataDisplayItemTopTitle = ({
 }: DataDisplayItemPartProps) => (
     <div
         className={cn(
-            "col-start-1 col-end-4 row-start-1 min-w-0 truncate text-xs font-medium uppercase tracking-wide text-main-500",
+            "zvs-data-display-item__top-title min-w-0 truncate text-xs font-medium uppercase tracking-wide text-main-500",
             className,
         )}
         {...props}
@@ -67,7 +68,23 @@ const DataDisplayItemTopSubTitle = ({
 }: DataDisplayItemPartProps) => (
     <div
         className={cn(
-            "col-start-2 row-start-2 mt-0.5 min-w-0 truncate text-sm font-medium text-main-100",
+            "zvs-data-display-item__top-subtitle min-w-0 truncate text-sm font-medium text-main-100",
+            className,
+        )}
+        {...props}
+    >
+        {children}
+    </div>
+);
+
+const DataDisplayItemTopBadge = ({
+    children,
+    className,
+    ...props
+}: DataDisplayItemPartProps) => (
+    <div
+        className={cn(
+            "zvs-data-display-item__top-badge ml-auto shrink-0 text-main-400",
             className,
         )}
         {...props}
@@ -83,7 +100,7 @@ const DataDisplayItemContentIcon = ({
 }: DataDisplayItemPartProps) => (
     <div
         className={cn(
-            "col-start-1 row-start-2 row-end-5 mt-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-main-800 text-main-300",
+            "zvs-data-display-item__icon flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-main-800 text-main-300",
             className,
         )}
         {...props}
@@ -99,7 +116,7 @@ const DataDisplayItemContentTitle = ({
 }: DataDisplayItemPartProps) => (
     <div
         className={cn(
-            "col-start-2 row-start-3 min-w-0 truncate text-xs font-medium text-main-200",
+            "zvs-data-display-item__content-title min-w-0 truncate text-xs font-medium text-main-200",
             className,
         )}
         {...props}
@@ -115,7 +132,7 @@ const DataDisplayItemContentDescription = ({
 }: DataDisplayItemPartProps) => (
     <div
         className={cn(
-            "col-start-2 col-end-4 row-start-4 min-w-0 text-xs leading-5 text-main-400",
+            "zvs-data-display-item__description min-w-0 text-xs leading-5 text-main-400",
             className,
         )}
         {...props}
@@ -131,7 +148,7 @@ const DataDisplayItemContentBadge = ({
 }: DataDisplayItemPartProps) => (
     <div
         className={cn(
-            "col-start-3 row-start-2 row-end-5 ml-auto shrink-0 self-center text-main-400",
+            "zvs-data-display-item__badge ml-auto shrink-0 text-main-400",
             className,
         )}
         {...props}
@@ -144,6 +161,7 @@ export const DataDisplay = Object.assign(DataDisplayRoot, {
     Item: DataDisplayItem,
     ItemTopTitle: DataDisplayItemTopTitle,
     ItemTopSubTitle: DataDisplayItemTopSubTitle,
+    ItemTopBadge: DataDisplayItemTopBadge,
     ItemContentTitle: DataDisplayItemContentTitle,
     ItemContentDescription: DataDisplayItemContentDescription,
     ItemContentIcon: DataDisplayItemContentIcon,
