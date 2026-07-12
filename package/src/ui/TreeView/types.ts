@@ -1,8 +1,6 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
-type DivClassName = ComponentPropsWithoutRef<"div">["className"];
-type ButtonClassName = ComponentPropsWithoutRef<"button">["className"];
-type SpanClassName = ComponentPropsWithoutRef<"span">["className"];
+import type { ButtonClassName, DivClassName, SpanClassName, SvgClassName } from "../_shared/types";
 
 export type TreeViewVirtualizationProps = {
     virtualized?: boolean;
@@ -30,7 +28,7 @@ export type TreeViewCatalogProps = TreeViewVirtualizationProps &
             trigger?: ButtonClassName;
             title?: SpanClassName;
             nested?: DivClassName;
-            chevronIcon?: ComponentPropsWithoutRef<"svg">["className"];
+            chevronIcon?: SvgClassName;
             folderIcon?: SpanClassName;
             rightSlot?: SpanClassName;
             virtualContent?: DivClassName;

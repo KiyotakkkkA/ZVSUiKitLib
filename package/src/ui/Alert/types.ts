@@ -1,12 +1,8 @@
 import type {
-    ComponentPropsWithoutRef,
     HTMLAttributes,
     ReactNode,
 } from "react";
-
-type DivClassName = ComponentPropsWithoutRef<"div">["className"];
-type ParagraphClassName = ComponentPropsWithoutRef<"p">["className"];
-type SpanClassName = ComponentPropsWithoutRef<"span">["className"];
+import type { DivClassName, ParagraphClassName, SpanClassName } from "../_shared/types";
 
 export type AlertVariant =
     "neutral" | "tertiary" | "success" | "warning" | "danger" | "info";

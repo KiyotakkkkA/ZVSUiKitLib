@@ -1,7 +1,7 @@
-import type { ComponentPropsWithoutRef } from "react";
+import type { ButtonClassName, SpanClassName } from "../_shared/types";
 
 export type InputCheckSlidedClassNames = {
-    thumb?: ComponentPropsWithoutRef<"span">["className"];
+    thumb?: SpanClassName;
 };
 
 export type InputCheckSlidedProps = {
@@ -9,6 +9,6 @@ export type InputCheckSlidedProps = {
     onChange: (checked: boolean) => void;
     disabled?: boolean;
     type?: "slided";
-    className?: ComponentPropsWithoutRef<"button">["className"];
+    className?: ButtonClassName;
     classNames?: InputCheckSlidedClassNames;
 };

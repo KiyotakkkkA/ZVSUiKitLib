@@ -1,12 +1,9 @@
 import type {
-    ComponentPropsWithoutRef,
     Dispatch,
     PropsWithChildren,
     SetStateAction,
 } from "react";
-
-type DivClassName = ComponentPropsWithoutRef<"div">["className"];
-type ButtonClassName = ComponentPropsWithoutRef<"button">["className"];
+import type { ButtonClassName, DivClassName } from "../_shared/types";
 
 export type AccordionProps = PropsWithChildren<{
     defaultOpen?: boolean;

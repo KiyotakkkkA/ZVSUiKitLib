@@ -1,10 +1,12 @@
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ReactNode } from "react";
 import type { PositionAnchor } from "../_shared/types";
 
-type DivClassName = ComponentPropsWithoutRef<"div">["className"];
-type ButtonClassName = ComponentPropsWithoutRef<"button">["className"];
-type InputClassName = ComponentPropsWithoutRef<"input">["className"];
-type SpanClassName = ComponentPropsWithoutRef<"span">["className"];
+import type {
+    ButtonClassName,
+    DivClassName,
+    InputClassName,
+    SpanClassName,
+} from "../_shared/types";
 
 export type SelectOption = {
     value: string;

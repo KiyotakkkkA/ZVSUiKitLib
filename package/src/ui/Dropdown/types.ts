@@ -5,7 +5,7 @@ import type {
     ReactNode,
     Ref,
 } from "react";
-import type { PositionAnchor } from "../_shared/types";
+import type { DivClassName, PositionAnchor } from "../_shared/types";
 
 export type DropdownContextValue = {
     open: boolean;
@@ -22,7 +22,7 @@ export type DropdownContextValue = {
 
 export type DropdownProps = {
     children: ReactNode;
-    className?: HTMLAttributes<HTMLDivElement>["className"];
+    className?: DivClassName;
     disabled?: boolean;
     menuWidth?: number | string;
     menuPlacement?: PositionAnchor;

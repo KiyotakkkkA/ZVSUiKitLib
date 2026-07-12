@@ -1,8 +1,10 @@
-import type { ComponentPropsWithoutRef } from "react";
+import type {
+    DivClassName,
+    ParagraphClassName,
+    SvgClassName,
+} from "../_shared/types";
 
-type DivClassName = ComponentPropsWithoutRef<"div">["className"];
-type IconClassName = ComponentPropsWithoutRef<"svg">["className"];
-type ParagraphClassName = ComponentPropsWithoutRef<"p">["className"];
+type IconClassName = SvgClassName;
 
 export type PrettyBRClassNames = {
     divider?: DivClassName;

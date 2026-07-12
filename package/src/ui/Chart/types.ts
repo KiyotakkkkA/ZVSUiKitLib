@@ -1,8 +1,7 @@
 import type { ComponentPropsWithoutRef, CSSProperties, ReactNode } from "react";
 import type { TooltipContentProps, TooltipValueType } from "recharts";
 
-type DivClassName = ComponentPropsWithoutRef<"div">["className"];
-type SpanClassName = ComponentPropsWithoutRef<"span">["className"];
+import type { DivClassName, SpanClassName } from "../_shared/types";
 
 export type ChartType = "line" | "area" | "bar";
 

@@ -1,13 +1,10 @@
 import type React from "react";
 import type {
-    ComponentPropsWithoutRef,
     HTMLAttributes,
     InputHTMLAttributes,
     ReactNode,
 } from "react";
-
-type SpanClassName = ComponentPropsWithoutRef<"span">["className"];
-type ButtonClassName = ComponentPropsWithoutRef<"button">["className"];
+import type { ButtonClassName, DivClassName, SpanClassName, SvgClassName } from "../_shared/types";
 
 export type AutoFillOption = {
     value: string;
@@ -42,14 +39,14 @@ export type AutoFillSelectorInputProps = Omit<
 >;
 
 export type AutoFillSelectorMenuProps = HTMLAttributes<HTMLDivElement> & {
-    scrollClassName?: ComponentPropsWithoutRef<"div">["className"];
+    scrollClassName?: DivClassName;
 };
 
 export type AutoFillSelectorOptionsProps = HTMLAttributes<HTMLDivElement> & {
     optionClassName?: ButtonClassName;
     optionLabelClassName?: SpanClassName;
     optionDescriptionClassName?: SpanClassName;
-    optionIconClassName?: ComponentPropsWithoutRef<"svg">["className"];
+    optionIconClassName?: SvgClassName;
 };
 
 export type AutoFillSelectorEmptyProps = HTMLAttributes<HTMLDivElement> & {

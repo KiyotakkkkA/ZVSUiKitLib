@@ -1,8 +1,9 @@
-import type { ComponentPropsWithoutRef, InputHTMLAttributes } from "react";
+import type { InputHTMLAttributes } from "react";
+import type { DivClassName, SvgClassName } from "../_shared/types";
 
 export type InputSmallClassNames = {
-    wrapper?: ComponentPropsWithoutRef<"div">["className"];
-    icon?: ComponentPropsWithoutRef<"svg">["className"];
+    wrapper?: DivClassName;
+    icon?: SvgClassName;
 };
 
 export type InputSmallProps = InputHTMLAttributes<HTMLInputElement> & {

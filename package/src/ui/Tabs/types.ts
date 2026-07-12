@@ -1,7 +1,6 @@
 import type { ButtonHTMLAttributes, ComponentPropsWithoutRef } from "react";
 
-type DivClassName = ComponentPropsWithoutRef<"div">["className"];
-type ButtonClassName = ComponentPropsWithoutRef<"button">["className"];
+import type { ButtonClassName, DivClassName } from "../_shared/types";
 
 export type TabOption = {
     value: string;

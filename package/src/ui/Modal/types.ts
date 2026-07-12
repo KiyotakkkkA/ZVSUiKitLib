@@ -1,19 +1,20 @@
-import type { ComponentPropsWithoutRef, PropsWithChildren } from "react";
+import type { PropsWithChildren } from "react";
+import type { ButtonClassName, DivClassName } from "../_shared/types";
 
 export type ModalProps = PropsWithChildren<{
     open: boolean;
     onClose: () => void;
-    className?: ComponentPropsWithoutRef<"div">["className"];
-    overlayClassName?: ComponentPropsWithoutRef<"div">["className"];
+    className?: DivClassName;
+    overlayClassName?: DivClassName;
     closeOnOverlayClick?: boolean;
 }>;
 
 export type ModalSectionProps = PropsWithChildren<{
-    className?: ComponentPropsWithoutRef<"div">["className"];
+    className?: DivClassName;
 }>;
 
 export type ModalHeaderProps = ModalSectionProps & {
-    closeButtonClassName?: ComponentPropsWithoutRef<"button">["className"];
+    closeButtonClassName?: ButtonClassName;
     closeButtonAriaLabel?: string;
     showCloseButton?: boolean;
 };

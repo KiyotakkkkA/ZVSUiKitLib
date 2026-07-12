@@ -1,5 +1,5 @@
-import type { ComponentPropsWithoutRef } from "react";
+import type { DivClassName } from "../_shared/types";
 
 export type LoaderProps = {
-    className?: ComponentPropsWithoutRef<"div">["className"];
+    className?: DivClassName;
 };

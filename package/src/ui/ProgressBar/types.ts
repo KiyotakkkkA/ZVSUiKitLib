@@ -1,7 +1,4 @@
-import type { ComponentPropsWithoutRef } from "react";
-
-type DivClassName = ComponentPropsWithoutRef<"div">["className"];
-type SpanClassName = ComponentPropsWithoutRef<"span">["className"];
+import type { DivClassName, SpanClassName } from "../_shared/types";
 
 export type ProgressBarClassNames = {
     header?: DivClassName;

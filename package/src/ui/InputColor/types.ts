@@ -1,14 +1,8 @@
 import type {
-    ComponentPropsWithoutRef,
     InputHTMLAttributes,
     ReactNode,
 } from "react";
-
-type DivClassName = ComponentPropsWithoutRef<"div">["className"];
-type LabelClassName = ComponentPropsWithoutRef<"label">["className"];
-type InputClassName = ComponentPropsWithoutRef<"input">["className"];
-type SpanClassName = ComponentPropsWithoutRef<"span">["className"];
-type ButtonClassName = ComponentPropsWithoutRef<"button">["className"];
+import type { ButtonClassName, DivClassName, InputClassName, LabelClassName, SpanClassName } from "../_shared/types";
 
 type BaseInputColorProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,

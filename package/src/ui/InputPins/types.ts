@@ -1,7 +1,6 @@
-import type { ComponentPropsWithoutRef, InputHTMLAttributes } from "react";
+import type { InputHTMLAttributes } from "react";
 
-type DivClassName = ComponentPropsWithoutRef<"div">["className"];
-type InputClassName = ComponentPropsWithoutRef<"input">["className"];
+import type { DivClassName, InputClassName } from "../_shared/types";
 
 type BaseInputPinsProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,

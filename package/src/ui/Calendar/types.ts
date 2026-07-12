@@ -1,8 +1,5 @@
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
-
-type DivClassName = ComponentPropsWithoutRef<"div">["className"];
-type ButtonClassName = ComponentPropsWithoutRef<"button">["className"];
-type SpanClassName = ComponentPropsWithoutRef<"span">["className"];
+import type { ReactNode } from "react";
+import type { ButtonClassName, DivClassName, SpanClassName } from "../_shared/types";
 
 export type CalendarDate = Date | null;
 

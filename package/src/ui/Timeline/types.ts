@@ -1,6 +1,6 @@
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ReactNode } from "react";
 
-type DivClassName = ComponentPropsWithoutRef<"div">["className"];
+import type { DivClassName } from "../_shared/types";
 
 export type TimelineProps = {
     children: ReactNode;

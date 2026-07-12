@@ -1,6 +1,5 @@
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
-
-type DivClassName = ComponentPropsWithoutRef<"div">["className"];
+import type { ReactNode } from "react";
+import type { DivClassName } from "../_shared/types";
 
 export type EmptyStateClassNames = {
     icon?: DivClassName;

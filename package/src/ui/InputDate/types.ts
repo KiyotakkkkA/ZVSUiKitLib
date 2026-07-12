@@ -1,10 +1,7 @@
-import type { ComponentPropsWithoutRef } from "react";
 import type { CalendarDate, CalendarProps } from "../Calendar/types";
 import type { PositionAnchor } from "../_shared/types";
 
-type DivClassName = ComponentPropsWithoutRef<"div">["className"];
-type ButtonClassName = ComponentPropsWithoutRef<"button">["className"];
-type SpanClassName = ComponentPropsWithoutRef<"span">["className"];
+import type { ButtonClassName, DivClassName, SpanClassName } from "../_shared/types";
 
 export type InputDateClassNames = {
     trigger?: ButtonClassName;

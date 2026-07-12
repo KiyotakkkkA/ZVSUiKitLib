@@ -1,7 +1,6 @@
-import type { ComponentPropsWithoutRef, SelectHTMLAttributes } from "react";
+import type { SelectHTMLAttributes } from "react";
 
-type DivClassName = ComponentPropsWithoutRef<"div">["className"];
-type SelectClassName = ComponentPropsWithoutRef<"select">["className"];
+import type { DivClassName, SelectClassName } from "../_shared/types";
 
 type BaseSelectNativeProps = Omit<
     SelectHTMLAttributes<HTMLSelectElement>,

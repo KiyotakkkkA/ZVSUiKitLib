@@ -1,4 +1,5 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { DivClassName } from "../_shared/types";
 
 export type ContextMenuState = {
     open: boolean;
@@ -32,7 +33,7 @@ export type ContextMenuSubProps = {
     children: ReactNode;
     fixable?: boolean;
     closeDelay?: number;
-    className?: ComponentPropsWithoutRef<"div">["className"];
+    className?: DivClassName;
 };
 
 export type ContextMenuSubTriggerProps = ComponentPropsWithoutRef<"button"> & {

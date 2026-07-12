@@ -1,8 +1,10 @@
-import type { ComponentPropsWithoutRef, InputHTMLAttributes } from "react";
+import type { InputHTMLAttributes } from "react";
 
-type DivClassName = ComponentPropsWithoutRef<"div">["className"];
-type InputClassName = ComponentPropsWithoutRef<"input">["className"];
-type SpanClassName = ComponentPropsWithoutRef<"span">["className"];
+import type {
+    DivClassName,
+    InputClassName,
+    SpanClassName,
+} from "../_shared/types";
 
 type BaseInputRangeProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,

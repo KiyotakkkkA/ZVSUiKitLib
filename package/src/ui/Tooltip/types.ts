@@ -1,7 +1,7 @@
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ReactNode } from "react";
 import type { PositionAnchor } from "../_shared/types";
 
-type DivClassName = ComponentPropsWithoutRef<"div">["className"];
+import type { DivClassName } from "../_shared/types";
 
 export type TooltipProps = {
     children: ReactNode;
