@@ -1,6 +1,10 @@
 import type { ComponentPropsWithoutRef } from "react";
 
-import type { InputClassName, LabelClassName, SpanClassName } from "../_shared/types";
+import type {
+    InputClassName,
+    LabelClassName,
+    SpanClassName,
+} from "../_shared/types";
 
 type BaseInputProps = Omit<
     ComponentPropsWithoutRef<"input">,

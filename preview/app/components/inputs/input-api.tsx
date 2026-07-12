@@ -219,7 +219,11 @@ const groups: Record<string, G[]> = {
                 p("showCount", "boolean", "Character counter."),
                 p("autoResize", "boolean", "Grow with content."),
                 p("minRows", "number", "Minimum rows. Default: 3."),
-                p("maxRows", "number", "Maximum auto-resize rows. Default: 10."),
+                p(
+                    "maxRows",
+                    "number",
+                    "Maximum auto-resize rows. Default: 10.",
+                ),
                 c("InputBigClassNames", [
                     "root",
                     "label",
@@ -259,7 +263,11 @@ const groups: Record<string, G[]> = {
                     "(checked: boolean) => void",
                     "Checked-state callback.",
                 ),
-                p("modelValue", "string", "Model key when rendered inside InputCheckBoxGroup."),
+                p(
+                    "modelValue",
+                    "string",
+                    "Model key when rendered inside InputCheckBoxGroup.",
+                ),
                 p("className", "string", "Outer label classes."),
                 c("InputCheckBoxClassNames", ["input", "mark", "indicator"]),
                 native("input"),
@@ -272,12 +280,39 @@ const groups: Record<string, G[]> = {
             description: "Generic over a Record<string, boolean> model.",
             props: [
                 p("model", "T", "Controlled boolean record."),
-                p("onModelChange", "(model: T) => void", "Model update callback."),
-                p("default", "Extract<keyof T, string>", "Fallback key when the model has no active value."),
-                p("multiple", "boolean", "Allows independent selections.", "true"),
-                p("orientation", '"vertical" | "horizontal"', "Child layout direction.", "horizontal"),
-                p("disabled", "boolean", "Disables all child checkboxes.", "false"),
-                p("children", "ReactNode", "InputCheckBox children with modelValue."),
+                p(
+                    "onModelChange",
+                    "(model: T) => void",
+                    "Model update callback.",
+                ),
+                p(
+                    "default",
+                    "Extract<keyof T, string>",
+                    "Fallback key when the model has no active value.",
+                ),
+                p(
+                    "multiple",
+                    "boolean",
+                    "Allows independent selections.",
+                    "true",
+                ),
+                p(
+                    "orientation",
+                    '"vertical" | "horizontal"',
+                    "Child layout direction.",
+                    "horizontal",
+                ),
+                p(
+                    "disabled",
+                    "boolean",
+                    "Disables all child checkboxes.",
+                    "false",
+                ),
+                p(
+                    "children",
+                    "ReactNode",
+                    "InputCheckBox children with modelValue.",
+                ),
                 native("div"),
             ],
         },
@@ -468,7 +503,11 @@ const groups: Record<string, G[]> = {
                     "(checked: boolean) => void",
                     "Checked callback.",
                 ),
-                p("modelValue", "string", "Model key when rendered inside InputRadioGroup."),
+                p(
+                    "modelValue",
+                    "string",
+                    "Model key when rendered inside InputRadioGroup.",
+                ),
                 p("className", "string", "Outer label classes."),
                 c("InputRadioClassNames", ["input", "dot", "indicator"]),
                 native("input"),
@@ -478,15 +517,37 @@ const groups: Record<string, G[]> = {
     InputRadioGroup: [
         {
             title: "InputRadioGroup",
-            description: "Generic exclusive group over a Record<string, boolean> model.",
+            description:
+                "Generic exclusive group over a Record<string, boolean> model.",
             props: [
                 p("model", "T", "Controlled boolean record."),
-                p("onModelChange", "(model: T) => void", "Model update callback."),
-                p("default", "Extract<keyof T, string>", "Fallback key when the model has no active value."),
-                p("orientation", '"vertical" | "horizontal"', "Child layout direction.", "horizontal"),
+                p(
+                    "onModelChange",
+                    "(model: T) => void",
+                    "Model update callback.",
+                ),
+                p(
+                    "default",
+                    "Extract<keyof T, string>",
+                    "Fallback key when the model has no active value.",
+                ),
+                p(
+                    "orientation",
+                    '"vertical" | "horizontal"',
+                    "Child layout direction.",
+                    "horizontal",
+                ),
                 p("disabled", "boolean", "Disables all child radios.", "false"),
-                p("name", "string", "Native radio group name; generated when omitted."),
-                p("children", "ReactNode", "InputRadio children with modelValue."),
+                p(
+                    "name",
+                    "string",
+                    "Native radio group name; generated when omitted.",
+                ),
+                p(
+                    "children",
+                    "ReactNode",
+                    "InputRadio children with modelValue.",
+                ),
                 native("div"),
             ],
         },

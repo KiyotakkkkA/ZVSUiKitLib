@@ -12,14 +12,14 @@ import { InputRadio } from "@kiyotakkkka/zvs-uikit-lib";
 
 ## Props
 
-| Prop       | Type                         | Default | Description                 |
-| ---------- | ---------------------------- | ------- | --------------------------- |
-| checked    | boolean                      | -       | Current selected state.     |
-| onChange   | `(checked: boolean) => void` | -       | Triggered on selection.     |
+| Prop       | Type                         | Default | Description                               |
+| ---------- | ---------------------------- | ------- | ----------------------------------------- |
+| checked    | boolean                      | -       | Current selected state.                   |
+| onChange   | `(checked: boolean) => void` | -       | Triggered on selection.                   |
 | modelValue | string                       | -       | Model key when used in `InputRadioGroup`. |
-| disabled   | boolean                      | `false` | Disables interaction.       |
-| className  | string                       | -       | Extra wrapper classes.      |
-| classNames | object                       | -       | Classes for internal slots. |
+| disabled   | boolean                      | `false` | Disables interaction.                     |
+| className  | string                       | -       | Extra wrapper classes.                    |
+| classNames | object                       | -       | Classes for internal slots.               |
 
 ### `classNames` slots
 

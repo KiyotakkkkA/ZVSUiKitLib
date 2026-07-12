@@ -12,11 +12,11 @@ Hook for accessing style management API from `StyleContext`.
 
 Object with the current palette and methods:
 
-| Member      | Type                                   | Description                          |
-| ----------- | -------------------------------------- | ------------------------------------ |
-| palette     | `StyleThemePalette`                    | Current controlled palette.          |
-| changeTheme | `(palette: StyleThemePalette) => void` | Apply and persist a palette.         |
-| resetTheme  | `() => void`                           | Restore `initialPalette`.            |
+| Member      | Type                                   | Description                  |
+| ----------- | -------------------------------------- | ---------------------------- |
+| palette     | `StyleThemePalette`                    | Current controlled palette.  |
+| changeTheme | `(palette: StyleThemePalette) => void` | Apply and persist a palette. |
+| resetTheme  | `() => void`                           | Restore `initialPalette`.    |
 
 `StyleThemePalette` contains a `main` scale (`"50"` through `"900"`) and
 required `accent`, `danger`, `warning`, `success`, and `info` palettes. Every
@@ -45,16 +45,16 @@ import { Button } from "@kiyotakkkka/zvs-uikit-lib";
 
 const draculaPalette = {
     main: {
-    50: "rgb(248 248 242)",
-    100: "rgb(241 250 140)",
-    200: "rgb(189 147 249)",
-    300: "rgb(139 233 253)",
-    400: "rgb(80 250 123)",
-    500: "rgb(255 121 198)",
-    600: "rgb(255 85 85)",
-    700: "rgb(98 114 164)",
-    800: "rgb(68 71 90)",
-    900: "rgb(40 42 54)",
+        50: "rgb(248 248 242)",
+        100: "rgb(241 250 140)",
+        200: "rgb(189 147 249)",
+        300: "rgb(139 233 253)",
+        400: "rgb(80 250 123)",
+        500: "rgb(255 121 198)",
+        600: "rgb(255 85 85)",
+        700: "rgb(98 114 164)",
+        800: "rgb(68 71 90)",
+        900: "rgb(40 42 54)",
     },
     accent: { light: "#bd93f9", medium: "#ff79c6", dark: "#8b5cf6" },
     danger: { light: "#fca5a5", medium: "#ef4444", dark: "#b91c1c" },

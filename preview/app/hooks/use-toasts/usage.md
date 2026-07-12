@@ -20,6 +20,10 @@ function SaveButton() {
 }
 
 export function App() {
-    return <ToastProvider><SaveButton /></ToastProvider>;
+    return (
+        <ToastProvider>
+            <SaveButton />
+        </ToastProvider>
+    );
 }
 ```

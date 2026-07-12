@@ -1,5 +1,9 @@
 import type { ReactNode } from "react";
-import type { ButtonClassName, DivClassName, SpanClassName } from "../_shared/types";
+import type {
+    ButtonClassName,
+    DivClassName,
+    SpanClassName,
+} from "../_shared/types";
 
 export type CalendarDate = Date | null;
 

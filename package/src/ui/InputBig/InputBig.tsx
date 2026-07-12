@@ -39,8 +39,8 @@ export const InputBig = forwardRef<HTMLTextAreaElement, InputBigProps>(
         const generatedId = useId();
         const textareaId = id ?? generatedId;
         const textareaRef = useRef<HTMLTextAreaElement>(null);
-        const [uncontrolledLength, setUncontrolledLength] = useState(() =>
-            String(defaultValue ?? "").length,
+        const [uncontrolledLength, setUncontrolledLength] = useState(
+            () => String(defaultValue ?? "").length,
         );
 
         useImperativeHandle(forwardedRef, () => textareaRef.current!);

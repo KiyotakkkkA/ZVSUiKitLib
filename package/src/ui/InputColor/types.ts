@@ -1,8 +1,11 @@
+import type { InputHTMLAttributes, ReactNode } from "react";
 import type {
-    InputHTMLAttributes,
-    ReactNode,
-} from "react";
-import type { ButtonClassName, DivClassName, InputClassName, LabelClassName, SpanClassName } from "../_shared/types";
+    ButtonClassName,
+    DivClassName,
+    InputClassName,
+    LabelClassName,
+    SpanClassName,
+} from "../_shared/types";
 
 type BaseInputColorProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,

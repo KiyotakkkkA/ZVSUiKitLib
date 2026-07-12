@@ -125,8 +125,7 @@ export const inputComponents: ComponentDocSection = {
         {
             slug: "input-small",
             name: "InputSmall",
-            summary:
-                "Compact native input with coordinated behavior presets.",
+            summary: "Compact native input with coordinated behavior presets.",
         },
         {
             slug: "input-date",

@@ -13,11 +13,7 @@ export function DemoAutoFillSelector() {
     const [tags, setTags] = useState<string[]>(["react"]);
 
     return (
-        <AutoFillSelector
-            value={tags}
-            onChange={setTags}
-            options={options}
-        >
+        <AutoFillSelector value={tags} onChange={setTags} options={options}>
             <AutoFillSelector.Trigger>
                 <AutoFillSelector.Tags />
                 <AutoFillSelector.Input placeholder="Select technologies" />

@@ -4,9 +4,16 @@ import { Button, StyleProvider, useStyle } from "@kiyotakkkka/zvs-uikit-lib";
 
 const ocean = {
     main: {
-        50: "#eeffff", 100: "#b2ccd6", 200: "#89ddff",
-        300: "#82aaff", 400: "#676e95", 500: "#546e7a",
-        600: "#3b4b5a", 700: "#263238", 800: "#0f2130", 900: "#0f111a",
+        50: "#eeffff",
+        100: "#b2ccd6",
+        200: "#89ddff",
+        300: "#82aaff",
+        400: "#676e95",
+        500: "#546e7a",
+        600: "#3b4b5a",
+        700: "#263238",
+        800: "#0f2130",
+        900: "#0f111a",
     },
     accent: { light: "#89ddff", medium: "#82aaff", dark: "#5c6bc0" },
     danger: { light: "#fca5a5", medium: "#ef4444", dark: "#b91c1c" },
@@ -21,6 +28,10 @@ function ThemeButton() {
 }
 
 export function App() {
-    return <StyleProvider><ThemeButton /></StyleProvider>;
+    return (
+        <StyleProvider>
+            <ThemeButton />
+        </StyleProvider>
+    );
 }
 ```

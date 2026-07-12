@@ -175,7 +175,9 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
                             classNames?.trailingButton,
                         )}
                         onPointerDown={(event) => event.preventDefault()}
-                        onClick={() => setPasswordVisible((visible) => !visible)}
+                        onClick={() =>
+                            setPasswordVisible((visible) => !visible)
+                        }
                     >
                         <Icon
                             icon={

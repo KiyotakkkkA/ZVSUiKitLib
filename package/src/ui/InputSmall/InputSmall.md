@@ -14,13 +14,13 @@ import { InputSmall } from "@kiyotakkkka/zvs-uikit-lib";
 
 ## Props
 
-| Prop       | Type                                                   | Default | Description                                           |
-| ---------- | ------------------------------------------------------ | ------- | ----------------------------------------------------- |
-| preset     | `"password" \| "search" \| "email" \| "phone" \| "url"` | - | Coordinated behavior preset.               |
-| type       | HTML input type                                        | preset  | Explicit native type; overrides non-password presets. |
-| onClear    | `() => void`                                           | -       | Called when the search preset is cleared.             |
-| className  | string                                                 | -       | Input element classes.                                |
-| classNames | object                                                 | -       | Classes for internal slots.                           |
+| Prop       | Type                                                    | Default | Description                                           |
+| ---------- | ------------------------------------------------------- | ------- | ----------------------------------------------------- |
+| preset     | `"password" \| "search" \| "email" \| "phone" \| "url"` | -       | Coordinated behavior preset.                          |
+| type       | HTML input type                                         | preset  | Explicit native type; overrides non-password presets. |
+| onClear    | `() => void`                                            | -       | Called when the search preset is cleared.             |
+| className  | string                                                  | -       | Input element classes.                                |
+| classNames | object                                                  | -       | Classes for internal slots.                           |
 
 All remaining native input attributes are forwarded.
 
@@ -29,10 +29,10 @@ All remaining native input attributes are forwarded.
 | Preset     | Behavior                                                         |
 | ---------- | ---------------------------------------------------------------- |
 | `password` | Password type, visibility toggle, current-password autocomplete. |
-| `search`   | Search type, leading icon, clear button, Escape-to-clear.         |
-| `email`    | Email type, email keyboard and autocomplete.                      |
-| `phone`    | Telephone type, telephone keyboard and autocomplete.              |
-| `url`      | URL type, URL keyboard and autocomplete.                          |
+| `search`   | Search type, leading icon, clear button, Escape-to-clear.        |
+| `email`    | Email type, email keyboard and autocomplete.                     |
+| `phone`    | Telephone type, telephone keyboard and autocomplete.             |
+| `url`      | URL type, URL keyboard and autocomplete.                         |
 
 ### `classNames` slots
 

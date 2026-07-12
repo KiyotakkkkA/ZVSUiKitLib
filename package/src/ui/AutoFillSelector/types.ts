@@ -1,10 +1,11 @@
 import type React from "react";
+import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
 import type {
-    HTMLAttributes,
-    InputHTMLAttributes,
-    ReactNode,
-} from "react";
-import type { ButtonClassName, DivClassName, SpanClassName, SvgClassName } from "../_shared/types";
+    ButtonClassName,
+    DivClassName,
+    SpanClassName,
+    SvgClassName,
+} from "../_shared/types";
 
 export type AutoFillOption = {
     value: string;

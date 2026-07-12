@@ -148,9 +148,7 @@ const ToastCard = ({ item, onDone }: ToastCardProps) => {
                 />
 
                 <div className="min-w-0">
-                    <p className="text-sm font-semibold">
-                        {item.title}
-                    </p>
+                    <p className="text-sm font-semibold">{item.title}</p>
                     {item.description && (
                         <p
                             className={`mt-1 text-xs ${isPrimary ? "text-main-600" : "text-main-300"}`}

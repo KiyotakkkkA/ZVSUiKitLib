@@ -1,6 +1,11 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
-import type { ButtonClassName, DivClassName, SpanClassName, SvgClassName } from "../_shared/types";
+import type {
+    ButtonClassName,
+    DivClassName,
+    SpanClassName,
+    SvgClassName,
+} from "../_shared/types";
 
 export type TreeViewVirtualizationProps = {
     virtualized?: boolean;

@@ -7,24 +7,21 @@ Connects `InputCheckBox` children to a boolean record.
 ## Import
 
 ```tsx
-import {
-    InputCheckBox,
-    InputCheckBoxGroup,
-} from "@kiyotakkkka/zvs-uikit-lib";
+import { InputCheckBox, InputCheckBoxGroup } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## Props
 
-| Prop          | Type                         | Default | Description                                      |
-| ------------- | ---------------------------- | ------- | ------------------------------------------------ |
-| model         | `Record<string, boolean>`    | -       | Controlled boolean model.                        |
-| onModelChange | `(model: T) => void`         | -       | Triggered with the next immutable model.         |
-| default       | `keyof T`                    | -       | Active fallback key when model has no selection. |
-| multiple      | boolean                      | `true`  | Allows several active keys.                      |
-| orientation   | `"vertical" \| "horizontal"` | `"horizontal"` | Child layout direction.                  |
-| disabled      | boolean                      | `false` | Disables every checkbox in the group.            |
-| className     | string                       | -       | Extra group wrapper classes.                     |
-| children      | ReactNode                    | -       | `InputCheckBox` controls with `modelValue`.       |
+| Prop          | Type                         | Default        | Description                                      |
+| ------------- | ---------------------------- | -------------- | ------------------------------------------------ |
+| model         | `Record<string, boolean>`    | -              | Controlled boolean model.                        |
+| onModelChange | `(model: T) => void`         | -              | Triggered with the next immutable model.         |
+| default       | `keyof T`                    | -              | Active fallback key when model has no selection. |
+| multiple      | boolean                      | `true`         | Allows several active keys.                      |
+| orientation   | `"vertical" \| "horizontal"` | `"horizontal"` | Child layout direction.                          |
+| disabled      | boolean                      | `false`        | Disables every checkbox in the group.            |
+| className     | string                       | -              | Extra group wrapper classes.                     |
+| children      | ReactNode                    | -              | `InputCheckBox` controls with `modelValue`.      |
 
 The component also forwards native `div` attributes except `default` and
 `onChange`.
@@ -33,10 +30,7 @@ The component also forwards native `div` attributes except `default` and
 
 ```tsx
 "use client";
-import {
-    InputCheckBox,
-    InputCheckBoxGroup,
-} from "@kiyotakkkka/zvs-uikit-lib";
+import { InputCheckBox, InputCheckBoxGroup } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 
 type NotificationModel = {

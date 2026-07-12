@@ -41,9 +41,7 @@ export function CodeBlock({
                     "[&_button:hover]:text-(--ink)",
                 )}
             />
-            <CodeView.Content
-                className="zvs-scroll-area p-4.5 text-[#aeb7b0]"
-            />
+            <CodeView.Content className="zvs-scroll-area p-4.5 text-[#aeb7b0]" />
         </CodeView>
     );
 }

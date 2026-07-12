@@ -41,9 +41,7 @@ export function InputCheckBoxGroup<T extends BooleanModel>({
                     : Object.fromEntries(
                           Object.keys(effectiveModel).map((modelKey) => [
                               modelKey,
-                              modelKey === key
-                                  ? !effectiveModel[key]
-                                  : false,
+                              modelKey === key ? !effectiveModel[key] : false,
                           ]),
                       );
 

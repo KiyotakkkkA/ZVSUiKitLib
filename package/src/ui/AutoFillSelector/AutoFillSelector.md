@@ -23,16 +23,16 @@ type AutoFillOption = {
 
 ## Props
 
-| Prop         | Type                        | Default         | Description                              |
-| ------------ | --------------------------- | --------------- | ---------------------------------------- |
-| options      | `AutoFillOption[]`          | -               | Option list.                             |
-| value        | string[]                    | `[]`            | Selected values.                         |
-| onChange     | `(value: string[]) => void` | -               | Called when selection changes.           |
-| disabled     | boolean                     | `false`         | Disables interactions.                   |
-| menuWidth    | number \| string            | `"auto"`        | Dropdown popup width; `auto` matches the trigger. |
-| children     | ReactNode                   | -               | Selector compound parts.                 |
-| onOpenChange | `(open: boolean) => void`   | -               | Called when dropdown open state changes. |
-| className    | string                      | -               | Root wrapper classes.                    |
+| Prop         | Type                        | Default  | Description                                       |
+| ------------ | --------------------------- | -------- | ------------------------------------------------- |
+| options      | `AutoFillOption[]`          | -        | Option list.                                      |
+| value        | string[]                    | `[]`     | Selected values.                                  |
+| onChange     | `(value: string[]) => void` | -        | Called when selection changes.                    |
+| disabled     | boolean                     | `false`  | Disables interactions.                            |
+| menuWidth    | number \| string            | `"auto"` | Dropdown popup width; `auto` matches the trigger. |
+| children     | ReactNode                   | -        | Selector compound parts.                          |
+| onOpenChange | `(open: boolean) => void`   | -        | Called when dropdown open state changes.          |
+| className    | string                      | -        | Root wrapper classes.                             |
 
 The search query is cleared automatically when the dropdown closes.
 
@@ -109,11 +109,7 @@ export function DemoAutoFillSelector() {
     const [tags, setTags] = useState<string[]>(["react"]);
 
     return (
-        <AutoFillSelector
-            value={tags}
-            onChange={setTags}
-            options={options}
-        >
+        <AutoFillSelector value={tags} onChange={setTags} options={options}>
             <AutoFillSelector.Trigger>
                 <AutoFillSelector.Tags />
                 <AutoFillSelector.Input placeholder="Select technologies" />

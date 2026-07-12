@@ -18,10 +18,7 @@ export default function HooksLayout({ children }: { children: ReactNode }) {
                         </div>
                         <div className="sidebar-section">
                             <span className="sidebar-label">Hooks</span>
-                            <nav
-                                className="component-nav"
-                                aria-label="Hooks"
-                            >
+                            <nav className="component-nav" aria-label="Hooks">
                                 <Link href="/hooks/use-style">useStyle</Link>
                                 <Link href="/hooks/use-toasts">useToasts</Link>
                             </nav>

@@ -2,10 +2,7 @@ import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { cookies } from "next/headers";
-import {
-    StyleProvider,
-    ToastProvider,
-} from "@kiyotakkkka/zvs-uikit-lib";
+import { StyleProvider, ToastProvider } from "@kiyotakkkka/zvs-uikit-lib";
 import {
     defaultThemePalette,
     getThemeVariables,

@@ -269,11 +269,7 @@ const ContextMenuContent = ({
             {...props}
             ref={contentRef}
             role="menu"
-            className={cn(
-                "fixed z-50",
-                contentClassName,
-                className,
-            )}
+            className={cn("fixed z-50", contentClassName, className)}
             style={{
                 ...style,
                 left: state.x,
@@ -324,7 +320,12 @@ const ContextMenuItemBase = ({
             }}
         >
             {leftSlot && (
-                <span className={cn("shrink-0", danger ? "text-danger-medium" : "text-main-400")}>
+                <span
+                    className={cn(
+                        "shrink-0",
+                        danger ? "text-danger-medium" : "text-main-400",
+                    )}
+                >
                     {leftSlot}
                 </span>
             )}
@@ -332,7 +333,12 @@ const ContextMenuItemBase = ({
             <span className="min-w-0 flex-1 truncate">{children}</span>
 
             {rightSlot && (
-                <span className={cn("shrink-0 text-xs", danger ? "text-danger-medium/80" : "text-main-500")}>
+                <span
+                    className={cn(
+                        "shrink-0 text-xs",
+                        danger ? "text-danger-medium/80" : "text-main-500",
+                    )}
+                >
                     {rightSlot}
                 </span>
             )}

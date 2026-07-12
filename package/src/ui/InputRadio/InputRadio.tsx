@@ -20,9 +20,7 @@ export const InputRadio = ({
         <label
             className={cn(
                 "relative inline-flex h-5 w-5 items-center justify-center rounded-full ",
-                isDisabled
-                    ? "cursor-not-allowed opacity-60"
-                    : "cursor-pointer",
+                isDisabled ? "cursor-not-allowed opacity-60" : "cursor-pointer",
                 className,
             )}
         >

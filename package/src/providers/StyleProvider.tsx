@@ -100,4 +100,11 @@ export function StyleProvider({
     );
 }
 
-export type { MainColorPalette, MainColorStep, SemanticColorName, SemanticColorPalette, SemanticColorStep, StyleThemePalette } from "../theme";
+export type {
+    MainColorPalette,
+    MainColorStep,
+    SemanticColorName,
+    SemanticColorPalette,
+    SemanticColorStep,
+    StyleThemePalette,
+} from "../theme";

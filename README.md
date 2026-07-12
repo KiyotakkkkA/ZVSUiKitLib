@@ -50,18 +50,26 @@ For correct component rendering, use this palette (or override the same tokens):
     --color-main-700: rgb(64 64 64);
     --color-main-800: rgb(38 38 38);
     --color-main-900: rgb(23 23 23);
+
     --color-accent-light: #d8ff8d;
     --color-accent-medium: #b7f34a;
     --color-accent-dark: #8fc52b;
+
     --color-danger-light: #fca5a5;
     --color-danger-medium: #ef4444;
     --color-danger-dark: #b91c1c;
+
     --color-warning-light: #fde68a;
     --color-warning-medium: #f59e0b;
     --color-warning-dark: #b45309;
+
     --color-success-light: #86efac;
     --color-success-medium: #22c55e;
     --color-success-dark: #15803d;
+
+    --color-info-light: #93c5fd;
+    --color-info-medium: #3b82f6;
+    --color-info-dark: #1e40af;
 }
 ```
 

@@ -1,7 +1,11 @@
 import type { CalendarDate, CalendarProps } from "../Calendar/types";
 import type { PositionAnchor } from "../_shared/types";
 
-import type { ButtonClassName, DivClassName, SpanClassName } from "../_shared/types";
+import type {
+    ButtonClassName,
+    DivClassName,
+    SpanClassName,
+} from "../_shared/types";
 
 export type InputDateClassNames = {
     trigger?: ButtonClassName;

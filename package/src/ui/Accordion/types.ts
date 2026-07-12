@@ -1,8 +1,4 @@
-import type {
-    Dispatch,
-    PropsWithChildren,
-    SetStateAction,
-} from "react";
+import type { Dispatch, PropsWithChildren, SetStateAction } from "react";
 import type { ButtonClassName, DivClassName } from "../_shared/types";
 
 export type AccordionProps = PropsWithChildren<{
