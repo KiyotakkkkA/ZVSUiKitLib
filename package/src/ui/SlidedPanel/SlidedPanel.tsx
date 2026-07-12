@@ -158,7 +158,7 @@ function SlidedPanelHeader({
     return (
         <header
             className={cn(
-                "flex items-center justify-between border-b border-main-700/70 bg-linear-to-r from-main-800/70 via-main-800/45 to-main-900/35 px-4 py-3",
+                "flex items-center justify-between border-b border-main-700/70 bg-main-900/35 px-4 py-3",
                 className,
             )}
             {...props}

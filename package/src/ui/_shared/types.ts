@@ -12,6 +12,8 @@ export type ParagraphClassName = ElementClassName<"p">;
 export type SelectClassName = ElementClassName<"select">;
 export type SvgClassName = ElementClassName<"svg">;
 
+export type Orientation = "horizontal" | "vertical";
+
 export type PositionAnchor =
     | "top-left"
     | "top-center"
