@@ -52,7 +52,7 @@ export default async function RootLayout({
             style={getThemeVariables(initialPalette) as CSSProperties}
         >
             <body>
-                <StyleProvider initialPalette={initialPalette} cookie>
+                <StyleProvider initialPalette={initialPalette} cookies>
                     <ToastProvider>{children}</ToastProvider>
                 </StyleProvider>
             </body>

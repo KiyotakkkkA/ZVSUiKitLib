@@ -37,7 +37,7 @@ export default function UseStylePage() {
                 <SectionAPI.Group title="StyleProvider" description="Place once near the application root.">
                     <SectionAPI.Table>
                         <SectionAPI.Prop name="initialPalette" type="StyleThemePalette" defaultValue="defaultThemePalette" description="Server and client initial theme." />
-                        <SectionAPI.Prop name="cookie" type="boolean | StyleCookieOptions" defaultValue="true" description="Cookie persistence configuration." />
+                        <SectionAPI.Prop name="cookies" type="boolean | StyleCookieOptions" defaultValue="false" description="Opt-in cookie persistence configuration." />
                         <SectionAPI.Prop name="children" type="ReactNode" description="Application content." />
                     </SectionAPI.Table>
                 </SectionAPI.Group>

@@ -84,9 +84,10 @@ export function DemoStyle() {
 
 ## SSR and cookie persistence
 
-`StyleProvider` writes the palette to the `zvs-theme` cookie by default. For a
-flash-free SSR render, read that cookie on the server, apply its variables to
-`html`, and pass the same palette as `initialPalette`.
+By default, `StyleProvider` works without persistence and only manages the
+current runtime palette. Pass `cookies` explicitly to store the palette in the
+`zvs-theme` cookie. For a flash-free SSR render, read that cookie on the server,
+apply its variables to `html`, and pass the same palette as `initialPalette`.
 
 ```tsx
 import type { CSSProperties } from "react";
@@ -108,7 +109,7 @@ export default async function RootLayout({ children }) {
     return (
         <html style={getThemeVariables(palette) as CSSProperties}>
             <body>
-                <StyleProvider initialPalette={palette} cookie>
+                <StyleProvider initialPalette={palette} cookies>
                     {children}
                 </StyleProvider>
             </body>
@@ -117,5 +118,5 @@ export default async function RootLayout({ children }) {
 }
 ```
 
-Set `cookie={false}` to disable persistence, or pass an options object with
-`name`, `maxAge`, `path`, `sameSite`, and `secure`.
+Omit `cookies` for a regular provider without cookie access. Pass an options
+object to configure `name`, `maxAge`, `path`, `sameSite`, and `secure`.

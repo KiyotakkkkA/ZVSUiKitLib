@@ -24,7 +24,7 @@ export type StyleCookieOptions = {
 
 export type StyleProviderProps = PropsWithChildren<{
     initialPalette?: StyleThemePalette;
-    cookie?: boolean | StyleCookieOptions;
+    cookies?: boolean | StyleCookieOptions;
 }>;
 
 const applyPalette = (palette: StyleThemePalette) => {
@@ -59,7 +59,7 @@ const persistPalette = (
 export function StyleProvider({
     children,
     initialPalette = defaultThemePalette,
-    cookie = true,
+    cookies = false,
 }: StyleProviderProps) {
     const [palette, setPalette] = useState<StyleThemePalette>(() =>
         isStyleThemePalette(initialPalette)
@@ -79,14 +79,14 @@ export function StyleProvider({
 
             setPalette(nextPalette);
 
-            if (cookie) {
+            if (cookies) {
                 persistPalette(
                     nextPalette,
-                    typeof cookie === "object" ? cookie : {},
+                    typeof cookies === "object" ? cookies : {},
                 );
             }
         },
-        [cookie],
+        [cookies],
     );
 
     const resetTheme = useCallback(() => {
