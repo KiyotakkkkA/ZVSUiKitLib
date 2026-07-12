@@ -29,7 +29,7 @@ type AutoFillOption = {
 | value        | string[]                    | `[]`            | Selected values.                         |
 | onChange     | `(value: string[]) => void` | -               | Called when selection changes.           |
 | disabled     | boolean                     | `false`         | Disables interactions.                   |
-| menuWidth    | number \| string            | `"max-content"` | Dropdown popup width.                    |
+| menuWidth    | number \| string            | `"auto"`        | Dropdown popup width; `auto` matches the trigger. |
 | children     | ReactNode                   | -               | Selector compound parts.                 |
 | onOpenChange | `(open: boolean) => void`   | -               | Called when dropdown open state changes. |
 | className    | string                      | -               | Root wrapper classes.                    |
@@ -113,7 +113,6 @@ export function DemoAutoFillSelector() {
             value={tags}
             onChange={setTags}
             options={options}
-            menuWidth={320}
         >
             <AutoFillSelector.Trigger>
                 <AutoFillSelector.Tags />

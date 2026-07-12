@@ -43,7 +43,7 @@ function AutoFillSelectorRoot({
     value = EMPTY_VALUE,
     onChange,
     disabled = false,
-    menuWidth = "max-content",
+    menuWidth = "auto",
     className,
     children,
     onOpenChange,
@@ -123,8 +123,15 @@ function AutoFillSelectorRoot({
 
     return (
         <AutoFillSelectorContext.Provider value={contextValue}>
-            <div className={cn("relative min-w-0", className)} {...props}>
+            <div
+                className={cn(
+                    "relative w-72 max-w-full min-w-0 overflow-hidden",
+                    className,
+                )}
+                {...props}
+            >
                 <Dropdown
+                    className="w-full"
                     disabled={disabled}
                     menuWidth={menuWidth}
                     onOpenChange={(open) => {
@@ -153,9 +160,9 @@ function AutoFillSelectorTrigger({
         <Dropdown.Anchor
             focusInputOnOpen={() => inputRef.current?.focus()}
             className={cn(
-                "flex min-h-10 w-full flex-wrap items-center gap-2 rounded-xl border border-main-700/70",
-                "bg-main-800/70 px-3 py-2 text-sm text-main-100 transition-colors duration-200",
-                "focus-within:border-main-500/70",
+                "flex min-h-9 w-full min-w-0 max-w-full flex-wrap items-center gap-1 rounded-lg border border-main-700",
+                "overflow-hidden bg-main-800 px-2 py-1 text-sm text-main-100 transition-colors duration-200",
+                "hover:border-main-600 focus-within:border-main-500 focus-within:ring-2 focus-within:ring-main-500/20",
                 disabled ? "cursor-not-allowed opacity-60" : "cursor-text",
                 className,
             )}
@@ -180,7 +187,13 @@ function AutoFillSelectorTags({
     }
 
     return (
-        <div className={cn("contents", className)} {...props}>
+        <div
+            className={cn(
+                "flex min-w-0 max-w-full flex-wrap items-center gap-1",
+                className,
+            )}
+            {...props}
+        >
             {value.map((item) => {
                 const option = options.find((opt) => opt.value === item);
 
@@ -188,17 +201,19 @@ function AutoFillSelectorTags({
                     <span
                         key={item}
                         className={cn(
-                            "inline-flex items-center gap-1 rounded-full border border-main-600/70 bg-main-700/70 px-2 py-0.5 text-xs text-main-100",
+                            "inline-flex min-w-0 max-w-28 items-center gap-1 rounded-md bg-main-700 px-1.5 py-0.5 text-xs text-main-100",
                             tagClassName,
                         )}
                     >
-                        {option?.label ?? item}
+                        <span className="min-w-0 truncate">
+                            {option?.label ?? item}
+                        </span>
 
                         {!disabled && (
                             <button
                                 type="button"
                                 className={cn(
-                                    "text-main-400 transition-colors hover:text-main-100",
+                                    "shrink-0 text-main-400 transition-colors hover:text-main-100",
                                     tagRemoveClassName,
                                 )}
                                 onClick={(event) => {
@@ -256,7 +271,7 @@ function AutoFillSelectorInput({
                 }
             }}
             className={cn(
-                "min-w-35 flex-1 bg-transparent text-sm text-main-100 placeholder:text-main-500 outline-none",
+                "min-w-20 flex-1 bg-transparent px-0.5 py-0.5 text-sm text-main-100 placeholder:text-main-500 outline-none",
                 className,
             )}
             {...props}
@@ -274,14 +289,14 @@ function AutoFillSelectorMenu({
         <Dropdown.Menu
             aria-multiselectable
             className={cn(
-                "overflow-hidden border border-main-700 p-0",
+                "overflow-hidden rounded-lg border border-main-700 bg-main-800 p-1 shadow-lg",
                 className,
             )}
             {...props}
         >
             <ScrollArea
-                orientation="both"
-                className={cn("max-h-64 py-1", scrollClassName)}
+                orientation="vertical"
+                className={cn("max-h-64", scrollClassName)}
             >
                 {children}
             </ScrollArea>
@@ -334,17 +349,17 @@ function AutoFillSelectorOptions({
                             inputRef.current?.focus();
                         }}
                         className={cn(
-                            "w-auto min-w-full items-start gap-3 rounded-none px-3 py-2",
+                            "w-full min-w-0 items-center gap-2 rounded-md px-2 py-1.5",
                             isSelected
-                                ? "bg-main-700 text-main-100"
-                                : "text-main-300 hover:bg-main-700 hover:text-main-100",
+                                ? "bg-main-700/60 text-main-100"
+                                : "text-main-300 hover:bg-main-700/40 hover:text-main-100",
                             optionClassName,
                         )}
                     >
-                        <span>
+                        <span className="min-w-0 flex-1">
                             <span
                                 className={cn(
-                                    "block whitespace-nowrap font-medium",
+                                    "block truncate font-medium",
                                     optionLabelClassName,
                                 )}
                             >
@@ -354,7 +369,7 @@ function AutoFillSelectorOptions({
                             {option.description && (
                                 <span
                                     className={cn(
-                                        "mt-0.5 block whitespace-nowrap text-xs text-main-500",
+                                        "mt-0.5 block truncate text-xs text-main-500",
                                         optionDescriptionClassName,
                                     )}
                                 >

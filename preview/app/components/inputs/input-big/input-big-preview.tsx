@@ -9,8 +9,12 @@ export function DemoInputBig() {
         <InputBig
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="Comment"
-            rows={4}
+            label="Comment"
+            description="Some description about the input field."
+            placeholder="Enter a comment…"
+            maxLength={500}
+            showCount
+            autoResize
         />
     );
 }

@@ -42,10 +42,7 @@ export function CodeBlock({
                 )}
             />
             <CodeView.Content
-                className={cx(
-                    "p-4.5 text-[#aeb7b0]",
-                    "[scrollbar-color:rgba(183,243,74,0.22)_transparent]",
-                )}
+                className="zvs-scroll-area p-4.5 text-[#aeb7b0]"
             />
         </CodeView>
     );

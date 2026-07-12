@@ -30,7 +30,7 @@ const modelRequestsData = [
 
 export function ChartPreview() {
     return (
-        <div className="grid gap-4 w-full">
+        <div className="grid gap-4 min-w-150 p-2">
             <Chart
                 title="Line Chart"
                 description="Users and requests by weekday"

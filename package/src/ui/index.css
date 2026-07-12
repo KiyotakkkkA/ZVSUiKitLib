@@ -32,3 +32,37 @@
     --color-info-medium: #3b82f6;
     --color-info-dark: #1e40af;
 }
+
+.zvs-scroll-area {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(160 161 165 / 40%) transparent;
+}
+
+.zvs-scroll-area::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+.zvs-scroll-area::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.zvs-scroll-area::-webkit-scrollbar-thumb {
+    border: 0.125rem solid transparent;
+    border-radius: 9999px;
+    background: rgb(160 161 165 / 40%);
+    background-clip: padding-box;
+}
+
+.zvs-scroll-area::-webkit-scrollbar-thumb:hover {
+    background: rgb(160 161 165 / 60%);
+    background-clip: padding-box;
+}
+
+.zvs-scroll-area--hidden {
+    scrollbar-width: none;
+}
+
+.zvs-scroll-area--hidden::-webkit-scrollbar {
+    display: none;
+}

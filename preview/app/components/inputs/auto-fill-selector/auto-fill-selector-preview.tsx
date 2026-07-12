@@ -16,7 +16,6 @@ export function DemoAutoFillSelector() {
             value={tags}
             onChange={setTags}
             options={options}
-            menuWidth={320}
         >
             <AutoFillSelector.Trigger>
                 <AutoFillSelector.Tags />

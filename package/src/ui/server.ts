@@ -3,7 +3,6 @@ export * from "./Button";
 export * from "./Card";
 export * from "./DataDisplay";
 export * from "./EmptyState";
-export * from "./InputBig";
 export * from "./Loader";
 export * from "./ProgressBar";
 export * from "./ScrollArea";

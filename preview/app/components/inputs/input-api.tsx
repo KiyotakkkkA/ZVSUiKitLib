@@ -213,6 +213,21 @@ const groups: Record<string, G[]> = {
             description: "Extends TextareaHTMLAttributes<HTMLTextAreaElement>.",
             props: [
                 p("className", "string", "Textarea classes."),
+                p("label", "ReactNode", "Accessible field label."),
+                p("description", "ReactNode", "Supporting text."),
+                p("error", "ReactNode", "Error message and invalid state."),
+                p("showCount", "boolean", "Character counter."),
+                p("autoResize", "boolean", "Grow with content."),
+                p("minRows", "number", "Minimum rows. Default: 3."),
+                p("maxRows", "number", "Maximum auto-resize rows. Default: 10."),
+                c("InputBigClassNames", [
+                    "root",
+                    "label",
+                    "textarea",
+                    "footer",
+                    "message",
+                    "counter",
+                ]),
                 p(
                     "value / defaultValue",
                     "string",

@@ -10,8 +10,12 @@ export function DemoInputBig() {
         <InputBig
             value={text}
             onChange={(e) => setText(e.target.value)}
-            placeholder="Comment"
-            rows={4}
+            label="Комментарий"
+            description="Добавьте контекст, который поможет быстрее разобраться."
+            placeholder="Введите комментарий…"
+            maxLength={500}
+            showCount
+            autoResize
         />
     );
 }
