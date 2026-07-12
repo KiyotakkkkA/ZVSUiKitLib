@@ -5,5 +5,9 @@ import { useState } from "react";
 export function DemoInputCheckSlided() {
     const [enabled, setEnabled] = useState(true);
 
-    return <InputCheckSlided checked={enabled} onChange={setEnabled} />;
+    return (
+        <InputCheckSlided checked={enabled} onChange={setEnabled}>
+            Автоматические обновления
+        </InputCheckSlided>
+    );
 }

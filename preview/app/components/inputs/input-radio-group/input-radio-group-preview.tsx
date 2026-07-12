@@ -8,12 +8,8 @@ export function DemoInputRadioGroup() {
 
     return (
         <InputRadioGroup model={model} onModelChange={setModel} default="email">
-            <div className="flex items-center gap-2 text-sm">
-                <InputRadio modelValue="email" /> Email
-            </div>
-            <div className="flex items-center gap-2 text-sm">
-                <InputRadio modelValue="phone" /> Phone
-            </div>
+            <InputRadio modelValue="email">Email</InputRadio>
+            <InputRadio modelValue="phone">Phone</InputRadio>
         </InputRadioGroup>
     );
 }

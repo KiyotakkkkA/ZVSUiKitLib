@@ -13,12 +13,10 @@ export function DemoInputCheckBoxGroup() {
             default="email"
             multiple
         >
-            <div className="flex items-center gap-2 text-sm">
-                <InputCheckBox modelValue="email" id="email" /> Email
-            </div>
-            <div className="flex items-center gap-2 text-sm">
-                <InputCheckBox modelValue="sms" /> SMS
-            </div>
+            <InputCheckBox modelValue="email" id="email">
+                Email
+            </InputCheckBox>
+            <InputCheckBox modelValue="sms">SMS</InputCheckBox>
         </InputCheckBoxGroup>
     );
 }

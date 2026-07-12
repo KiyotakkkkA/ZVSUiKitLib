@@ -6,6 +6,10 @@ import { useState } from "react";
 export function DemoInputCheckBox() {
     const [checked, setChecked] = useState(false);
 
-    return <InputCheckBox checked={checked} onChange={setChecked} />;
+    return (
+        <InputCheckBox checked={checked} onChange={setChecked}>
+            Получать уведомления
+        </InputCheckBox>
+    );
 }
 ```
