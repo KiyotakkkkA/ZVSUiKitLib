@@ -1,6 +1,6 @@
 import type { ComponentPropsWithoutRef } from "react";
 import type { CalendarDate, CalendarProps } from "../Calendar/types";
-import type { DropdownMenuPlacement } from "../Dropdown/types";
+import type { PositionAnchor } from "../_shared/types";
 
 type DivClassName = ComponentPropsWithoutRef<"div">["className"];
 type ButtonClassName = ComponentPropsWithoutRef<"button">["className"];
@@ -30,7 +30,7 @@ export type InputDateProps = {
     disabled?: boolean;
     closeOnSelect?: boolean;
     clearable?: boolean;
-    menuPlacement?: DropdownMenuPlacement;
+    menuPlacement?: PositionAnchor;
     menuWidth?: number | "auto";
     className?: DivClassName;
     classNames?: InputDateClassNames;
