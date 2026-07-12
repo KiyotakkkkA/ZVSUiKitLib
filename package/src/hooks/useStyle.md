@@ -10,17 +10,21 @@ Hook for accessing style management API from `StyleContext`.
 
 ## Return Value
 
-Object with method:
+Object with the current palette and methods:
 
-| Method      | Signature                              | Description                          |
+| Member      | Type                                   | Description                          |
 | ----------- | -------------------------------------- | ------------------------------------ |
-| changeTheme | `(palette: StyleThemePalette) => void` | Change theme by providing a palette. |
+| palette     | `StyleThemePalette`                    | Current controlled palette.          |
+| changeTheme | `(palette: StyleThemePalette) => void` | Apply and persist a palette.         |
+| resetTheme  | `() => void`                           | Restore `initialPalette`.            |
 
-`StyleThemePalette` is an object with keys of `MainColorStep` type (`"50"`, `"100"`, ..., `"900"`) and string values (color codes).
+`StyleThemePalette` contains a `main` scale (`"50"` through `"900"`) and
+required `accent`, `danger`, `warning`, `success`, and `info` palettes. Every
+semantic palette contains `light`, `medium`, and `dark` values.
 For example:
 
 ```ts
-const draculaPalette = {
+const draculaMain = {
     50: "rgb(248 248 242)",
     100: "rgb(241 250 140)",
     200: "rgb(189 147 249)",
@@ -40,6 +44,7 @@ const draculaPalette = {
 import { Button } from "@kiyotakkkka/zvs-uikit-lib";
 
 const draculaPalette = {
+    main: {
     50: "rgb(248 248 242)",
     100: "rgb(241 250 140)",
     200: "rgb(189 147 249)",
@@ -50,6 +55,12 @@ const draculaPalette = {
     700: "rgb(98 114 164)",
     800: "rgb(68 71 90)",
     900: "rgb(40 42 54)",
+    },
+    accent: { light: "#bd93f9", medium: "#ff79c6", dark: "#8b5cf6" },
+    danger: { light: "#fca5a5", medium: "#ef4444", dark: "#b91c1c" },
+    warning: { light: "#fde68a", medium: "#f59e0b", dark: "#b45309" },
+    success: { light: "#86efac", medium: "#22c55e", dark: "#15803d" },
+    info: { light: "#93c5fd", medium: "#3b82f6", dark: "#1e40af" },
 };
 
 function ThemeButton() {
@@ -70,3 +81,41 @@ export function DemoStyle() {
     );
 }
 ```
+
+## SSR and cookie persistence
+
+`StyleProvider` writes the palette to the `zvs-theme` cookie by default. For a
+flash-free SSR render, read that cookie on the server, apply its variables to
+`html`, and pass the same palette as `initialPalette`.
+
+```tsx
+import type { CSSProperties } from "react";
+import { cookies } from "next/headers";
+import { StyleProvider } from "@kiyotakkkka/zvs-uikit-lib";
+import {
+    defaultThemePalette,
+    getThemeVariables,
+    parseThemePalette,
+    STYLE_THEME_COOKIE,
+} from "@kiyotakkkka/zvs-uikit-lib/server";
+
+export default async function RootLayout({ children }) {
+    const cookieStore = await cookies();
+    const palette =
+        parseThemePalette(cookieStore.get(STYLE_THEME_COOKIE)?.value) ??
+        defaultThemePalette;
+
+    return (
+        <html style={getThemeVariables(palette) as CSSProperties}>
+            <body>
+                <StyleProvider initialPalette={palette} cookie>
+                    {children}
+                </StyleProvider>
+            </body>
+        </html>
+    );
+}
+```
+
+Set `cookie={false}` to disable persistence, or pass an options object with
+`name`, `maxAge`, `path`, `sameSite`, and `secure`.

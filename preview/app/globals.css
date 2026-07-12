@@ -16,17 +16,29 @@
     --color-accent-light: #d8ff8d;
     --color-accent-medium: #b7f34a;
     --color-accent-dark: #8fc52b;
+    --color-danger-light: #fca5a5;
+    --color-danger-medium: #ef4444;
+    --color-danger-dark: #b91c1c;
+    --color-warning-light: #fde68a;
+    --color-warning-medium: #f59e0b;
+    --color-warning-dark: #b45309;
+    --color-success-light: #86efac;
+    --color-success-medium: #22c55e;
+    --color-success-dark: #15803d;
+    --color-info-light: #93c5fd;
+    --color-info-medium: #3b82f6;
+    --color-info-dark: #1e40af;
 }
 
 :root {
-    --ink: #e9eee9;
-    --muted: #8c968f;
-    --dim: #626b65;
-    --line: rgba(226, 238, 229, 0.11);
-    --line-bright: rgba(226, 238, 229, 0.2);
-    --surface: #101311;
-    --surface-raised: #151916;
-    --canvas: #090b0a;
+    --ink: var(--color-main-100);
+    --muted: var(--color-main-400);
+    --dim: var(--color-main-500);
+    --line: color-mix(in srgb, var(--color-main-200) 11%, transparent);
+    --line-bright: color-mix(in srgb, var(--color-main-200) 20%, transparent);
+    --surface: var(--color-main-800);
+    --surface-raised: var(--color-main-700);
+    --canvas: var(--color-main-900);
     --acid: var(--color-accent-medium);
     --acid-soft: color-mix(
         in srgb,
@@ -79,7 +91,7 @@ input {
     min-height: var(--header-height);
     padding: 0 34px;
     border-bottom: 1px solid var(--line);
-    background: rgba(9, 11, 10, 0.82);
+    background: color-mix(in srgb, var(--color-main-900) 82%, transparent);
     backdrop-filter: blur(18px);
 }
 
@@ -146,7 +158,7 @@ input {
     padding: 8px 9px 8px 12px;
     border: 1px solid var(--line);
     border-radius: 8px;
-    background: rgba(255, 255, 255, 0.025);
+    background: color-mix(in srgb, var(--color-main-50) 2.5%, transparent);
     color: var(--dim);
     font-size: 14px;
 }
@@ -327,7 +339,7 @@ input {
 }
 
 .button-secondary {
-    background: rgba(255, 255, 255, 0.035);
+    background: color-mix(in srgb, var(--color-main-50) 3.5%, transparent);
     color: var(--ink);
 }
 
@@ -672,8 +684,8 @@ input {
     left: max(0px, calc((100vw - 1600px) / 2));
     width: 280px;
     height: calc(100vh - var(--header-height));
-    background: #080b09;
-    scrollbar-color: #343a36 #080b09;
+    background: var(--canvas);
+    scrollbar-color: var(--color-main-600) var(--canvas);
 }
 
 .docs-content {
@@ -689,13 +701,13 @@ input {
 }
 
 .docs-sidebar::-webkit-scrollbar-track {
-    background: #080b09;
+    background: var(--canvas);
 }
 
 .docs-sidebar::-webkit-scrollbar-thumb {
-    border: 2px solid #080b09;
+    border: 2px solid var(--canvas);
     border-radius: 999px;
-    background: #343a36;
+    background: var(--color-main-600);
 }
 
 .docs-sidebar::-webkit-scrollbar-button {
@@ -745,7 +757,7 @@ input {
 .component-nav a:hover,
 .toc-sidebar nav a:hover {
     color: var(--ink);
-    background: rgba(255, 255, 255, 0.035);
+    background: color-mix(in srgb, var(--color-main-50) 3.5%, transparent);
 }
 
 .component-nav {
@@ -758,7 +770,7 @@ input {
     justify-content: space-between;
     padding: 7px 9px 7px 10px;
     border-radius: 6px;
-    color: #89928c;
+    color: var(--color-main-400);
     font-family: var(--font-geist-mono), monospace;
     font-size: 12px;
     transition:
@@ -833,7 +845,7 @@ input {
     padding: 5px 8px;
     border: 1px solid var(--line);
     border-radius: 5px;
-    color: #919a94;
+    color: var(--color-main-400);
     font-family: var(--font-geist-mono), monospace;
     font-size: 11px;
 }
@@ -891,10 +903,10 @@ input {
     place-items: center;
     border: 1px solid var(--line);
     border-radius: 12px;
-    background-color: #0c0f0d;
+    background-color: var(--color-main-900);
     background-image:
-        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+        linear-gradient(color-mix(in srgb, var(--color-main-50) 2.5%, transparent) 1px, transparent 1px),
+        linear-gradient(90deg, color-mix(in srgb, var(--color-main-50) 2.5%, transparent) 1px, transparent 1px);
     background-size: 28px 28px;
 }
 
@@ -906,7 +918,7 @@ input {
 
 .preview-field > label,
 .preview-label {
-    color: #c7cec9;
+    color: var(--color-main-200);
     font-size: 14px;
     font-weight: 560;
 }
@@ -942,7 +954,7 @@ input {
     display: flex;
     align-items: center;
     gap: 12px;
-    color: #c7cec9;
+    color: var(--color-main-200);
     font-size: 14px;
 }
 
@@ -957,7 +969,7 @@ input {
 .docs-input {
     height: 42px !important;
     border-color: var(--line-bright) !important;
-    background: #0b0e0c !important;
+    background: var(--color-main-900) !important;
     font-size: 14px !important;
 }
 

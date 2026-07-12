@@ -17,23 +17,23 @@ const variantStyles: Record<
         defaultIcon: "mdi:sparkles-outline",
     },
     success: {
-        box: "border-emerald-700/50 bg-emerald-900/25 text-emerald-100",
-        icon: "text-emerald-300",
+        box: "border-success-dark/50 bg-success-dark/25 text-success-light",
+        icon: "text-success-light",
         defaultIcon: "mdi:check-circle-outline",
     },
     warning: {
-        box: "border-amber-700/50 bg-amber-900/25 text-amber-100",
-        icon: "text-amber-300",
+        box: "border-warning-dark/50 bg-warning-dark/25 text-warning-light",
+        icon: "text-warning-light",
         defaultIcon: "mdi:alert-outline",
     },
     danger: {
-        box: "border-rose-700/50 bg-rose-900/25 text-rose-100",
-        icon: "text-rose-300",
+        box: "border-danger-dark/50 bg-danger-dark/25 text-danger-light",
+        icon: "text-danger-light",
         defaultIcon: "mdi:alert-circle-outline",
     },
     info: {
-        box: "border-sky-700/50 bg-sky-900/25 text-sky-100",
-        icon: "text-sky-300",
+        box: "border-info-dark/50 bg-info-dark/25 text-info-light",
+        icon: "text-info-light",
         defaultIcon: "mdi:information-outline",
     },
 };

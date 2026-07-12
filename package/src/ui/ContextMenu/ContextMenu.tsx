@@ -310,7 +310,7 @@ const ContextMenuItemBase = ({
                 itemClassName,
                 inset && "pl-7",
                 danger
-                    ? "text-red-300 hover:bg-red-500/15 hover:text-red-200 focus-visible:bg-red-500/15 focus-visible:text-red-200"
+                    ? "text-danger-light hover:bg-danger-medium/15 hover:text-danger-light focus-visible:bg-danger-medium/15 focus-visible:text-danger-light"
                     : "text-main-200 hover:bg-main-700/70 hover:text-main-50 focus-visible:bg-main-700/70 focus-visible:text-main-50",
                 disabled && "cursor-not-allowed",
                 className,
@@ -324,7 +324,7 @@ const ContextMenuItemBase = ({
             }}
         >
             {leftSlot && (
-                <span className={cn("shrink-0", danger ? "text-red-400" : "text-main-400")}>
+                <span className={cn("shrink-0", danger ? "text-danger-medium" : "text-main-400")}>
                     {leftSlot}
                 </span>
             )}
@@ -332,7 +332,7 @@ const ContextMenuItemBase = ({
             <span className="min-w-0 flex-1 truncate">{children}</span>
 
             {rightSlot && (
-                <span className={cn("shrink-0 text-xs", danger ? "text-red-400/80" : "text-main-500")}>
+                <span className={cn("shrink-0 text-xs", danger ? "text-danger-medium/80" : "text-main-500")}>
                     {rightSlot}
                 </span>
             )}

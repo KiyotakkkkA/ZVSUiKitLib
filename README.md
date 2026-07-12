@@ -53,6 +53,15 @@ For correct component rendering, use this palette (or override the same tokens):
     --color-accent-light: #d8ff8d;
     --color-accent-medium: #b7f34a;
     --color-accent-dark: #8fc52b;
+    --color-danger-light: #fca5a5;
+    --color-danger-medium: #ef4444;
+    --color-danger-dark: #b91c1c;
+    --color-warning-light: #fde68a;
+    --color-warning-medium: #f59e0b;
+    --color-warning-dark: #b45309;
+    --color-success-light: #86efac;
+    --color-success-medium: #22c55e;
+    --color-success-dark: #15803d;
 }
 ```
 

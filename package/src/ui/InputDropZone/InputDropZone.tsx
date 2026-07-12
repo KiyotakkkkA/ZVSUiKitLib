@@ -342,7 +342,7 @@ export const InputDropZone = ({
                                 type="button"
                                 disabled={disabled}
                                 onClick={() => removeItem(item)}
-                                className="text-sm font-semibold text-red-300 transition hover:text-red-200 disabled:cursor-not-allowed disabled:opacity-60"
+                                className="text-sm font-semibold text-danger-light transition hover:text-danger-medium disabled:cursor-not-allowed disabled:opacity-60"
                             >
                                 Удалить
                             </button>
@@ -356,7 +356,7 @@ export const InputDropZone = ({
                     type="button"
                     disabled={disabled}
                     onClick={clearFiles}
-                    className="text-sm font-semibold text-red-300 transition hover:text-red-200 disabled:cursor-not-allowed disabled:opacity-60"
+                    className="text-sm font-semibold text-danger-light transition hover:text-danger-medium disabled:cursor-not-allowed disabled:opacity-60"
                 >
                     {multiple ? clearAllLabel : clearLabel}
                 </button>

@@ -14,6 +14,25 @@ export type SvgClassName = ElementClassName<"svg">;
 
 export type Orientation = "horizontal" | "vertical";
 
+export type ColorVariantsBase =
+    | "primary"
+    | "secondary"
+    | "tertiary"
+    | "success"
+    | "warning"
+    | "danger"
+    | "info";
+
+type ColorVariantsOutline =
+    | "primary-outline"
+    | "tertiary-outline"
+    | "success-outline"
+    | "warning-outline"
+    | "danger-outline"
+    | "info-outline";
+
+export type ColorVariants = ColorVariantsBase | ColorVariantsOutline;
+
 export type PositionAnchor =
     | "top-left"
     | "top-center"

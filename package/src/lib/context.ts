@@ -19,7 +19,9 @@ export type ToastContextValue = {
 };
 
 type StyleContextValue = {
+    palette: StyleThemePalette;
     changeTheme: (palette: StyleThemePalette) => void;
+    resetTheme: () => void;
 };
 
 export const StyleContext = createContext<StyleContextValue | null>(null);

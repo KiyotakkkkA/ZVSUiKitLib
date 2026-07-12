@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { GithubIcon, SearchIcon } from "./icons";
 
 export function SiteHeader() {
@@ -20,6 +19,7 @@ export function SiteHeader() {
             <nav className="top-nav" aria-label="Primary navigation">
                 <Link href="/">Overview</Link>
                 <Link href="/components/overlays/context-menu">Components</Link>
+                <Link href="/hooks/use-style">Hooks</Link>
                 <a href="https://www.npmjs.com/package/@kiyotakkkka/zvs-uikit-lib">
                     Releases
                 </a>
