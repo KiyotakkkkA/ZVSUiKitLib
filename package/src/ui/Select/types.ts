@@ -1,5 +1,5 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
-import type { DropdownMenuPlacement } from "../Dropdown/types";
+import type { PositionAnchor } from "../_shared/types";
 
 type DivClassName = ComponentPropsWithoutRef<"div">["className"];
 type ButtonClassName = ComponentPropsWithoutRef<"button">["className"];
@@ -33,6 +33,6 @@ export type SelectProps = {
     className?: DivClassName;
     classNames?: SelectClassNames;
     menuWidth?: number | string;
-    menuPlacement?: DropdownMenuPlacement;
+    menuPlacement?: PositionAnchor;
     closeOnSelect?: boolean;
 };
