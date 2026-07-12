@@ -15,7 +15,7 @@ import { InputPins } from "@kiyotakkkka/zvs-uikit-lib";
 | Prop       | Type              | Default | Description                     |
 | ---------- | ----------------- | ------- | ------------------------------- |
 | value      | string            | -       | Current PIN value.              |
-| onChange   | `(value) => void` | -       | Called with the joined value.   |
+| onChange   | `(value) => void` | -       | Called with the positional value; empty preceding cells are spaces. |
 | length     | number            | `4`     | Number of input cells.          |
 | label      | string            | -       | Optional label under the cells. |
 | disabled   | boolean           | `false` | Disables all cells.             |

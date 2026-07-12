@@ -1,4 +1,5 @@
 import { cn } from "../../lib/utils";
+import { useInputRadioGroup } from "../InputRadioGroup";
 import type { InputRadioProps } from "./types";
 
 export const InputRadio = ({
@@ -7,23 +8,36 @@ export const InputRadio = ({
     disabled = false,
     className,
     classNames,
+    modelValue,
     ...props
 }: InputRadioProps) => {
+    const group = useInputRadioGroup();
+    const isGrouped = Boolean(group && modelValue);
+    const isChecked = isGrouped ? Boolean(group?.model[modelValue!]) : checked;
+    const isDisabled = disabled || Boolean(group?.disabled);
+
     return (
         <label
             className={cn(
                 "relative inline-flex h-5 w-5 items-center justify-center rounded-full ",
-                disabled ? "cursor-not-allowed opacity-60" : "cursor-pointer",
+                isDisabled
+                    ? "cursor-not-allowed opacity-60"
+                    : "cursor-pointer",
                 className,
             )}
         >
             <input
-                type="radio"
-                checked={checked}
-                disabled={disabled}
-                onChange={() => onChange(!checked)}
-                className={cn("peer sr-only", classNames?.input)}
                 {...props}
+                type="radio"
+                checked={Boolean(isChecked)}
+                disabled={isDisabled}
+                name={group?.name ?? props.name}
+                value={modelValue}
+                onChange={() => {
+                    if (isGrouped) group?.select(modelValue!);
+                    onChange?.(true);
+                }}
+                className={cn("peer sr-only", classNames?.input)}
             />
 
             <span

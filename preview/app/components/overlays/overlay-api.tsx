@@ -82,12 +82,6 @@ const groups: Record<string, GroupDoc[]> = {
                     description: "Adds leading inset alignment.",
                 },
                 {
-                    name: "variant",
-                    type: '"default" | "danger"',
-                    defaultValue: "default",
-                    description: "Visual item variant.",
-                },
-                {
                     name: "leftSlot / rightSlot",
                     type: "ReactNode",
                     description: "Content rendered beside the label.",
@@ -102,6 +96,42 @@ const groups: Record<string, GroupDoc[]> = {
                     type: 'ComponentPropsWithoutRef<"button">',
                     description: "Native button attributes are forwarded.",
                 },
+            ],
+        },
+        {
+            title: "ContextMenu.ItemDanger",
+            description:
+                "Destructive action. Accepts the same props as ContextMenu.Item.",
+            props: [
+                {
+                    name: "inset",
+                    type: "boolean",
+                    defaultValue: "false",
+                    description: "Adds leading inset alignment.",
+                },
+                {
+                    name: "leftSlot / rightSlot",
+                    type: "ReactNode",
+                    description: "Content rendered beside the label.",
+                },
+                {
+                    name: "...buttonProps",
+                    type: 'ComponentPropsWithoutRef<"button">',
+                    description: "Native button attributes are forwarded.",
+                },
+            ],
+        },
+        {
+            title: "ContextMenu.Label",
+            description: 'Extends ComponentPropsWithoutRef<"div">.',
+            props: [
+                {
+                    name: "inset",
+                    type: "boolean",
+                    defaultValue: "false",
+                    description: "Aligns the label with inset items.",
+                },
+                nativeDiv,
             ],
         },
         {
@@ -133,6 +163,7 @@ const groups: Record<string, GroupDoc[]> = {
                 {
                     name: "closeDelay",
                     type: "number",
+                    defaultValue: "140",
                     description: "Delay before the submenu closes.",
                 },
                 {
@@ -181,7 +212,7 @@ const groups: Record<string, GroupDoc[]> = {
                 {
                     name: "sideOffset",
                     type: "number",
-                    defaultValue: "0",
+                    defaultValue: "4",
                     description: "Space between submenu and parent.",
                 },
                 {

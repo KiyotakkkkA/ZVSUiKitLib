@@ -15,7 +15,9 @@ import { cn } from "../../lib/utils";
 import { usePortalContainer } from "../../hooks/usePortalContainer";
 import type {
     ContextMenuContentProps,
+    ContextMenuItemDangerProps,
     ContextMenuItemProps,
+    ContextMenuLabelProps,
     ContextMenuProps,
     ContextMenuSeparatorProps,
     ContextMenuState,
@@ -26,6 +28,12 @@ import type {
 } from "./types";
 
 const CONTEXT_MENU_VIEWPORT_PADDING = 8;
+
+const contentClassName =
+    "min-w-40 rounded-lg border border-main-700/80 bg-main-900/95 p-1 text-main-100 shadow-xl shadow-black/35 backdrop-blur-xl";
+
+const itemClassName =
+    "flex min-h-7 w-full items-center gap-2 rounded-md px-2 py-1 text-left text-sm leading-5 transition-colors duration-150 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-40";
 
 type ContextMenuContextValue = {
     state: ContextMenuState;
@@ -262,7 +270,8 @@ const ContextMenuContent = ({
             ref={contentRef}
             role="menu"
             className={cn(
-                "fixed z-50 min-w-44 rounded-xl border border-main-700 bg-main-900 p-1 shadow-2xl shadow-black/30",
+                "fixed z-50",
+                contentClassName,
                 className,
             )}
             style={{
@@ -278,17 +287,17 @@ const ContextMenuContent = ({
     );
 };
 
-const ContextMenuItem = ({
+const ContextMenuItemBase = ({
     children,
     inset = false,
-    variant = "default",
     leftSlot,
     rightSlot,
     className,
     onClick,
     disabled,
+    danger = false,
     ...props
-}: ContextMenuItemProps) => {
+}: ContextMenuItemProps & { danger?: boolean }) => {
     const { close } = useContextMenu();
 
     return (
@@ -298,14 +307,12 @@ const ContextMenuItem = ({
             role="menuitem"
             disabled={disabled}
             className={cn(
-                "flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left text-sm transition-colors duration-150",
-                inset && "pl-8",
-                variant === "default" &&
-                    "text-main-200 hover:bg-main-800 hover:text-main-100",
-                variant === "danger" &&
-                    "text-red-300 hover:bg-red-500/10 hover:text-red-200",
-                disabled && "cursor-not-allowed opacity-50",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-300/50",
+                itemClassName,
+                inset && "pl-7",
+                danger
+                    ? "text-red-300 hover:bg-red-500/15 hover:text-red-200 focus-visible:bg-red-500/15 focus-visible:text-red-200"
+                    : "text-main-200 hover:bg-main-700/70 hover:text-main-50 focus-visible:bg-main-700/70 focus-visible:text-main-50",
+                disabled && "cursor-not-allowed",
                 className,
             )}
             onClick={(event) => {
@@ -317,17 +324,44 @@ const ContextMenuItem = ({
             }}
         >
             {leftSlot && (
-                <span className="shrink-0 text-main-400">{leftSlot}</span>
+                <span className={cn("shrink-0", danger ? "text-red-400" : "text-main-400")}>
+                    {leftSlot}
+                </span>
             )}
 
             <span className="min-w-0 flex-1 truncate">{children}</span>
 
             {rightSlot && (
-                <span className="shrink-0 text-main-500">{rightSlot}</span>
+                <span className={cn("shrink-0 text-xs", danger ? "text-red-400/80" : "text-main-500")}>
+                    {rightSlot}
+                </span>
             )}
         </button>
     );
 };
+
+const ContextMenuItem = (props: ContextMenuItemProps) => (
+    <ContextMenuItemBase {...props} />
+);
+
+const ContextMenuItemDanger = (props: ContextMenuItemDangerProps) => (
+    <ContextMenuItemBase {...props} danger />
+);
+
+const ContextMenuLabel = ({
+    inset = false,
+    className,
+    ...props
+}: ContextMenuLabelProps) => (
+    <div
+        {...props}
+        className={cn(
+            "px-2 pb-0.5 pt-1.5 text-[11px] font-medium leading-4 text-main-500",
+            inset && "pl-7",
+            className,
+        )}
+    />
+);
 
 const ContextMenuSeparator = ({
     className,
@@ -337,7 +371,7 @@ const ContextMenuSeparator = ({
         <div
             {...props}
             role="separator"
-            className={cn("my-1 h-px bg-main-700", className)}
+            className={cn("-mx-1 my-1 h-px bg-main-700/80", className)}
         />
     );
 };
@@ -497,12 +531,11 @@ const ContextMenuSubTrigger = ({
             aria-expanded={open}
             disabled={disabled}
             className={cn(
-                "flex w-full items-center gap-2 rounded-lg px-2 py-1.5 text-left text-sm transition-colors duration-150",
-                "text-main-200 hover:bg-main-800 hover:text-main-100",
-                open && "bg-main-800 text-main-100",
-                inset && "pl-8",
+                itemClassName,
+                "text-main-200 hover:bg-main-700/70 hover:text-main-50 focus-visible:bg-main-700/70 focus-visible:text-main-50",
+                open && "bg-main-700/70 text-main-50",
+                inset && "pl-7",
                 disabled && "cursor-not-allowed opacity-50",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-300/50",
                 className,
             )}
             onClick={(event) => {
@@ -524,7 +557,7 @@ const ContextMenuSubTrigger = ({
             {rightSlot ?? (
                 <span
                     className={cn(
-                        "shrink-0 text-main-500 transition-transform duration-150",
+                        "shrink-0 text-base leading-none text-main-500 transition-transform duration-150",
                         open && "translate-x-0.5 text-main-300",
                         pinned && "text-main-100",
                     )}
@@ -539,7 +572,7 @@ const ContextMenuSubTrigger = ({
 const ContextMenuSubContent = ({
     children,
     className,
-    sideOffset = 6,
+    sideOffset = 4,
     style,
     onPointerEnter,
     ...props
@@ -566,7 +599,8 @@ const ContextMenuSubContent = ({
                 {...props}
                 role="menu"
                 className={cn(
-                    "absolute top-0 z-50 min-w-44 rounded-xl border border-main-700 bg-main-900 p-1 shadow-2xl shadow-black/30",
+                    "absolute top-0 z-50",
+                    contentClassName,
                     className,
                 )}
                 style={{
@@ -588,6 +622,8 @@ export const ContextMenu = Object.assign(ContextMenuRoot, {
     Trigger: ContextMenuTrigger,
     Content: ContextMenuContent,
     Item: ContextMenuItem,
+    ItemDanger: ContextMenuItemDanger,
+    Label: ContextMenuLabel,
     Separator: ContextMenuSeparator,
 
     Sub: ContextMenuSub,

@@ -6,13 +6,12 @@ import {
     SectionOverview,
     SectionPreview,
 } from "../../../molecules";
-import passwordCode from "./password.md";
 import { DemoInputSmall } from "./input-small-preview";
 import usageCode from "./usage.md";
 
 export const metadata: Metadata = {
     title: "InputSmall",
-    description: "Compact single-line input with password visibility support.",
+    description: "Compact native input with coordinated behavior presets.",
 };
 
 export default function InputSmallPage() {
@@ -24,8 +23,8 @@ export default function InputSmallPage() {
                 </SectionOverview.MetaTitle>
                 <SectionOverview.Title>InputSmall</SectionOverview.Title>
                 <SectionOverview.Description>
-                    A compact single-line field with native input behavior and a
-                    built-in password visibility control.
+                    A compact native field with accessible password, search,
+                    email, phone, and URL behavior presets.
                 </SectionOverview.Description>
                 <SectionOverview.Tags>
                     <span>Stable</span>
@@ -40,17 +39,11 @@ export default function InputSmallPage() {
 
             <SectionCode
                 nav={{ id: "usage", title: "Usage" }}
-                label="EmailField.tsx"
+                label="InputSmallExample.tsx"
             >
                 {usageCode}
             </SectionCode>
 
-            <SectionCode
-                nav={{ id: "password", title: "Password input" }}
-                label="PasswordField.tsx"
-            >
-                {passwordCode}
-            </SectionCode>
             <InputAPI component="InputSmall" />
         </DocumentationPage>
     );

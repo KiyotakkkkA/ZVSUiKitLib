@@ -1,4 +1,5 @@
 import { cn } from "../../lib/utils";
+import { useInputCheckBoxGroup } from "../InputCheckBoxGroup";
 import type { InputCheckBoxProps } from "./types";
 
 export const InputCheckBox = ({
@@ -7,22 +8,36 @@ export const InputCheckBox = ({
     disabled = false,
     className,
     classNames,
+    modelValue,
     ...props
 }: InputCheckBoxProps) => {
+    const group = useInputCheckBoxGroup();
+    const isGrouped = Boolean(group && modelValue);
+    const isChecked = isGrouped ? Boolean(group?.model[modelValue!]) : checked;
+    const isDisabled = disabled || Boolean(group?.disabled);
+
     return (
         <label
             className={cn(
                 "relative inline-flex h-5 w-5 items-center justify-center rounded-md",
-                disabled ? "cursor-not-allowed opacity-60" : "cursor-pointer",
+                isDisabled
+                    ? "cursor-not-allowed opacity-60"
+                    : "cursor-pointer",
                 className,
             )}
         >
             <input
                 {...props}
                 type="checkbox"
-                checked={checked}
-                disabled={disabled}
-                onChange={() => onChange(!checked)}
+                checked={Boolean(isChecked)}
+                disabled={isDisabled}
+                value={modelValue}
+                onChange={() => {
+                    const nextChecked = !isChecked;
+
+                    if (isGrouped) group?.toggle(modelValue!);
+                    onChange?.(nextChecked);
+                }}
                 className={cn("peer sr-only", classNames?.input)}
             />
 

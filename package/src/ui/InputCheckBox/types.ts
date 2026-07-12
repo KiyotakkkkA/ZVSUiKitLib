@@ -13,8 +13,9 @@ export type InputCheckBoxClassNames = {
 };
 
 export type InputCheckBoxProps = BaseInputProps & {
-    checked: boolean;
-    onChange: (checked: boolean) => void;
+    checked?: boolean;
+    onChange?: (checked: boolean) => void;
+    modelValue?: string;
     className?: LabelClassName;
     classNames?: InputCheckBoxClassNames;
 };

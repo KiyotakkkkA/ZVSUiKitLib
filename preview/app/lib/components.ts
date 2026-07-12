@@ -126,7 +126,7 @@ export const inputComponents: ComponentDocSection = {
             slug: "input-small",
             name: "InputSmall",
             summary:
-                "Compact single-line input with password visibility support.",
+                "Compact native input with coordinated behavior presets.",
         },
         {
             slug: "input-date",
@@ -159,6 +159,11 @@ export const inputComponents: ComponentDocSection = {
             summary: "Controlled checkbox input.",
         },
         {
+            slug: "input-checkbox-group",
+            name: "InputCheckBoxGroup",
+            summary: "Boolean-record checkbox selection group.",
+        },
+        {
             slug: "input-check-slided",
             name: "InputCheckSlided",
             summary: "Controlled sliding switch.",
@@ -182,6 +187,11 @@ export const inputComponents: ComponentDocSection = {
             slug: "input-radio",
             name: "InputRadio",
             summary: "Controlled radio input.",
+        },
+        {
+            slug: "input-radio-group",
+            name: "InputRadioGroup",
+            summary: "Exclusive boolean-record radio group.",
         },
         {
             slug: "input-range",

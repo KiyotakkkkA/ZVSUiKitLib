@@ -2,7 +2,7 @@ import { useRef, type ClipboardEvent, type KeyboardEvent } from "react";
 import { cn } from "../../lib/utils";
 import type { InputPinsProps } from "./types";
 
-const normalizePinValue = (value: string, length: number) => {
+const normalizeInput = (value: string, length: number) => {
     return value.replace(/\s/g, "").slice(0, length);
 };
 
@@ -20,10 +20,10 @@ export function InputPins({
     ...props
 }: InputPinsProps) {
     const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
-    const normalizedValue = normalizePinValue(value, length);
+    const normalizedValue = value.slice(0, length);
     const values = Array.from(
         { length },
-        (_, index) => normalizedValue[index] ?? "",
+        (_, index) => normalizedValue[index]?.trim() ?? "",
     );
 
     const focusInput = (index: number) => {
@@ -33,7 +33,7 @@ export function InputPins({
 
     const updateAtIndex = (index: number, nextValue: string) => {
         const nextValues = [...values];
-        const characters = normalizePinValue(nextValue, length).split("");
+        const characters = normalizeInput(nextValue, length).split("");
 
         if (characters.length > 1) {
             characters.forEach((character, characterIndex) => {
@@ -44,13 +44,13 @@ export function InputPins({
                 }
             });
 
-            onChange(nextValues.join(""));
+            onChange(nextValues.join("").padEnd(length, " "));
             focusInput(Math.min(index + characters.length, length - 1));
             return;
         }
 
         nextValues[index] = characters[0] ?? "";
-        onChange(nextValues.join(""));
+        onChange(nextValues.join("").padEnd(length, " "));
 
         if (characters[0] && index < length - 1) {
             focusInput(index + 1);
@@ -66,7 +66,7 @@ export function InputPins({
             const nextValues = [...values];
 
             nextValues[index - 1] = "";
-            onChange(nextValues.join(""));
+            onChange(nextValues.join("").padEnd(length, " "));
             focusInput(index - 1);
         }
 

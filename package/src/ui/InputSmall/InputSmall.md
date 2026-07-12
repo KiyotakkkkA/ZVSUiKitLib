@@ -2,7 +2,9 @@
 
 ## Purpose
 
-Compact single-line input. For `type="password"`, it includes a built-in show/hide toggle.
+Compact native input with optional behavior presets. `type` keeps its native
+HTML meaning; `preset` configures a coordinated type, input mode, autocomplete,
+icons, and interactions.
 
 ## Import
 
@@ -12,18 +14,34 @@ import { InputSmall } from "@kiyotakkkka/zvs-uikit-lib";
 
 ## Props
 
-| Prop       | Type   | Default | Description                                            |
-| ---------- | ------ | ------- | ------------------------------------------------------ |
-| className  | string | -       | Extra classes for input element.                       |
-| classNames | object | -       | Classes for internal slots.                            |
-| type       | string | -       | Input type. `password` enables visibility toggle icon. |
+| Prop       | Type                                                   | Default | Description                                           |
+| ---------- | ------------------------------------------------------ | ------- | ----------------------------------------------------- |
+| preset     | `"password" \| "search" \| "email" \| "phone" \| "url"` | - | Coordinated behavior preset.               |
+| type       | HTML input type                                        | preset  | Explicit native type; overrides non-password presets. |
+| onClear    | `() => void`                                           | -       | Called when the search preset is cleared.             |
+| className  | string                                                 | -       | Input element classes.                                |
+| classNames | object                                                 | -       | Classes for internal slots.                           |
+
+All remaining native input attributes are forwarded.
+
+### Presets
+
+| Preset     | Behavior                                                         |
+| ---------- | ---------------------------------------------------------------- |
+| `password` | Password type, visibility toggle, current-password autocomplete. |
+| `search`   | Search type, leading icon, clear button, Escape-to-clear.         |
+| `email`    | Email type, email keyboard and autocomplete.                      |
+| `phone`    | Telephone type, telephone keyboard and autocomplete.              |
+| `url`      | URL type, URL keyboard and autocomplete.                          |
 
 ### `classNames` slots
 
-| Slot    | Description                 |
-| ------- | --------------------------- |
-| wrapper | Outer wrapper classes.      |
-| icon    | Password toggle icon class. |
+| Slot           | Description                                   |
+| -------------- | --------------------------------------------- |
+| wrapper        | Outer wrapper classes.                        |
+| icon           | Every preset icon.                            |
+| leadingIcon    | Leading preset icon.                          |
+| trailingButton | Password visibility and search clear buttons. |
 
 ## Example
 
@@ -33,14 +51,22 @@ import { InputSmall } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 
 export function DemoInputSmall() {
-    const [email, setEmail] = useState("");
+    const [search, setSearch] = useState("");
 
     return (
-        <InputSmall
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter email"
-        />
+        <div className="grid gap-3">
+            <InputSmall placeholder="Name" />
+            <InputSmall preset="email" placeholder="Email" />
+            <InputSmall preset="password" placeholder="Password" />
+            <InputSmall
+                preset="search"
+                value={search}
+                onChange={(event) => setSearch(event.target.value)}
+                placeholder="Search"
+            />
+            <InputSmall preset="phone" placeholder="Phone" />
+            <InputSmall preset="url" placeholder="Website" />
+        </div>
     );
 }
 ```

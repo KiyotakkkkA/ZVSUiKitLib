@@ -22,9 +22,14 @@ export type ContextMenuContentProps = ComponentPropsWithoutRef<"div"> & {
 
 export type ContextMenuItemProps = ComponentPropsWithoutRef<"button"> & {
     inset?: boolean;
-    variant?: "default" | "danger";
     leftSlot?: ReactNode;
     rightSlot?: ReactNode;
+};
+
+export type ContextMenuItemDangerProps = ContextMenuItemProps;
+
+export type ContextMenuLabelProps = ComponentPropsWithoutRef<"div"> & {
+    inset?: boolean;
 };
 
 export type ContextMenuSeparatorProps = ComponentPropsWithoutRef<"div">;

@@ -23,6 +23,8 @@ import { ContextMenu } from "@kiyotakkkka/zvs-uikit-lib";
 | `ContextMenu.Trigger`    | Area that opens the menu.  |
 | `ContextMenu.Content`    | Floating menu content.     |
 | `ContextMenu.Item`       | Clickable menu item.       |
+| `ContextMenu.ItemDanger` | Destructive menu item.     |
+| `ContextMenu.Label`      | Section label.             |
 | `ContextMenu.Separator`  | Visual separator.          |
 | `ContextMenu.Sub`        | Submenu wrapper.           |
 | `ContextMenu.SubTrigger` | Item that opens a submenu. |
@@ -45,21 +47,31 @@ import { ContextMenu } from "@kiyotakkkka/zvs-uikit-lib";
 
 ### `ContextMenu.Item` props
 
-| Prop      | Type                  | Default   | Description             |
-| --------- | --------------------- | --------- | ----------------------- |
-| variant   | "default" \| "danger" | `default` | Item style              |
-| inset     | boolean               | `false`   | Adds left padding.      |
-| leftSlot  | ReactNode             | -         | Optional leading slot.  |
-| rightSlot | ReactNode             | -         | Optional trailing slot. |
-| className | string                | -         | Item classes.           |
-| children  | ReactNode             | -         | Item content.           |
+| Prop      | Type      | Default | Description             |
+| --------- | --------- | ------- | ----------------------- |
+| inset     | boolean   | `false` | Adds left padding.      |
+| leftSlot  | ReactNode | -       | Optional leading slot.  |
+| rightSlot | ReactNode | -       | Optional trailing slot. |
+| className | string    | -       | Item classes.           |
+| children  | ReactNode | -       | Item content.           |
+
+`ContextMenu.ItemDanger` accepts the same props as `ContextMenu.Item` and
+provides destructive-action colors without a `variant` prop.
+
+### `ContextMenu.Label` props
+
+| Prop      | Type      | Default | Description        |
+| --------- | --------- | ------- | ------------------ |
+| inset     | boolean   | `false` | Adds left padding. |
+| className | string    | -       | Label classes.     |
+| children  | ReactNode | -       | Label content.     |
 
 ### `ContextMenu.Sub` props
 
 | Prop       | Type      | Default | Description                              |
 | ---------- | --------- | ------- | ---------------------------------------- |
 | fixable    | boolean   | `false` | Keeps submenu open when clicking inside. |
-| closeDelay | number    | `0`     | Delay in ms before closing submenu.      |
+| closeDelay | number    | `140`   | Delay in ms before closing submenu.      |
 | className  | string    | -       | Submenu wrapper classes.                 |
 | children   | ReactNode | -       | `SubTrigger` and `SubContent` parts.     |
 
@@ -77,7 +89,7 @@ import { ContextMenu } from "@kiyotakkkka/zvs-uikit-lib";
 
 | Prop       | Type      | Default | Description              |
 | ---------- | --------- | ------- | ------------------------ |
-| sideOffset | number    | `0`     | Distance from trigger.   |
+| sideOffset | number    | `4`     | Distance from trigger.   |
 | className  | string    | -       | Submenu content classes. |
 | children   | ReactNode | -       | Submenu items and parts. |
 
@@ -95,10 +107,10 @@ export function DemoContextMenu() {
             </ContextMenu.Trigger>
 
             <ContextMenu.Content>
+                <ContextMenu.Label>File</ContextMenu.Label>
                 <ContextMenu.Item onClick={() => console.log("Open")}>
                     Open
                 </ContextMenu.Item>
-                <ContextMenu.Item variant="danger">Delete</ContextMenu.Item>
                 <ContextMenu.Sub fixable>
                     <ContextMenu.SubTrigger>More</ContextMenu.SubTrigger>
                     <ContextMenu.SubContent sideOffset={4}>
@@ -106,6 +118,8 @@ export function DemoContextMenu() {
                         <ContextMenu.Item>Option 2</ContextMenu.Item>
                     </ContextMenu.SubContent>
                 </ContextMenu.Sub>
+                <ContextMenu.Separator />
+                <ContextMenu.ItemDanger>Delete</ContextMenu.ItemDanger>
             </ContextMenu.Content>
         </ContextMenu>
     );
