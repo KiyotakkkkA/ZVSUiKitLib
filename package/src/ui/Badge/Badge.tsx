@@ -16,12 +16,14 @@ export function Badge({
     variant = "secondary",
     className,
     children,
+    rounded = "rounded-lg",
     ...props
 }: BadgeProps) {
     return (
         <span
             className={cn(
-                "inline-flex items-center rounded-full border px-2 py-0.5 text-[11px] font-medium",
+                "inline-flex items-center border px-2 py-0.5 text-[11px] font-medium",
+                rounded && `zvs-${rounded}`,
                 variantClasses[variant],
                 className,
             )}

@@ -51,6 +51,13 @@ import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib";
 | focusInputOnOpen | `() => void` | -       | Called after opening by click, Enter, or Space. |
 | className        | string       | -       | Anchor classes.                                 |
 
+### `Dropdown.Menu` props
+
+| Prop      | Type            | Default        | Description                  |
+| --------- | --------------- | -------------- | ---------------------------- |
+| rounded   | `RoundVariants` | `"rounded-lg"` | Popup container border radius. |
+| className | string          | -              | Popup container classes.     |
+
 ### `Dropdown.Item` props
 
 | Prop         | Type      | Default | Description                                    |

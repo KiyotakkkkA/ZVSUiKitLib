@@ -1,6 +1,6 @@
 import type { SelectHTMLAttributes } from "react";
 
-import type { DivClassName, SelectClassName } from "../_shared/types";
+import type { DivClassName, RoundVariants, SelectClassName } from "../_shared/types";
 
 type BaseSelectNativeProps = Omit<
     SelectHTMLAttributes<HTMLSelectElement>,
@@ -21,6 +21,7 @@ export type SelectNativeProps = BaseSelectNativeProps & {
     options: SelectNativeOption[];
     onChange?: (value: string) => void;
     placeholder?: string;
+    rounded?: RoundVariants | "";
     className?: DivClassName;
     classNames?: SelectNativeClassNames;
 };

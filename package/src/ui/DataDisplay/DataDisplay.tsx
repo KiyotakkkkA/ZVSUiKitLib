@@ -4,6 +4,7 @@ import type { DataDisplayItemProps, DataDisplayProps } from "./types";
 const DataDisplayRoot = ({
     children,
     bordered = true,
+    rounded = "rounded-lg",
     className,
     ...props
 }: DataDisplayProps) => {
@@ -12,8 +13,8 @@ const DataDisplayRoot = ({
             {...props}
             className={cn(
                 "grid min-w-0 gap-2",
-                bordered &&
-                    "rounded-2xl border border-main-700/70 bg-main-900/50 p-3",
+                bordered && "border border-main-700/70 bg-main-900/50 p-3",
+                bordered && rounded && `zvs-${rounded}`,
                 className,
             )}
         >

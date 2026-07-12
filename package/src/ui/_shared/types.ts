@@ -38,3 +38,15 @@ export type PositionAnchor =
     | "bottom-left"
     | "bottom-center"
     | "bottom-right";
+
+export type RoundVariants =
+    | "rounded-none"
+    | "rounded-sm"
+    | "rounded"
+    | "rounded-md"
+    | "rounded-lg"
+    | "rounded-xl"
+    | "rounded-2xl"
+    | "rounded-3xl"
+    | "rounded-4xl"
+    | "rounded-full";

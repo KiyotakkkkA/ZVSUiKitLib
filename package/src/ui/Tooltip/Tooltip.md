@@ -17,6 +17,7 @@ import { Tooltip } from "@kiyotakkkka/zvs-uikit-lib";
 | children  | ReactNode                                                                                         | -              | Wrapped trigger element.       |
 | label     | ReactNode                                                                                         | -              | Tooltip content.               |
 | placement | `"top-left" \| "top-center" \| "top-right" \| "bottom-left" \| "bottom-center" \| "bottom-right"` | `"top-center"` | Tooltip and arrow positioning. |
+| rounded   | `RoundVariants`                                                                                     | `"rounded-lg"` | Tooltip border radius.         |
 | className | string                                                                                            | -              | Tooltip panel classes.         |
 
 ## Example

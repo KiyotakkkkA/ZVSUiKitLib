@@ -8,11 +8,17 @@ import type {
     CardFooterProps,
 } from "./types";
 
-function CardRoot({ className, children, ...props }: CardProps) {
+function CardRoot({
+    className,
+    children,
+    rounded = "rounded-lg",
+    ...props
+}: CardProps) {
     return (
         <section
             className={cn(
-                "rounded-2xl border border-main-700/70 bg-main-900/55",
+                "border border-main-700/70 bg-main-900/55",
+                rounded && `zvs-${rounded}`,
                 "text-main-100",
                 className,
             )}

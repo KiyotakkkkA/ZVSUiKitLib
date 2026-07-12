@@ -4,6 +4,7 @@ import type {
     DivClassName,
     ParagraphClassName,
     SpanClassName,
+    RoundVariants,
 } from "../_shared/types";
 
 export type AlertClassNames = {
@@ -18,4 +19,5 @@ export type AlertProps = HTMLAttributes<HTMLDivElement> & {
     title?: ReactNode;
     icon?: ReactNode;
     classNames?: AlertClassNames;
+    rounded?: RoundVariants | "";
 };

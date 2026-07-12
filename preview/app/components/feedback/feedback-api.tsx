@@ -29,6 +29,7 @@ const groups: Record<string, P[]> = {
         p("title", "ReactNode", "Optional heading."),
         p("icon", "ReactNode", "Custom leading icon."),
         p("children", "ReactNode", "Message body."),
+        p("rounded", "RoundVariants", "Border radius.", "rounded-lg"),
         p("className", "string", "Root classes."),
         c("AlertClassNames", ["icon", "content", "title", "body"]),
         p(
@@ -40,6 +41,7 @@ const groups: Record<string, P[]> = {
     Badge: [
         p("variant", "BadgeVariant", "Visual status variant.", "neutral"),
         p("children", "ReactNode", "Badge content."),
+        p("rounded", "RoundVariants", "Border radius.", "rounded-lg"),
         p("className", "string", "Badge classes."),
         p(
             "...spanProps",

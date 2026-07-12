@@ -5,7 +5,7 @@ import type {
     ReactNode,
     Ref,
 } from "react";
-import type { DivClassName, PositionAnchor } from "../_shared/types";
+import type { DivClassName, PositionAnchor, RoundVariants } from "../_shared/types";
 
 export type DropdownContextValue = {
     open: boolean;
@@ -38,7 +38,9 @@ export type DropdownAnchorProps = HTMLAttributes<HTMLDivElement> & {
     focusInputOnOpen?: () => void;
 };
 
-export type DropdownMenuProps = HTMLAttributes<HTMLDivElement>;
+export type DropdownMenuProps = HTMLAttributes<HTMLDivElement> & {
+    rounded?: RoundVariants | "";
+};
 
 export type DropdownItemProps = ButtonHTMLAttributes<HTMLButtonElement> & {
     closeOnClick?: boolean;

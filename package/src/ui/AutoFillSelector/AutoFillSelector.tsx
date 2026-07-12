@@ -150,6 +150,7 @@ function AutoFillSelectorRoot({
 }
 
 function AutoFillSelectorTrigger({
+    rounded = "rounded-2xl",
     className,
     children,
     ...props
@@ -160,9 +161,10 @@ function AutoFillSelectorTrigger({
         <Dropdown.Anchor
             focusInputOnOpen={() => inputRef.current?.focus()}
             className={cn(
-                "flex min-h-9 w-full min-w-0 max-w-full flex-wrap items-center gap-1 rounded-lg border border-main-700",
+                "flex min-h-9 w-full min-w-0 max-w-full flex-wrap items-center gap-1 border border-main-700",
                 "overflow-hidden bg-main-800 px-2 py-1 text-sm text-main-100 transition-colors duration-200",
                 "hover:border-main-600 focus-within:border-main-500 focus-within:ring-2 focus-within:ring-main-500/20",
+                `zvs-${rounded}`,
                 disabled ? "cursor-not-allowed opacity-60" : "cursor-text",
                 className,
             )}
@@ -174,6 +176,7 @@ function AutoFillSelectorTrigger({
 }
 
 function AutoFillSelectorTags({
+    rounded = "rounded-full",
     className,
     tagClassName,
     tagRemoveClassName,
@@ -201,7 +204,8 @@ function AutoFillSelectorTags({
                     <span
                         key={item}
                         className={cn(
-                            "inline-flex min-w-0 max-w-28 items-center gap-1 rounded-md bg-main-700 px-1.5 py-0.5 text-xs text-main-100",
+                            "inline-flex min-w-0 max-w-28 items-center gap-1 bg-main-700 px-1.5 py-0.5 text-xs text-main-100",
+                            `zvs-${rounded}`,
                             tagClassName,
                         )}
                     >
@@ -237,6 +241,7 @@ function AutoFillSelectorTags({
 }
 
 function AutoFillSelectorInput({
+    rounded = "rounded-full",
     className,
     placeholder = "Введите для поиска",
     onFocus,
@@ -272,6 +277,7 @@ function AutoFillSelectorInput({
             }}
             className={cn(
                 "min-w-20 flex-1 bg-transparent px-0.5 py-0.5 text-sm text-main-100 placeholder:text-main-500 outline-none",
+                `zvs-${rounded}`,
                 className,
             )}
             {...props}
@@ -283,13 +289,15 @@ function AutoFillSelectorMenu({
     className,
     scrollClassName,
     children,
+    rounded = "rounded-4xl",
     ...props
 }: AutoFillSelectorMenuProps) {
     return (
         <Dropdown.Menu
             aria-multiselectable
             className={cn(
-                "overflow-hidden rounded-lg border border-main-700 bg-main-800 p-1 shadow-lg",
+                "overflow-hidden border border-main-700 bg-main-800 p-1 shadow-lg",
+                `zvs-${rounded}`,
                 className,
             )}
             {...props}
@@ -305,6 +313,7 @@ function AutoFillSelectorMenu({
 }
 
 function AutoFillSelectorOptions({
+    rounded = "rounded-full",
     className,
     optionClassName,
     optionLabelClassName,
@@ -320,7 +329,7 @@ function AutoFillSelectorOptions({
     }
 
     return (
-        <div className={cn("flex flex-col", className)} {...props}>
+        <div className={cn("flex flex-col gap-1", className)} {...props}>
             {filteredOptions.map((option) => {
                 const isSelected = selectedSet.has(option.value);
 
@@ -349,7 +358,7 @@ function AutoFillSelectorOptions({
                             inputRef.current?.focus();
                         }}
                         className={cn(
-                            "w-full min-w-0 items-center gap-2 rounded-md px-2 py-1.5",
+                            `w-full min-w-0 items-center gap-2 px-4 py-1.5 zvs-${rounded}`,
                             isSelected
                                 ? "bg-main-700/60 text-main-100"
                                 : "text-main-300 hover:bg-main-700/40 hover:text-main-100",

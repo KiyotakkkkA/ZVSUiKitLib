@@ -123,21 +123,6 @@ export const inputComponents: ComponentDocSection = {
     prefix: "inputs",
     components: [
         {
-            slug: "input-small",
-            name: "InputSmall",
-            summary: "Compact native input with coordinated behavior presets.",
-        },
-        {
-            slug: "input-date",
-            name: "InputDate",
-            summary: "Date input paired with a calendar popup.",
-        },
-        {
-            slug: "calendar",
-            name: "Calendar",
-            summary: "Date calendar with constraints and custom rendering.",
-        },
-        {
             slug: "auto-fill-selector",
             name: "AutoFillSelector",
             summary: "Searchable multi-select.",
@@ -146,6 +131,11 @@ export const inputComponents: ComponentDocSection = {
             slug: "button",
             name: "Button",
             summary: "Action control with variants and loading state.",
+        },
+        {
+            slug: "calendar",
+            name: "Calendar",
+            summary: "Date calendar with constraints and custom rendering.",
         },
         {
             slug: "input-big",
@@ -171,6 +161,11 @@ export const inputComponents: ComponentDocSection = {
             slug: "input-color",
             name: "InputColor",
             summary: "Color picker with hue, alpha, and presets.",
+        },
+        {
+            slug: "input-date",
+            name: "InputDate",
+            summary: "Date input paired with a calendar popup.",
         },
         {
             slug: "input-drop-zone",
@@ -203,6 +198,11 @@ export const inputComponents: ComponentDocSection = {
             summary: "Pointer-driven numeric slider.",
         },
         {
+            slug: "input-small",
+            name: "InputSmall",
+            summary: "Compact native input with coordinated behavior presets.",
+        },
+        {
             slug: "select",
             name: "Select",
             summary: "Searchable dropdown selection.",
@@ -217,7 +217,11 @@ export const inputComponents: ComponentDocSection = {
             name: "Switcher",
             summary: "Compact segmented switcher.",
         },
-        { slug: "tabs", name: "Tabs", summary: "Controlled tab navigation." },
+        {
+            slug: "tabs",
+            name: "Tabs",
+            summary: "Controlled tab navigation.",
+        },
     ],
 };
 

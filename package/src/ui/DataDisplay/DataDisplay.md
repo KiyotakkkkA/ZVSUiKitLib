@@ -16,6 +16,7 @@ import { DataDisplay } from "@kiyotakkkka/zvs-uikit-lib";
 | --------- | --------- | ------- | ------------------------------ |
 | children  | ReactNode | -       | `DataDisplay.Item` components. |
 | bordered  | boolean   | `true`  | Adds border and background.    |
+| rounded   | `RoundVariants` | `"rounded-lg"` | Bordered container radius. |
 | className | string    | -       | Root classes.                  |
 
 ## Compound parts

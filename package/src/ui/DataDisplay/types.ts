@@ -1,8 +1,10 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { RoundVariants } from "../_shared/types";
 
 export type DataDisplayProps = ComponentPropsWithoutRef<"div"> & {
     children: ReactNode;
     bordered?: boolean;
+    rounded?: RoundVariants | "";
 };
 
 export type DataDisplayItemProps = ComponentPropsWithoutRef<"div"> & {

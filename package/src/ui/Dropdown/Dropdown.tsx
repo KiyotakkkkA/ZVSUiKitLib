@@ -416,7 +416,12 @@ function DropdownAnchor({
     );
 }
 
-function DropdownMenu({ children, className, ...props }: DropdownMenuProps) {
+function DropdownMenu({
+    children,
+    className,
+    rounded = "rounded-lg",
+    ...props
+}: DropdownMenuProps) {
     const { menuId, setMenuRef, menuPlacement } = useDropdownContext();
 
     return (
@@ -427,7 +432,8 @@ function DropdownMenu({ children, className, ...props }: DropdownMenuProps) {
             popover="auto"
             data-placement={menuPlacement}
             className={cn(
-                "zvs-dropdown-popover fixed z-60 rounded-xl border-0 bg-main-800 p-1.5",
+                "zvs-dropdown-popover fixed z-60 border-0 bg-main-800 p-1.5",
+                rounded && `zvs-${rounded}`,
                 "max-w-[calc(100vw-1rem)]",
                 className,
             )}

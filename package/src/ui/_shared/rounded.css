@@ -1,0 +1,39 @@
+.zvs-rounded-none {
+    border-radius: 0px;
+}
+
+.zvs-rounded-sm {
+    border-radius: 0.125rem;
+}
+
+.zvs-rounded {
+    border-radius: 0.25rem;
+}
+
+.zvs-rounded-md {
+    border-radius: 0.375rem;
+}
+
+.zvs-rounded-lg {
+    border-radius: 0.5rem;
+}
+
+.zvs-rounded-xl {
+    border-radius: 0.75rem;
+}
+
+.zvs-rounded-2xl {
+    border-radius: 1rem;
+}
+
+.zvs-rounded-3xl {
+    border-radius: 1.5rem;
+}
+
+.zvs-rounded-4xl {
+    border-radius: 2rem;
+}
+
+.zvs-rounded-full {
+    border-radius: 9999px;
+}

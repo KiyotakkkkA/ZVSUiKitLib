@@ -38,7 +38,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
             loading = false,
             loadingText,
             variant = "secondary",
-            shape = "rounded-md",
+            rounded = "rounded-full",
             className,
             classNames = {
                 loaderIcon: "w-4 h-4",
@@ -61,7 +61,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 className={cn(
                     "inline-flex items-center justify-center gap-2 border transition-colors",
                     "cursor-pointer disabled:cursor-not-allowed disabled:opacity-70 p-1",
-                    shape,
+                    `zvs-${rounded}`,
                     variant ? variants[variant] : "",
                     className,
                 )}

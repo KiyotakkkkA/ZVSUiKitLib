@@ -317,6 +317,12 @@ const groups: Record<string, GroupDoc[]> = {
             description: "Extends HTMLAttributes<HTMLDivElement>.",
             props: [
                 {
+                    name: "rounded",
+                    type: "RoundVariants",
+                    defaultValue: "rounded-lg",
+                    description: "Popover border radius.",
+                },
+                {
                     name: "className",
                     type: "string",
                     description: "Popover menu classes.",
@@ -415,6 +421,12 @@ const groups: Record<string, GroupDoc[]> = {
             description: "Extends HTMLAttributes<HTMLDivElement>.",
             props: [
                 {
+                    name: "rounded",
+                    type: "RoundVariants",
+                    defaultValue: "rounded-lg",
+                    description: "Panel border radius.",
+                },
+                {
                     name: "children",
                     type: "ReactNode",
                     description: "Floating panel content.",
@@ -447,6 +459,12 @@ const groups: Record<string, GroupDoc[]> = {
                     name: "className",
                     type: "string",
                     description: "Dialog container classes.",
+                },
+                {
+                    name: "rounded",
+                    type: "RoundVariants",
+                    defaultValue: "rounded-lg",
+                    description: "Dialog container border radius.",
                 },
                 {
                     name: "overlayClassName",
@@ -608,6 +626,12 @@ const groups: Record<string, GroupDoc[]> = {
                     type: "TooltipPlacement",
                     defaultValue: "top-center",
                     description: "Tooltip and arrow placement.",
+                },
+                {
+                    name: "rounded",
+                    type: "RoundVariants",
+                    defaultValue: "rounded-lg",
+                    description: "Tooltip border radius.",
                 },
                 {
                     name: "className",

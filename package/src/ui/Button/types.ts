@@ -1,16 +1,9 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
-import type { ColorVariantOutline, ColorVariantsBase } from "../..";
-
-export type ButtonShape =
-    | "rounded-none"
-    | "rounded-sm"
-    | "rounded-md"
-    | "rounded-lg"
-    | "rounded-xl"
-    | "rounded-2xl"
-    | "rounded-full"
-    | "rounded-l-full"
-    | "rounded-r-full";
+import type {
+    ColorVariantOutline,
+    ColorVariantsBase,
+    RoundVariants,
+} from "../..";
 
 export type ButtonClassNames = {
     loaderIcon?: string;
@@ -25,6 +18,6 @@ export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
     loading?: boolean;
     loadingText?: string;
     variant?: ButtonVariants | "";
-    shape?: ButtonShape | "";
+    rounded?: RoundVariants | "";
     classNames?: ButtonClassNames;
 };

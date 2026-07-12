@@ -25,6 +25,7 @@ export function Tooltip({
     label,
     placement = "top-center",
     className,
+    rounded = "rounded-lg",
 }: TooltipProps) {
     return (
         <span className="group relative inline-flex w-fit">
@@ -32,7 +33,8 @@ export function Tooltip({
             <span
                 role="tooltip"
                 className={cn(
-                    "pointer-events-none invisible absolute z-50 max-w-xs whitespace-nowrap rounded-lg",
+                    "pointer-events-none invisible absolute z-50 max-w-xs whitespace-nowrap",
+                    rounded && `zvs-${rounded}`,
                     "bg-main-100 px-2.5 py-1.5 text-xs font-medium text-main-900 shadow-lg",
                     "opacity-0 transition-opacity duration-150",
                     "group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100",

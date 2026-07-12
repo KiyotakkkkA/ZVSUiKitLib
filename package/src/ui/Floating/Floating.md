@@ -40,6 +40,7 @@ The root also accepts standard `HTMLAttributes<HTMLDivElement>`.
 | --------- | ----------- | ------- | ------------------------- |
 | children  | `ReactNode` | -       | Content of the floating.  |
 | className | `string`    | -       | Floating wrapper classes. |
+| rounded   | `RoundVariants` | `"rounded-lg"` | Floating panel border radius. |
 
 ## Example
 

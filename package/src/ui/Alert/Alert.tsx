@@ -51,6 +51,7 @@ export function Alert({
     className,
     classNames,
     children,
+    rounded = "rounded-lg",
     ...props
 }: AlertProps) {
     const variantStyle = variantStyles[variant];
@@ -59,7 +60,8 @@ export function Alert({
         <div
             role="status"
             className={cn(
-                "flex items-start gap-3 rounded-xl border px-3 py-2.5",
+                "flex items-start gap-3 border px-3 py-2.5",
+                rounded && `zvs-${rounded}`,
                 variantStyle.box,
                 className,
             )}

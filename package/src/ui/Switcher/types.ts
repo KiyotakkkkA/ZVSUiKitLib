@@ -1,4 +1,4 @@
-import type { ButtonClassName, DivClassName } from "../_shared/types";
+import type { ButtonClassName, DivClassName, RoundVariants } from "../_shared/types";
 
 export type SwitcherOption = {
     value: string;
@@ -15,4 +15,5 @@ export type SwitcherProps = {
     onChange: (value: string) => void;
     className?: DivClassName;
     classNames?: SwitcherClassNames;
+    rounded?: RoundVariants | "";
 };

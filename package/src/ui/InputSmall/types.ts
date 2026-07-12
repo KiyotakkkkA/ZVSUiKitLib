@@ -1,5 +1,5 @@
 import type { InputHTMLAttributes } from "react";
-import type { DivClassName, SvgClassName } from "../_shared/types";
+import type { DivClassName, RoundVariants, SvgClassName } from "../_shared/types";
 
 export type InputPreset = "password" | "search" | "email" | "phone" | "url";
 export type InputPresets = InputPreset;
@@ -15,4 +15,5 @@ export type InputSmallProps = InputHTMLAttributes<HTMLInputElement> & {
     classNames?: InputSmallClassNames;
     preset?: InputPresets;
     onClear?: () => void;
+    rounded?: RoundVariants | "";
 };

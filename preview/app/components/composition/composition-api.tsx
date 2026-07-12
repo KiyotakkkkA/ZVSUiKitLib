@@ -109,6 +109,7 @@ const groups: Record<string, GroupDoc[]> = {
             description: "Extends HTMLAttributes<HTMLElement>.",
             props: [
                 prop("children", "ReactNode", "Card sections."),
+                prop("rounded", "RoundVariants", "Border radius.", "rounded-lg"),
                 prop("className", "string", "Root card classes."),
                 native("article"),
             ],
@@ -303,6 +304,7 @@ const groups: Record<string, GroupDoc[]> = {
             props: [
                 prop("children", "ReactNode", "DataDisplay.Item rows."),
                 prop("bordered", "boolean", "Adds row borders.", "false"),
+                prop("rounded", "RoundVariants", "Border radius.", "rounded-lg"),
                 prop("className", "string", "Root classes."),
                 native("div"),
             ],

@@ -57,6 +57,12 @@ const groups: Record<string, G[]> = {
             props: [
                 p("children", "ReactNode", "Trigger content."),
                 p("className", "string", "Trigger classes."),
+                p(
+                    "rounded",
+                    '"rounded-none" | "rounded-sm" | "rounded" | "rounded-md" | "rounded-lg" | "rounded-xl" | "rounded-2xl" | "rounded-3xl" | "rounded-4xl" | "rounded-full"',
+                    "Border-radius preset.",
+                    "rounded-2xl",
+                ),
             ],
         },
         {
@@ -70,6 +76,12 @@ const groups: Record<string, G[]> = {
                     "Tag and remove-button classes.",
                 ),
                 p("className", "string", "Tags wrapper classes."),
+                p(
+                    "rounded",
+                    '"rounded-none" | "rounded-sm" | "rounded" | "rounded-md" | "rounded-lg" | "rounded-xl" | "rounded-2xl" | "rounded-3xl" | "rounded-4xl" | "rounded-full"',
+                    "Border-radius preset.",
+                    "rounded-full",
+                ),
             ],
         },
         {
@@ -88,6 +100,12 @@ const groups: Record<string, G[]> = {
                 p("children", "ReactNode", "Menu content."),
                 p("scrollClassName", "string", "Scrollable area classes."),
                 p("className", "string", "Menu classes."),
+                p(
+                    "rounded",
+                    '"rounded-none" | "rounded-sm" | "rounded" | "rounded-md" | "rounded-lg" | "rounded-xl" | "rounded-2xl" | "rounded-3xl" | "rounded-4xl" | "rounded-full"',
+                    "Border-radius preset.",
+                    "rounded-4xl",
+                ),
             ],
         },
         {
@@ -101,6 +119,12 @@ const groups: Record<string, G[]> = {
                     "Option slot classes.",
                 ),
                 p("className", "string", "Options wrapper classes."),
+                p(
+                    "rounded",
+                    '"rounded-none" | "rounded-sm" | "rounded" | "rounded-md" | "rounded-lg" | "rounded-xl" | "rounded-2xl" | "rounded-3xl" | "rounded-4xl" | "rounded-full"',
+                    "Border-radius preset.",
+                    "rounded-full",
+                ),
             ],
         },
         {
@@ -636,6 +660,7 @@ const groups: Record<string, G[]> = {
             description: "Extends InputHTMLAttributes<HTMLInputElement>.",
             props: [
                 p("className", "string", "Native input classes."),
+                p("rounded", "RoundVariants", "Border radius.", "rounded-full"),
                 c("InputSmallClassNames", [
                     "wrapper",
                     "icon",
@@ -713,6 +738,7 @@ const groups: Record<string, G[]> = {
                 p("options", "SelectNativeOption[]", "Native options."),
                 p("onChange", "(value: string) => void", "Selection callback."),
                 p("placeholder", "string", "Placeholder option."),
+                p("rounded", "RoundVariants", "Border radius.", "rounded-full"),
                 p("className", "string", "Root classes."),
                 c("SelectNativeClassNames", ["select"]),
                 native("select"),
@@ -726,6 +752,7 @@ const groups: Record<string, G[]> = {
                 p("value", "string", "Controlled selected value."),
                 p("options", "SwitcherOption[]", "Available tabs."),
                 p("onChange", "(value: string) => void", "Selection callback."),
+                p("rounded", "RoundVariants", "Border radius.", "rounded-lg"),
                 p("className", "string", "Root classes."),
                 c("SwitcherClassNames", ["tab"]),
             ],

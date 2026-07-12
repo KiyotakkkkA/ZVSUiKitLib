@@ -3,6 +3,7 @@ import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
 import type {
     ButtonClassName,
     DivClassName,
+    RoundVariants,
     SpanClassName,
     SvgClassName,
 } from "../_shared/types";
@@ -27,9 +28,12 @@ export type AutoFillSelectorProps = Omit<
     onOpenChange?: (open: boolean) => void;
 };
 
-export type AutoFillSelectorTriggerProps = HTMLAttributes<HTMLDivElement>;
+export type AutoFillSelectorTriggerProps = HTMLAttributes<HTMLDivElement> & {
+    rounded?: RoundVariants;
+};
 
 export type AutoFillSelectorTagsProps = HTMLAttributes<HTMLDivElement> & {
+    rounded?: RoundVariants;
     tagClassName?: SpanClassName;
     tagRemoveClassName?: ButtonClassName;
 };
@@ -37,10 +41,11 @@ export type AutoFillSelectorTagsProps = HTMLAttributes<HTMLDivElement> & {
 export type AutoFillSelectorInputProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
     "value" | "onChange" | "disabled"
->;
+> & { rounded?: RoundVariants };
 
 export type AutoFillSelectorMenuProps = HTMLAttributes<HTMLDivElement> & {
     scrollClassName?: DivClassName;
+    rounded?: RoundVariants;
 };
 
 export type AutoFillSelectorOptionsProps = HTMLAttributes<HTMLDivElement> & {
@@ -48,6 +53,7 @@ export type AutoFillSelectorOptionsProps = HTMLAttributes<HTMLDivElement> & {
     optionLabelClassName?: SpanClassName;
     optionDescriptionClassName?: SpanClassName;
     optionIconClassName?: SvgClassName;
+    rounded?: RoundVariants;
 };
 
 export type AutoFillSelectorEmptyProps = HTMLAttributes<HTMLDivElement> & {

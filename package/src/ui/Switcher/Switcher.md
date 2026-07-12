@@ -17,6 +17,7 @@ import { Switcher } from "@kiyotakkkka/zvs-uikit-lib";
 | value      | string                               | -       | Active value.               |
 | options    | `{ value: string; label: string }[]` | -       | Segments list.              |
 | onChange   | `(value: string) => void`            | -       | Called on selection change. |
+| rounded    | `RoundVariants`                      | `"rounded-lg"` | Border radius shape.      |
 | className  | string                               | -       | Extra wrapper classes.      |
 | classNames | object                               | -       | Classes for internal slots. |
 

@@ -70,6 +70,7 @@ function FloatingTrigger({
 function FloatingContent({
     children,
     className,
+    rounded = "rounded-lg",
     ...props
 }: FloatingContentProps) {
     const { anchor } = useFloatingContext();
@@ -77,7 +78,8 @@ function FloatingContent({
     return (
         <div
             className={cn(
-                "pointer-events-none invisible absolute z-40 rounded-xl border border-main-700/80",
+                "pointer-events-none invisible absolute z-40 border border-main-700/80",
+                rounded && `zvs-${rounded}`,
                 "bg-main-900/95 p-3 opacity-0 transition-all duration-150",
                 "group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100",
                 panelPositionByAnchor[anchor],

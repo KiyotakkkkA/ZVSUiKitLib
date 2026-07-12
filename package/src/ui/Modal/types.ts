@@ -1,5 +1,5 @@
 import type { PropsWithChildren } from "react";
-import type { ButtonClassName, DivClassName } from "../_shared/types";
+import type { ButtonClassName, DivClassName, RoundVariants } from "../_shared/types";
 
 export type ModalProps = PropsWithChildren<{
     open: boolean;
@@ -7,6 +7,7 @@ export type ModalProps = PropsWithChildren<{
     className?: DivClassName;
     overlayClassName?: DivClassName;
     closeOnOverlayClick?: boolean;
+    rounded?: RoundVariants | "";
 }>;
 
 export type ModalSectionProps = PropsWithChildren<{
