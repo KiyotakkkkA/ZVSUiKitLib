@@ -1,3 +1,5 @@
+export type { PositionAnchor } from "./_shared/types";
+
 export * from "./Button";
 export * from "./Breadcrumbs";
 export * from "./ContextMenu";

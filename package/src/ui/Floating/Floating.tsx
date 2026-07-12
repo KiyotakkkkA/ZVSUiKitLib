@@ -3,14 +3,14 @@
 import { createContext, useContext, useMemo } from "react";
 import { cn } from "../../lib/utils";
 import type {
-    FloatingAnchor,
     FloatingContentProps,
     FloatingContextValue,
     FloatingProps,
     FloatingTriggerProps,
 } from "./types";
+import type { PositionAnchor } from "../..";
 
-const panelPositionByAnchor: Record<FloatingAnchor, string> = {
+const panelPositionByAnchor: Record<PositionAnchor, string> = {
     "top-left": "bottom-full left-0 mb-2 origin-bottom-left",
     "top-center": "bottom-full left-1/2 mb-2 -translate-x-1/2 origin-bottom",
     "top-right": "bottom-full right-0 mb-2 origin-bottom-right",

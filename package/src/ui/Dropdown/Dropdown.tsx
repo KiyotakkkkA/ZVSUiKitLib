@@ -16,7 +16,6 @@ import {
 } from "react";
 import { cn } from "../../lib/utils";
 import type {
-    DropdownMenuPlacement,
     DropdownContextValue,
     DropdownProps,
     DropdownTriggerProps,
@@ -27,6 +26,7 @@ import type {
 } from "./types";
 import "./Dropdown.css";
 import { Button } from "../Button/Button";
+import type { PositionAnchor } from "../..";
 
 const DROPDOWN_MENU_GAP = 8;
 const DROPDOWN_VIEWPORT_PADDING = 8;
@@ -61,7 +61,7 @@ const isPopoverOpen = (element: HTMLElement) => {
 const applyMenuStyle = (
     triggerElement: HTMLElement,
     menuElement: HTMLElement,
-    menuPlacement: DropdownMenuPlacement,
+    menuPlacement: PositionAnchor,
     menuWidth: number | string,
 ) => {
     const triggerRect = triggerElement.getBoundingClientRect();
@@ -79,10 +79,13 @@ const applyMenuStyle = (
 
     const isTopPlacement = menuPlacement.startsWith("top");
     const isRightPlacement = menuPlacement.endsWith("right");
+    const isCenterPlacement = menuPlacement.endsWith("center");
 
-    const preferredLeft = isRightPlacement
-        ? triggerRect.right - menuWidthPx
-        : triggerRect.left;
+    const preferredLeft = isCenterPlacement
+        ? triggerRect.left + (triggerRect.width - menuWidthPx) / 2
+        : isRightPlacement
+          ? triggerRect.right - menuWidthPx
+          : triggerRect.left;
 
     const preferredTop = isTopPlacement
         ? triggerRect.top - menuHeightPx - DROPDOWN_MENU_GAP

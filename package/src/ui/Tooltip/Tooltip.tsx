@@ -1,7 +1,8 @@
+import type { PositionAnchor } from "../..";
 import { cn } from "../../lib/utils";
-import type { TooltipPlacement, TooltipProps } from "./types";
+import type { TooltipProps } from "./types";
 
-const panelPositionByPlacement: Record<TooltipPlacement, string> = {
+const panelPositionByPlacement: Record<PositionAnchor, string> = {
     "top-left": "bottom-full left-0 mb-2",
     "top-center": "bottom-full left-1/2 mb-2 -translate-x-1/2",
     "top-right": "bottom-full right-0 mb-2",
@@ -10,7 +11,7 @@ const panelPositionByPlacement: Record<TooltipPlacement, string> = {
     "bottom-right": "top-full right-0 mt-2",
 };
 
-const arrowPositionByPlacement: Record<TooltipPlacement, string> = {
+const arrowPositionByPlacement: Record<PositionAnchor, string> = {
     "top-left": "top-full left-5 -translate-y-1/2",
     "top-center": "top-full left-1/2 -translate-x-1/2 -translate-y-1/2",
     "top-right": "top-full right-5 -translate-y-1/2",

@@ -25,7 +25,7 @@ export const ScrollArea = forwardRef<HTMLDivElement, ScrollAreaProps>(
                 ref={ref}
                 className={cn(
                     overflowClassName,
-                    "[scrollbar-width:thin]",
+                    "scrollbar-thin",
                     `${showScrollbar ? "[scrollbar-color:rgba(160,161,165,0.4)_transparent]" : "[scrollbar-color:rgba(0,0,0,0)_transparent]"}`,
                     "[&::-webkit-scrollbar]:w-2",
                     "[&::-webkit-scrollbar]:h-2",

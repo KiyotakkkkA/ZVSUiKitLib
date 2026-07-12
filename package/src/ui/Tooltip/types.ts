@@ -1,18 +1,11 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { PositionAnchor } from "../_shared/types";
 
 type DivClassName = ComponentPropsWithoutRef<"div">["className"];
-
-export type TooltipPlacement =
-    | "top-left"
-    | "top-center"
-    | "top-right"
-    | "bottom-left"
-    | "bottom-center"
-    | "bottom-right";
 
 export type TooltipProps = {
     children: ReactNode;
     label: ReactNode;
-    placement?: TooltipPlacement;
+    placement?: PositionAnchor;
     className?: DivClassName;
 };

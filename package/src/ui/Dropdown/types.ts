@@ -5,9 +5,7 @@ import type {
     ReactNode,
     Ref,
 } from "react";
-
-export type DropdownMenuPlacement =
-    "top-right" | "top-left" | "bottom-right" | "bottom-left";
+import type { PositionAnchor } from "../_shared/types";
 
 export type DropdownContextValue = {
     open: boolean;
@@ -19,7 +17,7 @@ export type DropdownContextValue = {
     setTriggerRef: Ref<HTMLElement>;
     setMenuRef: Ref<HTMLDivElement>;
     ignoreNextTriggerClickRef: MutableRefObject<boolean>;
-    menuPlacement: DropdownMenuPlacement;
+    menuPlacement: PositionAnchor;
 };
 
 export type DropdownProps = {
@@ -27,7 +25,7 @@ export type DropdownProps = {
     className?: HTMLAttributes<HTMLDivElement>["className"];
     disabled?: boolean;
     menuWidth?: number | string;
-    menuPlacement?: DropdownMenuPlacement;
+    menuPlacement?: PositionAnchor;
     onOpenChange?: (open: boolean) => void;
 };
 

@@ -1,16 +1,9 @@
 import type { HTMLAttributes, ReactNode } from "react";
-
-export type FloatingAnchor =
-    | "top-left"
-    | "top-center"
-    | "top-right"
-    | "bottom-left"
-    | "bottom-center"
-    | "bottom-right";
+import type { PositionAnchor } from "../_shared/types";
 
 export type FloatingProps = {
     children: ReactNode;
-    anchor?: FloatingAnchor;
+    anchor?: PositionAnchor;
 } & HTMLAttributes<HTMLDivElement>;
 
 export type FloatingTriggerProps = HTMLAttributes<HTMLDivElement>;
@@ -18,5 +11,5 @@ export type FloatingTriggerProps = HTMLAttributes<HTMLDivElement>;
 export type FloatingContentProps = HTMLAttributes<HTMLDivElement>;
 
 export type FloatingContextValue = {
-    anchor: FloatingAnchor;
+    anchor: PositionAnchor;
 };
