@@ -18,8 +18,8 @@ import { Button } from "@kiyotakkkka/zvs-uikit-lib";
 | label       | string                                                                                                                                                                                     | -                | Value for `aria-label`.                                               |
 | loading     | boolean                                                                                                                                                                                    | `false`          | Shows loading state and disables the button.                          |
 | loadingText | string                                                                                                                                                                                     | -                | Text shown while loading. Without it, the centered `Loader` is shown. |
-| variant     | `"ghost" \| "primary" \| "secondary" \| "danger" \| "success" \| "warning" \| "info" \| "primary-outline" \| "success-outline" \| "warning-outline" \| "danger-outline" \| "info-outline"` | `"secondary" `   | Visual style. Empty string disables built-in variant style.           |
-| rounded     | `"rounded-none" \| "rounded-sm" \| "rounded-md" \| "rounded-lg" \| "rounded-xl" \| "rounded-2xl" \| "rounded-3xl" \| "rounded-4xl" \| "rounded-full"`                                      | `"rounded-full"` | Border radius shape.                                                  |
+| variant     | [`ButtonVariants`](../../docs/dict.md#buttonvariants) | `"secondary"`   | Visual style. Empty string disables built-in variant style. |
+| rounded     | [`RoundVariants`](../../docs/dict.md#roundvariants)   | `"rounded-full"` | Border radius shape.                                        |
 | className   | string                                                                                                                                                                                     | -                | Extra classes.                                                        |
 
 ### `classNames` slots

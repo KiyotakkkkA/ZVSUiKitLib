@@ -14,8 +14,8 @@ import { Alert } from "@kiyotakkkka/zvs-uikit-lib";
 
 | Prop       | Type                                                                                     | Default       | Description                          |
 | ---------- | ---------------------------------------------------------------------------------------- | ------------- | ------------------------------------ |
-| variant    | `"primary" \| "secondary" \| "tertiary" \| "success" \| "warning" \| "danger" \| "info"` | `"secondary"` | Alert visual style.                  |
-| rounded    | `RoundVariants`                                                                            | `"rounded-lg"` | Border radius shape.                 |
+| variant    | [`ColorVariantsBase`](../../docs/dict.md#colorvariantsbase) | `"secondary"` | Alert visual style. |
+| rounded    | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-lg"` | Border radius shape. |
 | title      | ReactNode                                                                                | -             | Alert title.                         |
 | icon       | ReactNode                                                                                | -             | Custom icon (replaces default icon). |
 | className  | string                                                                                   | -             | Extra classes.                       |

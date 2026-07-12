@@ -16,7 +16,7 @@ Extends `HTMLAttributes<HTMLDivElement>`.
 
 | Prop        | Type                         | Default        | Description            |
 | ----------- | ---------------------------- | -------------- | ---------------------- |
-| orientation | `"horizontal" \| "vertical"` | `"horizontal"` | Separator orientation. |
+| orientation | [`Orientation`](../../docs/dict.md#orientation) | `"horizontal"` | Separator orientation. |
 | className   | string                       | -              | Extra classes.         |
 
 ## Example

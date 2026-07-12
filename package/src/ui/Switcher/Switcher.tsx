@@ -7,13 +7,13 @@ export const Switcher = ({
     onChange,
     className,
     classNames,
-    rounded = "rounded-lg",
+    rounded = "rounded-full",
 }: SwitcherProps) => {
     return (
         <div
             className={cn(
                 "inline-flex items-center gap-1 border border-main-700/70 bg-main-900/55 p-1",
-                rounded && `zvs-${rounded}`,
+                `zvs-${rounded}`,
                 className,
             )}
             role="tablist"
@@ -31,6 +31,7 @@ export const Switcher = ({
                         onClick={() => onChange(option.value)}
                         className={cn(
                             "cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors",
+                            `zvs-${rounded}`,
                             isActive
                                 ? "bg-main-700/80 text-main-100"
                                 : "text-main-300 hover:bg-main-800/70 hover:text-main-100",

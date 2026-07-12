@@ -17,7 +17,7 @@ import { InputRadio, InputRadioGroup } from "@kiyotakkkka/zvs-uikit-lib";
 | model         | `Record<string, boolean>`    | -              | Controlled boolean model.                        |
 | onModelChange | `(model: T) => void`         | -              | Triggered with the next immutable model.         |
 | default       | `keyof T`                    | -              | Active fallback key when model has no selection. |
-| orientation   | `"vertical" \| "horizontal"` | `"horizontal"` | Child layout direction.                          |
+| orientation   | [`Orientation`](../../docs/dict.md#orientation) | `"horizontal"` | Child layout direction. |
 | disabled      | boolean                      | `false`        | Disables every radio in the group.               |
 | name          | string                       | generated      | Native name shared by child radio inputs.        |
 | className     | string                       | -              | Extra group wrapper classes.                     |

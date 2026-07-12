@@ -87,15 +87,27 @@ export const Pagination = ({
                             onChange={(value) => onPerPageChange(Number(value))}
                             options={perPageSelectOptions}
                             className="w-16"
-                            classNames={{
-                                trigger:
-                                    "h-8 w-16 rounded border border-main-700 bg-main-900 px-2 text-sm font-semibold text-main-100 outline-none transition hover:border-main-600 focus:border-main-400 disabled:cursor-not-allowed disabled:opacity-60 sm:h-9",
-                                menu: "border border-main-700 bg-main-900 text-main-100",
-                                option: "px-2 py-1 text-sm transition hover:bg-main-700 data-[highlighted]:bg-main-700 data-[highlighted]:text-main-100 text-center",
-                            }}
                             menuWidth={80}
                             menuPlacement="bottom-left"
-                        />
+                        >
+                            <Select.Trigger
+                                rounded="rounded"
+                                className="h-8 w-16 border-main-700 bg-main-900 px-2 text-sm font-semibold sm:h-9"
+                            />
+                            <Select.Menu
+                                rounded="rounded-lg"
+                                className="border border-main-700 bg-main-900 text-main-100"
+                            >
+                                {perPageSelectOptions.map((option) => (
+                                    <Select.Option
+                                        key={option.value}
+                                        {...option}
+                                        rounded="rounded-md"
+                                        className="justify-center px-2 py-1 text-sm"
+                                    />
+                                ))}
+                            </Select.Menu>
+                        </Select>
                     </div>
                 )}
 

@@ -433,7 +433,7 @@ function DropdownMenu({
             data-placement={menuPlacement}
             className={cn(
                 "zvs-dropdown-popover fixed z-60 border-0 bg-main-800 p-1.5",
-                rounded && `zvs-${rounded}`,
+                `zvs-${rounded}`,
                 "max-w-[calc(100vw-1rem)]",
                 className,
             )}

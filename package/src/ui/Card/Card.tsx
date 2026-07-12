@@ -18,7 +18,7 @@ function CardRoot({
         <section
             className={cn(
                 "border border-main-700/70 bg-main-900/55",
-                rounded && `zvs-${rounded}`,
+                `zvs-${rounded}`,
                 "text-main-100",
                 className,
             )}

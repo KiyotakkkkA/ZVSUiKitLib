@@ -15,7 +15,7 @@ import { Card } from "@kiyotakkkka/zvs-uikit-lib";
 | Prop      | Type   | Default | Description   |
 | --------- | ------ | ------- | ------------- |
 | className | string | -       | Root classes. |
-| rounded   | `RoundVariants` | `"rounded-lg"` | Root border radius. |
+| rounded   | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-lg"` | Root border radius. |
 
 ## Compound parts
 

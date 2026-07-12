@@ -303,7 +303,7 @@ const groups: Record<string, GroupDoc[]> = {
             description: "Extends native div attributes.",
             props: [
                 prop("children", "ReactNode", "DataDisplay.Item rows."),
-                prop("bordered", "boolean", "Adds row borders.", "false"),
+                prop("bordered", "boolean", "Adds border and background.", "true"),
                 prop("rounded", "RoundVariants", "Border radius.", "rounded-lg"),
                 prop("className", "string", "Root classes."),
                 native("div"),
@@ -311,17 +311,29 @@ const groups: Record<string, GroupDoc[]> = {
         },
         {
             title: "DataDisplay.Item",
-            description: "Extends native div attributes.",
+            description: "Structured compound data row.",
             props: [
-                prop("label", "ReactNode", "Item label."),
-                prop("value", "ReactNode", "Primary value."),
-                prop("description", "ReactNode", "Supporting text."),
-                prop("icon", "ReactNode", "Leading icon."),
-                prop("rightSlot", "ReactNode", "Trailing content."),
+                prop("children", "ReactNode", "Item compound parts."),
                 prop("className", "string", "Item classes."),
                 native("div"),
             ],
         },
+        ...[
+            ["ItemTopTitle", "Primary label in the top row."],
+            ["ItemTopSubTitle", "Primary value below the label."],
+            ["ItemContentTitle", "Optional additional content title."],
+            ["ItemContentDescription", "Supporting content description."],
+            ["ItemContentIcon", "Leading icon container."],
+            ["ItemContentBadge", "Trailing badge or status container."],
+        ].map(([part, description]) => ({
+            title: `DataDisplay.${part}`,
+            description: "Extends HTMLAttributes<HTMLDivElement>.",
+            props: [
+                prop("children", "ReactNode", description),
+                prop("className", "string", `${part} classes.`),
+                native("div"),
+            ],
+        })),
     ],
     Pagination: [
         {

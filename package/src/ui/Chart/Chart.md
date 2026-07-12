@@ -22,7 +22,7 @@ import { Chart } from "@kiyotakkkka/zvs-uikit-lib";
 | series             | `ChartSeries[]`             | -                                            | Series configuration.                     |
 | xKey               | string                      | -                                            | Data key for the X axis.                  |
 | height             | number                      | `280`                                        | Chart height in pixels.                   |
-| type               | `"line" \| "area" \| "bar"` | `"line"`                                     | Chart type.                               |
+| type               | [`ChartType`](../../docs/dict.md#charttype) | `"line"` | Chart type. |
 | showGrid           | boolean                     | `true`                                       | Toggle grid lines.                        |
 | showXAxis          | boolean                     | `true`                                       | Toggle X axis.                            |
 | showYAxis          | boolean                     | `true`                                       | Toggle Y axis.                            |

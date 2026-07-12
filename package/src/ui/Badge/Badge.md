@@ -14,8 +14,8 @@ import { Badge } from "@kiyotakkkka/zvs-uikit-lib";
 
 | Prop      | Type                                                                                     | Default       | Description        |
 | --------- | ---------------------------------------------------------------------------------------- | ------------- | ------------------ |
-| variant   | `"primary" \| "secondary" \| "tertiary" \| "success" \| "warning" \| "danger" \| "info"` | `"secondary"` | Badge color style. |
-| rounded   | `RoundVariants`                                                                            | `"rounded-lg"` | Border radius shape. |
+| variant   | [`ColorVariantsBase`](../../docs/dict.md#colorvariantsbase) | `"secondary"` | Badge color style. |
+| rounded   | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-lg"` | Border radius shape. |
 | className | string                                                                                   | -             | Extra classes.     |
 | children  | ReactNode                                                                                | -             | Badge content.     |
 

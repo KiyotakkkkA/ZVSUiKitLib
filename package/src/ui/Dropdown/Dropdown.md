@@ -18,7 +18,7 @@ import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib";
 | className     | string                                                                                            | -               | Outer wrapper classes.                            |
 | disabled      | boolean                                                                                           | `false`         | Disables the dropdown trigger.                    |
 | menuWidth     | number \| string                                                                                  | `220`           | Popup width. Use `"auto"` to match trigger width. |
-| menuPlacement | `"top-left" \| "top-center" \| "top-right" \| "bottom-left" \| "bottom-center" \| "bottom-right"` | `"bottom-left"` | Popup placement relative to the trigger.          |
+| menuPlacement | [`PositionAnchor`](../../docs/dict.md#positionanchor) | `"bottom-left"` | Popup placement relative to the trigger. |
 | onOpenChange  | `(open: boolean) => void`                                                                         | -               | Called when open state changes.                   |
 
 ## Compound parts
@@ -55,7 +55,7 @@ import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib";
 
 | Prop      | Type            | Default        | Description                  |
 | --------- | --------------- | -------------- | ---------------------------- |
-| rounded   | `RoundVariants` | `"rounded-lg"` | Popup container border radius. |
+| rounded   | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-lg"` | Popup container border radius. |
 | className | string          | -              | Popup container classes.     |
 
 ### `Dropdown.Item` props

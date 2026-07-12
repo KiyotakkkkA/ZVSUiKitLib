@@ -1,32 +1,45 @@
+"use client";
+
 import { Icon } from "@iconify/react";
-import { useCallback, useMemo, useState } from "react";
-import { Dropdown } from "../Dropdown/Dropdown";
+import {
+    createContext,
+    useCallback,
+    useContext,
+    useMemo,
+    useState,
+} from "react";
 import { cn } from "../../lib/utils";
+import { Dropdown } from "../Dropdown/Dropdown";
 import { InputSmall } from "../InputSmall/InputSmall";
 import { ScrollArea } from "../ScrollArea/ScrollArea";
-import type { SelectOption, SelectProps } from "./types";
+import type {
+    SelectContextValue,
+    SelectMenuProps,
+    SelectOption,
+    SelectOptionProps,
+    SelectProps,
+    SelectTriggerProps,
+} from "./types";
 
-const getSelectMenuWidth = (
-    options: SelectOption[],
-    menuWidth?: number | string,
-) => {
-    if (menuWidth !== undefined) {
-        return menuWidth;
+const SelectContext = createContext<SelectContextValue | null>(null);
+
+function useSelectContext() {
+    const context = useContext(SelectContext);
+
+    if (!context) {
+        throw new Error(
+            "Select.Trigger, Select.Menu и Select.Option должны использоваться внутри Select.",
+        );
     }
 
-    const longestLabelLength = options.reduce(
-        (maxLength, option) => Math.max(maxLength, option.label.length),
-        0,
-    );
+    return context;
+}
 
-    const estimatedWidth = longestLabelLength * 9 + 72;
-    return Math.min(320, Math.max(120, estimatedWidth));
-};
-
-export function Select({
+function SelectRoot({
     value,
     onChange,
     options,
+    children,
     placeholder = "Выберите",
     searchable = false,
     searchPlaceholder = "Поиск...",
@@ -39,127 +52,182 @@ export function Select({
     closeOnSelect = true,
 }: SelectProps) {
     const [query, setQuery] = useState("");
-
     const selectedOption = useMemo(
-        () => options.find((item) => item.value === value),
+        () => options.find((option) => option.value === value),
         [options, value],
     );
-
-    const filteredOptions = useMemo(() => {
-        if (!searchable) {
-            return options;
-        }
-
-        const normalizedQuery = query.trim().toLocaleLowerCase();
-
-        if (!normalizedQuery) {
-            return options;
-        }
-
-        return options.filter((option) =>
+    const normalizedQuery = query.trim().toLocaleLowerCase();
+    const isVisible = useCallback(
+        (option: SelectOption) =>
+            !searchable ||
+            !normalizedQuery ||
             option.label.toLocaleLowerCase().includes(normalizedQuery),
-        );
-    }, [options, query, searchable]);
-
-    const resolvedMenuWidth = useMemo(
-        () => getSelectMenuWidth(options, menuWidth),
-        [menuWidth, options],
+        [normalizedQuery, searchable],
+    );
+    const visibleOptionsCount = useMemo(
+        () => options.filter(isVisible).length,
+        [isVisible, options],
     );
 
-    const handleOpenChange = useCallback((open: boolean) => {
-        if (!open) {
-            setQuery("");
-        }
-    }, []);
+    const contextValue = useMemo<SelectContextValue>(
+        () => ({
+            value,
+            selectedOption,
+            placeholder,
+            query,
+            searchable,
+            searchPlaceholder,
+            emptyMessage,
+            classNames,
+            closeOnSelect,
+            setQuery,
+            select: (option) => {
+                onChange(option.value);
+                option.onClick?.();
+            },
+            isVisible,
+            visibleOptionsCount,
+        }),
+        [
+            value,
+            selectedOption,
+            query,
+            placeholder,
+            searchable,
+            searchPlaceholder,
+            emptyMessage,
+            classNames,
+            closeOnSelect,
+            onChange,
+            isVisible,
+            visibleOptionsCount,
+        ],
+    );
 
     return (
-        <div
+        <SelectContext.Provider value={contextValue}>
+            <Dropdown
+                className={cn("w-72 max-w-full", className)}
+                menuWidth={menuWidth ?? "auto"}
+                menuPlacement={menuPlacement}
+                disabled={disabled}
+                onOpenChange={(open) => {
+                    if (!open) setQuery("");
+                }}
+            >
+                {children}
+            </Dropdown>
+        </SelectContext.Provider>
+    );
+}
+
+function SelectTrigger({
+    className,
+    rounded = "rounded-2xl",
+}: SelectTriggerProps) {
+    const { selectedOption, placeholder } = useSelectContext();
+
+    return (
+        <Dropdown.Trigger
+            placeholder={placeholder}
             className={cn(
-                "flex items-center gap-2 text-sm text-main-200",
+                "h-10 w-full border border-main-700 bg-main-800 px-4 py-2 text-sm",
+                "hover:border-main-600 focus-visible:border-main-500/70 focus-visible:ring-2 focus-visible:ring-main-500/25",
+                rounded && `zvs-${rounded}`,
                 className,
             )}
         >
-            <Dropdown
-                menuWidth={resolvedMenuWidth}
-                menuPlacement={menuPlacement}
-                disabled={disabled}
-                onOpenChange={handleOpenChange}
-            >
-                <Dropdown.Trigger
-                    placeholder={placeholder}
-                    className={classNames?.trigger}
-                >
-                    {selectedOption?.label}
-                </Dropdown.Trigger>
-
-                <Dropdown.Menu className={classNames?.menu}>
-                    <div className="space-y-1.5 rounded-lg">
-                        {searchable && (
-                            <InputSmall
-                                value={query}
-                                onChange={(event) =>
-                                    setQuery(event.target.value)
-                                }
-                                placeholder={searchPlaceholder}
-                                className={cn("h-8 w-full", classNames?.search)}
-                            />
-                        )}
-
-                        <ScrollArea className="max-h-72 rounded-lg pr-1">
-                            <div className="flex flex-col gap-1">
-                                {filteredOptions.length === 0 && (
-                                    <p className="px-3 py-2 text-sm text-main-500">
-                                        {emptyMessage}
-                                    </p>
-                                )}
-
-                                {filteredOptions.map((option) => {
-                                    const active = option.value === value;
-
-                                    return (
-                                        <Dropdown.Item
-                                            key={option.value}
-                                            active={active}
-                                            closeOnClick={closeOnSelect}
-                                            icon={
-                                                active ? (
-                                                    <Icon
-                                                        icon="mdi:check"
-                                                        className="text-main-200"
-                                                        aria-hidden
-                                                    />
-                                                ) : (
-                                                    option.icon
-                                                )
-                                            }
-                                            onClick={() => {
-                                                onChange(option.value);
-                                                option.onClick?.();
-                                            }}
-                                            className={cn(
-                                                "whitespace-nowrap cursor-pointer",
-                                                active
-                                                    ? "bg-main-700/60 text-main-100"
-                                                    : "text-main-300",
-                                                classNames?.option,
-                                            )}
-                                        >
-                                            <span
-                                                className={cn(
-                                                    "whitespace-nowrap",
-                                                    classNames?.optionLabel,
-                                                )}
-                                            >
-                                                {option.label}
-                                            </span>
-                                        </Dropdown.Item>
-                                    );
-                                })}
-                            </div>
-                        </ScrollArea>
-                    </div>
-                </Dropdown.Menu>
-            </Dropdown>
-        </div>
+            {selectedOption?.label}
+        </Dropdown.Trigger>
     );
 }
+
+function SelectMenu({
+    children,
+    className,
+    rounded = "rounded-4xl",
+}: SelectMenuProps) {
+    const {
+        query,
+        searchable,
+        searchPlaceholder,
+        emptyMessage,
+        classNames,
+        setQuery,
+        visibleOptionsCount,
+    } = useSelectContext();
+
+    return (
+        <Dropdown.Menu
+            rounded={rounded}
+            className={cn("overflow-hidden bg-main-800 p-1.5", className)}
+        >
+            {searchable && (
+                <InputSmall
+                    rounded="rounded-full"
+                    value={query}
+                    onChange={(event) => setQuery(event.target.value)}
+                    placeholder={searchPlaceholder}
+                    className={cn("h-8 w-full", classNames?.search)}
+                />
+            )}
+
+            <ScrollArea className={cn("max-h-72", searchable && "mt-1.5")}>
+                <div className="flex flex-col gap-1">
+                    {visibleOptionsCount === 0 ? (
+                        <p className="px-3 py-2 text-sm text-main-500">
+                            {emptyMessage}
+                        </p>
+                    ) : (
+                        children
+                    )}
+                </div>
+            </ScrollArea>
+        </Dropdown.Menu>
+    );
+}
+
+function SelectOptionComponent({
+    value,
+    label,
+    icon,
+    onClick,
+    className,
+    rounded = "rounded-full",
+}: SelectOptionProps) {
+    const context = useSelectContext();
+    const option = { value, label, icon, onClick };
+
+    if (!context.isVisible(option)) return null;
+
+    const active = value === context.value;
+
+    return (
+        <Dropdown.Item
+            active={active}
+            closeOnClick={context.closeOnSelect}
+            icon={
+                active ? (
+                    <Icon icon="mdi:check" className="text-main-200" aria-hidden />
+                ) : (
+                    icon
+                )
+            }
+            onClick={() => context.select(option)}
+            className={cn(
+                "min-w-0 cursor-pointer px-3 py-1.5",
+                active ? "bg-main-700/60 text-main-100" : "text-main-300",
+                rounded && `zvs-${rounded}`,
+                className,
+            )}
+        >
+            <span className="truncate">{label}</span>
+        </Dropdown.Item>
+    );
+}
+
+export const Select = Object.assign(SelectRoot, {
+    Trigger: SelectTrigger,
+    Menu: SelectMenu,
+    Option: SelectOptionComponent,
+});

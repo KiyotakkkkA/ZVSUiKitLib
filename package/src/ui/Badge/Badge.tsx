@@ -23,7 +23,7 @@ export function Badge({
         <span
             className={cn(
                 "inline-flex items-center border px-2 py-0.5 text-[11px] font-medium",
-                rounded && `zvs-${rounded}`,
+                `zvs-${rounded}`,
                 variantClasses[variant],
                 className,
             )}

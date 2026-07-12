@@ -61,7 +61,7 @@ export function Alert({
             role="status"
             className={cn(
                 "flex items-start gap-3 border px-3 py-2.5",
-                rounded && `zvs-${rounded}`,
+                `zvs-${rounded}`,
                 variantStyle.box,
                 className,
             )}

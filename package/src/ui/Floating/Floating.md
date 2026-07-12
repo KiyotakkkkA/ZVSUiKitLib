@@ -15,7 +15,7 @@ import { Floating } from "@kiyotakkkka/zvs-uikit-lib";
 | Prop      | Type                                                                                              | Default       | Description                                |
 | --------- | ------------------------------------------------------------------------------------------------- | ------------- | ------------------------------------------ |
 | children  | `ReactNode`                                                                                       | -             | `Floating.Trigger` and `Floating.Content`. |
-| anchor    | `"top-left" \| "top-center" \| "top-right" \| "bottom-left" \| "bottom-center" \| "bottom-right"` | `"top-right"` | Content position relative to the trigger.  |
+| anchor    | [`PositionAnchor`](../../docs/dict.md#positionanchor) | `"top-right"` | Content position relative to the trigger. |
 | className | `string`                                                                                          | -             | Root wrapper classes.                      |
 
 The root also accepts standard `HTMLAttributes<HTMLDivElement>`.
@@ -40,7 +40,7 @@ The root also accepts standard `HTMLAttributes<HTMLDivElement>`.
 | --------- | ----------- | ------- | ------------------------- |
 | children  | `ReactNode` | -       | Content of the floating.  |
 | className | `string`    | -       | Floating wrapper classes. |
-| rounded   | `RoundVariants` | `"rounded-lg"` | Floating panel border radius. |
+| rounded   | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-lg"` | Floating panel border radius. |
 
 ## Example
 

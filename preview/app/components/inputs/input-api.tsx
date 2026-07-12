@@ -707,7 +707,12 @@ const groups: Record<string, G[]> = {
             props: [
                 p("value", "string", "Controlled selected value."),
                 p("onChange", "(value: string) => void", "Selection callback."),
-                p("options", "SelectOption[]", "Available options."),
+                p(
+                    "options",
+                    "SelectOption[]",
+                    "Option source for selection and search.",
+                ),
+                p("children", "ReactNode", "Select.Trigger and Select.Menu."),
                 p(
                     "placeholder / searchPlaceholder / emptyMessage",
                     "string",
@@ -715,17 +720,57 @@ const groups: Record<string, G[]> = {
                 ),
                 p("searchable", "boolean", "Enables option search."),
                 p("disabled", "boolean", "Disables selection."),
-                p("menuWidth", "number | string", "Popup width."),
+                p(
+                    "menuWidth",
+                    "number | string",
+                    "Popup width; auto matches the trigger.",
+                    "auto",
+                ),
                 p("menuPlacement", "DropdownMenuPlacement", "Popup placement."),
                 p("closeOnSelect", "boolean", "Closes popup after selection."),
                 p("className", "string", "Root classes."),
-                c("SelectClassNames", [
-                    "trigger",
-                    "menu",
-                    "search",
-                    "option",
-                    "optionLabel",
-                ]),
+                c("SelectClassNames", ["search"]),
+            ],
+        },
+        {
+            title: "Select.Trigger",
+            props: [
+                p("className", "string", "Trigger button classes."),
+                p(
+                    "rounded",
+                    "RoundVariants",
+                    "Trigger border radius.",
+                    "rounded-2xl",
+                ),
+            ],
+        },
+        {
+            title: "Select.Menu",
+            props: [
+                p("children", "ReactNode", "Mapped Select.Option elements."),
+                p("className", "string", "Popup classes."),
+                p(
+                    "rounded",
+                    "RoundVariants",
+                    "Popup border radius.",
+                    "rounded-4xl",
+                ),
+            ],
+        },
+        {
+            title: "Select.Option",
+            props: [
+                p("value", "string", "Option value."),
+                p("label", "string", "Visible and searchable label."),
+                p("icon", "ReactNode", "Leading icon."),
+                p("onClick", "() => void", "Runs after selection."),
+                p("className", "string", "Option button classes."),
+                p(
+                    "rounded",
+                    "RoundVariants",
+                    "Option border radius.",
+                    "rounded-full",
+                ),
             ],
         },
     ],

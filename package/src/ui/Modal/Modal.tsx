@@ -134,7 +134,7 @@ function ModalRoot({
                 <div
                     className={cn(
                         "flex max-h-[88vh] w-full max-w-5xl flex-col border border-main-700/90",
-                        rounded && `zvs-${rounded}`,
+                        `zvs-${rounded}`,
                         "bg-main-900/95 shadow-2xl animate-in zoom-in-95 slide-in-from-bottom-2 duration-220",
                         className,
                     )}

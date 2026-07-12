@@ -20,7 +20,7 @@ import { ProgressBar } from "@kiyotakkkka/zvs-uikit-lib";
 | showValue  | boolean                                                                                  | `false`   | Shows calculated percentage.                  |
 | className  | string                                                                                   | -         | Root classes.                                 |
 | classNames | object                                                                                   | -         | Classes for internal slots.                   |
-| variant    | `"primary" \| "secondary" \| "tertiary" \| "success" \| "warning" \| "danger" \| "info"` | `primary` | Color variant of the progress bar.            |
+| variant    | [`ColorVariantsBase`](../../docs/dict.md#colorvariantsbase) | `primary` | Color variant of the progress bar. |
 
 ### `classNames` slots
 

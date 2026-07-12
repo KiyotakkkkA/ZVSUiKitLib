@@ -33,7 +33,7 @@ type AutoFillOption = {
 | children     | ReactNode                                                                                                                                             | -               | Selector compound parts.                          |
 | onOpenChange | `(open: boolean) => void`                                                                                                                             | -               | Called when dropdown open state changes.          |
 | className    | string                                                                                                                                                | -               | Root wrapper classes.                             |
-| rounded      | `"rounded-none" \| "rounded-sm" \| "rounded-md" \| "rounded-lg" \| "rounded-xl" \| "rounded-2xl" \| "rounded-3xl" \| "rounded-4xl" \| "rounded-full"` | `"rounded-2xl"` | Border radius classes.                            |
+| rounded      | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-2xl"` | Border radius classes.                            |
 
 The search query is cleared automatically when the dropdown closes.
 
@@ -57,7 +57,7 @@ All compound parts must be rendered inside `AutoFillSelector`.
 | tagClassName       | string                                                                                                                                                | -                | Selected tag classes.      |
 | tagRemoveClassName | string                                                                                                                                                | -                | Tag remove button classes. |
 | className          | string                                                                                                                                                | -                | Tags wrapper classes.      |
-| rounded            | `"rounded-none" \| "rounded-sm" \| "rounded-md" \| "rounded-lg" \| "rounded-xl" \| "rounded-2xl" \| "rounded-3xl" \| "rounded-4xl" \| "rounded-full"` | `"rounded-full"` | Border radius classes.     |
+| rounded            | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-full"` | Border radius classes.     |
 
 ### `AutoFillSelector.Input` props
 
@@ -67,7 +67,7 @@ All compound parts must be rendered inside `AutoFillSelector`.
 | ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ------------------------------------ |
 | placeholder | string                                                                                                                                                | `"Введите для поиска"` | Placeholder when no values selected. |
 | className   | string                                                                                                                                                | -                      | Input classes.                       |
-| rounded     | `"rounded-none" \| "rounded-sm" \| "rounded-md" \| "rounded-lg" \| "rounded-xl" \| "rounded-2xl" \| "rounded-3xl" \| "rounded-4xl" \| "rounded-full"` | `"rounded-full"`       | Border radius classes.               |
+| rounded     | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-full"`       | Border radius classes.               |
 
 Backspace removes the last selected value when the query is empty.
 
@@ -77,7 +77,7 @@ Backspace removes the last selected value when the query is empty.
 | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ----------------------------- |
 | scrollClassName | string                                                                                                                                                | -               | Internal scroll area classes. |
 | className       | string                                                                                                                                                | -               | Dropdown menu classes.        |
-| rounded         | `"rounded-none" \| "rounded-sm" \| "rounded-md" \| "rounded-lg" \| "rounded-xl" \| "rounded-2xl" \| "rounded-3xl" \| "rounded-4xl" \| "rounded-full"` | `"rounded-4xl"` | Border radius classes.        |
+| rounded         | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-4xl"` | Border radius classes.        |
 
 ### `AutoFillSelector.Options` props
 
@@ -88,7 +88,7 @@ Backspace removes the last selected value when the query is empty.
 | optionDescriptionClassName | string                                                                                                                                                | -                | Option description classes. |
 | optionIconClassName        | string                                                                                                                                                | -                | Option icon/check classes.  |
 | className                  | string                                                                                                                                                | -                | Options wrapper classes.    |
-| rounded                    | `"rounded-none" \| "rounded-sm" \| "rounded-md" \| "rounded-lg" \| "rounded-xl" \| "rounded-2xl" \| "rounded-3xl" \| "rounded-4xl" \| "rounded-full"` | `"rounded-full"` | Border radius classes.      |
+| rounded                    | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-full"` | Border radius classes.      |
 
 ### `AutoFillSelector.Empty` props
 

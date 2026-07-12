@@ -17,7 +17,7 @@ import { SlidedPanel } from "@kiyotakkkka/zvs-uikit-lib";
 | open                | boolean                                  | -         | Controls panel visibility.                       |
 | onClose             | `() => void`                             | -         | Close handler.                                   |
 | closeOnOverlayClick | boolean                                  | `true`    | Close when clicking overlay.                     |
-| panelPlacement      | `"top" \| "right" \| "bottom" \| "left"` | `"right"` | Edge from which the panel opens.                 |
+| panelPlacement      | [`SlidedPanelPlacement`](../../docs/dict.md#slidedpanelplacement) | `"right"` | Edge from which the panel opens. |
 | className           | string                                   | -         | Panel classes, including custom width or height. |
 | children            | ReactNode                                | -         | Panel sections/content.                          |
 

@@ -19,7 +19,7 @@ import { InputColor } from "@kiyotakkkka/zvs-uikit-lib";
 | onChange       | `(value: string) => void`      | -           | Called with `#RRGGBB`, or `#RRGGBBAA` when translucent. |
 | label          | ReactNode                      | -           | Label rendered above the trigger.                       |
 | showValue      | boolean                        | `true`      | Shows the current formatted color in the trigger.       |
-| size           | `"sm" \| "md" \| "lg"`         | `"md"`      | Trigger size.                                           |
+| size           | [`InputColorSize`](../../docs/dict.md#inputcolorsize) | `"md"` | Trigger size. |
 | palettePresets | `string[] \| null`             | `null`      | Optional quick-select palette inside the popup.         |
 | valueFormatter | `(value: string) => ReactNode` | -           | Formats the value displayed in the trigger.             |
 | disabled       | boolean                        | `false`     | Disables the trigger and all picker interactions.       |

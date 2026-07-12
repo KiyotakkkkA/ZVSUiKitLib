@@ -1,11 +1,9 @@
 import type { ReactNode } from "react";
-import type { PositionAnchor } from "../_shared/types";
-
 import type {
-    ButtonClassName,
     DivClassName,
     InputClassName,
-    SpanClassName,
+    PositionAnchor,
+    RoundVariants,
 } from "../_shared/types";
 
 export type SelectOption = {
@@ -16,17 +14,14 @@ export type SelectOption = {
 };
 
 export type SelectClassNames = {
-    trigger?: ButtonClassName;
-    menu?: DivClassName;
     search?: InputClassName;
-    option?: ButtonClassName;
-    optionLabel?: SpanClassName;
 };
 
 export type SelectProps = {
     value: string;
     onChange: (value: string) => void;
     options: SelectOption[];
+    children: ReactNode;
     placeholder?: string;
     searchable?: boolean;
     searchPlaceholder?: string;
@@ -37,4 +32,36 @@ export type SelectProps = {
     menuWidth?: number | string;
     menuPlacement?: PositionAnchor;
     closeOnSelect?: boolean;
+};
+
+export type SelectTriggerProps = {
+    className?: string;
+    rounded?: RoundVariants | "";
+};
+
+export type SelectMenuProps = {
+    children: ReactNode;
+    className?: DivClassName;
+    rounded?: RoundVariants | "";
+};
+
+export type SelectOptionProps = SelectOption & {
+    className?: string;
+    rounded?: RoundVariants | "";
+};
+
+export type SelectContextValue = {
+    value: string;
+    selectedOption?: SelectOption;
+    placeholder: string;
+    query: string;
+    searchable: boolean;
+    searchPlaceholder: string;
+    emptyMessage: string;
+    classNames?: SelectClassNames;
+    closeOnSelect: boolean;
+    setQuery: (query: string) => void;
+    select: (option: SelectOption) => void;
+    isVisible: (option: SelectOption) => boolean;
+    visibleOptionsCount: number;
 };

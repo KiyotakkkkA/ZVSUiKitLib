@@ -14,7 +14,7 @@ import { ScrollArea } from "@kiyotakkkka/zvs-uikit-lib";
 
 | Prop          | Type                                   | Default      | Description             |
 | ------------- | -------------------------------------- | ------------ | ----------------------- |
-| orientation   | `"horizontal" \| "vertical" \| "both"` | `"vertical"` | Scroll direction mode.  |
+| orientation   | [`ScrollAreaOrientation`](../../docs/dict.md#scrollareaorientation) | `"vertical"` | Scroll direction mode. |
 | showScrollbar | boolean                                | `true`       | Show or hide scrollbar. |
 | className     | string                                 | -            | Extra classes.          |
 | children      | ReactNode                              | -            | Scrollable content.     |

@@ -17,7 +17,7 @@ import { SelectNative } from "@kiyotakkkka/zvs-uikit-lib";
 | options     | `SelectNativeOption[]` | -       | Select options.              |
 | onChange    | `(value) => void`      | -       | Called with selected value.  |
 | placeholder | string                 | -       | Disabled placeholder option. |
-| rounded     | `RoundVariants`        | `"rounded-full"` | Border radius shape. |
+| rounded     | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-full"` | Border radius shape. |
 | className   | string                 | -       | Wrapper classes.             |
 | classNames  | object                 | -       | Internal slot classes.       |
 

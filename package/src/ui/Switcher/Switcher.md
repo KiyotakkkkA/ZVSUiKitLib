@@ -12,14 +12,14 @@ import { Switcher } from "@kiyotakkkka/zvs-uikit-lib";
 
 ## Props
 
-| Prop       | Type                                 | Default | Description                 |
-| ---------- | ------------------------------------ | ------- | --------------------------- |
-| value      | string                               | -       | Active value.               |
-| options    | `{ value: string; label: string }[]` | -       | Segments list.              |
-| onChange   | `(value: string) => void`            | -       | Called on selection change. |
-| rounded    | `RoundVariants`                      | `"rounded-lg"` | Border radius shape.      |
-| className  | string                               | -       | Extra wrapper classes.      |
-| classNames | object                               | -       | Classes for internal slots. |
+| Prop       | Type                                 | Default          | Description                 |
+| ---------- | ------------------------------------ | ---------------- | --------------------------- |
+| value      | string                               | -                | Active value.               |
+| options    | `{ value: string; label: string }[]` | -                | Segments list.              |
+| onChange   | `(value: string) => void`            | -                | Called on selection change. |
+| rounded    | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-full"` | Border radius shape. |
+| className  | string                               | -                | Extra wrapper classes.      |
+| classNames | object                               | -                | Classes for internal slots. |
 
 ### `classNames` slots
 

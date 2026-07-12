@@ -16,10 +16,10 @@ import { InputSmall } from "@kiyotakkkka/zvs-uikit-lib";
 
 | Prop       | Type                                                    | Default | Description                                           |
 | ---------- | ------------------------------------------------------- | ------- | ----------------------------------------------------- |
-| preset     | `"password" \| "search" \| "email" \| "phone" \| "url"` | -       | Coordinated behavior preset.                          |
+| preset     | [`InputPreset`](../../docs/dict.md#inputpreset)          | -       | Coordinated behavior preset.                          |
 | type       | HTML input type                                         | preset  | Explicit native type; overrides non-password presets. |
 | onClear    | `() => void`                                            | -       | Called when the search preset is cleared.             |
-| rounded    | `RoundVariants`                                         | `"rounded-full"` | Border radius shape.                            |
+| rounded    | [`RoundVariants`](../../docs/dict.md#roundvariants)      | `"rounded-full"` | Border radius shape.                            |
 | className  | string                                                  | -       | Input element classes.                                |
 | classNames | object                                                  | -       | Classes for internal slots.                           |
 

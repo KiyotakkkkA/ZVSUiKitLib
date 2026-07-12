@@ -16,7 +16,7 @@ import { Modal } from "@kiyotakkkka/zvs-uikit-lib";
 | ------------------- | ------------ | ------- | --------------------------------------------------------- |
 | open                | boolean      | -       | Controls modal visibility.                                |
 | onClose             | `() => void` | -       | Close handler for `Escape`, overlay, and close button.    |
-| rounded             | `RoundVariants` | `"rounded-lg"` | Modal container border radius.                         |
+| rounded             | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-lg"` | Modal container border radius. |
 | className           | string       | -       | Classes for the modal container.                          |
 | overlayClassName    | string       | -       | Classes for the overlay element.                          |
 | closeOnOverlayClick | boolean      | `true`  | Closes when clicking overlay (and `Enter`/`Space` on it). |

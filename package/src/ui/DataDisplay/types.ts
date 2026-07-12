@@ -1,16 +1,16 @@
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { HTMLAttributes, ReactNode } from "react";
 import type { RoundVariants } from "../_shared/types";
 
-export type DataDisplayProps = ComponentPropsWithoutRef<"div"> & {
+export type DataDisplayProps = HTMLAttributes<HTMLDivElement> & {
     children: ReactNode;
     bordered?: boolean;
     rounded?: RoundVariants | "";
 };
 
-export type DataDisplayItemProps = ComponentPropsWithoutRef<"div"> & {
-    label: ReactNode;
-    value?: ReactNode;
-    description?: ReactNode;
-    icon?: ReactNode;
-    rightSlot?: ReactNode;
+export type DataDisplayItemProps = HTMLAttributes<HTMLDivElement> & {
+    children: ReactNode;
+};
+
+export type DataDisplayItemPartProps = HTMLAttributes<HTMLDivElement> & {
+    children: ReactNode;
 };
