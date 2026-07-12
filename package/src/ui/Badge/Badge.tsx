@@ -1,10 +1,11 @@
+import type { ColorVariantsBase } from "../..";
 import { cn } from "../../lib/utils";
-import type { BadgeVariant, BadgeProps } from "./types";
+import type { BadgeProps } from "./types";
 
-const variantClasses: Record<BadgeVariant, string> = {
-    neutral: "border-main-600/70 bg-main-700/60 text-main-100",
-    tertiary:
-        "border-accent-dark/60 bg-accent-medium/15 text-accent-light",
+const variantClasses: Record<ColorVariantsBase, string> = {
+    primary: "bg-main-100 text-main-800",
+    secondary: "border-main-600/70 bg-main-700/60 text-main-100",
+    tertiary: "border-accent-dark/60 bg-accent-medium/15 text-accent-light",
     success: "border-success-dark/60 bg-success-dark/40 text-success-light",
     warning: "border-warning-dark/60 bg-warning-dark/35 text-warning-light",
     danger: "border-danger-dark/60 bg-danger-dark/35 text-danger-light",
@@ -12,7 +13,7 @@ const variantClasses: Record<BadgeVariant, string> = {
 };
 
 export function Badge({
-    variant = "neutral",
+    variant = "secondary",
     className,
     children,
     ...props

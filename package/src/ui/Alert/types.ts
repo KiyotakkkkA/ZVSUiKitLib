@@ -1,11 +1,10 @@
+import type { HTMLAttributes, ReactNode } from "react";
 import type {
-    HTMLAttributes,
-    ReactNode,
-} from "react";
-import type { DivClassName, ParagraphClassName, SpanClassName } from "../_shared/types";
-
-export type AlertVariant =
-    "neutral" | "tertiary" | "success" | "warning" | "danger" | "info";
+    ColorVariantsBase,
+    DivClassName,
+    ParagraphClassName,
+    SpanClassName,
+} from "../_shared/types";
 
 export type AlertClassNames = {
     icon?: SpanClassName;
@@ -15,7 +14,7 @@ export type AlertClassNames = {
 };
 
 export type AlertProps = HTMLAttributes<HTMLDivElement> & {
-    variant?: AlertVariant;
+    variant?: ColorVariantsBase;
     title?: ReactNode;
     icon?: ReactNode;
     classNames?: AlertClassNames;

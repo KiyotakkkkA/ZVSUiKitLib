@@ -1,4 +1,8 @@
-import type { DivClassName, SpanClassName } from "../_shared/types";
+import type {
+    ColorVariantsBase,
+    DivClassName,
+    SpanClassName,
+} from "../_shared/types";
 
 export type ProgressBarClassNames = {
     header?: DivClassName;
@@ -9,6 +13,7 @@ export type ProgressBarClassNames = {
 };
 
 export type ProgressBarProps = {
+    variant?: ColorVariantsBase;
     value: number;
     max?: number;
     label?: string;

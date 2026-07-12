@@ -2,7 +2,7 @@ import { Button } from "@kiyotakkkka/zvs-uikit-lib/server";
 
 export function DemoButton() {
     return (
-        <div className="grid grid-cols-3 gap-x-8 gap-y-4 w-fit">
+        <div className="grid grid-cols-3 gap-x-8 gap-y-4 w-fit p-2">
             <Button variant="primary">Primary</Button>
             <Button variant="primary" shape="rounded-full">
                 Primary Rounded
@@ -38,6 +38,12 @@ export function DemoButton() {
                 Danger Rounded
             </Button>
             <Button variant="danger-outline">Danger Outline</Button>
+
+            <Button variant="info">Info</Button>
+            <Button variant="info" shape="rounded-full">
+                Info Rounded
+            </Button>
+            <Button variant="info-outline">Info Outline</Button>
         </div>
     );
 }

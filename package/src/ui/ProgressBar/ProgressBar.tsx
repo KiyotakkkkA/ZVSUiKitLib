@@ -1,7 +1,19 @@
 import { cn } from "../../lib/utils";
+import type { ColorVariantsBase } from "../_shared/types";
 import type { ProgressBarProps } from "./types";
 
+const variantClasses: Record<ColorVariantsBase, string> = {
+    primary: "bg-main-200",
+    secondary: "bg-main-700",
+    tertiary: "bg-accent-dark",
+    success: "bg-success-dark",
+    warning: "bg-warning-dark",
+    danger: "bg-danger-dark",
+    info: "bg-info-dark",
+};
+
 export const ProgressBar = ({
+    variant = "primary",
     value,
     max = 100,
     label,
@@ -57,7 +69,8 @@ export const ProgressBar = ({
             >
                 <div
                     className={cn(
-                        "h-full rounded-full bg-main-200 transition-all duration-300",
+                        "h-full rounded-full transition-all duration-300",
+                        variantClasses[variant],
                         classNames?.indicator,
                     )}
                     style={{ width: `${percent}%` }}

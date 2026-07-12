@@ -23,15 +23,13 @@ export type ColorVariantsBase =
     | "danger"
     | "info";
 
-type ColorVariantsOutline =
+export type ColorVariantOutline =
     | "primary-outline"
     | "tertiary-outline"
     | "success-outline"
     | "warning-outline"
     | "danger-outline"
     | "info-outline";
-
-export type ColorVariants = ColorVariantsBase | ColorVariantsOutline;
 
 export type PositionAnchor =
     | "top-left"

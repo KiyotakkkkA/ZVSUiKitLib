@@ -1,18 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from "react";
-
-export type ButtonVariants =
-    | "ghost"
-    | "primary"
-    | "secondary"
-    | "tertiary"
-    | "danger"
-    | "success"
-    | "warning"
-    | "primary-outline"
-    | "tertiary-outline"
-    | "danger-outline"
-    | "success-outline"
-    | "warning-outline";
+import type { ColorVariantOutline, ColorVariantsBase } from "../..";
 
 export type ButtonShape =
     | "rounded-none"
@@ -29,6 +16,8 @@ export type ButtonClassNames = {
     loaderIcon?: string;
     loaderText?: string;
 };
+
+export type ButtonVariants = ColorVariantsBase | ColorVariantOutline | "ghost";
 
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
     children: ReactNode;

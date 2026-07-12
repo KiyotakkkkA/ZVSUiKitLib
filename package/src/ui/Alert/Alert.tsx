@@ -1,12 +1,18 @@
 import { Icon } from "@iconify/react";
 import { cn } from "../../lib/utils";
-import type { AlertVariant, AlertProps } from "./types";
+import type { AlertProps } from "./types";
+import type { ColorVariantsBase } from "../..";
 
 const variantStyles: Record<
-    AlertVariant,
+    ColorVariantsBase,
     { box: string; icon: string; defaultIcon: string }
 > = {
-    neutral: {
+    primary: {
+        box: "bg-main-100 text-main-800",
+        icon: "text-main-800",
+        defaultIcon: "mdi:information",
+    },
+    secondary: {
         box: "border-main-700/70 bg-main-900/60 text-main-100",
         icon: "text-main-300",
         defaultIcon: "mdi:information-outline",
@@ -29,7 +35,7 @@ const variantStyles: Record<
     danger: {
         box: "border-danger-dark/50 bg-danger-dark/25 text-danger-light",
         icon: "text-danger-light",
-        defaultIcon: "mdi:alert-circle-outline",
+        defaultIcon: "mdi:close-octagon",
     },
     info: {
         box: "border-info-dark/50 bg-info-dark/25 text-info-light",
@@ -39,7 +45,7 @@ const variantStyles: Record<
 };
 
 export function Alert({
-    variant = "neutral",
+    variant = "secondary",
     title,
     icon,
     className,

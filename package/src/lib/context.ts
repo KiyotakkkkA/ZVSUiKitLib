@@ -1,7 +1,6 @@
 import { createContext } from "react";
 import type { StyleThemePalette } from "../providers/StyleProvider";
-
-export type ToastType = "normal" | "info" | "warning" | "success" | "danger";
+import type { ColorVariantsBase } from "../ui/_shared/types";
 
 export type ToastInput = {
     title: string;
@@ -10,8 +9,10 @@ export type ToastInput = {
 };
 
 export type ToastContextValue = {
-    push: (type: ToastType, input: ToastInput) => void;
-    normal: (input: ToastInput) => void;
+    push: (type: ColorVariantsBase, input: ToastInput) => void;
+    primary: (input: ToastInput) => void;
+    secondary: (input: ToastInput) => void;
+    tertiary: (input: ToastInput) => void;
     info: (input: ToastInput) => void;
     warning: (input: ToastInput) => void;
     success: (input: ToastInput) => void;

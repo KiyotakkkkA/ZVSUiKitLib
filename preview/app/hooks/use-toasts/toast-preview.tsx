@@ -3,7 +3,9 @@
 import { Button, useToasts } from "@kiyotakkkka/zvs-uikit-lib";
 
 const toastExamples = [
-    ["normal", "Neutral update", "A background task has finished."],
+    ["primary", "New version available", "Refresh when you are ready."],
+    ["secondary", "Storage almost full", "Only 10% of storage remains."],
+    ["tertiary", "Changes saved", "Your settings were updated."],
     ["info", "New version available", "Refresh when you are ready."],
     ["warning", "Storage almost full", "Only 10% of storage remains."],
     ["success", "Changes saved", "Your settings were updated."],
@@ -18,11 +20,7 @@ export function ToastPreview() {
             {toastExamples.map(([type, title, description]) => (
                 <Button
                     key={type}
-                    variant={
-                        type === "normal" || type === "info"
-                            ? "secondary"
-                            : type
-                    }
+                    variant={type}
                     onClick={() => toasts[type]({ title, description })}
                 >
                     Show {type}

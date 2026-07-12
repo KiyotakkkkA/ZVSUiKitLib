@@ -12,11 +12,11 @@ import { Badge } from "@kiyotakkkka/zvs-uikit-lib";
 
 ## Props
 
-| Prop      | Type                                                        | Default     | Description        |
-| --------- | ----------------------------------------------------------- | ----------- | ------------------ |
-| variant   | `"neutral" \| "success" \| "warning" \| "danger" \| "info"` | `"neutral"` | Badge color style. |
-| className | string                                                      | -           | Extra classes.     |
-| children  | ReactNode                                                   | -           | Badge content.     |
+| Prop      | Type                                                                                     | Default       | Description        |
+| --------- | ---------------------------------------------------------------------------------------- | ------------- | ------------------ |
+| variant   | `"primary" \| "secondary" \| "tertiary" \| "success" \| "warning" \| "danger" \| "info"` | `"secondary"` | Badge color style. |
+| className | string                                                                                   | -             | Extra classes.     |
+| children  | ReactNode                                                                                | -             | Badge content.     |
 
 ## Example
 

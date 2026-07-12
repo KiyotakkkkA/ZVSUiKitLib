@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import { cn } from "../../lib/utils";
 import { Loader } from "../Loader/Loader";
-import type { ButtonVariants, ButtonProps } from "./types";
+import type { ButtonProps, ButtonVariants } from "./types";
 
 const variants: Record<ButtonVariants, string> = {
     ghost: "bg-transparent border-transparent text-main-50",
@@ -10,12 +10,12 @@ const variants: Record<ButtonVariants, string> = {
     secondary: "bg-main-700 hover:bg-main-600 border-transparent text-main-50",
     tertiary:
         "bg-accent-medium hover:bg-accent-dark border-transparent text-main-900",
-    danger:
-        "bg-danger-medium hover:bg-danger-dark border-transparent text-main-50",
+    danger: "bg-danger-medium hover:bg-danger-dark border-transparent text-main-50",
     success:
         "bg-success-medium hover:bg-success-dark border-transparent text-main-50",
     warning:
         "bg-warning-medium hover:bg-warning-dark border-transparent text-main-50",
+    info: "bg-info-medium hover:bg-info-dark border-transparent text-main-50",
     "primary-outline":
         "bg-transparent hover:bg-main-50 hover:text-main-900 border-main-50 text-main-50",
     "tertiary-outline":
@@ -26,6 +26,8 @@ const variants: Record<ButtonVariants, string> = {
         "bg-transparent hover:bg-success-medium hover:text-main-900 border-success-medium text-success-medium",
     "warning-outline":
         "bg-transparent hover:bg-warning-medium hover:text-main-900 border-warning-medium text-warning-medium",
+    "info-outline":
+        "bg-transparent hover:bg-info-medium hover:text-main-900 border-info-medium text-info-medium",
 };
 
 export const Button = forwardRef<HTMLButtonElement, ButtonProps>(

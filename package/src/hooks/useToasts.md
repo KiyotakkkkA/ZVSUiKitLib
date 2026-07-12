@@ -12,14 +12,16 @@ Hook for accessing toast notification API from `ToastContext`.
 
 Object with methods:
 
-| Method  | Signature               | Description                                                            |
-| ------- | ----------------------- | ---------------------------------------------------------------------- |
-| push    | `(type, input) => void` | Show toast by type (`normal`, `info`, `warning`, `success`, `danger`). |
-| normal  | `(input) => void`       | Show `normal` toast.                                                   |
-| info    | `(input) => void`       | Show `info` toast.                                                     |
-| warning | `(input) => void`       | Show `warning` toast.                                                  |
-| success | `(input) => void`       | Show `success` toast.                                                  |
-| danger  | `(input) => void`       | Show `danger` toast.                                                   |
+| Method    | Signature               | Description                                                                                      |
+| --------- | ----------------------- | ------------------------------------------------------------------------------------------------ |
+| push      | `(type, input) => void` | Show toast by type (`primary`, `secondary`, `tertiary`, `info`, `warning`, `success`, `danger`). |
+| primary   | `(input) => void`       | Show `primary` toast.                                                                            |
+| secondary | `(input) => void`       | Show `secondary` toast.                                                                          |
+| tertiary  | `(input) => void`       | Show `tertiary` toast.                                                                           |
+| info      | `(input) => void`       | Show `info` toast.                                                                               |
+| warning   | `(input) => void`       | Show `warning` toast.                                                                            |
+| success   | `(input) => void`       | Show `success` toast.                                                                            |
+| danger    | `(input) => void`       | Show `danger` toast.                                                                             |
 
 `input`:
 

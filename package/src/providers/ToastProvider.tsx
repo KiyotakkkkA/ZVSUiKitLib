@@ -10,12 +10,12 @@ import {
     ToastContext,
     type ToastContextValue,
     type ToastInput,
-    type ToastType,
 } from "../lib/context";
+import type { ColorVariantsBase } from "../ui";
 
 type ToastItem = {
     id: string;
-    type: ToastType;
+    type: ColorVariantsBase;
     title: string;
     description?: string;
     durationMs: number;
@@ -47,14 +47,26 @@ const makeToastId = () => {
 };
 
 const toastStyles: Record<
-    ToastType,
+    ColorVariantsBase,
     { icon: string; accent: string; progress: string; border: string }
 > = {
-    normal: {
+    primary: {
+        icon: "mdi:information-outline",
+        accent: "text-main-800",
+        progress: "bg-main-800",
+        border: "border-transparent",
+    },
+    secondary: {
         icon: "mdi:information-outline",
         accent: "text-main-200",
         progress: "bg-main-500",
         border: "border-main-600",
+    },
+    tertiary: {
+        icon: "mdi:information-outline",
+        accent: "text-accent-light",
+        progress: "bg-accent-medium",
+        border: "border-accent-dark/70",
     },
     info: {
         icon: "mdi:information",
@@ -91,6 +103,7 @@ const ToastCard = ({ item, onDone }: ToastCardProps) => {
     const [entered, setEntered] = useState(false);
     const [progressStarted, setProgressStarted] = useState(false);
     const style = toastStyles[item.type];
+    const isPrimary = item.type === "primary";
 
     useEffect(() => {
         const rafId = window.requestAnimationFrame(() => {
@@ -120,7 +133,7 @@ const ToastCard = ({ item, onDone }: ToastCardProps) => {
 
     return (
         <div
-            className={`relative overflow-hidden rounded-xl border ${style.border} bg-main-900 px-4 py-3 shadow-xl transition-all duration-200 ${
+            className={`relative overflow-hidden rounded-xl border ${style.border} ${isPrimary ? "bg-main-100 text-main-800" : "bg-main-900 text-main-100"} px-4 py-3 shadow-xl transition-all duration-200 ${
                 entered
                     ? "translate-x-0 opacity-100"
                     : "translate-x-8 opacity-0"
@@ -135,18 +148,22 @@ const ToastCard = ({ item, onDone }: ToastCardProps) => {
                 />
 
                 <div className="min-w-0">
-                    <p className="text-sm font-semibold text-main-100">
+                    <p className="text-sm font-semibold">
                         {item.title}
                     </p>
                     {item.description && (
-                        <p className="mt-1 text-xs text-main-300">
+                        <p
+                            className={`mt-1 text-xs ${isPrimary ? "text-main-600" : "text-main-300"}`}
+                        >
                             {item.description}
                         </p>
                     )}
                 </div>
             </div>
 
-            <div className="mt-3 h-1 w-full overflow-hidden rounded-full bg-main-800">
+            <div
+                className={`mt-3 h-1 w-full overflow-hidden rounded-full ${isPrimary ? "bg-main-300" : "bg-main-800"}`}
+            >
                 <div
                     className={`h-full ${style.progress}`}
                     style={{
@@ -166,7 +183,7 @@ export const ToastProvider = ({ children }: PropsWithChildren) => {
         setToasts((prev) => prev.filter((toast) => toast.id !== id));
     }, []);
 
-    const push = useCallback((type: ToastType, input: ToastInput) => {
+    const push = useCallback((type: ColorVariantsBase, input: ToastInput) => {
         const id = makeToastId();
         setToasts((prev) => [
             ...prev.slice(-(MAX_TOASTS - 1)),
@@ -183,7 +200,9 @@ export const ToastProvider = ({ children }: PropsWithChildren) => {
     const contextValue = useMemo<ToastContextValue>(
         () => ({
             push,
-            normal: (input) => push("normal", input),
+            primary: (input) => push("primary", input),
+            secondary: (input) => push("secondary", input),
+            tertiary: (input) => push("tertiary", input),
             info: (input) => push("info", input),
             warning: (input) => push("warning", input),
             success: (input) => push("success", input),

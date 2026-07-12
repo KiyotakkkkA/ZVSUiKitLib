@@ -1,8 +1,6 @@
 import type { HTMLAttributes } from "react";
-
-export type BadgeVariant =
-    "neutral" | "tertiary" | "success" | "warning" | "danger" | "info";
+import type { ColorVariantsBase } from "../_shared/types";
 
 export type BadgeProps = HTMLAttributes<HTMLSpanElement> & {
-    variant?: BadgeVariant;
+    variant?: ColorVariantsBase;
 };
