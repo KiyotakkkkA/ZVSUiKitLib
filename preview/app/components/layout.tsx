@@ -1,10 +1,9 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import {
-    compositionComponents,
-    feedbackComponents,
     inputComponents,
     overlayComponents,
+    typographyComponents,
 } from "../lib/components";
 import { SiteHeader } from "../ui/site-header";
 import { SidebarScrollArea } from "../molecules/sidebar-scroll-area";
@@ -40,10 +39,7 @@ export default function ComponentsLayout({
                                     docSection={overlayComponents}
                                 />
                                 <SidebarNavigationSection
-                                    docSection={compositionComponents}
-                                />
-                                <SidebarNavigationSection
-                                    docSection={feedbackComponents}
+                                    docSection={typographyComponents}
                                 />
                             </nav>
                         </div>

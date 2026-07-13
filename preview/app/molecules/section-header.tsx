@@ -5,7 +5,7 @@ export function SectionHeader({ nav }: { nav: SectionNavigation }) {
         <div className="docs-section-heading">
             <div>
                 <span aria-hidden="true">{"//"}</span>
-                <h2>{nav.title}</h2>
+                <h2>{nav.headerTitle}</h2>
             </div>
         </div>
     );

@@ -30,7 +30,9 @@ export default function UseToastsPage() {
                 </SectionOverview.Tags>
             </SectionOverview>
             <SectionPreview nav={{ id: "preview", title: "All toast types" }}>
-                <ToastPreview />
+                <SectionPreview.Component>
+                    <ToastPreview />
+                </SectionPreview.Component>
             </SectionPreview>
             <SectionCode
                 nav={{ id: "usage", title: "Usage" }}

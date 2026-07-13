@@ -12,27 +12,27 @@ import { InputDate } from "@kiyotakkkka/zvs-uikit-lib";
 
 ## Props
 
-| Prop            | Type                                                           | Default           | Description                              |
-| --------------- | -------------------------------------------------------------- | ----------------- | ---------------------------------------- |
-| value           | `Date \| null`                                                 | -                 | Controlled selected date.                |
-| defaultValue    | `Date \| null`                                                 | `null`            | Initial value for uncontrolled mode.     |
-| onChange        | `(date: Date \| null) => void`                                 | -                 | Date change callback.                    |
-| placeholder     | string                                                         | `"Выберите дату"` | Trigger text for empty value.            |
-| locale          | string                                                         | `"ru-RU"`         | Date label locale.                       |
-| weekStartsOn    | `CalendarProps["weekStartsOn"]`                                | `1`               | Week start day for nested calendar.      |
-| minDate         | Date                                                           | -                 | Minimum available date.                  |
-| maxDate         | Date                                                           | -                 | Maximum available date.                  |
-| disabledDates   | `CalendarProps["disabledDates"]`                               | -                 | Disabled dates configuration.            |
-| allowDeselect   | boolean                                                        | -                 | Pass-through to calendar.                |
-| showOutsideDays | boolean                                                        | -                 | Pass-through to calendar.                |
-| disabled        | boolean                                                        | `false`           | Disable trigger and popup.               |
-| closeOnSelect   | boolean                                                        | `false`           | Close popup after selecting date.        |
-| clearable       | boolean                                                        | `false`           | Show clear button when date is selected. |
-| menuPlacement   | [`PositionAnchor`](../../docs/dict.md#positionanchor) | `"bottom-left"` | Popup placement. |
-| menuWidth       | number                                                         | `300`             | Popup width.                             |
-| className       | string                                                         | -                 | Root classes.                            |
-| classNames      | object                                                         | -                 | Classes for internal slots.              |
-| formatLabel     | `(date: Date) => string`                                       | -                 | Custom trigger label formatting.         |
+| Prop            | Type                                                  | Default           | Description                              |
+| --------------- | ----------------------------------------------------- | ----------------- | ---------------------------------------- |
+| value           | `Date \| null`                                        | -                 | Controlled selected date.                |
+| defaultValue    | `Date \| null`                                        | `null`            | Initial value for uncontrolled mode.     |
+| onChange        | `(date: Date \| null) => void`                        | -                 | Date change callback.                    |
+| placeholder     | string                                                | `"Выберите дату"` | Trigger text for empty value.            |
+| locale          | string                                                | `"ru-RU"`         | Date label locale.                       |
+| weekStartsOn    | `CalendarProps["weekStartsOn"]`                       | `1`               | Week start day for nested calendar.      |
+| minDate         | Date                                                  | -                 | Minimum available date.                  |
+| maxDate         | Date                                                  | -                 | Maximum available date.                  |
+| disabledDates   | `CalendarProps["disabledDates"]`                      | -                 | Disabled dates configuration.            |
+| allowDeselect   | boolean                                               | -                 | Pass-through to calendar.                |
+| showOutsideDays | boolean                                               | -                 | Pass-through to calendar.                |
+| disabled        | boolean                                               | `false`           | Disable trigger and popup.               |
+| closeOnSelect   | boolean                                               | `false`           | Close popup after selecting date.        |
+| clearable       | boolean                                               | `false`           | Show clear button when date is selected. |
+| menuPlacement   | [`PositionAnchor`](../../docs/dict.md#positionanchor) | `"bottom-left"`   | Popup placement.                         |
+| menuWidth       | number                                                | `300`             | Popup width.                             |
+| className       | string                                                | -                 | Root classes.                            |
+| classNames      | object                                                | -                 | Classes for internal slots.              |
+| formatLabel     | `(date: Date) => string`                              | -                 | Custom trigger label formatting.         |
 
 ### `classNames` slots
 

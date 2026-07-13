@@ -1,36 +1,76 @@
 import type { Metadata } from "next";
-import { OverlayAPI } from "../overlay-api";
+import { APIProps } from "../../../../_shared/api-props";
 import {
     DocumentationPage,
-    SectionCode,
+    SectionAPI,
     SectionOverview,
     SectionPreview,
 } from "../../../molecules";
-import { DemoSlidedPanel } from "./slided-panel-preview";
-import usage from "./usage.md";
+import { DemoSlidedPanel } from "./(preview)/slided-panel-preview";
+import usage from "./(usage)/usage.md";
+import { slidedPanelProps } from "./props";
 export const metadata: Metadata = {
     title: "SlidedPanel",
-    description: "Compound edge drawer.",
+    description: "Slide-in edge panel.",
 };
 export default function Page() {
     return (
         <DocumentationPage>
-            <SectionOverview nav={{ id: "overview", title: "Overview" }}>
+            <SectionOverview
+                nav={{
+                    id: "overview",
+                    headerTitle: "SlidedPanel overview",
+                    navTitle: "Overview",
+                }}
+            >
+                <SectionOverview.MetaTitle>Overlays</SectionOverview.MetaTitle>
                 <SectionOverview.Title>SlidedPanel</SectionOverview.Title>
                 <SectionOverview.Description>
-                    Compound edge drawer.
+                    Open a composable drawer from any viewport edge for focused
+                    secondary workflows.
                 </SectionOverview.Description>
             </SectionOverview>
-            <SectionPreview nav={{ id: "preview", title: "Preview" }}>
-                <DemoSlidedPanel />
-            </SectionPreview>
-            <SectionCode
-                nav={{ id: "usage", title: "Usage" }}
-                label="SlidedPanelExample.tsx"
+            <SectionPreview
+                nav={{
+                    id: "right-drawer",
+                    headerTitle: "Right-side drawer",
+                    navTitle: "Drawer",
+                }}
             >
-                {usage}
-            </SectionCode>
-            <OverlayAPI component="SlidedPanel" />
+                <SectionPreview.Component>
+                    <DemoSlidedPanel />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="SlidedPanelExample.tsx">
+                    {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionAPI
+                nav={{
+                    id: "api",
+                    headerTitle: "SlidedPanel API",
+                    navTitle: "API",
+                }}
+            >
+                <SectionAPI.Group
+                    title={slidedPanelProps.root.name}
+                    description={slidedPanelProps.root.description}
+                >
+                    <SectionAPI.Table>
+                        <APIProps props={slidedPanelProps.root.props} />
+                    </SectionAPI.Table>
+                </SectionAPI.Group>
+                {slidedPanelProps.compound.map((part) => (
+                    <SectionAPI.Group
+                        key={part.name}
+                        title={`${slidedPanelProps.root.name}.${part.name}`}
+                        description={part.description}
+                    >
+                        <SectionAPI.Table>
+                            <APIProps props={part.props} />
+                        </SectionAPI.Table>
+                    </SectionAPI.Group>
+                ))}
+            </SectionAPI>
         </DocumentationPage>
     );
 }

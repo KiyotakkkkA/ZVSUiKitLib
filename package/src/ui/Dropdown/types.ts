@@ -5,7 +5,11 @@ import type {
     ReactNode,
     Ref,
 } from "react";
-import type { DivClassName, PositionAnchor, RoundVariants } from "../_shared/types";
+import type {
+    DivClassName,
+    PositionAnchor,
+    RoundVariants,
+} from "../_shared/types";
 
 export type DropdownContextValue = {
     open: boolean;

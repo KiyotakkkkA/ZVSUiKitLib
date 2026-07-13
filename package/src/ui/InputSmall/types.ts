@@ -1,5 +1,9 @@
 import type { InputHTMLAttributes } from "react";
-import type { DivClassName, RoundVariants, SvgClassName } from "../_shared/types";
+import type {
+    DivClassName,
+    RoundVariants,
+    SvgClassName,
+} from "../_shared/types";
 
 export type InputPreset = "password" | "search" | "email" | "phone" | "url";
 export type InputPresets = InputPreset;

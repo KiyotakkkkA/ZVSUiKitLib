@@ -2,7 +2,8 @@ import type { ReactNode } from "react";
 
 export type SectionNavigation = {
     id: string;
-    title: string;
+    headerTitle: string;
+    navTitle: string;
 };
 
 export type SectionProps = {

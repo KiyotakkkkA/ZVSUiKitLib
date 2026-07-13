@@ -12,12 +12,12 @@ import { DataDisplay } from "@kiyotakkkka/zvs-uikit-lib";
 
 ## Props
 
-| Prop      | Type            | Default        | Description                 |
-| --------- | --------------- | -------------- | --------------------------- |
-| children  | ReactNode       | -              | `DataDisplay.Item` rows.   |
-| bordered  | boolean         | `true`         | Adds border and background. |
-| rounded   | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-lg"` | Container radius. |
-| className | string          | -              | Root classes.               |
+| Prop      | Type                                                | Default        | Description                 |
+| --------- | --------------------------------------------------- | -------------- | --------------------------- |
+| children  | ReactNode                                           | -              | `DataDisplay.Item` rows.    |
+| bordered  | boolean                                             | `true`         | Adds border and background. |
+| rounded   | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-lg"` | Container radius.           |
+| className | string                                              | -              | Root classes.               |
 
 ## Compound parts
 
@@ -50,12 +50,16 @@ export function DemoDataDisplay() {
                 <DataDisplay.ItemTopBadge>
                     <span className="text-xs text-main-500">live</span>
                 </DataDisplay.ItemTopBadge>
-                <DataDisplay.ItemTopSubTitle>Active</DataDisplay.ItemTopSubTitle>
+                <DataDisplay.ItemTopSubTitle>
+                    Active
+                </DataDisplay.ItemTopSubTitle>
             </DataDisplay.Item>
 
             <DataDisplay.Item>
                 <DataDisplay.ItemTopTitle>Owner</DataDisplay.ItemTopTitle>
-                <DataDisplay.ItemTopSubTitle>KiyotakkkkA</DataDisplay.ItemTopSubTitle>
+                <DataDisplay.ItemTopSubTitle>
+                    KiyotakkkkA
+                </DataDisplay.ItemTopSubTitle>
                 <DataDisplay.ItemContentIcon>
                     <Icon icon="mdi:tune-variant" width={18} height={18} />
                 </DataDisplay.ItemContentIcon>

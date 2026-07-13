@@ -16,33 +16,33 @@ import { Chart } from "@kiyotakkkka/zvs-uikit-lib";
 
 ### `Chart` (root)
 
-| Prop               | Type                        | Default                                      | Description                               |
-| ------------------ | --------------------------- | -------------------------------------------- | ----------------------------------------- |
-| data               | `ChartDataItem[]`           | -                                            | Dataset.                                  |
-| series             | `ChartSeries[]`             | -                                            | Series configuration.                     |
-| xKey               | string                      | -                                            | Data key for the X axis.                  |
-| height             | number                      | `280`                                        | Chart height in pixels.                   |
-| type               | [`ChartType`](../../docs/dict.md#charttype) | `"line"` | Chart type. |
-| showGrid           | boolean                     | `true`                                       | Toggle grid lines.                        |
-| showXAxis          | boolean                     | `true`                                       | Toggle X axis.                            |
-| showYAxis          | boolean                     | `true`                                       | Toggle Y axis.                            |
-| showTooltip        | boolean                     | `true`                                       | Toggle tooltip.                           |
-| yWidth             | number                      | `52`                                         | Y axis width.                             |
-| margin             | object                      | `{ top: 16, right: 18, bottom: 4, left: 8 }` | Chart margin.                             |
-| xTickFormatter     | `(value) => string`         | -                                            | X axis tick formatter.                    |
-| yTickFormatter     | `(value) => string`         | -                                            | Y axis tick formatter.                    |
-| tooltipCursorColor | string                      | `rgba(245, 245, 245, 0.28)`                  | Tooltip cursor stroke color.              |
-| tooltipCursorFill  | string                      | `transparent`                                | Tooltip cursor fill.                      |
-| tooltipCursorWidth | number                      | `1`                                          | Tooltip cursor stroke width.              |
-| activeDotRadius    | number                      | `4`                                          | Active dot radius for line/area.          |
-| renderTooltip      | `(props) => ReactNode`      | -                                            | Custom tooltip renderer.                  |
-| emptyState         | ReactNode                   | `"Нет данных"`                               | Content for empty datasets.               |
-| title              | ReactNode                   | -                                            | Optional title above the chart.           |
-| description        | ReactNode                   | -                                            | Optional description text.                |
-| className          | string                      | -                                            | Root wrapper classes.                     |
-| classNames         | object                      | -                                            | Slot class overrides.                     |
-| style              | CSSProperties               | -                                            | Root inline styles.                       |
-| colorVars          | string[]                    | default palette                              | CSS color variables for series fallbacks. |
+| Prop               | Type                                        | Default                                      | Description                               |
+| ------------------ | ------------------------------------------- | -------------------------------------------- | ----------------------------------------- |
+| data               | `ChartDataItem[]`                           | -                                            | Dataset.                                  |
+| series             | `ChartSeries[]`                             | -                                            | Series configuration.                     |
+| xKey               | string                                      | -                                            | Data key for the X axis.                  |
+| height             | number                                      | `280`                                        | Chart height in pixels.                   |
+| type               | [`ChartType`](../../docs/dict.md#charttype) | `"line"`                                     | Chart type.                               |
+| showGrid           | boolean                                     | `true`                                       | Toggle grid lines.                        |
+| showXAxis          | boolean                                     | `true`                                       | Toggle X axis.                            |
+| showYAxis          | boolean                                     | `true`                                       | Toggle Y axis.                            |
+| showTooltip        | boolean                                     | `true`                                       | Toggle tooltip.                           |
+| yWidth             | number                                      | `52`                                         | Y axis width.                             |
+| margin             | object                                      | `{ top: 16, right: 18, bottom: 4, left: 8 }` | Chart margin.                             |
+| xTickFormatter     | `(value) => string`                         | -                                            | X axis tick formatter.                    |
+| yTickFormatter     | `(value) => string`                         | -                                            | Y axis tick formatter.                    |
+| tooltipCursorColor | string                                      | `rgba(245, 245, 245, 0.28)`                  | Tooltip cursor stroke color.              |
+| tooltipCursorFill  | string                                      | `transparent`                                | Tooltip cursor fill.                      |
+| tooltipCursorWidth | number                                      | `1`                                          | Tooltip cursor stroke width.              |
+| activeDotRadius    | number                                      | `4`                                          | Active dot radius for line/area.          |
+| renderTooltip      | `(props) => ReactNode`                      | -                                            | Custom tooltip renderer.                  |
+| emptyState         | ReactNode                                   | `"Нет данных"`                               | Content for empty datasets.               |
+| title              | ReactNode                                   | -                                            | Optional title above the chart.           |
+| description        | ReactNode                                   | -                                            | Optional description text.                |
+| className          | string                                      | -                                            | Root wrapper classes.                     |
+| classNames         | object                                      | -                                            | Slot class overrides.                     |
+| style              | CSSProperties                               | -                                            | Root inline styles.                       |
+| colorVars          | string[]                                    | default palette                              | CSS color variables for series fallbacks. |
 
 ### `ChartSeries`
 

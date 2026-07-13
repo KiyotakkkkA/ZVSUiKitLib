@@ -14,14 +14,14 @@ import { InputSmall } from "@kiyotakkkka/zvs-uikit-lib";
 
 ## Props
 
-| Prop       | Type                                                    | Default | Description                                           |
-| ---------- | ------------------------------------------------------- | ------- | ----------------------------------------------------- |
-| preset     | [`InputPreset`](../../docs/dict.md#inputpreset)          | -       | Coordinated behavior preset.                          |
-| type       | HTML input type                                         | preset  | Explicit native type; overrides non-password presets. |
-| onClear    | `() => void`                                            | -       | Called when the search preset is cleared.             |
-| rounded    | [`RoundVariants`](../../docs/dict.md#roundvariants)      | `"rounded-full"` | Border radius shape.                            |
-| className  | string                                                  | -       | Input element classes.                                |
-| classNames | object                                                  | -       | Classes for internal slots.                           |
+| Prop       | Type                                                | Default          | Description                                           |
+| ---------- | --------------------------------------------------- | ---------------- | ----------------------------------------------------- |
+| preset     | [`InputPreset`](../../docs/dict.md#inputpreset)     | -                | Coordinated behavior preset.                          |
+| type       | HTML input type                                     | preset           | Explicit native type; overrides non-password presets. |
+| onClear    | `() => void`                                        | -                | Called when the search preset is cleared.             |
+| rounded    | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-full"` | Border radius shape.                                  |
+| className  | string                                              | -                | Input element classes.                                |
+| classNames | object                                              | -                | Classes for internal slots.                           |
 
 All remaining native input attributes are forwarded.
 

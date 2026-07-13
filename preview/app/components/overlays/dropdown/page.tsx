@@ -1,38 +1,76 @@
 import type { Metadata } from "next";
-import { OverlayAPI } from "../overlay-api";
+import { APIProps } from "../../../../_shared/api-props";
 import {
     DocumentationPage,
-    SectionCode,
+    SectionAPI,
     SectionOverview,
     SectionPreview,
 } from "../../../molecules";
-import { DemoDropdown } from "./dropdown-preview";
-import usage from "./usage.md";
+import { DemoDropdown } from "./(preview)/dropdown-preview";
+import usage from "./(usage)/usage.md";
+import { dropdownProps } from "./props";
 export const metadata: Metadata = {
     title: "Dropdown",
-    description: "Composable anchored menu.",
+    description: "Generic dropdown popup container.",
 };
 export default function Page() {
     return (
         <DocumentationPage>
-            <SectionOverview nav={{ id: "overview", title: "Overview" }}>
-                <SectionOverview.MetaTitle>Overlay</SectionOverview.MetaTitle>
+            <SectionOverview
+                nav={{
+                    id: "overview",
+                    headerTitle: "Dropdown overview",
+                    navTitle: "Overview",
+                }}
+            >
+                <SectionOverview.MetaTitle>Overlays</SectionOverview.MetaTitle>
                 <SectionOverview.Title>Dropdown</SectionOverview.Title>
                 <SectionOverview.Description>
-                    Composable popup with Trigger, Anchor, Menu, Item, and
-                    Render parts.
+                    Compose a trigger and viewport-aware native popover menu
+                    with selectable actions.
                 </SectionOverview.Description>
             </SectionOverview>
-            <SectionPreview nav={{ id: "preview", title: "Preview" }}>
-                <DemoDropdown />
-            </SectionPreview>
-            <SectionCode
-                nav={{ id: "usage", title: "Usage" }}
-                label="DropdownExample.tsx"
+            <SectionPreview
+                nav={{
+                    id: "actions-menu",
+                    headerTitle: "Actions dropdown",
+                    navTitle: "Actions",
+                }}
             >
-                {usage}
-            </SectionCode>
-            <OverlayAPI component="Dropdown" />
+                <SectionPreview.Component>
+                    <DemoDropdown />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="DropdownExample.tsx">
+                    {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionAPI
+                nav={{
+                    id: "api",
+                    headerTitle: "Dropdown API",
+                    navTitle: "API",
+                }}
+            >
+                <SectionAPI.Group
+                    title={dropdownProps.root.name}
+                    description={dropdownProps.root.description}
+                >
+                    <SectionAPI.Table>
+                        <APIProps props={dropdownProps.root.props} />
+                    </SectionAPI.Table>
+                </SectionAPI.Group>
+                {dropdownProps.compound.map((part) => (
+                    <SectionAPI.Group
+                        key={part.name}
+                        title={`${dropdownProps.root.name}.${part.name}`}
+                        description={part.description}
+                    >
+                        <SectionAPI.Table>
+                            <APIProps props={part.props} />
+                        </SectionAPI.Table>
+                    </SectionAPI.Group>
+                ))}
+            </SectionAPI>
         </DocumentationPage>
     );
 }

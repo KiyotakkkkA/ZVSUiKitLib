@@ -12,11 +12,11 @@ import { Floating } from "@kiyotakkkka/zvs-uikit-lib";
 
 ## Props
 
-| Prop      | Type                                                                                              | Default       | Description                                |
-| --------- | ------------------------------------------------------------------------------------------------- | ------------- | ------------------------------------------ |
-| children  | `ReactNode`                                                                                       | -             | `Floating.Trigger` and `Floating.Content`. |
-| anchor    | [`PositionAnchor`](../../docs/dict.md#positionanchor) | `"top-right"` | Content position relative to the trigger. |
-| className | `string`                                                                                          | -             | Root wrapper classes.                      |
+| Prop      | Type                                                  | Default       | Description                                |
+| --------- | ----------------------------------------------------- | ------------- | ------------------------------------------ |
+| children  | `ReactNode`                                           | -             | `Floating.Trigger` and `Floating.Content`. |
+| anchor    | [`PositionAnchor`](../../docs/dict.md#positionanchor) | `"top-right"` | Content position relative to the trigger.  |
+| className | `string`                                              | -             | Root wrapper classes.                      |
 
 The root also accepts standard `HTMLAttributes<HTMLDivElement>`.
 
@@ -36,10 +36,10 @@ The root also accepts standard `HTMLAttributes<HTMLDivElement>`.
 
 ### "Floating.Content" Props
 
-| Prop      | Type        | Default | Description               |
-| --------- | ----------- | ------- | ------------------------- |
-| children  | `ReactNode` | -       | Content of the floating.  |
-| className | `string`    | -       | Floating wrapper classes. |
+| Prop      | Type                                                | Default        | Description                   |
+| --------- | --------------------------------------------------- | -------------- | ----------------------------- |
+| children  | `ReactNode`                                         | -              | Content of the floating.      |
+| className | `string`                                            | -              | Floating wrapper classes.     |
 | rounded   | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-lg"` | Floating panel border radius. |
 
 ## Example

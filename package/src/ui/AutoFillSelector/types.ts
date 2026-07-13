@@ -2,7 +2,6 @@ import type React from "react";
 import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
 import type {
     ButtonClassName,
-    DivClassName,
     RoundVariants,
     SpanClassName,
     SvgClassName,
@@ -44,7 +43,6 @@ export type AutoFillSelectorInputProps = Omit<
 > & { rounded?: RoundVariants };
 
 export type AutoFillSelectorMenuProps = HTMLAttributes<HTMLDivElement> & {
-    scrollClassName?: DivClassName;
     rounded?: RoundVariants;
 };
 

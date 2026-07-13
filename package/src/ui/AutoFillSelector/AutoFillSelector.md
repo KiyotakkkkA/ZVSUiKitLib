@@ -23,16 +23,16 @@ type AutoFillOption = {
 
 ## Props
 
-| Prop         | Type                                                                                                                                                  | Default         | Description                                       |
-| ------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------- |
-| options      | `AutoFillOption[]`                                                                                                                                    | -               | Option list.                                      |
-| value        | string[]                                                                                                                                              | `[]`            | Selected values.                                  |
-| onChange     | `(value: string[]) => void`                                                                                                                           | -               | Called when selection changes.                    |
-| disabled     | boolean                                                                                                                                               | `false`         | Disables interactions.                            |
-| menuWidth    | number \| string                                                                                                                                      | `"auto"`        | Dropdown popup width; `auto` matches the trigger. |
-| children     | ReactNode                                                                                                                                             | -               | Selector compound parts.                          |
-| onOpenChange | `(open: boolean) => void`                                                                                                                             | -               | Called when dropdown open state changes.          |
-| className    | string                                                                                                                                                | -               | Root wrapper classes.                             |
+| Prop         | Type                                                | Default         | Description                                       |
+| ------------ | --------------------------------------------------- | --------------- | ------------------------------------------------- |
+| options      | `AutoFillOption[]`                                  | -               | Option list.                                      |
+| value        | string[]                                            | `[]`            | Selected values.                                  |
+| onChange     | `(value: string[]) => void`                         | -               | Called when selection changes.                    |
+| disabled     | boolean                                             | `false`         | Disables interactions.                            |
+| menuWidth    | number \| string                                    | `"auto"`        | Dropdown popup width; `auto` matches the trigger. |
+| children     | ReactNode                                           | -               | Selector compound parts.                          |
+| onOpenChange | `(open: boolean) => void`                           | -               | Called when dropdown open state changes.          |
+| className    | string                                              | -               | Root wrapper classes.                             |
 | rounded      | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-2xl"` | Border radius classes.                            |
 
 The search query is cleared automatically when the dropdown closes.
@@ -52,42 +52,41 @@ All compound parts must be rendered inside `AutoFillSelector`.
 
 ### `AutoFillSelector.Tags` props
 
-| Prop               | Type                                                                                                                                                  | Default          | Description                |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | -------------------------- |
-| tagClassName       | string                                                                                                                                                | -                | Selected tag classes.      |
-| tagRemoveClassName | string                                                                                                                                                | -                | Tag remove button classes. |
-| className          | string                                                                                                                                                | -                | Tags wrapper classes.      |
+| Prop               | Type                                                | Default          | Description                |
+| ------------------ | --------------------------------------------------- | ---------------- | -------------------------- |
+| tagClassName       | string                                              | -                | Selected tag classes.      |
+| tagRemoveClassName | string                                              | -                | Tag remove button classes. |
+| className          | string                                              | -                | Tags wrapper classes.      |
 | rounded            | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-full"` | Border radius classes.     |
 
 ### `AutoFillSelector.Input` props
 
 `AutoFillSelector.Input` accepts native input props except `value`, `onChange`, and `disabled`.
 
-| Prop        | Type                                                                                                                                                  | Default                | Description                          |
-| ----------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------- | ------------------------------------ |
-| placeholder | string                                                                                                                                                | `"Введите для поиска"` | Placeholder when no values selected. |
-| className   | string                                                                                                                                                | -                      | Input classes.                       |
+| Prop        | Type                                                | Default                | Description                          |
+| ----------- | --------------------------------------------------- | ---------------------- | ------------------------------------ |
+| placeholder | string                                              | `"Введите для поиска"` | Placeholder when no values selected. |
+| className   | string                                              | -                      | Input classes.                       |
 | rounded     | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-full"`       | Border radius classes.               |
 
 Backspace removes the last selected value when the query is empty.
 
 ### `AutoFillSelector.Menu` props
 
-| Prop            | Type                                                                                                                                                  | Default         | Description                   |
-| --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | --------------- | ----------------------------- |
-| scrollClassName | string                                                                                                                                                | -               | Internal scroll area classes. |
-| className       | string                                                                                                                                                | -               | Dropdown menu classes.        |
-| rounded         | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-4xl"` | Border radius classes.        |
+| Prop      | Type                                                | Default         | Description            |
+| --------- | --------------------------------------------------- | --------------- | ---------------------- |
+| className | string                                              | -               | Dropdown menu classes. |
+| rounded   | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-4xl"` | Border radius classes. |
 
 ### `AutoFillSelector.Options` props
 
-| Prop                       | Type                                                                                                                                                  | Default          | Description                 |
-| -------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | --------------------------- |
-| optionClassName            | string                                                                                                                                                | -                | Option button classes.      |
-| optionLabelClassName       | string                                                                                                                                                | -                | Option label classes.       |
-| optionDescriptionClassName | string                                                                                                                                                | -                | Option description classes. |
-| optionIconClassName        | string                                                                                                                                                | -                | Option icon/check classes.  |
-| className                  | string                                                                                                                                                | -                | Options wrapper classes.    |
+| Prop                       | Type                                                | Default          | Description                 |
+| -------------------------- | --------------------------------------------------- | ---------------- | --------------------------- |
+| optionClassName            | string                                              | -                | Option button classes.      |
+| optionLabelClassName       | string                                              | -                | Option label classes.       |
+| optionDescriptionClassName | string                                              | -                | Option description classes. |
+| optionIconClassName        | string                                              | -                | Option icon/check classes.  |
+| className                  | string                                              | -                | Options wrapper classes.    |
 | rounded                    | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-full"` | Border radius classes.      |
 
 ### `AutoFillSelector.Empty` props

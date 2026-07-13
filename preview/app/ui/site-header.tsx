@@ -18,7 +18,9 @@ export function SiteHeader() {
 
             <nav className="top-nav" aria-label="Primary navigation">
                 <Link href="/">Overview</Link>
-                <Link href="/components/overlays/context-menu">Components</Link>
+                <Link href="/components/inputs/auto-fill-selector">
+                    Components
+                </Link>
                 <Link href="/hooks/use-style">Hooks</Link>
                 <a href="https://www.npmjs.com/package/@kiyotakkkka/zvs-uikit-lib">
                     Releases
@@ -28,7 +30,7 @@ export function SiteHeader() {
             <div className="header-actions">
                 <Link
                     className="search-trigger"
-                    href="/components/overlays/context-menu"
+                    href="/components/inputs/auto-fill-selector"
                 >
                     <SearchIcon />
                     <span>Search docs</span>

@@ -35,9 +35,9 @@ function validateNavigation(items: SectionNavigation[]) {
     const ids = new Set<string>();
 
     for (const item of items) {
-        if (!item.id.trim() || !item.title.trim()) {
+        if (!item.id.trim() || !item.navTitle.trim()) {
             throw new Error(
-                "Section nav.id and nav.title must be non-empty strings.",
+                "Section nav.id and nav.navTitle must be non-empty strings.",
             );
         }
 
@@ -71,7 +71,7 @@ export function DocumentationPage({
                     <nav aria-label="On this page">
                         {navigation.map((item) => (
                             <a key={item.id} href={`#${item.id}`}>
-                                {item.title}
+                                {item.navTitle}
                             </a>
                         ))}
                     </nav>

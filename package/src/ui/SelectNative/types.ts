@@ -1,6 +1,10 @@
 import type { SelectHTMLAttributes } from "react";
 
-import type { DivClassName, RoundVariants, SelectClassName } from "../_shared/types";
+import type {
+    DivClassName,
+    RoundVariants,
+    SelectClassName,
+} from "../_shared/types";
 
 type BaseSelectNativeProps = Omit<
     SelectHTMLAttributes<HTMLSelectElement>,

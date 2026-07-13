@@ -14,6 +14,8 @@ type PropProps = {
     type: string;
     defaultValue?: string;
     description: string;
+    nameInfo?: ReactNode;
+    typeInfo?: ReactNode;
     children?: ReactNode;
 };
 
@@ -64,15 +66,29 @@ function Table({ className, children }: SlotProps) {
     );
 }
 
-function Prop({ name, type, defaultValue, description, children }: PropProps) {
+function Prop({
+    name,
+    type,
+    defaultValue,
+    description,
+    nameInfo,
+    typeInfo,
+    children,
+}: PropProps) {
     return (
         <>
             <tr>
-                <td>
-                    <code>{name}</code>
+                <td className="api-prop-name">
+                    <div className="api-prop-value">
+                        <code>{name}</code>
+                        {nameInfo}
+                    </div>
                 </td>
-                <td>
-                    <code>{type}</code>
+                <td className="api-prop-type">
+                    <div className="api-prop-value">
+                        <code>{type}</code>
+                        {typeInfo}
+                    </div>
                 </td>
                 <td>{defaultValue ?? "—"}</td>
                 <td>{description}</td>

@@ -287,9 +287,8 @@ function AutoFillSelectorInput({
 
 function AutoFillSelectorMenu({
     className,
-    scrollClassName,
     children,
-    rounded = "rounded-4xl",
+    rounded = "rounded-2xl",
     ...props
 }: AutoFillSelectorMenuProps) {
     return (
@@ -302,10 +301,7 @@ function AutoFillSelectorMenu({
             )}
             {...props}
         >
-            <ScrollArea
-                orientation="vertical"
-                className={cn("max-h-64", scrollClassName)}
-            >
+            <ScrollArea orientation="vertical" className="max-h-64">
                 {children}
             </ScrollArea>
         </Dropdown.Menu>
@@ -313,7 +309,7 @@ function AutoFillSelectorMenu({
 }
 
 function AutoFillSelectorOptions({
-    rounded = "rounded-full",
+    rounded = "rounded-2xl",
     className,
     optionClassName,
     optionLabelClassName,
@@ -395,7 +391,7 @@ function AutoFillSelectorOptions({
 
 function AutoFillSelectorEmpty({
     className,
-    children = "Ничего не найдено",
+    children = "Nothing found",
     ...props
 }: AutoFillSelectorEmptyProps) {
     const { filteredOptions } = useAutoFillSelectorContext();

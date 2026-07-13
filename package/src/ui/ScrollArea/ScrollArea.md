@@ -12,12 +12,12 @@ import { ScrollArea } from "@kiyotakkkka/zvs-uikit-lib";
 
 ## Props
 
-| Prop          | Type                                   | Default      | Description             |
-| ------------- | -------------------------------------- | ------------ | ----------------------- |
-| orientation   | [`ScrollAreaOrientation`](../../docs/dict.md#scrollareaorientation) | `"vertical"` | Scroll direction mode. |
-| showScrollbar | boolean                                | `true`       | Show or hide scrollbar. |
-| className     | string                                 | -            | Extra classes.          |
-| children      | ReactNode                              | -            | Scrollable content.     |
+| Prop          | Type                                                                | Default      | Description             |
+| ------------- | ------------------------------------------------------------------- | ------------ | ----------------------- |
+| orientation   | [`ScrollAreaOrientation`](../../docs/dict.md#scrollareaorientation) | `"vertical"` | Scroll direction mode.  |
+| showScrollbar | boolean                                                             | `true`       | Show or hide scrollbar. |
+| className     | string                                                              | -            | Extra classes.          |
+| children      | ReactNode                                                           | -            | Scrollable content.     |
 
 ## Example
 

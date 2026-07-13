@@ -12,12 +12,12 @@ import { Skeleton } from "@kiyotakkkka/zvs-uikit-lib";
 
 ## Props
 
-| Prop      | Type                                             | Default   | Description                        |
-| --------- | ------------------------------------------------ | --------- | ---------------------------------- |
-| animated  | boolean                                          | true      | Enables shimmer animation.         |
-| rounded   | [`SkeletonRadius`](../../docs/dict.md#skeletonradius) | "md"      | Border radius preset.        |
-| tone      | [`SkeletonTone`](../../docs/dict.md#skeletontone)     | "default" | Background intensity preset. |
-| className | string                                           | -         | Extra classes for size and layout. |
+| Prop      | Type                                                  | Default   | Description                        |
+| --------- | ----------------------------------------------------- | --------- | ---------------------------------- |
+| animated  | boolean                                               | true      | Enables shimmer animation.         |
+| rounded   | [`SkeletonRadius`](../../docs/dict.md#skeletonradius) | "md"      | Border radius preset.              |
+| tone      | [`SkeletonTone`](../../docs/dict.md#skeletontone)     | "default" | Background intensity preset.       |
+| className | string                                                | -         | Extra classes for size and layout. |
 
 Also accepts native `div` attributes.
 

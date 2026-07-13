@@ -12,14 +12,14 @@ import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib";
 
 ## Props
 
-| Prop          | Type                                                                                              | Default         | Description                                       |
-| ------------- | ------------------------------------------------------------------------------------------------- | --------------- | ------------------------------------------------- |
-| children      | ReactNode                                                                                         | -               | Dropdown parts and optional render block.         |
-| className     | string                                                                                            | -               | Outer wrapper classes.                            |
-| disabled      | boolean                                                                                           | `false`         | Disables the dropdown trigger.                    |
-| menuWidth     | number \| string                                                                                  | `220`           | Popup width. Use `"auto"` to match trigger width. |
-| menuPlacement | [`PositionAnchor`](../../docs/dict.md#positionanchor) | `"bottom-left"` | Popup placement relative to the trigger. |
-| onOpenChange  | `(open: boolean) => void`                                                                         | -               | Called when open state changes.                   |
+| Prop          | Type                                                  | Default         | Description                                       |
+| ------------- | ----------------------------------------------------- | --------------- | ------------------------------------------------- |
+| children      | ReactNode                                             | -               | Dropdown parts and optional render block.         |
+| className     | string                                                | -               | Outer wrapper classes.                            |
+| disabled      | boolean                                               | `false`         | Disables the dropdown trigger.                    |
+| menuWidth     | number \| string                                      | `220`           | Popup width. Use `"auto"` to match trigger width. |
+| menuPlacement | [`PositionAnchor`](../../docs/dict.md#positionanchor) | `"bottom-left"` | Popup placement relative to the trigger.          |
+| onOpenChange  | `(open: boolean) => void`                             | -               | Called when open state changes.                   |
 
 ## Compound parts
 
@@ -33,14 +33,14 @@ import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib";
 
 ### `Dropdown.Trigger` props
 
-| Prop        | Type      | Default     | Description                          |
-| ----------- | --------- | ----------- | ------------------------------------ |
-| children    | ReactNode | -           | Trigger label.                       |
-| placeholder | ReactNode | `"Открыть"` | Text shown when `children` is empty. |
-| icon        | ReactNode | chevron     | Custom trailing icon.                |
-| disabled    | boolean   | -           | Disables only this trigger.          |
-| rounded     | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-2xl"` | Trigger border radius. |
-| className   | string    | -           | Trigger button classes.              |
+| Prop        | Type                                                | Default         | Description                          |
+| ----------- | --------------------------------------------------- | --------------- | ------------------------------------ |
+| children    | ReactNode                                           | -               | Trigger label.                       |
+| placeholder | ReactNode                                           | `"Открыть"`     | Text shown when `children` is empty. |
+| icon        | ReactNode                                           | chevron         | Custom trailing icon.                |
+| disabled    | boolean                                             | -               | Disables only this trigger.          |
+| rounded     | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-2xl"` | Trigger border radius.               |
+| className   | string                                              | -               | Trigger button classes.              |
 
 ### `Dropdown.Anchor` props
 
@@ -54,10 +54,10 @@ import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib";
 
 ### `Dropdown.Menu` props
 
-| Prop      | Type            | Default        | Description                  |
-| --------- | --------------- | -------------- | ---------------------------- |
+| Prop      | Type                                                | Default        | Description                    |
+| --------- | --------------------------------------------------- | -------------- | ------------------------------ |
 | rounded   | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-lg"` | Popup container border radius. |
-| className | string          | -              | Popup container classes.     |
+| className | string                                              | -              | Popup container classes.       |
 
 ### `Dropdown.Item` props
 

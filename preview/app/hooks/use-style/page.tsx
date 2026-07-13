@@ -30,7 +30,9 @@ export default function UseStylePage() {
                 </SectionOverview.Tags>
             </SectionOverview>
             <SectionPreview nav={{ id: "palettes", title: "11 palettes" }}>
-                <ThemePreview />
+                <SectionPreview.Component>
+                    <ThemePreview />
+                </SectionPreview.Component>
             </SectionPreview>
             <SectionCode
                 nav={{ id: "usage", title: "Usage" }}

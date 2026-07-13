@@ -1,5 +1,9 @@
 import type { PropsWithChildren } from "react";
-import type { ButtonClassName, DivClassName, RoundVariants } from "../_shared/types";
+import type {
+    ButtonClassName,
+    DivClassName,
+    RoundVariants,
+} from "../_shared/types";
 
 export type ModalProps = PropsWithChildren<{
     open: boolean;

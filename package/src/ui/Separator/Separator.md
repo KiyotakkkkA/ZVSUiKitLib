@@ -14,10 +14,10 @@ import { Separator } from "@kiyotakkkka/zvs-uikit-lib";
 
 Extends `HTMLAttributes<HTMLDivElement>`.
 
-| Prop        | Type                         | Default        | Description            |
-| ----------- | ---------------------------- | -------------- | ---------------------- |
+| Prop        | Type                                            | Default        | Description            |
+| ----------- | ----------------------------------------------- | -------------- | ---------------------- |
 | orientation | [`Orientation`](../../docs/dict.md#orientation) | `"horizontal"` | Separator orientation. |
-| className   | string                       | -              | Extra classes.         |
+| className   | string                                          | -              | Extra classes.         |
 
 ## Example
 

@@ -12,14 +12,14 @@ import { SlidedPanel } from "@kiyotakkkka/zvs-uikit-lib";
 
 ## Props
 
-| Prop                | Type                                     | Default   | Description                                      |
-| ------------------- | ---------------------------------------- | --------- | ------------------------------------------------ |
-| open                | boolean                                  | -         | Controls panel visibility.                       |
-| onClose             | `() => void`                             | -         | Close handler.                                   |
-| closeOnOverlayClick | boolean                                  | `true`    | Close when clicking overlay.                     |
-| panelPlacement      | [`SlidedPanelPlacement`](../../docs/dict.md#slidedpanelplacement) | `"right"` | Edge from which the panel opens. |
-| className           | string                                   | -         | Panel classes, including custom width or height. |
-| children            | ReactNode                                | -         | Panel sections/content.                          |
+| Prop                | Type                                                              | Default   | Description                                      |
+| ------------------- | ----------------------------------------------------------------- | --------- | ------------------------------------------------ |
+| open                | boolean                                                           | -         | Controls panel visibility.                       |
+| onClose             | `() => void`                                                      | -         | Close handler.                                   |
+| closeOnOverlayClick | boolean                                                           | `true`    | Close when clicking overlay.                     |
+| panelPlacement      | [`SlidedPanelPlacement`](../../docs/dict.md#slidedpanelplacement) | `"right"` | Edge from which the panel opens.                 |
+| className           | string                                                            | -         | Panel classes, including custom width or height. |
+| children            | ReactNode                                                         | -         | Panel sections/content.                          |
 
 `right` and `left` panels use the full viewport height and a default width of `24rem`. `top` and `bottom` panels use the full viewport width and a default height of `24rem`.
 

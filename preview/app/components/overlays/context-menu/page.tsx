@@ -1,37 +1,78 @@
 import type { Metadata } from "next";
-import { OverlayAPI } from "../overlay-api";
+import { APIProps } from "../../../../_shared/api-props";
 import {
     DocumentationPage,
-    SectionCode,
+    SectionAPI,
     SectionOverview,
     SectionPreview,
 } from "../../../molecules";
-import { DemoContextMenu } from "./context-menu-preview";
-import usage from "./usage.md";
+import { DemoContextMenu } from "./(preview)/context-menu-preview";
+import usage from "./(usage)/usage.md";
+import { contextMenuProps } from "./props";
+
 export const metadata: Metadata = {
     title: "ContextMenu",
-    description: "Pointer context menu.",
+    description: "Right-click menu with items and submenus.",
 };
+
 export default function Page() {
     return (
         <DocumentationPage>
-            <SectionOverview nav={{ id: "overview", title: "Overview" }}>
+            <SectionOverview
+                nav={{
+                    id: "overview",
+                    headerTitle: "ContextMenu overview",
+                    navTitle: "Overview",
+                }}
+            >
+                <SectionOverview.MetaTitle>Overlays</SectionOverview.MetaTitle>
                 <SectionOverview.Title>ContextMenu</SectionOverview.Title>
                 <SectionOverview.Description>
-                    Compound contextual actions with nested submenus and
-                    viewport positioning.
+                    Open contextual actions from a right-click target, including
+                    labels, separators, destructive items, and nested submenus.
                 </SectionOverview.Description>
             </SectionOverview>
-            <SectionPreview nav={{ id: "preview", title: "Preview" }}>
-                <DemoContextMenu />
-            </SectionPreview>
-            <SectionCode
-                nav={{ id: "usage", title: "Usage" }}
-                label="ContextMenuExample.tsx"
+            <SectionPreview
+                nav={{
+                    id: "interactive-menu",
+                    headerTitle: "Interactive context menu",
+                    navTitle: "Context menu",
+                }}
             >
-                {usage}
-            </SectionCode>
-            <OverlayAPI component="ContextMenu" />
+                <SectionPreview.Component>
+                    <DemoContextMenu />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="ContextMenuExample.tsx">
+                    {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionAPI
+                nav={{
+                    id: "api",
+                    headerTitle: "ContextMenu API",
+                    navTitle: "API",
+                }}
+            >
+                <SectionAPI.Group
+                    title={contextMenuProps.root.name}
+                    description={contextMenuProps.root.description}
+                >
+                    <SectionAPI.Table>
+                        <APIProps props={contextMenuProps.root.props} />
+                    </SectionAPI.Table>
+                </SectionAPI.Group>
+                {contextMenuProps.compound.map((part) => (
+                    <SectionAPI.Group
+                        key={part.name}
+                        title={`${contextMenuProps.root.name}.${part.name}`}
+                        description={part.description}
+                    >
+                        <SectionAPI.Table>
+                            <APIProps props={part.props} />
+                        </SectionAPI.Table>
+                    </SectionAPI.Group>
+                ))}
+            </SectionAPI>
         </DocumentationPage>
     );
 }

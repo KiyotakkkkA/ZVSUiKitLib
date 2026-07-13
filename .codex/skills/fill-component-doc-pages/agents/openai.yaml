@@ -1,0 +1,4 @@
+interface:
+    display_name: "Fill Component Documentation Pages"
+    short_description: "Build complete UI kit component documentation"
+    default_prompt: "Use $fill-component-doc-pages to create or complete a component documentation page."

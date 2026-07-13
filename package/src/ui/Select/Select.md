@@ -14,50 +14,50 @@ import { Select } from "@kiyotakkkka/zvs-uikit-lib";
 
 ## Props
 
-| Prop              | Type                      | Default               | Description                                      |
-| ----------------- | ------------------------- | --------------------- | ------------------------------------------------ |
-| value             | string                    | -                     | Selected value.                                  |
-| onChange          | `(value: string) => void` | -                     | Value change handler.                            |
-| options           | `SelectOption[]`          | -                     | Option source for selection and search.           |
-| children          | ReactNode                 | -                     | `Select.Trigger` and `Select.Menu`.             |
-| placeholder       | string                    | `"Выберите"`          | Trigger text without a selected option.          |
-| searchable        | boolean                   | `false`               | Enables search inside `Select.Menu`.             |
-| searchPlaceholder | string                    | `"Поиск..."`          | Search input placeholder.                        |
-| emptyMessage      | string                    | `"Ничего не найдено"` | Empty search result.                              |
-| disabled          | boolean                   | `false`               | Disables interaction.                            |
-| menuWidth         | number \| string          | `"auto"`              | Popup width; `auto` matches the trigger.          |
-| menuPlacement     | `PositionAnchor`          | `"bottom-left"`       | Popup placement.                                 |
-| closeOnSelect     | boolean                   | `true`                | Closes the popup after option selection.         |
-| className         | string                    | -                     | Root wrapper classes.                            |
-| classNames        | `{ search?: string }`     | -                     | Search input classes.                            |
+| Prop              | Type                      | Default               | Description                              |
+| ----------------- | ------------------------- | --------------------- | ---------------------------------------- |
+| value             | string                    | -                     | Selected value.                          |
+| onChange          | `(value: string) => void` | -                     | Value change handler.                    |
+| options           | `SelectOption[]`          | -                     | Option source for selection and search.  |
+| children          | ReactNode                 | -                     | `Select.Trigger` and `Select.Menu`.      |
+| placeholder       | string                    | `"Выберите"`          | Trigger text without a selected option.  |
+| searchable        | boolean                   | `false`               | Enables search inside `Select.Menu`.     |
+| searchPlaceholder | string                    | `"Поиск..."`          | Search input placeholder.                |
+| emptyMessage      | string                    | `"Ничего не найдено"` | Empty search result.                     |
+| disabled          | boolean                   | `false`               | Disables interaction.                    |
+| menuWidth         | number \| string          | `"auto"`              | Popup width; `auto` matches the trigger. |
+| menuPlacement     | `PositionAnchor`          | `"bottom-left"`       | Popup placement.                         |
+| closeOnSelect     | boolean                   | `true`                | Closes the popup after option selection. |
+| className         | string                    | -                     | Root wrapper classes.                    |
+| classNames        | `{ search?: string }`     | -                     | Search input classes.                    |
 
 ## Compound parts
 
 ### `Select.Trigger`
 
-| Prop      | Type            | Default          | Description              |
-| --------- | --------------- | ---------------- | ------------------------ |
-| className | string          | -                | Trigger button classes.  |
-| rounded   | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-2xl"` | Trigger border radius. |
+| Prop      | Type                                                | Default         | Description             |
+| --------- | --------------------------------------------------- | --------------- | ----------------------- |
+| className | string                                              | -               | Trigger button classes. |
+| rounded   | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-2xl"` | Trigger border radius.  |
 
 ### `Select.Menu`
 
-| Prop      | Type            | Default          | Description              |
-| --------- | --------------- | ---------------- | ------------------------ |
-| children  | ReactNode       | -                | Mapped `Select.Option`s. |
-| className | string          | -                | Popup classes.           |
-| rounded   | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-4xl"` | Popup border radius. |
+| Prop      | Type                                                | Default         | Description              |
+| --------- | --------------------------------------------------- | --------------- | ------------------------ |
+| children  | ReactNode                                           | -               | Mapped `Select.Option`s. |
+| className | string                                              | -               | Popup classes.           |
+| rounded   | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-4xl"` | Popup border radius.     |
 
 ### `Select.Option`
 
-| Prop      | Type            | Default           | Description                         |
-| --------- | --------------- | ----------------- | ----------------------------------- |
-| value     | string          | -                 | Option value.                       |
-| label     | string          | -                 | Visible label and searchable text.  |
-| icon      | ReactNode       | -                 | Optional leading icon.              |
-| onClick   | `() => void`    | -                 | Runs after the value changes.       |
-| className | string          | -                 | Option button classes.              |
-| rounded   | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-full"` | Option border radius. |
+| Prop      | Type                                                | Default          | Description                        |
+| --------- | --------------------------------------------------- | ---------------- | ---------------------------------- |
+| value     | string                                              | -                | Option value.                      |
+| label     | string                                              | -                | Visible label and searchable text. |
+| icon      | ReactNode                                           | -                | Optional leading icon.             |
+| onClick   | `() => void`                                        | -                | Runs after the value changes.      |
+| className | string                                              | -                | Option button classes.             |
+| rounded   | [`RoundVariants`](../../docs/dict.md#roundvariants) | `"rounded-full"` | Option border radius.              |
 
 ## Example
 
