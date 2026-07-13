@@ -14,7 +14,13 @@ export const metadata: Metadata = { title: "useToasts" };
 export default function UseToastsPage() {
     return (
         <DocumentationPage>
-            <SectionOverview nav={{ id: "overview", title: "Overview" }}>
+            <SectionOverview
+                nav={{
+                    id: "overview",
+                    navTitle: "Overview",
+                    headerTitle: "useToasts",
+                }}
+            >
                 <SectionOverview.MetaTitle>
                     Notification hook
                 </SectionOverview.MetaTitle>
@@ -29,18 +35,26 @@ export default function UseToastsPage() {
                     <span>ARIA live</span>
                 </SectionOverview.Tags>
             </SectionOverview>
-            <SectionPreview nav={{ id: "preview", title: "All toast types" }}>
+            <SectionPreview
+                nav={{
+                    id: "preview",
+                    navTitle: "Preview",
+                    headerTitle: "Preview",
+                }}
+            >
                 <SectionPreview.Component>
                     <ToastPreview />
                 </SectionPreview.Component>
             </SectionPreview>
             <SectionCode
-                nav={{ id: "usage", title: "Usage" }}
+                nav={{ id: "usage", navTitle: "Usage", headerTitle: "Usage" }}
                 label="ToastExample.tsx"
             >
                 {usage}
             </SectionCode>
-            <SectionAPI nav={{ id: "api", title: "API" }}>
+            <SectionAPI
+                nav={{ id: "api", navTitle: "API", headerTitle: "API" }}
+            >
                 <SectionAPI.Group
                     title="useToasts"
                     description="Must be used inside ToastProvider."

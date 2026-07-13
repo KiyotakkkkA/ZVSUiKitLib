@@ -14,7 +14,13 @@ export const metadata: Metadata = { title: "useStyle" };
 export default function UseStylePage() {
     return (
         <DocumentationPage>
-            <SectionOverview nav={{ id: "overview", title: "Overview" }}>
+            <SectionOverview
+                nav={{
+                    id: "overview",
+                    navTitle: "Overview",
+                    headerTitle: "useStyle",
+                }}
+            >
                 <SectionOverview.MetaTitle>
                     Theme hook
                 </SectionOverview.MetaTitle>
@@ -29,18 +35,26 @@ export default function UseStylePage() {
                     <span>CSS variables</span>
                 </SectionOverview.Tags>
             </SectionOverview>
-            <SectionPreview nav={{ id: "palettes", title: "11 palettes" }}>
+            <SectionPreview
+                nav={{
+                    id: "palettes",
+                    navTitle: "Preview",
+                    headerTitle: "Preview",
+                }}
+            >
                 <SectionPreview.Component>
                     <ThemePreview />
                 </SectionPreview.Component>
             </SectionPreview>
             <SectionCode
-                nav={{ id: "usage", title: "Usage" }}
+                nav={{ id: "usage", navTitle: "Usage", headerTitle: "Usage" }}
                 label="ThemeExample.tsx"
             >
                 {usage}
             </SectionCode>
-            <SectionAPI nav={{ id: "api", title: "API" }}>
+            <SectionAPI
+                nav={{ id: "api", navTitle: "API", headerTitle: "API" }}
+            >
                 <SectionAPI.Group
                     title="useStyle"
                     description="Must be used inside StyleProvider."
