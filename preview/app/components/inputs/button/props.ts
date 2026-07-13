@@ -44,6 +44,20 @@ export const componentProps: ComponentAPIDoc = {
                 type: "string",
                 description: "Extra classes.",
             },
+            classNames: {
+                type: "ButtonClassNames",
+                description: "Classes for loading-state slots.",
+                slots: {
+                    loaderIcon: {
+                        type: "string",
+                        description: "Classes applied to the centered loading spinner.",
+                    },
+                    loaderText: {
+                        type: "string",
+                        description: "Classes applied to loadingText content.",
+                    },
+                },
+            },
         },
     },
     compound: [],

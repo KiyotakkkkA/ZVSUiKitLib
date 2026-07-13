@@ -1,3 +1,4 @@
+import { roundVariantsDirective } from "@/_shared/directives";
 import type { ComponentAPIDoc } from "../../../../_shared/types";
 
 export const componentProps: ComponentAPIDoc = {
@@ -14,6 +15,7 @@ export const componentProps: ComponentAPIDoc = {
                 type: "RoundVariants",
                 description: "Border radius shape.",
                 defaultValue: '"rounded-lg"',
+                directives: [roundVariantsDirective],
             },
             title: {
                 type: "ReactNode",
@@ -28,7 +30,7 @@ export const componentProps: ComponentAPIDoc = {
                 description: "Extra classes.",
             },
             classNames: {
-                type: "object",
+                type: "AlertClassNames",
                 description: "Classes for internal slots.",
                 slots: {
                     icon: {

@@ -160,6 +160,7 @@ While using Next.js you can import some components like SSR-friendly from `@kiyo
 
 List of SSR-friendly components:
 
+- Alert
 - Badge
 - Button
 - Card
@@ -168,6 +169,7 @@ List of SSR-friendly components:
 - InputBig
 - Loader
 - ProgressBar
+- SelectNative
 - ScrollArea
 - Separator
 - Skeleton

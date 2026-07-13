@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { SelectNative } from "@kiyotakkkka/zvs-uikit-lib";
+import { SelectNative } from "@kiyotakkkka/zvs-uikit-lib/server";
 
 export function DemoSelectNative() {
     const [value, setValue] = useState("gray");

@@ -38,8 +38,12 @@ export const componentProps: ComponentAPIDoc = {
                 description: "Wrapper classes.",
             },
             classNames: {
-                type: "object",
-                description: "Internal slot classes.",
+                type: "InputPinsClassNames",
+                description: "Classes for the segmented input slots.",
+                slots: {
+                    group: { type: "string", description: "Wrapper around all PIN cells." },
+                    input: { type: "string", description: "Classes applied to every native input cell." },
+                },
             },
         },
     },

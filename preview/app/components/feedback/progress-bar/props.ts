@@ -28,7 +28,7 @@ export const componentProps: ComponentAPIDoc = {
                 description: "Root classes.",
             },
             classNames: {
-                type: "object",
+                type: "ProgressBarClassNames",
                 description: "Classes for internal slots.",
                 slots: {
                     header: {

@@ -14,7 +14,13 @@ export const metadata: Metadata = {
 export default function Page() {
     return (
         <DocumentationPage>
-            <SectionOverview nav={{ id: "overview", title: "Overview" }}>
+            <SectionOverview
+                nav={{
+                    id: "overview",
+                    navTitle: "Overview",
+                    headerTitle: "Em",
+                }}
+            >
                 <SectionOverview.MetaTitle>
                     Typography
                 </SectionOverview.MetaTitle>
@@ -24,7 +30,11 @@ export default function Page() {
                 </SectionOverview.Description>
             </SectionOverview>
             <SectionPreview
-                nav={{ id: "preview", title: "Preview" }}
+                nav={{
+                    id: "preview",
+                    navTitle: "Preview",
+                    headerTitle: "Example",
+                }}
                 className="[&_.demo-stage>div]:w-full"
             >
                 <SectionPreview.Component>

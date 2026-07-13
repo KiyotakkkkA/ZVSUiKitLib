@@ -83,7 +83,7 @@ export const componentProps: ComponentAPIDoc = {
                 description: "Root classes.",
             },
             classNames: {
-                type: "object",
+                type: "InputDateClassNames",
                 description: "Classes for internal slots.",
                 slots: {
                     trigger: {

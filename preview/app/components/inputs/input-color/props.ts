@@ -59,7 +59,7 @@ export const componentProps: ComponentAPIDoc = {
                 description: "Root wrapper classes.",
             },
             classNames: {
-                type: "object",
+                type: "InputColorClassNames",
                 description: "Classes for internal slots.",
                 slots: {
                     label: {

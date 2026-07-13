@@ -47,7 +47,7 @@ export const componentProps: ComponentAPIDoc = {
                 description: "Root wrapper classes.",
             },
             classNames: {
-                type: "object",
+                type: "InputSliderClassNames",
                 description: "Classes for internal slots.",
                 slots: {
                     track: {

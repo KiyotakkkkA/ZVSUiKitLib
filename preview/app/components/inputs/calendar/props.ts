@@ -66,7 +66,7 @@ export const componentProps: ComponentAPIDoc = {
                 description: "Root classes.",
             },
             classNames: {
-                type: "object",
+                type: "CalendarClassNames",
                 description: "Classes for internal slots.",
                 slots: {
                     header: {

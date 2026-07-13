@@ -1,5 +1,4 @@
-"use client";
-import { Skeleton } from "@kiyotakkkka/zvs-uikit-lib";
+import { Skeleton } from "@kiyotakkkka/zvs-uikit-lib/server";
 
 export function DemoSkeleton() {
     return (

@@ -66,6 +66,10 @@ export const componentProps: ComponentAPIDoc = {
                         type: "string",
                         description: "Visible value classes.",
                     },
+                    thumbLabel: {
+                        type: "string",
+                        description: "Accessible and visible thumb label classes.",
+                    },
                 },
             },
         },

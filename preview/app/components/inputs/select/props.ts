@@ -1,3 +1,4 @@
+import { roundVariantsDirective } from "@/_shared/directives";
 import type { ComponentAPIDoc } from "../../../../_shared/types";
 
 export const componentProps: ComponentAPIDoc = {
@@ -66,8 +67,14 @@ export const componentProps: ComponentAPIDoc = {
                 description: "Root wrapper classes.",
             },
             classNames: {
-                type: "{ search?: string }",
-                description: "Search input classes.",
+                type: "SelectClassNames",
+                description: "Classes for internal select slots.",
+                slots: {
+                    search: {
+                        type: "string",
+                        description: "Search input classes inside Select.Menu.",
+                    },
+                },
             },
         },
     },
@@ -84,6 +91,7 @@ export const componentProps: ComponentAPIDoc = {
                     type: "RoundVariants",
                     description: "Trigger border radius.",
                     defaultValue: '"rounded-2xl"',
+                    directives: [roundVariantsDirective],
                 },
             },
         },
@@ -103,6 +111,7 @@ export const componentProps: ComponentAPIDoc = {
                     type: "RoundVariants",
                     description: "Popup border radius.",
                     defaultValue: '"rounded-4xl"',
+                    directives: [roundVariantsDirective],
                 },
             },
         },
@@ -134,6 +143,7 @@ export const componentProps: ComponentAPIDoc = {
                     type: "RoundVariants",
                     description: "Option border radius.",
                     defaultValue: '"rounded-full"',
+                    directives: [roundVariantsDirective],
                 },
             },
         },

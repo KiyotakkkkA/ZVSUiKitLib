@@ -27,7 +27,7 @@ export const componentProps: ComponentAPIDoc = {
                 description: "Extra wrapper classes.",
             },
             classNames: {
-                type: "object",
+                type: "InputCheckBoxClassNames",
                 description: "Classes for internal slots.",
                 slots: {
                     input: {

@@ -26,7 +26,7 @@ export const componentProps: ComponentAPIDoc = {
                 description: "Root classes.",
             },
             classNames: {
-                type: "object",
+                type: "EmptyStateClassNames",
                 description: "Classes for internal slots.",
                 slots: {
                     icon: {

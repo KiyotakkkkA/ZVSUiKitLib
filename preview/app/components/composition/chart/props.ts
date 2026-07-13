@@ -106,6 +106,22 @@ export const componentProps: ComponentAPIDoc = {
                         type: "string",
                         description: "Tooltip classes.",
                     },
+                    tooltipLabel: {
+                        type: "string",
+                        description: "Tooltip header label classes.",
+                    },
+                    tooltipRow: {
+                        type: "string",
+                        description: "Tooltip series row classes.",
+                    },
+                    tooltipKey: {
+                        type: "string",
+                        description: "Tooltip series name classes.",
+                    },
+                    tooltipValue: {
+                        type: "string",
+                        description: "Tooltip series value classes.",
+                    },
                 },
             },
         },

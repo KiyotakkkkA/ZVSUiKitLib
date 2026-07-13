@@ -1,3 +1,4 @@
+import { roundVariantsDirective } from "@/_shared/directives";
 import type { ComponentAPIDoc } from "../../../../_shared/types";
 
 export const componentProps: ComponentAPIDoc = {
@@ -10,6 +11,7 @@ export const componentProps: ComponentAPIDoc = {
                 type: "RoundVariants",
                 description: "Root border radius.",
                 defaultValue: '"rounded-lg"',
+                directives: [roundVariantsDirective],
             },
             className: {
                 type: "string",

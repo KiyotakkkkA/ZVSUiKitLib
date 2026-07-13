@@ -28,7 +28,7 @@ export const componentProps: ComponentAPIDoc = {
                 description: "Extra classes.",
             },
             classNames: {
-                type: "object",
+                type: "InputCheckSlidedClassNames",
                 description: "Classes for internal slots.",
                 slots: {
                     thumb: {

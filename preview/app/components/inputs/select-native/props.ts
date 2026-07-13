@@ -1,3 +1,4 @@
+import { roundVariantsDirective } from "@/_shared/directives";
 import type { ComponentAPIDoc } from "../../../../_shared/types";
 
 export const componentProps: ComponentAPIDoc = {
@@ -21,14 +22,21 @@ export const componentProps: ComponentAPIDoc = {
                 type: "RoundVariants",
                 description: "Border radius shape.",
                 defaultValue: '"rounded-full"',
+                directives: [roundVariantsDirective],
             },
             className: {
                 type: "string",
                 description: "Wrapper classes.",
             },
             classNames: {
-                type: "object",
-                description: "Internal slot classes.",
+                type: "SelectNativeClassNames",
+                description: "Classes for internal native select slots.",
+                slots: {
+                    select: {
+                        type: "string",
+                        description: "Native select element classes.",
+                    },
+                },
             },
         },
     },
