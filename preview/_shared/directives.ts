@@ -58,3 +58,38 @@ export const positionAnchorDirective = enumValuesDirective({
         "bottom-right",
     ],
 });
+
+export const colorVariantsBaseDirective = enumValuesDirective({
+    title: "ColorVariantsBase",
+    description: "Available color variants.",
+    values: [
+        "primary",
+        "secondary",
+        "tertiary",
+        "success",
+        "warning",
+        "danger",
+        "info",
+    ],
+});
+
+export const colorVariantFullDirective = enumValuesDirective({
+    title: "ColorVariantBase | ColorVariantOutline | 'ghost'",
+    description: "Available color variants with outline.",
+    values: [
+        "primary",
+        "secondary",
+        "tertiary",
+        "success",
+        "warning",
+        "danger",
+        "info",
+        "ghost",
+        "primary-outline",
+        "tertiary-outline",
+        "success-outline",
+        "warning-outline",
+        "danger-outline",
+        "info-outline",
+    ],
+});

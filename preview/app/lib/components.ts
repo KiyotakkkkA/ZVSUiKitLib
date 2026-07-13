@@ -20,6 +20,38 @@ export const inputComponents: ComponentDocSection = {
             name: "AutoFillSelector",
             summary: "Searchable multi-select.",
         },
+        { slug: "button", name: "Button", summary: "Base button with variants and shape options." },
+        { slug: "calendar", name: "Calendar", summary: "Date calendar with constraints." },
+        { slug: "input-big", name: "InputBig", summary: "Multiline text input." },
+        { slug: "input-checkbox", name: "InputCheckBox", summary: "Boolean checkbox control." },
+        { slug: "input-checkbox-group", name: "InputCheckBoxGroup", summary: "Checkboxes connected to a boolean model." },
+        { slug: "input-check-slided", name: "InputCheckSlided", summary: "Boolean switch control." },
+        { slug: "input-color", name: "InputColor", summary: "Color picker with presets." },
+        { slug: "input-date", name: "InputDate", summary: "Date input with calendar popup." },
+        { slug: "input-drop-zone", name: "InputDropZone", summary: "File drop zone with previews." },
+        { slug: "input-pins", name: "InputPins", summary: "Segmented PIN and OTP input." },
+        { slug: "input-radio", name: "InputRadio", summary: "Single-choice radio control." },
+        { slug: "input-radio-group", name: "InputRadioGroup", summary: "Radios connected to an exclusive boolean model." },
+        { slug: "input-range", name: "InputRange", summary: "Numeric boundary range selector." },
+        { slug: "input-slider", name: "InputSlider", summary: "Numeric range slider." },
+        { slug: "input-small", name: "InputSmall", summary: "Single-line text input." },
+        { slug: "select", name: "Select", summary: "Searchable single-value select." },
+        { slug: "select-native", name: "SelectNative", summary: "Styled native select control." },
+        { slug: "switcher", name: "Switcher", summary: "Segmented option switch." },
+        { slug: "tabs", name: "Tabs", summary: "Line-style tab switcher." },
+    ],
+};
+
+export const feedbackComponents: ComponentDocSection = {
+    title: "Feedback",
+    prefix: "feedback",
+    components: [
+        { slug: "alert", name: "Alert", summary: "Alert and notification block." },
+        { slug: "badge", name: "Badge", summary: "Compact status indicator." },
+        { slug: "empty-state", name: "EmptyState", summary: "Placeholder for empty states." },
+        { slug: "loader", name: "Loader", summary: "Loading spinner." },
+        { slug: "progress-bar", name: "ProgressBar", summary: "Progress indicator with optional label." },
+        { slug: "skeleton", name: "Skeleton", summary: "Loading placeholder block." },
     ],
 };
 

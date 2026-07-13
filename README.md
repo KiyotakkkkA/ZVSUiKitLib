@@ -98,12 +98,14 @@ For correct component rendering, use this palette (or override the same tokens):
 | `Calendar`         | Date calendar with constraints and custom day rendering.                 | [Calendar](package/src/ui/Calendar/Calendar.md)                         |
 | `InputBig`         | Multiline text input.                                                    | [InputBig](package/src/ui/InputBig/InputBig.md)                         |
 | `InputCheckBox`    | `true/false` checkbox control.                                           | [InputCheckBox](package/src/ui/InputCheckBox/InputCheckBox.md)          |
+| `InputCheckBoxGroup` | Connects checkbox controls to a shared boolean model.                  | [InputCheckBoxGroup](package/src/ui/InputCheckBoxGroup/InputCheckBoxGroup.md) |
 | `InputCheckSlided` | `true/false` switch control.                                             | [InputCheckSlided](package/src/ui/InputCheckSlided/InputCheckSlided.md) |
 | `InputColor`       | Custom color picker with optional preset palette.                        | [InputColor](package/src/ui/InputColor/InputColor.md)                   |
 | `InputDate`        | Date input with calendar popup.                                          | [InputDate](package/src/ui/InputDate/InputDate.md)                      |
 | `InputDropZone`    | File drop zone with previews and single/multiple modes.                  | [InputDropZone](package/src/ui/InputDropZone/InputDropZone.md)          |
 | `InputPins`        | Segmented input for PIN, OTP, or short confirmation codes.               | [InputPins](package/src/ui/InputPins/InputPins.md)                      |
 | `InputRadio`       | Radio control for selecting one option from a group.                     | [InputRadio](package/src/ui/InputRadio/InputRadio.md)                   |
+| `InputRadioGroup`  | Connects radio controls to an exclusive boolean model.                    | [InputRadioGroup](package/src/ui/InputRadioGroup/InputRadioGroup.md)    |
 | `InputRange`       | Controlled range input for selecting a pair of numeric boundaries.       | [InputRange](package/src/ui/InputRange/InputRange.md)                   |
 | `InputSlider`      | Numeric range slider with optional value label.                          | [InputSlider](package/src/ui/InputSlider/InputSlider.md)                |
 | `InputSmall`       | Single-line input with password visibility toggle for `type="password"`. | [InputSmall](package/src/ui/InputSmall/InputSmall.md)                   |
