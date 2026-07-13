@@ -52,6 +52,28 @@ export const overlayComponents: ComponentDocSection = {
     ],
 };
 
+export const compositionComponents: ComponentDocSection = {
+    title: "Composition",
+    prefix: "composition",
+    components: [
+        { slug: "accordion", name: "Accordion", summary: "Expandable section with animated height." },
+        { slug: "breadcrumbs", name: "Breadcrumbs", summary: "Navigation trail for the current page." },
+        { slug: "card", name: "Card", summary: "Composable content container." },
+        { slug: "carousel", name: "Carousel", summary: "Content carousel with navigation." },
+        { slug: "chart", name: "Chart", summary: "Line, area, and bar data chart." },
+        { slug: "code-view", name: "CodeView", summary: "Highlighted code block with copy action." },
+        { slug: "data-display", name: "DataDisplay", summary: "Compact labeled data list." },
+        { slug: "pagination", name: "Pagination", summary: "Pagination and page-size controls." },
+        { slug: "pretty-br", name: "PrettyBR", summary: "Decorative labeled divider." },
+        { slug: "resizable-panel", name: "ResizablePanel", summary: "Resizable sidebar layout." },
+        { slug: "scroll-area", name: "ScrollArea", summary: "Styled scroll container." },
+        { slug: "separator", name: "Separator", summary: "Horizontal or vertical divider." },
+        { slug: "table", name: "Table", summary: "Typed sortable data table." },
+        { slug: "timeline", name: "Timeline", summary: "Ordered event timeline." },
+        { slug: "tree-view", name: "TreeView", summary: "Hierarchical optionally virtualized list." },
+    ],
+};
+
 export const typographyComponents: ComponentDocSection = {
     title: "Typography",
     prefix: "typography",

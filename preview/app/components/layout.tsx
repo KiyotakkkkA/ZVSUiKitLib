@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
 import {
+    compositionComponents,
     inputComponents,
     overlayComponents,
     typographyComponents,
@@ -37,6 +38,9 @@ export default function ComponentsLayout({
                                 />
                                 <SidebarNavigationSection
                                     docSection={overlayComponents}
+                                />
+                                <SidebarNavigationSection
+                                    docSection={compositionComponents}
                                 />
                                 <SidebarNavigationSection
                                     docSection={typographyComponents}

@@ -10,5 +10,9 @@ export function SidebarScrollArea({
     children: ReactNode;
     className?: string;
 }) {
-    return <ScrollArea className={className}>{children}</ScrollArea>;
+    return (
+        <ScrollArea showScrollbar={false} className={className}>
+            {children}
+        </ScrollArea>
+    );
 }
