@@ -9,4 +9,3 @@ export function DemoInputCheckBox() {
     return <InputCheckBox checked={checked} onChange={setChecked} />;
 }
 ```
-

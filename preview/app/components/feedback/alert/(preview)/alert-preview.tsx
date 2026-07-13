@@ -8,4 +8,3 @@ export function DemoAlert() {
         </Alert>
     );
 }
-

@@ -6,4 +6,3 @@ export function DemoBadge() {
     return <Badge variant="success">Active</Badge>;
 }
 ```
-

@@ -6,4 +6,3 @@ export function DemoPrettyBR() {
     return <PrettyBR label="Main block" icon="mdi:star-outline" />;
 }
 ```
-

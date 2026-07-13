@@ -6,4 +6,3 @@ export function DemoLoader() {
     return <Loader className="h-6 w-6" />;
 }
 ```
-

@@ -8,4 +8,3 @@ export function DemoInputRange() {
     return <InputRange value={value} onChange={setValue} />;
 }
 ```
-

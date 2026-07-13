@@ -6,4 +6,3 @@ export function DemoInputRange() {
     const [value, setValue] = useState<[number, number]>([20, 80]);
     return <InputRange value={value} onChange={setValue} />;
 }
-

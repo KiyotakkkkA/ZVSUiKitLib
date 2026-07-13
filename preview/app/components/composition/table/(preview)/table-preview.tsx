@@ -87,4 +87,3 @@ const columns: TableColumn<InvoiceRow>[] = [
 export function TablePreview() {
     return <Table data={rows} columns={columns} rowKey="id" />;
 }
-

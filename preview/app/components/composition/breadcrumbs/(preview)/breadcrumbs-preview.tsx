@@ -10,4 +10,3 @@ export function BreadcrumbsPreview() {
         </Breadcrumbs>
     );
 }
-

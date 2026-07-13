@@ -9,4 +9,3 @@ export function DemoInputPins() {
     return <InputPins value={pin} onChange={setPin} label="Pin Input" />;
 }
 ```
-

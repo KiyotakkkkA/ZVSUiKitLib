@@ -7,4 +7,3 @@ export function DemoInputCheckSlided() {
 
     return <InputCheckSlided checked={enabled} onChange={setEnabled} />;
 }
-

@@ -6,4 +6,3 @@ export function DemoProgressBar() {
     return <ProgressBar label="Upload" value={64} showValue />;
 }
 ```
-

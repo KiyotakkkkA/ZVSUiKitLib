@@ -1,54 +1,53 @@
 import type { ComponentAPIDoc } from "../../../../_shared/types";
 
 export const componentProps: ComponentAPIDoc = {
-    "root": {
-        "name": "EmptyState",
-        "description": "Public EmptyState component API.",
-        "props": {
-            "icon": {
-                "type": "ReactNode",
-                "description": "Optional icon area."
+    root: {
+        name: "EmptyState",
+        description: "Public EmptyState component API.",
+        props: {
+            icon: {
+                type: "ReactNode",
+                description: "Optional icon area.",
             },
-            "title": {
-                "type": "ReactNode",
-                "description": "Main empty state title."
+            title: {
+                type: "ReactNode",
+                description: "Main empty state title.",
             },
-            "description": {
-                "type": "ReactNode",
-                "description": "Supporting text."
+            description: {
+                type: "ReactNode",
+                description: "Supporting text.",
             },
-            "action": {
-                "type": "ReactNode",
-                "description": "Optional action control."
+            action: {
+                type: "ReactNode",
+                description: "Optional action control.",
             },
-            "className": {
-                "type": "string",
-                "description": "Root classes."
+            className: {
+                type: "string",
+                description: "Root classes.",
             },
-            "classNames": {
-                "type": "object",
-                "description": "Classes for internal slots.",
-                "slots": {
-                    "icon": {
-                        "type": "string",
-                        "description": "Icon wrapper classes."
+            classNames: {
+                type: "object",
+                description: "Classes for internal slots.",
+                slots: {
+                    icon: {
+                        type: "string",
+                        description: "Icon wrapper classes.",
                     },
-                    "title": {
-                        "type": "string",
-                        "description": "Title classes."
+                    title: {
+                        type: "string",
+                        description: "Title classes.",
                     },
-                    "description": {
-                        "type": "string",
-                        "description": "Description classes."
+                    description: {
+                        type: "string",
+                        description: "Description classes.",
                     },
-                    "action": {
-                        "type": "string",
-                        "description": "Action wrapper classes."
-                    }
-                }
-            }
-        }
+                    action: {
+                        type: "string",
+                        description: "Action wrapper classes.",
+                    },
+                },
+            },
+        },
     },
-    "compound": []
+    compound: [],
 };
-
