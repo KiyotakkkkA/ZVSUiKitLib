@@ -278,7 +278,8 @@ export function Calendar({
                 >
                     <Dropdown menuWidth={208} menuPlacement="bottom-left">
                         <Dropdown.Trigger
-                            className="group h-8 min-w-0 rounded-lg bg-transparent px-2 text-sm font-semibold capitalize text-main-100 hover:bg-main-700/35"
+                            rounded="rounded-lg"
+                            className="group h-8 min-w-0 hover:border-transparent bg-transparent border-transparent px-2 text-sm font-semibold capitalize text-main-100 hover:bg-main-700/35"
                             aria-label="Выбрать месяц"
                         >
                             <span className="truncate">
@@ -293,7 +294,7 @@ export function Calendar({
                                         month.value ===
                                         activeViewDate.getMonth()
                                     }
-                                    className="justify-center px-2 capitalize"
+                                    className="text-center px-2 capitalize"
                                     onClick={() =>
                                         setViewMonth(
                                             new Date(
@@ -317,13 +318,17 @@ export function Calendar({
 
                     <Dropdown menuWidth={152} menuPlacement="bottom-right">
                         <Dropdown.Trigger
-                            className="group h-8 rounded-lg bg-transparent px-2 text-sm font-semibold tabular-nums text-main-100 hover:bg-main-700/35"
+                            rounded="rounded-lg"
+                            className="group h-8 hover:border-transparent border-transparent bg-transparent px-2 text-sm font-semibold tabular-nums text-main-100 hover:bg-main-700/35"
                             aria-label="Выбрать год"
                         >
                             {activeViewDate.getFullYear()}
                         </Dropdown.Trigger>
                         <Dropdown.Menu className="border-main-700 bg-main-800/95 p-2 shadow-2xl shadow-black/30 backdrop-blur">
-                            <ScrollArea className="max-h-60 grid grid-cols-2 gap-1">
+                            <ScrollArea
+                                showScrollbar={false}
+                                className="max-h-60 grid grid-cols-2 gap-1 min-w-32"
+                            >
                                 {yearOptions.map((year) => (
                                     <Dropdown.Item
                                         key={year}
@@ -331,7 +336,7 @@ export function Calendar({
                                             year ===
                                             activeViewDate.getFullYear()
                                         }
-                                        className="justify-center tabular-nums"
+                                        className="text-center tabular-nums"
                                         onClick={() =>
                                             setViewMonth(
                                                 new Date(
