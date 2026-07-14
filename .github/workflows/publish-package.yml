@@ -61,6 +61,10 @@ jobs:
               if: steps.version.outputs.changed == 'true'
               run: npm run build:package
 
+            - name: Prepare package README
+              if: steps.version.outputs.changed == 'true'
+              run: cp README.md package/README.md
+
             - name: Publish package
               if: steps.version.outputs.changed == 'true'
               run: npm publish --workspace=package
