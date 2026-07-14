@@ -15,7 +15,7 @@
     "license": "MIT",
     "repository": {
         "type": "git",
-        "url": "https://github.com/KiyotakkkkA/ZVSUiKitLib.git",
+        "url": "git+https://github.com/KiyotakkkkA/ZVSUiKitLib.git",
         "directory": "package"
     },
     "private": false,
@@ -28,7 +28,8 @@
         "**/*.css"
     ],
     "publishConfig": {
-        "access": "public"
+        "access": "public",
+        "registry": "https://registry.npmjs.org/"
     },
     "exports": {
         ".": {
