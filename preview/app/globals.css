@@ -189,8 +189,6 @@ input {
     color: var(--muted);
 }
 
-/* Landing */
-
 .landing-shell {
     overflow: hidden;
 }
@@ -1202,7 +1200,7 @@ input {
     border-color: var(--line-bright) !important;
     background: color-mix(
         in srgb,
-        var(--color-main-900) 96%,
+        var(--color-main-800) 96%,
         transparent
     ) !important;
     box-shadow: 0 18px 50px rgb(0 0 0 / 35%);

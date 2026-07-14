@@ -1,3 +1,4 @@
+import { colorVariantsBaseDirective } from "@/_shared/directives";
 import type { ComponentAPIDoc } from "../../../../_shared/types";
 
 export const componentProps: ComponentAPIDoc = {
@@ -5,6 +6,12 @@ export const componentProps: ComponentAPIDoc = {
         name: "ProgressBar",
         description: "Public ProgressBar component API.",
         props: {
+            variant: {
+                type: "ColorVariantsBase",
+                description: "Color variant of the progress bar.",
+                defaultValue: "primary",
+                directives: [colorVariantsBaseDirective],
+            },
             value: {
                 type: "number",
                 description: "Current value. Clamped between 0 and max.",
@@ -52,11 +59,6 @@ export const componentProps: ComponentAPIDoc = {
                         description: "Filled indicator classes.",
                     },
                 },
-            },
-            variant: {
-                type: "ColorVariantsBase",
-                description: "Color variant of the progress bar.",
-                defaultValue: "primary",
             },
         },
     },

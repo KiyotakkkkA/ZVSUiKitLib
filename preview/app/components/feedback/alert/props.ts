@@ -1,4 +1,7 @@
-import { roundVariantsDirective } from "@/_shared/directives";
+import {
+    roundVariantsDirective,
+    colorVariantsBaseDirective,
+} from "@/_shared/directives";
 import type { ComponentAPIDoc } from "../../../../_shared/types";
 
 export const componentProps: ComponentAPIDoc = {
@@ -10,6 +13,7 @@ export const componentProps: ComponentAPIDoc = {
                 type: "ColorVariantsBase",
                 description: "Alert visual style.",
                 defaultValue: '"secondary"',
+                directives: [colorVariantsBaseDirective],
             },
             rounded: {
                 type: "RoundVariants",
