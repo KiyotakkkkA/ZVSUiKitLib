@@ -9,6 +9,7 @@ on:
 
 permissions:
     contents: read
+    id-token: write
 
 concurrency:
     group: publish-package
@@ -21,7 +22,7 @@ jobs:
 
         steps:
             - name: Checkout repository
-              uses: actions/checkout@v4
+              uses: actions/checkout@v6
               with:
                   fetch-depth: 0
 
@@ -46,28 +47,11 @@ jobs:
 
             - name: Setup Node.js
               if: steps.version.outputs.changed == 'true'
-              uses: actions/setup-node@v4
+              uses: actions/setup-node@v6
               with:
                   node-version: 24
                   registry-url: https://registry.npmjs.org
-                  cache: npm
-
-            - name: Remove deprecated npm config
-              if: steps.version.outputs.changed == 'true'
-              shell: bash
-              run: sed -i '/^always-auth=/d' "${NPM_CONFIG_USERCONFIG}"
-
-            - name: Verify npm authentication
-              if: steps.version.outputs.changed == 'true'
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-              run: |
-                  if [ -z "${NODE_AUTH_TOKEN}" ]; then
-                    echo "::error::Repository secret NPM_TOKEN is not configured."
-                    exit 1
-                  fi
-
-                  npm whoami --registry=https://registry.npmjs.org
+                  package-manager-cache: false
 
             - name: Install dependencies
               if: steps.version.outputs.changed == 'true'
@@ -80,5 +64,3 @@ jobs:
             - name: Publish package
               if: steps.version.outputs.changed == 'true'
               run: npm publish --workspace=package
-              env:
-                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
