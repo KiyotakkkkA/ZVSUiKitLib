@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRightIcon, BoxIcon, CopyIcon } from "./ui/icons";
+import { Icon } from "@iconify/react";
 import { SiteHeader } from "./ui/site-header";
 
 const features = [
@@ -57,7 +57,8 @@ export default function Home() {
                                 className="button button-primary"
                                 href="/components/input-small"
                             >
-                                Explore components <ArrowRightIcon />
+                                Explore components{" "}
+                                <Icon icon="material-symbols:arrow-right-alt-rounded" />
                             </Link>
                             <a
                                 className="button button-secondary"
@@ -72,7 +73,7 @@ export default function Home() {
                         >
                             <span>$</span>
                             <code>npm i @kiyotakkkka/zvs-uikit-lib</code>
-                            <CopyIcon />
+                            <Icon icon="material-symbols:content-copy" />
                         </div>
                     </div>
 
@@ -158,7 +159,7 @@ export default function Home() {
                                 className="feature-card"
                             >
                                 <span>{feature.number}</span>
-                                <BoxIcon />
+                                <Icon icon="material-symbols:check-small-rounded" />
                                 <h3>{feature.title}</h3>
                                 <p>{feature.text}</p>
                             </article>

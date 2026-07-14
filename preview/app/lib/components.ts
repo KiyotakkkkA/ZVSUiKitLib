@@ -273,3 +273,11 @@ export const typographyComponents: ComponentDocSection = {
         { slug: "strong", name: "Strong", summary: "Strong importance text." },
     ],
 };
+
+export const componentDocSections = [
+    inputComponents,
+    overlayComponents,
+    compositionComponents,
+    feedbackComponents,
+    typographyComponents,
+] as const;

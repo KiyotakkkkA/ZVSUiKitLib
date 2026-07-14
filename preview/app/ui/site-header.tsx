@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { GithubIcon, SearchIcon } from "./icons";
+import { Icon } from "@iconify/react";
+import { DocsSearch } from "./docs-search";
 
 export function SiteHeader() {
     return (
@@ -22,26 +23,23 @@ export function SiteHeader() {
                     Components
                 </Link>
                 <Link href="/hooks/use-style">Hooks</Link>
-                <a href="https://www.npmjs.com/package/@kiyotakkkka/zvs-uikit-lib">
-                    Releases
-                </a>
             </nav>
 
             <div className="header-actions">
-                <Link
-                    className="search-trigger"
-                    href="/components/inputs/auto-fill-selector"
-                >
-                    <SearchIcon />
-                    <span>Search docs</span>
-                    <kbd>⌘ K</kbd>
-                </Link>
+                <DocsSearch />
                 <a
                     className="icon-link"
                     href="https://github.com/KiyotakkkkA/ZVSUiKitLib"
                     aria-label="Open GitHub repository"
                 >
-                    <GithubIcon />
+                    <Icon icon="mdi:github" />
+                </a>
+                <a
+                    className="icon-link"
+                    href="https://www.npmjs.com/package/@kiyotakkkka/zvs-uikit-lib"
+                    aria-label="Open NPM repository"
+                >
+                    <Icon icon="simple-icons:npm" />
                 </a>
             </div>
         </header>
