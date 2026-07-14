@@ -41,8 +41,15 @@ export const componentProps: ComponentAPIDoc = {
                 type: "InputPinsClassNames",
                 description: "Classes for the segmented input slots.",
                 slots: {
-                    group: { type: "string", description: "Wrapper around all PIN cells." },
-                    input: { type: "string", description: "Classes applied to every native input cell." },
+                    group: {
+                        type: "string",
+                        description: "Wrapper around all PIN cells.",
+                    },
+                    input: {
+                        type: "string",
+                        description:
+                            "Classes applied to every native input cell.",
+                    },
                 },
             },
         },

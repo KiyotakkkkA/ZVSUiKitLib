@@ -14,11 +14,11 @@ This component is also available from `@kiyotakkkka/zvs-uikit-lib/server`.
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| block | boolean | false | Renders a scrollable pre/code block instead of inline code. |
-| className | string | - | Additional code or pre classes. |
-| children | ReactNode | - | Code content. |
+| Prop      | Type      | Default | Description                                                 |
+| --------- | --------- | ------- | ----------------------------------------------------------- |
+| block     | boolean   | false   | Renders a scrollable pre/code block instead of inline code. |
+| className | string    | -       | Additional code or pre classes.                             |
+| children  | ReactNode | -       | Code content.                                               |
 
 The component forwards the native attributes supported by its underlying semantic element.
 
@@ -31,4 +31,3 @@ export function DemoCode() {
     return <Code block>{`npm install @kiyotakkkka/zvs-uikit-lib`}</Code>;
 }
 ```
-

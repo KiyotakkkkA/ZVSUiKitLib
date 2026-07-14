@@ -50,7 +50,8 @@ export const componentProps: ComponentAPIDoc = {
                 slots: {
                     loaderIcon: {
                         type: "string",
-                        description: "Classes applied to the centered loading spinner.",
+                        description:
+                            "Classes applied to the centered loading spinner.",
                     },
                     loaderText: {
                         type: "string",

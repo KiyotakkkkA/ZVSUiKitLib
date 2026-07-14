@@ -14,10 +14,10 @@ This component is also available from `@kiyotakkkka/zvs-uikit-lib/server`.
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| className | string | - | Additional kbd element classes. |
-| children | ReactNode | - | Key label. |
+| Prop      | Type      | Default | Description                     |
+| --------- | --------- | ------- | ------------------------------- |
+| className | string    | -       | Additional kbd element classes. |
+| children  | ReactNode | -       | Key label.                      |
 
 The component forwards the native attributes supported by its underlying semantic element.
 
@@ -30,4 +30,3 @@ export function DemoKbd() {
     return <Kbd>Esc</Kbd>;
 }
 ```
-

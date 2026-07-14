@@ -43,14 +43,30 @@ export const componentProps: ComponentAPIDoc = {
             },
             classNames: {
                 type: "InputBigClassNames",
-                description: "Classes for textarea layout and supporting content slots.",
+                description:
+                    "Classes for textarea layout and supporting content slots.",
                 slots: {
-                    root: { type: "string", description: "Root field wrapper classes." },
+                    root: {
+                        type: "string",
+                        description: "Root field wrapper classes.",
+                    },
                     label: { type: "string", description: "Label classes." },
-                    textarea: { type: "string", description: "Native textarea classes." },
-                    footer: { type: "string", description: "Message and counter row classes." },
-                    message: { type: "string", description: "Description or error message classes." },
-                    counter: { type: "string", description: "Character counter classes." },
+                    textarea: {
+                        type: "string",
+                        description: "Native textarea classes.",
+                    },
+                    footer: {
+                        type: "string",
+                        description: "Message and counter row classes.",
+                    },
+                    message: {
+                        type: "string",
+                        description: "Description or error message classes.",
+                    },
+                    counter: {
+                        type: "string",
+                        description: "Character counter classes.",
+                    },
                 },
             },
         },

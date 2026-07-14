@@ -14,12 +14,12 @@ This component is also available from `@kiyotakkkka/zvs-uikit-lib/server`.
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| tone | TextTone | "default" | Text color emphasis. |
-| size | TextSize | "md" | Font size and line height. |
-| className | string | - | Additional paragraph classes. |
-| children | ReactNode | - | Text content. |
+| Prop      | Type      | Default   | Description                   |
+| --------- | --------- | --------- | ----------------------------- |
+| tone      | TextTone  | "default" | Text color emphasis.          |
+| size      | TextSize  | "md"      | Font size and line height.    |
+| className | string    | -         | Additional paragraph classes. |
+| children  | ReactNode | -         | Text content.                 |
 
 The component forwards the native attributes supported by its underlying semantic element.
 
@@ -29,7 +29,10 @@ The component forwards the native attributes supported by its underlying semanti
 import { Text } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoText() {
-    return <Text size="lg" tone="muted">Supporting copy</Text>;
+    return (
+        <Text size="lg" tone="muted">
+            Supporting copy
+        </Text>
+    );
 }
 ```
-

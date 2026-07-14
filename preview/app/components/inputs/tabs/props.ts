@@ -25,9 +25,19 @@ export const componentProps: ComponentAPIDoc = {
                 type: "TabsClassNames",
                 description: "Classes for the tab list and tab states.",
                 slots: {
-                    list: { type: "string", description: "Tablist wrapper classes." },
-                    tab: { type: "string", description: "Classes applied to every tab button." },
-                    activeTab: { type: "string", description: "Additional classes applied to the active tab." },
+                    list: {
+                        type: "string",
+                        description: "Tablist wrapper classes.",
+                    },
+                    tab: {
+                        type: "string",
+                        description: "Classes applied to every tab button.",
+                    },
+                    activeTab: {
+                        type: "string",
+                        description:
+                            "Additional classes applied to the active tab.",
+                    },
                 },
             },
             tabProps: {

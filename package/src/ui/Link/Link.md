@@ -14,11 +14,11 @@ This component is also available from `@kiyotakkkka/zvs-uikit-lib/server`.
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| href | string | - | Link destination. |
-| className | string | - | Additional anchor classes. |
-| children | ReactNode | - | Link content. |
+| Prop      | Type      | Default | Description                |
+| --------- | --------- | ------- | -------------------------- |
+| href      | string    | -       | Link destination.          |
+| className | string    | -       | Additional anchor classes. |
+| children  | ReactNode | -       | Link content.              |
 
 The component forwards the native attributes supported by its underlying semantic element.
 
@@ -31,4 +31,3 @@ export function DemoLink() {
     return <Link href="/components">Browse components</Link>;
 }
 ```
-

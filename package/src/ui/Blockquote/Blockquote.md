@@ -14,11 +14,11 @@ This component is also available from `@kiyotakkkka/zvs-uikit-lib/server`.
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| cite | ReactNode | - | Optional attribution rendered in the footer. |
-| className | string | - | Additional blockquote classes. |
-| children | ReactNode | - | Quoted content. |
+| Prop      | Type      | Default | Description                                  |
+| --------- | --------- | ------- | -------------------------------------------- |
+| cite      | ReactNode | -       | Optional attribution rendered in the footer. |
+| className | string    | -       | Additional blockquote classes.               |
+| children  | ReactNode | -       | Quoted content.                              |
 
 The component forwards the native attributes supported by its underlying semantic element.
 
@@ -28,7 +28,8 @@ The component forwards the native attributes supported by its underlying semanti
 import { Blockquote } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoBlockquote() {
-    return <Blockquote cite="Design principle">Make structure obvious.</Blockquote>;
+    return (
+        <Blockquote cite="Design principle">Make structure obvious.</Blockquote>
+    );
 }
 ```
-

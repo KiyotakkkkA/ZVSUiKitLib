@@ -14,10 +14,10 @@ This component is also available from `@kiyotakkkka/zvs-uikit-lib/server`.
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| className | string | - | Additional em element classes. |
-| children | ReactNode | - | Emphasized content. |
+| Prop      | Type      | Default | Description                    |
+| --------- | --------- | ------- | ------------------------------ |
+| className | string    | -       | Additional em element classes. |
+| children  | ReactNode | -       | Emphasized content.            |
 
 The component forwards the native attributes supported by its underlying semantic element.
 
@@ -30,4 +30,3 @@ export function DemoEm() {
     return <Em>Important nuance</Em>;
 }
 ```
-

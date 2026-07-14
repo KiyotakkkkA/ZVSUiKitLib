@@ -14,11 +14,11 @@ This component is also available from `@kiyotakkkka/zvs-uikit-lib/server`.
 
 ## Props
 
-| Prop | Type | Default | Description |
-| --- | --- | --- | --- |
-| level | HeadingLevel | 2 | Semantic heading level and matching visual size. |
-| className | string | - | Additional heading classes. |
-| children | ReactNode | - | Heading content. |
+| Prop      | Type         | Default | Description                                      |
+| --------- | ------------ | ------- | ------------------------------------------------ |
+| level     | HeadingLevel | 2       | Semantic heading level and matching visual size. |
+| className | string       | -       | Additional heading classes.                      |
+| children  | ReactNode    | -       | Heading content.                                 |
 
 The component forwards the native attributes supported by its underlying semantic element.
 
@@ -31,4 +31,3 @@ export function DemoHeading() {
     return <Heading level={2}>Section title</Heading>;
 }
 ```
-

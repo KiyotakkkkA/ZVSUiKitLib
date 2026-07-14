@@ -158,17 +158,17 @@ For correct component rendering, use this palette (or override the same tokens):
 
 ### Components: Typography
 
-| Component | Purpose | Documentation |
-| --- | --- | --- |
-| `Text` | Body and supporting text. | [Text](package/src/ui/Text/Text.md) |
-| `Heading` | Semantic heading scale. | [Heading](package/src/ui/Heading/Heading.md) |
+| Component    | Purpose                                    | Documentation                                         |
+| ------------ | ------------------------------------------ | ----------------------------------------------------- |
+| `Text`       | Body and supporting text.                  | [Text](package/src/ui/Text/Text.md)                   |
+| `Heading`    | Semantic heading scale.                    | [Heading](package/src/ui/Heading/Heading.md)          |
 | `Blockquote` | Block quotation with optional attribution. | [Blockquote](package/src/ui/Blockquote/Blockquote.md) |
-| `Code` | Inline and block code treatment. | [Code](package/src/ui/Code/Code.md) |
-| `Em` | Semantic stress emphasis. | [Em](package/src/ui/Em/Em.md) |
-| `Kbd` | Keyboard input token. | [Kbd](package/src/ui/Kbd/Kbd.md) |
-| `Link` | Styled semantic anchor. | [Link](package/src/ui/Link/Link.md) |
-| `Quote` | Inline semantic quotation. | [Quote](package/src/ui/Quote/Quote.md) |
-| `Strong` | Semantic importance. | [Strong](package/src/ui/Strong/Strong.md) |
+| `Code`       | Inline and block code treatment.           | [Code](package/src/ui/Code/Code.md)                   |
+| `Em`         | Semantic stress emphasis.                  | [Em](package/src/ui/Em/Em.md)                         |
+| `Kbd`        | Keyboard input token.                      | [Kbd](package/src/ui/Kbd/Kbd.md)                      |
+| `Link`       | Styled semantic anchor.                    | [Link](package/src/ui/Link/Link.md)                   |
+| `Quote`      | Inline semantic quotation.                 | [Quote](package/src/ui/Quote/Quote.md)                |
+| `Strong`     | Semantic importance.                       | [Strong](package/src/ui/Strong/Strong.md)             |
 
 While using Next.js you can import some components like SSR-friendly from `@kiyotakkkka/zvs-uikit-lib/server`:
 
