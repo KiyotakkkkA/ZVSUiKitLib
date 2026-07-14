@@ -1,66 +1,66 @@
 name: Publish package
 
 on:
-  push:
-    branches:
-      - main
-    paths:
-      - package/package.json
+    push:
+        branches:
+            - main
+        paths:
+            - package/package.json
 
 permissions:
-  contents: read
+    contents: read
 
 concurrency:
-  group: publish-package
-  cancel-in-progress: false
+    group: publish-package
+    cancel-in-progress: false
 
 jobs:
-  publish:
-    runs-on: ubuntu-latest
+    publish:
+        runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v4
+              with:
+                  fetch-depth: 0
 
-      - name: Check package version change
-        id: version
-        env:
-          BEFORE_SHA: ${{ github.event.before }}
-        run: |
-          git show "${BEFORE_SHA}:package/package.json" > "${RUNNER_TEMP}/previous-package.json"
+            - name: Check package version change
+              id: version
+              env:
+                  BEFORE_SHA: ${{ github.event.before }}
+              run: |
+                  git show "${BEFORE_SHA}:package/package.json" > "${RUNNER_TEMP}/previous-package.json"
 
-          previous_version=$(node --print "require(process.env.RUNNER_TEMP + '/previous-package.json').version")
-          current_version=$(node --print "require('./package/package.json').version")
+                  previous_version=$(node --print "require(process.env.RUNNER_TEMP + '/previous-package.json').version")
+                  current_version=$(node --print "require('./package/package.json').version")
 
-          echo "Previous version: ${previous_version}"
-          echo "Current version: ${current_version}"
+                  echo "Previous version: ${previous_version}"
+                  echo "Current version: ${current_version}"
 
-          if [ "${previous_version}" = "${current_version}" ]; then
-            echo "changed=false" >> "${GITHUB_OUTPUT}"
-          else
-            echo "changed=true" >> "${GITHUB_OUTPUT}"
-          fi
+                  if [ "${previous_version}" = "${current_version}" ]; then
+                    echo "changed=false" >> "${GITHUB_OUTPUT}"
+                  else
+                    echo "changed=true" >> "${GITHUB_OUTPUT}"
+                  fi
 
-      - name: Setup Node.js
-        if: steps.version.outputs.changed == 'true'
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          registry-url: https://registry.npmjs.org
-          cache: npm
+            - name: Setup Node.js
+              if: steps.version.outputs.changed == 'true'
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 24
+                  registry-url: https://registry.npmjs.org
+                  cache: npm
 
-      - name: Install dependencies
-        if: steps.version.outputs.changed == 'true'
-        run: npm ci
+            - name: Install dependencies
+              if: steps.version.outputs.changed == 'true'
+              run: npm ci
 
-      - name: Build package
-        if: steps.version.outputs.changed == 'true'
-        run: npm run build:package
+            - name: Build package
+              if: steps.version.outputs.changed == 'true'
+              run: npm run build:package
 
-      - name: Publish package
-        if: steps.version.outputs.changed == 'true'
-        run: npm publish --workspace=package
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+            - name: Publish package
+              if: steps.version.outputs.changed == 'true'
+              run: npm publish --workspace=package
+              env:
+                  NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
