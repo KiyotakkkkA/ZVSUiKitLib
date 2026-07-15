@@ -5,8 +5,10 @@ const require = createRequire(import.meta.url);
 const rawLoaderPath = require.resolve("raw-loader");
 
 const nextConfig: NextConfig = {
-    transpilePackages: ["@kiyotakkkka/zvs-uikit-lib"],
     allowedDevOrigins: ["172.18.0.1"],
+    experimental: {
+        turbopackFileSystemCacheForDev: false,
+    },
     turbopack: {
         rules: {
             "*.md": {

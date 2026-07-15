@@ -63,7 +63,7 @@ jobs:
 
             - name: Prepare package README
               if: steps.version.outputs.changed == 'true'
-              run: cp README.md package/README.md
+              run: sed 's#](package/#](#g' README.md > package/README.md
 
             - name: Publish package
               if: steps.version.outputs.changed == 'true'
