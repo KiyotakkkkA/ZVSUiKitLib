@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+import { Icon } from "../_shared/icons";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "../../lib/utils";
 import type { InputDropZoneProps, SelectedFileItem } from "./types";

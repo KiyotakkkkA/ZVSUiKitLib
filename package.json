@@ -34,6 +34,7 @@
         "check": "npm run typecheck && npm run lint && npm run build",
         "start": "next start preview",
         "preview:package": "vite preview package --config package/vite.config.ts",
-        "pack:check": "npm run typecheck:package && npm run lint:package && npm run build:package && npm pack ./package --dry-run"
+        "pack:check": "npm run typecheck:package && npm run lint:package && npm run build:package && npm pack ./package --dry-run",
+        "docs:fill": "tsc package/src/scripts/doc_filling.ts --target ES2020 --module ES2020 --moduleResolution node --types node --skipLibCheck --outDir package/.docs-tmp && node package/.docs-tmp/doc_filling.js package/src && node -e \"require('fs').rmSync('package/.docs-tmp',{recursive:true,force:true})\""
     }
 }

@@ -19,7 +19,7 @@
         "directory": "package"
     },
     "private": false,
-    "version": "5.0.5",
+    "version": "5.1.0",
     "type": "module",
     "main": "./dist/index.js",
     "module": "./dist/index.js",
@@ -48,7 +48,6 @@
         "dist"
     ],
     "dependencies": {
-        "@iconify/react": "^6.0.2",
         "@tanstack/react-virtual": "^3.13.23",
         "clsx": "^2.1.1",
         "recharts": "^3.8.1",

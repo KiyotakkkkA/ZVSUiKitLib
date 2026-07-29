@@ -22,7 +22,7 @@ export const componentProps: ComponentAPIDoc = {
             props: {
                 icon: {
                     type: "string",
-                    description: "Iconify marker name.",
+                    description: "Local icon name.",
                 },
                 className: {
                     type: "string",

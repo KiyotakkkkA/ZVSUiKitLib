@@ -3,10 +3,15 @@ import type { HTMLAttributes, PropsWithChildren } from "react";
 export type SlidedPanelPlacement = "top" | "right" | "bottom" | "left";
 
 export type SlidedPanelProps = PropsWithChildren<{
+    /** Whether open is enabled. */
     open: boolean;
+    /** Callback invoked when close occurs. */
     onClose: () => void;
+    /** Function used to close on overlay click. */
     closeOnOverlayClick?: boolean;
+    /** The screen edge from which the panel opens. */
     panelPlacement?: SlidedPanelPlacement;
+    /** CSS classes applied to the root element. */
     className?: HTMLAttributes<HTMLElement>["className"];
 }>;
 
@@ -17,6 +22,8 @@ export type SlidedPanelContentProps = HTMLAttributes<HTMLDivElement>;
 export type SlidedPanelFooterProps = HTMLAttributes<HTMLElement>;
 
 export type SlidedPanelContextValue = {
+    /** Whether open is enabled. */
     open: boolean;
+    /** Callback invoked when close occurs. */
     onClose: () => void;
 };

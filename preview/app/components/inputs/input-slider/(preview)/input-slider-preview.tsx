@@ -13,6 +13,7 @@ export function DemoInputSlider() {
             max={100}
             step={5}
             showValue
+            className="w-64"
             valueFormatter={(next) => `${next}%`}
         />
     );

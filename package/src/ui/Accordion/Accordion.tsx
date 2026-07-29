@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useRef, useState } from "react";
-import { Icon } from "@iconify/react";
+import { Icon } from "../_shared/icons";
 import { cn } from "../../lib/utils";
 import type {
     AccordionContentProps,

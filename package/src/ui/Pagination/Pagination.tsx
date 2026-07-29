@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+import { Icon } from "../_shared/icons";
 import { Button } from "../Button/Button";
 import { Select } from "../Select/Select";
 import type { PaginationPageItem, PaginationProps } from "./types";

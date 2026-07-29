@@ -6,7 +6,7 @@ import {
     useRef,
     useState,
 } from "react";
-import { Icon } from "@iconify/react";
+import { Icon } from "../_shared/icons";
 import { Dropdown } from "../Dropdown/Dropdown";
 import { ScrollArea } from "../ScrollArea/ScrollArea";
 import { cn } from "../../lib/utils";

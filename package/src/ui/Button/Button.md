@@ -1,34 +1,3 @@
-# Button
-
-## Purpose
-
-Base button with color variants and shape options.
-
-## Import
-
-```tsx
-import { Button } from "@kiyotakkkka/zvs-uikit-lib";
-```
-
-## Props
-
-| Prop        | Type                                                  | Default          | Description                                                           |
-| ----------- | ----------------------------------------------------- | ---------------- | --------------------------------------------------------------------- |
-| children    | ReactNode                                             | -                | Button content.                                                       |
-| label       | string                                                | -                | Value for `aria-label`.                                               |
-| loading     | boolean                                               | `false`          | Shows loading state and disables the button.                          |
-| loadingText | string                                                | -                | Text shown while loading. Without it, the centered `Loader` is shown. |
-| variant     | [`ButtonVariants`](../../docs/dict.md#buttonvariants) | `"secondary"`    | Visual style. Empty string disables built-in variant style.           |
-| rounded     | [`RoundVariants`](../../docs/dict.md#roundvariants)   | `"rounded-full"` | Border radius shape.                                                  |
-| className   | string                                                | -                | Extra classes.                                                        |
-
-### `classNames` slots
-
-| Slot       | Description                  |
-| ---------- | ---------------------------- |
-| loaderIcon | Loader icon wrapper classes. |
-| loaderText | Loader text wrapper classes. |
-
 ## Example
 
 ```tsx

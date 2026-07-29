@@ -5,7 +5,7 @@ import {
     useState,
     type PropsWithChildren,
 } from "react";
-import { Icon } from "@iconify/react";
+import { Icon } from "../ui/_shared/icons";
 import {
     ToastContext,
     type ToastContextValue,

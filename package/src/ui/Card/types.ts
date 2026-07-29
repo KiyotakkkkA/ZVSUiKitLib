@@ -2,6 +2,7 @@ import type { HTMLAttributes } from "react";
 import type { RoundVariants } from "../_shared/types";
 
 export type CardProps = HTMLAttributes<HTMLElement> & {
+    /** Selects the card container border radius. */
     rounded?: RoundVariants | "";
 };
 export type CardHeaderProps = HTMLAttributes<HTMLElement>;

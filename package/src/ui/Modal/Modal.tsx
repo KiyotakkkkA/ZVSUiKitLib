@@ -6,7 +6,7 @@ import {
     type MouseEvent,
 } from "react";
 import { createPortal } from "react-dom";
-import { Icon } from "@iconify/react";
+import { Icon } from "../_shared/icons";
 import { Button } from "../Button/Button";
 import { ScrollArea } from "../ScrollArea/ScrollArea";
 import { cn } from "../../lib/utils";

@@ -7,7 +7,7 @@ export const componentProps: ComponentAPIDoc = {
         props: {
             icon: {
                 type: "string",
-                description: "Iconify icon name.",
+                description: "Local icon name.",
                 defaultValue: '"mdi:star-four-points"',
             },
             label: {

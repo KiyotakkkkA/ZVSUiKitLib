@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+import { Icon } from "../_shared/icons";
 import { Children, useCallback, useEffect, useMemo, useState } from "react";
 import { cn } from "../../lib/utils";
 import type { CarouselImageProps, CarouselProps } from "./types";

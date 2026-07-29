@@ -1,4 +1,4 @@
-# InputRange
+## Example
 
 Controlled range input for selecting a pair of numeric boundaries.
 

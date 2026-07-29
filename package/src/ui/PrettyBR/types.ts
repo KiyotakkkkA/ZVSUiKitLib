@@ -7,15 +7,23 @@ import type {
 type IconClassName = SvgClassName;
 
 export type PrettyBRClassNames = {
+    /** The divider used by the component. */
     divider?: DivClassName;
+    /** Content rendered for the icon. */
     icon?: IconClassName;
+    /** Text used for the label. */
     label?: ParagraphClassName;
 };
 
 export type PrettyBRProps = {
+    /** Content rendered for the icon. */
     icon?: string;
+    /** Text used for the label. */
     label?: string;
+    /** The rendered icon size in pixels. */
     size?: number;
+    /** CSS classes applied to the root element. */
     className?: DivClassName;
+    /** CSS classes applied to the component slots. */
     classNames?: PrettyBRClassNames;
 };

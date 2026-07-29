@@ -1,25 +1,3 @@
-# Timeline
-
-## Purpose
-
-Compound timeline for ordered events with icon markers.
-
-## Import
-
-```tsx
-import { Timeline } from "@kiyotakkkka/zvs-uikit-lib";
-```
-
-## Components
-
-| Component               | Props                           | Description            |
-| ----------------------- | ------------------------------- | ---------------------- |
-| `Timeline`              | `className`, `children`         | Root timeline wrapper. |
-| `Timeline.Item`         | `icon`, `className`, `children` | Timeline event row.    |
-| `Timeline.ItemTitle`    | `className`, `children`         | Event title.           |
-| `Timeline.ItemSubTitle` | `className`, `children`         | Event subtitle/date.   |
-| `Timeline.ItemContent`  | `className`, `children`         | Event body content.    |
-
 ## Example
 
 ```tsx

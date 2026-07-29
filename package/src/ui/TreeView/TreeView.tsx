@@ -1,6 +1,6 @@
 import { Children, isValidElement, useMemo, useRef, useState } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
-import { Icon } from "@iconify/react";
+import { Icon } from "../_shared/icons";
 import { ScrollArea } from "../ScrollArea/ScrollArea";
 import { cn } from "../../lib/utils";
 import type {

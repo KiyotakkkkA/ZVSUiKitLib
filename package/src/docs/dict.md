@@ -1,45 +1,17 @@
-# Type dictionary
+# Shared type dictionary
 
-Shared and reusable property types referenced by component documentation.
+## Table of contents
 
-## RoundVariants
-
-```ts
-type RoundVariants =
-    | "rounded-none"
-    | "rounded-sm"
-    | "rounded"
-    | "rounded-md"
-    | "rounded-lg"
-    | "rounded-xl"
-    | "rounded-2xl"
-    | "rounded-3xl"
-    | "rounded-4xl"
-    | "rounded-full";
-```
+- [Orientation](#orientation)
+- [ColorVariantsBase](#colorvariantsbase)
+- [ColorVariantOutline](#colorvariantoutline)
+- [PositionAnchor](#positionanchor)
+- [RoundVariants](#roundvariants)
 
 ## Orientation
 
 ```ts
 type Orientation = "horizontal" | "vertical";
-```
-
-## ScrollAreaOrientation
-
-```ts
-type ScrollAreaOrientation = Orientation | "both";
-```
-
-## PositionAnchor
-
-```ts
-type PositionAnchor =
-    | "top-left"
-    | "top-center"
-    | "top-right"
-    | "bottom-left"
-    | "bottom-center"
-    | "bottom-right";
 ```
 
 ## ColorVariantsBase
@@ -55,12 +27,10 @@ type ColorVariantsBase =
     | "info";
 ```
 
-## ButtonVariants
+## ColorVariantOutline
 
 ```ts
-type ButtonVariants =
-    | ColorVariantsBase
-    | "ghost"
+type ColorVariantOutline =
     | "primary-outline"
     | "tertiary-outline"
     | "success-outline"
@@ -69,38 +39,30 @@ type ButtonVariants =
     | "info-outline";
 ```
 
-## ChartType
+## PositionAnchor
 
 ```ts
-type ChartType = "line" | "area" | "bar";
+type PositionAnchor =
+    | "top-left"
+    | "top-center"
+    | "top-right"
+    | "bottom-left"
+    | "bottom-center"
+    | "bottom-right";
 ```
 
-## InputColorSize
+## RoundVariants
 
 ```ts
-type InputColorSize = "sm" | "md" | "lg";
-```
-
-## InputPreset
-
-```ts
-type InputPreset = "password" | "search" | "email" | "phone" | "url";
-```
-
-## SkeletonRadius
-
-```ts
-type SkeletonRadius = "none" | "sm" | "md" | "lg" | "xl" | "full";
-```
-
-## SkeletonTone
-
-```ts
-type SkeletonTone = "default" | "subtle" | "strong";
-```
-
-## SlidedPanelPlacement
-
-```ts
-type SlidedPanelPlacement = "top" | "right" | "bottom" | "left";
+type RoundVariants =
+    | "rounded-none"
+    | "rounded-sm"
+    | "rounded"
+    | "rounded-md"
+    | "rounded-lg"
+    | "rounded-xl"
+    | "rounded-2xl"
+    | "rounded-3xl"
+    | "rounded-4xl"
+    | "rounded-full";
 ```

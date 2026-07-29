@@ -1,4 +1,5 @@
 export type * from "./_shared/types";
+export * from "./_shared/icons";
 
 export * from "./Button";
 export * from "./Breadcrumbs";

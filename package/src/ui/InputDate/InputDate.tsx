@@ -1,4 +1,4 @@
-import { Icon } from "@iconify/react";
+import { Icon } from "../_shared/icons";
 import { useCallback, useMemo, useState } from "react";
 import { cn } from "../../lib/utils";
 import { Calendar } from "../Calendar/Calendar";

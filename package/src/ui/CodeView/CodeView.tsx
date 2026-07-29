@@ -8,7 +8,7 @@ import {
     useMemo,
     useSyncExternalStore,
 } from "react";
-import { Icon } from "@iconify/react";
+import { Icon } from "../_shared/icons";
 import {
     createHighlighter,
     type BundledLanguage,

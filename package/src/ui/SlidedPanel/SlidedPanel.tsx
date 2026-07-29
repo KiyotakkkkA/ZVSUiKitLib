@@ -6,7 +6,7 @@ import {
     type MouseEvent,
 } from "react";
 import { createPortal } from "react-dom";
-import { Icon } from "@iconify/react";
+import { Icon } from "../_shared/icons";
 import { cn } from "../../lib/utils";
 import { usePortalContainer } from "../../hooks/usePortalContainer";
 import type {
