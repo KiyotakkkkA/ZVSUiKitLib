@@ -13,6 +13,8 @@ npm i @kiyotakkkka/zvs-uikit-lib
 Tailwind 4 does not scan `node_modules` by default. Add this line to the CSS file where you import Tailwind (`@import "tailwindcss"`):
 
 ```css
+@import "@kiyotakkkka/zvs-uikit-lib/styles.css";
+
 @source "../node_modules/@kiyotakkkka/zvs-uikit-lib/dist/**/*.{js,cjs,mjs,ts,tsx,jsx}";
 ```
 
@@ -30,6 +32,12 @@ module.exports = {
     ],
     // other config...
 };
+```
+
+And after add this line to the global css file
+
+```css
+@import "@kiyotakkkka/zvs-uikit-lib/styles.css";
 ```
 
 </details>
