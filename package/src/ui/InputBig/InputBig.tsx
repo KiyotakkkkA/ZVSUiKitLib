@@ -86,7 +86,7 @@ export const InputBig = forwardRef<HTMLTextAreaElement, InputBigProps>(
         };
 
         return (
-            <div className={cn("w-full min-w-0", classNames?.root)}>
+            <div className={cn("w-full min-w-0", className)}>
                 {label && (
                     <label
                         htmlFor={textareaId}
@@ -121,7 +121,6 @@ export const InputBig = forwardRef<HTMLTextAreaElement, InputBigProps>(
                         error &&
                             "border-danger-medium/70 focus:border-danger-medium focus:ring-danger-medium/20",
                         autoResize ? "resize-none" : "resize-y",
-                        className,
                         classNames?.textarea,
                     )}
                     {...props}

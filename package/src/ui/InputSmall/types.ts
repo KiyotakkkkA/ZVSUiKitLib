@@ -1,6 +1,6 @@
 import type { InputHTMLAttributes } from "react";
 import type {
-    DivClassName,
+    InputClassName,
     RoundVariants,
     SvgClassName,
 } from "../_shared/types";
@@ -9,8 +9,8 @@ export type InputPreset = "password" | "search" | "email" | "phone" | "url";
 export type InputPresets = InputPreset;
 
 export type InputSmallClassNames = {
-    /** The wrapper used by the component. */
-    wrapper?: DivClassName;
+    /** The input element used by the component. */
+    input?: InputClassName;
     /** Content rendered for the icon. */
     icon?: SvgClassName;
     /** Content rendered for the leading icon. */

@@ -7,8 +7,6 @@ import type {
 } from "../_shared/types";
 
 export type InputBigClassNames = {
-    /** The root used by the component. */
-    root?: DivClassName;
     /** Text used for the label. */
     label?: LabelClassName;
     /** The textarea used by the component. */
@@ -36,6 +34,8 @@ export type InputBigProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
     minRows?: number;
     /** The max rows used by the component. */
     maxRows?: number;
+    /** The CSS class applied to the component. */
+    className?: string;
     /** CSS classes applied to the component slots. */
     classNames?: InputBigClassNames;
 };

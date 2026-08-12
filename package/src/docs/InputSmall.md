@@ -45,7 +45,7 @@ Extends: `InputHTMLAttributes<HTMLInputElement>`.
 
 | Property         | Description                                |
 | ---------------- | ------------------------------------------ |
-| `wrapper`        | The wrapper used by the component.         |
+| `input`          | The input element used by the component.   |
 | `icon`           | Content rendered for the icon.             |
 | `leadingIcon`    | Content rendered for the leading icon.     |
 | `trailingButton` | The trailing button used by the component. |

@@ -29,13 +29,13 @@ Extends: `TextareaHTMLAttributes<HTMLTextAreaElement>`.
 | `autoResize`  | `boolean`            | -       | No       | Whether the input grows automatically to fit its content. |
 | `minRows`     | `number`             | -       | No       | The min rows used by the component.                       |
 | `maxRows`     | `number`             | -       | No       | The max rows used by the component.                       |
+| `className`   | `string`             | -       | No       | The CSS class applied to the component.                   |
 | `classNames`  | `InputBigClassNames` | -       | No       | CSS classes applied to the component slots.               |
 
 ### InputBigClassNames
 
 | Property   | Description                         |
 | ---------- | ----------------------------------- |
-| `root`     | The root used by the component.     |
 | `label`    | Text used for the label.            |
 | `textarea` | The textarea used by the component. |
 | `footer`   | Content rendered for the footer.    |

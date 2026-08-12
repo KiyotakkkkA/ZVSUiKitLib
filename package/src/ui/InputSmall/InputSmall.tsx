@@ -113,7 +113,7 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
         };
 
         return (
-            <div className={cn("relative", classNames?.wrapper)}>
+            <div className={cn("relative", className)}>
                 {config?.icon && (
                     <Icon
                         icon={config.icon}
@@ -159,7 +159,7 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
                         hasTrailingAction && "pr-9",
                         isSearchPreset &&
                             "[&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden",
-                        className,
+                        classNames?.input,
                     )}
                 />
 
