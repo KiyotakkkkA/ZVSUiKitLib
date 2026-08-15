@@ -58,7 +58,10 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
                 {loading ? (
                     <>
                         <Loader
-                            className={cn(styles.loaderIcon, classNames?.loaderIcon)}
+                            className={cn(
+                                styles.loaderIcon,
+                                classNames?.loaderIcon,
+                            )}
                         />
                         {loadingText && (
                             <span className={classNames?.loaderText}>

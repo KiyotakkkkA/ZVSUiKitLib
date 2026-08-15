@@ -233,11 +233,7 @@ const CodeViewDefaultActions = memo(() => {
 
     if (!copyable && !downloadable) return null;
 
-    const btnClass = cn(
-        styles.s2,
-        styles.s3,
-        styles.s4,
-    );
+    const btnClass = cn(styles.s2, styles.s3, styles.s4);
 
     return (
         <div className={styles.s5}>
@@ -248,7 +244,7 @@ const CodeViewDefaultActions = memo(() => {
                     className={btnClass}
                     onClick={downloadCode}
                 >
-                    <Icon icon="mdi:download" width={14} height={14} />
+                    <Icon icon="download" width={14} height={14} />
                     <span className={styles.s6}>Download</span>
                 </button>
             )}
@@ -260,7 +256,7 @@ const CodeViewDefaultActions = memo(() => {
                     className={btnClass}
                     onClick={() => void copyCode()}
                 >
-                    <Icon icon="mdi:content-copy" width={14} height={14} />
+                    <Icon icon="content-copy" width={14} height={14} />
                     <span className={styles.s7}>Copy</span>
                 </button>
             )}
@@ -376,10 +372,7 @@ const CodeViewRoot = ({
             <div
                 {...props}
                 id={props.id ?? generatedId}
-                className={cn(
-                    styles.s8,
-                    className,
-                )}
+                className={cn(styles.s8, className)}
             >
                 {children ?? (
                     <>
@@ -403,30 +396,16 @@ const CodeViewHeader = ({
     const { language, fileName, defaultActions } = useCodeView();
 
     return (
-        <div
-            {...props}
-            className={cn(
-                styles.s9,
-                className,
-            )}
-        >
+        <div {...props} className={cn(styles.s9, className)}>
             <div className={styles.s10}>
                 {showLanguage && (
-                    <span
-                        className={cn(
-                            styles.s11,
-                        )}
-                    >
+                    <span className={cn(styles.s11)}>
                         {language.toUpperCase()}
                     </span>
                 )}
 
                 {showFileName && fileName && (
-                    <span
-                        className={cn(styles.s12)}
-                    >
-                        {fileName}
-                    </span>
+                    <span className={cn(styles.s12)}>{fileName}</span>
                 )}
 
                 {children}
@@ -448,13 +427,7 @@ const CodeViewContent = ({
     if (isLoading) {
         return (
             <div {...props} className={cn(styles.s13, className)}>
-                {loadingFallback ?? (
-                    <div
-                        className={cn(
-                            styles.s14,
-                        )}
-                    />
-                )}
+                {loadingFallback ?? <div className={cn(styles.s14)} />}
             </div>
         );
     }
@@ -462,12 +435,7 @@ const CodeViewContent = ({
     return (
         <div
             {...props}
-            className={cn(
-                styles.s15,
-                styles.s16,
-                styles.s17,
-                styles.s18,
-            )}
+            className={cn(styles.s15, styles.s16, styles.s17, styles.s18)}
         >
             <ScrollArea
                 orientation="both"

@@ -2,27 +2,27 @@
 @reference "../theme.css";
 
 .s0 {
-    @apply h-9 gap-2 rounded-lg px-2;
+    @apply h-9 gap-2 px-2;
 }
 
 .s1 {
-    @apply h-11 gap-2.5 rounded-xl px-2.5;
+    @apply h-11 gap-2.5 px-2.5;
 }
 
 .s2 {
-    @apply h-12 gap-3 rounded-xl px-3;
+    @apply h-12 gap-3 px-3;
 }
 
 .s3 {
-    @apply h-6 w-6 rounded-md;
+    @apply h-6 w-6;
 }
 
 .s4 {
-    @apply h-8 w-8 rounded-lg;
+    @apply h-8 w-8;
 }
 
 .s5 {
-    @apply h-9 w-9 rounded-lg;
+    @apply h-9 w-9;
 }
 
 .s6 {

@@ -7,7 +7,9 @@ import {
     SectionPreview,
 } from "../../../molecules";
 import { DemoResizablePanel } from "./(preview)/resizable-panel-preview";
+import { ControlledResizablePanelPreview } from "./(preview)/controlled-resizable-panel-preview";
 import usage from "./(usage)/usage.md";
+import controlledUsage from "./(usage)/controlled.md";
 import { componentProps } from "./props";
 
 export const metadata: Metadata = {
@@ -29,7 +31,7 @@ export default function Page() {
                 </SectionOverview.MetaTitle>
                 <SectionOverview.Title>ResizablePanel</SectionOverview.Title>
                 <SectionOverview.Description>
-                    Resizable sidebar layout.
+                    Accessible split-panel layout with controlled and uncontrolled sizing, pointer, touch, and keyboard interaction.
                 </SectionOverview.Description>
             </SectionOverview>
             <SectionPreview
@@ -39,11 +41,25 @@ export default function Page() {
                     navTitle: "Example",
                 }}
             >
-                <SectionPreview.Component>
+                <SectionPreview.Component className="p-5 [&>div]:flex [&>div]:w-full [&>div]:items-center [&>div]:justify-center sm:p-8">
                     <DemoResizablePanel />
                 </SectionPreview.Component>
                 <SectionPreview.Code label="ResizablePanelExample.tsx">
                     {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "controlled-vertical",
+                    headerTitle: "Controlled vertical panel",
+                    navTitle: "Controlled vertical",
+                }}
+            >
+                <SectionPreview.Component className="p-5 [&>div]:flex [&>div]:w-full [&>div]:items-center [&>div]:justify-center sm:p-8">
+                    <ControlledResizablePanelPreview />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="ControlledResizablePanel.tsx">
+                    {controlledUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

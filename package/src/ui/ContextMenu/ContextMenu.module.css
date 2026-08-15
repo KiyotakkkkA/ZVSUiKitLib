@@ -109,5 +109,9 @@
     @apply absolute top-0 z-50;
 }
 
-.content { @apply min-w-40 rounded-lg border border-main-700/80 bg-main-900/95 p-1 text-main-100 shadow-xl shadow-black/35 backdrop-blur-xl; }
-.item { @apply flex min-h-7 w-full items-center gap-2 rounded-md px-2 py-1 text-left text-sm leading-5 transition-colors duration-150 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-40; }
+.content {
+    @apply min-w-40 rounded-lg border border-main-700/80 bg-main-900/95 p-1 text-main-100 shadow-xl shadow-black/35 backdrop-blur-xl;
+}
+.item {
+    @apply flex min-h-7 w-full items-center gap-2 rounded-md px-2 py-1 text-left text-sm leading-5 transition-colors duration-150 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-40;
+}

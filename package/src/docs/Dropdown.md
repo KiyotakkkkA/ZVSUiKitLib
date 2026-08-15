@@ -51,11 +51,11 @@ import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib";
 
 Extends: `ButtonHTMLAttributes<HTMLButtonElement>`.
 
-| Property      | Type                                           | Default         | Required | Description                                                     |
-| ------------- | ---------------------------------------------- | --------------- | -------- | --------------------------------------------------------------- |
-| `placeholder` | `ReactNode`                                    | `"Открыть"`     | No       | Renders fallback trigger content when no children are supplied. |
-| `icon`        | `ReactNode`                                    | -               | No       | Replaces the default trailing chevron.                          |
-| `rounded`     | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-2xl"` | No       | Selects the trigger button border radius.                       |
+| Property      | Type                                           | Default          | Required | Description                                                     |
+| ------------- | ---------------------------------------------- | ---------------- | -------- | --------------------------------------------------------------- |
+| `placeholder` | `ReactNode`                                    | `"Открыть"`      | No       | Renders fallback trigger content when no children are supplied. |
+| `icon`        | `ReactNode`                                    | -                | No       | Replaces the default trailing chevron.                          |
+| `rounded`     | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-full"` | No       | Selects the trigger button border radius.                       |
 
 ### Dropdown.Anchor
 
@@ -69,19 +69,20 @@ Extends: `HTMLAttributes<HTMLDivElement>`.
 
 Extends: `HTMLAttributes<HTMLDivElement>`.
 
-| Property  | Type                                           | Default        | Required | Description                           |
-| --------- | ---------------------------------------------- | -------------- | -------- | ------------------------------------- |
-| `rounded` | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-lg"` | No       | Selects the popup menu border radius. |
+| Property  | Type                                           | Default         | Required | Description                           |
+| --------- | ---------------------------------------------- | --------------- | -------- | ------------------------------------- |
+| `rounded` | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-4xl"` | No       | Selects the popup menu border radius. |
 
 ### Dropdown.Item
 
 Extends: `ButtonHTMLAttributes<HTMLButtonElement>`.
 
-| Property       | Type        | Default | Required | Description                                                          |
-| -------------- | ----------- | ------- | -------- | -------------------------------------------------------------------- |
-| `closeOnClick` | `boolean`   | `true`  | No       | Closes the popup after the item click unless the event is prevented. |
-| `active`       | `boolean`   | `false` | No       | Applies the active item appearance.                                  |
-| `icon`         | `ReactNode` | -       | No       | Renders a leading icon inside the menu item.                         |
+| Property       | Type                                           | Default         | Required | Description                                                          |
+| -------------- | ---------------------------------------------- | --------------- | -------- | -------------------------------------------------------------------- |
+| `closeOnClick` | `boolean`                                      | `true`          | No       | Closes the popup after the item click unless the event is prevented. |
+| `active`       | `boolean`                                      | `false`         | No       | Applies the active item appearance.                                  |
+| `icon`         | `ReactNode`                                    | -               | No       | Renders a leading icon inside the menu item.                         |
+| `rounded`      | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-3xl"` | No       | Selects the border radius for the menu item.                         |
 
 ### Dropdown.Render
 

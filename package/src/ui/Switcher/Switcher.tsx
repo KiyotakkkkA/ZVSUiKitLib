@@ -12,11 +12,7 @@ export const Switcher = ({
 }: SwitcherProps) => {
     return (
         <div
-            className={cn(
-                styles.s0,
-                `zvs-${rounded}`,
-                className,
-            )}
+            className={cn(styles.s0, `zvs-${rounded}`, className)}
             role="tablist"
             aria-label="Switcher"
         >
@@ -33,9 +29,7 @@ export const Switcher = ({
                         className={cn(
                             styles.s1,
                             `zvs-${rounded}`,
-                            isActive
-                                ? styles.s2
-                                : styles.s3,
+                            isActive ? styles.s2 : styles.s3,
                             classNames?.tab,
                         )}
                     >

@@ -26,25 +26,17 @@ function ModalHeader({
     const modalContext = useContext(ModalContext);
 
     return (
-        <div
-            className={cn(
-                styles.s0,
-                className,
-            )}
-        >
+        <div className={cn(styles.s0, className)}>
             <div className={styles.s1}>{children}</div>
 
             {showCloseButton && (
                 <Button
                     variant="secondary"
-                    className={cn(
-                        styles.s2,
-                        closeButtonClassName,
-                    )}
+                    className={cn(styles.s2, closeButtonClassName)}
                     onClick={modalContext?.onClose}
                     aria-label={closeButtonAriaLabel}
                 >
-                    <Icon icon="mdi:close" width="16" height="16" />
+                    <Icon icon="close" width="16" height="16" />
                 </Button>
             )}
         </div>
@@ -53,23 +45,12 @@ function ModalHeader({
 
 function ModalContent({ children, className }: ModalSectionProps) {
     return (
-        <ScrollArea className={cn(styles.s3, className)}>
-            {children}
-        </ScrollArea>
+        <ScrollArea className={cn(styles.s3, className)}>{children}</ScrollArea>
     );
 }
 
 function ModalFooter({ children, className }: ModalSectionProps) {
-    return (
-        <div
-            className={cn(
-                styles.s4,
-                className,
-            )}
-        >
-            {children}
-        </div>
-    );
+    return <div className={cn(styles.s4, className)}>{children}</div>;
 }
 
 function ModalRoot({
@@ -79,7 +60,7 @@ function ModalRoot({
     overlayClassName,
     children,
     closeOnOverlayClick = true,
-    rounded = "rounded-lg",
+    rounded = "rounded-4xl",
 }: ModalProps) {
     const portalContainer = usePortalContainer();
 
@@ -121,10 +102,7 @@ function ModalRoot({
 
     return createPortal(
         <div
-            className={cn(
-                styles.s5,
-                overlayClassName,
-            )}
+            className={cn(styles.s5, overlayClassName)}
             onClick={onOverlayClick}
             onKeyDown={onOverlayKeyDown}
             tabIndex={-1}

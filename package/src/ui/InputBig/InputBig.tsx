@@ -1,6 +1,5 @@
 "use client";
 
-
 import styles from "./InputBig.module.css";
 
 import {
@@ -121,8 +120,7 @@ export const InputBig = forwardRef<HTMLTextAreaElement, InputBigProps>(
                         styles.s5,
                         styles.s6,
                         styles.s7,
-                        error &&
-                            styles.s8,
+                        error && styles.s8,
                         autoResize ? styles.s9 : styles.s10,
                         classNames?.textarea,
                     )}
@@ -130,12 +128,7 @@ export const InputBig = forwardRef<HTMLTextAreaElement, InputBigProps>(
                 />
 
                 {(message || showCount) && (
-                    <div
-                        className={cn(
-                            styles.s11,
-                            classNames?.footer,
-                        )}
-                    >
+                    <div className={cn(styles.s11, classNames?.footer)}>
                         {message ? (
                             <p
                                 id={messageId}

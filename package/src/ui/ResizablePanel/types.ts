@@ -1,35 +1,46 @@
 import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
+export type ResizablePanelOrientation = "horizontal" | "vertical";
+
 export type ResizablePanelContextValue = {
-    /** The current size of the resizable panel. */
     size: number;
-    /** Function used to set size. */
-    setSize: (size: number) => void;
-    /** The minimum allowed size of the resizable panel. */
     minSize: number;
-    /** The maximum allowed size of the resizable panel. */
     maxSize: number;
+    defaultSize: number;
+    keyboardStep: number;
+    orientation: ResizablePanelOrientation;
+    disabled: boolean;
+    resizing: boolean;
+    sidebarId: string;
+    resizeTo: (size: number) => number;
+    startResize: () => void;
+    endResize: () => void;
 };
 
 export type ResizablePanelProps = ComponentPropsWithoutRef<"div"> & {
-    /** The content rendered inside the component. */
     children: ReactNode;
-    /** The initial size of the resizable panel. */
+    /** Controlled primary panel size in pixels. */
+    size?: number;
+    /** Initial uncontrolled primary panel size in pixels. */
     defaultSize?: number;
-    /** The minimum allowed size of the resizable panel. */
     minSize?: number;
-    /** The maximum allowed size of the resizable panel. */
     maxSize?: number;
+    orientation?: ResizablePanelOrientation;
+    keyboardStep?: number;
+    disabled?: boolean;
+    onSizeChange?: (size: number) => void;
+    onResizeStart?: (size: number) => void;
+    onResizeEnd?: (size: number) => void;
 };
 
 export type ResizablePanelSidebarProps = ComponentPropsWithoutRef<"aside"> & {
-    /** The content rendered inside the component. */
     children: ReactNode;
 };
-
 export type ResizablePanelContentProps = ComponentPropsWithoutRef<"main"> & {
-    /** The content rendered inside the component. */
     children: ReactNode;
 };
-
-export type ResizablePanelHandleProps = ComponentPropsWithoutRef<"div">;
+export type ResizablePanelHandleProps = ComponentPropsWithoutRef<"div"> & {
+    "aria-label"?: string;
+    /** Restores defaultSize when the handle is double-clicked. */
+    resetOnDoubleClick?: boolean;
+};

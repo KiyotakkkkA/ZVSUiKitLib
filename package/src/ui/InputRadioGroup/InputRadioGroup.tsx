@@ -1,6 +1,5 @@
 "use client";
 
-
 import styles from "./InputRadioGroup.module.css";
 
 import { useId, useMemo } from "react";
@@ -61,9 +60,7 @@ export function InputRadioGroup<T extends BooleanModel>({
                 aria-disabled={disabled || undefined}
                 className={cn(
                     styles.s0,
-                    orientation === "vertical"
-                        ? styles.s2
-                        : styles.s3,
+                    orientation === "vertical" ? styles.s2 : styles.s3,
                     className,
                 )}
             >

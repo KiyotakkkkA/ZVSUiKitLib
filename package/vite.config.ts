@@ -20,6 +20,11 @@ const isExternal = (id: string) =>
     );
 
 export default defineConfig({
+    css: {
+        modules: {
+            generateScopedName: "zvs_[name]_[local]_[hash:base64:5]",
+        },
+    },
     build: {
         emptyOutDir: true,
         copyPublicDir: false,

@@ -62,10 +62,7 @@ const VirtualizedChildrenList = ({
                         ref={virtualizer.measureElement}
                         data-index={virtualItem.index}
                         role="none"
-                        className={cn(
-                            styles.s1,
-                            classNames?.item,
-                        )}
+                        className={cn(styles.s1, classNames?.item)}
                         style={{
                             transform: `translateY(${virtualItem.start}px)`,
                         }}
@@ -88,14 +85,7 @@ const TreeViewBase = ({
     ...props
 }: TreeViewProps) => {
     return (
-        <div
-            {...props}
-            role="tree"
-            className={cn(
-                styles.s2,
-                className,
-            )}
-        >
+        <div {...props} role="tree" className={cn(styles.s2, className)}>
             {virtualized ? (
                 <VirtualizedChildrenList
                     height={height}
@@ -166,7 +156,7 @@ const TreeViewCatalog = ({
                 onClick={() => setOpen(!isOpen)}
             >
                 <Icon
-                    icon="mdi:chevron-right"
+                    icon="chevron-right"
                     width={16}
                     height={16}
                     className={cn(
@@ -176,46 +166,31 @@ const TreeViewCatalog = ({
                     )}
                 />
 
-                <span
-                    className={cn(
-                        styles.s10,
-                        classNames?.folderIcon,
-                    )}
-                >
+                <span className={cn(styles.s10, classNames?.folderIcon)}>
                     {isOpen
                         ? (openIcon ??
                           icon ?? (
                               <Icon
-                                  icon="mdi:folder-open-outline"
+                                  icon="folder-open-outline"
                                   width={16}
                                   height={16}
                               />
                           ))
                         : (icon ?? (
                               <Icon
-                                  icon="mdi:folder-outline"
+                                  icon="folder-outline"
                                   width={16}
                                   height={16}
                               />
                           ))}
                 </span>
 
-                <span
-                    className={cn(
-                        styles.s11,
-                        classNames?.title,
-                    )}
-                >
+                <span className={cn(styles.s11, classNames?.title)}>
                     {title}
                 </span>
 
                 {rightSlot && (
-                    <span
-                        className={cn(
-                            styles.s12,
-                            classNames?.rightSlot,
-                        )}
-                    >
+                    <span className={cn(styles.s12, classNames?.rightSlot)}>
                         {rightSlot}
                     </span>
                 )}
@@ -238,10 +213,7 @@ const TreeViewCatalog = ({
                 ) : (
                     <div
                         role="group"
-                        className={cn(
-                            styles.s14,
-                            classNames?.nested,
-                        )}
+                        className={cn(styles.s14, classNames?.nested)}
                     >
                         {children}
                     </div>
@@ -278,9 +250,7 @@ const TreeViewElement = ({
             className={cn(
                 styles.s15,
                 styles.s16,
-                selected
-                    ? styles.s17
-                    : styles.s18,
+                selected ? styles.s17 : styles.s18,
                 disabled && styles.s19,
                 styles.s20,
                 className,
@@ -303,12 +273,7 @@ const TreeViewElement = ({
                 {children ?? (
                     <>
                         {label && (
-                            <span
-                                className={cn(
-                                    styles.s24,
-                                    classNames?.label,
-                                )}
-                            >
+                            <span className={cn(styles.s24, classNames?.label)}>
                                 {label}
                             </span>
                         )}
@@ -329,12 +294,7 @@ const TreeViewElement = ({
             </span>
 
             {rightSlot && (
-                <span
-                    className={cn(
-                        styles.s27,
-                        classNames?.rightSlot,
-                    )}
-                >
+                <span className={cn(styles.s27, classNames?.rightSlot)}>
                     {rightSlot}
                 </span>
             )}

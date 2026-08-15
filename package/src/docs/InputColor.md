@@ -27,18 +27,19 @@ type InputColorSize = "sm" | "md" | "lg";
 
 Extends: `BaseInputColorProps`.
 
-| Property         | Type                           | Default | Required | Description                                         |
-| ---------------- | ------------------------------ | ------- | -------- | --------------------------------------------------- |
-| `value`          | `string`                       | -       | No       | The value used by the component.                    |
-| `defaultValue`   | `string`                       | -       | No       | The default value used by the component.            |
-| `onChange`       | `(value: string) => void`      | -       | No       | Callback invoked when change occurs.                |
-| `label`          | `ReactNode`                    | -       | No       | Text used for the label.                            |
-| `showValue`      | `boolean`                      | -       | No       | Whether show value is enabled.                      |
-| `size`           | `InputColorSize`               | -       | No       | The size preset applied to the color input trigger. |
-| `palettePresets` | `string[] \| null`             | -       | No       | The palette presets used by the component.          |
-| `valueFormatter` | `(value: string) => ReactNode` | -       | No       | The value formatter used by the component.          |
-| `className`      | `DivClassName`                 | -       | No       | CSS classes applied to the root element.            |
-| `classNames`     | `InputColorClassNames`         | -       | No       | CSS classes applied to the component slots.         |
+| Property         | Type                                           | Default | Required | Description                                         |
+| ---------------- | ---------------------------------------------- | ------- | -------- | --------------------------------------------------- |
+| `value`          | `string`                                       | -       | No       | The value used by the component.                    |
+| `defaultValue`   | `string`                                       | -       | No       | The default value used by the component.            |
+| `rounded`        | [RoundVariants](./dict.md#roundvariants) \| "" | -       | No       | The rounded variant for the component.              |
+| `onChange`       | `(value: string) => void`                      | -       | No       | Callback invoked when change occurs.                |
+| `label`          | `ReactNode`                                    | -       | No       | Text used for the label.                            |
+| `showValue`      | `boolean`                                      | -       | No       | Whether show value is enabled.                      |
+| `size`           | `InputColorSize`                               | -       | No       | The size preset applied to the color input trigger. |
+| `palettePresets` | `string[] \| null`                             | -       | No       | The palette presets used by the component.          |
+| `valueFormatter` | `(value: string) => ReactNode`                 | -       | No       | The value formatter used by the component.          |
+| `className`      | `DivClassName`                                 | -       | No       | CSS classes applied to the root element.            |
+| `classNames`     | `InputColorClassNames`                         | -       | No       | CSS classes applied to the component slots.         |
 
 ### InputColorClassNames
 

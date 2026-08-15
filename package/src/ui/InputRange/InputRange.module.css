@@ -25,25 +25,20 @@
     @apply bg-main-100 shadow-sm;
 }
 
-.s6 {
-    @apply transition-transform duration-150;
-}
-
 .s7 {
     @apply bg-main-300;
-}
-
-.s8 {
 }
 
 .s9 {
 }
 
-.s10:hover .s8 { transform: translate(-50%, -50%) scale(1.1); }
-.s10:focus-within .s9 { box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-main-300) 60%, transparent); }
+.s10:focus-within .s9 {
+    box-shadow: 0 0 0 2px
+        color-mix(in srgb, var(--color-main-300) 60%, transparent);
+}
 
 .s10 {
-    @apply inline-flex w-full items-center gap-3;
+    @apply inline-flex w-64 max-w-full items-center gap-3;
 }
 
 .s11 {

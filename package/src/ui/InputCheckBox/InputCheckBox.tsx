@@ -26,12 +26,7 @@ export const InputCheckBox = ({
                 className,
             )}
         >
-            <span
-                className={cn(
-                    styles.s3,
-                    classNames?.control,
-                )}
-            >
+            <span className={cn(styles.s3, classNames?.control)}>
                 <input
                     {...props}
                     type="checkbox"
@@ -46,19 +41,9 @@ export const InputCheckBox = ({
                     className={cn(styles.s4, classNames?.input)}
                 />
                 <span
-                    className={cn(
-                        styles.s5,
-                        styles.s6,
-                        classNames?.indicator,
-                    )}
+                    className={cn(styles.s5, styles.s6, classNames?.indicator)}
                 />
-                <span
-                    className={cn(
-                        styles.s7,
-                        styles.s8,
-                        classNames?.mark,
-                    )}
-                />
+                <span className={cn(styles.s7, styles.s8, classNames?.mark)} />
             </span>
 
             {children && (

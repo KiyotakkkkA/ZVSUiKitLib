@@ -9,24 +9,12 @@ export function Code({
 }: CodeProps) {
     if (block)
         return (
-            <pre
-                className={cn(
-                    styles.s0,
-                    className,
-                )}
-                {...props}
-            >
+            <pre className={cn(styles.s0, className)} {...props}>
                 <code>{children}</code>
             </pre>
         );
     return (
-        <code
-            className={cn(
-                styles.s1,
-                className,
-            )}
-            {...props}
-        >
+        <code className={cn(styles.s1, className)} {...props}>
             {children}
         </code>
     );

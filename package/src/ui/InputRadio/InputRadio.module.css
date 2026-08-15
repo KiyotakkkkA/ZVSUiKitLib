@@ -35,9 +35,17 @@
 .s8 {
 }
 
-.s4:checked ~ .s6 { background-color: var(--color-main-700); }
-.s4:focus-visible ~ .s6 { box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-main-300) 50%, transparent); }
-.s4:checked ~ .s8 { scale: 1; opacity: 1; }
+.s4:checked ~ .s6 {
+    background-color: var(--color-main-700);
+}
+.s4:focus-visible ~ .s6 {
+    box-shadow: 0 0 0 2px
+        color-mix(in srgb, var(--color-main-300) 50%, transparent);
+}
+.s4:checked ~ .s8 {
+    scale: 1;
+    opacity: 1;
+}
 
 .s9 {
     @apply min-w-0;

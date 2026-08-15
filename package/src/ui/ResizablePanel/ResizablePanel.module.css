@@ -1,28 +1,48 @@
 @reference "tailwindcss";
 @reference "../theme.css";
 
-.s0 {
+.root {
     @apply flex min-h-0 min-w-0 overflow-hidden rounded-2xl border border-main-700/70 bg-main-900/50;
 }
-
-.s1 {
-    @apply min-h-0 shrink-0 overflow-hidden;
+.root[data-orientation="vertical"] {
+    @apply flex-col;
 }
-
-.s2 {
-    @apply min-h-0 min-w-0 flex-1 overflow-hidden;
+.sidebar {
+    @apply min-h-0 min-w-0 shrink-0 overflow-auto;
 }
-
-.s3 {
-    @apply relative flex w-2 shrink-0 cursor-col-resize items-center justify-center;
+.content {
+    @apply min-h-0 min-w-0 flex-1 overflow-auto;
 }
-
-.s4 {
-    @apply bg-main-900 hover:bg-main-800/60;
+.handle {
+    @apply relative flex shrink-0 touch-none items-center justify-center bg-main-900 outline-none transition-colors;
 }
-
-.s5 {
-    @apply h-10 w-px rounded-full bg-main-700 transition-colors duration-150;
+.handle[data-orientation="horizontal"] {
+    @apply w-2 cursor-col-resize;
 }
-
-.s3:hover .s5 { background-color: var(--color-main-400); }
+.handle[data-orientation="vertical"] {
+    @apply h-2 cursor-row-resize;
+}
+.handle:hover,
+.handle[data-resizing] {
+    @apply bg-main-800/60;
+}
+.handle:focus-visible {
+    @apply ring-2 ring-inset ring-main-400;
+}
+.handle[aria-disabled="true"] {
+    @apply cursor-not-allowed opacity-50;
+}
+.grip {
+    @apply rounded-full bg-main-700 transition-colors duration-150;
+}
+.handle[data-orientation="horizontal"] .grip {
+    @apply h-10 w-px;
+}
+.handle[data-orientation="vertical"] .grip {
+    @apply h-px w-10;
+}
+.handle:hover .grip,
+.handle:focus-visible .grip,
+.handle[data-resizing] .grip {
+    @apply bg-main-400;
+}

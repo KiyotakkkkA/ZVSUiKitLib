@@ -124,13 +124,7 @@ function AutoFillSelectorRoot({
 
     return (
         <AutoFillSelectorContext.Provider value={contextValue}>
-            <div
-                className={cn(
-                    styles.s0,
-                    className,
-                )}
-                {...props}
-            >
+            <div className={cn(styles.s0, className)} {...props}>
                 <Dropdown
                     className={styles.s1}
                     disabled={disabled}
@@ -191,13 +185,7 @@ function AutoFillSelectorTags({
     }
 
     return (
-        <div
-            className={cn(
-                styles.s7,
-                className,
-            )}
-            {...props}
-        >
+        <div className={cn(styles.s7, className)} {...props}>
             {value.map((item) => {
                 const option = options.find((opt) => opt.value === item);
 
@@ -217,10 +205,7 @@ function AutoFillSelectorTags({
                         {!disabled && (
                             <button
                                 type="button"
-                                className={cn(
-                                    styles.s10,
-                                    tagRemoveClassName,
-                                )}
+                                className={cn(styles.s10, tagRemoveClassName)}
                                 onClick={(event) => {
                                     event.stopPropagation();
                                     removeValue(item);
@@ -228,7 +213,7 @@ function AutoFillSelectorTags({
                                 aria-label="Удалить"
                             >
                                 <Icon
-                                    icon="mdi:close"
+                                    icon="close"
                                     className={styles.s11}
                                     aria-hidden
                                 />
@@ -276,11 +261,7 @@ function AutoFillSelectorInput({
                     removeValue(value[value.length - 1]);
                 }
             }}
-            className={cn(
-                styles.s12,
-                `zvs-${rounded}`,
-                className,
-            )}
+            className={cn(styles.s12, `zvs-${rounded}`, className)}
             {...props}
         />
     );
@@ -289,17 +270,14 @@ function AutoFillSelectorInput({
 function AutoFillSelectorMenu({
     className,
     children,
-    rounded = "rounded-2xl",
+    rounded = "rounded-4xl",
     ...props
 }: AutoFillSelectorMenuProps) {
     return (
         <Dropdown.Menu
             aria-multiselectable
             rounded={rounded}
-            className={cn(
-                styles.s13,
-                className,
-            )}
+            className={cn(styles.s13, className)}
             {...props}
         >
             <ScrollArea orientation="vertical" className={styles.s14}>
@@ -310,7 +288,7 @@ function AutoFillSelectorMenu({
 }
 
 function AutoFillSelectorOptions({
-    rounded = "rounded-2xl",
+    rounded = "rounded-3xl",
     className,
     optionClassName,
     optionLabelClassName,
@@ -332,13 +310,14 @@ function AutoFillSelectorOptions({
 
                 return (
                     <Dropdown.Item
+                        rounded={rounded}
                         key={option.value}
                         active={isSelected}
                         closeOnClick={false}
                         icon={
                             isSelected ? (
                                 <Icon
-                                    icon="mdi:check"
+                                    icon="check"
                                     className={cn(
                                         styles.s16,
                                         optionIconClassName,
@@ -355,19 +334,14 @@ function AutoFillSelectorOptions({
                             inputRef.current?.focus();
                         }}
                         className={cn(
-                            `w-full min-w-0 items-center gap-2 px-4 py-1.5 zvs-${rounded}`,
-                            isSelected
-                                ? styles.s17
-                                : styles.s18,
+                            `w-full min-w-0 items-center gap-2 px-4 py-1.5`,
+                            isSelected ? styles.s17 : styles.s18,
                             optionClassName,
                         )}
                     >
                         <span className={styles.s19}>
                             <span
-                                className={cn(
-                                    styles.s20,
-                                    optionLabelClassName,
-                                )}
+                                className={cn(styles.s20, optionLabelClassName)}
                             >
                                 {option.label}
                             </span>
@@ -402,10 +376,7 @@ function AutoFillSelectorEmpty({
     }
 
     return (
-        <div
-            className={cn(styles.s22, className)}
-            {...props}
-        >
+        <div className={cn(styles.s22, className)} {...props}>
             {children}
         </div>
     );

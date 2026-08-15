@@ -1,3 +1,60 @@
-@import "tailwindcss/preflight.css";
 @import "./ui/theme.css";
 @import "./ui/_shared/rounded.css";
+
+/*
+ * Keep the small subset of Preflight required by library components scoped to
+ * generated CSS Module classes. Importing Tailwind's global Preflight here
+ * would reset the host application's spacing and native elements.
+ */
+:where([class^="zvs_"], [class*=" zvs_"]),
+:where([class^="zvs_"], [class*=" zvs_"])::before,
+:where([class^="zvs_"], [class*=" zvs_"])::after {
+    box-sizing: border-box;
+    margin: 0;
+    border: 0 solid;
+    padding: 0;
+}
+
+:where(button, input, select, optgroup, textarea):where(
+    [class^="zvs_"],
+    [class*=" zvs_"]
+) {
+    margin: 0;
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    background-color: transparent;
+    opacity: 1;
+}
+
+:where(button, select):where([class^="zvs_"], [class*=" zvs_"]) {
+    text-transform: none;
+}
+
+:where(
+    button,
+    input[type="button"],
+    input[type="reset"],
+    input[type="submit"]
+):where([class^="zvs_"], [class*=" zvs_"]) {
+    appearance: button;
+}
+
+:where(img, svg, video, canvas, audio, iframe, embed, object):where(
+    [class^="zvs_"],
+    [class*=" zvs_"]
+) {
+    display: block;
+    vertical-align: middle;
+}
+
+:where(img, video):where([class^="zvs_"], [class*=" zvs_"]) {
+    max-width: 100%;
+    height: auto;
+}
+
+:where([hidden]):where([class^="zvs_"], [class*=" zvs_"]) {
+    display: none !important;
+}

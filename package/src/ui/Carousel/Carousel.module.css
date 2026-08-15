@@ -33,8 +33,16 @@
     @apply grid size-9 place-items-center rounded-lg border border-white/35 bg-white/20 shadow-sm backdrop-blur-sm transition;
 }
 
-.s3:hover .s4, .s6:hover .s7 { border-color: rgb(255 255 255 / 0.55); background-color: rgb(255 255 255 / 0.35); box-shadow: var(--shadow-md); }
-.s3:active .s4, .s6:active .s7 { scale: 0.95; }
+.s3:hover .s4,
+.s6:hover .s7 {
+    border-color: rgb(255 255 255 / 0.55);
+    background-color: rgb(255 255 255 / 0.35);
+    box-shadow: var(--shadow-md);
+}
+.s3:active .s4,
+.s6:active .s7 {
+    scale: 0.95;
+}
 
 .s8 {
     @apply size-7;

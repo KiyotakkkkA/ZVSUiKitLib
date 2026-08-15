@@ -37,19 +37,9 @@ const DefaultTooltip = memo(
         if (!active || !payload?.length) return null;
 
         return (
-            <div
-                className={cn(
-                    styles.s0,
-                    classNames?.tooltip,
-                )}
-            >
+            <div className={cn(styles.s0, classNames?.tooltip)}>
                 {label !== undefined && (
-                    <div
-                        className={cn(
-                            styles.s1,
-                            classNames?.tooltipLabel,
-                        )}
-                    >
+                    <div className={cn(styles.s1, classNames?.tooltipLabel)}>
                         {label}
                     </div>
                 )}
@@ -348,30 +338,18 @@ const ChartBase = ({
         <div
             {...props}
             style={style}
-            className={cn(
-                styles.s8,
-                className,
-                classNames?.root,
-            )}
+            className={cn(styles.s8, className, classNames?.root)}
         >
             {(title || description) && (
                 <div className={cn(styles.s9, classNames?.header)}>
                     {title && (
-                        <div
-                            className={cn(
-                                styles.s10,
-                                classNames?.title,
-                            )}
-                        >
+                        <div className={cn(styles.s10, classNames?.title)}>
                             {title}
                         </div>
                     )}
                     {description && (
                         <div
-                            className={cn(
-                                styles.s11,
-                                classNames?.description,
-                            )}
+                            className={cn(styles.s11, classNames?.description)}
                         >
                             {description}
                         </div>
@@ -386,10 +364,7 @@ const ChartBase = ({
                     </ResponsiveContainer>
                 ) : (
                     <div
-                        className={cn(
-                            styles.s13,
-                            classNames?.empty,
-                        )}
+                        className={cn(styles.s13, classNames?.empty)}
                         style={{ height }}
                     >
                         {emptyState}

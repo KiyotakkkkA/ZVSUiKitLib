@@ -11,37 +11,37 @@ const variantStyles: Record<
     primary: {
         box: styles.primary,
         icon: styles.primaryIcon,
-        defaultIcon: "mdi:information",
+        defaultIcon: "information",
     },
     secondary: {
         box: styles.secondary,
         icon: styles.secondaryIcon,
-        defaultIcon: "mdi:information-outline",
+        defaultIcon: "information-outline",
     },
     tertiary: {
         box: styles.tertiary,
         icon: styles.tertiaryIcon,
-        defaultIcon: "mdi:sparkles-outline",
+        defaultIcon: "sparkles-outline",
     },
     success: {
         box: styles.success,
         icon: styles.successIcon,
-        defaultIcon: "mdi:check-circle-outline",
+        defaultIcon: "check-circle-outline",
     },
     warning: {
         box: styles.warning,
         icon: styles.warningIcon,
-        defaultIcon: "mdi:alert-outline",
+        defaultIcon: "alert-outline",
     },
     danger: {
         box: styles.danger,
         icon: styles.dangerIcon,
-        defaultIcon: "mdi:close-octagon",
+        defaultIcon: "close-octagon",
     },
     info: {
         box: styles.info,
         icon: styles.infoIcon,
-        defaultIcon: "mdi:information-outline",
+        defaultIcon: "information-outline",
     },
 };
 
@@ -69,11 +69,7 @@ export function Alert({
             {...props}
         >
             <span
-                className={cn(
-                    styles.s1,
-                    variantStyle.icon,
-                    classNames?.icon,
-                )}
+                className={cn(styles.s1, variantStyle.icon, classNames?.icon)}
             >
                 {icon ?? (
                     <Icon
@@ -85,14 +81,7 @@ export function Alert({
             </span>
             <div className={cn(styles.s2, classNames?.content)}>
                 {title && (
-                    <p
-                        className={cn(
-                            styles.s3,
-                            classNames?.title,
-                        )}
-                    >
-                        {title}
-                    </p>
+                    <p className={cn(styles.s3, classNames?.title)}>{title}</p>
                 )}
                 {children && (
                     <div className={cn(styles.s4, classNames?.body)}>

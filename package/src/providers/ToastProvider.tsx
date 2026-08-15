@@ -51,43 +51,43 @@ const toastStyles: Record<
     { icon: string; accent: string; progress: string; border: string }
 > = {
     primary: {
-        icon: "mdi:information-outline",
+        icon: "information-outline",
         accent: "text-main-800",
         progress: "bg-main-800",
         border: "border-transparent",
     },
     secondary: {
-        icon: "mdi:information-outline",
+        icon: "information-outline",
         accent: "text-main-200",
         progress: "bg-main-500",
         border: "border-main-600",
     },
     tertiary: {
-        icon: "mdi:information-outline",
+        icon: "information-outline",
         accent: "text-accent-light",
         progress: "bg-accent-medium",
         border: "border-accent-dark/70",
     },
     info: {
-        icon: "mdi:information",
+        icon: "information",
         accent: "text-info-light",
         progress: "bg-info-medium",
         border: "border-info-dark/70",
     },
     warning: {
-        icon: "mdi:alert-outline",
+        icon: "alert-outline",
         accent: "text-warning-light",
         progress: "bg-warning-medium",
         border: "border-warning-dark/70",
     },
     success: {
-        icon: "mdi:check-circle-outline",
+        icon: "check-circle-outline",
         accent: "text-success-light",
         progress: "bg-success-medium",
         border: "border-success-dark/70",
     },
     danger: {
-        icon: "mdi:close-circle-outline",
+        icon: "close-circle-outline",
         accent: "text-danger-light",
         progress: "bg-danger-medium",
         border: "border-danger-dark/70",

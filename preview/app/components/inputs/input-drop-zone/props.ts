@@ -44,16 +44,6 @@ export const componentProps: ComponentAPIDoc = {
                 description: "Accepted file types, same format as file input.",
                 defaultValue: '"image/*"',
             },
-            emptyIcon: {
-                type: "string",
-                description: "Icon shown when empty.",
-                defaultValue: '"mdi:image-plus-outline"',
-            },
-            selectedIcon: {
-                type: "string",
-                description: "Icon shown for multiple selected state.",
-                defaultValue: '"mdi:image-check-outline"',
-            },
             emptyTitle: {
                 type: "string",
                 description: "Empty state title.",

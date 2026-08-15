@@ -113,9 +113,7 @@ function SlidedPanelRoot({
                 className={cn(
                     styles.s16,
                     overlayPlacementClasses[panelPlacement],
-                    open
-                        ? styles.s17
-                        : styles.s18,
+                    open ? styles.s17 : styles.s18,
                 )}
                 onClick={onOverlayClick}
                 onKeyDown={onOverlayKeyDown}
@@ -157,13 +155,7 @@ function SlidedPanelHeader({
     const { onClose } = useSlidedPanelContext();
 
     return (
-        <header
-            className={cn(
-                styles.s23,
-                className,
-            )}
-            {...props}
-        >
+        <header className={cn(styles.s23, className)} {...props}>
             <div className={styles.s24}>{children}</div>
 
             <button
@@ -172,7 +164,7 @@ function SlidedPanelHeader({
                 className={styles.s25}
                 onClick={onClose}
             >
-                <Icon icon="mdi:close" width={18} height={18} />
+                <Icon icon="close" width={18} height={18} />
             </button>
         </header>
     );
@@ -184,13 +176,7 @@ function SlidedPanelTitle({
     ...props
 }: SlidedPanelTitleProps) {
     return (
-        <p
-            className={cn(
-                styles.s26,
-                className,
-            )}
-            {...props}
-        >
+        <p className={cn(styles.s26, className)} {...props}>
             {children}
         </p>
     );
@@ -202,10 +188,7 @@ function SlidedPanelSubtitle({
     ...props
 }: SlidedPanelSubtitleProps) {
     return (
-        <p
-            className={cn(styles.s27, className)}
-            {...props}
-        >
+        <p className={cn(styles.s27, className)} {...props}>
             {children}
         </p>
     );
@@ -229,10 +212,7 @@ function SlidedPanelFooter({
     ...props
 }: SlidedPanelFooterProps) {
     return (
-        <footer
-            className={cn(styles.s29, className)}
-            {...props}
-        >
+        <footer className={cn(styles.s29, className)} {...props}>
             {children}
         </footer>
     );

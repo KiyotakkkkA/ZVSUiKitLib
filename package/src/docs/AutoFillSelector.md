@@ -78,7 +78,7 @@ Extends: `HTMLAttributes<HTMLDivElement>`.
 
 | Property  | Type                                     | Default         | Required | Description                                        |
 | --------- | ---------------------------------------- | --------------- | -------- | -------------------------------------------------- |
-| `rounded` | [RoundVariants](./dict.md#roundvariants) | `"rounded-2xl"` | No       | The border-radius preset applied to the component. |
+| `rounded` | [RoundVariants](./dict.md#roundvariants) | `"rounded-4xl"` | No       | The border-radius preset applied to the component. |
 
 ### AutoFillSelector.Options
 
@@ -90,7 +90,7 @@ Extends: `HTMLAttributes<HTMLDivElement>`.
 | `optionLabelClassName`       | `SpanClassName`                          | -               | No       | CSS classes applied to the option label element.       |
 | `optionDescriptionClassName` | `SpanClassName`                          | -               | No       | CSS classes applied to the option description element. |
 | `optionIconClassName`        | `SvgClassName`                           | -               | No       | CSS classes applied to the option icon element.        |
-| `rounded`                    | [RoundVariants](./dict.md#roundvariants) | `"rounded-2xl"` | No       | The border-radius preset applied to the component.     |
+| `rounded`                    | [RoundVariants](./dict.md#roundvariants) | `"rounded-3xl"` | No       | The border-radius preset applied to the component.     |
 
 ### AutoFillSelector.Empty
 

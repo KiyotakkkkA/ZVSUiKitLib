@@ -239,24 +239,11 @@ export function Calendar({
     }, [activeViewDate, maxDay]);
 
     return (
-        <div
-            className={cn(
-                styles.s0,
-                className,
-            )}
-        >
-            <div
-                className={cn(
-                    styles.s1,
-                    classNames?.header,
-                )}
-            >
+        <div className={cn(styles.s0, className)}>
+            <div className={cn(styles.s1, classNames?.header)}>
                 <Button
                     variant="secondary"
-                    className={cn(
-                        styles.s2,
-                        classNames?.navButton,
-                    )}
+                    className={cn(styles.s2, classNames?.navButton)}
                     onClick={() =>
                         setViewMonth(
                             new Date(
@@ -271,12 +258,7 @@ export function Calendar({
                     {"<"}
                 </Button>
 
-                <div
-                    className={cn(
-                        styles.s3,
-                        classNames?.selectors,
-                    )}
-                >
+                <div className={cn(styles.s3, classNames?.selectors)}>
                     <Dropdown menuWidth={208} menuPlacement="bottom-left">
                         <Dropdown.Trigger
                             rounded="rounded-lg"
@@ -312,10 +294,7 @@ export function Calendar({
                         </Dropdown.Menu>
                     </Dropdown>
 
-                    <span
-                        className={styles.s8}
-                        aria-hidden
-                    />
+                    <span className={styles.s8} aria-hidden />
 
                     <Dropdown menuWidth={152} menuPlacement="bottom-right">
                         <Dropdown.Trigger
@@ -358,10 +337,7 @@ export function Calendar({
 
                 <Button
                     variant="secondary"
-                    className={cn(
-                        styles.s13,
-                        classNames?.navButton,
-                    )}
+                    className={cn(styles.s13, classNames?.navButton)}
                     onClick={() =>
                         setViewMonth(
                             new Date(
@@ -381,19 +357,14 @@ export function Calendar({
                 {weekdayLabels.map((label) => (
                     <span
                         key={label}
-                        className={cn(
-                            styles.s15,
-                            classNames?.weekday,
-                        )}
+                        className={cn(styles.s15, classNames?.weekday)}
                     >
                         {label}
                     </span>
                 ))}
             </div>
 
-            <div
-                className={cn(styles.s16, classNames?.days)}
-            >
+            <div className={cn(styles.s16, classNames?.days)}>
                 {dayCells.map((day) => {
                     if (!showOutsideDays && !day.isCurrentMonth) {
                         return (
@@ -412,22 +383,14 @@ export function Calendar({
                             className={cn(
                                 styles.s18,
                                 styles.s19,
-                                day.isCurrentMonth
-                                    ? styles.s20
-                                    : styles.s21,
-                                day.isToday &&
-                                    !day.isSelected &&
-                                    styles.s22,
-                                day.isSelected &&
-                                    styles.s23,
-                                day.isToday &&
-                                    day.isSelected &&
-                                    styles.s24,
+                                day.isCurrentMonth ? styles.s20 : styles.s21,
+                                day.isToday && !day.isSelected && styles.s22,
+                                day.isSelected && styles.s23,
+                                day.isToday && day.isSelected && styles.s24,
                                 !day.isSelected &&
                                     !day.isDisabled &&
                                     styles.s25,
-                                day.isDisabled &&
-                                    styles.s26,
+                                day.isDisabled && styles.s26,
                                 typeof classNames?.day === "function"
                                     ? classNames.day(day)
                                     : classNames?.day,

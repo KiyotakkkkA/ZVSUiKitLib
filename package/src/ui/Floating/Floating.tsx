@@ -1,6 +1,5 @@
 "use client";
 
-
 import styles from "./Floating.module.css";
 
 import { createContext, useContext, useMemo } from "react";
@@ -46,10 +45,7 @@ function FloatingRoot({
 
     return (
         <FloatingContext.Provider value={contextValue}>
-            <div
-                className={cn(styles.s0, className)}
-                {...props}
-            >
+            <div className={cn(styles.s0, className)} {...props}>
                 {children}
             </div>
         </FloatingContext.Provider>

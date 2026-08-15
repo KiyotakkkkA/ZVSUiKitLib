@@ -57,10 +57,10 @@ import { Select } from "@kiyotakkkka/zvs-uikit-lib";
 
 ### Select.Trigger
 
-| Property    | Type                                           | Default         | Required | Description                                        |
-| ----------- | ---------------------------------------------- | --------------- | -------- | -------------------------------------------------- |
-| `className` | `string`                                       | -               | No       | CSS classes applied to the root element.           |
-| `rounded`   | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-2xl"` | No       | The border-radius preset applied to the component. |
+| Property    | Type                                           | Default          | Required | Description                                        |
+| ----------- | ---------------------------------------------- | ---------------- | -------- | -------------------------------------------------- |
+| `className` | `string`                                       | -                | No       | CSS classes applied to the root element.           |
+| `rounded`   | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-full"` | No       | The border-radius preset applied to the component. |
 
 ### Select.Menu
 

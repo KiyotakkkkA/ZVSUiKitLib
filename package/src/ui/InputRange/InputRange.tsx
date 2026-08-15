@@ -98,20 +98,13 @@ const Thumb = ({
                 aria-valuenow={value}
                 onChange={(e) => onChange(index, Number(e.target.value))}
                 onKeyDown={handleKeyDown}
-                className={cn(
-                    styles.s0,
-                    inputClassName,
-                )}
+                className={cn(styles.s0, inputClassName)}
             />
 
             {showLabel && (
                 <span
                     aria-hidden="true"
-                    className={cn(
-                        styles.s1,
-                        styles.s2,
-                        labelClassName,
-                    )}
+                    className={cn(styles.s1, styles.s2, labelClassName)}
                     style={{
                         left: `${percent}%`,
                         transform: `translateX(clamp(0%, calc(-1 * ${percent}%), -100%))`,
@@ -127,8 +120,7 @@ const Thumb = ({
                     styles.s3,
                     styles.s4,
                     styles.s5,
-                    styles.s6,
-                    disabled ? styles.s7 : styles.s8,
+                    disabled && styles.s7,
                     styles.s9,
                     thumbClassName,
                 )}
@@ -263,10 +255,7 @@ export const InputRange = ({
                         )}
                     >
                         <div
-                            className={cn(
-                                styles.s19,
-                                classNames?.fill,
-                            )}
+                            className={cn(styles.s19, classNames?.fill)}
                             style={{
                                 left: `${startPercent}%`,
                                 width: `${endPercent - startPercent}%`,

@@ -17,7 +17,10 @@
     align-items: start;
 }
 
-.s2:has(> .s7) { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-areas: "top-title top-title top-badge" "icon top-subtitle badge" "icon content-title badge" "icon description description"; }
+.s2:has(> .s7) {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas: "top-title top-title top-badge" "icon top-subtitle badge" "icon content-title badge" "icon description description";
+}
 
 .s3 {
     @apply transition-colors hover:bg-main-800/40;

@@ -20,14 +20,14 @@ import { Modal } from "@kiyotakkkka/zvs-uikit-lib";
 
 ### Modal
 
-| Property              | Type                                           | Default        | Required | Description                                        |
-| --------------------- | ---------------------------------------------- | -------------- | -------- | -------------------------------------------------- |
-| `open`                | `boolean`                                      | -              | Yes      | Whether open is enabled.                           |
-| `onClose`             | `() => void`                                   | -              | Yes      | Callback invoked when close occurs.                |
-| `className`           | `DivClassName`                                 | -              | No       | CSS classes applied to the root element.           |
-| `overlayClassName`    | `DivClassName`                                 | -              | No       | CSS classes applied to the overlay element.        |
-| `closeOnOverlayClick` | `boolean`                                      | `true`         | No       | Function used to close on overlay click.           |
-| `rounded`             | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-lg"` | No       | The border-radius preset applied to the component. |
+| Property              | Type                                           | Default         | Required | Description                                        |
+| --------------------- | ---------------------------------------------- | --------------- | -------- | -------------------------------------------------- |
+| `open`                | `boolean`                                      | -               | Yes      | Whether open is enabled.                           |
+| `onClose`             | `() => void`                                   | -               | Yes      | Callback invoked when close occurs.                |
+| `className`           | `DivClassName`                                 | -               | No       | CSS classes applied to the root element.           |
+| `overlayClassName`    | `DivClassName`                                 | -               | No       | CSS classes applied to the overlay element.        |
+| `closeOnOverlayClick` | `boolean`                                      | `true`          | No       | Function used to close on overlay click.           |
+| `rounded`             | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-4xl"` | No       | The border-radius preset applied to the component. |
 
 ### Modal.Content
 

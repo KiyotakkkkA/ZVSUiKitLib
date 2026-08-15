@@ -4,6 +4,7 @@ import type {
     DivClassName,
     InputClassName,
     LabelClassName,
+    RoundVariants,
     SpanClassName,
 } from "../_shared/types";
 
@@ -56,6 +57,8 @@ export type InputColorProps = BaseInputColorProps & {
     value?: string;
     /** The default value used by the component. */
     defaultValue?: string;
+    /** The rounded variant for the component. */
+    rounded?: RoundVariants | "";
     /** Callback invoked when change occurs. */
     onChange?: (value: string) => void;
     /** Text used for the label. */

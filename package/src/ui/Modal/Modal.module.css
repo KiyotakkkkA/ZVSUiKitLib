@@ -35,7 +35,21 @@
     animation: modal-panel-in 220ms ease-out;
 }
 
-@keyframes modal-fade-in { from { opacity: 0; } }
-@keyframes modal-panel-in { from { opacity: 0; transform: translateY(0.5rem) scale(0.95); } }
+@keyframes modal-fade-in {
+    from {
+        opacity: 0;
+    }
+}
+@keyframes modal-panel-in {
+    from {
+        opacity: 0;
+        transform: translateY(0.5rem) scale(0.95);
+    }
+}
 
-@media (prefers-reduced-motion: reduce) { .s5, .s7 { animation: none; } }
+@media (prefers-reduced-motion: reduce) {
+    .s5,
+    .s7 {
+        animation: none;
+    }
+}

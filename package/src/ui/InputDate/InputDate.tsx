@@ -132,7 +132,7 @@ export function InputDate({
                                                     }}
                                                 >
                                                     <Icon
-                                                        icon="mdi:close"
+                                                        icon="close"
                                                         className={styles.s7}
                                                         aria-hidden
                                                     />
@@ -140,7 +140,7 @@ export function InputDate({
                                             )}
 
                                         <Icon
-                                            icon="mdi:chevron-down"
+                                            icon="chevron-down"
                                             className={cn(
                                                 styles.s8,
                                                 open && styles.s9,
@@ -153,9 +153,7 @@ export function InputDate({
                                 <span
                                     className={cn(
                                         styles.s10,
-                                        selectedDate
-                                            ? styles.s11
-                                            : styles.s12,
+                                        selectedDate ? styles.s11 : styles.s12,
                                         classNames?.value,
                                     )}
                                 >
@@ -165,10 +163,7 @@ export function InputDate({
 
                             <Dropdown.Menu
                                 role="dialog"
-                                className={cn(
-                                    styles.s13,
-                                    classNames?.menu,
-                                )}
+                                className={cn(styles.s13, classNames?.menu)}
                             >
                                 <Calendar
                                     value={selectedDate}

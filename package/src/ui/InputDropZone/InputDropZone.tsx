@@ -4,8 +4,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { cn } from "../../lib/utils";
 import type { InputDropZoneProps, SelectedFileItem } from "./types";
 
-const imageFileIcon = "mdi:file-image-outline";
-const genericFileIcon = "mdi:file-outline";
+const imageFileIcon = "file-image-outline";
+const genericFileIcon = "file-outline";
 
 const getAcceptRules = (accept: string) => {
     return accept
@@ -72,8 +72,8 @@ export const InputDropZone = ({
     multiple = false,
     disabled = false,
     accept = "image/*",
-    emptyIcon = "mdi:image-plus-outline",
-    selectedIcon = "mdi:image-check-outline",
+    emptyIcon = "image-plus-outline",
+    selectedIcon = "image-check-outline",
     emptyTitle = "Перетащите картинку сюда",
     emptyDescription = "или нажмите для выбора файла",
     selectedDescription = "Файл будет загружен.",
@@ -302,12 +302,8 @@ export const InputDropZone = ({
                         <span className={styles.s20}>
                             <Icon icon={emptyIcon} width={26} height={26} />
                         </span>
-                        <span className={styles.s21}>
-                            {emptyTitle}
-                        </span>
-                        <span className={styles.s22}>
-                            {emptyDescription}
-                        </span>
+                        <span className={styles.s21}>{emptyTitle}</span>
+                        <span className={styles.s22}>{emptyDescription}</span>
                     </span>
                 )}
             </button>
@@ -315,10 +311,7 @@ export const InputDropZone = ({
             {multiple && hasSelection && (
                 <div className={styles.s23}>
                     {selectedItems.map((item) => (
-                        <div
-                            key={item.id}
-                            className={styles.s24}
-                        >
+                        <div key={item.id} className={styles.s24}>
                             {item.previewSrc ? (
                                 <span className={styles.s25}>
                                     <img
@@ -336,9 +329,7 @@ export const InputDropZone = ({
                                     />
                                 </span>
                             )}
-                            <span className={styles.s28}>
-                                {item.name}
-                            </span>
+                            <span className={styles.s28}>{item.name}</span>
                             <button
                                 type="button"
                                 disabled={disabled}

@@ -13,13 +13,7 @@ export function Tabs({
 }: TabsProps) {
     return (
         <div className={cn(styles.s0, className)} {...props}>
-            <div
-                role="tablist"
-                className={cn(
-                    styles.s1,
-                    classNames?.list,
-                )}
-            >
+            <div role="tablist" className={cn(styles.s1, classNames?.list)}>
                 {options.map((option) => {
                     const active = option.value === value;
 
@@ -36,8 +30,7 @@ export function Tabs({
                                 styles.s2,
                                 styles.s3,
                                 styles.s4,
-                                active &&
-                                    styles.s5,
+                                active && styles.s5,
                                 classNames?.tab,
                                 active && classNames?.activeTab,
                                 tabProps?.className,

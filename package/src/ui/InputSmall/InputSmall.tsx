@@ -26,25 +26,25 @@ const presetConfig: Record<InputPreset, PresetConfig> = {
         type: "search",
         inputMode: "search",
         autoComplete: "off",
-        icon: "mdi:magnify",
+        icon: "magnify",
     },
     email: {
         type: "email",
         inputMode: "email",
         autoComplete: "email",
-        icon: "mdi:email-outline",
+        icon: "email-outline",
     },
     phone: {
         type: "tel",
         inputMode: "tel",
         autoComplete: "tel",
-        icon: "mdi:phone-outline",
+        icon: "phone",
     },
     url: {
         type: "url",
         inputMode: "url",
         autoComplete: "url",
-        icon: "mdi:link-variant",
+        icon: "link-variant",
     },
 };
 
@@ -158,8 +158,7 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
                         styles.s5,
                         hasLeadingIcon && styles.s6,
                         hasTrailingAction && styles.s7,
-                        isSearchPreset &&
-                            styles.s8,
+                        isSearchPreset && styles.s8,
                         classNames?.input,
                     )}
                 />
@@ -175,6 +174,7 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
                         className={cn(
                             styles.s9,
                             styles.s10,
+                            rounded && `zvs-${rounded}`,
                             classNames?.trailingButton,
                         )}
                         onPointerDown={(event) => event.preventDefault()}
@@ -185,8 +185,8 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
                         <Icon
                             icon={
                                 passwordVisible
-                                    ? "mdi:eye-off-outline"
-                                    : "mdi:eye-outline"
+                                    ? "eye-off-outline"
+                                    : "eye-outline"
                             }
                             aria-hidden
                             className={cn(styles.s11, classNames?.icon)}
@@ -208,7 +208,7 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
                         onClick={clear}
                     >
                         <Icon
-                            icon="mdi:close"
+                            icon="close"
                             aria-hidden
                             className={cn(styles.s14, classNames?.icon)}
                         />

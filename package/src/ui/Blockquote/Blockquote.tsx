@@ -8,19 +8,9 @@ export function Blockquote({
     ...props
 }: BlockquoteProps) {
     return (
-        <blockquote
-            className={cn(
-                styles.s0,
-                className,
-            )}
-            {...props}
-        >
+        <blockquote className={cn(styles.s0, className)} {...props}>
             <div>{children}</div>
-            {cite && (
-                <footer className={styles.s1}>
-                    {cite}
-                </footer>
-            )}
+            {cite && <footer className={styles.s1}>{cite}</footer>}
         </blockquote>
     );
 }

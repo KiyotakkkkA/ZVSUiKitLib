@@ -1,6 +1,5 @@
 "use client";
 
-
 import styles from "./ContextMenu.module.css";
 
 import {
@@ -32,11 +31,9 @@ import type {
 
 const CONTEXT_MENU_VIEWPORT_PADDING = 8;
 
-const contentClassName =
-    styles.content;
+const contentClassName = styles.content;
 
-const itemClassName =
-    styles.item;
+const itemClassName = styles.item;
 
 type ContextMenuContextValue = {
     state: ContextMenuState;
@@ -308,9 +305,7 @@ const ContextMenuItemBase = ({
             className={cn(
                 itemClassName,
                 inset && styles.s1,
-                danger
-                    ? styles.s2
-                    : styles.s3,
+                danger ? styles.s2 : styles.s3,
                 disabled && styles.s4,
                 className,
             )}
@@ -323,12 +318,7 @@ const ContextMenuItemBase = ({
             }}
         >
             {leftSlot && (
-                <span
-                    className={cn(
-                        styles.s5,
-                        danger ? styles.s6 : styles.s7,
-                    )}
-                >
+                <span className={cn(styles.s5, danger ? styles.s6 : styles.s7)}>
                     {leftSlot}
                 </span>
             )}
@@ -337,10 +327,7 @@ const ContextMenuItemBase = ({
 
             {rightSlot && (
                 <span
-                    className={cn(
-                        styles.s9,
-                        danger ? styles.s10 : styles.s11,
-                    )}
+                    className={cn(styles.s9, danger ? styles.s10 : styles.s11)}
                 >
                     {rightSlot}
                 </span>
@@ -364,11 +351,7 @@ const ContextMenuLabel = ({
 }: ContextMenuLabelProps) => (
     <div
         {...props}
-        className={cn(
-            styles.s12,
-            inset && styles.s13,
-            className,
-        )}
+        className={cn(styles.s12, inset && styles.s13, className)}
     />
 );
 
@@ -557,9 +540,7 @@ const ContextMenuSubTrigger = ({
             onFocus={openSub}
             onPointerEnter={openSub}
         >
-            {leftSlot && (
-                <span className={styles.s20}>{leftSlot}</span>
-            )}
+            {leftSlot && <span className={styles.s20}>{leftSlot}</span>}
 
             <span className={styles.s21}>{children}</span>
 
@@ -607,11 +588,7 @@ const ContextMenuSubContent = ({
             <div
                 {...props}
                 role="menu"
-                className={cn(
-                    styles.s26,
-                    contentClassName,
-                    className,
-                )}
+                className={cn(styles.s26, contentClassName, className)}
                 style={{
                     left: `calc(100% + ${sideOffset}px)`,
                     ...style,

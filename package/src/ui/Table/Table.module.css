@@ -25,6 +25,12 @@
     @apply text-main-300 hover:text-main-100;
 }
 
-.defaultHeaderCell { @apply px-5 py-3 text-xs font-bold uppercase tracking-wide text-main-300; }
-.defaultRow { @apply border-b border-main-800 last:border-b-0; }
-.defaultCell { @apply px-5 py-4 text-sm text-main-300; }
+.defaultHeaderCell {
+    @apply px-5 py-3 text-xs font-bold uppercase tracking-wide text-main-300;
+}
+.defaultRow {
+    @apply border-b border-main-800 last:border-b-0;
+}
+.defaultCell {
+    @apply px-5 py-4 text-sm text-main-300;
+}

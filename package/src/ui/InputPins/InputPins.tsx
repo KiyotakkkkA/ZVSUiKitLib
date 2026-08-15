@@ -235,13 +235,7 @@ export const InputPins = forwardRef<HTMLDivElement, InputPinsProps>(
         );
 
         return (
-            <div
-                ref={ref}
-                className={cn(
-                    styles.s7,
-                    className,
-                )}
-            >
+            <div ref={ref} className={cn(styles.s7, className)}>
                 <div
                     role="group"
                     aria-label={label ?? "Pin input"}
@@ -272,9 +266,7 @@ export const InputPins = forwardRef<HTMLDivElement, InputPinsProps>(
                     ))}
                 </div>
 
-                {label && (
-                    <span className={styles.s9}>{label}</span>
-                )}
+                {label && <span className={styles.s9}>{label}</span>}
             </div>
         );
     },

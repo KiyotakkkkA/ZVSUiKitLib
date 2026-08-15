@@ -21,11 +21,26 @@
 }
 
 .s0:hover .s4,
-.s0:focus-within .s4 { visibility: visible; opacity: 1; }
+.s0:focus-within .s4 {
+    visibility: visible;
+    opacity: 1;
+}
 
-.topLeft { @apply bottom-full left-0 mb-2 origin-bottom-left; }
-.topCenter { @apply bottom-full left-1/2 mb-2 -translate-x-1/2 origin-bottom; }
-.topRight { @apply bottom-full right-0 mb-2 origin-bottom-right; }
-.bottomLeft { @apply top-full left-0 mt-2 origin-top-left; }
-.bottomCenter { @apply top-full left-1/2 mt-2 -translate-x-1/2 origin-top; }
-.bottomRight { @apply top-full right-0 mt-2 origin-top-right; }
+.topLeft {
+    @apply bottom-full left-0 mb-2 origin-bottom-left;
+}
+.topCenter {
+    @apply bottom-full left-1/2 mb-2 -translate-x-1/2 origin-bottom;
+}
+.topRight {
+    @apply bottom-full right-0 mb-2 origin-bottom-right;
+}
+.bottomLeft {
+    @apply top-full left-0 mt-2 origin-top-left;
+}
+.bottomCenter {
+    @apply top-full left-1/2 mt-2 -translate-x-1/2 origin-top;
+}
+.bottomRight {
+    @apply top-full right-0 mt-2 origin-top-right;
+}

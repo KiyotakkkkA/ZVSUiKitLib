@@ -124,18 +124,9 @@ export const InputSlider = ({
                     )}
                 />
 
-                <div
-                    className={cn(
-                        styles.s7,
-                        styles.s8,
-                        classNames?.track,
-                    )}
-                >
+                <div className={cn(styles.s7, styles.s8, classNames?.track)}>
                     <div
-                        className={cn(
-                            styles.s9,
-                            classNames?.fill,
-                        )}
+                        className={cn(styles.s9, classNames?.fill)}
                         style={{ width: `${percent}%` }}
                     />
                 </div>
@@ -143,9 +134,8 @@ export const InputSlider = ({
                 <span
                     className={cn(
                         styles.s10,
-                        styles.s11,
                         styles.s12,
-                        disabled ? styles.s13 : styles.s14,
+                        disabled && styles.s13,
                         classNames?.thumb,
                     )}
                     style={{ left: `${percent}%` }}
@@ -153,12 +143,7 @@ export const InputSlider = ({
             </div>
 
             {showValue && (
-                <span
-                    className={cn(
-                        styles.s15,
-                        classNames?.value,
-                    )}
-                >
+                <span className={cn(styles.s15, classNames?.value)}>
                     {formattedValue}
                 </span>
             )}

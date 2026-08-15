@@ -34,14 +34,7 @@ const DataDisplayItem = ({
     className,
     ...props
 }: DataDisplayItemProps) => (
-    <div
-        className={cn(
-            styles.s2,
-            styles.s3,
-            className,
-        )}
-        {...props}
-    >
+    <div className={cn(styles.s2, styles.s3, className)} {...props}>
         {children}
     </div>
 );
@@ -51,13 +44,7 @@ const DataDisplayItemTopTitle = ({
     className,
     ...props
 }: DataDisplayItemPartProps) => (
-    <div
-        className={cn(
-            styles.s4,
-            className,
-        )}
-        {...props}
-    >
+    <div className={cn(styles.s4, className)} {...props}>
         {children}
     </div>
 );
@@ -67,13 +54,7 @@ const DataDisplayItemTopSubTitle = ({
     className,
     ...props
 }: DataDisplayItemPartProps) => (
-    <div
-        className={cn(
-            styles.s5,
-            className,
-        )}
-        {...props}
-    >
+    <div className={cn(styles.s5, className)} {...props}>
         {children}
     </div>
 );
@@ -83,13 +64,7 @@ const DataDisplayItemTopBadge = ({
     className,
     ...props
 }: DataDisplayItemPartProps) => (
-    <div
-        className={cn(
-            styles.s6,
-            className,
-        )}
-        {...props}
-    >
+    <div className={cn(styles.s6, className)} {...props}>
         {children}
     </div>
 );
@@ -99,13 +74,7 @@ const DataDisplayItemContentIcon = ({
     className,
     ...props
 }: DataDisplayItemPartProps) => (
-    <div
-        className={cn(
-            styles.s7,
-            className,
-        )}
-        {...props}
-    >
+    <div className={cn(styles.s7, className)} {...props}>
         {children}
     </div>
 );
@@ -115,13 +84,7 @@ const DataDisplayItemContentTitle = ({
     className,
     ...props
 }: DataDisplayItemPartProps) => (
-    <div
-        className={cn(
-            styles.s8,
-            className,
-        )}
-        {...props}
-    >
+    <div className={cn(styles.s8, className)} {...props}>
         {children}
     </div>
 );
@@ -131,13 +94,7 @@ const DataDisplayItemContentDescription = ({
     className,
     ...props
 }: DataDisplayItemPartProps) => (
-    <div
-        className={cn(
-            styles.s9,
-            className,
-        )}
-        {...props}
-    >
+    <div className={cn(styles.s9, className)} {...props}>
         {children}
     </div>
 );
@@ -147,13 +104,7 @@ const DataDisplayItemContentBadge = ({
     className,
     ...props
 }: DataDisplayItemPartProps) => (
-    <div
-        className={cn(
-            styles.s10,
-            className,
-        )}
-        {...props}
-    >
+    <div className={cn(styles.s10, className)} {...props}>
         {children}
     </div>
 );

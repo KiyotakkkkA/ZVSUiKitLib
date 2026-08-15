@@ -17,12 +17,7 @@ function CardRoot({
 }: CardProps) {
     return (
         <section
-            className={cn(
-                styles.s0,
-                `zvs-${rounded}`,
-                styles.s1,
-                className,
-            )}
+            className={cn(styles.s0, `zvs-${rounded}`, styles.s1, className)}
             {...props}
         >
             {children}
@@ -32,10 +27,7 @@ function CardRoot({
 
 function CardHeader({ className, children, ...props }: CardHeaderProps) {
     return (
-        <header
-            className={cn(styles.s2, className)}
-            {...props}
-        >
+        <header className={cn(styles.s2, className)} {...props}>
             {children}
         </header>
     );
@@ -67,10 +59,7 @@ function CardContent({ className, children, ...props }: CardContentProps) {
 
 function CardFooter({ className, children, ...props }: CardFooterProps) {
     return (
-        <footer
-            className={cn(styles.s6, className)}
-            {...props}
-        >
+        <footer className={cn(styles.s6, className)} {...props}>
             {children}
         </footer>
     );

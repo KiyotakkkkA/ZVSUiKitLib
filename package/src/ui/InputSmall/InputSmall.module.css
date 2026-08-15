@@ -38,7 +38,7 @@
 }
 
 .s9 {
-    @apply absolute right-1 top-1/2 flex size-7 -translate-y-1/2 items-center justify-center rounded-md text-main-400 transition-colors;
+    @apply absolute right-1 top-1/2 flex size-7 -translate-y-1/2 items-center justify-center text-main-400 transition-colors;
 }
 
 .s10 {

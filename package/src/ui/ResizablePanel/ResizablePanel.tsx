@@ -1,5 +1,19 @@
+"use client";
+
 import styles from "./ResizablePanel.module.css";
-import { createContext, useContext, useMemo, useState } from "react";
+import {
+    createContext,
+    forwardRef,
+    useCallback,
+    useContext,
+    useEffect,
+    useId,
+    useMemo,
+    useRef,
+    useState,
+    type KeyboardEvent,
+    type PointerEvent,
+} from "react";
 import { cn } from "../../lib/utils";
 import type {
     ResizablePanelContextValue,
@@ -9,156 +23,321 @@ import type {
     ResizablePanelHandleProps,
 } from "./types";
 
-const ResizablePanelContext = createContext<ResizablePanelContextValue | null>(
-    null,
-);
-
-const useResizablePanel = () => {
-    const context = useContext(ResizablePanelContext);
-
-    if (!context) {
+const clamp = (value: number, min: number, max: number) =>
+    Math.min(Math.max(value, min), max);
+const Context = createContext<ResizablePanelContextValue | null>(null);
+const usePanel = () => {
+    const value = useContext(Context);
+    if (!value)
         throw new Error(
-            "ResizablePanel components must be used inside <ResizablePanel />",
+            "ResizablePanel parts must be used inside <ResizablePanel />",
         );
-    }
-
-    return context;
+    return value;
 };
 
-const ResizablePanelRoot = ({
-    children,
-    defaultSize = 280,
-    minSize = 180,
-    maxSize = 520,
-    className,
-    ...props
-}: ResizablePanelProps) => {
-    const [size, setSize] = useState(defaultSize);
+const Root = forwardRef<HTMLDivElement, ResizablePanelProps>(function Root(
+    {
+        children,
+        size: controlledSize,
+        defaultSize = 280,
+        minSize = 180,
+        maxSize = 520,
+        orientation = "horizontal",
+        keyboardStep = 10,
+        disabled = false,
+        onSizeChange,
+        onResizeStart,
+        onResizeEnd,
+        className,
+        ...props
+    },
+    ref,
+) {
+    const safeMin = Math.min(minSize, maxSize);
+    const safeMax = Math.max(minSize, maxSize);
+    const safeDefault = clamp(defaultSize, safeMin, safeMax);
+    const [innerSize, setInnerSize] = useState(safeDefault);
+    const size = clamp(controlledSize ?? innerSize, safeMin, safeMax);
+    const sizeRef = useRef(size);
+    const [resizing, setResizing] = useState(false);
+    const sidebarId = `${useId()}-primary-panel`;
 
-    const value = useMemo(
+    useEffect(() => {
+        sizeRef.current = size;
+    }, [size]);
+
+    const resizeTo = useCallback(
+        (nextValue: number) => {
+            const next = clamp(nextValue, safeMin, safeMax);
+            const previous = sizeRef.current;
+            sizeRef.current = next;
+            if (controlledSize === undefined) setInnerSize(next);
+            if (next !== previous) onSizeChange?.(next);
+            return next;
+        },
+        [controlledSize, onSizeChange, safeMax, safeMin],
+    );
+    const startResize = useCallback(() => {
+        setResizing(true);
+        onResizeStart?.(sizeRef.current);
+    }, [onResizeStart]);
+    const endResize = useCallback(() => {
+        setResizing(false);
+        onResizeEnd?.(sizeRef.current);
+    }, [onResizeEnd]);
+
+    const context = useMemo<ResizablePanelContextValue>(
         () => ({
             size,
-            setSize,
-            minSize,
-            maxSize,
+            minSize: safeMin,
+            maxSize: safeMax,
+            defaultSize: safeDefault,
+            keyboardStep: Math.max(1, keyboardStep),
+            orientation,
+            disabled,
+            resizing,
+            sidebarId,
+            resizeTo,
+            startResize,
+            endResize,
         }),
-        [size, minSize, maxSize],
+        [
+            size,
+            safeMin,
+            safeMax,
+            safeDefault,
+            keyboardStep,
+            orientation,
+            disabled,
+            resizing,
+            sidebarId,
+            resizeTo,
+            startResize,
+            endResize,
+        ],
     );
 
     return (
-        <ResizablePanelContext.Provider value={value}>
+        <Context.Provider value={context}>
             <div
                 {...props}
-                className={cn(
-                    styles.s0,
-                    className,
-                )}
+                ref={ref}
+                data-orientation={orientation}
+                data-resizing={resizing || undefined}
+                data-disabled={disabled || undefined}
+                className={cn(styles.root, className)}
             >
                 {children}
             </div>
-        </ResizablePanelContext.Provider>
+        </Context.Provider>
     );
-};
-
-const ResizablePanelSidebar = ({
-    children,
-    className,
-    style,
-    ...props
-}: ResizablePanelSidebarProps) => {
-    const { size } = useResizablePanel();
-
-    return (
-        <aside
-            {...props}
-            className={cn(styles.s1, className)}
-            style={{
-                width: size,
-                ...style,
-            }}
-        >
-            {children}
-        </aside>
-    );
-};
-
-const ResizablePanelContent = ({
-    children,
-    className,
-    ...props
-}: ResizablePanelContentProps) => {
-    return (
-        <main
-            {...props}
-            className={cn(styles.s2, className)}
-        >
-            {children}
-        </main>
-    );
-};
-
-const ResizablePanelHandle = ({
-    className,
-    ...props
-}: ResizablePanelHandleProps) => {
-    const { setSize, minSize, maxSize } = useResizablePanel();
-
-    return (
-        <div
-            {...props}
-            role="separator"
-            aria-orientation="vertical"
-            className={cn(
-                styles.s3,
-                styles.s4,
-                className,
-            )}
-            onPointerDown={(event) => {
-                const startX = event.clientX;
-
-                const parent = event.currentTarget.parentElement;
-                const sidebar = parent?.firstElementChild as HTMLElement | null;
-
-                if (!sidebar) {
-                    return;
-                }
-
-                const startWidth = sidebar.getBoundingClientRect().width;
-
-                const handlePointerMove = (moveEvent: PointerEvent) => {
-                    const nextSize = startWidth + moveEvent.clientX - startX;
-                    const clampedSize = Math.min(
-                        Math.max(nextSize, minSize),
-                        maxSize,
-                    );
-
-                    setSize(clampedSize);
-                };
-
-                const handlePointerUp = () => {
-                    window.removeEventListener(
-                        "pointermove",
-                        handlePointerMove,
-                    );
-                    window.removeEventListener("pointerup", handlePointerUp);
-                    document.body.style.cursor = "";
-                    document.body.style.userSelect = "";
-                };
-
-                document.body.style.cursor = "col-resize";
-                document.body.style.userSelect = "none";
-
-                window.addEventListener("pointermove", handlePointerMove);
-                window.addEventListener("pointerup", handlePointerUp);
-            }}
-        >
-            <span className={styles.s5} />
-        </div>
-    );
-};
-
-export const ResizablePanel = Object.assign(ResizablePanelRoot, {
-    Sidebar: ResizablePanelSidebar,
-    Handle: ResizablePanelHandle,
-    Content: ResizablePanelContent,
 });
+
+const Sidebar = forwardRef<HTMLElement, ResizablePanelSidebarProps>(
+    function Sidebar({ children, className, style, id, ...props }, ref) {
+        const { size, orientation, sidebarId } = usePanel();
+        return (
+            <aside
+                {...props}
+                ref={ref}
+                id={id ?? sidebarId}
+                className={cn(styles.sidebar, className)}
+                style={{
+                    ...(orientation === "horizontal"
+                        ? { width: size }
+                        : { height: size }),
+                    ...style,
+                }}
+            >
+                {children}
+            </aside>
+        );
+    },
+);
+
+const Content = forwardRef<HTMLElement, ResizablePanelContentProps>(
+    function Content({ children, className, ...props }, ref) {
+        return (
+            <main
+                {...props}
+                ref={ref}
+                className={cn(styles.content, className)}
+            >
+                {children}
+            </main>
+        );
+    },
+);
+
+const Handle = forwardRef<HTMLDivElement, ResizablePanelHandleProps>(
+    function Handle(
+        {
+            className,
+            resetOnDoubleClick = true,
+            onPointerDown,
+            onPointerMove,
+            onPointerUp,
+            onPointerCancel,
+            onLostPointerCapture,
+            onKeyDown,
+            onDoubleClick,
+            ...props
+        },
+        ref,
+    ) {
+        const panel = usePanel();
+        const interaction = useRef<{
+            pointerId: number;
+            start: number;
+            size: number;
+            direction: number;
+        } | null>(null);
+        const bodyStyles = useRef<{
+            cursor: string;
+            userSelect: string;
+        } | null>(null);
+        const restoreBody = useCallback(() => {
+            if (!bodyStyles.current) return;
+            document.body.style.cursor = bodyStyles.current.cursor;
+            document.body.style.userSelect = bodyStyles.current.userSelect;
+            bodyStyles.current = null;
+        }, []);
+        const finish = useCallback(() => {
+            if (!interaction.current) return;
+            interaction.current = null;
+            restoreBody();
+            panel.endResize();
+        }, [panel, restoreBody]);
+        useEffect(() => restoreBody, [restoreBody]);
+
+        const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+            onKeyDown?.(event);
+            if (event.defaultPrevented || panel.disabled) return;
+            const rtl =
+                getComputedStyle(
+                    event.currentTarget.parentElement ?? event.currentTarget,
+                ).direction === "rtl";
+            let delta: number | null = null;
+            if (event.key === "Home") delta = panel.minSize - panel.size;
+            if (event.key === "End") delta = panel.maxSize - panel.size;
+            if (panel.orientation === "horizontal") {
+                if (event.key === "ArrowLeft")
+                    delta = (rtl ? 1 : -1) * panel.keyboardStep;
+                if (event.key === "ArrowRight")
+                    delta = (rtl ? -1 : 1) * panel.keyboardStep;
+            } else {
+                if (event.key === "ArrowUp") delta = -panel.keyboardStep;
+                if (event.key === "ArrowDown") delta = panel.keyboardStep;
+            }
+            if (delta === null) return;
+            event.preventDefault();
+            panel.startResize();
+            panel.resizeTo(panel.size + delta);
+            panel.endResize();
+        };
+
+        return (
+            <div
+                {...props}
+                ref={ref}
+                role="separator"
+                tabIndex={panel.disabled ? -1 : (props.tabIndex ?? 0)}
+                aria-label={props["aria-label"] ?? "Resize panel"}
+                aria-controls={props["aria-controls"] ?? panel.sidebarId}
+                aria-orientation={
+                    panel.orientation === "horizontal"
+                        ? "vertical"
+                        : "horizontal"
+                }
+                aria-valuemin={panel.minSize}
+                aria-valuemax={panel.maxSize}
+                aria-valuenow={Math.round(panel.size)}
+                aria-disabled={panel.disabled || undefined}
+                data-orientation={panel.orientation}
+                data-resizing={panel.resizing || undefined}
+                className={cn(styles.handle, className)}
+                onKeyDown={handleKeyDown}
+                onPointerDown={(event) => {
+                    onPointerDown?.(event);
+                    if (
+                        event.defaultPrevented ||
+                        panel.disabled ||
+                        event.button !== 0
+                    )
+                        return;
+                    const rtl =
+                        getComputedStyle(
+                            event.currentTarget.parentElement ??
+                                event.currentTarget,
+                        ).direction === "rtl";
+                    interaction.current = {
+                        pointerId: event.pointerId,
+                        start:
+                            panel.orientation === "horizontal"
+                                ? event.clientX
+                                : event.clientY,
+                        size: panel.size,
+                        direction:
+                            panel.orientation === "horizontal" && rtl ? -1 : 1,
+                    };
+                    event.currentTarget.setPointerCapture(event.pointerId);
+                    bodyStyles.current = {
+                        cursor: document.body.style.cursor,
+                        userSelect: document.body.style.userSelect,
+                    };
+                    document.body.style.cursor =
+                        panel.orientation === "horizontal"
+                            ? "col-resize"
+                            : "row-resize";
+                    document.body.style.userSelect = "none";
+                    panel.startResize();
+                }}
+                onPointerMove={(event: PointerEvent<HTMLDivElement>) => {
+                    onPointerMove?.(event);
+                    const active = interaction.current;
+                    if (!active || active.pointerId !== event.pointerId) return;
+                    const coordinate =
+                        panel.orientation === "horizontal"
+                            ? event.clientX
+                            : event.clientY;
+                    panel.resizeTo(
+                        active.size +
+                            (coordinate - active.start) * active.direction,
+                    );
+                }}
+                onPointerUp={(event) => {
+                    onPointerUp?.(event);
+                    if (interaction.current?.pointerId !== event.pointerId)
+                        return;
+                    event.currentTarget.releasePointerCapture(event.pointerId);
+                    finish();
+                }}
+                onPointerCancel={(event) => {
+                    onPointerCancel?.(event);
+                    if (interaction.current?.pointerId === event.pointerId)
+                        finish();
+                }}
+                onLostPointerCapture={(event) => {
+                    onLostPointerCapture?.(event);
+                    finish();
+                }}
+                onDoubleClick={(event) => {
+                    onDoubleClick?.(event);
+                    if (
+                        event.defaultPrevented ||
+                        panel.disabled ||
+                        !resetOnDoubleClick
+                    )
+                        return;
+                    panel.startResize();
+                    panel.resizeTo(panel.defaultSize);
+                    panel.endResize();
+                }}
+            >
+                <span className={styles.grip} aria-hidden="true" />
+            </div>
+        );
+    },
+);
+
+export const ResizablePanel = Object.assign(Root, { Sidebar, Handle, Content });

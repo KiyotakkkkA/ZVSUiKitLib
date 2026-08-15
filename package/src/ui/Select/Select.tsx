@@ -1,6 +1,5 @@
 "use client";
 
-
 import styles from "./Select.module.css";
 
 import { Icon } from "../_shared/icons";
@@ -126,7 +125,7 @@ function SelectRoot({
 
 function SelectTrigger({
     className,
-    rounded = "rounded-2xl",
+    rounded = "rounded-full",
 }: SelectTriggerProps) {
     const { selectedOption, placeholder } = useSelectContext();
 
@@ -157,10 +156,7 @@ function SelectMenu({
     } = useSelectContext();
 
     return (
-        <Dropdown.Menu
-            rounded={rounded}
-            className={cn(styles.s1, className)}
-        >
+        <Dropdown.Menu rounded={rounded} className={cn(styles.s1, className)}>
             {searchable && (
                 <InputSmall
                     rounded="rounded-full"
@@ -174,9 +170,7 @@ function SelectMenu({
             <ScrollArea className={cn(styles.s3, searchable && styles.s4)}>
                 <div className={styles.s5}>
                     {visibleOptionsCount === 0 ? (
-                        <p className={styles.s6}>
-                            {emptyMessage}
-                        </p>
+                        <p className={styles.s6}>{emptyMessage}</p>
                     ) : (
                         children
                     )}
@@ -207,11 +201,7 @@ function SelectOptionComponent({
             closeOnClick={context.closeOnSelect}
             icon={
                 active ? (
-                    <Icon
-                        icon="mdi:check"
-                        className={styles.s7}
-                        aria-hidden
-                    />
+                    <Icon icon="check" className={styles.s7} aria-hidden />
                 ) : (
                     icon
                 )

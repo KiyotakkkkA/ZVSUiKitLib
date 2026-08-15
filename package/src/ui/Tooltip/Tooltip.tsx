@@ -26,7 +26,7 @@ export function Tooltip({
     label,
     placement = "top-center",
     className,
-    rounded = "rounded-lg",
+    rounded = "rounded-full",
 }: TooltipProps) {
     return (
         <span className={styles.s0}>

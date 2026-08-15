@@ -5,13 +5,7 @@ import { cn } from "../../lib/utils";
 import type { CarouselImageProps, CarouselProps } from "./types";
 
 function CarouselImage({ children, className }: CarouselImageProps) {
-    return (
-        <div
-            className={cn(styles.s0, className)}
-        >
-            {children}
-        </div>
-    );
+    return <div className={cn(styles.s0, className)}>{children}</div>;
 }
 
 function CarouselRoot({
@@ -85,10 +79,7 @@ function CarouselRoot({
 
     return (
         <section
-            className={cn(
-                styles.s1,
-                className,
-            )}
+            className={cn(styles.s1, className)}
             aria-roledescription="carousel"
         >
             <div
@@ -107,13 +98,8 @@ function CarouselRoot({
                         disabled={isPreviousDisabled}
                         onClick={goToPrevious}
                     >
-                        <span
-                            className={cn(
-                                styles.s4,
-                                classNames?.links,
-                            )}
-                        >
-                            <Icon icon="mdi:chevron-left" className={styles.s5} />
+                        <span className={cn(styles.s4, classNames?.links)}>
+                            <Icon icon="chevron-left" className={styles.s5} />
                         </span>
                     </button>
 
@@ -124,22 +110,12 @@ function CarouselRoot({
                         disabled={isNextDisabled}
                         onClick={goToNext}
                     >
-                        <span
-                            className={cn(
-                                styles.s7,
-                                classNames?.links,
-                            )}
-                        >
-                            <Icon icon="mdi:chevron-right" className={styles.s8} />
+                        <span className={cn(styles.s7, classNames?.links)}>
+                            <Icon icon="chevron-right" className={styles.s8} />
                         </span>
                     </button>
 
-                    <div
-                        className={cn(
-                            styles.s9,
-                            classNames?.nav,
-                        )}
-                    >
+                    <div className={cn(styles.s9, classNames?.nav)}>
                         {slides.map((_, index) => (
                             <button
                                 type="button"

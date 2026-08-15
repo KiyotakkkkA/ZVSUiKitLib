@@ -37,7 +37,9 @@
 }
 
 .s6:focus-visible ~ .s8 {
-    box-shadow: 0 0 0 2px var(--color-main-800), 0 0 0 4px color-mix(in srgb, var(--color-main-300) 50%, transparent);
+    box-shadow:
+        0 0 0 2px var(--color-main-800),
+        0 0 0 4px color-mix(in srgb, var(--color-main-300) 50%, transparent);
 }
 
 .s9 {

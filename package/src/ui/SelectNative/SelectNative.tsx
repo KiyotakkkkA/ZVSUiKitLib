@@ -49,11 +49,7 @@ export function SelectNative({
                     </option>
                 ))}
             </select>
-            <Icon
-                icon="mdi:chevron-down"
-                className={styles.s5}
-                aria-hidden
-            />
+            <Icon icon="chevron-down" className={styles.s5} aria-hidden />
         </div>
     );
 }

@@ -59,17 +59,11 @@ export const Pagination = ({
                 {total > 0 ? (
                     <div className={styles.s2}>
                         <span className={styles.s3}>Показано </span>
-                        <span className={styles.s4}>
-                            {from ?? 1}
-                        </span>
+                        <span className={styles.s4}>{from ?? 1}</span>
                         {" - "}
-                        <span className={styles.s5}>
-                            {to ?? total}
-                        </span>
+                        <span className={styles.s5}>{to ?? total}</span>
                         <span className={styles.s6}> из </span>
-                        <span className={styles.s7}>
-                            {total}
-                        </span>
+                        <span className={styles.s7}>{total}</span>
                     </div>
                 ) : (
                     "Нет записей"
@@ -79,9 +73,7 @@ export const Pagination = ({
             <div className={styles.s8}>
                 {onPerPageChange && (
                     <div className={styles.s9}>
-                        <span className={styles.s10}>
-                            На странице
-                        </span>
+                        <span className={styles.s10}>На странице</span>
                         <Select
                             value={String(perPage)}
                             disabled={disabled}
@@ -112,10 +104,7 @@ export const Pagination = ({
                     </div>
                 )}
 
-                <nav
-                    className={styles.s15}
-                    aria-label="Пагинация"
-                >
+                <nav className={styles.s15} aria-label="Пагинация">
                     <Button
                         variant="secondary"
                         disabled={disabled || isFirstPage}
@@ -123,15 +112,12 @@ export const Pagination = ({
                         className={styles.s16}
                         title="Предыдущая страница"
                     >
-                        <Icon icon="mdi:chevron-left" width={20} height={20} />
+                        <Icon icon="chevron-left" width={20} height={20} />
                     </Button>
 
                     {visiblePages.map((visiblePage, index) =>
                         visiblePage === "dots" ? (
-                            <span
-                                key={`dots-${index}`}
-                                className={styles.s17}
-                            >
+                            <span key={`dots-${index}`} className={styles.s17}>
                                 ...
                             </span>
                         ) : (
@@ -159,7 +145,7 @@ export const Pagination = ({
                         className={styles.s19}
                         title="Следующая страница"
                     >
-                        <Icon icon="mdi:chevron-right" width={20} height={20} />
+                        <Icon icon="chevron-right" width={20} height={20} />
                     </Button>
                 </nav>
             </div>

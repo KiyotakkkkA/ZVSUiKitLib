@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-@source "../../package/dist/**/*.{js,cjs,mjs,ts,tsx,jsx}";
-
 @theme {
     --color-main-50: rgb(250 250 250);
     --color-main-100: rgb(245 245 245);

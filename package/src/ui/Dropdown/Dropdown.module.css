@@ -32,7 +32,11 @@
     pointer-events: none;
     transform: translateY(-4px) scale(0.98);
     transform-origin: top;
-    transition: opacity 180ms ease, transform 180ms ease, display 180ms allow-discrete, overlay 180ms allow-discrete;
+    transition:
+        opacity 180ms ease,
+        transform 180ms ease,
+        display 180ms allow-discrete,
+        overlay 180ms allow-discrete;
 }
 
 .s6[data-placement^="top"] {
@@ -63,7 +67,7 @@
 }
 
 .s8 {
-    @apply flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-sm;
+    @apply flex w-full items-center gap-2 px-2.5 py-2 text-left text-sm;
 }
 
 .s9 {

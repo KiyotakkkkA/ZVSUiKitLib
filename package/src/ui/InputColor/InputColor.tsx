@@ -1,6 +1,5 @@
 "use client";
 
-
 import styles from "./InputColor.module.css";
 
 import { Icon } from "../_shared/icons";
@@ -155,6 +154,7 @@ const hsvToHex = (hue: number, saturation: number, brightness: number) => {
 export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
     function InputColor(
         {
+            rounded = "rounded-full",
             value,
             defaultValue = DEFAULT_COLOR,
             onChange,
@@ -238,13 +238,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
         };
 
         return (
-            <div
-                className={cn(
-                    styles.s9,
-                    disabled && styles.s10,
-                    className,
-                )}
-            >
+            <div className={cn(styles.s9, disabled && styles.s10, className)}>
                 {label && (
                     <label
                         htmlFor={triggerId}
@@ -265,6 +259,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
                     className={styles.s14}
                 >
                     <Dropdown.Trigger
+                        rounded={rounded}
                         id={triggerId}
                         aria-label={
                             props["aria-label"] ??
@@ -279,7 +274,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
                         )}
                         icon={
                             <Icon
-                                icon="mdi:palette-outline"
+                                icon="palette-outline"
                                 className={styles.s18}
                                 aria-hidden
                             />
@@ -290,6 +285,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
                                 className={cn(
                                     styles.s20,
                                     pickerSizeClasses[size],
+                                    rounded && `zvs-${rounded}`,
                                     classNames?.picker,
                                 )}
                             >
@@ -320,10 +316,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
                     </Dropdown.Trigger>
 
                     <Dropdown.Menu
-                        className={cn(
-                            styles.s23,
-                            classNames?.panel,
-                        )}
+                        className={cn(styles.s23, classNames?.panel)}
                     >
                         <div className={styles.s24}>
                             <span
@@ -331,12 +324,8 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
                                 style={{ backgroundColor: currentValue }}
                             />
                             <div className={styles.s26}>
-                                <p className={styles.s27}>
-                                    Настройка цвета
-                                </p>
-                                <p className={styles.s28}>
-                                    {currentValue}
-                                </p>
+                                <p className={styles.s27}>Настройка цвета</p>
+                                <p className={styles.s28}>{currentValue}</p>
                             </div>
                         </div>
 
@@ -406,7 +395,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
 
                         <div className={styles.s33}>
                             <Icon
-                                icon="mdi:palette"
+                                icon="palette"
                                 className={styles.s34}
                                 aria-hidden
                             />
@@ -458,7 +447,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
 
                         <div className={styles.s40}>
                             <Icon
-                                icon="mdi:opacity"
+                                icon="opacity"
                                 className={styles.s41}
                                 aria-hidden
                             />
@@ -518,10 +507,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
 
                         {palettePresets && palettePresets.length > 0 && (
                             <div
-                                className={cn(
-                                    styles.s48,
-                                    classNames?.palette,
-                                )}
+                                className={cn(styles.s48, classNames?.palette)}
                             >
                                 <div className={styles.s49}>
                                     {palettePresets.map((preset, index) => {
@@ -544,8 +530,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
                                                 className={cn(
                                                     styles.s50,
                                                     styles.s51,
-                                                    isSelected &&
-                                                        styles.s52,
+                                                    isSelected && styles.s52,
                                                     classNames?.preset,
                                                 )}
                                                 style={{

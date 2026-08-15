@@ -2,7 +2,7 @@
 @reference "../theme.css";
 
 .s0 {
-    @apply inline-flex w-full items-center gap-3;
+    @apply inline-flex w-64 max-w-full items-center gap-3;
 }
 
 .s1 {
@@ -42,11 +42,7 @@
 }
 
 .s10 {
-    @apply pointer-events-none absolute top-1/2 z-10 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-main-100;
-}
-
-.s11 {
-    @apply shadow-sm transition-transform duration-150;
+    @apply pointer-events-none absolute top-1/2 z-10 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-main-100 shadow-sm;
 }
 
 .s12 {
@@ -56,11 +52,10 @@
     @apply bg-main-300;
 }
 
-.s14 {
+.s0:focus-within .s12 {
+    box-shadow: 0 0 0 2px
+        color-mix(in srgb, var(--color-main-300) 60%, transparent);
 }
-
-.s0:focus-within .s12 { box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-main-300) 60%, transparent); }
-.s0:hover .s14 { transform: translate(-50%, -50%) scale(1.1); }
 
 .s15 {
     @apply min-w-8 text-right text-sm text-main-300;

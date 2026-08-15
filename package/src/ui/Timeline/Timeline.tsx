@@ -13,13 +13,7 @@ function TimelineRoot({ children, className }: TimelineProps) {
 
 function TimelineItem({ children, icon, className }: TimelineItemProps) {
     return (
-        <div
-            className={cn(
-                styles.s1,
-                styles.s2,
-                className,
-            )}
-        >
+        <div className={cn(styles.s1, styles.s2, className)}>
             <span className={styles.s3}>
                 <Icon icon={icon} width={13} height={13} aria-hidden />
             </span>
@@ -29,33 +23,21 @@ function TimelineItem({ children, icon, className }: TimelineItemProps) {
 }
 
 function TimelineItemTitle({ children, className }: TimelineItemSectionProps) {
-    return (
-        <h3 className={cn(styles.s5, className)}>
-            {children}
-        </h3>
-    );
+    return <h3 className={cn(styles.s5, className)}>{children}</h3>;
 }
 
 function TimelineItemSubTitle({
     children,
     className,
 }: TimelineItemSectionProps) {
-    return (
-        <p className={cn(styles.s6, className)}>
-            {children}
-        </p>
-    );
+    return <p className={cn(styles.s6, className)}>{children}</p>;
 }
 
 function TimelineItemContent({
     children,
     className,
 }: TimelineItemSectionProps) {
-    return (
-        <div className={cn(styles.s7, className)}>
-            {children}
-        </div>
-    );
+    return <div className={cn(styles.s7, className)}>{children}</div>;
 }
 
 export const Timeline = Object.assign(TimelineRoot, {

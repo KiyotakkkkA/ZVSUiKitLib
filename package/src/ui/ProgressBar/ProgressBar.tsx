@@ -28,30 +28,15 @@ export const ProgressBar = ({
     return (
         <div className={cn(styles.s7, className)}>
             {(label || showValue) && (
-                <div
-                    className={cn(
-                        styles.s8,
-                        classNames?.header,
-                    )}
-                >
+                <div className={cn(styles.s8, classNames?.header)}>
                     {label && (
-                        <span
-                            className={cn(
-                                styles.s9,
-                                classNames?.label,
-                            )}
-                        >
+                        <span className={cn(styles.s9, classNames?.label)}>
                             {label}
                         </span>
                     )}
 
                     {showValue && (
-                        <span
-                            className={cn(
-                                styles.s10,
-                                classNames?.value,
-                            )}
-                        >
+                        <span className={cn(styles.s10, classNames?.value)}>
                             {percent}%
                         </span>
                     )}
@@ -63,10 +48,7 @@ export const ProgressBar = ({
                 aria-valuemin={0}
                 aria-valuemax={max}
                 aria-valuenow={normalizedValue}
-                className={cn(
-                    styles.s11,
-                    classNames?.track,
-                )}
+                className={cn(styles.s11, classNames?.track)}
             >
                 <div
                     className={cn(

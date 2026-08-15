@@ -28,8 +28,8 @@ import { InputDropZone } from "@kiyotakkkka/zvs-uikit-lib";
 | `multiple`                    | `boolean`                                             | `false`                                               | No       | Whether multiple is enabled.                      |
 | `disabled`                    | `boolean`                                             | `false`                                               | No       | Whether disabled is enabled.                      |
 | `accept`                      | `string`                                              | `"image/*"`                                           | No       | The accept used by the component.                 |
-| `emptyIcon`                   | `string`                                              | `"mdi:image-plus-outline"`                            | No       | Content rendered for the empty icon.              |
-| `selectedIcon`                | `string`                                              | `"mdi:image-check-outline"`                           | No       | Whether selected icon is enabled.                 |
+| `emptyIcon`                   | `string`                                              | `"image-plus-outline"`                                | No       | Content rendered for the empty icon.              |
+| `selectedIcon`                | `string`                                              | `"image-check-outline"`                               | No       | Whether selected icon is enabled.                 |
 | `emptyTitle`                  | `string`                                              | `"Перетащите картинку сюда"`                          | No       | Text used for the empty title.                    |
 | `emptyDescription`            | `string`                                              | `"или нажмите для выбора файла"`                      | No       | Text used for the empty description.              |
 | `selectedDescription`         | `string`                                              | `"Файл будет загружен."`                              | No       | Whether selected description is enabled.          |

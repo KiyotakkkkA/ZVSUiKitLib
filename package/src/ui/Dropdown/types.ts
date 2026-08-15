@@ -75,6 +75,8 @@ export type DropdownItemProps = ButtonHTMLAttributes<HTMLButtonElement> & {
     active?: boolean;
     /** Renders a leading icon inside the menu item. */
     icon?: ReactNode;
+    /** Selects the border radius for the menu item. */
+    rounded?: RoundVariants | "";
 };
 
 export type DropdownRenderProps = {

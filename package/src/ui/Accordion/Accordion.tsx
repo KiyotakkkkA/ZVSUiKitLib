@@ -32,14 +32,7 @@ function AccordionRoot({
 
     return (
         <AccordionContext.Provider value={{ isOpen, setIsOpen }}>
-            <div
-                className={cn(
-                    styles.s0,
-                    className,
-                )}
-            >
-                {children}
-            </div>
+            <div className={cn(styles.s0, className)}>{children}</div>
         </AccordionContext.Provider>
     );
 }
@@ -50,21 +43,15 @@ function AccordionSummary({ className, children }: AccordionSummaryProps) {
     return (
         <button
             type="button"
-            className={cn(
-                styles.s1,
-                className,
-            )}
+            className={cn(styles.s1, className)}
             onClick={() => setIsOpen((prev) => !prev)}
         >
             <span className={styles.s2}>{children}</span>
             <span
-                className={cn(
-                    styles.s3,
-                    isOpen ? styles.s4 : styles.s5,
-                )}
+                className={cn(styles.s3, isOpen ? styles.s4 : styles.s5)}
                 aria-hidden
             >
-                <Icon icon="mdi:chevron-down" width={16} height={16} />
+                <Icon icon="chevron-down" width={16} height={16} />
             </span>
         </button>
     );
@@ -98,13 +85,7 @@ function AccordionContent({ className, children }: AccordionContentProps) {
             className={styles.s6}
             style={{ maxHeight: isOpen ? `${contentHeight + 1}px` : "0px" }}
         >
-            <div
-                ref={contentRef}
-                className={cn(
-                    styles.s7,
-                    className,
-                )}
-            >
+            <div ref={contentRef} className={cn(styles.s7, className)}>
                 {children}
             </div>
         </div>

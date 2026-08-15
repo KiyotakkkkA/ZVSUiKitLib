@@ -98,16 +98,9 @@ export function Table<T extends TableRecord>({
     }, []);
 
     return (
-        <table
-            className={cn(styles.s0, classNames?.root)}
-        >
+        <table className={cn(styles.s0, classNames?.root)}>
             <thead className={classNames?.header}>
-                <tr
-                    className={cn(
-                        styles.s1,
-                        classNames?.headerRow,
-                    )}
-                >
+                <tr className={cn(styles.s1, classNames?.headerRow)}>
                     {columns.map((column) => {
                         const isSortable = Boolean(column.sortModes?.length);
                         const isActive = sortState.columnKey === column.key;
@@ -142,9 +135,7 @@ export function Table<T extends TableRecord>({
                                         type="button"
                                         className={cn(
                                             styles.s3,
-                                            isActive
-                                                ? styles.s4
-                                                : styles.s5,
+                                            isActive ? styles.s4 : styles.s5,
                                             classNames?.sortButton,
                                         )}
                                         onClick={() =>

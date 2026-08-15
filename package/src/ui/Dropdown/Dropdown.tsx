@@ -1,6 +1,5 @@
 "use client";
 
-
 import styles from "./Dropdown.module.css";
 
 import { Icon } from "../_shared/icons";
@@ -283,7 +282,7 @@ function DropdownTrigger({
     className,
     placeholder = "Открыть",
     icon,
-    rounded = "rounded-2xl",
+    rounded = "rounded-full",
     disabled: disabledProp,
     onClick,
     onPointerDown,
@@ -303,7 +302,7 @@ function DropdownTrigger({
     return (
         <Button
             variant=""
-            rounded=""
+            rounded={rounded}
             ref={setTriggerRef as Ref<HTMLButtonElement>}
             aria-expanded={open}
             aria-controls={menuId}
@@ -329,25 +328,15 @@ function DropdownTrigger({
                     toggleOpen();
                 }
             }}
-            className={cn(
-                styles.s1,
-                styles.s2,
-                rounded && `zvs-${rounded}`,
-                className,
-            )}
+            className={cn(styles.s1, styles.s2, className)}
             {...props}
         >
-            <span className={styles.s3}>
-                {children ?? placeholder}
-            </span>
+            <span className={styles.s3}>{children ?? placeholder}</span>
 
             {icon ?? (
                 <Icon
-                    icon="mdi:chevron-down"
-                    className={cn(
-                        styles.s4,
-                        open && styles.s5,
-                    )}
+                    icon="chevron-down"
+                    className={cn(styles.s4, open && styles.s5)}
                     aria-hidden
                 />
             )}
@@ -426,7 +415,7 @@ function DropdownAnchor({
 function DropdownMenu({
     children,
     className,
-    rounded = "rounded-lg",
+    rounded = "rounded-4xl",
     ...props
 }: DropdownMenuProps) {
     const { menuId, setMenuRef, menuPlacement } = useDropdownContext();
@@ -438,12 +427,7 @@ function DropdownMenu({
             ref={setMenuRef}
             popover="auto"
             data-placement={menuPlacement}
-            className={cn(
-                styles.s6,
-                `zvs-${rounded}`,
-                styles.s7,
-                className,
-            )}
+            className={cn(styles.s6, `zvs-${rounded}`, styles.s7, className)}
             {...props}
         >
             {children}
@@ -460,6 +444,7 @@ function DropdownItem({
     onClick,
     onKeyDown,
     type = "button",
+    rounded = "rounded-3xl",
     ...props
 }: DropdownItemProps) {
     const { close } = useDropdownContext();
@@ -490,6 +475,7 @@ function DropdownItem({
                 styles.s8,
                 styles.s9,
                 styles.s10,
+                rounded && `zvs-${rounded}`,
                 active && styles.s11,
                 className,
             )}

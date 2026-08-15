@@ -42,10 +42,7 @@ const BreadcrumbsRoot = ({
                         const isLast = index === items.length - 1;
 
                         return (
-                            <li
-                                key={index}
-                                className={styles.s2}
-                            >
+                            <li key={index} className={styles.s2}>
                                 {child}
 
                                 {!isLast && <BreadcrumbsSeparator />}
@@ -76,9 +73,7 @@ const BreadcrumbsNav = ({
             className={cn(
                 styles.s3,
                 styles.s4,
-                active
-                    ? styles.s5
-                    : styles.s6,
+                active ? styles.s5 : styles.s6,
                 disabled && styles.s7,
                 styles.s8,
                 className,
