@@ -1,0 +1,65 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply w-full min-w-0;
+}
+
+.s1 {
+    @apply mb-1.5 block text-sm font-medium text-main-200;
+}
+
+.s2 {
+    @apply opacity-60;
+}
+
+.s3 {
+}
+
+.s4 {
+    @apply block min-h-24 w-full min-w-0 rounded-lg border bg-main-800 px-3 py-2.5;
+}
+
+.s5 {
+    @apply text-sm leading-6 text-main-100 placeholder:text-main-500 outline-none transition-[border-color,box-shadow,background-color];
+}
+
+.s6 {
+    @apply border-main-700 hover:border-main-600 focus:border-main-500 focus:ring-2 focus:ring-main-500/20;
+}
+
+.s7 {
+    @apply disabled:cursor-not-allowed disabled:opacity-60 read-only:cursor-default read-only:bg-main-800/60;
+}
+
+.s8 {
+    @apply border-danger-medium/70 focus:border-danger-medium focus:ring-danger-medium/20;
+}
+
+.s9 {
+    @apply resize-none;
+}
+
+.s10 {
+    @apply resize-y;
+}
+
+.s11 {
+    @apply mt-1.5 flex min-w-0 items-start justify-between gap-3 text-xs;
+}
+
+.s12 {
+    @apply min-w-0 text-main-500;
+}
+
+.s13 {
+    @apply text-danger-medium;
+}
+
+.s14 {
+    @apply shrink-0 tabular-nums text-main-500;
+}
+
+.s15 {
+    @apply text-main-300;
+}

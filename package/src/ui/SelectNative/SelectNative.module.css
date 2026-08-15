@@ -1,0 +1,26 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply relative inline-flex min-w-40;
+}
+
+.s1 {
+    @apply h-10 w-full appearance-none border border-main-700 bg-main-800;
+}
+
+.s2 {
+    @apply py-2 pl-3 pr-9 text-sm text-main-100 outline-none transition-colors;
+}
+
+.s3 {
+    @apply hover:border-main-600 focus-visible:border-main-500/70 focus-visible:ring-2 focus-visible:ring-main-500/25;
+}
+
+.s4 {
+    @apply disabled:cursor-not-allowed disabled:opacity-60;
+}
+
+.s5 {
+    @apply pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-main-400;
+}

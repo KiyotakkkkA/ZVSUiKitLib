@@ -1,3 +1,4 @@
+import styles from "./Table.module.css";
 import { useCallback, useMemo, useState, type ReactNode } from "react";
 import { cn } from "../../lib/utils";
 import type {
@@ -8,10 +9,9 @@ import type {
     TableRecord,
 } from "./types";
 
-const defaultHeaderCellClassName =
-    "px-5 py-3 text-xs font-bold uppercase tracking-wide text-main-300";
-const defaultRowClassName = "border-b border-main-800 last:border-b-0";
-const defaultCellClassName = "px-5 py-4 text-sm text-main-300";
+const defaultHeaderCellClassName = styles.defaultHeaderCell;
+const defaultRowClassName = styles.defaultRow;
+const defaultCellClassName = styles.defaultCell;
 
 function resolveClassName<T>(
     className: TableClassNameResolver<T> | undefined,
@@ -99,12 +99,12 @@ export function Table<T extends TableRecord>({
 
     return (
         <table
-            className={cn("w-full border-collapse text-left", classNames?.root)}
+            className={cn(styles.s0, classNames?.root)}
         >
             <thead className={classNames?.header}>
                 <tr
                     className={cn(
-                        "border-b border-main-700 bg-main-800/80",
+                        styles.s1,
                         classNames?.headerRow,
                     )}
                 >
@@ -120,7 +120,7 @@ export function Table<T extends TableRecord>({
                             <>
                                 <span>{column.title}</span>
                                 {isSortable && (
-                                    <span className="min-w-3 text-main-400">
+                                    <span className={styles.s2}>
                                         {activeIcon ?? ""}
                                     </span>
                                 )}
@@ -141,10 +141,10 @@ export function Table<T extends TableRecord>({
                                     <button
                                         type="button"
                                         className={cn(
-                                            "inline-flex w-full items-center gap-1.5 rounded-md px-1 py-0.5 text-left transition-colors duration-150",
+                                            styles.s3,
                                             isActive
-                                                ? "text-main-100"
-                                                : "text-main-300 hover:text-main-100",
+                                                ? styles.s4
+                                                : styles.s5,
                                             classNames?.sortButton,
                                         )}
                                         onClick={() =>

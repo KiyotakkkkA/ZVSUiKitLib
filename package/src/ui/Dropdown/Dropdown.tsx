@@ -1,5 +1,8 @@
 "use client";
 
+
+import styles from "./Dropdown.module.css";
+
 import { Icon } from "../_shared/icons";
 import {
     createContext,
@@ -270,7 +273,7 @@ function DropdownRoot({
 
     return (
         <DropdownContext.Provider value={contextValue}>
-            <div className={cn("min-w-0 w-fit", className)}>{children}</div>
+            <div className={cn(styles.s0, className)}>{children}</div>
         </DropdownContext.Provider>
     );
 }
@@ -327,14 +330,14 @@ function DropdownTrigger({
                 }
             }}
             className={cn(
-                "h-10 w-full justify-between gap-3 border border-main-700 bg-main-800 px-4 py-2 text-sm text-main-100",
-                "hover:border-main-600 focus-visible:border-main-500/70 focus-visible:ring-2 focus-visible:ring-main-500/25",
+                styles.s1,
+                styles.s2,
                 rounded && `zvs-${rounded}`,
                 className,
             )}
             {...props}
         >
-            <span className="min-w-0 truncate text-left">
+            <span className={styles.s3}>
                 {children ?? placeholder}
             </span>
 
@@ -342,8 +345,8 @@ function DropdownTrigger({
                 <Icon
                     icon="mdi:chevron-down"
                     className={cn(
-                        "shrink-0 text-main-400 transition-transform duration-200",
-                        open && "rotate-180",
+                        styles.s4,
+                        open && styles.s5,
                     )}
                     aria-hidden
                 />
@@ -436,9 +439,9 @@ function DropdownMenu({
             popover="auto"
             data-placement={menuPlacement}
             className={cn(
-                "zvs-dropdown-popover fixed z-60 isolate overflow-hidden border border-main-700 bg-main-800 p-1.5 shadow-xl",
+                styles.s6,
                 `zvs-${rounded}`,
-                "max-w-[calc(100vw-1rem)]",
+                styles.s7,
                 className,
             )}
             {...props}
@@ -484,17 +487,17 @@ function DropdownItem({
             }}
             onKeyDown={handleKeyDown}
             className={cn(
-                "flex w-full items-center gap-2 rounded-lg px-2.5 py-2 text-left text-sm",
-                "text-main-200 transition-colors hover:bg-main-700/70 hover:text-main-50",
-                "focus-visible:bg-main-700/70 focus-visible:text-main-50 focus-visible:outline-none",
-                active && "bg-main-700/70 text-main-50",
+                styles.s8,
+                styles.s9,
+                styles.s10,
+                active && styles.s11,
                 className,
             )}
             {...props}
         >
-            {icon && <span className="shrink-0 text-main-400">{icon}</span>}
+            {icon && <span className={styles.s12}>{icon}</span>}
 
-            <span className="min-w-0 flex-1 truncate">{children}</span>
+            <span className={styles.s13}>{children}</span>
         </button>
     );
 }

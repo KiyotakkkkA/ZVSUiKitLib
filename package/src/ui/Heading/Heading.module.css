@@ -1,0 +1,30 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply text-5xl leading-[1.08] tracking-[-0.045em];
+}
+
+.s1 {
+    @apply text-4xl leading-[1.12] tracking-[-0.035em];
+}
+
+.s2 {
+    @apply text-3xl leading-tight tracking-[-0.025em];
+}
+
+.s3 {
+    @apply text-2xl leading-tight tracking-[-0.02em];
+}
+
+.s4 {
+    @apply text-xl leading-snug tracking-[-0.015em];
+}
+
+.s5 {
+    @apply text-base leading-snug tracking-[-0.01em];
+}
+
+.s6 {
+    @apply text-balance font-semibold text-main-100;
+}

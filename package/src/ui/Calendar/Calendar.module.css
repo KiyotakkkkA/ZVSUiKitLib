@@ -1,0 +1,110 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply w-full max-w-[20rem] rounded-2xl border border-main-700/70 bg-main-900/55 p-3.5;
+}
+
+.s1 {
+    @apply grid grid-cols-[auto_1fr_auto] items-center gap-2;
+}
+
+.s2 {
+    @apply h-8 w-8 rounded-lg p-0 transition-transform duration-150 hover:scale-105;
+}
+
+.s3 {
+    @apply flex min-w-0 items-center justify-center gap-1;
+}
+
+.s4 {
+    @apply h-8 min-w-0 hover:border-transparent bg-transparent border-transparent px-2 text-sm font-semibold capitalize text-main-100 hover:bg-main-700/35;
+}
+
+.s5 {
+    @apply truncate;
+}
+
+.s6 {
+    @apply grid grid-cols-3 gap-1 border-main-700 bg-main-800/95 p-2 shadow-2xl shadow-black/30 backdrop-blur;
+}
+
+.s7 {
+    @apply text-center px-2 capitalize;
+}
+
+.s8 {
+    @apply h-4 w-px shrink-0 bg-main-700;
+}
+
+.s9 {
+    @apply h-8 hover:border-transparent border-transparent bg-transparent px-2 text-sm font-semibold tabular-nums text-main-100 hover:bg-main-700/35;
+}
+
+.s10 {
+    @apply border-main-700 bg-main-800/95 p-2 shadow-2xl shadow-black/30 backdrop-blur;
+}
+
+.s11 {
+    @apply max-h-60 grid grid-cols-2 gap-1 min-w-32;
+}
+
+.s12 {
+    @apply text-center tabular-nums;
+}
+
+.s13 {
+    @apply h-8 w-8 rounded-lg p-0 transition-transform duration-150 hover:scale-105;
+}
+
+.s14 {
+    @apply mt-3 grid grid-cols-7;
+}
+
+.s15 {
+    @apply text-center text-xs capitalize text-main-400;
+}
+
+.s16 {
+    @apply mt-2 grid grid-cols-7 gap-1;
+}
+
+.s17 {
+    @apply h-8 rounded-lg;
+}
+
+.s18 {
+    @apply h-8 rounded-lg border border-transparent text-sm transition-all duration-150 ease-out;
+}
+
+.s19 {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-400/70;
+}
+
+.s20 {
+    @apply text-main-100;
+}
+
+.s21 {
+    @apply text-main-500;
+}
+
+.s22 {
+    @apply border-main-400/80 bg-main-700/35 font-semibold text-main-50;
+}
+
+.s23 {
+    @apply bg-main-100 font-semibold text-main-900;
+}
+
+.s24 {
+    @apply ring-2 ring-main-400/75 ring-offset-1 ring-offset-main-900;
+}
+
+.s25 {
+    @apply hover:bg-main-700/30;
+}
+
+.s26 {
+    @apply cursor-not-allowed opacity-35;
+}

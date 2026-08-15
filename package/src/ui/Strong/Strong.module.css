@@ -1,0 +1,6 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply font-semibold text-main-100;
+}

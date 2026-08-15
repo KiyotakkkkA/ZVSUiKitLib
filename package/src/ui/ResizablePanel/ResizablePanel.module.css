@@ -1,0 +1,28 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply flex min-h-0 min-w-0 overflow-hidden rounded-2xl border border-main-700/70 bg-main-900/50;
+}
+
+.s1 {
+    @apply min-h-0 shrink-0 overflow-hidden;
+}
+
+.s2 {
+    @apply min-h-0 min-w-0 flex-1 overflow-hidden;
+}
+
+.s3 {
+    @apply relative flex w-2 shrink-0 cursor-col-resize items-center justify-center;
+}
+
+.s4 {
+    @apply bg-main-900 hover:bg-main-800/60;
+}
+
+.s5 {
+    @apply h-10 w-px rounded-full bg-main-700 transition-colors duration-150;
+}
+
+.s3:hover .s5 { background-color: var(--color-main-400); }

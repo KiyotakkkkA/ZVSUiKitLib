@@ -1,3 +1,4 @@
+import styles from "./Tabs.module.css";
 import { cn } from "../../lib/utils";
 import type { TabsProps } from "./types";
 
@@ -11,11 +12,11 @@ export function Tabs({
     ...props
 }: TabsProps) {
     return (
-        <div className={cn("w-fit", className)} {...props}>
+        <div className={cn(styles.s0, className)} {...props}>
             <div
                 role="tablist"
                 className={cn(
-                    "flex items-end gap-4 border-b border-main-700",
+                    styles.s1,
                     classNames?.list,
                 )}
             >
@@ -32,11 +33,11 @@ export function Tabs({
                             disabled={option.disabled}
                             onClick={() => onChange(option.value)}
                             className={cn(
-                                "relative -mb-px px-4 py-3 text-sm font-medium text-main-300 transition-colors",
-                                "hover:text-main-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-400/40",
-                                "disabled:cursor-not-allowed disabled:opacity-50",
+                                styles.s2,
+                                styles.s3,
+                                styles.s4,
                                 active &&
-                                    "border-b border-main-100 text-main-50",
+                                    styles.s5,
                                 classNames?.tab,
                                 active && classNames?.activeTab,
                                 tabProps?.className,

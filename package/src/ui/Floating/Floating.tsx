@@ -1,5 +1,8 @@
 "use client";
 
+
+import styles from "./Floating.module.css";
+
 import { createContext, useContext, useMemo } from "react";
 import { cn } from "../../lib/utils";
 import type {
@@ -11,12 +14,12 @@ import type {
 import type { PositionAnchor } from "../..";
 
 const panelPositionByAnchor: Record<PositionAnchor, string> = {
-    "top-left": "bottom-full left-0 mb-2 origin-bottom-left",
-    "top-center": "bottom-full left-1/2 mb-2 -translate-x-1/2 origin-bottom",
-    "top-right": "bottom-full right-0 mb-2 origin-bottom-right",
-    "bottom-left": "top-full left-0 mt-2 origin-top-left",
-    "bottom-center": "top-full left-1/2 mt-2 -translate-x-1/2 origin-top",
-    "bottom-right": "top-full right-0 mt-2 origin-top-right",
+    "top-left": styles.topLeft,
+    "top-center": styles.topCenter,
+    "top-right": styles.topRight,
+    "bottom-left": styles.bottomLeft,
+    "bottom-center": styles.bottomCenter,
+    "bottom-right": styles.bottomRight,
 };
 
 const FloatingContext = createContext<FloatingContextValue | null>(null);
@@ -44,7 +47,7 @@ function FloatingRoot({
     return (
         <FloatingContext.Provider value={contextValue}>
             <div
-                className={cn("group relative inline-flex w-fit", className)}
+                className={cn(styles.s0, className)}
                 {...props}
             >
                 {children}
@@ -61,7 +64,7 @@ function FloatingTrigger({
     useFloatingContext();
 
     return (
-        <div className={cn("inline-flex w-fit", className)} {...props}>
+        <div className={cn(styles.s1, className)} {...props}>
             {children}
         </div>
     );
@@ -78,10 +81,10 @@ function FloatingContent({
     return (
         <div
             className={cn(
-                "pointer-events-none invisible absolute z-40 isolate overflow-hidden border border-main-700/80",
+                styles.s2,
                 `zvs-${rounded}`,
-                "bg-main-900/95 p-3 opacity-0 transition-all duration-150",
-                "group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100",
+                styles.s3,
+                styles.s4,
                 panelPositionByAnchor[anchor],
                 className,
             )}

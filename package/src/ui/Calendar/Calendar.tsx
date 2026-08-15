@@ -1,3 +1,4 @@
+import styles from "./Calendar.module.css";
 import { useMemo, useState } from "react";
 import { cn } from "../../lib/utils";
 import type { CalendarDate, CalendarProps } from "./types";
@@ -240,20 +241,20 @@ export function Calendar({
     return (
         <div
             className={cn(
-                "w-full max-w-[20rem] rounded-2xl border border-main-700/70 bg-main-900/55 p-3.5",
+                styles.s0,
                 className,
             )}
         >
             <div
                 className={cn(
-                    "grid grid-cols-[auto_1fr_auto] items-center gap-2",
+                    styles.s1,
                     classNames?.header,
                 )}
             >
                 <Button
                     variant="secondary"
                     className={cn(
-                        "h-8 w-8 rounded-lg p-0 transition-transform duration-150 hover:scale-105",
+                        styles.s2,
                         classNames?.navButton,
                     )}
                     onClick={() =>
@@ -272,21 +273,21 @@ export function Calendar({
 
                 <div
                     className={cn(
-                        "flex min-w-0 items-center justify-center gap-1",
+                        styles.s3,
                         classNames?.selectors,
                     )}
                 >
                     <Dropdown menuWidth={208} menuPlacement="bottom-left">
                         <Dropdown.Trigger
                             rounded="rounded-lg"
-                            className="group h-8 min-w-0 hover:border-transparent bg-transparent border-transparent px-2 text-sm font-semibold capitalize text-main-100 hover:bg-main-700/35"
+                            className={styles.s4}
                             aria-label="Выбрать месяц"
                         >
-                            <span className="truncate">
+                            <span className={styles.s5}>
                                 {monthOptions[activeViewDate.getMonth()]?.label}
                             </span>
                         </Dropdown.Trigger>
-                        <Dropdown.Menu className="grid grid-cols-3 gap-1 border-main-700 bg-main-800/95 p-2 shadow-2xl shadow-black/30 backdrop-blur">
+                        <Dropdown.Menu className={styles.s6}>
                             {monthOptions.map((month) => (
                                 <Dropdown.Item
                                     key={month.value}
@@ -294,7 +295,7 @@ export function Calendar({
                                         month.value ===
                                         activeViewDate.getMonth()
                                     }
-                                    className="text-center px-2 capitalize"
+                                    className={styles.s7}
                                     onClick={() =>
                                         setViewMonth(
                                             new Date(
@@ -312,22 +313,22 @@ export function Calendar({
                     </Dropdown>
 
                     <span
-                        className="h-4 w-px shrink-0 bg-main-700"
+                        className={styles.s8}
                         aria-hidden
                     />
 
                     <Dropdown menuWidth={152} menuPlacement="bottom-right">
                         <Dropdown.Trigger
                             rounded="rounded-lg"
-                            className="group h-8 hover:border-transparent border-transparent bg-transparent px-2 text-sm font-semibold tabular-nums text-main-100 hover:bg-main-700/35"
+                            className={styles.s9}
                             aria-label="Выбрать год"
                         >
                             {activeViewDate.getFullYear()}
                         </Dropdown.Trigger>
-                        <Dropdown.Menu className="border-main-700 bg-main-800/95 p-2 shadow-2xl shadow-black/30 backdrop-blur">
+                        <Dropdown.Menu className={styles.s10}>
                             <ScrollArea
                                 showScrollbar={false}
-                                className="max-h-60 grid grid-cols-2 gap-1 min-w-32"
+                                className={styles.s11}
                             >
                                 {yearOptions.map((year) => (
                                     <Dropdown.Item
@@ -336,7 +337,7 @@ export function Calendar({
                                             year ===
                                             activeViewDate.getFullYear()
                                         }
-                                        className="text-center tabular-nums"
+                                        className={styles.s12}
                                         onClick={() =>
                                             setViewMonth(
                                                 new Date(
@@ -358,7 +359,7 @@ export function Calendar({
                 <Button
                     variant="secondary"
                     className={cn(
-                        "h-8 w-8 rounded-lg p-0 transition-transform duration-150 hover:scale-105",
+                        styles.s13,
                         classNames?.navButton,
                     )}
                     onClick={() =>
@@ -376,12 +377,12 @@ export function Calendar({
                 </Button>
             </div>
 
-            <div className={cn("mt-3 grid grid-cols-7", classNames?.weekdays)}>
+            <div className={cn(styles.s14, classNames?.weekdays)}>
                 {weekdayLabels.map((label) => (
                     <span
                         key={label}
                         className={cn(
-                            "text-center text-xs capitalize text-main-400",
+                            styles.s15,
                             classNames?.weekday,
                         )}
                     >
@@ -391,14 +392,14 @@ export function Calendar({
             </div>
 
             <div
-                className={cn("mt-2 grid grid-cols-7 gap-1", classNames?.days)}
+                className={cn(styles.s16, classNames?.days)}
             >
                 {dayCells.map((day) => {
                     if (!showOutsideDays && !day.isCurrentMonth) {
                         return (
                             <span
                                 key={day.date.toISOString()}
-                                className="h-8 rounded-lg"
+                                className={styles.s17}
                                 aria-hidden
                             />
                         );
@@ -409,24 +410,24 @@ export function Calendar({
                             key={day.date.toISOString()}
                             type="button"
                             className={cn(
-                                "h-8 rounded-lg border border-transparent text-sm transition-all duration-150 ease-out",
-                                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-400/70",
+                                styles.s18,
+                                styles.s19,
                                 day.isCurrentMonth
-                                    ? "text-main-100"
-                                    : "text-main-500",
+                                    ? styles.s20
+                                    : styles.s21,
                                 day.isToday &&
                                     !day.isSelected &&
-                                    "border-main-400/80 bg-main-700/35 font-semibold text-main-50",
+                                    styles.s22,
                                 day.isSelected &&
-                                    "bg-main-100 font-semibold text-main-900",
+                                    styles.s23,
                                 day.isToday &&
                                     day.isSelected &&
-                                    "ring-2 ring-main-400/75 ring-offset-1 ring-offset-main-900",
+                                    styles.s24,
                                 !day.isSelected &&
                                     !day.isDisabled &&
-                                    "hover:bg-main-700/30",
+                                    styles.s25,
                                 day.isDisabled &&
-                                    "cursor-not-allowed opacity-35",
+                                    styles.s26,
                                 typeof classNames?.day === "function"
                                     ? classNames.day(day)
                                     : classNames?.day,

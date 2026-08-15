@@ -1,20 +1,21 @@
+import styles from "./Skeleton.module.css";
 import { cn } from "../../lib/utils";
 import "./Skeleton.css";
 import type { SkeletonProps, SkeletonRadius, SkeletonTone } from "./types";
 
 const roundedClassName: Record<SkeletonRadius, string> = {
-    none: "rounded-none",
-    sm: "rounded-sm",
-    md: "rounded-md",
-    lg: "rounded-lg",
-    xl: "rounded-xl",
-    full: "rounded-full",
+    none: styles.radiusNone,
+    sm: styles.radiusSm,
+    md: styles.radiusMd,
+    lg: styles.radiusLg,
+    xl: styles.radiusXl,
+    full: styles.radiusFull,
 };
 
 const toneClassName: Record<SkeletonTone, string> = {
-    default: "bg-main-700/75",
-    subtle: "bg-main-800/80",
-    strong: "bg-main-600/80",
+    default: styles.toneDefault,
+    subtle: styles.toneSubtle,
+    strong: styles.toneStrong,
 };
 
 export const Skeleton = ({
@@ -30,10 +31,10 @@ export const Skeleton = ({
             aria-hidden={ariaHidden}
             {...props}
             className={cn(
-                "relative block shrink-0 overflow-hidden",
+                styles.s0,
                 toneClassName[tone],
                 roundedClassName[rounded],
-                animated && "skeleton-shimmer",
+                animated && styles.s1,
                 className,
             )}
         />

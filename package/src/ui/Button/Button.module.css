@@ -1,0 +1,37 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply inline-flex items-center justify-center gap-2 border transition-[color,background-color,border-color,opacity,transform,box-shadow] duration-150 ease-out;
+}
+
+.s1 {
+    @apply cursor-pointer p-1 disabled:cursor-not-allowed disabled:opacity-70;
+}
+
+.ghost { @apply border-transparent bg-transparent text-main-50 hover:bg-main-800/60; }
+.primary { @apply border-transparent bg-main-50 text-main-900 hover:opacity-80; }
+.secondary { @apply border-transparent bg-main-700 text-main-50 hover:bg-main-600; }
+.tertiary { @apply border-transparent bg-accent-medium text-main-900 hover:bg-accent-dark; }
+.danger { @apply border-transparent bg-danger-medium text-main-50 hover:bg-danger-dark; }
+.success { @apply border-transparent bg-success-medium text-main-50 hover:bg-success-dark; }
+.warning { @apply border-transparent bg-warning-medium text-main-50 hover:bg-warning-dark; }
+.info { @apply border-transparent bg-info-medium text-main-50 hover:bg-info-dark; }
+
+.primaryOutline { @apply border-main-50 bg-transparent text-main-50 hover:bg-main-50 hover:text-main-900; }
+.tertiaryOutline { @apply border-accent-medium bg-transparent text-accent-medium hover:bg-accent-medium hover:text-main-900; }
+.dangerOutline { @apply border-danger-medium bg-transparent text-danger-medium hover:bg-danger-medium hover:text-main-900; }
+.successOutline { @apply border-success-medium bg-transparent text-success-medium hover:bg-success-medium hover:text-main-900; }
+.warningOutline { @apply border-warning-medium bg-transparent text-warning-medium hover:bg-warning-medium hover:text-main-900; }
+.infoOutline { @apply border-info-medium bg-transparent text-info-medium hover:bg-info-medium hover:text-main-900; }
+
+.loaderIcon {
+    @apply h-4 w-4;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .s0 {
+        transition-duration: 0.01ms;
+    }
+
+}

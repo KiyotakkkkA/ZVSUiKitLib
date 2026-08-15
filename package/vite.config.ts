@@ -49,7 +49,7 @@ export default defineConfig({
             renderChunk(code, chunk) {
                 if (chunk.isEntry && chunk.name === "index") {
                     return {
-                        code: `"use client";\n${code}`,
+                        code: `"use client";\nimport "./zvs-uikit-lib.css";\n${code}`,
                         map: null,
                     };
                 }

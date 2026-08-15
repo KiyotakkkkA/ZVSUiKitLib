@@ -1,0 +1,10 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply inline-block h-5 w-5 animate-spin rounded-full border-2;
+}
+
+.s1 {
+    @apply border-main-300/30 border-t-main-100;
+}

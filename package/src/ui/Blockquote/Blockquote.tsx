@@ -1,3 +1,4 @@
+import styles from "./Blockquote.module.css";
 import { cn } from "../../lib/utils";
 import type { BlockquoteProps } from "./types";
 export function Blockquote({
@@ -9,14 +10,14 @@ export function Blockquote({
     return (
         <blockquote
             className={cn(
-                "border-l-2 border-accent-medium pl-5 text-lg leading-8 text-main-200",
+                styles.s0,
                 className,
             )}
             {...props}
         >
             <div>{children}</div>
             {cite && (
-                <footer className="mt-3 text-xs not-italic text-main-500">
+                <footer className={styles.s1}>
                     {cite}
                 </footer>
             )}

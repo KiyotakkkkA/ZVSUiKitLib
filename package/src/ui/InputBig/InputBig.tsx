@@ -1,5 +1,8 @@
 "use client";
 
+
+import styles from "./InputBig.module.css";
+
 import {
     forwardRef,
     useId,
@@ -86,13 +89,13 @@ export const InputBig = forwardRef<HTMLTextAreaElement, InputBigProps>(
         };
 
         return (
-            <div className={cn("w-full min-w-0", className)}>
+            <div className={cn(styles.s0, className)}>
                 {label && (
                     <label
                         htmlFor={textareaId}
                         className={cn(
-                            "mb-1.5 block text-sm font-medium text-main-200",
-                            disabled && "opacity-60",
+                            styles.s1,
+                            disabled && styles.s2,
                             classNames?.label,
                         )}
                     >
@@ -113,14 +116,14 @@ export const InputBig = forwardRef<HTMLTextAreaElement, InputBigProps>(
                     aria-describedby={messageId}
                     onChange={handleChange}
                     className={cn(
-                        "zvs-scroll-area",
-                        "block min-h-24 w-full min-w-0 rounded-lg border bg-main-800 px-3 py-2.5",
-                        "text-sm leading-6 text-main-100 placeholder:text-main-500 outline-none transition-[border-color,box-shadow,background-color]",
-                        "border-main-700 hover:border-main-600 focus:border-main-500 focus:ring-2 focus:ring-main-500/20",
-                        "disabled:cursor-not-allowed disabled:opacity-60 read-only:cursor-default read-only:bg-main-800/60",
+                        styles.s3,
+                        styles.s4,
+                        styles.s5,
+                        styles.s6,
+                        styles.s7,
                         error &&
-                            "border-danger-medium/70 focus:border-danger-medium focus:ring-danger-medium/20",
-                        autoResize ? "resize-none" : "resize-y",
+                            styles.s8,
+                        autoResize ? styles.s9 : styles.s10,
                         classNames?.textarea,
                     )}
                     {...props}
@@ -129,7 +132,7 @@ export const InputBig = forwardRef<HTMLTextAreaElement, InputBigProps>(
                 {(message || showCount) && (
                     <div
                         className={cn(
-                            "mt-1.5 flex min-w-0 items-start justify-between gap-3 text-xs",
+                            styles.s11,
                             classNames?.footer,
                         )}
                     >
@@ -137,8 +140,8 @@ export const InputBig = forwardRef<HTMLTextAreaElement, InputBigProps>(
                             <p
                                 id={messageId}
                                 className={cn(
-                                    "min-w-0 text-main-500",
-                                    error && "text-danger-medium",
+                                    styles.s12,
+                                    error && styles.s13,
                                     classNames?.message,
                                 )}
                             >
@@ -151,10 +154,10 @@ export const InputBig = forwardRef<HTMLTextAreaElement, InputBigProps>(
                         {showCount && (
                             <span
                                 className={cn(
-                                    "shrink-0 tabular-nums text-main-500",
+                                    styles.s14,
                                     maxLength &&
                                         currentLength >= maxLength &&
-                                        "text-main-300",
+                                        styles.s15,
                                     classNames?.counter,
                                 )}
                             >

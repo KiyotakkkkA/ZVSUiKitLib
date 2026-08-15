@@ -1,0 +1,34 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply bg-main-100 text-main-800;
+}
+
+.s1 {
+    @apply border-main-600/70 bg-main-700/60 text-main-100;
+}
+
+.s2 {
+    @apply border-accent-dark/60 bg-accent-medium/15 text-accent-light;
+}
+
+.s3 {
+    @apply border-success-dark/60 bg-success-dark/40 text-success-light;
+}
+
+.s4 {
+    @apply border-warning-dark/60 bg-warning-dark/35 text-warning-light;
+}
+
+.s5 {
+    @apply border-danger-dark/60 bg-danger-dark/35 text-danger-light;
+}
+
+.s6 {
+    @apply border-info-dark/60 bg-info-dark/35 text-info-light;
+}
+
+.s7 {
+    @apply inline-flex items-center border px-2 py-0.5 text-[11px] font-medium;
+}

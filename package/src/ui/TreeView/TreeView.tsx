@@ -1,3 +1,4 @@
+import styles from "./TreeView.module.css";
 import { Children, isValidElement, useMemo, useRef, useState } from "react";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import { Icon } from "../_shared/icons";
@@ -52,7 +53,7 @@ const VirtualizedChildrenList = ({
             style={{ height }}
         >
             <div
-                className={cn("relative w-full", classNames?.content)}
+                className={cn(styles.s0, classNames?.content)}
                 style={{ height: virtualizer.getTotalSize() }}
             >
                 {virtualizer.getVirtualItems().map((virtualItem) => (
@@ -62,7 +63,7 @@ const VirtualizedChildrenList = ({
                         data-index={virtualItem.index}
                         role="none"
                         className={cn(
-                            "absolute left-0 top-0 w-full pb-1",
+                            styles.s1,
                             classNames?.item,
                         )}
                         style={{
@@ -91,7 +92,7 @@ const TreeViewBase = ({
             {...props}
             role="tree"
             className={cn(
-                "min-w-0 rounded-2xl border border-main-700/70 bg-main-900/50 p-3",
+                styles.s2,
                 className,
             )}
         >
@@ -104,7 +105,7 @@ const TreeViewBase = ({
                     {children}
                 </VirtualizedChildrenList>
             ) : (
-                <div role="group" className="space-y-1">
+                <div role="group" className={styles.s3}>
                     {children}
                 </div>
             )}
@@ -152,14 +153,14 @@ const TreeViewCatalog = ({
             {...props}
             role="treeitem"
             aria-expanded={isOpen}
-            className={cn("rounded-xl", className)}
+            className={cn(styles.s4, className)}
         >
             <button
                 type="button"
                 className={cn(
-                    "flex w-full cursor-pointer items-center gap-2 rounded-lg px-2 py-1.5 text-left",
-                    "text-main-100 transition-colors duration-200 hover:bg-main-800/60",
-                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-300/50",
+                    styles.s5,
+                    styles.s6,
+                    styles.s7,
                     classNames?.trigger,
                 )}
                 onClick={() => setOpen(!isOpen)}
@@ -169,15 +170,15 @@ const TreeViewCatalog = ({
                     width={16}
                     height={16}
                     className={cn(
-                        "shrink-0 text-main-300 transition-transform duration-200",
-                        isOpen && "rotate-90",
+                        styles.s8,
+                        isOpen && styles.s9,
                         classNames?.chevronIcon,
                     )}
                 />
 
                 <span
                     className={cn(
-                        "shrink-0 text-main-300",
+                        styles.s10,
                         classNames?.folderIcon,
                     )}
                 >
@@ -201,7 +202,7 @@ const TreeViewCatalog = ({
 
                 <span
                     className={cn(
-                        "min-w-0 flex-1 truncate text-sm font-medium",
+                        styles.s11,
                         classNames?.title,
                     )}
                 >
@@ -211,7 +212,7 @@ const TreeViewCatalog = ({
                 {rightSlot && (
                     <span
                         className={cn(
-                            "ml-auto shrink-0 text-main-400",
+                            styles.s12,
                             classNames?.rightSlot,
                         )}
                     >
@@ -223,7 +224,7 @@ const TreeViewCatalog = ({
             {isOpen &&
                 (virtualized ? (
                     <VirtualizedChildrenList
-                        className={cn("mt-1 pl-7", classNames?.nested)}
+                        className={cn(styles.s13, classNames?.nested)}
                         classNames={{
                             content: classNames?.virtualContent,
                             item: classNames?.virtualItem,
@@ -238,7 +239,7 @@ const TreeViewCatalog = ({
                     <div
                         role="group"
                         className={cn(
-                            "mt-1 space-y-1 pl-7",
+                            styles.s14,
                             classNames?.nested,
                         )}
                     >
@@ -275,13 +276,13 @@ const TreeViewElement = ({
             aria-disabled={disabled}
             disabled={disabled}
             className={cn(
-                "flex w-full min-w-0 cursor-pointer items-center gap-2 rounded-lg px-2 py-1.5 text-left",
-                "transition-colors duration-200",
+                styles.s15,
+                styles.s16,
                 selected
-                    ? "bg-main-700/70 text-main-100"
-                    : "text-main-300 hover:bg-main-800/50 hover:text-main-100",
-                disabled && "cursor-not-allowed opacity-60",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-300/50",
+                    ? styles.s17
+                    : styles.s18,
+                disabled && styles.s19,
+                styles.s20,
                 className,
             )}
             onClick={onClick}
@@ -289,8 +290,8 @@ const TreeViewElement = ({
             {icon && (
                 <span
                     className={cn(
-                        "shrink-0 text-main-400",
-                        selected && "text-main-100",
+                        styles.s21,
+                        selected && styles.s22,
                         classNames?.icon,
                     )}
                 >
@@ -298,13 +299,13 @@ const TreeViewElement = ({
                 </span>
             )}
 
-            <span className={cn("min-w-0 flex-1", classNames?.content)}>
+            <span className={cn(styles.s23, classNames?.content)}>
                 {children ?? (
                     <>
                         {label && (
                             <span
                                 className={cn(
-                                    "block truncate text-sm font-medium",
+                                    styles.s24,
                                     classNames?.label,
                                 )}
                             >
@@ -315,8 +316,8 @@ const TreeViewElement = ({
                         {description && (
                             <span
                                 className={cn(
-                                    "mt-0.5 block truncate text-xs text-main-400",
-                                    selected && "text-main-300",
+                                    styles.s25,
+                                    selected && styles.s26,
                                     classNames?.description,
                                 )}
                             >
@@ -330,7 +331,7 @@ const TreeViewElement = ({
             {rightSlot && (
                 <span
                     className={cn(
-                        "ml-auto shrink-0 text-main-500",
+                        styles.s27,
                         classNames?.rightSlot,
                     )}
                 >

@@ -1,3 +1,4 @@
+import styles from "./Switcher.module.css";
 import { cn } from "../../lib/utils";
 import type { SwitcherProps } from "./types";
 
@@ -12,7 +13,7 @@ export const Switcher = ({
     return (
         <div
             className={cn(
-                "inline-flex items-center gap-1 border border-main-700/70 bg-main-900/55 p-1",
+                styles.s0,
                 `zvs-${rounded}`,
                 className,
             )}
@@ -30,11 +31,11 @@ export const Switcher = ({
                         aria-selected={isActive}
                         onClick={() => onChange(option.value)}
                         className={cn(
-                            "cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors",
+                            styles.s1,
                             `zvs-${rounded}`,
                             isActive
-                                ? "bg-main-700/80 text-main-100"
-                                : "text-main-300 hover:bg-main-800/70 hover:text-main-100",
+                                ? styles.s2
+                                : styles.s3,
                             classNames?.tab,
                         )}
                     >

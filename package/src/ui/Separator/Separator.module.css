@@ -1,0 +1,13 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+}
+
+.s1 {
+    @apply h-px w-full bg-main-700/70;
+}
+
+.s2 {
+    @apply h-full w-px bg-main-700/70;
+}

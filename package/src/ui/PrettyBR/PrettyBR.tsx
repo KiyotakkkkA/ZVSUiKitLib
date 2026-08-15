@@ -1,3 +1,4 @@
+import styles from "./PrettyBR.module.css";
 import { Icon } from "../_shared/icons";
 import { cn } from "../../lib/utils";
 import type { PrettyBRProps } from "./types";
@@ -12,10 +13,10 @@ export const PrettyBR = (props: PrettyBRProps) => {
     } = props;
 
     return (
-        <div className={cn("my-3 flex items-center gap-3 px-1", className)}>
+        <div className={cn(styles.s0, className)}>
             <div
                 className={cn(
-                    "h-px flex-1 bg-main-600/70",
+                    styles.s1,
                     classNames?.divider,
                 )}
             />
@@ -23,11 +24,11 @@ export const PrettyBR = (props: PrettyBRProps) => {
                 icon={icon}
                 width={size}
                 height={size}
-                className={cn("text-main-400", classNames?.icon)}
+                className={cn(styles.s2, classNames?.icon)}
             />
             <p
                 className={cn(
-                    "text-[10px] uppercase tracking-[0.2em] text-main-400",
+                    styles.s3,
                     classNames?.label,
                 )}
             >
@@ -35,7 +36,7 @@ export const PrettyBR = (props: PrettyBRProps) => {
             </p>
             <div
                 className={cn(
-                    "h-px flex-1 bg-main-600/70",
+                    styles.s4,
                     classNames?.divider,
                 )}
             />

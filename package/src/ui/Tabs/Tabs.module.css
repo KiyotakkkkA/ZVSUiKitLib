@@ -1,0 +1,26 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply w-fit;
+}
+
+.s1 {
+    @apply flex items-end gap-4 border-b border-main-700;
+}
+
+.s2 {
+    @apply relative -mb-px px-4 py-3 text-sm font-medium text-main-300 transition-colors;
+}
+
+.s3 {
+    @apply hover:text-main-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-400/40;
+}
+
+.s4 {
+    @apply disabled:cursor-not-allowed disabled:opacity-50;
+}
+
+.s5 {
+    @apply border-b border-main-100 text-main-50;
+}

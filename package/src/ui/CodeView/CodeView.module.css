@@ -1,0 +1,80 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+}
+
+.s1 {
+}
+
+.s2 {
+    @apply inline-flex h-7 items-center justify-center gap-1 rounded-lg px-2 text-xs;
+}
+
+.s3 {
+    @apply text-main-400 transition-colors hover:bg-main-800 hover:text-main-50;
+}
+
+.s4 {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-300/50;
+}
+
+.s5 {
+    @apply flex shrink-0 items-center gap-1;
+}
+
+.s6 {
+    @apply hidden sm:inline;
+}
+
+.s7 {
+    @apply hidden sm:inline;
+}
+
+.s8 {
+    @apply overflow-hidden rounded-xl border border-main-700 bg-main-900;
+}
+
+.s9 {
+    @apply flex min-h-10 items-center justify-between gap-3 border-b border-main-700 bg-main-900 px-3 py-2;
+}
+
+.s10 {
+    @apply flex min-w-0 items-center gap-2;
+}
+
+.s11 {
+    @apply shrink-0 rounded-md bg-main-800 px-1.5 py-0.5 text-[11px] font-medium uppercase tracking-wide text-main-400;
+}
+
+.s12 {
+    @apply min-w-0 truncate text-xs text-main-400;
+}
+
+.s13 {
+    @apply p-3;
+}
+
+.s14 {
+    @apply h-20 w-full animate-pulse rounded-lg bg-main-800;
+}
+
+.s15 {
+    @apply text-main-50;
+}
+
+.s16 {
+    @apply [&_pre]:m-0 [&_pre]:bg-transparent [&_pre]:p-0;
+}
+
+.s17 {
+    @apply [&_pre]:text-xs [&_pre]:leading-relaxed;
+}
+
+.s18 {
+    @apply [&_code]:font-mono;
+}
+
+.s19 {
+    @apply p-3;
+}

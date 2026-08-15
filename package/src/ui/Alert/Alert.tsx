@@ -1,3 +1,4 @@
+import styles from "./Alert.module.css";
 import { Icon } from "../_shared/icons";
 import { cn } from "../../lib/utils";
 import type { AlertProps } from "./types";
@@ -8,38 +9,38 @@ const variantStyles: Record<
     { box: string; icon: string; defaultIcon: string }
 > = {
     primary: {
-        box: "bg-main-100 text-main-800",
-        icon: "text-main-800",
+        box: styles.primary,
+        icon: styles.primaryIcon,
         defaultIcon: "mdi:information",
     },
     secondary: {
-        box: "border-main-700/70 bg-main-900/60 text-main-100",
-        icon: "text-main-300",
+        box: styles.secondary,
+        icon: styles.secondaryIcon,
         defaultIcon: "mdi:information-outline",
     },
     tertiary: {
-        box: "border-accent-dark/50 bg-accent-medium/10 text-accent-light",
-        icon: "text-accent-medium",
+        box: styles.tertiary,
+        icon: styles.tertiaryIcon,
         defaultIcon: "mdi:sparkles-outline",
     },
     success: {
-        box: "border-success-dark/50 bg-success-dark/25 text-success-light",
-        icon: "text-success-light",
+        box: styles.success,
+        icon: styles.successIcon,
         defaultIcon: "mdi:check-circle-outline",
     },
     warning: {
-        box: "border-warning-dark/50 bg-warning-dark/25 text-warning-light",
-        icon: "text-warning-light",
+        box: styles.warning,
+        icon: styles.warningIcon,
         defaultIcon: "mdi:alert-outline",
     },
     danger: {
-        box: "border-danger-dark/50 bg-danger-dark/25 text-danger-light",
-        icon: "text-danger-light",
+        box: styles.danger,
+        icon: styles.dangerIcon,
         defaultIcon: "mdi:close-octagon",
     },
     info: {
-        box: "border-info-dark/50 bg-info-dark/25 text-info-light",
-        icon: "text-info-light",
+        box: styles.info,
+        icon: styles.infoIcon,
         defaultIcon: "mdi:information-outline",
     },
 };
@@ -60,7 +61,7 @@ export function Alert({
         <div
             role="status"
             className={cn(
-                "flex items-start gap-3 border px-3 py-2.5",
+                styles.s0,
                 `zvs-${rounded}`,
                 variantStyle.box,
                 className,
@@ -69,7 +70,7 @@ export function Alert({
         >
             <span
                 className={cn(
-                    "mt-0.5 shrink-0",
+                    styles.s1,
                     variantStyle.icon,
                     classNames?.icon,
                 )}
@@ -82,11 +83,11 @@ export function Alert({
                     />
                 )}
             </span>
-            <div className={cn("min-w-0", classNames?.content)}>
+            <div className={cn(styles.s2, classNames?.content)}>
                 {title && (
                     <p
                         className={cn(
-                            "text-sm font-semibold",
+                            styles.s3,
                             classNames?.title,
                         )}
                     >
@@ -94,7 +95,7 @@ export function Alert({
                     </p>
                 )}
                 {children && (
-                    <div className={cn("text-sm opacity-95", classNames?.body)}>
+                    <div className={cn(styles.s4, classNames?.body)}>
                         {children}
                     </div>
                 )}

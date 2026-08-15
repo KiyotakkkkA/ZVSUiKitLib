@@ -1,3 +1,4 @@
+import styles from "./InputSmall.module.css";
 import { Icon } from "../_shared/icons";
 import {
     forwardRef,
@@ -113,13 +114,13 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
         };
 
         return (
-            <div className={cn("relative", className)}>
+            <div className={cn(styles.s0, className)}>
                 {config?.icon && (
                     <Icon
                         icon={config.icon}
                         aria-hidden
                         className={cn(
-                            "pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-base text-main-400",
+                            styles.s1,
                             classNames?.leadingIcon,
                             classNames?.icon,
                         )}
@@ -150,15 +151,15 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
                         }
                     }}
                     className={cn(
-                        "h-9 w-full border border-main-700 bg-main-800 px-3 text-sm text-main-100",
+                        styles.s2,
                         `zvs-${rounded}`,
-                        "outline-none transition-colors duration-200 placeholder:text-main-500",
-                        "focus-visible:border-main-500/70 focus-visible:ring-2 focus-visible:ring-main-500/25",
-                        "disabled:cursor-not-allowed disabled:opacity-60 read-only:cursor-not-allowed",
-                        hasLeadingIcon && "pl-9",
-                        hasTrailingAction && "pr-9",
+                        styles.s3,
+                        styles.s4,
+                        styles.s5,
+                        hasLeadingIcon && styles.s6,
+                        hasTrailingAction && styles.s7,
                         isSearchPreset &&
-                            "[&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden",
+                            styles.s8,
                         classNames?.input,
                     )}
                 />
@@ -172,8 +173,8 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
                         }
                         aria-pressed={passwordVisible}
                         className={cn(
-                            "absolute right-1 top-1/2 flex size-7 -translate-y-1/2 items-center justify-center rounded-md text-main-400 transition-colors",
-                            "hover:bg-main-700/70 hover:text-main-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-400/40 disabled:pointer-events-none",
+                            styles.s9,
+                            styles.s10,
                             classNames?.trailingButton,
                         )}
                         onPointerDown={(event) => event.preventDefault()}
@@ -188,7 +189,7 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
                                     : "mdi:eye-outline"
                             }
                             aria-hidden
-                            className={cn("text-base", classNames?.icon)}
+                            className={cn(styles.s11, classNames?.icon)}
                         />
                     </button>
                 )}
@@ -199,8 +200,8 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
                         disabled={disabled || readOnly}
                         aria-label="Clear search"
                         className={cn(
-                            "absolute right-1 top-1/2 flex size-7 -translate-y-1/2 items-center justify-center rounded-md text-main-400 transition-colors",
-                            "hover:bg-main-700/70 hover:text-main-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-400/40 disabled:pointer-events-none",
+                            styles.s12,
+                            styles.s13,
                             classNames?.trailingButton,
                         )}
                         onPointerDown={(event) => event.preventDefault()}
@@ -209,7 +210,7 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
                         <Icon
                             icon="mdi:close"
                             aria-hidden
-                            className={cn("text-base", classNames?.icon)}
+                            className={cn(styles.s14, classNames?.icon)}
                         />
                     </button>
                 )}

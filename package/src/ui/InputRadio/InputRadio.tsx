@@ -1,3 +1,4 @@
+import styles from "./InputRadio.module.css";
 import { cn } from "../../lib/utils";
 import { useInputRadioGroup } from "../InputRadioGroup";
 import type { InputRadioProps } from "./types";
@@ -20,14 +21,14 @@ export const InputRadio = ({
     return (
         <label
             className={cn(
-                "inline-flex min-w-0 items-center gap-2 text-sm text-main-200",
-                isDisabled ? "cursor-not-allowed opacity-60" : "cursor-pointer",
+                styles.s0,
+                isDisabled ? styles.s1 : styles.s2,
                 className,
             )}
         >
             <span
                 className={cn(
-                    "relative inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full",
+                    styles.s3,
                     classNames?.control,
                 )}
             >
@@ -42,26 +43,26 @@ export const InputRadio = ({
                         if (isGrouped) group?.select(modelValue!);
                         onChange?.(true);
                     }}
-                    className={cn("peer sr-only", classNames?.input)}
+                    className={cn(styles.s4, classNames?.input)}
                 />
                 <span
                     className={cn(
-                        "absolute inset-0 rounded-full border border-main-600 bg-main-800 transition-colors duration-200",
-                        "peer-checked:bg-main-700 peer-focus-visible:ring-2 peer-focus-visible:ring-main-300/50",
+                        styles.s5,
+                        styles.s6,
                         classNames?.indicator,
                     )}
                 />
                 <span
                     className={cn(
-                        "relative h-2.5 w-2.5 scale-0 rounded-full bg-main-100 opacity-0 transition-all duration-200",
-                        "peer-checked:scale-100 peer-checked:opacity-100",
+                        styles.s7,
+                        styles.s8,
                         classNames?.dot,
                     )}
                 />
             </span>
 
             {children && (
-                <span className={cn("min-w-0", classNames?.content)}>
+                <span className={cn(styles.s9, classNames?.content)}>
                     {children}
                 </span>
             )}

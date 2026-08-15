@@ -1,3 +1,4 @@
+import styles from "./Card.module.css";
 import { cn } from "../../lib/utils";
 import type {
     CardProps,
@@ -17,9 +18,9 @@ function CardRoot({
     return (
         <section
             className={cn(
-                "border border-main-700/70 bg-main-900/55",
+                styles.s0,
                 `zvs-${rounded}`,
-                "text-main-100",
+                styles.s1,
                 className,
             )}
             {...props}
@@ -32,7 +33,7 @@ function CardRoot({
 function CardHeader({ className, children, ...props }: CardHeaderProps) {
     return (
         <header
-            className={cn("border-b border-main-700/70 px-4 py-3", className)}
+            className={cn(styles.s2, className)}
             {...props}
         >
             {children}
@@ -42,7 +43,7 @@ function CardHeader({ className, children, ...props }: CardHeaderProps) {
 
 function CardTitle({ className, children, ...props }: CardTitleProps) {
     return (
-        <h3 className={cn("text-sm font-semibold", className)} {...props}>
+        <h3 className={cn(styles.s3, className)} {...props}>
             {children}
         </h3>
     );
@@ -50,7 +51,7 @@ function CardTitle({ className, children, ...props }: CardTitleProps) {
 
 function CardSubtitle({ className, children, ...props }: CardSubtitleProps) {
     return (
-        <p className={cn("mt-1 text-xs text-main-400", className)} {...props}>
+        <p className={cn(styles.s4, className)} {...props}>
             {children}
         </p>
     );
@@ -58,7 +59,7 @@ function CardSubtitle({ className, children, ...props }: CardSubtitleProps) {
 
 function CardContent({ className, children, ...props }: CardContentProps) {
     return (
-        <div className={cn("px-4 py-3", className)} {...props}>
+        <div className={cn(styles.s5, className)} {...props}>
             {children}
         </div>
     );
@@ -67,7 +68,7 @@ function CardContent({ className, children, ...props }: CardContentProps) {
 function CardFooter({ className, children, ...props }: CardFooterProps) {
     return (
         <footer
-            className={cn("border-t border-main-700/70 px-4 py-3", className)}
+            className={cn(styles.s6, className)}
             {...props}
         >
             {children}

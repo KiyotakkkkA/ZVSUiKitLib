@@ -1,0 +1,30 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply border border-main-700/70 bg-main-900/55;
+}
+
+.s1 {
+    @apply text-main-100;
+}
+
+.s2 {
+    @apply border-b border-main-700/70 px-4 py-3;
+}
+
+.s3 {
+    @apply text-sm font-semibold;
+}
+
+.s4 {
+    @apply mt-1 text-xs text-main-400;
+}
+
+.s5 {
+    @apply px-4 py-3;
+}
+
+.s6 {
+    @apply border-t border-main-700/70 px-4 py-3;
+}

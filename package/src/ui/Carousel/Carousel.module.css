@@ -1,0 +1,57 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply h-full w-full shrink-0 overflow-hidden;
+}
+
+.s1 {
+    @apply relative overflow-hidden rounded-lg bg-slate-950 text-white;
+}
+
+.s2 {
+    @apply flex h-full transition-transform duration-500 ease-out;
+}
+
+.s3 {
+    @apply absolute inset-y-0 left-0 flex w-16 cursor-pointer items-center justify-start pl-4 text-white transition disabled:pointer-events-none disabled:opacity-45;
+}
+
+.s4 {
+    @apply grid size-9 place-items-center rounded-lg border border-white/35 bg-white/20 shadow-sm backdrop-blur-sm transition;
+}
+
+.s5 {
+    @apply size-7;
+}
+
+.s6 {
+    @apply absolute inset-y-0 right-0 flex w-16 cursor-pointer items-center justify-end pr-4 text-white transition disabled:pointer-events-none disabled:opacity-45;
+}
+
+.s7 {
+    @apply grid size-9 place-items-center rounded-lg border border-white/35 bg-white/20 shadow-sm backdrop-blur-sm transition;
+}
+
+.s3:hover .s4, .s6:hover .s7 { border-color: rgb(255 255 255 / 0.55); background-color: rgb(255 255 255 / 0.35); box-shadow: var(--shadow-md); }
+.s3:active .s4, .s6:active .s7 { scale: 0.95; }
+
+.s8 {
+    @apply size-7;
+}
+
+.s9 {
+    @apply absolute bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-2;
+}
+
+.s10 {
+    @apply size-3 cursor-pointer rounded-full transition hover:bg-white/70;
+}
+
+.s11 {
+    @apply bg-white;
+}
+
+.s12 {
+    @apply bg-white/45;
+}

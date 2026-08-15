@@ -1,0 +1,17 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply flex gap-3;
+}
+
+.s1 {
+}
+
+.s2 {
+    @apply flex-col items-start;
+}
+
+.s3 {
+    @apply flex-row flex-wrap items-center;
+}

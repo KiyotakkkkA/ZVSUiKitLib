@@ -1,0 +1,83 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply pointer-events-none absolute inset-0 h-full w-full appearance-none bg-transparent opacity-0;
+}
+
+.s1 {
+    @apply pointer-events-none absolute bottom-full mb-1.5;
+}
+
+.s2 {
+    @apply whitespace-nowrap text-xs text-main-300;
+}
+
+.s3 {
+    @apply pointer-events-none absolute top-1/2 z-10;
+}
+
+.s4 {
+    @apply h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full;
+}
+
+.s5 {
+    @apply bg-main-100 shadow-sm;
+}
+
+.s6 {
+    @apply transition-transform duration-150;
+}
+
+.s7 {
+    @apply bg-main-300;
+}
+
+.s8 {
+}
+
+.s9 {
+}
+
+.s10:hover .s8 { transform: translate(-50%, -50%) scale(1.1); }
+.s10:focus-within .s9 { box-shadow: 0 0 0 2px color-mix(in srgb, var(--color-main-300) 60%, transparent); }
+
+.s10 {
+    @apply inline-flex w-full items-center gap-3;
+}
+
+.s11 {
+    @apply cursor-not-allowed opacity-60;
+}
+
+.s12 {
+    @apply cursor-pointer;
+}
+
+.s13 {
+    @apply relative w-full;
+}
+
+.s14 {
+    @apply pt-5;
+}
+
+.s15 {
+    @apply relative h-6 w-full touch-none select-none;
+}
+
+.s16 {
+    @apply absolute left-0 top-1/2 h-2 w-full -translate-y-1/2 overflow-hidden rounded-full;
+}
+
+.s17 {
+    @apply border border-main-600 bg-main-800;
+}
+
+.s18 {
+    @apply transition-colors duration-200;
+}
+
+.s19 {
+    @apply absolute h-full rounded-full bg-main-500/70 transition-colors duration-200;
+}

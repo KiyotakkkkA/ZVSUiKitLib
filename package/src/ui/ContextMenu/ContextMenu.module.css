@@ -1,0 +1,113 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply fixed z-50;
+}
+
+.s1 {
+    @apply pl-7;
+}
+
+.s2 {
+    @apply text-danger-light hover:bg-danger-medium/15 hover:text-danger-light focus-visible:bg-danger-medium/15 focus-visible:text-danger-light;
+}
+
+.s3 {
+    @apply text-main-200 hover:bg-main-700/70 hover:text-main-50 focus-visible:bg-main-700/70 focus-visible:text-main-50;
+}
+
+.s4 {
+    @apply cursor-not-allowed;
+}
+
+.s5 {
+    @apply shrink-0;
+}
+
+.s6 {
+    @apply text-danger-medium;
+}
+
+.s7 {
+    @apply text-main-400;
+}
+
+.s8 {
+    @apply min-w-0 flex-1 truncate;
+}
+
+.s9 {
+    @apply shrink-0 text-xs;
+}
+
+.s10 {
+    @apply text-danger-medium/80;
+}
+
+.s11 {
+    @apply text-main-500;
+}
+
+.s12 {
+    @apply px-2 pb-0.5 pt-1.5 text-[11px] font-medium leading-4 text-main-500;
+}
+
+.s13 {
+    @apply pl-7;
+}
+
+.s14 {
+    @apply -mx-1 my-1 h-px bg-main-700/80;
+}
+
+.s15 {
+    @apply relative;
+}
+
+.s16 {
+    @apply text-main-200 hover:bg-main-700/70 hover:text-main-50 focus-visible:bg-main-700/70 focus-visible:text-main-50;
+}
+
+.s17 {
+    @apply bg-main-700/70 text-main-50;
+}
+
+.s18 {
+    @apply pl-7;
+}
+
+.s19 {
+    @apply cursor-not-allowed opacity-50;
+}
+
+.s20 {
+    @apply shrink-0 text-main-400;
+}
+
+.s21 {
+    @apply min-w-0 flex-1 truncate;
+}
+
+.s22 {
+    @apply shrink-0 text-base leading-none text-main-500 transition-transform duration-150;
+}
+
+.s23 {
+    @apply translate-x-0.5 text-main-300;
+}
+
+.s24 {
+    @apply text-main-100;
+}
+
+.s25 {
+    @apply absolute top-0 z-40 h-full;
+}
+
+.s26 {
+    @apply absolute top-0 z-50;
+}
+
+.content { @apply min-w-40 rounded-lg border border-main-700/80 bg-main-900/95 p-1 text-main-100 shadow-xl shadow-black/35 backdrop-blur-xl; }
+.item { @apply flex min-h-7 w-full items-center gap-2 rounded-md px-2 py-1 text-left text-sm leading-5 transition-colors duration-150 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-40; }

@@ -1,0 +1,6 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply text-main-200;
+}

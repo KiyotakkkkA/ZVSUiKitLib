@@ -1,0 +1,19 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(160 161 165 / 40%) transparent;
+}
+
+.s1 {
+    scrollbar-width: none;
+}
+
+.s0::-webkit-scrollbar { width: 0.5rem; height: 0.5rem; }
+.s0::-webkit-scrollbar-thumb { border: 0.125rem solid transparent; border-radius: 9999px; background: rgb(160 161 165 / 40%); background-clip: padding-box; }
+.s0::-webkit-scrollbar-thumb:hover { background: rgb(160 161 165 / 60%); background-clip: padding-box; }
+.s1::-webkit-scrollbar { display: none; }
+.horizontal { @apply overflow-x-auto overflow-y-hidden; }
+.vertical { @apply overflow-y-auto overflow-x-hidden; }
+.both { @apply overflow-auto; }

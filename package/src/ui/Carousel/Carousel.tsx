@@ -1,3 +1,4 @@
+import styles from "./Carousel.module.css";
 import { Icon } from "../_shared/icons";
 import { Children, useCallback, useEffect, useMemo, useState } from "react";
 import { cn } from "../../lib/utils";
@@ -6,7 +7,7 @@ import type { CarouselImageProps, CarouselProps } from "./types";
 function CarouselImage({ children, className }: CarouselImageProps) {
     return (
         <div
-            className={cn("h-full w-full shrink-0 overflow-hidden", className)}
+            className={cn(styles.s0, className)}
         >
             {children}
         </div>
@@ -85,13 +86,13 @@ function CarouselRoot({
     return (
         <section
             className={cn(
-                "relative overflow-hidden rounded-lg bg-slate-950 text-white",
+                styles.s1,
                 className,
             )}
             aria-roledescription="carousel"
         >
             <div
-                className="flex h-full transition-transform duration-500 ease-out"
+                className={styles.s2}
                 style={{ transform: `translateX(-${activeSlideIndex * 100}%)` }}
             >
                 {slides}
@@ -101,41 +102,41 @@ function CarouselRoot({
                 <>
                     <button
                         type="button"
-                        className="group absolute inset-y-0 left-0 flex w-16 cursor-pointer items-center justify-start pl-4 text-white transition disabled:pointer-events-none disabled:opacity-45"
+                        className={styles.s3}
                         aria-label="Previous slide"
                         disabled={isPreviousDisabled}
                         onClick={goToPrevious}
                     >
                         <span
                             className={cn(
-                                "grid size-9 place-items-center rounded-lg border border-white/35 bg-white/20 shadow-sm backdrop-blur-sm transition group-hover:border-white/55 group-hover:bg-white/35 group-hover:shadow-md group-active:scale-95",
+                                styles.s4,
                                 classNames?.links,
                             )}
                         >
-                            <Icon icon="mdi:chevron-left" className="size-7" />
+                            <Icon icon="mdi:chevron-left" className={styles.s5} />
                         </span>
                     </button>
 
                     <button
                         type="button"
-                        className="group absolute inset-y-0 right-0 flex w-16 cursor-pointer items-center justify-end pr-4 text-white transition disabled:pointer-events-none disabled:opacity-45"
+                        className={styles.s6}
                         aria-label="Next slide"
                         disabled={isNextDisabled}
                         onClick={goToNext}
                     >
                         <span
                             className={cn(
-                                "grid size-9 place-items-center rounded-lg border border-white/35 bg-white/20 shadow-sm backdrop-blur-sm transition group-hover:border-white/55 group-hover:bg-white/35 group-hover:shadow-md group-active:scale-95",
+                                styles.s7,
                                 classNames?.links,
                             )}
                         >
-                            <Icon icon="mdi:chevron-right" className="size-7" />
+                            <Icon icon="mdi:chevron-right" className={styles.s8} />
                         </span>
                     </button>
 
                     <div
                         className={cn(
-                            "absolute bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-2",
+                            styles.s9,
                             classNames?.nav,
                         )}
                     >
@@ -144,10 +145,10 @@ function CarouselRoot({
                                 type="button"
                                 key={index}
                                 className={cn(
-                                    "size-3 cursor-pointer rounded-full transition hover:bg-white/70",
+                                    styles.s10,
                                     activeSlideIndex === index
-                                        ? "bg-white"
-                                        : "bg-white/45",
+                                        ? styles.s11
+                                        : styles.s12,
                                 )}
                                 aria-label={`Go to slide ${index + 1}`}
                                 aria-current={

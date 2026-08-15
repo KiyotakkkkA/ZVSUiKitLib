@@ -1,15 +1,16 @@
+import styles from "./ProgressBar.module.css";
 import { cn } from "../../lib/utils";
 import type { ColorVariantsBase } from "../_shared/types";
 import type { ProgressBarProps } from "./types";
 
 const variantClasses: Record<ColorVariantsBase, string> = {
-    primary: "bg-main-200",
-    secondary: "bg-main-700",
-    tertiary: "bg-accent-dark",
-    success: "bg-success-dark",
-    warning: "bg-warning-dark",
-    danger: "bg-danger-dark",
-    info: "bg-info-dark",
+    primary: styles.s0,
+    secondary: styles.s1,
+    tertiary: styles.s2,
+    success: styles.s3,
+    warning: styles.s4,
+    danger: styles.s5,
+    info: styles.s6,
 };
 
 export const ProgressBar = ({
@@ -25,18 +26,18 @@ export const ProgressBar = ({
     const percent = max === 0 ? 0 : Math.round((normalizedValue / max) * 100);
 
     return (
-        <div className={cn("w-full", className)}>
+        <div className={cn(styles.s7, className)}>
             {(label || showValue) && (
                 <div
                     className={cn(
-                        "mb-1.5 flex items-center justify-between gap-3",
+                        styles.s8,
                         classNames?.header,
                     )}
                 >
                     {label && (
                         <span
                             className={cn(
-                                "truncate text-sm font-medium text-main-200",
+                                styles.s9,
                                 classNames?.label,
                             )}
                         >
@@ -47,7 +48,7 @@ export const ProgressBar = ({
                     {showValue && (
                         <span
                             className={cn(
-                                "shrink-0 text-xs text-main-400",
+                                styles.s10,
                                 classNames?.value,
                             )}
                         >
@@ -63,13 +64,13 @@ export const ProgressBar = ({
                 aria-valuemax={max}
                 aria-valuenow={normalizedValue}
                 className={cn(
-                    "h-2 w-full overflow-hidden rounded-full bg-main-800",
+                    styles.s11,
                     classNames?.track,
                 )}
             >
                 <div
                     className={cn(
-                        "h-full rounded-full transition-all duration-300",
+                        styles.s12,
                         variantClasses[variant],
                         classNames?.indicator,
                     )}

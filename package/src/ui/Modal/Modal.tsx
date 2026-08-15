@@ -1,3 +1,4 @@
+import styles from "./Modal.module.css";
 import {
     createContext,
     useEffect,
@@ -27,17 +28,17 @@ function ModalHeader({
     return (
         <div
             className={cn(
-                "flex items-center gap-3 border-b border-main-700/80 px-5 py-4",
+                styles.s0,
                 className,
             )}
         >
-            <div className="min-w-0 flex-1">{children}</div>
+            <div className={styles.s1}>{children}</div>
 
             {showCloseButton && (
                 <Button
                     variant="secondary"
                     className={cn(
-                        "h-8 w-8 border-main-600 bg-main-700/70 hover:bg-main-600/80",
+                        styles.s2,
                         closeButtonClassName,
                     )}
                     onClick={modalContext?.onClose}
@@ -52,7 +53,7 @@ function ModalHeader({
 
 function ModalContent({ children, className }: ModalSectionProps) {
     return (
-        <ScrollArea className={cn("min-h-0 flex-1 px-5 py-5", className)}>
+        <ScrollArea className={cn(styles.s3, className)}>
             {children}
         </ScrollArea>
     );
@@ -62,7 +63,7 @@ function ModalFooter({ children, className }: ModalSectionProps) {
     return (
         <div
             className={cn(
-                "flex items-center justify-end gap-2 border-t border-main-700/80 px-5 py-4",
+                styles.s4,
                 className,
             )}
         >
@@ -121,7 +122,7 @@ function ModalRoot({
     return createPortal(
         <div
             className={cn(
-                "fixed inset-0 z-50 flex animate-in items-center justify-center bg-black/60 px-4 py-6 backdrop-blur-sm fade-in duration-200",
+                styles.s5,
                 overlayClassName,
             )}
             onClick={onOverlayClick}
@@ -133,9 +134,9 @@ function ModalRoot({
             <ModalContext.Provider value={{ onClose }}>
                 <div
                     className={cn(
-                        "flex max-h-[88vh] w-full max-w-5xl flex-col border border-main-700/90",
+                        styles.s6,
                         `zvs-${rounded}`,
-                        "bg-main-900/95 shadow-2xl animate-in zoom-in-95 slide-in-from-bottom-2 duration-220",
+                        styles.s7,
                         className,
                     )}
                 >

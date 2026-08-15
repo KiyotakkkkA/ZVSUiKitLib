@@ -1,0 +1,58 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply rounded-xl border border-main-700 bg-main-900/95 px-3 py-2 shadow-2xl shadow-black/30;
+}
+
+.s1 {
+    @apply mb-1 text-xs font-medium text-main-400;
+}
+
+.s2 {
+    @apply space-y-1;
+}
+
+.s3 {
+    @apply flex items-center justify-between gap-4 text-sm;
+}
+
+.s4 {
+    @apply flex items-center gap-1.5;
+}
+
+.s5 {
+    @apply inline-block h-2 w-2 shrink-0 rounded-full;
+}
+
+.s6 {
+    @apply text-main-400;
+}
+
+.s7 {
+    @apply font-medium text-main-100;
+}
+
+.s8 {
+    @apply min-w-0 rounded-2xl border border-main-700/70 bg-main-900/50 p-4;
+}
+
+.s9 {
+    @apply mb-4;
+}
+
+.s10 {
+    @apply text-base font-semibold text-main-100;
+}
+
+.s11 {
+    @apply mt-1 text-sm text-main-400;
+}
+
+.s12 {
+    @apply min-w-0 overflow-visible;
+}
+
+.s13 {
+    @apply flex items-center justify-center rounded-xl border border-dashed border-main-700 bg-main-900/40 text-sm text-main-500;
+}

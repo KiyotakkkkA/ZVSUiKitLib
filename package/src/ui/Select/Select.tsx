@@ -1,5 +1,8 @@
 "use client";
 
+
+import styles from "./Select.module.css";
+
 import { Icon } from "../_shared/icons";
 import {
     createContext,
@@ -107,7 +110,7 @@ function SelectRoot({
     return (
         <SelectContext.Provider value={contextValue}>
             <Dropdown
-                className={cn("w-72 max-w-full", className)}
+                className={cn(styles.s0, className)}
                 menuWidth={menuWidth ?? "auto"}
                 menuPlacement={menuPlacement}
                 disabled={disabled}
@@ -156,7 +159,7 @@ function SelectMenu({
     return (
         <Dropdown.Menu
             rounded={rounded}
-            className={cn("bg-main-800", className)}
+            className={cn(styles.s1, className)}
         >
             {searchable && (
                 <InputSmall
@@ -164,14 +167,14 @@ function SelectMenu({
                     value={query}
                     onChange={(event) => setQuery(event.target.value)}
                     placeholder={searchPlaceholder}
-                    className={cn("h-8 w-full", classNames?.search)}
+                    className={cn(styles.s2, classNames?.search)}
                 />
             )}
 
-            <ScrollArea className={cn("max-h-72", searchable && "mt-1.5")}>
-                <div className="flex flex-col gap-1">
+            <ScrollArea className={cn(styles.s3, searchable && styles.s4)}>
+                <div className={styles.s5}>
                     {visibleOptionsCount === 0 ? (
-                        <p className="px-3 py-2 text-sm text-main-500">
+                        <p className={styles.s6}>
                             {emptyMessage}
                         </p>
                     ) : (
@@ -206,7 +209,7 @@ function SelectOptionComponent({
                 active ? (
                     <Icon
                         icon="mdi:check"
-                        className="text-main-200"
+                        className={styles.s7}
                         aria-hidden
                     />
                 ) : (
@@ -215,13 +218,13 @@ function SelectOptionComponent({
             }
             onClick={() => context.select(option)}
             className={cn(
-                "min-w-0 cursor-pointer px-3 py-1.5",
-                active ? "bg-main-700/60 text-main-100" : "text-main-300",
+                styles.s8,
+                active ? styles.s9 : styles.s10,
                 rounded && `zvs-${rounded}`,
                 className,
             )}
         >
-            <span className="truncate">{label}</span>
+            <span className={styles.s11}>{label}</span>
         </Dropdown.Item>
     );
 }

@@ -1,0 +1,122 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply items-start;
+}
+
+.s1 {
+    @apply justify-end;
+}
+
+.s2 {
+    @apply items-end;
+}
+
+.s3 {
+    @apply justify-start;
+}
+
+.s4 {
+    @apply h-96 w-full border-b border-main-600/70 shadow-[0_16px_60px_rgba(0,0,0,0.5)];
+}
+
+.s5 {
+    @apply h-full w-96 border-l border-main-600/70 shadow-[-16px_0_60px_rgba(0,0,0,0.5)];
+}
+
+.s6 {
+    @apply h-96 w-full border-t border-main-600/70 shadow-[0_-16px_60px_rgba(0,0,0,0.5)];
+}
+
+.s7 {
+    @apply h-full w-96 border-r border-main-600/70 shadow-[16px_0_60px_rgba(0,0,0,0.5)];
+}
+
+.s8 {
+    @apply -translate-y-full;
+}
+
+.s9 {
+    @apply translate-x-full;
+}
+
+.s10 {
+    @apply translate-y-full;
+}
+
+.s11 {
+    @apply -translate-x-full;
+}
+
+.s12 {
+    @apply translate-y-0;
+}
+
+.s13 {
+    @apply translate-x-0;
+}
+
+.s14 {
+    @apply translate-y-0;
+}
+
+.s15 {
+    @apply translate-x-0;
+}
+
+.s16 {
+    @apply fixed inset-0 z-50 flex bg-black/60 backdrop-blur-sm transition-opacity duration-260;
+}
+
+.s17 {
+    @apply pointer-events-auto opacity-100;
+}
+
+.s18 {
+    @apply pointer-events-none opacity-0;
+}
+
+.s19 {
+    @apply flex flex-col overflow-hidden bg-main-900/95 backdrop-blur-md;
+}
+
+.s20 {
+    @apply transition-all duration-260 ease-out;
+}
+
+.s21 {
+    @apply opacity-100;
+}
+
+.s22 {
+    @apply opacity-0;
+}
+
+.s23 {
+    @apply flex items-center justify-between border-b border-main-700/70 bg-main-900/35 px-4 py-3;
+}
+
+.s24 {
+    @apply min-w-0 flex-1;
+}
+
+.s25 {
+    @apply ml-3 shrink-0 rounded-md p-1 text-main-300 transition-colors hover:bg-main-700/70 hover:text-main-100;
+}
+
+.s26 {
+    @apply truncate text-base font-semibold text-main-100;
+}
+
+.s27 {
+    @apply truncate text-xs text-main-400;
+}
+
+.s28 {
+    @apply min-h-0 flex-1 p-4;
+}
+
+.s29 {
+    @apply border-t border-main-700/70 px-4 py-3;
+}

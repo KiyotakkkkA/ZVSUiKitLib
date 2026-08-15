@@ -1,1 +1,1 @@
-import "./ui/index.css";
+import "./reset.css";

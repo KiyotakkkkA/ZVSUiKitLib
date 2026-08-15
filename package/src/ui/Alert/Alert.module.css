@@ -1,0 +1,37 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply flex items-start gap-3 border px-3 py-2.5;
+}
+
+.s1 {
+    @apply mt-0.5 shrink-0;
+}
+
+.s2 {
+    @apply min-w-0;
+}
+
+.s3 {
+    @apply text-sm font-semibold;
+}
+
+.s4 {
+    @apply text-sm opacity-95;
+}
+
+.primary { @apply bg-main-100 text-main-800; }
+.primaryIcon { @apply text-main-800; }
+.secondary { @apply border-main-700/70 bg-main-900/60 text-main-100; }
+.secondaryIcon { @apply text-main-300; }
+.tertiary { @apply border-accent-dark/50 bg-accent-medium/10 text-accent-light; }
+.tertiaryIcon { @apply text-accent-medium; }
+.success { @apply border-success-dark/50 bg-success-dark/25 text-success-light; }
+.successIcon { @apply text-success-light; }
+.warning { @apply border-warning-dark/50 bg-warning-dark/25 text-warning-light; }
+.warningIcon { @apply text-warning-light; }
+.danger { @apply border-danger-dark/50 bg-danger-dark/25 text-danger-light; }
+.dangerIcon { @apply text-danger-light; }
+.info { @apply border-info-dark/50 bg-info-dark/25 text-info-light; }
+.infoIcon { @apply text-info-light; }

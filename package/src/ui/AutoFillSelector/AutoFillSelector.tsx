@@ -1,3 +1,4 @@
+import styles from "./AutoFillSelector.module.css";
 import {
     createContext,
     useCallback,
@@ -125,13 +126,13 @@ function AutoFillSelectorRoot({
         <AutoFillSelectorContext.Provider value={contextValue}>
             <div
                 className={cn(
-                    "relative w-72 max-w-full min-w-0 overflow-hidden",
+                    styles.s0,
                     className,
                 )}
                 {...props}
             >
                 <Dropdown
-                    className="w-full"
+                    className={styles.s1}
                     disabled={disabled}
                     menuWidth={menuWidth}
                     onOpenChange={(open) => {
@@ -161,11 +162,11 @@ function AutoFillSelectorTrigger({
         <Dropdown.Anchor
             focusInputOnOpen={() => inputRef.current?.focus()}
             className={cn(
-                "flex min-h-9 w-full min-w-0 max-w-full flex-wrap items-center gap-1 border border-main-700",
-                "overflow-hidden bg-main-800 px-2 py-1 text-sm text-main-100 transition-colors duration-200",
-                "hover:border-main-600 focus-within:border-main-500 focus-within:ring-2 focus-within:ring-main-500/20",
+                styles.s2,
+                styles.s3,
+                styles.s4,
                 `zvs-${rounded}`,
-                disabled ? "cursor-not-allowed opacity-60" : "cursor-text",
+                disabled ? styles.s5 : styles.s6,
                 className,
             )}
             {...props}
@@ -192,7 +193,7 @@ function AutoFillSelectorTags({
     return (
         <div
             className={cn(
-                "flex min-w-0 max-w-full flex-wrap items-center gap-1",
+                styles.s7,
                 className,
             )}
             {...props}
@@ -204,12 +205,12 @@ function AutoFillSelectorTags({
                     <span
                         key={item}
                         className={cn(
-                            "inline-flex min-w-0 max-w-28 items-center gap-1 bg-main-700 px-1.5 py-0.5 text-xs text-main-100",
+                            styles.s8,
                             `zvs-${rounded}`,
                             tagClassName,
                         )}
                     >
-                        <span className="min-w-0 truncate">
+                        <span className={styles.s9}>
                             {option?.label ?? item}
                         </span>
 
@@ -217,7 +218,7 @@ function AutoFillSelectorTags({
                             <button
                                 type="button"
                                 className={cn(
-                                    "shrink-0 text-main-400 transition-colors hover:text-main-100",
+                                    styles.s10,
                                     tagRemoveClassName,
                                 )}
                                 onClick={(event) => {
@@ -228,7 +229,7 @@ function AutoFillSelectorTags({
                             >
                                 <Icon
                                     icon="mdi:close"
-                                    className="h-3.5 w-3.5"
+                                    className={styles.s11}
                                     aria-hidden
                                 />
                             </button>
@@ -276,7 +277,7 @@ function AutoFillSelectorInput({
                 }
             }}
             className={cn(
-                "min-w-20 flex-1 bg-transparent px-0.5 py-0.5 text-sm text-main-100 placeholder:text-main-500 outline-none",
+                styles.s12,
                 `zvs-${rounded}`,
                 className,
             )}
@@ -296,12 +297,12 @@ function AutoFillSelectorMenu({
             aria-multiselectable
             rounded={rounded}
             className={cn(
-                "border-main-700 bg-main-800 p-1 shadow-lg",
+                styles.s13,
                 className,
             )}
             {...props}
         >
-            <ScrollArea orientation="vertical" className="max-h-64">
+            <ScrollArea orientation="vertical" className={styles.s14}>
                 {children}
             </ScrollArea>
         </Dropdown.Menu>
@@ -325,7 +326,7 @@ function AutoFillSelectorOptions({
     }
 
     return (
-        <div className={cn("flex flex-col gap-1", className)} {...props}>
+        <div className={cn(styles.s15, className)} {...props}>
             {filteredOptions.map((option) => {
                 const isSelected = selectedSet.has(option.value);
 
@@ -339,7 +340,7 @@ function AutoFillSelectorOptions({
                                 <Icon
                                     icon="mdi:check"
                                     className={cn(
-                                        "h-4 w-4 text-main-200",
+                                        styles.s16,
                                         optionIconClassName,
                                     )}
                                     aria-hidden
@@ -356,15 +357,15 @@ function AutoFillSelectorOptions({
                         className={cn(
                             `w-full min-w-0 items-center gap-2 px-4 py-1.5 zvs-${rounded}`,
                             isSelected
-                                ? "bg-main-700/60 text-main-100"
-                                : "text-main-300 hover:bg-main-700/40 hover:text-main-100",
+                                ? styles.s17
+                                : styles.s18,
                             optionClassName,
                         )}
                     >
-                        <span className="min-w-0 flex-1">
+                        <span className={styles.s19}>
                             <span
                                 className={cn(
-                                    "block truncate font-medium",
+                                    styles.s20,
                                     optionLabelClassName,
                                 )}
                             >
@@ -374,7 +375,7 @@ function AutoFillSelectorOptions({
                             {option.description && (
                                 <span
                                     className={cn(
-                                        "mt-0.5 block truncate text-xs text-main-500",
+                                        styles.s21,
                                         optionDescriptionClassName,
                                     )}
                                 >
@@ -402,7 +403,7 @@ function AutoFillSelectorEmpty({
 
     return (
         <div
-            className={cn("px-3 py-2 text-sm text-main-500", className)}
+            className={cn(styles.s22, className)}
             {...props}
         >
             {children}

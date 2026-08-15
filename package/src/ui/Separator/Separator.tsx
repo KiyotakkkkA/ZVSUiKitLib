@@ -1,3 +1,4 @@
+import styles from "./Separator.module.css";
 import { cn } from "../../lib/utils";
 import type { SeparatorProps } from "./types";
 
@@ -12,8 +13,8 @@ export function Separator({
             aria-orientation={orientation}
             className={cn(
                 orientation === "horizontal"
-                    ? "h-px w-full bg-main-700/70"
-                    : "h-full w-px bg-main-700/70",
+                    ? styles.s1
+                    : styles.s2,
                 className,
             )}
             {...props}

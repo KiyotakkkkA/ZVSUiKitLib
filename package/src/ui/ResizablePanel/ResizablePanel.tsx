@@ -1,3 +1,4 @@
+import styles from "./ResizablePanel.module.css";
 import { createContext, useContext, useMemo, useState } from "react";
 import { cn } from "../../lib/utils";
 import type {
@@ -49,7 +50,7 @@ const ResizablePanelRoot = ({
             <div
                 {...props}
                 className={cn(
-                    "flex min-h-0 min-w-0 overflow-hidden rounded-2xl border border-main-700/70 bg-main-900/50",
+                    styles.s0,
                     className,
                 )}
             >
@@ -70,7 +71,7 @@ const ResizablePanelSidebar = ({
     return (
         <aside
             {...props}
-            className={cn("min-h-0 shrink-0 overflow-hidden", className)}
+            className={cn(styles.s1, className)}
             style={{
                 width: size,
                 ...style,
@@ -89,7 +90,7 @@ const ResizablePanelContent = ({
     return (
         <main
             {...props}
-            className={cn("min-h-0 min-w-0 flex-1 overflow-hidden", className)}
+            className={cn(styles.s2, className)}
         >
             {children}
         </main>
@@ -108,8 +109,8 @@ const ResizablePanelHandle = ({
             role="separator"
             aria-orientation="vertical"
             className={cn(
-                "group relative flex w-2 shrink-0 cursor-col-resize items-center justify-center",
-                "bg-main-900 hover:bg-main-800/60",
+                styles.s3,
+                styles.s4,
                 className,
             )}
             onPointerDown={(event) => {
@@ -151,7 +152,7 @@ const ResizablePanelHandle = ({
                 window.addEventListener("pointerup", handlePointerUp);
             }}
         >
-            <span className="h-10 w-px rounded-full bg-main-700 transition-colors duration-150 group-hover:bg-main-400" />
+            <span className={styles.s5} />
         </div>
     );
 };

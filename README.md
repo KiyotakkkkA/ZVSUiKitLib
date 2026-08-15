@@ -1,63 +1,35 @@
-# UI Kit Installation
-
-## Step 1 - Install package
+## Install
 
 ```bash
 npm i @kiyotakkkka/zvs-uikit-lib
 ```
 
-## Step 2 - Configure Tailwind scanning
+```tsx
+import { Button, Text } from "@kiyotakkkka/zvs-uikit-lib";
 
-<details><summary><b>Tailwind 4 setup</b></summary>
-
-Tailwind 4 does not scan `node_modules` by default. Add this line to the CSS file where you import Tailwind (`@import "tailwindcss"`):
-
-```css
-@import "@kiyotakkkka/zvs-uikit-lib/styles.css";
-
-@source "../node_modules/@kiyotakkkka/zvs-uikit-lib/dist/**/*.{js,cjs,mjs,ts,tsx,jsx}";
+export function Example() {
+    return (
+        <Button>
+            <Text>Ready</Text>
+        </Button>
+    );
+}
 ```
 
-</details>
-
-<details><summary><b>Tailwind 3 setup</b></summary>
-
-Add the package path to `content` in `tailwind.config.js`:
-
-```js
-module.exports = {
-    content: [
-        "../node_modules/@kiyotakkkka/zvs-uikit-lib/dist/**/*.{js,cjs,mjs,ts,tsx,jsx}",
-        // other paths...
-    ],
-    // other config...
-};
-```
-
-And after add this line to the global css file
+## Themes
 
 ```css
-@import "@kiyotakkkka/zvs-uikit-lib/styles.css";
-```
-
-</details>
-
-## Step 3 - Color palette
-
-For correct component rendering, use this palette (or override the same tokens):
-
-```css
-@theme {
-    --color-main-50: rgb(250 250 250);
-    --color-main-100: rgb(245 245 245);
-    --color-main-200: rgb(229 229 229);
-    --color-main-300: rgb(212 212 212);
-    --color-main-400: rgb(163 163 163);
-    --color-main-500: rgb(115 115 115);
-    --color-main-600: rgb(82 82 82);
-    --color-main-700: rgb(64 64 64);
-    --color-main-800: rgb(38 38 38);
-    --color-main-900: rgb(23 23 23);
+:root {
+    --color-main-50: #fafafa;
+    --color-main-100: #f5f5f5;
+    --color-main-200: #e5e5e5;
+    --color-main-300: #d4d4d4;
+    --color-main-400: #a3a3a3;
+    --color-main-500: #737373;
+    --color-main-600: #525252;
+    --color-main-700: #404040;
+    --color-main-800: #1c1c1c;
+    --color-main-900: #0e0e0e;
 
     --color-accent-light: #d8ff8d;
     --color-accent-medium: #b7f34a;
@@ -81,6 +53,114 @@ For correct component rendering, use this palette (or override the same tokens):
 }
 ```
 
+### Runtime theme with `StyleProvider`
+
+Use `StyleProvider` when the palette can change at runtime. A
+`StyleThemePalette` is a complete, type-safe palette. Spreading
+`defaultThemePalette` is the easiest way to customize only selected groups
+while retaining valid values for all other tokens.
+
+```tsx
+"use client";
+
+import type { ReactNode } from "react";
+import {
+    Button,
+    StyleProvider,
+    defaultThemePalette,
+    useStyle,
+    type StyleThemePalette,
+} from "@kiyotakkkka/zvs-uikit-lib";
+
+const roseTheme: StyleThemePalette = {
+    ...defaultThemePalette,
+    main: {
+        50: "#fff7ed",
+        100: "#ffedd5",
+        200: "#fed7aa",
+        300: "#fdba74",
+        400: "#fb923c",
+        500: "#f97316",
+        600: "#ea580c",
+        700: "#9a3412",
+        800: "#431407",
+        900: "#1c0a04",
+    },
+    accent: {
+        light: "#fda4af",
+        medium: "#f43f5e",
+        dark: "#be123c",
+    },
+};
+
+function ThemeControls() {
+    const { changeTheme, resetTheme } = useStyle();
+
+    return (
+        <>
+            <Button onClick={() => changeTheme(roseTheme)}>Rose theme</Button>
+            <Button variant="secondary" onClick={resetTheme}>
+                Reset
+            </Button>
+        </>
+    );
+}
+
+export function AppTheme({ children }: { children: ReactNode }) {
+    return (
+        <StyleProvider>
+            <ThemeControls />
+            {children}
+        </StyleProvider>
+    );
+}
+```
+
+`useStyle()` returns the current `palette`, `changeTheme(palette)`, and
+`resetTheme()`. It must be used below `StyleProvider`.
+
+### Persistence and SSR
+
+Pass `cookies` to persist runtime changes in the `zvs-theme` cookie. For an SSR
+render without a theme flash, read the palette on the server, apply its CSS
+variables to `<html>`, and pass the same value to `initialPalette`.
+
+```tsx
+import type { CSSProperties, ReactNode } from "react";
+import { cookies } from "next/headers";
+import { StyleProvider } from "@kiyotakkkka/zvs-uikit-lib";
+import {
+    defaultThemePalette,
+    getThemeVariables,
+    parseThemePalette,
+    STYLE_THEME_COOKIE,
+} from "@kiyotakkkka/zvs-uikit-lib/server";
+
+export default async function RootLayout({
+    children,
+}: {
+    children: ReactNode;
+}) {
+    const cookieStore = await cookies();
+    const palette =
+        parseThemePalette(cookieStore.get(STYLE_THEME_COOKIE)?.value) ??
+        defaultThemePalette;
+
+    return (
+        <html style={getThemeVariables(palette) as CSSProperties}>
+            <body>
+                <StyleProvider initialPalette={palette} cookies>
+                    {children}
+                </StyleProvider>
+            </body>
+        </html>
+    );
+}
+```
+
+`cookies` also accepts `{ name, maxAge, path, sameSite, secure }`. Without this
+prop, theme switching remains in memory and does not write cookies.
+
 ---
 
 ## Component Catalog & API
@@ -89,6 +169,7 @@ For correct component rendering, use this palette (or override the same tokens):
 
 ### Navigation
 
+- [Themes](#themes)
 - [Components](#components)
 - [Hooks](#hooks)
 - [Providers](#providers)

@@ -1,5 +1,8 @@
 "use client";
 
+
+import styles from "./InputRadioGroup.module.css";
+
 import { useId, useMemo } from "react";
 import { cn } from "../../lib/utils";
 import type { BooleanModel } from "../InputCheckBoxGroup";
@@ -57,10 +60,10 @@ export function InputRadioGroup<T extends BooleanModel>({
                 aria-orientation={orientation}
                 aria-disabled={disabled || undefined}
                 className={cn(
-                    "flex gap-3",
+                    styles.s0,
                     orientation === "vertical"
-                        ? "flex-col items-start"
-                        : "flex-row flex-wrap items-center",
+                        ? styles.s2
+                        : styles.s3,
                     className,
                 )}
             >

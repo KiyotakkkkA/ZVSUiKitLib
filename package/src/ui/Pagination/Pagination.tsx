@@ -1,3 +1,4 @@
+import styles from "./Pagination.module.css";
 import { Icon } from "../_shared/icons";
 import { Button } from "../Button/Button";
 import { Select } from "../Select/Select";
@@ -53,20 +54,20 @@ export const Pagination = ({
     }));
 
     return (
-        <div className="grid gap-2 sm:flex sm:items-center sm:justify-between sm:gap-3">
-            <div className="rounded-md border border-main-700/70 bg-main-900/35 px-3 py-2 text-sm text-main-300 sm:border-0 sm:bg-transparent sm:px-0 sm:py-0">
+        <div className={styles.s0}>
+            <div className={styles.s1}>
                 {total > 0 ? (
-                    <div className="whitespace-nowrap">
-                        <span className="hidden sm:inline">Показано </span>
-                        <span className="font-semibold text-main-50">
+                    <div className={styles.s2}>
+                        <span className={styles.s3}>Показано </span>
+                        <span className={styles.s4}>
                             {from ?? 1}
                         </span>
                         {" - "}
-                        <span className="font-semibold text-main-50">
+                        <span className={styles.s5}>
                             {to ?? total}
                         </span>
-                        <span className="text-main-400"> из </span>
-                        <span className="font-semibold text-main-50">
+                        <span className={styles.s6}> из </span>
+                        <span className={styles.s7}>
                             {total}
                         </span>
                     </div>
@@ -75,10 +76,10 @@ export const Pagination = ({
                 )}
             </div>
 
-            <div className="grid grid-cols-[1fr_auto] items-center gap-2 sm:flex sm:flex-row sm:items-center sm:gap-3">
+            <div className={styles.s8}>
                 {onPerPageChange && (
-                    <div className="flex min-w-0 items-center justify-between gap-2 rounded-md bg-main-900/35 text-sm text-main-300 sm:border-0 sm:bg-transparent sm:px-0 sm:py-0">
-                        <span className="truncate hidden sm:inline">
+                    <div className={styles.s9}>
+                        <span className={styles.s10}>
                             На странице
                         </span>
                         <Select
@@ -86,24 +87,24 @@ export const Pagination = ({
                             disabled={disabled}
                             onChange={(value) => onPerPageChange(Number(value))}
                             options={perPageSelectOptions}
-                            className="w-16"
+                            className={styles.s11}
                             menuWidth={80}
                             menuPlacement="bottom-left"
                         >
                             <Select.Trigger
                                 rounded="rounded"
-                                className="h-8 w-16 border-main-700 bg-main-900 px-2 text-sm font-semibold sm:h-9"
+                                className={styles.s12}
                             />
                             <Select.Menu
                                 rounded="rounded-lg"
-                                className="border border-main-700 bg-main-900 text-main-100"
+                                className={styles.s13}
                             >
                                 {perPageSelectOptions.map((option) => (
                                     <Select.Option
                                         key={option.value}
                                         {...option}
                                         rounded="rounded-md"
-                                        className="justify-center px-2 py-1 text-sm"
+                                        className={styles.s14}
                                     />
                                 ))}
                             </Select.Menu>
@@ -112,14 +113,14 @@ export const Pagination = ({
                 )}
 
                 <nav
-                    className="flex items-center justify-end gap-1 rounded-md border border-main-700/70 bg-main-900/35 p-1 sm:border-0 sm:bg-transparent sm:p-0"
+                    className={styles.s15}
                     aria-label="Пагинация"
                 >
                     <Button
                         variant="secondary"
                         disabled={disabled || isFirstPage}
                         onClick={() => onPageChange(page - 1)}
-                        className="flex size-8 items-center justify-center p-0 disabled:cursor-not-allowed disabled:opacity-50 sm:size-9"
+                        className={styles.s16}
                         title="Предыдущая страница"
                     >
                         <Icon icon="mdi:chevron-left" width={20} height={20} />
@@ -129,7 +130,7 @@ export const Pagination = ({
                         visiblePage === "dots" ? (
                             <span
                                 key={`dots-${index}`}
-                                className="flex size-8 items-center justify-center text-main-500 sm:size-9"
+                                className={styles.s17}
                             >
                                 ...
                             </span>
@@ -143,7 +144,7 @@ export const Pagination = ({
                                 }
                                 disabled={disabled || visiblePage === page}
                                 onClick={() => onPageChange(visiblePage)}
-                                className="flex size-8 items-center justify-center p-0 text-sm font-bold disabled:cursor-default disabled:opacity-100 sm:size-9"
+                                className={styles.s18}
                                 title={`Страница ${visiblePage}`}
                             >
                                 {visiblePage}
@@ -155,7 +156,7 @@ export const Pagination = ({
                         variant="secondary"
                         disabled={disabled || isLastPage}
                         onClick={() => onPageChange(page + 1)}
-                        className="flex size-8 items-center justify-center p-0 disabled:cursor-not-allowed disabled:opacity-50 sm:size-9"
+                        className={styles.s19}
                         title="Следующая страница"
                     >
                         <Icon icon="mdi:chevron-right" width={20} height={20} />

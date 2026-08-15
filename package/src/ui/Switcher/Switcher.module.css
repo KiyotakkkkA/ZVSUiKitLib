@@ -1,0 +1,18 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply inline-flex items-center gap-1 border border-main-700/70 bg-main-900/55 p-1;
+}
+
+.s1 {
+    @apply cursor-pointer rounded-lg px-3 py-1.5 text-xs font-medium transition-colors;
+}
+
+.s2 {
+    @apply bg-main-700/80 text-main-100;
+}
+
+.s3 {
+    @apply text-main-300 hover:bg-main-800/70 hover:text-main-100;
+}

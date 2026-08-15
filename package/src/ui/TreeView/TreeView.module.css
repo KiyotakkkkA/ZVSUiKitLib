@@ -1,0 +1,114 @@
+@reference "tailwindcss";
+@reference "../theme.css";
+
+.s0 {
+    @apply relative w-full;
+}
+
+.s1 {
+    @apply absolute left-0 top-0 w-full pb-1;
+}
+
+.s2 {
+    @apply min-w-0 rounded-2xl border border-main-700/70 bg-main-900/50 p-3;
+}
+
+.s3 {
+    @apply space-y-1;
+}
+
+.s4 {
+    @apply rounded-xl;
+}
+
+.s5 {
+    @apply flex w-full cursor-pointer items-center gap-2 rounded-lg px-2 py-1.5 text-left;
+}
+
+.s6 {
+    @apply text-main-100 transition-colors duration-200 hover:bg-main-800/60;
+}
+
+.s7 {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-300/50;
+}
+
+.s8 {
+    @apply shrink-0 text-main-300 transition-transform duration-200;
+}
+
+.s9 {
+    @apply rotate-90;
+}
+
+.s10 {
+    @apply shrink-0 text-main-300;
+}
+
+.s11 {
+    @apply min-w-0 flex-1 truncate text-sm font-medium;
+}
+
+.s12 {
+    @apply ml-auto shrink-0 text-main-400;
+}
+
+.s13 {
+    @apply mt-1 pl-7;
+}
+
+.s14 {
+    @apply mt-1 space-y-1 pl-7;
+}
+
+.s15 {
+    @apply flex w-full min-w-0 cursor-pointer items-center gap-2 rounded-lg px-2 py-1.5 text-left;
+}
+
+.s16 {
+    @apply transition-colors duration-200;
+}
+
+.s17 {
+    @apply bg-main-700/70 text-main-100;
+}
+
+.s18 {
+    @apply text-main-300 hover:bg-main-800/50 hover:text-main-100;
+}
+
+.s19 {
+    @apply cursor-not-allowed opacity-60;
+}
+
+.s20 {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-300/50;
+}
+
+.s21 {
+    @apply shrink-0 text-main-400;
+}
+
+.s22 {
+    @apply text-main-100;
+}
+
+.s23 {
+    @apply min-w-0 flex-1;
+}
+
+.s24 {
+    @apply block truncate text-sm font-medium;
+}
+
+.s25 {
+    @apply mt-0.5 block truncate text-xs text-main-400;
+}
+
+.s26 {
+    @apply text-main-300;
+}
+
+.s27 {
+    @apply ml-auto shrink-0 text-main-500;
+}

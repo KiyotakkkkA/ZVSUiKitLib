@@ -1,3 +1,4 @@
+import styles from "./Accordion.module.css";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { Icon } from "../_shared/icons";
 import { cn } from "../../lib/utils";
@@ -33,7 +34,7 @@ function AccordionRoot({
         <AccordionContext.Provider value={{ isOpen, setIsOpen }}>
             <div
                 className={cn(
-                    "rounded-xl border border-main-700/70 bg-main-900/50",
+                    styles.s0,
                     className,
                 )}
             >
@@ -50,16 +51,16 @@ function AccordionSummary({ className, children }: AccordionSummaryProps) {
         <button
             type="button"
             className={cn(
-                "flex w-full cursor-pointer items-center justify-between gap-2 px-2.5 py-2 text-left",
+                styles.s1,
                 className,
             )}
             onClick={() => setIsOpen((prev) => !prev)}
         >
-            <span className="min-w-0 flex-1">{children}</span>
+            <span className={styles.s2}>{children}</span>
             <span
                 className={cn(
-                    "shrink-0 text-main-400 transition-transform duration-300",
-                    isOpen ? "rotate-180" : "rotate-0",
+                    styles.s3,
+                    isOpen ? styles.s4 : styles.s5,
                 )}
                 aria-hidden
             >
@@ -94,13 +95,13 @@ function AccordionContent({ className, children }: AccordionContentProps) {
 
     return (
         <div
-            className="overflow-hidden transition-all duration-300 ease-in-out"
+            className={styles.s6}
             style={{ maxHeight: isOpen ? `${contentHeight + 1}px` : "0px" }}
         >
             <div
                 ref={contentRef}
                 className={cn(
-                    "border-t border-main-700/70 px-2.5 py-2",
+                    styles.s7,
                     className,
                 )}
             >

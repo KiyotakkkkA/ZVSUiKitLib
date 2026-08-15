@@ -1,3 +1,4 @@
+import styles from "./ScrollArea.module.css";
 import { forwardRef } from "react";
 import { cn } from "../../lib/utils";
 import type { ScrollAreaProps } from "./types";
@@ -15,17 +16,17 @@ export const ScrollArea = forwardRef<HTMLDivElement, ScrollAreaProps>(
     ) => {
         const overflowClassName =
             orientation === "horizontal"
-                ? "overflow-x-auto overflow-y-hidden"
+                ? styles.horizontal
                 : orientation === "vertical"
-                  ? "overflow-y-auto overflow-x-hidden"
-                  : "overflow-auto";
+                  ? styles.vertical
+                  : styles.both;
 
         return (
             <div
                 ref={ref}
                 className={cn(
-                    "zvs-scroll-area",
-                    !showScrollbar && "zvs-scroll-area--hidden",
+                    styles.s0,
+                    !showScrollbar && styles.s1,
                     overflowClassName,
                     className,
                 )}
