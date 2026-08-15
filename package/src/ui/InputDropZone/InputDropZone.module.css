@@ -50,7 +50,7 @@
 }
 
 .s12 {
-    @apply flex h-12 w-12 items-center justify-center rounded-md bg-main-700/65 text-main-100;
+    @apply flex h-12 w-12 items-center justify-center rounded-md bg-main-700/65 text-[26px] text-main-100;
 }
 
 .s13 {
@@ -66,7 +66,7 @@
 }
 
 .s16 {
-    @apply flex h-12 w-12 items-center justify-center rounded-md bg-main-700/65 text-main-100;
+    @apply flex h-12 w-12 items-center justify-center rounded-md bg-main-700/65 text-[26px] text-main-100;
 }
 
 .s17 {
@@ -82,7 +82,7 @@
 }
 
 .s20 {
-    @apply flex h-12 w-12 items-center justify-center rounded-md bg-main-700/65 text-main-100;
+    @apply flex h-12 w-12 items-center justify-center rounded-md bg-main-700/65 text-[26px] text-main-100;
 }
 
 .s21 {
@@ -110,7 +110,7 @@
 }
 
 .s27 {
-    @apply flex h-12 w-12 shrink-0 items-center justify-center rounded border border-main-700 text-main-300;
+    @apply flex h-12 w-12 shrink-0 items-center justify-center rounded border border-main-700 text-[22px] text-main-300;
 }
 
 .s28 {

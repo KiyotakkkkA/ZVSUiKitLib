@@ -44,6 +44,16 @@ export const componentProps: ComponentAPIDoc = {
                 description: "Accepted file types, same format as file input.",
                 defaultValue: '"image/*"',
             },
+            emptyIcon: {
+                type: "ReactNode",
+                description: "Icon content shown when no files are selected.",
+                defaultValue: '<Icon icon="image-plus-outline" />',
+            },
+            selectedIcon: {
+                type: "ReactNode",
+                description: "Icon content shown for a multiple-file selection.",
+                defaultValue: '<Icon icon="image-check-outline" />',
+            },
             emptyTitle: {
                 type: "string",
                 description: "Empty state title.",
@@ -79,9 +89,9 @@ export const componentProps: ComponentAPIDoc = {
                 defaultValue: '"Удалить все файлы"',
             },
             fileIcon: {
-                type: "string",
+                type: "ReactNode",
                 description: "Fallback icon for non-image files.",
-                defaultValue: '"mdi:file-outline"',
+                defaultValue: '<Icon icon="file-outline" />',
             },
             uploadedFileLabel: {
                 type: "string",

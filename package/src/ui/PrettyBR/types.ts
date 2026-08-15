@@ -3,6 +3,7 @@ import type {
     ParagraphClassName,
     SvgClassName,
 } from "../_shared/types";
+import type { ReactNode } from "react";
 
 type IconClassName = SvgClassName;
 
@@ -17,7 +18,7 @@ export type PrettyBRClassNames = {
 
 export type PrettyBRProps = {
     /** Content rendered for the icon. */
-    icon?: string;
+    icon?: ReactNode;
     /** Text used for the label. */
     label?: string;
     /** The rendered icon size in pixels. */

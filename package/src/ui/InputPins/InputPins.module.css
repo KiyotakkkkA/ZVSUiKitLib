@@ -22,11 +22,11 @@
 }
 
 .s5 {
-    @apply rounded-l-2xl;
+    @apply rounded-l-full;
 }
 
 .s6 {
-    @apply rounded-r-2xl;
+    @apply rounded-r-full;
 }
 
 .s7 {

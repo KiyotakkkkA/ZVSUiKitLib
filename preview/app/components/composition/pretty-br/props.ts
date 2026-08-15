@@ -6,9 +6,9 @@ export const componentProps: ComponentAPIDoc = {
         description: "Decorative divider with optional icon and label.",
         props: {
             icon: {
-                type: "string",
-                description: "Local icon name.",
-                defaultValue: '"mdi:star-four-points"',
+                type: "ReactNode",
+                description: "Custom icon content.",
+                defaultValue: '<Icon icon="script" />',
             },
             label: {
                 type: "string",

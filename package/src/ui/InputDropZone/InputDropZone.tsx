@@ -1,11 +1,10 @@
 import styles from "./InputDropZone.module.css";
 import { Icon } from "../_shared/icons";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { cn } from "../../lib/utils";
 import type { InputDropZoneProps, SelectedFileItem } from "./types";
 
-const imageFileIcon = "file-image-outline";
-const genericFileIcon = "file-outline";
+const imageFileIcon = <Icon icon="file-image-outline" />;
 
 const getAcceptRules = (accept: string) => {
     return accept
@@ -59,7 +58,7 @@ const getAcceptedFiles = (files: FileList | null, accept: string) => {
 
 const isImageFile = (file: File) => file.type.startsWith("image/");
 
-const getFileIcon = (file: File, fallbackIcon: string) => {
+const getFileIcon = (file: File, fallbackIcon: ReactNode) => {
     return isImageFile(file) ? imageFileIcon : fallbackIcon;
 };
 
@@ -72,8 +71,8 @@ export const InputDropZone = ({
     multiple = false,
     disabled = false,
     accept = "image/*",
-    emptyIcon = "image-plus-outline",
-    selectedIcon = "image-check-outline",
+    emptyIcon = <Icon icon="image-plus-outline" />,
+    selectedIcon = <Icon icon="image-check-outline" />,
     emptyTitle = "Перетащите картинку сюда",
     emptyDescription = "или нажмите для выбора файла",
     selectedDescription = "Файл будет загружен.",
@@ -81,7 +80,7 @@ export const InputDropZone = ({
     previewAlt = "Предпросмотр изображения вопроса",
     selectedMultipleDescription = "Нажмите или перетащите файлы, чтобы добавить еще.",
     clearAllLabel = "Удалить все файлы",
-    fileIcon = genericFileIcon,
+    fileIcon = <Icon icon="file-outline" />,
     uploadedFileLabel = "Загруженный файл",
 }: InputDropZoneProps) => {
     const inputRef = useRef<HTMLInputElement | null>(null);
@@ -272,11 +271,7 @@ export const InputDropZone = ({
                 ) : hasSelection && !multiple ? (
                     <span className={styles.s11}>
                         <span className={styles.s12}>
-                            <Icon
-                                icon={selectedItems[0].icon}
-                                width={26}
-                                height={26}
-                            />
+                            {selectedItems[0].icon}
                         </span>
                         <span className={styles.s13}>
                             {selectedItems[0].name}
@@ -287,9 +282,7 @@ export const InputDropZone = ({
                     </span>
                 ) : hasSelection ? (
                     <span className={styles.s15}>
-                        <span className={styles.s16}>
-                            <Icon icon={selectedIcon} width={26} height={26} />
-                        </span>
+                        <span className={styles.s16}>{selectedIcon}</span>
                         <span className={styles.s17}>
                             Выбрано файлов: {selectedItems.length}
                         </span>
@@ -299,9 +292,7 @@ export const InputDropZone = ({
                     </span>
                 ) : (
                     <span className={styles.s19}>
-                        <span className={styles.s20}>
-                            <Icon icon={emptyIcon} width={26} height={26} />
-                        </span>
+                        <span className={styles.s20}>{emptyIcon}</span>
                         <span className={styles.s21}>{emptyTitle}</span>
                         <span className={styles.s22}>{emptyDescription}</span>
                     </span>
@@ -321,13 +312,7 @@ export const InputDropZone = ({
                                     />
                                 </span>
                             ) : (
-                                <span className={styles.s27}>
-                                    <Icon
-                                        icon={item.icon}
-                                        width={22}
-                                        height={22}
-                                    />
-                                </span>
+                                <span className={styles.s27}>{item.icon}</span>
                             )}
                             <span className={styles.s28}>{item.name}</span>
                             <button

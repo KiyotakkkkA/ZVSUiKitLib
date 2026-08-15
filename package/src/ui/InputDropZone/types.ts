@@ -1,3 +1,5 @@
+import type { ReactNode } from "react";
+
 export type InputDropZoneProps = {
     /** The file used by the component. */
     file?: File | null;
@@ -16,9 +18,9 @@ export type InputDropZoneProps = {
     /** The accept used by the component. */
     accept?: string;
     /** Content rendered for the empty icon. */
-    emptyIcon?: string;
+    emptyIcon?: ReactNode;
     /** Whether selected icon is enabled. */
-    selectedIcon?: string;
+    selectedIcon?: ReactNode;
     /** Text used for the empty title. */
     emptyTitle?: string;
     /** Text used for the empty description. */
@@ -34,7 +36,7 @@ export type InputDropZoneProps = {
     /** Function used to clear all label. */
     clearAllLabel?: string;
     /** Content rendered for the file icon. */
-    fileIcon?: string;
+    fileIcon?: ReactNode;
     /** Text used for the uploaded file label. */
     uploadedFileLabel?: string;
 };
@@ -47,7 +49,7 @@ export type SelectedFileItem = {
     /** The preview src used by the component. */
     previewSrc: string | null;
     /** Content rendered for the icon. */
-    icon: string;
+    icon: ReactNode;
     /** The source used by the component. */
     source: "file" | "preview";
     /** The index identifier. */

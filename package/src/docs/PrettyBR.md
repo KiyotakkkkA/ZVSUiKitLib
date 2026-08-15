@@ -20,7 +20,7 @@ import { PrettyBR } from "@kiyotakkkka/zvs-uikit-lib";
 
 | Property     | Type                 | Default | Required | Description                                 |
 | ------------ | -------------------- | ------- | -------- | ------------------------------------------- |
-| `icon`       | `string`             | -       | No       | Content rendered for the icon.              |
+| `icon`       | `ReactNode`          | -       | No       | Content rendered for the icon.              |
 | `label`      | `string`             | -       | No       | Text used for the label.                    |
 | `size`       | `number`             | -       | No       | The rendered icon size in pixels.           |
 | `className`  | `DivClassName`       | -       | No       | CSS classes applied to the root element.    |
@@ -38,9 +38,11 @@ import { PrettyBR } from "@kiyotakkkka/zvs-uikit-lib";
 
 ```tsx
 "use client";
-import { PrettyBR } from "@kiyotakkkka/zvs-uikit-lib";
+import { Icon, PrettyBR } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoPrettyBR() {
-    return <PrettyBR label="Main block" icon="mdi:star-outline" />;
+    return (
+        <PrettyBR label="Main block" icon={<Icon icon="sparkles-outline" />} />
+    );
 }
 ```

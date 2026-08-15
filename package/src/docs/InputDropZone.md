@@ -28,8 +28,8 @@ import { InputDropZone } from "@kiyotakkkka/zvs-uikit-lib";
 | `multiple`                    | `boolean`                                             | `false`                                               | No       | Whether multiple is enabled.                      |
 | `disabled`                    | `boolean`                                             | `false`                                               | No       | Whether disabled is enabled.                      |
 | `accept`                      | `string`                                              | `"image/*"`                                           | No       | The accept used by the component.                 |
-| `emptyIcon`                   | `string`                                              | `"image-plus-outline"`                                | No       | Content rendered for the empty icon.              |
-| `selectedIcon`                | `string`                                              | `"image-check-outline"`                               | No       | Whether selected icon is enabled.                 |
+| `emptyIcon`                   | `ReactNode`                                           | `<Icon icon="image-plus-outline" />`                  | No       | Content rendered for the empty icon.              |
+| `selectedIcon`                | `ReactNode`                                           | `<Icon icon="image-check-outline" />`                 | No       | Whether selected icon is enabled.                 |
 | `emptyTitle`                  | `string`                                              | `"Перетащите картинку сюда"`                          | No       | Text used for the empty title.                    |
 | `emptyDescription`            | `string`                                              | `"или нажмите для выбора файла"`                      | No       | Text used for the empty description.              |
 | `selectedDescription`         | `string`                                              | `"Файл будет загружен."`                              | No       | Whether selected description is enabled.          |
@@ -37,7 +37,7 @@ import { InputDropZone } from "@kiyotakkkka/zvs-uikit-lib";
 | `previewAlt`                  | `string`                                              | `"Предпросмотр изображения вопроса"`                  | No       | Text used for the preview alt.                    |
 | `selectedMultipleDescription` | `string`                                              | `"Нажмите или перетащите файлы, чтобы добавить еще."` | No       | Whether selected multiple description is enabled. |
 | `clearAllLabel`               | `string`                                              | `"Удалить все файлы"`                                 | No       | Function used to clear all label.                 |
-| `fileIcon`                    | `string`                                              | `genericFileIcon`                                     | No       | Content rendered for the file icon.               |
+| `fileIcon`                    | `ReactNode`                                           | `<Icon icon="file-outline" />`                        | No       | Content rendered for the file icon.               |
 | `uploadedFileLabel`           | `string`                                              | `"Загруженный файл"`                                  | No       | Text used for the uploaded file label.            |
 
 ### SelectedFileItem
@@ -47,7 +47,7 @@ import { InputDropZone } from "@kiyotakkkka/zvs-uikit-lib";
 | `id`         | `string`              | -       | Yes      | The id identifier.                     |
 | `name`       | `string`              | -       | Yes      | The name identifier.                   |
 | `previewSrc` | `string \| null`      | -       | Yes      | The preview src used by the component. |
-| `icon`       | `string`              | -       | Yes      | Content rendered for the icon.         |
+| `icon`       | `ReactNode`           | -       | Yes      | Content rendered for the icon.         |
 | `source`     | `"file" \| "preview"` | -       | Yes      | The source used by the component.      |
 | `index`      | `number`              | -       | Yes      | The index identifier.                  |
 

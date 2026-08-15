@@ -14,11 +14,11 @@
 }
 
 .s3 {
-    @apply overflow-hidden bg-main-800 px-2 py-1 text-sm text-main-100 transition-colors duration-200;
+    @apply overflow-hidden bg-main-800 px-2 py-1 text-sm text-main-100 outline-none transition-colors duration-200;
 }
 
 .s4 {
-    @apply hover:border-main-600 focus-within:border-main-500 focus-within:ring-2 focus-within:ring-main-500/20;
+    @apply hover:border-main-600 focus-within:border-main-500 focus-within:ring-2 focus-within:ring-inset focus-within:ring-main-500/20;
 }
 
 .s5 {

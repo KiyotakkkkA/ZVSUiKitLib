@@ -260,6 +260,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
                 >
                     <Dropdown.Trigger
                         rounded={rounded}
+                        style={{ paddingLeft: "0.25rem" }}
                         id={triggerId}
                         aria-label={
                             props["aria-label"] ??
