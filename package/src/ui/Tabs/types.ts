@@ -1,6 +1,10 @@
 import type { ButtonHTMLAttributes, ComponentPropsWithoutRef } from "react";
 
-import type { ButtonClassName, DivClassName } from "../_shared/types";
+import type {
+    ButtonClassName,
+    DivClassName,
+    Orientation,
+} from "../_shared/types";
 
 export type TabOption = {
     /** The value used by the component. */
@@ -9,6 +13,10 @@ export type TabOption = {
     label: string;
     /** Whether disabled is enabled. */
     disabled?: boolean;
+    /** Identifies the tab element so a panel can point back at it. */
+    tabId?: string;
+    /** The `id` of the panel this tab controls. */
+    panelId?: string;
 };
 
 export type TabsClassNames = {
@@ -30,6 +38,10 @@ export type TabsProps = Omit<
     onChange: (value: string) => void;
     /** The options used by the component. */
     options: TabOption[];
+    /** The axis the tab list is arranged along, driving arrow-key navigation. */
+    orientation?: Orientation;
+    /** Accessible name for the tab list. */
+    label?: string;
     /** CSS classes applied to the component slots. */
     classNames?: TabsClassNames;
     /** The tab props used by the component. */

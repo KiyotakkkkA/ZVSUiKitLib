@@ -9,6 +9,10 @@ export type SlidedPanelProps = PropsWithChildren<{
     onClose: () => void;
     /** Function used to close on overlay click. */
     closeOnOverlayClick?: boolean;
+    /** Whether the Escape key closes the panel. */
+    closeOnEscape?: boolean;
+    /** Accessible name used when the panel renders no `SlidedPanel.Title`. */
+    label?: string;
     /** The screen edge from which the panel opens. */
     panelPlacement?: SlidedPanelPlacement;
     /** CSS classes applied to the root element. */

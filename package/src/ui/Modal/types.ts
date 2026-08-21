@@ -16,6 +16,10 @@ export type ModalProps = PropsWithChildren<{
     overlayClassName?: DivClassName;
     /** Function used to close on overlay click. */
     closeOnOverlayClick?: boolean;
+    /** Whether the Escape key closes the modal. */
+    closeOnEscape?: boolean;
+    /** Accessible name used when the modal renders no `Modal.Header`. */
+    label?: string;
     /** The border-radius preset applied to the component. */
     rounded?: RoundVariants | "";
 }>;

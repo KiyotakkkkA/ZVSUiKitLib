@@ -7,8 +7,11 @@ import {
     createContext,
     useCallback,
     useContext,
+    useEffect,
     useMemo,
+    useRef,
     useState,
+    type KeyboardEvent,
 } from "react";
 import { cn } from "../../lib/utils";
 import { Dropdown } from "../Dropdown/Dropdown";
@@ -22,6 +25,8 @@ import type {
     SelectProps,
     SelectTriggerProps,
 } from "./types";
+
+const OPTION_SELECTOR = "[role='option']:not([aria-disabled='true'])";
 
 const SelectContext = createContext<SelectContextValue | null>(null);
 
@@ -54,6 +59,7 @@ function SelectRoot({
     closeOnSelect = true,
 }: SelectProps) {
     const [query, setQuery] = useState("");
+    const [open, setOpen] = useState(false);
     const selectedOption = useMemo(
         () => options.find((option) => option.value === value),
         [options, value],
@@ -77,6 +83,7 @@ function SelectRoot({
             selectedOption,
             placeholder,
             query,
+            open,
             searchable,
             searchPlaceholder,
             emptyMessage,
@@ -94,6 +101,7 @@ function SelectRoot({
             value,
             selectedOption,
             query,
+            open,
             placeholder,
             searchable,
             searchPlaceholder,
@@ -113,8 +121,10 @@ function SelectRoot({
                 menuWidth={menuWidth ?? "auto"}
                 menuPlacement={menuPlacement}
                 disabled={disabled}
-                onOpenChange={(open) => {
-                    if (!open) setQuery("");
+                onOpenChange={(nextOpen) => {
+                    setOpen(nextOpen);
+
+                    if (!nextOpen) setQuery("");
                 }}
             >
                 {children}
@@ -133,6 +143,7 @@ function SelectTrigger({
         <Dropdown.Trigger
             placeholder={placeholder}
             rounded={rounded}
+            aria-haspopup="listbox"
             className={cn(className)}
         >
             {selectedOption?.label}
@@ -143,10 +154,12 @@ function SelectTrigger({
 function SelectMenu({
     children,
     className,
+    label,
     rounded = "rounded-3xl",
 }: SelectMenuProps) {
     const {
         query,
+        open,
         searchable,
         searchPlaceholder,
         emptyMessage,
@@ -154,21 +167,129 @@ function SelectMenu({
         setQuery,
         visibleOptionsCount,
     } = useSelectContext();
+    const listRef = useRef<HTMLDivElement>(null);
+    const searchRef = useRef<HTMLInputElement>(null);
+    const typeaheadRef = useRef({ buffer: "", at: 0 });
+
+    const getOptions = useCallback(
+        () =>
+            Array.from(
+                listRef.current?.querySelectorAll<HTMLElement>(
+                    OPTION_SELECTOR,
+                ) ?? [],
+            ),
+        [],
+    );
+
+    useEffect(() => {
+        if (!open) return;
+
+        const frame = window.requestAnimationFrame(() => {
+            if (searchable) {
+                searchRef.current?.focus();
+                return;
+            }
+
+            const items = getOptions();
+            const selected = items.find(
+                (item) => item.getAttribute("aria-selected") === "true",
+            );
+
+            (selected ?? items[0])?.focus();
+        });
+
+        return () => window.cancelAnimationFrame(frame);
+    }, [open, searchable, getOptions]);
+
+    const focusAt = (index: number) => {
+        const items = getOptions();
+
+        if (items.length === 0) return;
+
+        const bounded = (index + items.length) % items.length;
+        items[bounded]?.focus();
+    };
+
+    const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+        const items = getOptions();
+        const current = items.indexOf(document.activeElement as HTMLElement);
+
+        if (event.key === "ArrowDown") {
+            event.preventDefault();
+            focusAt(current + 1);
+            return;
+        }
+
+        if (event.key === "ArrowUp") {
+            event.preventDefault();
+            focusAt(current === -1 ? items.length - 1 : current - 1);
+            return;
+        }
+
+        if (event.key === "Home") {
+            event.preventDefault();
+            focusAt(0);
+            return;
+        }
+
+        if (event.key === "End") {
+            event.preventDefault();
+            focusAt(items.length - 1);
+            return;
+        }
+
+        if (searchable || event.key.length !== 1 || event.metaKey || event.ctrlKey || event.altKey) {
+            return;
+        }
+
+        const now = Date.now();
+        const typeahead = typeaheadRef.current;
+        typeahead.buffer =
+            now - typeahead.at > 700
+                ? event.key.toLocaleLowerCase()
+                : typeahead.buffer + event.key.toLocaleLowerCase();
+        typeahead.at = now;
+
+        const match = items.findIndex((item) =>
+            (item.textContent ?? "")
+                .trim()
+                .toLocaleLowerCase()
+                .startsWith(typeahead.buffer),
+        );
+
+        if (match !== -1) {
+            event.preventDefault();
+            focusAt(match);
+        }
+    };
 
     return (
         <Dropdown.Menu rounded={rounded} className={cn(styles.s1, className)}>
             {searchable && (
                 <InputSmall
+                    ref={searchRef}
                     rounded="rounded-full"
                     value={query}
                     onChange={(event) => setQuery(event.target.value)}
                     placeholder={searchPlaceholder}
                     className={cn(styles.s2, classNames?.search)}
+                    onKeyDown={(event) => {
+                        if (event.key === "ArrowDown") {
+                            event.preventDefault();
+                            focusAt(0);
+                        }
+                    }}
                 />
             )}
 
             <ScrollArea className={cn(styles.s3, searchable && styles.s4)}>
-                <div className={styles.s5}>
+                <div
+                    ref={listRef}
+                    role="listbox"
+                    aria-label={label}
+                    onKeyDown={onKeyDown}
+                    className={styles.s5}
+                >
                     {visibleOptionsCount === 0 ? (
                         <p className={styles.s6}>{emptyMessage}</p>
                     ) : (
@@ -197,6 +318,8 @@ function SelectOptionComponent({
 
     return (
         <Dropdown.Item
+            role="option"
+            aria-selected={active}
             active={active}
             closeOnClick={context.closeOnSelect}
             icon={

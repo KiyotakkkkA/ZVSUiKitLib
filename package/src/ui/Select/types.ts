@@ -63,6 +63,8 @@ export type SelectTriggerProps = {
 export type SelectMenuProps = {
     /** The content rendered inside the component. */
     children: ReactNode;
+    /** Accessible name for the option list. */
+    label?: string;
     /** CSS classes applied to the root element. */
     className?: DivClassName;
     /** The border-radius preset applied to the component. */
@@ -85,6 +87,8 @@ export type SelectContextValue = {
     placeholder: string;
     /** The query used by the component. */
     query: string;
+    /** Indicates whether the popup menu is open. */
+    open: boolean;
     /** Whether searchable is enabled. */
     searchable: boolean;
     /** Text used for the search placeholder. */

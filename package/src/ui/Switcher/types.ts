@@ -23,6 +23,8 @@ export type SwitcherProps = {
     options: SwitcherOption[];
     /** Callback invoked when change occurs. */
     onChange: (value: string) => void;
+    /** Accessible name for the radio group. */
+    label?: string;
     /** CSS classes applied to the root element. */
     className?: DivClassName;
     /** CSS classes applied to the component slots. */

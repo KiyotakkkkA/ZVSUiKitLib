@@ -42,6 +42,9 @@ export function Table<T extends TableRecord>({
     data,
     columns,
     rowKey,
+    caption,
+    captionVisible = false,
+    emptyMessage,
     classNames,
 }: TableProps<T>) {
     const [sortState, setSortState] = useState<SortState>({
@@ -99,6 +102,17 @@ export function Table<T extends TableRecord>({
 
     return (
         <table className={cn(styles.s0, classNames?.root)}>
+            {caption && (
+                <caption
+                    className={cn(
+                        !captionVisible && styles.visuallyHidden,
+                        classNames?.caption,
+                    )}
+                >
+                    {caption}
+                </caption>
+            )}
+
             <thead className={classNames?.header}>
                 <tr className={cn(styles.s1, classNames?.headerRow)}>
                     {columns.map((column) => {
@@ -123,6 +137,15 @@ export function Table<T extends TableRecord>({
                         return (
                             <th
                                 key={column.key}
+                                scope="col"
+                                aria-sort={
+                                    isSortable
+                                        ? isActive
+                                            ? (activeSortMode?.direction ??
+                                              "other")
+                                            : "none"
+                                        : undefined
+                                }
                                 className={cn(
                                     defaultHeaderCellClassName,
                                     classNames?.headerCell,
@@ -154,43 +177,57 @@ export function Table<T extends TableRecord>({
             </thead>
 
             <tbody className={classNames?.body}>
-                {sortedData.map((item, index) => (
-                    <tr
-                        key={resolveRowKey(rowKey, item, index)}
-                        className={cn(
-                            defaultRowClassName,
-                            classNames?.row,
-                            resolveClassName(
-                                classNames?.rowDynamic,
-                                item,
-                                index,
-                            ),
-                        )}
-                    >
-                        {columns.map((column) => (
-                            <td
-                                key={column.key}
-                                className={cn(
-                                    defaultCellClassName,
-                                    classNames?.cell,
-                                    column.className,
-                                    resolveClassName(
-                                        column.cellClassName,
-                                        item,
-                                        index,
-                                    ),
-                                )}
-                            >
-                                {column.render
-                                    ? column.render(item, index)
-                                    : (getColumnValue(
-                                          item,
-                                          column,
-                                      ) as ReactNode)}
-                            </td>
-                        ))}
+                {sortedData.length === 0 && emptyMessage ? (
+                    <tr className={cn(defaultRowClassName, classNames?.row)}>
+                        <td
+                            colSpan={columns.length}
+                            className={cn(
+                                defaultCellClassName,
+                                classNames?.empty,
+                            )}
+                        >
+                            {emptyMessage}
+                        </td>
                     </tr>
-                ))}
+                ) : (
+                    sortedData.map((item, index) => (
+                        <tr
+                            key={resolveRowKey(rowKey, item, index)}
+                            className={cn(
+                                defaultRowClassName,
+                                classNames?.row,
+                                resolveClassName(
+                                    classNames?.rowDynamic,
+                                    item,
+                                    index,
+                                ),
+                            )}
+                        >
+                            {columns.map((column) => (
+                                <td
+                                    key={column.key}
+                                    className={cn(
+                                        defaultCellClassName,
+                                        classNames?.cell,
+                                        column.className,
+                                        resolveClassName(
+                                            column.cellClassName,
+                                            item,
+                                            index,
+                                        ),
+                                    )}
+                                >
+                                    {column.render
+                                        ? column.render(item, index)
+                                        : (getColumnValue(
+                                              item,
+                                              column,
+                                          ) as ReactNode)}
+                                </td>
+                            ))}
+                        </tr>
+                    ))
+                )}
             </tbody>
         </table>
     );

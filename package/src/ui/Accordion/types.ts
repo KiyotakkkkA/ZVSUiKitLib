@@ -23,4 +23,8 @@ export type AccordionContextValue = {
     isOpen: boolean;
     /** Updates the accordion expanded state. */
     setIsOpen: Dispatch<SetStateAction<boolean>>;
+    /** Identifies the collapsible content region. */
+    contentId: string;
+    /** Identifies the summary trigger that labels the content region. */
+    summaryId: string;
 };

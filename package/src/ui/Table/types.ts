@@ -12,6 +12,8 @@ export type TableSortMode<T extends TableRecord> = {
     key: string;
     /** The sort fn used by the component. */
     sortFn: (left: T, right: T, columnKey: string) => number;
+    /** The direction reported to assistive technology through `aria-sort`. */
+    direction?: "ascending" | "descending" | "other";
 };
 
 export type TableColumn<T extends TableRecord> = {
@@ -52,6 +54,10 @@ export type TableClassNames<T extends TableRecord> = {
     rowDynamic?: TableClassNameResolver<T>;
     /** The cell used by the component. */
     cell?: string;
+    /** The caption used by the component. */
+    caption?: string;
+    /** The empty state cell used by the component. */
+    empty?: string;
 };
 
 export type SortState = {
@@ -68,6 +74,12 @@ export type TableProps<T extends TableRecord> = {
     columns: Array<TableColumn<T>>;
     /** The row key identifier. */
     rowKey: keyof T | ((item: T, index: number) => string | number);
+    /** Describes the table for assistive technology. */
+    caption?: ReactNode;
+    /** Whether the caption is visible or exposed to assistive technology only. */
+    captionVisible?: boolean;
+    /** Rendered in place of the body when `data` is empty. */
+    emptyMessage?: ReactNode;
     /** CSS classes applied to the component slots. */
     classNames?: TableClassNames<T>;
 };

@@ -1,5 +1,12 @@
 import styles from "./Accordion.module.css";
-import { createContext, useContext, useEffect, useRef, useState } from "react";
+import {
+    createContext,
+    useContext,
+    useEffect,
+    useId,
+    useRef,
+    useState,
+} from "react";
 import { Icon } from "../_shared/icons";
 import { cn } from "../../lib/utils";
 import type {
@@ -29,20 +36,27 @@ function AccordionRoot({
     children,
 }: AccordionProps) {
     const [isOpen, setIsOpen] = useState(defaultOpen);
+    const contentId = useId();
+    const summaryId = useId();
 
     return (
-        <AccordionContext.Provider value={{ isOpen, setIsOpen }}>
+        <AccordionContext.Provider
+            value={{ isOpen, setIsOpen, contentId, summaryId }}
+        >
             <div className={cn(styles.s0, className)}>{children}</div>
         </AccordionContext.Provider>
     );
 }
 
 function AccordionSummary({ className, children }: AccordionSummaryProps) {
-    const { isOpen, setIsOpen } = useAccordionContext();
+    const { isOpen, setIsOpen, contentId, summaryId } = useAccordionContext();
 
     return (
         <button
             type="button"
+            id={summaryId}
+            aria-expanded={isOpen}
+            aria-controls={contentId}
             className={cn(styles.s1, className)}
             onClick={() => setIsOpen((prev) => !prev)}
         >
@@ -58,7 +72,7 @@ function AccordionSummary({ className, children }: AccordionSummaryProps) {
 }
 
 function AccordionContent({ className, children }: AccordionContentProps) {
-    const { isOpen } = useAccordionContext();
+    const { isOpen, contentId, summaryId } = useAccordionContext();
     const contentRef = useRef<HTMLDivElement>(null);
     const [contentHeight, setContentHeight] = useState(0);
 
@@ -82,6 +96,10 @@ function AccordionContent({ className, children }: AccordionContentProps) {
 
     return (
         <div
+            id={contentId}
+            role="region"
+            aria-labelledby={summaryId}
+            inert={!isOpen}
             className={styles.s6}
             style={{ maxHeight: isOpen ? `${contentHeight + 1}px` : "0px" }}
         >
