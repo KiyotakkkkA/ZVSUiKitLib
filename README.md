@@ -4,6 +4,14 @@
 npm i @kiyotakkkka/zvs-uikit-lib
 ```
 
+Import the stylesheet once, in your app's entry:
+
+```tsx
+import "@kiyotakkkka/zvs-uikit-lib/styles.css";
+```
+
+Then use the components anywhere:
+
 ```tsx
 import { Button, Text } from "@kiyotakkkka/zvs-uikit-lib";
 
@@ -16,6 +24,10 @@ export function Example() {
 }
 ```
 
+Tailwind and PostCSS are not required — the stylesheet is precompiled. There is
+a second build for projects that want to override components without
+`!important`; see [Styles](#styles).
+
 See [CHANGELOG.md](CHANGELOG.md) for what changed in 7.0.0, including the
 breaking changes.
 
@@ -27,7 +39,8 @@ breaking changes.
 | `@kiyotakkkka/zvs-uikit-lib/chart`      | `Chart`. Pulls in `recharts`.                           |
 | `@kiyotakkkka/zvs-uikit-lib/code-view`  | `CodeView`. Pulls in `shiki`.                           |
 | `@kiyotakkkka/zvs-uikit-lib/server`     | Components safe to render on the server.                |
-| `@kiyotakkkka/zvs-uikit-lib/styles.css` | Optional explicit CSS entry.                            |
+| `@kiyotakkkka/zvs-uikit-lib/styles.css` | The stylesheet. Import it once — see Styles.             |
+| `@kiyotakkkka/zvs-uikit-lib/styles-layered.css` | The same stylesheet inside `@layer zvs-uikit`.  |
 
 `Chart` and `CodeView` are the only components with heavy third-party
 dependencies. They sit behind their own entry points so a project that does not
@@ -39,65 +52,87 @@ import { Chart } from "@kiyotakkkka/zvs-uikit-lib/chart";
 import { CodeView } from "@kiyotakkkka/zvs-uikit-lib/code-view";
 ```
 
-## Overriding styles alongside Tailwind
+## Styles
 
-The library ships its stylesheet inside a cascade layer named `zvs-uikit`.
+The entry points no longer import CSS themselves — pick a stylesheet and import
+it once, in your app's entry:
+
+```tsx
+import "@kiyotakkkka/zvs-uikit-lib/styles.css";
+```
+
+Two builds ship, carrying identical rules and differing only in whether they
+sit in a cascade layer. The choice is a trade-off, and one file cannot serve
+both sides of it.
+
+| | `styles.css` | `styles-layered.css` |
+| --- | --- | --- |
+| Cascade layer | none | `@layer zvs-uikit` |
+| Overriding with `className` | needs `!important` next to Tailwind | plain `className` wins |
+| Your unlayered global CSS | loses to the library | **overrides the library** |
+| Tailwind Preflight | loses to the library | overrides the library unless ordered |
+| Setup | none | layer order must be declared |
+
+### `styles.css` — unlayered, the safe default
+
+Behaves like every previous version. Nothing in your stylesheet can strip a
+component, because unlayered library rules outrank Tailwind's `@layer
+utilities` and anything else. The cost is that overriding a component from
+Tailwind needs `!important`:
+
+```tsx
+<Button className="bg-red-500!">Delete</Button>
+```
+
+Use this unless you specifically want the other behaviour.
+
+### `styles-layered.css` — override without `!important`
+
 Layered CSS loses to unlayered CSS and to any layer declared after it, so a
-plain `className` beats the component's own rules and `!important` is not
-needed:
+plain `className` beats the component:
 
 ```tsx
 <Button className="bg-red-500">Delete</Button>
 ```
 
-For that to hold, the layer has to sit in one specific place: **after Tailwind's
-`base`, before `utilities`.**
+Two things then have to be true, and both are on your side:
 
-### Tailwind v4 — this line is required
-
-Declare the layer order at the top of the CSS entry that imports Tailwind:
+**1. Declare the layer order**, at the top of the CSS entry that imports
+Tailwind. The layer belongs after `base` and before `utilities`:
 
 ```css
 @layer theme, base, zvs-uikit, components, utilities;
 @import "tailwindcss";
 ```
 
-Both neighbours matter:
+Before `base` the library loses to Tailwind's Preflight, which resets
+`background-color`, `border-width` and `padding` on buttons and inputs, and the
+components render stripped. After `utilities` it outranks your own classes and
+`!important` is back.
 
-- **`base` must come first.** It holds Tailwind's Preflight, which resets
-  `background-color`, `border-width` and `padding` on buttons and inputs. A
-  layer ordered before `base` loses to Preflight and the components render
-  stripped of their backgrounds, borders and padding.
-- **`utilities` must come last**, otherwise the library outranks your own
-  classes and `!important` is back.
-
-Layer order follows where a layer name first appears, so this line also removes
-any dependence on where the bundler places the library's stylesheet. Without it
-the result is decided by that placement, and both outcomes are wrong.
-
-### Tailwind v3
-
-v3 compiles its `@layer` directives away and emits unlayered CSS — Preflight
-included. Unlayered CSS beats every layer, so Preflight would strip the
-components. Put Tailwind's own output into layers in your entry instead
-(needs `postcss-import`):
+**2. Keep your own global CSS in a layer.** Anything unlayered — the resets and
+element rules a `globals.css` usually collects — beats the library too. A rule
+as ordinary as `button, input { font: inherit; }` will resize every menu item
+and input in the kit. Wrap that file's contents:
 
 ```css
 @layer theme, base, zvs-uikit, components, utilities;
+@import "tailwindcss";
+
+@layer base {
+    /* your resets and element rules */
+}
+```
+
+On Tailwind v3 there is more to do: v3 compiles its `@layer` directives away
+and emits Preflight unlayered, so you also have to route Tailwind's own output
+into layers with `postcss-import`:
+
+```css
 @import "tailwindcss/base" layer(base);
 @import "tailwindcss/components" layer(components);
 @import "tailwindcss/utilities" layer(utilities);
 ```
-
-### No Tailwind
-
-Nothing to declare — your own unlayered CSS wins over the library's layer, so a
-plain stylesheet is enough to restyle a component. One thing to watch: a global
-reset in `globals.css` is unlayered too, so it will also override the
-components. Wrap it in `@layer base` if that happens.
-
-To go the other way and let a library rule win over one of yours, put your
-override in a layer declared before `zvs-uikit`.
 
 ## Themes
 

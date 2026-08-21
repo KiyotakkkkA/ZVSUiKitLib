@@ -2,8 +2,9 @@
 
 React UI kit with TypeScript components, hooks, and providers.
 
-Component styles and the CSS reset are precompiled and loaded automatically by
-the main entry. Tailwind CSS and PostCSS are not required in consumer projects.
+Component styles and the CSS reset are precompiled. Tailwind CSS and PostCSS
+are not required in consumer projects. Import the stylesheet once in your app's
+entry — see Styles below.
 
 ## Installation
 
@@ -17,26 +18,31 @@ Available entry points:
 - `@kiyotakkkka/zvs-uikit-lib/chart` — `Chart` (pulls in `recharts`)
 - `@kiyotakkkka/zvs-uikit-lib/code-view` — `CodeView` (pulls in `shiki`)
 - `@kiyotakkkka/zvs-uikit-lib/server` — components safe to render on the server
-- `@kiyotakkkka/zvs-uikit-lib/styles.css` (optional explicit CSS entry)
+- `@kiyotakkkka/zvs-uikit-lib/styles.css` — the stylesheet, imported by you
+- `@kiyotakkkka/zvs-uikit-lib/styles-layered.css` — the same CSS in a cascade layer
 
 `Chart` and `CodeView` live behind their own entry points so that projects
 that do not use them never pay for `recharts` or `shiki`.
 
-## Overriding styles
+## Styles
 
-The stylesheet ships inside a cascade layer named `zvs-uikit`, so a plain
-`className` overrides a component without `!important`. On Tailwind v4 the
-layer has to sit after `base` and before `utilities` — declare the order at the
-top of the CSS entry that imports Tailwind:
+The entry points do not import CSS. Import one stylesheet in your app's entry:
 
-```css
-@layer theme, base, zvs-uikit, components, utilities;
-@import "tailwindcss";
+```tsx
+import "@kiyotakkkka/zvs-uikit-lib/styles.css";
 ```
 
-This line is required. Ordered before `base`, the library loses to Tailwind's
-Preflight and the components render without their backgrounds, borders and
-padding; ordered after `utilities`, it outranks your own classes again.
+- `styles.css` — unlayered. Nothing in your CSS can strip a component;
+  overriding one from Tailwind needs `!important`. Use this unless you want the
+  other behaviour.
+- `styles-layered.css` — wrapped in `@layer zvs-uikit`. A plain `className`
+  overrides a component, but you must declare
+  `@layer theme, base, zvs-uikit, components, utilities;` above
+  `@import "tailwindcss"` and keep your own global CSS inside a layer,
+  otherwise unlayered rules — Tailwind's Preflight included — strip the
+  components.
+
+See the repository README for the full comparison.
 
 ## License
 

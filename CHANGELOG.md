@@ -28,6 +28,9 @@ base and an inconsistent public surface.
   prop, as everywhere else. Passing a ref is unchanged for callers.
 - **`SortState` moved** from `Table/types` to `lib/sorting`. It is still
   re-exported from the package root.
+- **The stylesheet is no longer imported for you.** Add
+  `import "@kiyotakkkka/zvs-uikit-lib/styles.css";` to your app's entry. See
+  the Changed section for why, and for the layered alternative.
 
 ### Added
 
@@ -99,18 +102,19 @@ base and an inconsistent public surface.
 
 ### Changed
 
-- **The stylesheet ships inside a cascade layer, `@layer zvs-uikit`.** It used
-  to be unlayered, and unlayered CSS beats layered CSS whatever the source
-  order — so the library's rules won against Tailwind's `@layer utilities` and
-  every override needed `!important`. Inside its own layer the library loses to
-  Tailwind utilities and to plain unlayered app CSS, which is what a consumer
-  expects. Tailwind v4 projects must declare the order once:
+- **The entry points no longer import CSS; you import a stylesheet yourself.**
+  Two builds ship with identical rules: `styles.css` unlayered, as in every
+  previous version, and `styles-layered.css` inside `@layer zvs-uikit`. One
+  file cannot be both easy to override and impossible to break by accident, so
+  the trade-off is now an explicit choice rather than a hidden default.
+  Unlayered, nothing in a consumer's CSS can strip a component but overriding
+  one from Tailwind needs `!important`; layered, a plain `className` wins, at
+  the price of losing to every unlayered rule — Tailwind's Preflight and a
+  typical `globals.css` reset included. The layered build requires
   `@layer theme, base, zvs-uikit, components, utilities;` above
-  `@import "tailwindcss"` — the layer has to sit after `base`, whose Preflight
-  would otherwise strip the components, and before `utilities`, which must keep
-  winning. Tailwind v3 emits Preflight unlayered and needs its own output put
-  into layers; a project without Tailwind needs nothing. See the README.
-  The `@property` rules Tailwind registers are hoisted out of the layer, since
+  `@import "tailwindcss"` and the consumer's own globals kept inside a layer.
+  The README carries the comparison and both recipes. In the layered build the
+  47 `@property` rules Tailwind registers are hoisted above the layer, since
   registration inside `@layer` is not reliable across browsers.
 - **`shiki` no longer compiles all 24 grammars up front.** The highlighter
   starts empty and loads the requested grammar on demand, the way themes were

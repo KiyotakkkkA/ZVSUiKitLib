@@ -1,12 +1,13 @@
 #!/usr/bin/env node
 /**
- * Fails when the built stylesheet is not wrapped in the `zvs-uikit` cascade
- * layer.
+ * Checks the two stylesheets the build emits.
  *
- * Unlayered CSS beats layered CSS whatever the source order, so an unlayered
- * build silently wins against Tailwind's `@layer utilities` and forces
- * consumers to write `!important` on every override. Nothing in typecheck,
- * lint or the tests can see that — it only shows up in someone else's app.
+ * `zvs-uikit-lib.css` must stay unlayered and `zvs-uikit-lib.layered.css` must
+ * be the same CSS wrapped in the `zvs-uikit` cascade layer. Getting either
+ * wrong is invisible to typecheck, lint and the tests — it only shows up in
+ * someone else's app, as components that cannot be overridden without
+ * `!important` or, the other way round, components stripped of their styles by
+ * the app's own CSS.
  *
  * Run after `build:package`.
  */
@@ -16,55 +17,94 @@ import { dirname, join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
-const cssFile = join(repoRoot, "package/dist/zvs-uikit-lib.css");
+const distDir = join(repoRoot, "package/dist");
+const plainFile = join(distDir, "zvs-uikit-lib.css");
+const layeredFile = join(distDir, "zvs-uikit-lib.layered.css");
 const LAYER_OPEN = "@layer zvs-uikit{";
+const HOISTED = /@(?:charset|import|property)[^{;]*(?:;|\{[^}]*\})/g;
 
-if (!existsSync(cssFile)) {
-    console.error(
-        `${relative(repoRoot, cssFile)} is missing. Run "npm run build:package" first.`,
-    );
-    process.exit(1);
-}
-
-const css = readFileSync(cssFile, "utf8");
-const layerAt = css.indexOf(LAYER_OPEN);
 const problems = [];
 
-if (layerAt === -1) {
+const read = (file) => {
+    if (!existsSync(file)) {
+        problems.push(
+            `${relative(repoRoot, file)} is missing — run "npm run build:package" first`,
+        );
+
+        return null;
+    }
+
+    return readFileSync(file, "utf8");
+};
+
+const bracesBalanced = (css) => {
+    let depth = 0;
+
+    for (const character of css) {
+        if (character === "{") depth += 1;
+        else if (character === "}") depth -= 1;
+
+        if (depth < 0) return false;
+    }
+
+    return depth === 0;
+};
+
+const plain = read(plainFile);
+const layered = read(layeredFile);
+
+if (plain !== null && plain.includes("@layer")) {
     problems.push(
-        `the stylesheet is not wrapped in "${LAYER_OPEN}...}" — consumers will need !important to override any component`,
+        "zvs-uikit-lib.css contains @layer — it is the unlayered build and must stay that way",
     );
 }
 
-const beforeLayer = layerAt === -1 ? css : css.slice(0, layerAt);
-const insideLayer = layerAt === -1 ? "" : css.slice(layerAt);
+if (layered !== null) {
+    const layerAt = layered.indexOf(LAYER_OPEN);
 
-if (/[^\s]/.test(beforeLayer.replace(/@(?:charset|import|property)[^{;]*(?:;|\{[^}]*\})/g, ""))) {
-    problems.push(
-        "there is CSS outside the layer other than hoisted @charset, @import and @property rules; anything unlayered beats Tailwind utilities",
-    );
+    if (layerAt === -1) {
+        problems.push(
+            `zvs-uikit-lib.layered.css is not wrapped in "${LAYER_OPEN}...}"`,
+        );
+    } else {
+        const before = layered.slice(0, layerAt);
+        const inside = layered.slice(layerAt);
+
+        if (/\S/.test(before.replace(HOISTED, ""))) {
+            problems.push(
+                "zvs-uikit-lib.layered.css has CSS outside the layer beyond the hoisted @charset, @import and @property rules",
+            );
+        }
+
+        if (inside.includes("@property")) {
+            problems.push(
+                "zvs-uikit-lib.layered.css keeps an @property rule inside the layer; registration there is not reliable across browsers",
+            );
+        }
+    }
+
+    if (!bracesBalanced(layered)) {
+        problems.push(
+            "zvs-uikit-lib.layered.css has unbalanced braces — the layer wrap is malformed",
+        );
+    }
 }
 
-if (insideLayer.includes("@property")) {
-    problems.push(
-        "an @property rule is inside the layer; registration there is not reliable across browsers, so it must be hoisted",
-    );
-}
+if (plain !== null && layered !== null) {
+    const stripped = layered
+        .replace(HOISTED, "")
+        .replace(LAYER_OPEN, "")
+        .replace(/\}$/, "");
 
-let depth = 0;
-for (const character of css) {
-    if (character === "{") depth += 1;
-    else if (character === "}") depth -= 1;
-
-    if (depth < 0) break;
-}
-
-if (depth !== 0) {
-    problems.push(`braces are unbalanced (depth ${depth}) — the layer wrap is malformed`);
+    if (stripped.length !== plain.replace(HOISTED, "").length) {
+        problems.push(
+            "the two stylesheets do not carry the same rules; the layered build should differ only by the wrapper",
+        );
+    }
 }
 
 if (problems.length > 0) {
-    console.error("package/dist/zvs-uikit-lib.css is not shippable:\n");
+    console.error("The built stylesheets are not shippable:\n");
 
     for (const problem of problems) console.error(`  - ${problem}`);
 
@@ -72,5 +112,5 @@ if (problems.length > 0) {
 }
 
 console.log(
-    `zvs-uikit-lib.css is wrapped in "${LAYER_OPEN}" with ${(beforeLayer.match(/@property/g) ?? []).length} @property rules hoisted above it.`,
+    `zvs-uikit-lib.css is unlayered and zvs-uikit-lib.layered.css wraps the same rules in "${LAYER_OPEN}".`,
 );

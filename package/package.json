@@ -52,7 +52,8 @@
             "import": "./dist/server.js",
             "default": "./dist/server.js"
         },
-        "./styles.css": "./dist/zvs-uikit-lib.css"
+        "./styles.css": "./dist/zvs-uikit-lib.css",
+        "./styles-layered.css": "./dist/zvs-uikit-lib.layered.css"
     },
     "files": [
         "dist"
