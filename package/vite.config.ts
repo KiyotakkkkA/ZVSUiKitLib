@@ -1,6 +1,6 @@
 import { resolve } from "node:path";
 import { createRequire } from "node:module";
-import { defineConfig } from "vite";
+import { defineConfig, type Plugin } from "vite";
 import react from "@vitejs/plugin-react";
 
 const require = createRequire(import.meta.url);
@@ -22,6 +22,7 @@ const isExternal = (id: string) =>
 const CLIENT_ENTRIES = new Set(["index", "chart", "code-view"]);
 
 const CSS_LAYER_NAME = "zvs-uikit";
+const CSS_BASE_NAME = "zvs-uikit-lib";
 
 /**
  * At-rules that must stay outside the cascade layer. `@import` and `@charset`
@@ -33,44 +34,50 @@ const HOISTED_AT_RULES =
     /@(?:charset\s+[^;]+;|import\s+[^;]+;|property\s+--[\w-]+\s*\{[^}]*\})/g;
 
 /**
- * Wraps the emitted stylesheet in a cascade layer.
+ * Emits a second copy of the stylesheet wrapped in a cascade layer.
  *
- * Unlayered CSS always beats layered CSS, whatever the source order. Shipping
- * the library's rules unlayered therefore made them win over Tailwind's
- * utilities, which live in `@layer utilities`, and consumers had to reach for
- * `!important` on every override. Inside a layer of its own the library loses
- * to both Tailwind utilities and plain unlayered app CSS, which is what a
- * consumer expects.
+ * The two files exist because one file cannot be both easy to override and
+ * impossible to break by accident:
+ *
+ * - `zvs-uikit-lib.css` is unlayered. It outranks Tailwind's `@layer
+ *   utilities`, so overriding a component needs `!important` — but nothing in
+ *   the consumer's stylesheet can strip it.
+ * - `zvs-uikit-lib.layered.css` sits in `@layer zvs-uikit`. A plain
+ *   `className` then wins without `!important`, at the price of losing to
+ *   every unlayered rule in the consumer's CSS, Tailwind's Preflight included.
+ *
+ * The consumer imports whichever they want; the entry points import neither.
  */
-const wrapCssInLayer = () => ({
-    name: "wrap-css-in-cascade-layer",
-    enforce: "post" as const,
-    generateBundle(_options: unknown, bundle: Record<string, unknown>) {
-        for (const asset of Object.values(bundle)) {
-            const file = asset as {
-                type?: string;
-                fileName?: string;
-                source?: unknown;
-            };
+const emitLayeredCss = (): Plugin => ({
+    name: "emit-layered-css",
+    enforce: "post",
+    generateBundle(_options, bundle) {
+        const stylesheet = bundle[`${CSS_BASE_NAME}.css`];
 
-            if (
-                file.type !== "asset" ||
-                !file.fileName?.endsWith(".css") ||
-                typeof file.source !== "string"
-            ) {
-                continue;
-            }
+        if (
+            !stylesheet ||
+            stylesheet.type !== "asset" ||
+            typeof stylesheet.source !== "string"
+        ) {
+            return;
+        }
 
-            const hoisted: string[] = [];
-            const layered = file.source.replace(HOISTED_AT_RULES, (match) => {
+        const hoisted: string[] = [];
+        const layered = stylesheet.source.replace(
+            HOISTED_AT_RULES,
+            (match) => {
                 hoisted.push(match);
                 return "";
-            });
+            },
+        );
 
-            if (!layered.trim()) continue;
+        if (!layered.trim()) return;
 
-            file.source = `${hoisted.join("")}@layer ${CSS_LAYER_NAME}{${layered}}`;
-        }
+        this.emitFile({
+            type: "asset",
+            fileName: `${CSS_BASE_NAME}.layered.css`,
+            source: `${hoisted.join("")}@layer ${CSS_LAYER_NAME}{${layered}}`,
+        });
     },
 });
 
@@ -94,7 +101,7 @@ export default defineConfig({
             name: "ZvsUiKit",
             formats: ["es"],
             fileName: (_format, entryName) => `${entryName}.js`,
-            cssFileName: "zvs-uikit-lib",
+            cssFileName: CSS_BASE_NAME,
         },
         rollupOptions: {
             external: isExternal,
@@ -110,15 +117,12 @@ export default defineConfig({
             enforce: "post",
             renderChunk(code, chunk) {
                 if (chunk.isEntry && CLIENT_ENTRIES.has(chunk.name)) {
-                    return {
-                        code: `"use client";\nimport "./zvs-uikit-lib.css";\n${code}`,
-                        map: null,
-                    };
+                    return { code: `"use client";\n${code}`, map: null };
                 }
 
                 return null;
             },
         },
-        wrapCssInLayer(),
+        emitLayeredCss(),
     ],
 });
