@@ -45,7 +45,9 @@ base and an inconsistent public surface.
 - **`LocaleProvider`, `useLocale`, `defaultDictionary` and `enDictionary`.**
   Every string the components render now comes from one dictionary. Without a
   provider the library falls back to the strings it always shipped with, so
-  existing apps are unaffected.
+  existing apps are unaffected. Components exported from `/server` cannot read
+  the provider — React context needs a client component — so they take the
+  string as a prop defaulting to `defaultDictionary`.
 - **`SizeVariants`**, a shared `"sm" | "md" | "lg"` scale. `Button` and `Badge`
   accept `size`; omitting it keeps their current appearance exactly.
   `InputColorSize` is now an alias of it.
@@ -86,6 +88,14 @@ base and an inconsistent public surface.
 - **`Table` headers** had no `scope="col"` and reported no `aria-sort`.
 - **`package/tsconfig.eslint.json` was never committed** although
   `eslint.config.js` requires it, so `npm run lint` failed on a fresh clone.
+- **The `/server` entry stopped being usable from a React Server Component.**
+  `Loader` is exported from `/server` and had started reading the locale
+  dictionary through `useLocale`, which uses `useContext`; importing `/server`
+  from a server component then failed with "You're importing a module that
+  depends on `createContext` into a React Server Component module". `Loader`
+  now takes a `label` prop defaulting to the plain `defaultDictionary`
+  constant, and `npm run check:server` walks the import graph of the entry and
+  fails on any client-only React API, so this cannot come back unnoticed.
 
 ### Changed
 

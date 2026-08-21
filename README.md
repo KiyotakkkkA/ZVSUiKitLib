@@ -222,6 +222,12 @@ restating the rest:
 Props such as `placeholder` still win over the dictionary wherever a component
 accepts them.
 
+Components imported from `@kiyotakkkka/zvs-uikit-lib/server` are the exception:
+React context is a client-only API, so they cannot read `LocaleProvider`. They
+take their strings as props instead, defaulting to `defaultDictionary` — for
+example `<Loader label="Loading" />`. `npm run check:server` guards this by
+walking the import graph of that entry point.
+
 ## Component Catalog & API
 
 <a id="readme-nav"></a>

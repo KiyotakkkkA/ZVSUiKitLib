@@ -1,17 +1,19 @@
 import styles from "./Loader.module.css";
 import { cn } from "../../lib/utils";
-import { useLocale } from "../../hooks/useLocale";
+import { defaultDictionary } from "../../locale/dictionary";
 import type { LoaderProps } from "./types";
 
-export function Loader({ className, ref }: LoaderProps) {
-    const t = useLocale().loader;
-
+export function Loader({
+    className,
+    label = defaultDictionary.loader.label,
+    ref,
+}: LoaderProps) {
     return (
         <div
             ref={ref}
             className={cn(styles.s0, styles.s1, className)}
             role="status"
-            aria-label={t.label}
+            aria-label={label}
         />
     );
 }
