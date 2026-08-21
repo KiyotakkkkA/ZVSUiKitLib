@@ -1,0 +1,164 @@
+@reference "tailwindcss";
+@reference "../ui/theme.css";
+
+.viewport {
+    position: fixed;
+    right: 1rem;
+    bottom: 1rem;
+    z-index: 70;
+    display: flex;
+    width: 22.5rem;
+    max-width: calc(100vw - 2rem);
+    flex-direction: column;
+    gap: 0.5rem;
+    pointer-events: none;
+}
+
+.card {
+    @apply relative overflow-hidden rounded-xl border px-4 py-3 shadow-xl;
+
+    transition:
+        transform 200ms ease,
+        opacity 200ms ease;
+    transform: translateX(2rem);
+    opacity: 0;
+}
+
+.cardEntered {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.body {
+    @apply flex items-start gap-2 pr-2;
+}
+
+.content {
+    @apply min-w-0;
+}
+
+.title {
+    @apply text-sm font-semibold;
+}
+
+.description {
+    @apply mt-1 text-xs;
+}
+
+.track {
+    @apply mt-3 h-1 w-full overflow-hidden rounded-full;
+}
+
+.bar {
+    @apply h-full;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card {
+        transition: none;
+        transform: none;
+        opacity: 1;
+    }
+
+    .bar {
+        transition: none !important;
+    }
+}
+
+/* Surfaces */
+
+.surfacePrimary {
+    @apply bg-main-100 text-main-800;
+}
+
+.surfaceDefault {
+    @apply bg-main-900 text-main-100;
+}
+
+.descriptionPrimary {
+    @apply text-main-600;
+}
+
+.descriptionDefault {
+    @apply text-main-300;
+}
+
+.trackPrimary {
+    @apply bg-main-300;
+}
+
+.trackDefault {
+    @apply bg-main-800;
+}
+
+/* Variants */
+
+.borderPrimary {
+    @apply border-transparent;
+}
+.iconPrimary {
+    @apply text-main-800;
+}
+.barPrimary {
+    @apply bg-main-800;
+}
+
+.borderSecondary {
+    @apply border-main-600;
+}
+.iconSecondary {
+    @apply text-main-200;
+}
+.barSecondary {
+    @apply bg-main-500;
+}
+
+.borderTertiary {
+    @apply border-accent-dark/70;
+}
+.iconTertiary {
+    @apply text-accent-light;
+}
+.barTertiary {
+    @apply bg-accent-medium;
+}
+
+.borderInfo {
+    @apply border-info-dark/70;
+}
+.iconInfo {
+    @apply text-info-light;
+}
+.barInfo {
+    @apply bg-info-medium;
+}
+
+.borderWarning {
+    @apply border-warning-dark/70;
+}
+.iconWarning {
+    @apply text-warning-light;
+}
+.barWarning {
+    @apply bg-warning-medium;
+}
+
+.borderSuccess {
+    @apply border-success-dark/70;
+}
+.iconSuccess {
+    @apply text-success-light;
+}
+.barSuccess {
+    @apply bg-success-medium;
+}
+
+.borderDanger {
+    @apply border-danger-dark/70;
+}
+.iconDanger {
+    @apply text-danger-light;
+}
+.barDanger {
+    @apply bg-danger-medium;
+}
