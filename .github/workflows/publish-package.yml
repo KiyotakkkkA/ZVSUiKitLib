@@ -77,6 +77,10 @@ jobs:
               if: steps.version.outputs.changed == 'true'
               run: npm run build:package
 
+            - name: Check the stylesheet ships in a cascade layer
+              if: steps.version.outputs.changed == 'true'
+              run: npm run check:css
+
             - name: Prepare package README
               if: steps.version.outputs.changed == 'true'
               run: sed 's#](package/#](#g' README.md > package/README.md

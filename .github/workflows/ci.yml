@@ -45,5 +45,8 @@ jobs:
             - name: Build
               run: npm run build
 
+            - name: Check the stylesheet ships in a cascade layer
+              run: npm run check:css
+
             - name: Verify publishable package contents
               run: npm pack ./package --dry-run

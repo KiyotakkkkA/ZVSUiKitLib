@@ -22,6 +22,17 @@ Available entry points:
 `Chart` and `CodeView` live behind their own entry points so that projects
 that do not use them never pay for `recharts` or `shiki`.
 
+## Overriding styles
+
+The stylesheet ships inside a cascade layer named `zvs-uikit`, so a plain
+`className` overrides a component without `!important`. On Tailwind v4, declare
+the layer order once at the top of the CSS entry that imports Tailwind:
+
+```css
+@layer zvs-uikit, theme, base, components, utilities;
+@import "tailwindcss";
+```
+
 ## License
 
 MIT

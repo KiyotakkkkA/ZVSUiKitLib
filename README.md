@@ -39,6 +39,40 @@ import { Chart } from "@kiyotakkkka/zvs-uikit-lib/chart";
 import { CodeView } from "@kiyotakkkka/zvs-uikit-lib/code-view";
 ```
 
+## Overriding styles alongside Tailwind
+
+The library ships its stylesheet inside a cascade layer named `zvs-uikit`.
+Layered CSS always loses to unlayered CSS, and to any layer declared after it,
+so a plain `className` beats the component's own rules and `!important` is not
+needed:
+
+```tsx
+<Button className="bg-red-500">Delete</Button>
+```
+
+**Tailwind v4** puts its utilities in `@layer utilities`, so the two layers have
+to be ordered. Declare the order once, at the very top of the CSS entry that
+imports Tailwind:
+
+```css
+@layer zvs-uikit, theme, base, components, utilities;
+@import "tailwindcss";
+```
+
+Layer order is fixed by where a layer name first appears, so this one line
+settles it no matter where the bundler places the library's stylesheet. Without
+it the outcome depends on that placement: if the library's CSS lands after
+Tailwind's, its layer sorts last and wins again.
+
+**Tailwind v3** compiles its `@layer` directives away and emits unlayered CSS,
+which already beats the library's layer. Nothing to declare.
+
+**No Tailwind:** your own unlayered CSS wins over the library's rules, so a
+plain stylesheet is enough to restyle a component.
+
+To go the other way and let a specific library rule win, put your override in a
+layer declared before `zvs-uikit`, or leave that rule to the component.
+
 ## Themes
 
 ```css

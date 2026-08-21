@@ -21,6 +21,59 @@ const isExternal = (id: string) =>
 
 const CLIENT_ENTRIES = new Set(["index", "chart", "code-view"]);
 
+const CSS_LAYER_NAME = "zvs-uikit";
+
+/**
+ * At-rules that must stay outside the cascade layer. `@import` and `@charset`
+ * are only valid at the top of a stylesheet, and `@property` registration
+ * inside `@layer` is not reliable across browsers — the custom properties
+ * Tailwind registers are global anyway, so layering them buys nothing.
+ */
+const HOISTED_AT_RULES =
+    /@(?:charset\s+[^;]+;|import\s+[^;]+;|property\s+--[\w-]+\s*\{[^}]*\})/g;
+
+/**
+ * Wraps the emitted stylesheet in a cascade layer.
+ *
+ * Unlayered CSS always beats layered CSS, whatever the source order. Shipping
+ * the library's rules unlayered therefore made them win over Tailwind's
+ * utilities, which live in `@layer utilities`, and consumers had to reach for
+ * `!important` on every override. Inside a layer of its own the library loses
+ * to both Tailwind utilities and plain unlayered app CSS, which is what a
+ * consumer expects.
+ */
+const wrapCssInLayer = () => ({
+    name: "wrap-css-in-cascade-layer",
+    enforce: "post" as const,
+    generateBundle(_options: unknown, bundle: Record<string, unknown>) {
+        for (const asset of Object.values(bundle)) {
+            const file = asset as {
+                type?: string;
+                fileName?: string;
+                source?: unknown;
+            };
+
+            if (
+                file.type !== "asset" ||
+                !file.fileName?.endsWith(".css") ||
+                typeof file.source !== "string"
+            ) {
+                continue;
+            }
+
+            const hoisted: string[] = [];
+            const layered = file.source.replace(HOISTED_AT_RULES, (match) => {
+                hoisted.push(match);
+                return "";
+            });
+
+            if (!layered.trim()) continue;
+
+            file.source = `${hoisted.join("")}@layer ${CSS_LAYER_NAME}{${layered}}`;
+        }
+    },
+});
+
 export default defineConfig({
     css: {
         modules: {
@@ -66,5 +119,6 @@ export default defineConfig({
                 return null;
             },
         },
+        wrapCssInLayer(),
     ],
 });
