@@ -14,8 +14,6 @@ type BaseInputColorProps = Omit<
     "type" | "value" | "defaultValue" | "onChange" | "size" | "className"
 >;
 
-export type InputColorSize = SizeVariants;
-
 export type InputColorClassNames = {
     /** Text used for the label. */
     label?: LabelClassName;
@@ -67,7 +65,7 @@ export type InputColorProps = BaseInputColorProps & {
     /** Whether show value is enabled. */
     showValue?: boolean;
     /** The size preset applied to the color input trigger. */
-    size?: InputColorSize;
+    size?: SizeVariants;
     /** The palette presets used by the component. */
     palettePresets?: string[] | null;
     /** The value formatter used by the component. */

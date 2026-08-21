@@ -22,24 +22,25 @@ import {
     rgbToHsv,
     withAlpha,
 } from "../../lib/color";
-import type { InputColorProps, InputColorSize } from "./types";
+import type { InputColorProps } from "./types";
 import { Dropdown } from "../Dropdown/Dropdown";
+import type { SizeVariants } from "../_shared/types";
 
 const DEFAULT_COLOR = "#6366F1";
 
-const controlSizeClasses: Record<InputColorSize, string> = {
+const controlSizeClasses: Record<SizeVariants, string> = {
     sm: styles.s0,
     md: styles.s1,
     lg: styles.s2,
 };
 
-const pickerSizeClasses: Record<InputColorSize, string> = {
+const pickerSizeClasses: Record<SizeVariants, string> = {
     sm: styles.s3,
     md: styles.s4,
     lg: styles.s5,
 };
 
-const valueSizeClasses: Record<InputColorSize, string> = {
+const valueSizeClasses: Record<SizeVariants, string> = {
     sm: styles.s6,
     md: styles.s7,
     lg: styles.s8,

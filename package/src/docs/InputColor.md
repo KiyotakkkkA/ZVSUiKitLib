@@ -4,7 +4,6 @@
 
 - [Import](#import)
 - [API](#api)
-    - [InputColorSize](#inputcolorsize)
     - [InputColor](#inputcolor)
         - [InputColorClassNames](#inputcolorclassnames)
 - [Example](#example)
@@ -16,12 +15,6 @@ import { InputColor } from "@kiyotakkkka/zvs-uikit-lib";
 ```
 
 ## API
-
-### InputColorSize
-
-```ts
-type InputColorSize = "sm" | "md" | "lg";
-```
 
 ### InputColor
 
@@ -35,7 +28,7 @@ Extends: `BaseInputColorProps`.
 | `onChange`       | `(value: string) => void`                      | -       | No       | Callback invoked when change occurs.                |
 | `label`          | `ReactNode`                                    | -       | No       | Text used for the label.                            |
 | `showValue`      | `boolean`                                      | -       | No       | Whether show value is enabled.                      |
-| `size`           | `InputColorSize`                               | -       | No       | The size preset applied to the color input trigger. |
+| `size`           | `"sm" \| "md" \| "lg"`                         | -       | No       | The size preset applied to the color input trigger. |
 | `palettePresets` | `string[] \| null`                             | -       | No       | The palette presets used by the component.          |
 | `valueFormatter` | `(value: string) => ReactNode`                 | -       | No       | The value formatter used by the component.          |
 | `className`      | `DivClassName`                                 | -       | No       | CSS classes applied to the root element.            |

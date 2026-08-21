@@ -1,15 +1,6 @@
 # Changelog
 
-All notable changes to `@kiyotakkkka/zvs-uikit-lib` are documented here. The
-format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the
-project uses [semantic versioning](https://semver.org/).
-
-## [7.0.0] — unreleased
-
-This release closes the findings of a full audit of the library: a component
-that rendered unstyled in production, roles announced without the behaviour
-they imply, a bundle that pulled megabytes nobody asked for, an untested code
-base and an inconsistent public surface.
+## [7.0.0]
 
 ### Breaking
 
@@ -31,10 +22,8 @@ base and an inconsistent public surface.
 
 ### Added
 
-- **`ref` on every component that renders a DOM root.** 49 of 56 components
-  previously gave no access to their node, which broke `react-hook-form`'s
-  `register()`, programmatic focus and anything measuring or anchoring to a
-  component. Each ref points at the node a caller actually wants: the native
+- **`ref` on every component that renders a DOM root.**
+  Each ref points at the node a caller actually wants: the native
   input for `InputCheckBox`, `InputRadio` and `InputCheckSlided`, the select
   for `SelectNative`, the `<table>` for `Table`, the dialog panel for `Modal`
   and `SlidedPanel`. `ContextMenu` and `Select` render no root element of their
@@ -48,7 +37,6 @@ base and an inconsistent public surface.
   existing apps are unaffected.
 - **`SizeVariants`**, a shared `"sm" | "md" | "lg"` scale. `Button` and `Badge`
   accept `size`; omitting it keeps their current appearance exactly.
-  `InputColorSize` is now an alias of it.
 - **`Modal`**: `closeOnEscape` and `label`. **`SlidedPanel`**: `closeOnEscape`
   and `label`. **`Tabs`**: `orientation`, `label`, and `tabId`/`panelId` per
   option. **`Select.Menu`** and **`Switcher`**: `label`. **`Table`**:
@@ -56,17 +44,11 @@ base and an inconsistent public surface.
   `direction` reported through `aria-sort`.
 - **Tests.** Vitest, plus 44 tests over the colour conversions, popup
   placement, the table sort cycle, palette validation and dictionary merging.
-- **CI on pull requests**, running typecheck, lint, tests, build and a
-  `npm pack --dry-run` content check. The publish workflow runs the same gates
-  before publishing.
 
 ### Fixed
 
 - **`ToastProvider` rendered completely unstyled** in any project without
-  Tailwind. It was the one component styled with bare utility classes
-  (`bg-main-900`, `text-main-100`, `border-accent-dark/70`), none of which are
-  emitted into `dist/zvs-uikit-lib.css`. It now uses CSS Modules like every
-  other component, and honours `prefers-reduced-motion`.
+  Tailwind.
 - **`Modal` and `SlidedPanel` did not manage focus.** Both now trap Tab inside
   the dialog, move focus in on open and back to the trigger on close, lock body
   scroll (reference counted, so nested dialogs behave) and handle Escape.
@@ -84,26 +66,8 @@ base and an inconsistent public surface.
   reached it. The panel is now `inert` and the trigger carries `aria-expanded`
   and `aria-controls`.
 - **`Table` headers** had no `scope="col"` and reported no `aria-sort`.
-- **`package/tsconfig.eslint.json` was never committed** although
-  `eslint.config.js` requires it, so `npm run lint` failed on a fresh clone.
 
 ### Changed
 
 - **`shiki` no longer compiles all 24 grammars up front.** The highlighter
-  starts empty and loads the requested grammar on demand, the way themes were
-  already handled. An unavailable grammar still falls back to plaintext.
-- **Colour maths, popup geometry and the sort-state machine moved** into
-  `lib/color.ts`, `lib/position.ts` and `lib/sorting.ts`, out of the components
-  and under test.
-- **Developer-facing context errors are in English**, matching the rest of the
-  package.
-
-### Known follow-ups
-
-- `dist/zvs-uikit-lib.css` is still one 191 KB file loaded by every entry
-  point. Splitting it needs `build.cssCodeSplit` and a build run to verify.
-- Component render tests (Testing Library) are not yet part of the suite.
-- The generated documentation under `package/src/docs` still describes the
-  previous props. Run `npm run docs:fill` to regenerate it.
-- `size` is implemented on `Button` and `Badge`; the remaining components can
-  adopt the same three steps.
+  starts empty and loads the requested grammar on demand.
