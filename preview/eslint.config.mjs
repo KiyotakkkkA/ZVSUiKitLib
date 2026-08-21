@@ -12,6 +12,14 @@ const eslintConfig = defineConfig([
             },
         },
     },
+    {
+        languageOptions: {
+            parserOptions: {
+                project: "./tsconfig.json",
+                tsconfigRootDir: import.meta.dirname,
+            },
+        },
+    },
     // Override default ignores of eslint-config-next.
     globalIgnores([
         // Default ignores of eslint-config-next:

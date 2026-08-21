@@ -18,12 +18,19 @@ export default defineConfig([
         languageOptions: {
             ecmaVersion: 2020,
             globals: globals.browser,
+            parserOptions: {
+                project: "./tsconfig.eslint.json",
+                tsconfigRootDir: import.meta.dirname,
+            },
         },
     },
     {
-        files: ["src/scripts/**/*.ts"],
+        files: ["**/src/scripts/**/*.ts"],
         languageOptions: {
             globals: globals.node,
+            parserOptions: {
+                project: false,
+            },
         },
     },
 ]);
