@@ -20,6 +20,7 @@ import { ProgressBar } from "@kiyotakkkka/zvs-uikit-lib";
 
 | Property     | Type                                             | Default     | Required | Description                                        |
 | ------------ | ------------------------------------------------ | ----------- | -------- | -------------------------------------------------- |
+| `ref`        | `Ref<HTMLDivElement>`                            | -           | No       | Receives the progress bar root element.            |
 | `variant`    | [ColorVariantsBase](./dict.md#colorvariantsbase) | `"primary"` | No       | The visual style variant applied to the component. |
 | `value`      | `number`                                         | -           | Yes      | The value used by the component.                   |
 | `max`        | `number`                                         | `100`       | No       | The max used by the component.                     |

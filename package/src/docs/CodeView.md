@@ -24,6 +24,7 @@ Extends: `Omit< ComponentPropsWithoutRef<"div">, "children" >`.
 
 | Property           | Type                                      | Default         | Required | Description                                  |
 | ------------------ | ----------------------------------------- | --------------- | -------- | -------------------------------------------- |
+| `ref`              | `Ref<HTMLDivElement>`                     | -               | No       | Receives the code view root element.         |
 | `code`             | `string`                                  | -               | Yes      | The code used by the component.              |
 | `language`         | `BundledLanguage \| string`               | -               | No       | The language used by the component.          |
 | `theme`            | `BundledTheme`                            | `DEFAULT_THEME` | No       | The theme used by the component.             |

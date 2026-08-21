@@ -1,4 +1,8 @@
-import type { ButtonHTMLAttributes, ComponentPropsWithoutRef, Ref } from "react";
+import type {
+    ButtonHTMLAttributes,
+    ComponentPropsWithoutRef,
+    Ref,
+} from "react";
 
 import type {
     ButtonClassName,

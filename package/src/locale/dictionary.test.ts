@@ -1,9 +1,5 @@
 import { describe, expect, it } from "vitest";
-import {
-    defaultDictionary,
-    enDictionary,
-    mergeDictionary,
-} from "./dictionary";
+import { defaultDictionary, enDictionary, mergeDictionary } from "./dictionary";
 
 describe("mergeDictionary", () => {
     it("returns the base untouched when there are no overrides", () => {

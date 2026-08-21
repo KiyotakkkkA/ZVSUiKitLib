@@ -308,7 +308,9 @@ export const InputDropZone = ({
                     <span className={styles.s19}>
                         <span className={styles.s20}>{emptyIcon}</span>
                         <span className={styles.s21}>{texts.emptyTitle}</span>
-                        <span className={styles.s22}>{texts.emptyDescription}</span>
+                        <span className={styles.s22}>
+                            {texts.emptyDescription}
+                        </span>
                     </span>
                 )}
             </button>

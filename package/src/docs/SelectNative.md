@@ -31,6 +31,7 @@ Extends: `BaseSelectNativeProps`.
 
 | Property      | Type                                           | Default          | Required | Description                                        |
 | ------------- | ---------------------------------------------- | ---------------- | -------- | -------------------------------------------------- |
+| `ref`         | `Ref<HTMLSelectElement>`                       | -                | No       | Receives the native select node.                   |
 | `options`     | `SelectNativeOption[]`                         | -                | Yes      | The options used by the component.                 |
 | `onChange`    | `(value: string) => void`                      | -                | No       | Callback invoked when change occurs.               |
 | `placeholder` | `string`                                       | -                | No       | Text used for the placeholder.                     |

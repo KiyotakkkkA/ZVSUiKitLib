@@ -38,6 +38,7 @@ Extends: `Omit< React.HTMLAttributes<HTMLDivElement>, "onChange" >`.
 
 | Property       | Type                        | Default       | Required | Description                                |
 | -------------- | --------------------------- | ------------- | -------- | ------------------------------------------ |
+| `ref`          | `Ref<HTMLDivElement>`       | -             | No       | Receives the selector root element.        |
 | `options`      | `AutoFillOption[]`          | -             | Yes      | The options used by the component.         |
 | `value`        | `string[]`                  | `EMPTY_VALUE` | No       | The value used by the component.           |
 | `onChange`     | `(value: string[]) => void` | -             | No       | Callback invoked when change occurs.       |

@@ -38,7 +38,4 @@ export function LocaleProvider({
     );
 }
 
-export type {
-    PartialZvsDictionary,
-    ZvsDictionary,
-} from "../locale/dictionary";
+export type { PartialZvsDictionary, ZvsDictionary } from "../locale/dictionary";

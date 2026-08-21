@@ -18,7 +18,7 @@ import { Em } from "@kiyotakkkka/zvs-uikit-lib";
 ### Em
 
 ```ts
-type EmProps = HTMLAttributes<HTMLElement>;
+type EmProps = ComponentPropsWithRef<"em">;
 ```
 
 ## Example

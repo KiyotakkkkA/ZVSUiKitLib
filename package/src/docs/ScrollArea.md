@@ -19,10 +19,11 @@ import { ScrollArea } from "@kiyotakkkka/zvs-uikit-lib";
 
 Extends: `HTMLAttributes<HTMLDivElement>`.
 
-| Property        | Type                                           | Default | Required | Description                                               |
-| --------------- | ---------------------------------------------- | ------- | -------- | --------------------------------------------------------- |
-| `orientation`   | [Orientation](./dict.md#orientation) \| "both" | -       | No       | The direction in which the component content is arranged. |
-| `showScrollbar` | `boolean`                                      | -       | No       | Whether show scrollbar is enabled.                        |
+| Property        | Type                                           | Default      | Required | Description                                               |
+| --------------- | ---------------------------------------------- | ------------ | -------- | --------------------------------------------------------- |
+| `ref`           | `Ref<HTMLDivElement>`                          | -            | No       | Receives the scroll container element.                    |
+| `orientation`   | [Orientation](./dict.md#orientation) \| "both" | `"vertical"` | No       | The direction in which the component content is arranged. |
+| `showScrollbar` | `boolean`                                      | `true`       | No       | Whether show scrollbar is enabled.                        |
 
 ## Example
 

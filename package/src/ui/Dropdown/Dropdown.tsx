@@ -315,9 +315,7 @@ function DropdownTrigger({
             className={cn(styles.s1, styles.s2, className)}
             {...props}
         >
-            <span className={styles.s3}>
-                {children ?? resolvedPlaceholder}
-            </span>
+            <span className={styles.s3}>{children ?? resolvedPlaceholder}</span>
 
             {icon ?? (
                 <Icon

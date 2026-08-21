@@ -53,10 +53,10 @@ const openPlacementClasses: Record<SlidedPanelPlacement, string> = {
 };
 
 const SlidedPanelContext = createContext<
-    (SlidedPanelContextValue & {
-        titleId: string;
-        registerTitle: (registered: boolean) => void;
-    })
+    | (SlidedPanelContextValue & {
+          titleId: string;
+          registerTitle: (registered: boolean) => void;
+      })
     | null
 >(null);
 

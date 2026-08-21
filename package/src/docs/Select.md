@@ -32,22 +32,22 @@ import { Select } from "@kiyotakkkka/zvs-uikit-lib";
 
 ### Select
 
-| Property            | Type                                       | Default               | Required | Description                                      |
-| ------------------- | ------------------------------------------ | --------------------- | -------- | ------------------------------------------------ |
-| `value`             | `string`                                   | -                     | Yes      | The value used by the component.                 |
-| `onChange`          | `(value: string) => void`                  | -                     | Yes      | Callback invoked when change occurs.             |
-| `options`           | `SelectOption[]`                           | -                     | Yes      | The options used by the component.               |
-| `children`          | `ReactNode`                                | -                     | Yes      | The content rendered inside the component.       |
-| `placeholder`       | `string`                                   | `"Выберите"`          | No       | Text used for the placeholder.                   |
-| `searchable`        | `boolean`                                  | `false`               | No       | Whether searchable is enabled.                   |
-| `searchPlaceholder` | `string`                                   | `"Поиск..."`          | No       | Text used for the search placeholder.            |
-| `emptyMessage`      | `string`                                   | `"Ничего не найдено"` | No       | Text used for the empty message.                 |
-| `disabled`          | `boolean`                                  | `false`               | No       | Whether disabled is enabled.                     |
-| `className`         | `DivClassName`                             | -                     | No       | CSS classes applied to the root element.         |
-| `classNames`        | `SelectClassNames`                         | -                     | No       | CSS classes applied to the component slots.      |
-| `menuWidth`         | `number \| string`                         | -                     | No       | The width of the popup menu.                     |
-| `menuPlacement`     | [PositionAnchor](./dict.md#positionanchor) | `"bottom-left"`       | No       | The popup menu position relative to its trigger. |
-| `closeOnSelect`     | `boolean`                                  | `true`                | No       | Function used to close on select.                |
+| Property            | Type                                       | Default         | Required | Description                                                                                                                  |
+| ------------------- | ------------------------------------------ | --------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `value`             | `string`                                   | -               | Yes      | The value used by the component.                                                                                             |
+| `onChange`          | `(value: string) => void`                  | -               | Yes      | Callback invoked when change occurs.                                                                                         |
+| `options`           | `SelectOption[]`                           | -               | Yes      | The options used by the component.                                                                                           |
+| `children`          | `ReactNode`                                | -               | Yes      | The content rendered inside the component.                                                                                   |
+| `placeholder`       | `string`                                   | -               | No       | Text used for the placeholder. Defaults to the \`select.placeholder\` string from the active locale dictionary.              |
+| `searchable`        | `boolean`                                  | `false`         | No       | Whether searchable is enabled.                                                                                               |
+| `searchPlaceholder` | `string`                                   | -               | No       | Text used for the search placeholder. Defaults to the \`select.searchPlaceholder\` string from the active locale dictionary. |
+| `emptyMessage`      | `string`                                   | -               | No       | Text used for the empty message. Defaults to the \`select.emptyMessage\` string from the active locale dictionary.           |
+| `disabled`          | `boolean`                                  | `false`         | No       | Whether disabled is enabled.                                                                                                 |
+| `className`         | `DivClassName`                             | -               | No       | CSS classes applied to the root element.                                                                                     |
+| `classNames`        | `SelectClassNames`                         | -               | No       | CSS classes applied to the component slots.                                                                                  |
+| `menuWidth`         | `number \| string`                         | -               | No       | The width of the popup menu.                                                                                                 |
+| `menuPlacement`     | [PositionAnchor](./dict.md#positionanchor) | `"bottom-left"` | No       | The popup menu position relative to its trigger.                                                                             |
+| `closeOnSelect`     | `boolean`                                  | `true`          | No       | Function used to close on select.                                                                                            |
 
 ### SelectClassNames
 
@@ -67,6 +67,7 @@ import { Select } from "@kiyotakkkka/zvs-uikit-lib";
 | Property    | Type                                           | Default         | Required | Description                                        |
 | ----------- | ---------------------------------------------- | --------------- | -------- | -------------------------------------------------- |
 | `children`  | `ReactNode`                                    | -               | Yes      | The content rendered inside the component.         |
+| `label`     | `string`                                       | -               | No       | Accessible name for the option list.               |
 | `className` | `DivClassName`                                 | -               | No       | CSS classes applied to the root element.           |
 | `rounded`   | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-3xl"` | No       | The border-radius preset applied to the component. |
 
@@ -87,6 +88,7 @@ Extends: `SelectOption`.
 | `selectedOption`      | `SelectOption`                      | -       | No       | Whether selected option is enabled.              |
 | `placeholder`         | `string`                            | -       | Yes      | Text used for the placeholder.                   |
 | `query`               | `string`                            | -       | Yes      | The query used by the component.                 |
+| `open`                | `boolean`                           | -       | Yes      | Indicates whether the popup menu is open.        |
 | `searchable`          | `boolean`                           | -       | Yes      | Whether searchable is enabled.                   |
 | `searchPlaceholder`   | `string`                            | -       | Yes      | Text used for the search placeholder.            |
 | `emptyMessage`        | `string`                            | -       | Yes      | Text used for the empty message.                 |

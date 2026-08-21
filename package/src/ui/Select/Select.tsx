@@ -243,7 +243,13 @@ function SelectMenu({
             return;
         }
 
-        if (searchable || event.key.length !== 1 || event.metaKey || event.ctrlKey || event.altKey) {
+        if (
+            searchable ||
+            event.key.length !== 1 ||
+            event.metaKey ||
+            event.ctrlKey ||
+            event.altKey
+        ) {
             return;
         }
 

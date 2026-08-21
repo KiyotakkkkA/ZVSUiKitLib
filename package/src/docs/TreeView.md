@@ -35,9 +35,10 @@ import { TreeView } from "@kiyotakkkka/zvs-uikit-lib";
 
 Extends: `TreeViewVirtualizationProps`, `ComponentPropsWithoutRef<"div">`.
 
-| Property   | Type        | Default | Required | Description                                            |
-| ---------- | ----------- | ------- | -------- | ------------------------------------------------------ |
-| `children` | `ReactNode` | -       | Yes      | Renders the tree nodes inside the root tree container. |
+| Property   | Type                  | Default | Required | Description                                            |
+| ---------- | --------------------- | ------- | -------- | ------------------------------------------------------ |
+| `ref`      | `Ref<HTMLDivElement>` | -       | No       | Receives the tree root element.                        |
+| `children` | `ReactNode`           | -       | Yes      | Renders the tree nodes inside the root tree container. |
 
 ### TreeView.Catalog
 

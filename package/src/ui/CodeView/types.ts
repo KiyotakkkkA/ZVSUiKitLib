@@ -1,4 +1,9 @@
-import type { CSSProperties, ComponentPropsWithoutRef, ReactNode, Ref } from "react";
+import type {
+    CSSProperties,
+    ComponentPropsWithoutRef,
+    ReactNode,
+    Ref,
+} from "react";
 import type { BundledLanguage, BundledTheme } from "shiki";
 
 export type CodeViewProps = Omit<

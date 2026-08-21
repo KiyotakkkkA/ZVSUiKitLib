@@ -26,6 +26,7 @@ type PaginationPageItem = number | "dots";
 
 | Property          | Type                        | Default        | Required | Description                                   |
 | ----------------- | --------------------------- | -------------- | -------- | --------------------------------------------- |
+| `ref`             | `Ref<HTMLDivElement>`       | -              | No       | Receives the pagination root element.         |
 | `page`            | `number`                    | -              | Yes      | The page used by the component.               |
 | `perPage`         | `number`                    | -              | Yes      | The per page used by the component.           |
 | `total`           | `number`                    | -              | Yes      | The total used by the component.              |

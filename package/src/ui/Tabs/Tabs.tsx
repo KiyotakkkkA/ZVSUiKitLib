@@ -37,7 +37,9 @@ export function Tabs({
         const previousKey =
             orientation === "vertical" ? "ArrowUp" : "ArrowLeft";
         const nextKey = orientation === "vertical" ? "ArrowDown" : "ArrowRight";
-        const current = tabs.indexOf(document.activeElement as HTMLButtonElement);
+        const current = tabs.indexOf(
+            document.activeElement as HTMLButtonElement,
+        );
 
         if (event.key === previousKey) {
             event.preventDefault();

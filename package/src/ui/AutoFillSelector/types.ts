@@ -1,5 +1,10 @@
 import type React from "react";
-import type { HTMLAttributes, InputHTMLAttributes, ReactNode, Ref } from "react";
+import type {
+    HTMLAttributes,
+    InputHTMLAttributes,
+    ReactNode,
+    Ref,
+} from "react";
 import type {
     ButtonClassName,
     RoundVariants,

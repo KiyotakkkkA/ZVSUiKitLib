@@ -3,6 +3,7 @@
 ## Table of contents
 
 - [Orientation](#orientation)
+- [SizeVariants](#sizevariants)
 - [ColorVariantsBase](#colorvariantsbase)
 - [ColorVariantOutline](#colorvariantoutline)
 - [PositionAnchor](#positionanchor)
@@ -12,6 +13,12 @@
 
 ```ts
 type Orientation = "horizontal" | "vertical";
+```
+
+## SizeVariants
+
+```ts
+type SizeVariants = "sm" | "md" | "lg";
 ```
 
 ## ColorVariantsBase

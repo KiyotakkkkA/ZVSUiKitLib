@@ -20,8 +20,8 @@ export type TreeViewVirtualizationProps = {
 
 export type TreeViewProps = TreeViewVirtualizationProps &
     ComponentPropsWithoutRef<"div"> & {
-    /** Receives the tree root element. */
-    ref?: Ref<HTMLDivElement>;
+        /** Receives the tree root element. */
+        ref?: Ref<HTMLDivElement>;
         /** Renders the tree nodes inside the root tree container. */
         children: ReactNode;
     };

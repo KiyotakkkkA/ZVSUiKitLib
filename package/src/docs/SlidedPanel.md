@@ -30,13 +30,16 @@ type SlidedPanelPlacement = "top" | "right" | "bottom" | "left";
 
 ### SlidedPanel
 
-| Property              | Type                                       | Default   | Required | Description                                 |
-| --------------------- | ------------------------------------------ | --------- | -------- | ------------------------------------------- |
-| `open`                | `boolean`                                  | -         | Yes      | Whether open is enabled.                    |
-| `onClose`             | `() => void`                               | -         | Yes      | Callback invoked when close occurs.         |
-| `closeOnOverlayClick` | `boolean`                                  | `true`    | No       | Function used to close on overlay click.    |
-| `panelPlacement`      | `SlidedPanelPlacement`                     | `"right"` | No       | The screen edge from which the panel opens. |
-| `className`           | `HTMLAttributes<HTMLElement>["className"]` | -         | No       | CSS classes applied to the root element.    |
+| Property              | Type                                       | Default   | Required | Description                                                           |
+| --------------------- | ------------------------------------------ | --------- | -------- | --------------------------------------------------------------------- |
+| `ref`                 | `Ref<HTMLElement>`                         | -         | No       | Receives the panel \`<section>\` element.                             |
+| `open`                | `boolean`                                  | -         | Yes      | Whether open is enabled.                                              |
+| `onClose`             | `() => void`                               | -         | Yes      | Callback invoked when close occurs.                                   |
+| `closeOnOverlayClick` | `boolean`                                  | `true`    | No       | Function used to close on overlay click.                              |
+| `closeOnEscape`       | `boolean`                                  | `true`    | No       | Whether the Escape key closes the panel.                              |
+| `label`               | `string`                                   | -         | No       | Accessible name used when the panel renders no \`SlidedPanel.Title\`. |
+| `panelPlacement`      | `SlidedPanelPlacement`                     | `"right"` | No       | The screen edge from which the panel opens.                           |
+| `className`           | `HTMLAttributes<HTMLElement>["className"]` | -         | No       | CSS classes applied to the root element.                              |
 
 ### SlidedPanel.Header
 

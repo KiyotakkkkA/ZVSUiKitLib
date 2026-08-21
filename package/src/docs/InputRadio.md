@@ -22,6 +22,7 @@ Extends: `BaseInputProps`.
 
 | Property     | Type                         | Default | Required | Description                                                |
 | ------------ | ---------------------------- | ------- | -------- | ---------------------------------------------------------- |
+| `ref`        | `Ref<HTMLInputElement>`      | -       | No       | Receives the native radio input node.                      |
 | `checked`    | `boolean`                    | -       | No       | Controls whether the radio is selected.                    |
 | `onChange`   | `(checked: boolean) => void` | -       | No       | Runs with the next selected state after user interaction.  |
 | `modelValue` | `string`                     | -       | No       | Identifies the radio entry when used inside a radio group. |

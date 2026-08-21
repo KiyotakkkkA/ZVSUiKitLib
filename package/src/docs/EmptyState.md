@@ -20,6 +20,7 @@ import { EmptyState } from "@kiyotakkkka/zvs-uikit-lib";
 
 | Property      | Type                   | Default | Required | Description                                 |
 | ------------- | ---------------------- | ------- | -------- | ------------------------------------------- |
+| `ref`         | `Ref<HTMLDivElement>`  | -       | No       | Receives the empty-state root element.      |
 | `icon`        | `ReactNode`            | -       | No       | Content rendered for the icon.              |
 | `title`       | `ReactNode`            | -       | Yes      | Text used for the title.                    |
 | `description` | `ReactNode`            | -       | No       | Text used for the description.              |

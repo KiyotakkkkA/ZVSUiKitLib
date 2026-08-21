@@ -22,6 +22,7 @@ Extends: `BaseInputProps`.
 
 | Property     | Type                         | Default | Required | Description                                                      |
 | ------------ | ---------------------------- | ------- | -------- | ---------------------------------------------------------------- |
+| `ref`        | `Ref<HTMLInputElement>`      | -       | No       | Receives the native checkbox input node.                         |
 | `checked`    | `boolean`                    | -       | No       | Controls whether the checkbox is checked.                        |
 | `onChange`   | `(checked: boolean) => void` | -       | No       | Runs with the next checked state after user interaction.         |
 | `modelValue` | `string`                     | -       | No       | Identifies the checkbox entry when used inside a checkbox group. |

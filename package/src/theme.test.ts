@@ -57,9 +57,9 @@ describe("serializeThemePalette", () => {
 
     it("refuses to serialize an invalid palette", () => {
         expect(() =>
-            serializeThemePalette(
-                { main: {} } as unknown as typeof defaultThemePalette,
-            ),
+            serializeThemePalette({
+                main: {},
+            } as unknown as typeof defaultThemePalette),
         ).toThrow();
     });
 });

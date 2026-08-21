@@ -29,6 +29,7 @@ Extends: `BaseInputRangeProps`.
 
 | Property          | Type                               | Default | Required | Description                                                |
 | ----------------- | ---------------------------------- | ------- | -------- | ---------------------------------------------------------- |
+| `ref`             | `Ref<HTMLDivElement>`              | -       | No       | Receives the range root element.                           |
 | `value`           | `InputRangeValue`                  | -       | Yes      | Controls the lower and upper selected boundaries.          |
 | `onChange`        | `(value: InputRangeValue) => void` | -       | Yes      | Runs with the updated lower and upper boundaries.          |
 | `min`             | `number`                           | `0`     | No       | Sets the minimum selectable boundary.                      |

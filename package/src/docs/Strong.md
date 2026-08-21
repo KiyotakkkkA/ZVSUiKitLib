@@ -18,7 +18,7 @@ import { Strong } from "@kiyotakkkka/zvs-uikit-lib";
 ### Strong
 
 ```ts
-type StrongProps = HTMLAttributes<HTMLElement>;
+type StrongProps = ComponentPropsWithRef<"strong">;
 ```
 
 ## Example

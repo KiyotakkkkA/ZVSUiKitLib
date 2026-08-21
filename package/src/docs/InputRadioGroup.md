@@ -21,6 +21,7 @@ Extends: `Omit< HTMLAttributes<HTMLDivElement>, "default" \| "onChange" >`.
 
 | Property        | Type                                 | Default        | Required | Description                                                   |
 | --------------- | ------------------------------------ | -------------- | -------- | ------------------------------------------------------------- |
+| `ref`           | `Ref<HTMLDivElement>`                | -              | No       | Receives the group root element.                              |
 | `model`         | `T`                                  | -              | Yes      | Maps each radio value to its selected state.                  |
 | `onModelChange` | `(model: T) => void`                 | -              | Yes      | Runs with the model after the selected radio changes.         |
 | `default`       | `Extract<keyof T, string>`           | -              | No       | Selects the model key used when no radio is currently active. |

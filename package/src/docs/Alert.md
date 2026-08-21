@@ -22,6 +22,7 @@ Extends: `HTMLAttributes<HTMLDivElement>`.
 
 | Property     | Type                                             | Default        | Required | Description                                              |
 | ------------ | ------------------------------------------------ | -------------- | -------- | -------------------------------------------------------- |
+| `ref`        | `Ref<HTMLDivElement>`                            | -              | No       | Receives the underlying \`HTMLDivElement\` node.         |
 | `variant`    | [ColorVariantsBase](./dict.md#colorvariantsbase) | `"secondary"`  | No       | Selects the alert color scheme and default status icon.  |
 | `title`      | `ReactNode`                                      | -              | No       | Renders an optional heading above the alert body.        |
 | `icon`       | `ReactNode`                                      | -              | No       | Replaces the default icon selected by the alert variant. |

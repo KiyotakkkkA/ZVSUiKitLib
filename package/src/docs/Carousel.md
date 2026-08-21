@@ -21,6 +21,7 @@ import { Carousel } from "@kiyotakkkka/zvs-uikit-lib";
 
 | Property            | Type                 | Default | Required | Description                                    |
 | ------------------- | -------------------- | ------- | -------- | ---------------------------------------------- |
+| `ref`               | `Ref<HTMLElement>`   | -       | No       | Receives the carousel \`<section>\` element.   |
 | `children`          | `ReactNode`          | -       | Yes      | The content rendered inside the component.     |
 | `className`         | `string`             | -       | No       | CSS classes applied to the root element.       |
 | `classNames`        | `CarouselClassNames` | -       | No       | CSS classes applied to the component slots.    |

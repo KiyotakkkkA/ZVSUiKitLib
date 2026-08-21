@@ -18,7 +18,7 @@ import { Link } from "@kiyotakkkka/zvs-uikit-lib";
 ### Link
 
 ```ts
-type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement>;
+type LinkProps = ComponentPropsWithRef<"a">;
 ```
 
 ## Example

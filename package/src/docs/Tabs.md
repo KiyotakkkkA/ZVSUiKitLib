@@ -19,23 +19,28 @@ import { Tabs } from "@kiyotakkkka/zvs-uikit-lib";
 
 ### TabOption
 
-| Property   | Type      | Default | Required | Description                      |
-| ---------- | --------- | ------- | -------- | -------------------------------- |
-| `value`    | `string`  | -       | Yes      | The value used by the component. |
-| `label`    | `string`  | -       | Yes      | Text used for the label.         |
-| `disabled` | `boolean` | -       | No       | Whether disabled is enabled.     |
+| Property   | Type      | Default | Required | Description                                                 |
+| ---------- | --------- | ------- | -------- | ----------------------------------------------------------- |
+| `value`    | `string`  | -       | Yes      | The value used by the component.                            |
+| `label`    | `string`  | -       | Yes      | Text used for the label.                                    |
+| `disabled` | `boolean` | -       | No       | Whether disabled is enabled.                                |
+| `tabId`    | `string`  | -       | No       | Identifies the tab element so a panel can point back at it. |
+| `panelId`  | `string`  | -       | No       | The \`id\` of the panel this tab controls.                  |
 
 ### Tabs
 
 Extends: `Omit< ComponentPropsWithoutRef<"div">, "onChange" \| "children" >`.
 
-| Property     | Type                                                       | Default | Required | Description                                 |
-| ------------ | ---------------------------------------------------------- | ------- | -------- | ------------------------------------------- |
-| `value`      | `string`                                                   | -       | Yes      | The value used by the component.            |
-| `onChange`   | `(value: string) => void`                                  | -       | Yes      | Callback invoked when change occurs.        |
-| `options`    | `TabOption[]`                                              | -       | Yes      | The options used by the component.          |
-| `classNames` | `TabsClassNames`                                           | -       | No       | CSS classes applied to the component slots. |
-| `tabProps`   | `Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onClick">` | -       | No       | The tab props used by the component.        |
+| Property      | Type                                                       | Default        | Required | Description                                                            |
+| ------------- | ---------------------------------------------------------- | -------------- | -------- | ---------------------------------------------------------------------- |
+| `ref`         | `Ref<HTMLDivElement>`                                      | -              | No       | Receives the underlying \`HTMLDivElement\` node.                       |
+| `value`       | `string`                                                   | -              | Yes      | The value used by the component.                                       |
+| `onChange`    | `(value: string) => void`                                  | -              | Yes      | Callback invoked when change occurs.                                   |
+| `options`     | `TabOption[]`                                              | -              | Yes      | The options used by the component.                                     |
+| `orientation` | [Orientation](./dict.md#orientation)                       | `"horizontal"` | No       | The axis the tab list is arranged along, driving arrow-key navigation. |
+| `label`       | `string`                                                   | -              | No       | Accessible name for the tab list.                                      |
+| `classNames`  | `TabsClassNames`                                           | -              | No       | CSS classes applied to the component slots.                            |
+| `tabProps`    | `Omit<ButtonHTMLAttributes<HTMLButtonElement>, "onClick">` | -              | No       | The tab props used by the component.                                   |
 
 ### TabsClassNames
 

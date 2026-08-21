@@ -18,7 +18,7 @@ import { Quote } from "@kiyotakkkka/zvs-uikit-lib";
 ### Quote
 
 ```ts
-type QuoteProps = HTMLAttributes<HTMLQuoteElement>;
+type QuoteProps = ComponentPropsWithRef<"q">;
 ```
 
 ## Example

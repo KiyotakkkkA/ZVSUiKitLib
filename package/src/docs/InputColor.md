@@ -28,7 +28,7 @@ Extends: `BaseInputColorProps`.
 | `onChange`       | `(value: string) => void`                      | -       | No       | Callback invoked when change occurs.                |
 | `label`          | `ReactNode`                                    | -       | No       | Text used for the label.                            |
 | `showValue`      | `boolean`                                      | -       | No       | Whether show value is enabled.                      |
-| `size`           | `"sm" \| "md" \| "lg"`                         | -       | No       | The size preset applied to the color input trigger. |
+| `size`           | [SizeVariants](./dict.md#sizevariants)         | -       | No       | The size preset applied to the color input trigger. |
 | `palettePresets` | `string[] \| null`                             | -       | No       | The palette presets used by the component.          |
 | `valueFormatter` | `(value: string) => ReactNode`                 | -       | No       | The value formatter used by the component.          |
 | `className`      | `DivClassName`                                 | -       | No       | CSS classes applied to the root element.            |

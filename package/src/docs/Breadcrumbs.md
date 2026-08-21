@@ -22,10 +22,11 @@ import { Breadcrumbs } from "@kiyotakkkka/zvs-uikit-lib";
 
 Extends: `ComponentPropsWithoutRef<"nav">`.
 
-| Property    | Type        | Default | Required | Description                                               |
-| ----------- | ----------- | ------- | -------- | --------------------------------------------------------- |
-| `separator` | `ReactNode` | `"/"`   | No       | Replaces the separator rendered between breadcrumb items. |
-| `children`  | `ReactNode` | -       | Yes      | Renders breadcrumb navigation items.                      |
+| Property    | Type               | Default | Required | Description                                               |
+| ----------- | ------------------ | ------- | -------- | --------------------------------------------------------- |
+| `ref`       | `Ref<HTMLElement>` | -       | No       | Receives the breadcrumbs \`<nav>\` element.               |
+| `separator` | `ReactNode`        | `"/"`   | No       | Replaces the separator rendered between breadcrumb items. |
+| `children`  | `ReactNode`        | -       | Yes      | Renders breadcrumb navigation items.                      |
 
 ### Breadcrumbs.Nav
 

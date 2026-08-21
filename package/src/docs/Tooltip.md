@@ -19,6 +19,7 @@ import { Tooltip } from "@kiyotakkkka/zvs-uikit-lib";
 
 | Property    | Type                                           | Default          | Required | Description                                        |
 | ----------- | ---------------------------------------------- | ---------------- | -------- | -------------------------------------------------- |
+| `ref`       | `Ref<HTMLSpanElement>`                         | -                | No       | Receives the tooltip wrapper element.              |
 | `children`  | `ReactNode`                                    | -                | Yes      | The content rendered inside the component.         |
 | `label`     | `ReactNode`                                    | -                | Yes      | Text used for the label.                           |
 | `placement` | [PositionAnchor](./dict.md#positionanchor)     | `"top-center"`   | No       | The content position relative to its trigger.      |

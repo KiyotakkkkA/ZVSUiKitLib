@@ -26,6 +26,7 @@ Extends: `HTMLAttributes<HTMLElement>`.
 
 | Property  | Type                                           | Default        | Required | Description                               |
 | --------- | ---------------------------------------------- | -------------- | -------- | ----------------------------------------- |
+| `ref`     | `Ref<HTMLElement>`                             | -              | No       | Receives the card \`<section>\` element.  |
 | `rounded` | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-lg"` | No       | Selects the card container border radius. |
 
 ### Card.Header

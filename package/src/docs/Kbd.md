@@ -18,7 +18,7 @@ import { Kbd } from "@kiyotakkkka/zvs-uikit-lib";
 ### Kbd
 
 ```ts
-type KbdProps = HTMLAttributes<HTMLElement>;
+type KbdProps = ComponentPropsWithRef<"kbd">;
 ```
 
 ## Example

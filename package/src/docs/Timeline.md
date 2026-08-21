@@ -21,17 +21,18 @@ import { Timeline } from "@kiyotakkkka/zvs-uikit-lib";
 
 ### Timeline
 
-| Property    | Type           | Default | Required | Description                                |
-| ----------- | -------------- | ------- | -------- | ------------------------------------------ |
-| `children`  | `ReactNode`    | -       | Yes      | The content rendered inside the component. |
-| `className` | `DivClassName` | -       | No       | CSS classes applied to the root element.   |
+| Property    | Type                  | Default | Required | Description                                |
+| ----------- | --------------------- | ------- | -------- | ------------------------------------------ |
+| `ref`       | `Ref<HTMLDivElement>` | -       | No       | Receives the timeline root element.        |
+| `children`  | `ReactNode`           | -       | Yes      | The content rendered inside the component. |
+| `className` | `DivClassName`        | -       | No       | CSS classes applied to the root element.   |
 
 ### Timeline.Item
 
 | Property    | Type           | Default | Required | Description                                |
 | ----------- | -------------- | ------- | -------- | ------------------------------------------ |
 | `children`  | `ReactNode`    | -       | Yes      | The content rendered inside the component. |
-| `icon`      | `string`       | -       | Yes      | Content rendered for the icon.             |
+| `icon`      | `IconName`     | -       | Yes      | Content rendered for the icon.             |
 | `className` | `DivClassName` | -       | No       | CSS classes applied to the root element.   |
 
 ### Timeline.ItemTitle

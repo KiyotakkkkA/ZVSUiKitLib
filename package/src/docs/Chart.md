@@ -76,32 +76,33 @@ type ChartTooltipProps = TooltipContentProps<
 
 Extends: `Omit<ComponentPropsWithoutRef<"div">, "children">`.
 
-| Property             | Type                                      | Default                       | Required | Description                                    |
-| -------------------- | ----------------------------------------- | ----------------------------- | -------- | ---------------------------------------------- |
-| `data`               | `ChartDataItem[]`                         | -                             | Yes      | The data used by the component.                |
-| `series`             | `ChartSeries[]`                           | -                             | Yes      | The series used by the component.              |
-| `xKey`               | `string`                                  | -                             | Yes      | The x key identifier.                          |
-| `height`             | `number`                                  | `DEFAULT_HEIGHT`              | No       | The height of the chart in pixels.             |
-| `type`               | `ChartType`                               | `"line"`                      | No       | The chart visualization type.                  |
-| `showGrid`           | `boolean`                                 | `true`                        | No       | Whether show grid is enabled.                  |
-| `showXAxis`          | `boolean`                                 | `true`                        | No       | Whether show xaxis is enabled.                 |
-| `showYAxis`          | `boolean`                                 | `true`                        | No       | Whether show yaxis is enabled.                 |
-| `showTooltip`        | `boolean`                                 | `true`                        | No       | Whether show tooltip is enabled.               |
-| `yWidth`             | `number`                                  | `52`                          | No       | The width reserved for the Y axis.             |
-| `margin`             | `ChartMargin`                             | `DEFAULT_MARGIN`              | No       | The margin used by the component.              |
-| `xTickFormatter`     | `(value: string \| number) => string`     | -                             | No       | The x tick formatter used by the component.    |
-| `yTickFormatter`     | `(value: string \| number) => string`     | -                             | No       | The y tick formatter used by the component.    |
-| `tooltipCursorColor` | `string`                                  | `"rgba(245, 245, 245, 0.28)"` | No       | The stroke color of the tooltip cursor.        |
-| `tooltipCursorFill`  | `string`                                  | `"transparent"`               | No       | The tooltip cursor fill used by the component. |
-| `tooltipCursorWidth` | `number`                                  | `1`                           | No       | The stroke width of the tooltip cursor.        |
-| `activeDotRadius`    | `number`                                  | `4`                           | No       | Whether active dot radius is enabled.          |
-| `renderTooltip`      | `(props: ChartTooltipProps) => ReactNode` | -                             | No       | Function used to render tooltip.               |
-| `emptyState`         | `ReactNode`                               | `"Нет данных"`                | No       | The empty state used by the component.         |
-| `title`              | `ReactNode`                               | -                             | No       | Text used for the title.                       |
-| `description`        | `ReactNode`                               | -                             | No       | Text used for the description.                 |
-| `classNames`         | `ChartClassNames`                         | -                             | No       | CSS classes applied to the component slots.    |
-| `style`              | `CSSProperties`                           | -                             | No       | The style used by the component.               |
-| `colorVars`          | `string[]`                                | `DEFAULT_COLOR_VARS`          | No       | The color vars used by the component.          |
+| Property             | Type                                      | Default                       | Required | Description                                                                                                           |
+| -------------------- | ----------------------------------------- | ----------------------------- | -------- | --------------------------------------------------------------------------------------------------------------------- |
+| `ref`                | `Ref<HTMLDivElement>`                     | -                             | No       | Receives the chart root element.                                                                                      |
+| `data`               | `ChartDataItem[]`                         | -                             | Yes      | The data used by the component.                                                                                       |
+| `series`             | `ChartSeries[]`                           | -                             | Yes      | The series used by the component.                                                                                     |
+| `xKey`               | `string`                                  | -                             | Yes      | The x key identifier.                                                                                                 |
+| `height`             | `number`                                  | `DEFAULT_HEIGHT`              | No       | The height of the chart in pixels.                                                                                    |
+| `type`               | `ChartType`                               | `"line"`                      | No       | The chart visualization type.                                                                                         |
+| `showGrid`           | `boolean`                                 | `true`                        | No       | Whether show grid is enabled.                                                                                         |
+| `showXAxis`          | `boolean`                                 | `true`                        | No       | Whether show xaxis is enabled.                                                                                        |
+| `showYAxis`          | `boolean`                                 | `true`                        | No       | Whether show yaxis is enabled.                                                                                        |
+| `showTooltip`        | `boolean`                                 | `true`                        | No       | Whether show tooltip is enabled.                                                                                      |
+| `yWidth`             | `number`                                  | `52`                          | No       | The width reserved for the Y axis.                                                                                    |
+| `margin`             | `ChartMargin`                             | `DEFAULT_MARGIN`              | No       | The margin used by the component.                                                                                     |
+| `xTickFormatter`     | `(value: string \| number) => string`     | -                             | No       | The x tick formatter used by the component.                                                                           |
+| `yTickFormatter`     | `(value: string \| number) => string`     | -                             | No       | The y tick formatter used by the component.                                                                           |
+| `tooltipCursorColor` | `string`                                  | `"rgba(245, 245, 245, 0.28)"` | No       | The stroke color of the tooltip cursor.                                                                               |
+| `tooltipCursorFill`  | `string`                                  | `"transparent"`               | No       | The tooltip cursor fill used by the component.                                                                        |
+| `tooltipCursorWidth` | `number`                                  | `1`                           | No       | The stroke width of the tooltip cursor.                                                                               |
+| `activeDotRadius`    | `number`                                  | `4`                           | No       | Whether active dot radius is enabled.                                                                                 |
+| `renderTooltip`      | `(props: ChartTooltipProps) => ReactNode` | -                             | No       | Function used to render tooltip.                                                                                      |
+| `emptyState`         | `ReactNode`                               | -                             | No       | The empty state used by the component. Defaults to the \`chart.emptyState\` string from the active locale dictionary. |
+| `title`              | `ReactNode`                               | -                             | No       | Text used for the title.                                                                                              |
+| `description`        | `ReactNode`                               | -                             | No       | Text used for the description.                                                                                        |
+| `classNames`         | `ChartClassNames`                         | -                             | No       | CSS classes applied to the component slots.                                                                           |
+| `style`              | `CSSProperties`                           | -                             | No       | The style used by the component.                                                                                      |
+| `colorVars`          | `string[]`                                | `DEFAULT_COLOR_VARS`          | No       | The color vars used by the component.                                                                                 |
 
 ### ChartClassNames
 

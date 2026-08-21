@@ -19,9 +19,10 @@ import { Code } from "@kiyotakkkka/zvs-uikit-lib";
 
 Extends: `HTMLAttributes<HTMLElement>`.
 
-| Property | Type      | Default | Required | Description                              |
-| -------- | --------- | ------- | -------- | ---------------------------------------- |
-| `block`  | `boolean` | `false` | No       | Whether the code is rendered as a block. |
+| Property | Type               | Default | Required | Description                                         |
+| -------- | ------------------ | ------- | -------- | --------------------------------------------------- |
+| `ref`    | `Ref<HTMLElement>` | -       | No       | Receives the rendered \`<pre>\` or \`<code>\` node. |
+| `block`  | `boolean`          | `false` | No       | Whether the code is rendered as a block.            |
 
 ## Example
 

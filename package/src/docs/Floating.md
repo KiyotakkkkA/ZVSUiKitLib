@@ -24,6 +24,7 @@ Extends: `HTMLAttributes<HTMLDivElement>`.
 
 | Property   | Type                                       | Default       | Required | Description                                |
 | ---------- | ------------------------------------------ | ------------- | -------- | ------------------------------------------ |
+| `ref`      | `Ref<HTMLDivElement>`                      | -             | No       | Receives the floating root element.        |
 | `children` | `ReactNode`                                | -             | Yes      | The content rendered inside the component. |
 | `anchor`   | [PositionAnchor](./dict.md#positionanchor) | `"top-right"` | No       | Content rendered for the anchor.           |
 

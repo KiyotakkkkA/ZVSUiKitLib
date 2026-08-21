@@ -1,4 +1,9 @@
-import type { CSSProperties, ComponentPropsWithoutRef, ReactNode, Ref } from "react";
+import type {
+    CSSProperties,
+    ComponentPropsWithoutRef,
+    ReactNode,
+    Ref,
+} from "react";
 import type { TooltipContentProps, TooltipValueType } from "recharts";
 
 import type { DivClassName, SpanClassName } from "../_shared/types";

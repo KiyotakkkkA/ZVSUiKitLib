@@ -20,6 +20,7 @@ import { InputCheckSlided } from "@kiyotakkkka/zvs-uikit-lib";
 
 | Property     | Type                         | Default | Required | Description                                              |
 | ------------ | ---------------------------- | ------- | -------- | -------------------------------------------------------- |
+| `ref`        | `Ref<HTMLInputElement>`      | -       | No       | Receives the native checkbox input node.                 |
 | `checked`    | `boolean`                    | -       | Yes      | Controls whether the switch is on.                       |
 | `onChange`   | `(checked: boolean) => void` | -       | Yes      | Runs with the next checked state after user interaction. |
 | `disabled`   | `boolean`                    | `false` | No       | Prevents interaction with the switch.                    |

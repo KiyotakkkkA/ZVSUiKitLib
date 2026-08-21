@@ -18,9 +18,10 @@ export const Switcher = ({
     const groupRef = useRef<HTMLDivElement>(null);
 
     const selectAt = (index: number) => {
-        const buttons = groupRef.current?.querySelectorAll<HTMLButtonElement>(
-            "[role='radio']",
-        );
+        const buttons =
+            groupRef.current?.querySelectorAll<HTMLButtonElement>(
+                "[role='radio']",
+            );
 
         buttons?.[index]?.focus();
         buttons?.[index]?.click();

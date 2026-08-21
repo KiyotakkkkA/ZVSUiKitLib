@@ -29,6 +29,7 @@ Extends: `HTMLAttributes<HTMLDivElement>`.
 
 | Property   | Type                                           | Default        | Required | Description                                        |
 | ---------- | ---------------------------------------------- | -------------- | -------- | -------------------------------------------------- |
+| `ref`      | `Ref<HTMLDivElement>`                          | -              | No       | Receives the data display root element.            |
 | `children` | `ReactNode`                                    | -              | Yes      | The content rendered inside the component.         |
 | `bordered` | `boolean`                                      | `true`         | No       | The bordered used by the component.                |
 | `rounded`  | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-lg"` | No       | The border-radius preset applied to the component. |

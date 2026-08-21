@@ -38,6 +38,7 @@ type CalendarDate = Date | null;
 
 | Property           | Type                                  | Default   | Required | Description                                    |
 | ------------------ | ------------------------------------- | --------- | -------- | ---------------------------------------------- |
+| `ref`              | `Ref<HTMLDivElement>`                 | -         | No       | Receives the calendar root element.            |
 | `value`            | `CalendarDate`                        | -         | No       | The value used by the component.               |
 | `defaultValue`     | `CalendarDate`                        | `null`    | No       | The default value used by the component.       |
 | `onChange`         | `(date: CalendarDate) => void`        | -         | No       | Callback invoked when change occurs.           |

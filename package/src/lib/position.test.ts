@@ -12,7 +12,9 @@ const trigger: Rect = {
 const viewport = { width: 1000, height: 800 };
 const menu = { width: 120, height: 100 };
 
-const position = (placement: Parameters<typeof computeMenuPosition>[0]["placement"]) =>
+const position = (
+    placement: Parameters<typeof computeMenuPosition>[0]["placement"],
+) =>
     computeMenuPosition({
         trigger,
         menu,

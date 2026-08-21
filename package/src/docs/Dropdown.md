@@ -40,6 +40,7 @@ import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib";
 
 | Property        | Type                                       | Default         | Required | Description                                                         |
 | --------------- | ------------------------------------------ | --------------- | -------- | ------------------------------------------------------------------- |
+| `ref`           | `Ref<HTMLDivElement>`                      | -               | No       | Receives the dropdown root element.                                 |
 | `children`      | `ReactNode`                                | -               | Yes      | Renders the dropdown trigger, menu, and optional render-prop parts. |
 | `className`     | `DivClassName`                             | -               | No       | Applies CSS classes to the dropdown root wrapper.                   |
 | `disabled`      | `boolean`                                  | `false`         | No       | Prevents the dropdown from opening through its trigger.             |
@@ -51,11 +52,11 @@ import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib";
 
 Extends: `ButtonHTMLAttributes<HTMLButtonElement>`.
 
-| Property      | Type                                           | Default          | Required | Description                                                     |
-| ------------- | ---------------------------------------------- | ---------------- | -------- | --------------------------------------------------------------- |
-| `placeholder` | `ReactNode`                                    | `"Открыть"`      | No       | Renders fallback trigger content when no children are supplied. |
-| `icon`        | `ReactNode`                                    | -                | No       | Replaces the default trailing chevron.                          |
-| `rounded`     | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-full"` | No       | Selects the trigger button border radius.                       |
+| Property      | Type                                           | Default          | Required | Description                                                                                                                                               |
+| ------------- | ---------------------------------------------- | ---------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `placeholder` | `ReactNode`                                    | -                | No       | Renders fallback trigger content when no children are supplied. Defaults to the \`dropdown.triggerPlaceholder\` string from the active locale dictionary. |
+| `icon`        | `ReactNode`                                    | -                | No       | Replaces the default trailing chevron.                                                                                                                    |
+| `rounded`     | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-full"` | No       | Selects the trigger button border radius.                                                                                                                 |
 
 ### Dropdown.Anchor
 

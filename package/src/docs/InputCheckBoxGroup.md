@@ -28,6 +28,7 @@ Extends: `Omit< HTMLAttributes<HTMLDivElement>, "default" \| "onChange" >`.
 
 | Property        | Type                                 | Default        | Required | Description                                                    |
 | --------------- | ------------------------------------ | -------------- | -------- | -------------------------------------------------------------- |
+| `ref`           | `Ref<HTMLDivElement>`                | -              | No       | Receives the group root element.                               |
 | `model`         | `T`                                  | -              | Yes      | Maps each checkbox value to its checked state.                 |
 | `onModelChange` | `(model: T) => void`                 | -              | Yes      | Runs with the updated checked-state model.                     |
 | `default`       | `Extract<keyof T, string>`           | -              | No       | Selects the model key checked when no key is currently active. |

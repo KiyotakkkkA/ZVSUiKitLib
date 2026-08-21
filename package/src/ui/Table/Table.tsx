@@ -80,9 +80,7 @@ export function Table<T extends TableRecord>({
     const toggleSortByColumn = useCallback((column: TableColumn<T>) => {
         const modeKeys = (column.sortModes ?? []).map((mode) => mode.key);
 
-        setSortState((current) =>
-            nextSortState(current, column.key, modeKeys),
-        );
+        setSortState((current) => nextSortState(current, column.key, modeKeys));
     }, []);
 
     return (

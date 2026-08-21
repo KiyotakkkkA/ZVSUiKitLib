@@ -17,9 +17,11 @@ import { Loader } from "@kiyotakkkka/zvs-uikit-lib";
 
 ### Loader
 
-| Property    | Type           | Default | Required | Description                             |
-| ----------- | -------------- | ------- | -------- | --------------------------------------- |
-| `className` | `DivClassName` | -       | No       | Applies CSS classes to the spinner SVG. |
+| Property    | Type                  | Default                          | Required | Description                             |
+| ----------- | --------------------- | -------------------------------- | -------- | --------------------------------------- |
+| `ref`       | `Ref<HTMLDivElement>` | -                                | No       | Receives the loader element.            |
+| `label`     | `string`              | `defaultDictionary.loader.label` | No       | Loading label                           |
+| `className` | `DivClassName`        | -                                | No       | Applies CSS classes to the spinner SVG. |
 
 ## Example
 
