@@ -1,4 +1,3 @@
-import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { createRequire } from "node:module";
 import { defineConfig } from "vite";
@@ -21,24 +20,6 @@ const isExternal = (id: string) =>
     );
 
 const CLIENT_ENTRIES = new Set(["index", "chart", "code-view"]);
-
-/**
- * Copies the one stylesheet the kit still ships into dist.
- *
- * No module imports it — the components carry Tailwind utilities and the
- * consumer imports the stylesheet themselves — so Vite would not otherwise
- * emit it.
- */
-const emitStylesheet = () => ({
-    name: "emit-stylesheet",
-    generateBundle() {
-        this.emitFile({
-            type: "asset",
-            fileName: "styles.css",
-            source: readFileSync(resolve(__dirname, "src/styles.css"), "utf8"),
-        });
-    },
-});
 
 export default defineConfig({
     build: {
@@ -75,6 +56,5 @@ export default defineConfig({
                 return null;
             },
         },
-        emitStylesheet(),
     ],
 });
