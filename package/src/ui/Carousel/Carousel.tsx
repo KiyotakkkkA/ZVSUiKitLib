@@ -1,11 +1,10 @@
-import styles from "./Carousel.module.css";
 import { Icon } from "../_shared/icons";
 import { Children, useCallback, useEffect, useMemo, useState } from "react";
 import { cn } from "../../lib/utils";
 import type { CarouselImageProps, CarouselProps } from "./types";
 
 function CarouselImage({ children, className }: CarouselImageProps) {
-    return <div className={cn(styles.s0, className)}>{children}</div>;
+    return <div className={cn("h-full w-full shrink-0 overflow-hidden", className)}>{children}</div>;
 }
 
 function CarouselRoot({
@@ -81,11 +80,11 @@ function CarouselRoot({
     return (
         <section
             ref={ref}
-            className={cn(styles.s1, className)}
+            className={cn("relative overflow-hidden rounded-lg bg-slate-950 text-white", className)}
             aria-roledescription="carousel"
         >
             <div
-                className={styles.s2}
+                className={"flex h-full transition-transform duration-500 ease-out"}
                 style={{ transform: `translateX(-${activeSlideIndex * 100}%)` }}
             >
                 {slides}
@@ -95,38 +94,38 @@ function CarouselRoot({
                 <>
                     <button
                         type="button"
-                        className={styles.s3}
+                        className={"group absolute inset-y-0 left-0 flex w-16 cursor-pointer items-center justify-start pl-4 text-white transition disabled:pointer-events-none disabled:opacity-45"}
                         aria-label="Previous slide"
                         disabled={isPreviousDisabled}
                         onClick={goToPrevious}
                     >
-                        <span className={cn(styles.s4, classNames?.links)}>
-                            <Icon icon="chevron-left" className={styles.s5} />
+                        <span className={cn("grid size-9 place-items-center rounded-lg border border-white/35 bg-white/20 shadow-sm backdrop-blur-sm transition", "group-hover:border-white/55 group-hover:bg-white/35 group-hover:shadow-md group-active:scale-95", classNames?.links)}>
+                            <Icon icon="chevron-left" className={"size-7"} />
                         </span>
                     </button>
 
                     <button
                         type="button"
-                        className={styles.s6}
+                        className={"group absolute inset-y-0 right-0 flex w-16 cursor-pointer items-center justify-end pr-4 text-white transition disabled:pointer-events-none disabled:opacity-45"}
                         aria-label="Next slide"
                         disabled={isNextDisabled}
                         onClick={goToNext}
                     >
-                        <span className={cn(styles.s7, classNames?.links)}>
-                            <Icon icon="chevron-right" className={styles.s8} />
+                        <span className={cn("grid size-9 place-items-center rounded-lg border border-white/35 bg-white/20 shadow-sm backdrop-blur-sm transition", "group-hover:border-white/55 group-hover:bg-white/35 group-hover:shadow-md group-active:scale-95", classNames?.links)}>
+                            <Icon icon="chevron-right" className={"size-7"} />
                         </span>
                     </button>
 
-                    <div className={cn(styles.s9, classNames?.nav)}>
+                    <div className={cn("absolute bottom-5 left-1/2 flex -translate-x-1/2 items-center gap-2", classNames?.nav)}>
                         {slides.map((_, index) => (
                             <button
                                 type="button"
                                 key={index}
                                 className={cn(
-                                    styles.s10,
+                                    "size-3 cursor-pointer rounded-full transition hover:bg-white/70",
                                     activeSlideIndex === index
-                                        ? styles.s11
-                                        : styles.s12,
+                                        ? "bg-white"
+                                        : "bg-white/45",
                                 )}
                                 aria-label={`Go to slide ${index + 1}`}
                                 aria-current={

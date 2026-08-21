@@ -1,4 +1,3 @@
-import styles from "./CodeView.module.css";
 import {
     createContext,
     memo,
@@ -223,13 +222,13 @@ const highlightCode = async ({
                         delete node.properties.style;
                         node.properties.class = cn(
                             String(node.properties.class ?? ""),
-                            styles.s0,
+                            "",
                         );
                     },
                     code(node) {
                         node.properties.class = cn(
                             String(node.properties.class ?? ""),
-                            styles.s1,
+                            "",
                         );
                     },
                 },
@@ -261,10 +260,10 @@ const CodeViewDefaultActions = memo(() => {
 
     if (!copyable && !downloadable) return null;
 
-    const btnClass = cn(styles.s2, styles.s3, styles.s4);
+    const btnClass = cn("inline-flex h-7 items-center justify-center gap-1 rounded-lg px-2 text-xs", "text-main-400 transition-colors hover:bg-main-800 hover:text-main-50", "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-300/50");
 
     return (
-        <div className={styles.s5}>
+        <div className={"flex shrink-0 items-center gap-1"}>
             {downloadable && (
                 <button
                     type="button"
@@ -273,7 +272,7 @@ const CodeViewDefaultActions = memo(() => {
                     onClick={downloadCode}
                 >
                     <Icon icon="download" width={14} height={14} />
-                    <span className={styles.s6}>Download</span>
+                    <span className={"hidden sm:inline"}>Download</span>
                 </button>
             )}
 
@@ -285,7 +284,7 @@ const CodeViewDefaultActions = memo(() => {
                     onClick={() => void copyCode()}
                 >
                     <Icon icon="content-copy" width={14} height={14} />
-                    <span className={styles.s7}>Copy</span>
+                    <span className={"hidden sm:inline"}>Copy</span>
                 </button>
             )}
         </div>
@@ -400,7 +399,7 @@ const CodeViewRoot = ({
             <div
                 {...props}
                 id={props.id ?? generatedId}
-                className={cn(styles.s8, className)}
+                className={cn("overflow-hidden rounded-xl border border-main-700 bg-main-900", className)}
             >
                 {children ?? (
                     <>
@@ -424,16 +423,16 @@ const CodeViewHeader = ({
     const { language, fileName, defaultActions } = useCodeView();
 
     return (
-        <div {...props} className={cn(styles.s9, className)}>
-            <div className={styles.s10}>
+        <div {...props} className={cn("flex min-h-10 items-center justify-between gap-3 border-b border-main-700 bg-main-900 px-3 py-2", className)}>
+            <div className={"flex min-w-0 items-center gap-2"}>
                 {showLanguage && (
-                    <span className={cn(styles.s11)}>
+                    <span className={cn("shrink-0 rounded-md bg-main-800 px-1.5 py-0.5 text-[11px] font-medium uppercase tracking-wide text-main-400")}>
                         {language.toUpperCase()}
                     </span>
                 )}
 
                 {showFileName && fileName && (
-                    <span className={cn(styles.s12)}>{fileName}</span>
+                    <span className={cn("min-w-0 truncate text-xs text-main-400")}>{fileName}</span>
                 )}
 
                 {children}
@@ -454,8 +453,8 @@ const CodeViewContent = ({
 
     if (isLoading) {
         return (
-            <div {...props} className={cn(styles.s13, className)}>
-                {loadingFallback ?? <div className={cn(styles.s14)} />}
+            <div {...props} className={cn("p-3", className)}>
+                {loadingFallback ?? <div className={cn("h-20 w-full animate-pulse rounded-lg bg-main-800")} />}
             </div>
         );
     }
@@ -463,11 +462,11 @@ const CodeViewContent = ({
     return (
         <div
             {...props}
-            className={cn(styles.s15, styles.s16, styles.s17, styles.s18)}
+            className={cn("text-main-50", "[&_pre]:m-0 [&_pre]:bg-transparent [&_pre]:p-0", "[&_pre]:text-xs [&_pre]:leading-relaxed", "[&_code]:font-mono")}
         >
             <ScrollArea
                 orientation="both"
-                className={cn(styles.s19, className)}
+                className={cn("p-3", className)}
                 style={{ maxHeight: maxHeight ?? maxContentHeight ?? 1000 }}
             >
                 <div dangerouslySetInnerHTML={{ __html: html }} />

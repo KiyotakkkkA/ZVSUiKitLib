@@ -1,0 +1,218 @@
+/*
+ * The only stylesheet the kit ships.
+ *
+ * Everything that can be expressed as a Tailwind utility now lives in the
+ * components themselves. What remains here is what utilities cannot express:
+ * the design tokens, three keyframe animations, scrollbar chrome, the popover
+ * transition and one grid template.
+ *
+ * Import it once, after Tailwind, and point Tailwind at the package so it
+ * compiles the utilities the components reference:
+ *
+ *     @import "tailwindcss";
+ *     @import "@kiyotakkkka/zvs-uikit-lib/styles.css";
+ *     @source "../node_modules/@kiyotakkkka/zvs-uikit-lib/dist";
+ */
+
+@theme {
+    --color-main-50: #fafafa;
+    --color-main-100: #f5f5f5;
+    --color-main-200: #e5e5e5;
+    --color-main-300: #d4d4d4;
+    --color-main-400: #a3a3a3;
+    --color-main-500: #737373;
+    --color-main-600: #525252;
+    --color-main-700: #404040;
+    --color-main-800: #1c1c1c;
+    --color-main-900: #0e0e0e;
+
+    --color-accent-light: #d8ff8d;
+    --color-accent-medium: #b7f34a;
+    --color-accent-dark: #8fc52b;
+
+    --color-danger-light: #fca5a5;
+    --color-danger-medium: #ef4444;
+    --color-danger-dark: #b91c1c;
+
+    --color-warning-light: #fde68a;
+    --color-warning-medium: #f59e0b;
+    --color-warning-dark: #b45309;
+
+    --color-success-light: #86efac;
+    --color-success-medium: #22c55e;
+    --color-success-dark: #15803d;
+
+    --color-info-light: #93c5fd;
+    --color-info-medium: #3b82f6;
+    --color-info-dark: #1e40af;
+
+    --animate-zvs-fade-in: zvs-fade-in 200ms ease-out;
+    --animate-zvs-panel-in: zvs-panel-in 220ms cubic-bezier(0.22, 1, 0.36, 1);
+    --animate-zvs-shimmer: zvs-shimmer 1.6s ease-in-out infinite;
+}
+
+@keyframes zvs-fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes zvs-panel-in {
+    from {
+        opacity: 0;
+        transform: translateY(0.5rem) scale(0.95);
+    }
+}
+
+@keyframes zvs-shimmer {
+    to {
+        transform: translateX(100%);
+    }
+}
+
+/* Scrollbar chrome — no utility equivalent. */
+
+.zvs-scroll-area {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(160 161 165 / 40%) transparent;
+}
+
+.zvs-scroll-area::-webkit-scrollbar {
+    width: 0.5rem;
+    height: 0.5rem;
+}
+
+.zvs-scroll-area::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.zvs-scroll-area::-webkit-scrollbar-thumb {
+    border: 0.125rem solid transparent;
+    border-radius: 9999px;
+    background: rgb(160 161 165 / 40%);
+    background-clip: padding-box;
+}
+
+.zvs-scroll-area::-webkit-scrollbar-thumb:hover {
+    background: rgb(160 161 165 / 60%);
+    background-clip: padding-box;
+}
+
+.zvs-scroll-area--hidden {
+    scrollbar-width: none;
+}
+
+.zvs-scroll-area--hidden::-webkit-scrollbar {
+    display: none;
+}
+
+/* Skeleton shimmer — needs a generated ::after. */
+
+.zvs-shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgb(255 255 255 / 0.12),
+        transparent
+    );
+    animation: var(--animate-zvs-shimmer);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .zvs-shimmer::after {
+        animation: none;
+    }
+}
+
+/* Popover entry and exit — needs @starting-style and :popover-open. */
+
+.zvs-popover {
+    box-sizing: border-box;
+    max-width: calc(100vw - 1rem);
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-4px) scale(0.98);
+    transform-origin: top;
+    transition-property: opacity, transform, display, overlay;
+    transition-duration: 180ms;
+    transition-timing-function: ease;
+    transition-behavior: allow-discrete;
+}
+
+.zvs-popover[data-placement^="top"] {
+    transform: translateY(4px) scale(0.98);
+    transform-origin: bottom;
+}
+
+.zvs-popover:popover-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+}
+
+@starting-style {
+    .zvs-popover:popover-open {
+        opacity: 0;
+        transform: translateY(-4px) scale(0.98);
+    }
+
+    .zvs-popover[data-placement^="top"]:popover-open {
+        opacity: 0;
+        transform: translateY(4px) scale(0.98);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .zvs-popover {
+        transition: none;
+    }
+}
+
+/* DataDisplay.Item — a named grid template, unreadable as arbitrary values. */
+
+.zvs-data-item {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+        "top-title top-badge"
+        "top-subtitle badge"
+        "content-title badge"
+        "description description";
+    column-gap: 0.75rem;
+    align-items: start;
+}
+
+.zvs-data-item:has(> .zvs-data-item__icon) {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    grid-template-areas:
+        "top-title top-title top-badge"
+        "icon top-subtitle badge"
+        "icon content-title badge"
+        "icon description description";
+}
+
+.zvs-data-item__top-title {
+    grid-area: top-title;
+}
+.zvs-data-item__top-subtitle {
+    grid-area: top-subtitle;
+}
+.zvs-data-item__top-badge {
+    grid-area: top-badge;
+}
+.zvs-data-item__icon {
+    grid-area: icon;
+}
+.zvs-data-item__content-title {
+    grid-area: content-title;
+}
+.zvs-data-item__description {
+    grid-area: description;
+}
+.zvs-data-item__badge {
+    grid-area: badge;
+}

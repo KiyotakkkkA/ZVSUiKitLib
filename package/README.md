@@ -2,9 +2,8 @@
 
 React UI kit with TypeScript components, hooks, and providers.
 
-Component styles and the CSS reset are precompiled. Tailwind CSS and PostCSS
-are not required in consumer projects. Import the stylesheet once in your app's
-entry — see Styles below.
+Components are styled with Tailwind utilities, so Tailwind v4 is required in
+the consuming project. See Styles below for the three lines of setup.
 
 ## Installation
 
@@ -18,31 +17,27 @@ Available entry points:
 - `@kiyotakkkka/zvs-uikit-lib/chart` — `Chart` (pulls in `recharts`)
 - `@kiyotakkkka/zvs-uikit-lib/code-view` — `CodeView` (pulls in `shiki`)
 - `@kiyotakkkka/zvs-uikit-lib/server` — components safe to render on the server
-- `@kiyotakkkka/zvs-uikit-lib/styles.css` — the stylesheet, imported by you
-- `@kiyotakkkka/zvs-uikit-lib/styles-layered.css` — the same CSS in a cascade layer
+- `@kiyotakkkka/zvs-uikit-lib/styles.css` — design tokens and the few rules utilities cannot express
 
 `Chart` and `CodeView` live behind their own entry points so that projects
 that do not use them never pay for `recharts` or `shiki`.
 
 ## Styles
 
-The entry points do not import CSS. Import one stylesheet in your app's entry:
+Components carry Tailwind utility classes and `cn()` merges them with
+`tailwind-merge`, so `className` overrides a component without `!important`.
 
-```tsx
-import "@kiyotakkkka/zvs-uikit-lib/styles.css";
+Tailwind v4 is required. In your CSS entry:
+
+```css
+@import "tailwindcss";
+@import "@kiyotakkkka/zvs-uikit-lib/styles.css";
+@source "../node_modules/@kiyotakkkka/zvs-uikit-lib/dist";
 ```
 
-- `styles.css` — unlayered. Nothing in your CSS can strip a component;
-  overriding one from Tailwind needs `!important`. Use this unless you want the
-  other behaviour.
-- `styles-layered.css` — wrapped in `@layer zvs-uikit`. A plain `className`
-  overrides a component, but you must declare
-  `@layer theme, base, zvs-uikit, components, utilities;` above
-  `@import "tailwindcss"` and keep your own global CSS inside a layer,
-  otherwise unlayered rules — Tailwind's Preflight included — strip the
-  components.
-
-See the repository README for the full comparison.
+`styles.css` holds the design tokens and the few rules utilities cannot
+express. `@source` lets Tailwind compile the classes the components use —
+without it the components render unstyled.
 
 ## License
 

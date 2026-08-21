@@ -28,9 +28,10 @@ base and an inconsistent public surface.
   prop, as everywhere else. Passing a ref is unchanged for callers.
 - **`SortState` moved** from `Table/types` to `lib/sorting`. It is still
   re-exported from the package root.
-- **The stylesheet is no longer imported for you.** Add
-  `import "@kiyotakkkka/zvs-uikit-lib/styles.css";` to your app's entry. See
-  the Changed section for why, and for the layered alternative.
+- **Tailwind v4 is now a requirement** and the stylesheet is no longer imported
+  for you. See the Changed section for the setup.
+- **`styles.ts` and the `./styles.css` JS entry are gone.** `./styles.css` now
+  resolves to a plain stylesheet asset.
 
 ### Added
 
@@ -102,20 +103,31 @@ base and an inconsistent public surface.
 
 ### Changed
 
-- **The entry points no longer import CSS; you import a stylesheet yourself.**
-  Two builds ship with identical rules: `styles.css` unlayered, as in every
-  previous version, and `styles-layered.css` inside `@layer zvs-uikit`. One
-  file cannot be both easy to override and impossible to break by accident, so
-  the trade-off is now an explicit choice rather than a hidden default.
-  Unlayered, nothing in a consumer's CSS can strip a component but overriding
-  one from Tailwind needs `!important`; layered, a plain `className` wins, at
-  the price of losing to every unlayered rule — Tailwind's Preflight and a
-  typical `globals.css` reset included. The layered build requires
-  `@layer theme, base, zvs-uikit, components, utilities;` above
-  `@import "tailwindcss"` and the consumer's own globals kept inside a layer.
-  The README carries the comparison and both recipes. In the layered build the
-  47 `@property` rules Tailwind registers are hoisted above the layer, since
-  registration inside `@layer` is not reliable across browsers.
+- **CSS Modules are gone; the components are styled with Tailwind utilities.**
+  58 `*.module.css` files, the precompiled 191 KB stylesheet, the scoped CSS
+  reset and the `zvs-rounded-*` classes are all deleted. The 690 `@apply` rules
+  they held moved into the components verbatim as utility strings, and the 64
+  rules that used sibling or descendant selectors became `peer-*`, `group-*`
+  and `data-[…]` variants.
+
+  `cn()` is now `twMerge(clsx(...))`, so a caller's `className` overrides a
+  component by removing the conflicting utility from the class string before it
+  reaches the DOM — no `!important`, no cascade layers, no dependence on import
+  order. This is the shadcn/ui model, and it is the only one of the three that
+  makes overriding work without asking the consumer to configure anything.
+
+  **Tailwind v4 is now required** in the consuming project, and it has to be
+  pointed at the package:
+
+  ```css
+  @import "tailwindcss";
+  @import "@kiyotakkkka/zvs-uikit-lib/styles.css";
+  @source "../node_modules/@kiyotakkkka/zvs-uikit-lib/dist";
+  ```
+
+  One stylesheet remains, `styles.css`: the design tokens as a `@theme` block,
+  three keyframe animations, the scrollbar chrome, the popover transition and
+  one named grid template — what utilities cannot express.
 - **`shiki` no longer compiles all 24 grammars up front.** The highlighter
   starts empty and loads the requested grammar on demand, the way themes were
   already handled. An unavailable grammar still falls back to plaintext.

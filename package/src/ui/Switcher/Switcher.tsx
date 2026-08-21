@@ -1,4 +1,3 @@
-import styles from "./Switcher.module.css";
 import { useRef, type KeyboardEvent } from "react";
 import { cn, mergeRefs } from "../../lib/utils";
 import { useLocale } from "../../hooks/useLocale";
@@ -62,7 +61,7 @@ export const Switcher = ({
     return (
         <div
             ref={mergeRefs(groupRef, ref)}
-            className={cn(styles.s0, `zvs-${rounded}`, className)}
+            className={cn("inline-flex items-center gap-1 border border-main-700/70 bg-main-900/55 p-1", rounded, className)}
             role="radiogroup"
             aria-label={label ?? t.label}
             onKeyDown={onKeyDown}
@@ -79,9 +78,9 @@ export const Switcher = ({
                         tabIndex={index === focusableIndex ? 0 : -1}
                         onClick={() => onChange(option.value)}
                         className={cn(
-                            styles.s1,
-                            `zvs-${rounded}`,
-                            isActive ? styles.s2 : styles.s3,
+                            "cursor-pointer px-3 py-1.5 text-xs font-medium transition-colors",
+                            rounded,
+                            isActive ? "bg-main-700/80 text-main-100" : "text-main-300 hover:bg-main-800/70 hover:text-main-100",
                             classNames?.tab,
                         )}
                     >

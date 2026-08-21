@@ -28,7 +28,7 @@
         "test": "vitest run --config package/vitest.config.ts",
         "test:watch": "vitest --config package/vitest.config.ts",
         "check:server": "node scripts/check-server-entry.mjs",
-        "check:css": "node scripts/check-css-layer.mjs",
+        "check:css": "node scripts/check-styles.mjs",
         "lint": "npm run lint:package && npm run lint:preview",
         "lint:package": "eslint --config package/eslint.config.js package/src package/vite.config.ts package/vitest.config.ts",
         "lint:preview": "eslint --config preview/eslint.config.mjs preview/app preview/next.config.ts",

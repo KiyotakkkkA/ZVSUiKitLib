@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@import "@kiyotakkkka/zvs-uikit-lib/styles.css";
+@source "../../package/dist";
 
 @theme {
     --color-main-50: rgb(250 250 250);

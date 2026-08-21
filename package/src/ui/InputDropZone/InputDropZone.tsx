@@ -1,4 +1,3 @@
-import styles from "./InputDropZone.module.css";
 import { Icon } from "../_shared/icons";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { cn } from "../../lib/utils";
@@ -213,7 +212,7 @@ export const InputDropZone = ({
     };
 
     return (
-        <div ref={ref} className={styles.s0}>
+        <div ref={ref} className={"space-y-3"}>
             <button
                 type="button"
                 disabled={disabled}
@@ -256,84 +255,84 @@ export const InputDropZone = ({
                     }
                 }}
                 className={cn(
-                    styles.s1,
+                    "flex min-h-32 w-full items-center justify-center rounded-md border border-dashed p-4 text-left transition",
                     disabled
-                        ? styles.s2
+                        ? "cursor-not-allowed border-main-700/60 bg-main-900/25 opacity-60"
                         : isActiveDragging
-                          ? styles.s3
-                          : styles.s4,
+                          ? "border-main-300 bg-main-800/70"
+                          : "border-main-700/80 bg-transparent hover:border-main-500 hover:bg-main-800/35",
                 )}
             >
                 {hasSelection && !multiple && selectedItems[0].previewSrc ? (
-                    <span className={styles.s5}>
-                        <span className={styles.s6}>
+                    <span className={"grid w-full gap-3 sm:grid-cols-[120px_minmax(0,1fr)] sm:items-center"}>
+                        <span className={"h-28 overflow-hidden rounded-md border border-main-700/80"}>
                             <img
                                 src={selectedItems[0].previewSrc}
                                 alt={texts.previewAlt}
-                                className={styles.s7}
+                                className={"h-full w-full object-cover"}
                             />
                         </span>
-                        <span className={styles.s8}>
-                            <span className={styles.s9}>
+                        <span className={"min-w-0"}>
+                            <span className={"block truncate text-sm font-semibold text-main-50"}>
                                 {selectedItems[0].name}
                             </span>
-                            <span className={styles.s10}>
+                            <span className={"mt-1 block text-sm leading-6 text-main-400"}>
                                 {texts.selectedReplaceHint}
                             </span>
                         </span>
                     </span>
                 ) : hasSelection && !multiple ? (
-                    <span className={styles.s11}>
-                        <span className={styles.s12}>
+                    <span className={"flex w-full flex-col items-center text-center"}>
+                        <span className={"flex h-12 w-12 items-center justify-center rounded-md bg-main-700/65 text-[26px] text-main-100"}>
                             {selectedItems[0].icon}
                         </span>
-                        <span className={styles.s13}>
+                        <span className={"mt-3 max-w-full truncate text-sm font-semibold text-main-100"}>
                             {selectedItems[0].name}
                         </span>
-                        <span className={styles.s14}>
+                        <span className={"mt-1 text-xs text-main-400"}>
                             {texts.selectedDescription}
                         </span>
                     </span>
                 ) : hasSelection ? (
-                    <span className={styles.s15}>
-                        <span className={styles.s16}>{selectedIcon}</span>
-                        <span className={styles.s17}>
+                    <span className={"flex w-full flex-col items-center text-center"}>
+                        <span className={"flex h-12 w-12 items-center justify-center rounded-md bg-main-700/65 text-[26px] text-main-100"}>{selectedIcon}</span>
+                        <span className={"mt-3 text-sm font-semibold text-main-100"}>
                             {t.selectedCount(selectedItems.length)}
                         </span>
-                        <span className={styles.s18}>
+                        <span className={"mt-1 text-xs text-main-400"}>
                             {texts.selectedMultipleDescription}
                         </span>
                     </span>
                 ) : (
-                    <span className={styles.s19}>
-                        <span className={styles.s20}>{emptyIcon}</span>
-                        <span className={styles.s21}>{texts.emptyTitle}</span>
-                        <span className={styles.s22}>{texts.emptyDescription}</span>
+                    <span className={"flex flex-col items-center text-center"}>
+                        <span className={"flex h-12 w-12 items-center justify-center rounded-md bg-main-700/65 text-[26px] text-main-100"}>{emptyIcon}</span>
+                        <span className={"mt-3 text-sm font-semibold text-main-100"}>{texts.emptyTitle}</span>
+                        <span className={"mt-1 text-xs text-main-400"}>{texts.emptyDescription}</span>
                     </span>
                 )}
             </button>
 
             {multiple && hasSelection && (
-                <div className={styles.s23}>
+                <div className={"grid gap-2"}>
                     {selectedItems.map((item) => (
-                        <div key={item.id} className={styles.s24}>
+                        <div key={item.id} className={"flex items-center gap-3 rounded-md border border-main-700 bg-main-800/40 p-2"}>
                             {item.previewSrc ? (
-                                <span className={styles.s25}>
+                                <span className={"h-12 w-12 overflow-hidden rounded border border-main-700"}>
                                     <img
                                         src={item.previewSrc}
                                         alt={`${texts.previewAlt} ${item.index + 1}`}
-                                        className={styles.s26}
+                                        className={"h-full w-full object-cover"}
                                     />
                                 </span>
                             ) : (
-                                <span className={styles.s27}>{item.icon}</span>
+                                <span className={"flex h-12 w-12 shrink-0 items-center justify-center rounded border border-main-700 text-[22px] text-main-300"}>{item.icon}</span>
                             )}
-                            <span className={styles.s28}>{item.name}</span>
+                            <span className={"min-w-0 flex-1 truncate text-sm font-semibold text-main-100"}>{item.name}</span>
                             <button
                                 type="button"
                                 disabled={disabled}
                                 onClick={() => removeItem(item)}
-                                className={styles.s29}
+                                className={"text-sm font-semibold text-danger-light transition hover:text-danger-medium disabled:cursor-not-allowed disabled:opacity-60"}
                             >
                                 {t.removeLabel}
                             </button>
@@ -347,7 +346,7 @@ export const InputDropZone = ({
                     type="button"
                     disabled={disabled}
                     onClick={clearFiles}
-                    className={styles.s30}
+                    className={"text-sm font-semibold text-danger-light transition hover:text-danger-medium disabled:cursor-not-allowed disabled:opacity-60"}
                 >
                     {multiple ? texts.clearAllLabel : texts.clearLabel}
                 </button>
@@ -359,7 +358,7 @@ export const InputDropZone = ({
                 accept={accept}
                 multiple={multiple}
                 disabled={disabled}
-                className={styles.s31}
+                className={"hidden"}
                 onChange={(event) => {
                     if (disabled) {
                         event.target.value = "";

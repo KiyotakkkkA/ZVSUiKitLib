@@ -1,4 +1,3 @@
-import styles from "./Table.module.css";
 import { useCallback, useMemo, useState, type ReactNode } from "react";
 import { cn } from "../../lib/utils";
 import { nextSortState } from "../../lib/sorting";
@@ -10,9 +9,9 @@ import type {
     TableRecord,
 } from "./types";
 
-const defaultHeaderCellClassName = styles.defaultHeaderCell;
-const defaultRowClassName = styles.defaultRow;
-const defaultCellClassName = styles.defaultCell;
+const defaultHeaderCellClassName = "px-5 py-3 text-xs font-bold uppercase tracking-wide text-main-300";
+const defaultRowClassName = "border-b border-main-800 last:border-b-0";
+const defaultCellClassName = "px-5 py-4 text-sm text-main-300";
 
 function resolveClassName<T>(
     className: TableClassNameResolver<T> | undefined,
@@ -86,11 +85,11 @@ export function Table<T extends TableRecord>({
     }, []);
 
     return (
-        <table ref={ref} className={cn(styles.s0, classNames?.root)}>
+        <table ref={ref} className={cn("w-full border-collapse text-left", classNames?.root)}>
             {caption && (
                 <caption
                     className={cn(
-                        !captionVisible && styles.visuallyHidden,
+                        !captionVisible && "sr-only",
                         classNames?.caption,
                     )}
                 >
@@ -99,7 +98,7 @@ export function Table<T extends TableRecord>({
             )}
 
             <thead className={classNames?.header}>
-                <tr className={cn(styles.s1, classNames?.headerRow)}>
+                <tr className={cn("border-b border-main-700 bg-main-800/80", classNames?.headerRow)}>
                     {columns.map((column) => {
                         const isSortable = Boolean(column.sortModes?.length);
                         const isActive = sortState.columnKey === column.key;
@@ -112,7 +111,7 @@ export function Table<T extends TableRecord>({
                             <>
                                 <span>{column.title}</span>
                                 {isSortable && (
-                                    <span className={styles.s2}>
+                                    <span className={"min-w-3 text-main-400"}>
                                         {activeIcon ?? ""}
                                     </span>
                                 )}
@@ -142,8 +141,8 @@ export function Table<T extends TableRecord>({
                                     <button
                                         type="button"
                                         className={cn(
-                                            styles.s3,
-                                            isActive ? styles.s4 : styles.s5,
+                                            "inline-flex w-full items-center gap-1.5 rounded-md px-1 py-0.5 text-left transition-colors duration-150",
+                                            isActive ? "text-main-100" : "text-main-300 hover:text-main-100",
                                             classNames?.sortButton,
                                         )}
                                         onClick={() =>

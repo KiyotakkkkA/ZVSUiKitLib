@@ -1,22 +1,21 @@
-import styles from "./Badge.module.css";
 import type { ColorVariantsBase, SizeVariants } from "../..";
 import { cn } from "../../lib/utils";
 import type { BadgeProps } from "./types";
 
 const variantClasses: Record<ColorVariantsBase, string> = {
-    primary: styles.s0,
-    secondary: styles.s1,
-    tertiary: styles.s2,
-    success: styles.s3,
-    warning: styles.s4,
-    danger: styles.s5,
-    info: styles.s6,
+    primary: "bg-main-100 text-main-800",
+    secondary: "border-main-600/70 bg-main-700/60 text-main-100",
+    tertiary: "border-accent-dark/60 bg-accent-medium/15 text-accent-light",
+    success: "border-success-dark/60 bg-success-dark/40 text-success-light",
+    warning: "border-warning-dark/60 bg-warning-dark/35 text-warning-light",
+    danger: "border-danger-dark/60 bg-danger-dark/35 text-danger-light",
+    info: "border-info-dark/60 bg-info-dark/35 text-info-light",
 };
 
 const sizeClasses: Record<SizeVariants, string> = {
-    sm: styles.sizeSm,
-    md: styles.sizeMd,
-    lg: styles.sizeLg,
+    sm: "px-1.5 py-0 text-[10px]",
+    md: "px-2 py-0.5 text-xs",
+    lg: "px-2.5 py-1 text-sm",
 };
 
 export function Badge({
@@ -30,8 +29,8 @@ export function Badge({
     return (
         <span
             className={cn(
-                styles.s7,
-                `zvs-${rounded}`,
+                "inline-flex items-center border px-2 py-0.5 text-[11px] font-medium",
+                rounded,
                 size ? sizeClasses[size] : "",
                 variantClasses[variant],
                 className,

@@ -1,6 +1,5 @@
 "use client";
 
-import styles from "./Dropdown.module.css";
 
 import { Icon } from "../_shared/icons";
 import {
@@ -28,7 +27,6 @@ import type {
     DropdownItemProps,
     DropdownRenderProps,
 } from "./types";
-import "./Dropdown.css";
 import { Button } from "../Button/Button";
 import type { PositionAnchor } from "../..";
 
@@ -252,7 +250,7 @@ function DropdownRoot({
 
     return (
         <DropdownContext.Provider value={contextValue}>
-            <div ref={ref} className={cn(styles.s0, className)}>
+            <div ref={ref} className={cn("min-w-0 w-fit", className)}>
                 {children}
             </div>
         </DropdownContext.Provider>
@@ -312,17 +310,17 @@ function DropdownTrigger({
                     toggleOpen();
                 }
             }}
-            className={cn(styles.s1, styles.s2, className)}
+            className={cn("h-10 w-full justify-between gap-3 border border-main-700 bg-main-800 px-4 py-2 text-sm text-main-100", "hover:border-main-600 focus-visible:border-main-500/70 focus-visible:ring-2 focus-visible:ring-main-500/25", className)}
             {...props}
         >
-            <span className={styles.s3}>
+            <span className={"min-w-0 truncate text-left"}>
                 {children ?? resolvedPlaceholder}
             </span>
 
             {icon ?? (
                 <Icon
                     icon="chevron-down"
-                    className={cn(styles.s4, open && styles.s5)}
+                    className={cn("shrink-0 text-main-400 transition-transform duration-200", open && "rotate-180")}
                     aria-hidden
                 />
             )}
@@ -413,7 +411,7 @@ function DropdownMenu({
             ref={setMenuRef}
             popover="auto"
             data-placement={menuPlacement}
-            className={cn(styles.s6, `zvs-${rounded}`, styles.s7, className)}
+            className={cn("zvs-popover fixed z-60 isolate overflow-hidden border border-main-700 bg-main-800 p-1.5 shadow-xl", rounded, "max-w-[calc(100vw-1rem)]", className)}
             {...props}
         >
             {children}
@@ -458,18 +456,18 @@ function DropdownItem({
             }}
             onKeyDown={handleKeyDown}
             className={cn(
-                styles.s8,
-                styles.s9,
-                styles.s10,
-                rounded && `zvs-${rounded}`,
-                active && styles.s11,
+                "flex w-full items-center gap-2 px-2.5 py-2 text-left text-sm",
+                "text-main-200 transition-colors hover:bg-main-700/70 hover:text-main-50",
+                "focus-visible:bg-main-700/70 focus-visible:text-main-50 focus-visible:outline-none",
+                rounded && rounded,
+                active && "bg-main-700/70 text-main-50",
                 className,
             )}
             {...props}
         >
-            {icon && <span className={styles.s12}>{icon}</span>}
+            {icon && <span className={"shrink-0 text-main-400"}>{icon}</span>}
 
-            <span className={styles.s13}>{children}</span>
+            <span className={"min-w-0 flex-1 truncate"}>{children}</span>
         </button>
     );
 }

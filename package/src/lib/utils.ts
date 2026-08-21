@@ -1,8 +1,15 @@
 import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 import type { Ref, RefObject } from "react";
 
+/**
+ * Joins class names and resolves conflicting Tailwind utilities in favour of
+ * the last one. This is what lets a caller's `className` override a
+ * component's own classes: `cn("px-2 py-1", "p-3")` returns `"p-3"`, with no
+ * `!important` and no cascade involved.
+ */
 export function cn(...inputs: ClassValue[]) {
-    return clsx(inputs);
+    return twMerge(clsx(inputs));
 }
 
 /**

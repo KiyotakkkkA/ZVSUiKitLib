@@ -1,4 +1,3 @@
-import styles from "./InputPins.module.css";
 import {
     forwardRef,
     memo,
@@ -81,13 +80,13 @@ const PinCell = memo(
                 onKeyDown={(event) => onCellKeyDown(index, event)}
                 onPaste={(event) => onCellPaste(index, event)}
                 className={cn(
-                    styles.s0,
-                    styles.s1,
-                    styles.s2,
-                    styles.s3,
-                    !isFirst && styles.s4,
-                    isFirst && styles.s5,
-                    isLast && styles.s6,
+                    "h-11 w-11 border border-main-700 bg-main-900 text-center text-sm text-main-100",
+                    "outline-none transition-colors placeholder:text-main-600",
+                    "focus-visible:z-10 focus-visible:border-main-400 focus-visible:ring-2 focus-visible:ring-main-400/20",
+                    "disabled:cursor-not-allowed disabled:opacity-60",
+                    !isFirst && "-ml-px",
+                    isFirst && "rounded-l-full",
+                    isLast && "rounded-r-full",
                     className,
                 )}
             />
@@ -235,11 +234,11 @@ export const InputPins = forwardRef<HTMLDivElement, InputPinsProps>(
         );
 
         return (
-            <div ref={ref} className={cn(styles.s7, className)}>
+            <div ref={ref} className={cn("inline-flex flex-col items-center gap-6", className)}>
                 <div
                     role="group"
                     aria-label={label ?? "Pin input"}
-                    className={cn(styles.s8, classNames?.group)}
+                    className={cn("flex items-center", classNames?.group)}
                 >
                     {values.map((item, index) => (
                         <PinCell
@@ -266,7 +265,7 @@ export const InputPins = forwardRef<HTMLDivElement, InputPinsProps>(
                     ))}
                 </div>
 
-                {label && <span className={styles.s9}>{label}</span>}
+                {label && <span className={"text-sm text-main-300"}>{label}</span>}
             </div>
         );
     },

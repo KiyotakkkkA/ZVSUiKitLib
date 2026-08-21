@@ -1,15 +1,14 @@
-import styles from "./Text.module.css";
 import { cn } from "../../lib/utils";
 import type { TextProps, TextSize, TextTone } from "./types";
 const toneClasses: Record<TextTone, string> = {
-    default: styles.s0,
-    muted: styles.s1,
-    subtle: styles.s2,
+    default: "text-main-200",
+    muted: "text-main-400",
+    subtle: "text-main-500",
 };
 const sizeClasses: Record<TextSize, string> = {
-    sm: styles.s3,
-    md: styles.s4,
-    lg: styles.s5,
+    sm: "text-sm leading-6",
+    md: "text-base leading-7",
+    lg: "text-lg leading-8",
 };
 export function Text({
     children,

@@ -1,4 +1,3 @@
-import styles from "./Alert.module.css";
 import { Icon, type IconName } from "../_shared/icons";
 import { cn } from "../../lib/utils";
 import type { AlertProps } from "./types";
@@ -9,38 +8,38 @@ const variantStyles: Record<
     { box: string; icon: string; defaultIcon: IconName }
 > = {
     primary: {
-        box: styles.primary,
-        icon: styles.primaryIcon,
+        box: "bg-main-100 text-main-800",
+        icon: "text-main-800",
         defaultIcon: "information",
     },
     secondary: {
-        box: styles.secondary,
-        icon: styles.secondaryIcon,
+        box: "border-main-700/70 bg-main-900/60 text-main-100",
+        icon: "text-main-300",
         defaultIcon: "information-outline",
     },
     tertiary: {
-        box: styles.tertiary,
-        icon: styles.tertiaryIcon,
+        box: "border-accent-dark/50 bg-accent-medium/10 text-accent-light",
+        icon: "text-accent-medium",
         defaultIcon: "sparkles-outline",
     },
     success: {
-        box: styles.success,
-        icon: styles.successIcon,
+        box: "border-success-dark/50 bg-success-dark/25 text-success-light",
+        icon: "text-success-light",
         defaultIcon: "check-circle-outline",
     },
     warning: {
-        box: styles.warning,
-        icon: styles.warningIcon,
+        box: "border-warning-dark/50 bg-warning-dark/25 text-warning-light",
+        icon: "text-warning-light",
         defaultIcon: "alert-outline",
     },
     danger: {
-        box: styles.danger,
-        icon: styles.dangerIcon,
+        box: "border-danger-dark/50 bg-danger-dark/25 text-danger-light",
+        icon: "text-danger-light",
         defaultIcon: "close-octagon",
     },
     info: {
-        box: styles.info,
-        icon: styles.infoIcon,
+        box: "border-info-dark/50 bg-info-dark/25 text-info-light",
+        icon: "text-info-light",
         defaultIcon: "information-outline",
     },
 };
@@ -61,15 +60,15 @@ export function Alert({
         <div
             role="status"
             className={cn(
-                styles.s0,
-                `zvs-${rounded}`,
+                "flex items-start gap-3 border px-3 py-2.5",
+                rounded,
                 variantStyle.box,
                 className,
             )}
             {...props}
         >
             <span
-                className={cn(styles.s1, variantStyle.icon, classNames?.icon)}
+                className={cn("mt-0.5 shrink-0", variantStyle.icon, classNames?.icon)}
             >
                 {icon ?? (
                     <Icon
@@ -79,12 +78,12 @@ export function Alert({
                     />
                 )}
             </span>
-            <div className={cn(styles.s2, classNames?.content)}>
+            <div className={cn("min-w-0", classNames?.content)}>
                 {title && (
-                    <p className={cn(styles.s3, classNames?.title)}>{title}</p>
+                    <p className={cn("text-sm font-semibold", classNames?.title)}>{title}</p>
                 )}
                 {children && (
-                    <div className={cn(styles.s4, classNames?.body)}>
+                    <div className={cn("text-sm opacity-95", classNames?.body)}>
                         {children}
                     </div>
                 )}

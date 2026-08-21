@@ -1,4 +1,3 @@
-import styles from "./InputRange.module.css";
 import {
     useCallback,
     useId,
@@ -98,13 +97,13 @@ const Thumb = ({
                 aria-valuenow={value}
                 onChange={(e) => onChange(index, Number(e.target.value))}
                 onKeyDown={handleKeyDown}
-                className={cn(styles.s0, inputClassName)}
+                className={cn("pointer-events-none absolute inset-0 h-full w-full appearance-none bg-transparent opacity-0", inputClassName)}
             />
 
             {showLabel && (
                 <span
                     aria-hidden="true"
-                    className={cn(styles.s1, styles.s2, labelClassName)}
+                    className={cn("pointer-events-none absolute bottom-full mb-1.5", "whitespace-nowrap text-xs text-main-300", labelClassName)}
                     style={{
                         left: `${percent}%`,
                         transform: `translateX(clamp(0%, calc(-1 * ${percent}%), -100%))`,
@@ -117,11 +116,11 @@ const Thumb = ({
             <span
                 aria-hidden="true"
                 className={cn(
-                    styles.s3,
-                    styles.s4,
-                    styles.s5,
-                    disabled && styles.s7,
-                    styles.s9,
+                    "pointer-events-none absolute top-1/2 z-10",
+                    "h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full",
+                    "bg-main-100 shadow-sm",
+                    disabled && "bg-main-300",
+                    "group-focus-within:shadow-[0_0_0_2px_color-mix(in_srgb,var(--color-main-300)_60%,transparent)]",
                     thumbClassName,
                 )}
                 style={{ left: `${percent}%` }}
@@ -231,18 +230,18 @@ export const InputRange = ({
         <div
             ref={ref}
             className={cn(
-                styles.s10,
-                disabled ? styles.s11 : styles.s12,
+                "group inline-flex w-64 max-w-full items-center gap-3",
+                disabled ? "cursor-not-allowed opacity-60" : "cursor-pointer",
                 className,
             )}
         >
-            <div className={cn(styles.s13, showThumbLabels && styles.s14)}>
+            <div className={cn("relative w-full", showThumbLabels && "pt-5")}>
                 <div
                     ref={trackRef}
                     role="group"
                     aria-label={props["aria-label"] ?? "Range slider"}
                     aria-disabled={disabled}
-                    className={styles.s15}
+                    className={"relative h-6 w-full touch-none select-none"}
                     onPointerDown={handlePointerDown}
                     onPointerMove={handlePointerMove}
                     onPointerUp={releaseCapture}
@@ -250,14 +249,14 @@ export const InputRange = ({
                 >
                     <div
                         className={cn(
-                            styles.s16,
-                            styles.s17,
-                            styles.s18,
+                            "absolute left-0 top-1/2 h-2 w-full -translate-y-1/2 overflow-hidden rounded-full",
+                            "border border-main-600 bg-main-800",
+                            "transition-colors duration-200",
                             classNames?.track,
                         )}
                     >
                         <div
-                            className={cn(styles.s19, classNames?.fill)}
+                            className={cn("absolute h-full rounded-full bg-main-500/70 transition-colors duration-200", classNames?.fill)}
                             style={{
                                 left: `${startPercent}%`,
                                 width: `${endPercent - startPercent}%`,

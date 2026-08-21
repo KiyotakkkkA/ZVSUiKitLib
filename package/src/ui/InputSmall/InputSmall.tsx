@@ -1,4 +1,3 @@
-import styles from "./InputSmall.module.css";
 import { Icon, type IconName } from "../_shared/icons";
 import {
     forwardRef,
@@ -114,13 +113,13 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
         };
 
         return (
-            <div className={cn(styles.s0, className)}>
+            <div className={cn("relative", className)}>
                 {config?.icon && (
                     <Icon
                         icon={config.icon}
                         aria-hidden
                         className={cn(
-                            styles.s1,
+                            "pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-base text-main-400",
                             classNames?.leadingIcon,
                             classNames?.icon,
                         )}
@@ -151,14 +150,14 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
                         }
                     }}
                     className={cn(
-                        styles.s2,
-                        `zvs-${rounded}`,
-                        styles.s3,
-                        styles.s4,
-                        styles.s5,
-                        hasLeadingIcon && styles.s6,
-                        hasTrailingAction && styles.s7,
-                        isSearchPreset && styles.s8,
+                        "h-9 w-full border border-main-700 bg-main-800 px-3 text-sm text-main-100",
+                        rounded,
+                        "outline-none transition-colors duration-200 placeholder:text-main-500",
+                        "focus-visible:border-main-500/70 focus-visible:ring-2 focus-visible:ring-main-500/25",
+                        "disabled:cursor-not-allowed disabled:opacity-60 read-only:cursor-not-allowed",
+                        hasLeadingIcon && "pl-9",
+                        hasTrailingAction && "pr-9",
+                        isSearchPreset && "[&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden",
                         classNames?.input,
                     )}
                 />
@@ -172,9 +171,9 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
                         }
                         aria-pressed={passwordVisible}
                         className={cn(
-                            styles.s9,
-                            styles.s10,
-                            rounded && `zvs-${rounded}`,
+                            "absolute right-1 top-1/2 flex size-7 -translate-y-1/2 items-center justify-center text-main-400 transition-colors",
+                            "hover:bg-main-700/70 hover:text-main-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-400/40 disabled:pointer-events-none",
+                            rounded && rounded,
                             classNames?.trailingButton,
                         )}
                         onPointerDown={(event) => event.preventDefault()}
@@ -189,7 +188,7 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
                                     : "eye-outline"
                             }
                             aria-hidden
-                            className={cn(styles.s11, classNames?.icon)}
+                            className={cn("text-base", classNames?.icon)}
                         />
                     </button>
                 )}
@@ -200,8 +199,8 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
                         disabled={disabled || readOnly}
                         aria-label="Clear search"
                         className={cn(
-                            styles.s12,
-                            styles.s13,
+                            "absolute right-1 top-1/2 flex size-7 -translate-y-1/2 items-center justify-center rounded-md text-main-400 transition-colors",
+                            "hover:bg-main-700/70 hover:text-main-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-400/40 disabled:pointer-events-none",
                             classNames?.trailingButton,
                         )}
                         onPointerDown={(event) => event.preventDefault()}
@@ -210,7 +209,7 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
                         <Icon
                             icon="close"
                             aria-hidden
-                            className={cn(styles.s14, classNames?.icon)}
+                            className={cn("text-base", classNames?.icon)}
                         />
                     </button>
                 )}

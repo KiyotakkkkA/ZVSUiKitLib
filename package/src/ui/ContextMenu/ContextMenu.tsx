@@ -1,6 +1,5 @@
 "use client";
 
-import styles from "./ContextMenu.module.css";
 
 import {
     createContext,
@@ -31,9 +30,9 @@ import type {
 
 const CONTEXT_MENU_VIEWPORT_PADDING = 8;
 
-const contentClassName = styles.content;
+const contentClassName = "min-w-40 rounded-lg border border-main-700/80 bg-main-900/95 p-1 text-main-100 shadow-xl shadow-black/35 backdrop-blur-xl";
 
-const itemClassName = styles.item;
+const itemClassName = "flex min-h-7 w-full items-center gap-2 rounded-md px-2 py-1 text-left text-sm leading-5 transition-colors duration-150 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-40";
 
 type ContextMenuContextValue = {
     state: ContextMenuState;
@@ -269,7 +268,7 @@ const ContextMenuContent = ({
             {...props}
             ref={contentRef}
             role="menu"
-            className={cn(styles.s0, contentClassName, className)}
+            className={cn("fixed z-50", contentClassName, className)}
             style={{
                 ...style,
                 left: state.x,
@@ -304,9 +303,9 @@ const ContextMenuItemBase = ({
             disabled={disabled}
             className={cn(
                 itemClassName,
-                inset && styles.s1,
-                danger ? styles.s2 : styles.s3,
-                disabled && styles.s4,
+                inset && "pl-7",
+                danger ? "text-danger-light hover:bg-danger-medium/15 hover:text-danger-light focus-visible:bg-danger-medium/15 focus-visible:text-danger-light" : "text-main-200 hover:bg-main-700/70 hover:text-main-50 focus-visible:bg-main-700/70 focus-visible:text-main-50",
+                disabled && "cursor-not-allowed",
                 className,
             )}
             onClick={(event) => {
@@ -318,16 +317,16 @@ const ContextMenuItemBase = ({
             }}
         >
             {leftSlot && (
-                <span className={cn(styles.s5, danger ? styles.s6 : styles.s7)}>
+                <span className={cn("shrink-0", danger ? "text-danger-medium" : "text-main-400")}>
                     {leftSlot}
                 </span>
             )}
 
-            <span className={styles.s8}>{children}</span>
+            <span className={"min-w-0 flex-1 truncate"}>{children}</span>
 
             {rightSlot && (
                 <span
-                    className={cn(styles.s9, danger ? styles.s10 : styles.s11)}
+                    className={cn("shrink-0 text-xs", danger ? "text-danger-medium/80" : "text-main-500")}
                 >
                     {rightSlot}
                 </span>
@@ -351,7 +350,7 @@ const ContextMenuLabel = ({
 }: ContextMenuLabelProps) => (
     <div
         {...props}
-        className={cn(styles.s12, inset && styles.s13, className)}
+        className={cn("px-2 pb-0.5 pt-1.5 text-[11px] font-medium leading-4 text-main-500", inset && "pl-7", className)}
     />
 );
 
@@ -363,7 +362,7 @@ const ContextMenuSeparator = ({
         <div
             {...props}
             role="separator"
-            className={cn(styles.s14, className)}
+            className={cn("-mx-1 my-1 h-px bg-main-700/80", className)}
         />
     );
 };
@@ -492,7 +491,7 @@ const ContextMenuSub = ({
     return (
         <ContextMenuSubContext.Provider value={value}>
             <div
-                className={cn(styles.s15, className)}
+                className={cn("relative", className)}
                 onPointerEnter={openSub}
                 onPointerLeave={scheduleClose}
             >
@@ -524,10 +523,10 @@ const ContextMenuSubTrigger = ({
             disabled={disabled}
             className={cn(
                 itemClassName,
-                styles.s16,
-                open && styles.s17,
-                inset && styles.s18,
-                disabled && styles.s19,
+                "text-main-200 hover:bg-main-700/70 hover:text-main-50 focus-visible:bg-main-700/70 focus-visible:text-main-50",
+                open && "bg-main-700/70 text-main-50",
+                inset && "pl-7",
+                disabled && "cursor-not-allowed opacity-50",
                 className,
             )}
             onClick={(event) => {
@@ -540,16 +539,16 @@ const ContextMenuSubTrigger = ({
             onFocus={openSub}
             onPointerEnter={openSub}
         >
-            {leftSlot && <span className={styles.s20}>{leftSlot}</span>}
+            {leftSlot && <span className={"shrink-0 text-main-400"}>{leftSlot}</span>}
 
-            <span className={styles.s21}>{children}</span>
+            <span className={"min-w-0 flex-1 truncate"}>{children}</span>
 
             {rightSlot ?? (
                 <span
                     className={cn(
-                        styles.s22,
-                        open && styles.s23,
-                        pinned && styles.s24,
+                        "shrink-0 text-base leading-none text-main-500 transition-transform duration-150",
+                        open && "translate-x-0.5 text-main-300",
+                        pinned && "text-main-100",
                     )}
                 >
                     ›
@@ -577,7 +576,7 @@ const ContextMenuSubContent = ({
         <>
             <div
                 aria-hidden="true"
-                className={styles.s25}
+                className={"absolute top-0 z-40 h-full"}
                 style={{
                     left: "100%",
                     width: sideOffset,
@@ -588,7 +587,7 @@ const ContextMenuSubContent = ({
             <div
                 {...props}
                 role="menu"
-                className={cn(styles.s26, contentClassName, className)}
+                className={cn("absolute top-0 z-50", contentClassName, className)}
                 style={{
                     left: `calc(100% + ${sideOffset}px)`,
                     ...style,

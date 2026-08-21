@@ -1,4 +1,3 @@
-import styles from "./ScrollArea.module.css";
 import { cn } from "../../lib/utils";
 import type { ScrollAreaProps } from "./types";
 
@@ -12,17 +11,17 @@ export function ScrollArea({
 }: ScrollAreaProps) {
     const overflowClassName =
         orientation === "horizontal"
-            ? styles.horizontal
+            ? "overflow-x-auto overflow-y-hidden"
             : orientation === "vertical"
-              ? styles.vertical
-              : styles.both;
+              ? "overflow-y-auto overflow-x-hidden"
+              : "overflow-auto";
 
     return (
         <div
             ref={ref}
             className={cn(
-                styles.s0,
-                !showScrollbar && styles.s1,
+                "zvs-scroll-area",
+                !showScrollbar && "zvs-scroll-area--hidden",
                 overflowClassName,
                 className,
             )}

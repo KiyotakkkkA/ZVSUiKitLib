@@ -1,4 +1,3 @@
-import styles from "./Calendar.module.css";
 import { useMemo, useState } from "react";
 import { cn } from "../../lib/utils";
 import { useLocale } from "../../hooks/useLocale";
@@ -242,11 +241,11 @@ export function Calendar({
     }, [activeViewDate, maxDay]);
 
     return (
-        <div ref={ref} className={cn(styles.s0, className)}>
-            <div className={cn(styles.s1, classNames?.header)}>
+        <div ref={ref} className={cn("w-full max-w-[20rem] rounded-2xl border border-main-700/70 bg-main-900/55 p-3.5", className)}>
+            <div className={cn("grid grid-cols-[auto_1fr_auto] items-center gap-2", classNames?.header)}>
                 <Button
                     variant="secondary"
-                    className={cn(styles.s2, classNames?.navButton)}
+                    className={cn("h-8 w-8 rounded-lg p-0 transition-transform duration-150 hover:scale-105", classNames?.navButton)}
                     onClick={() =>
                         setViewMonth(
                             new Date(
@@ -261,18 +260,18 @@ export function Calendar({
                     {"<"}
                 </Button>
 
-                <div className={cn(styles.s3, classNames?.selectors)}>
+                <div className={cn("flex min-w-0 items-center justify-center gap-1", classNames?.selectors)}>
                     <Dropdown menuWidth={208} menuPlacement="bottom-left">
                         <Dropdown.Trigger
                             rounded="rounded-lg"
-                            className={styles.s4}
+                            className={"h-8 min-w-0 hover:border-transparent bg-transparent border-transparent px-2 text-sm font-semibold capitalize text-main-100 hover:bg-main-700/35"}
                             aria-label={t.selectMonth}
                         >
-                            <span className={styles.s5}>
+                            <span className={"truncate"}>
                                 {monthOptions[activeViewDate.getMonth()]?.label}
                             </span>
                         </Dropdown.Trigger>
-                        <Dropdown.Menu className={styles.s6}>
+                        <Dropdown.Menu className={"grid grid-cols-3 gap-1 border-main-700 bg-main-800/95 p-2 shadow-2xl shadow-black/30 backdrop-blur"}>
                             {monthOptions.map((month) => (
                                 <Dropdown.Item
                                     key={month.value}
@@ -280,7 +279,7 @@ export function Calendar({
                                         month.value ===
                                         activeViewDate.getMonth()
                                     }
-                                    className={styles.s7}
+                                    className={"text-center px-2 capitalize"}
                                     onClick={() =>
                                         setViewMonth(
                                             new Date(
@@ -297,20 +296,20 @@ export function Calendar({
                         </Dropdown.Menu>
                     </Dropdown>
 
-                    <span className={styles.s8} aria-hidden />
+                    <span className={"h-4 w-px shrink-0 bg-main-700"} aria-hidden />
 
                     <Dropdown menuWidth={152} menuPlacement="bottom-right">
                         <Dropdown.Trigger
                             rounded="rounded-lg"
-                            className={styles.s9}
+                            className={"h-8 hover:border-transparent border-transparent bg-transparent px-2 text-sm font-semibold tabular-nums text-main-100 hover:bg-main-700/35"}
                             aria-label={t.selectYear}
                         >
                             {activeViewDate.getFullYear()}
                         </Dropdown.Trigger>
-                        <Dropdown.Menu className={styles.s10}>
+                        <Dropdown.Menu className={"border-main-700 bg-main-800/95 p-2 shadow-2xl shadow-black/30 backdrop-blur"}>
                             <ScrollArea
                                 showScrollbar={false}
-                                className={styles.s11}
+                                className={"max-h-60 grid grid-cols-2 gap-1 min-w-32"}
                             >
                                 {yearOptions.map((year) => (
                                     <Dropdown.Item
@@ -319,7 +318,7 @@ export function Calendar({
                                             year ===
                                             activeViewDate.getFullYear()
                                         }
-                                        className={styles.s12}
+                                        className={"text-center tabular-nums"}
                                         onClick={() =>
                                             setViewMonth(
                                                 new Date(
@@ -340,7 +339,7 @@ export function Calendar({
 
                 <Button
                     variant="secondary"
-                    className={cn(styles.s13, classNames?.navButton)}
+                    className={cn("h-8 w-8 rounded-lg p-0 transition-transform duration-150 hover:scale-105", classNames?.navButton)}
                     onClick={() =>
                         setViewMonth(
                             new Date(
@@ -356,24 +355,24 @@ export function Calendar({
                 </Button>
             </div>
 
-            <div className={cn(styles.s14, classNames?.weekdays)}>
+            <div className={cn("mt-3 grid grid-cols-7", classNames?.weekdays)}>
                 {weekdayLabels.map((label) => (
                     <span
                         key={label}
-                        className={cn(styles.s15, classNames?.weekday)}
+                        className={cn("text-center text-xs capitalize text-main-400", classNames?.weekday)}
                     >
                         {label}
                     </span>
                 ))}
             </div>
 
-            <div className={cn(styles.s16, classNames?.days)}>
+            <div className={cn("mt-2 grid grid-cols-7 gap-1", classNames?.days)}>
                 {dayCells.map((day) => {
                     if (!showOutsideDays && !day.isCurrentMonth) {
                         return (
                             <span
                                 key={day.date.toISOString()}
-                                className={styles.s17}
+                                className={"h-8 rounded-lg"}
                                 aria-hidden
                             />
                         );
@@ -384,16 +383,16 @@ export function Calendar({
                             key={day.date.toISOString()}
                             type="button"
                             className={cn(
-                                styles.s18,
-                                styles.s19,
-                                day.isCurrentMonth ? styles.s20 : styles.s21,
-                                day.isToday && !day.isSelected && styles.s22,
-                                day.isSelected && styles.s23,
-                                day.isToday && day.isSelected && styles.s24,
+                                "h-8 rounded-lg border border-transparent text-sm transition-all duration-150 ease-out",
+                                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-400/70",
+                                day.isCurrentMonth ? "text-main-100" : "text-main-500",
+                                day.isToday && !day.isSelected && "border-main-400/80 bg-main-700/35 font-semibold text-main-50",
+                                day.isSelected && "bg-main-100 font-semibold text-main-900",
+                                day.isToday && day.isSelected && "ring-2 ring-main-400/75 ring-offset-1 ring-offset-main-900",
                                 !day.isSelected &&
                                     !day.isDisabled &&
-                                    styles.s25,
-                                day.isDisabled && styles.s26,
+                                    "hover:bg-main-700/30",
+                                day.isDisabled && "cursor-not-allowed opacity-35",
                                 typeof classNames?.day === "function"
                                     ? classNames.day(day)
                                     : classNames?.day,
