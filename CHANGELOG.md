@@ -104,9 +104,12 @@ base and an inconsistent public surface.
   order — so the library's rules won against Tailwind's `@layer utilities` and
   every override needed `!important`. Inside its own layer the library loses to
   Tailwind utilities and to plain unlayered app CSS, which is what a consumer
-  expects. Tailwind v4 projects should declare the order once:
-  `@layer zvs-uikit, theme, base, components, utilities;` above
-  `@import "tailwindcss"`. Tailwind v3 and non-Tailwind projects need nothing.
+  expects. Tailwind v4 projects must declare the order once:
+  `@layer theme, base, zvs-uikit, components, utilities;` above
+  `@import "tailwindcss"` — the layer has to sit after `base`, whose Preflight
+  would otherwise strip the components, and before `utilities`, which must keep
+  winning. Tailwind v3 emits Preflight unlayered and needs its own output put
+  into layers; a project without Tailwind needs nothing. See the README.
   The `@property` rules Tailwind registers are hoisted out of the layer, since
   registration inside `@layer` is not reliable across browsers.
 - **`shiki` no longer compiles all 24 grammars up front.** The highlighter
