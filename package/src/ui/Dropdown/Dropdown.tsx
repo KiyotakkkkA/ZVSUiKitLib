@@ -18,6 +18,7 @@ import {
 } from "react";
 import { cn } from "../../lib/utils";
 import { useLocale } from "../../hooks/useLocale";
+import { computeMenuPosition } from "../../lib/position";
 import type {
     DropdownContextValue,
     DropdownProps,
@@ -51,12 +52,6 @@ function useDropdownContext() {
 const toCssLength = (value: number | string) =>
     typeof value === "number" ? `${value}px` : value;
 
-const clamp = (value: number, min: number, max: number) => {
-    if (max < min) return min;
-
-    return Math.max(min, Math.min(value, max));
-};
-
 const isPopoverOpen = (element: HTMLElement) => {
     return element.matches(":popover-open");
 };
@@ -77,34 +72,17 @@ const applyMenuStyle = (
             ? `${triggerRect.width}px`
             : toCssLength(menuWidth);
 
-    const menuWidthPx = menuElement.offsetWidth;
-    const menuHeightPx = menuElement.offsetHeight;
-
-    const isTopPlacement = menuPlacement.startsWith("top");
-    const isRightPlacement = menuPlacement.endsWith("right");
-    const isCenterPlacement = menuPlacement.endsWith("center");
-
-    const preferredLeft = isCenterPlacement
-        ? triggerRect.left + (triggerRect.width - menuWidthPx) / 2
-        : isRightPlacement
-          ? triggerRect.right - menuWidthPx
-          : triggerRect.left;
-
-    const preferredTop = isTopPlacement
-        ? triggerRect.top - menuHeightPx - DROPDOWN_MENU_GAP
-        : triggerRect.bottom + DROPDOWN_MENU_GAP;
-
-    const left = clamp(
-        preferredLeft,
-        DROPDOWN_VIEWPORT_PADDING,
-        window.innerWidth - menuWidthPx - DROPDOWN_VIEWPORT_PADDING,
-    );
-
-    const top = clamp(
-        preferredTop,
-        DROPDOWN_VIEWPORT_PADDING,
-        window.innerHeight - menuHeightPx - DROPDOWN_VIEWPORT_PADDING,
-    );
+    const { left, top } = computeMenuPosition({
+        trigger: triggerRect,
+        menu: {
+            width: menuElement.offsetWidth,
+            height: menuElement.offsetHeight,
+        },
+        placement: menuPlacement,
+        viewport: { width: window.innerWidth, height: window.innerHeight },
+        gap: DROPDOWN_MENU_GAP,
+        padding: DROPDOWN_VIEWPORT_PADDING,
+    });
 
     menuElement.style.left = `${left}px`;
     menuElement.style.top = `${top}px`;

@@ -60,12 +60,7 @@ export type TableClassNames<T extends TableRecord> = {
     empty?: string;
 };
 
-export type SortState = {
-    /** The column key identifier. */
-    columnKey: string | null;
-    /** The mode key identifier. */
-    modeKey: string | null;
-};
+export type { SortState } from "../../lib/sorting";
 
 export type TableProps<T extends TableRecord> = {
     /** Receives the `<table>` element. */

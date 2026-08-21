@@ -1,6 +1,7 @@
 import styles from "./Table.module.css";
 import { useCallback, useMemo, useState, type ReactNode } from "react";
 import { cn } from "../../lib/utils";
+import { nextSortState } from "../../lib/sorting";
 import type {
     SortState,
     TableColumn,
@@ -77,28 +78,11 @@ export function Table<T extends TableRecord>({
     }, [activeSortColumn, activeSortMode, data]);
 
     const toggleSortByColumn = useCallback((column: TableColumn<T>) => {
-        const sortModes = column.sortModes ?? [];
+        const modeKeys = (column.sortModes ?? []).map((mode) => mode.key);
 
-        if (sortModes.length === 0) {
-            return;
-        }
-
-        setSortState((current) => {
-            if (current.columnKey !== column.key || !current.modeKey) {
-                return { columnKey: column.key, modeKey: sortModes[0].key };
-            }
-
-            const currentIndex = sortModes.findIndex(
-                (mode) => mode.key === current.modeKey,
-            );
-            const nextMode = sortModes[currentIndex + 1];
-
-            if (!nextMode) {
-                return { columnKey: null, modeKey: null };
-            }
-
-            return { columnKey: column.key, modeKey: nextMode.key };
-        });
+        setSortState((current) =>
+            nextSortState(current, column.key, modeKeys),
+        );
     }, []);
 
     return (

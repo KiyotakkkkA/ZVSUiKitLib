@@ -65,6 +65,10 @@ jobs:
               if: steps.version.outputs.changed == 'true'
               run: npm run lint:package
 
+            - name: Test package
+              if: steps.version.outputs.changed == 'true'
+              run: npm run test
+
             - name: Build package
               if: steps.version.outputs.changed == 'true'
               run: npm run build:package
