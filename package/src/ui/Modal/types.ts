@@ -34,7 +34,7 @@ export type ModalSectionProps = PropsWithChildren<{
 export type ModalHeaderProps = ModalSectionProps & {
     /** CSS classes applied to the close button element. */
     closeButtonClassName?: ButtonClassName;
-    /** Function used to close button aria label. */
+    /** Function used to close button aria label. Defaults to the `modal.close` string from the active locale dictionary. */
     closeButtonAriaLabel?: string;
     /** Whether show close button is enabled. */
     showCloseButton?: boolean;

@@ -12,6 +12,7 @@ import { Icon } from "../_shared/icons";
 import { cn, mergeRefs } from "../../lib/utils";
 import { usePortalContainer } from "../../hooks/usePortalContainer";
 import { useDialog } from "../../hooks/useDialog";
+import { useLocale } from "../../hooks/useLocale";
 import type {
     SlidedPanelProps,
     SlidedPanelHeaderProps,
@@ -64,7 +65,7 @@ function useSlidedPanelContext() {
 
     if (!context) {
         throw new Error(
-            "SlidedPanel.Header, SlidedPanel.Title, SlidedPanel.Subtitle, SlidedPanel.Content и SlidedPanel.Footer должны использоваться внутри SlidedPanel.",
+            "SlidedPanel.Header, SlidedPanel.Title, SlidedPanel.Subtitle, SlidedPanel.Content and SlidedPanel.Footer must be used inside SlidedPanel.",
         );
     }
 
@@ -152,6 +153,7 @@ function SlidedPanelHeader({
     ...props
 }: SlidedPanelHeaderProps) {
     const { onClose } = useSlidedPanelContext();
+    const t = useLocale().slidedPanel;
 
     return (
         <header className={cn(styles.s23, className)} {...props}>
@@ -159,7 +161,7 @@ function SlidedPanelHeader({
 
             <button
                 type="button"
-                aria-label="Закрыть панель"
+                aria-label={t.close}
                 className={styles.s25}
                 onClick={onClose}
             >

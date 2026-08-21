@@ -14,6 +14,7 @@ import { ScrollArea } from "../ScrollArea/ScrollArea";
 import { cn, mergeRefs } from "../../lib/utils";
 import { usePortalContainer } from "../../hooks/usePortalContainer";
 import { useDialog } from "../../hooks/useDialog";
+import { useLocale } from "../../hooks/useLocale";
 import type { ModalProps, ModalSectionProps, ModalHeaderProps } from "./types";
 
 type ModalContextValue = {
@@ -28,9 +29,10 @@ function ModalHeader({
     children,
     className,
     closeButtonClassName,
-    closeButtonAriaLabel = "Закрыть окно",
+    closeButtonAriaLabel,
     showCloseButton = true,
 }: ModalHeaderProps) {
+    const t = useLocale().modal;
     const modalContext = useContext(ModalContext);
     const registerTitle = modalContext?.registerTitle;
 
@@ -52,7 +54,7 @@ function ModalHeader({
                     variant="secondary"
                     className={cn(styles.s2, closeButtonClassName)}
                     onClick={modalContext?.onClose}
-                    aria-label={closeButtonAriaLabel}
+                    aria-label={closeButtonAriaLabel ?? t.close}
                 >
                     <Icon icon="close" width="16" height="16" />
                 </Button>

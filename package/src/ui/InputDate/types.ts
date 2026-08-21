@@ -32,7 +32,7 @@ export type InputDateProps = {
     defaultValue?: CalendarDate;
     /** Callback invoked when change occurs. */
     onChange?: (date: CalendarDate) => void;
-    /** Text used for the placeholder. */
+    /** Text used for the placeholder. Defaults to the `inputDate.placeholder` string from the active locale dictionary. */
     placeholder?: string;
     /** The locale used by the component. */
     locale?: string;

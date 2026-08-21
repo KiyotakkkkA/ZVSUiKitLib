@@ -183,6 +183,42 @@ prop, theme switching remains in memory and does not write cookies.
 
 ---
 
+## Localisation
+
+Every string the components render — placeholders, empty states, aria-labels —
+comes from one dictionary. Without a provider the library falls back to
+`defaultDictionary`, which holds the Russian strings the components have always
+shipped with, so nothing changes for an app that ignores this.
+
+To translate, wrap the tree in `LocaleProvider`. `enDictionary` ships with the
+package:
+
+```tsx
+"use client";
+
+import { LocaleProvider, enDictionary } from "@kiyotakkkka/zvs-uikit-lib";
+
+export function AppLocale({ children }: { children: React.ReactNode }) {
+    return <LocaleProvider base={enDictionary}>{children}</LocaleProvider>;
+}
+```
+
+Overrides are merged group by group, so a single string can be replaced without
+restating the rest:
+
+```tsx
+<LocaleProvider
+    base={enDictionary}
+    dictionary={{ select: { emptyMessage: "No matching options" } }}
+>
+    {children}
+</LocaleProvider>
+```
+
+`useLocale()` returns the resolved dictionary and works without a provider.
+Props such as `placeholder` still win over the dictionary wherever a component
+accepts them.
+
 ## Component Catalog & API
 
 <a id="readme-nav"></a>
@@ -206,6 +242,7 @@ prop, theme switching remains in memory and does not write cookies.
 | `Button`             | Base button with variants and shape options.                             | [Button](package/src/docs/Button.md)                         |
 | `Calendar`           | Date calendar with constraints and custom day rendering.                 | [Calendar](package/src/docs/Calendar.md)                     |
 | `InputBig`           | Multiline text input.                                                    | [InputBig](package/src/docs/InputBig.md)                     |
+| `Field`              | Label, description and error wrapper for any control.                    | [Field](package/src/docs/Field.md)                           |
 | `InputCheckBox`      | `true/false` checkbox control.                                           | [InputCheckBox](package/src/docs/InputCheckBox.md)           |
 | `InputCheckBoxGroup` | Connects checkbox controls to a shared boolean model.                    | [InputCheckBoxGroup](package/src/docs/InputCheckBoxGroup.md) |
 | `InputCheckSlided`   | `true/false` switch control.                                             | [InputCheckSlided](package/src/docs/InputCheckSlided.md)     |
@@ -315,6 +352,7 @@ List of SSR-friendly components:
 | ----------- | --------------------------------------------------------------- | ------------------------------------------ | ----------------------------------------------------------------------------------- |
 | `useToasts` | Access toast context API. Works only inside `ToastProvider`.    | [useToasts](package/src/docs/useToasts.md) | `ToastContextValue` with: `push`, `normal`, `info`, `warning`, `success`, `danger`. |
 | `useStyle`  | Access style management API. Works only inside `StyleProvider`. | [useStyle](package/src/docs/useStyle.md)   | Object with method: `changeTheme(palette: StyleThemePalette) => void`.              |
+| `useLocale` | Read the active string dictionary. Works without a provider.    | —                                          | The resolved `ZvsDictionary`.                                                       |
 
 <a id="providers"></a>
 
@@ -324,3 +362,4 @@ List of SSR-friendly components:
 | --------------- | --------------------------------- |
 | `ToastProvider` | Global toast notifications stack. |
 | `StyleProvider` | Global style management.          |
+| `LocaleProvider` | Strings the components render.   |

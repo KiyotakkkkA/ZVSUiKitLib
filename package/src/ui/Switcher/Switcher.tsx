@@ -1,18 +1,20 @@
 import styles from "./Switcher.module.css";
 import { useRef, type KeyboardEvent } from "react";
 import { cn, mergeRefs } from "../../lib/utils";
+import { useLocale } from "../../hooks/useLocale";
 import type { SwitcherProps } from "./types";
 
 export const Switcher = ({
     value,
     options,
     onChange,
-    label = "Switcher",
+    label,
     className,
     classNames,
     rounded = "rounded-full",
     ref,
 }: SwitcherProps) => {
+    const t = useLocale().switcher;
     const groupRef = useRef<HTMLDivElement>(null);
 
     const selectAt = (index: number) => {
@@ -62,7 +64,7 @@ export const Switcher = ({
             ref={mergeRefs(groupRef, ref)}
             className={cn(styles.s0, `zvs-${rounded}`, className)}
             role="radiogroup"
-            aria-label={label}
+            aria-label={label ?? t.label}
             onKeyDown={onKeyDown}
         >
             {options.map((option, index) => {

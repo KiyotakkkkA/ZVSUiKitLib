@@ -14,6 +14,7 @@ import {
     type KeyboardEvent,
 } from "react";
 import { cn } from "../../lib/utils";
+import { useLocale } from "../../hooks/useLocale";
 import { Dropdown } from "../Dropdown/Dropdown";
 import { InputSmall } from "../InputSmall/InputSmall";
 import { ScrollArea } from "../ScrollArea/ScrollArea";
@@ -35,7 +36,7 @@ function useSelectContext() {
 
     if (!context) {
         throw new Error(
-            "Select.Trigger, Select.Menu и Select.Option должны использоваться внутри Select.",
+            "Select.Trigger, Select.Menu and Select.Option must be used inside Select.",
         );
     }
 
@@ -47,10 +48,10 @@ function SelectRoot({
     onChange,
     options,
     children,
-    placeholder = "Выберите",
+    placeholder,
     searchable = false,
-    searchPlaceholder = "Поиск...",
-    emptyMessage = "Ничего не найдено",
+    searchPlaceholder,
+    emptyMessage,
     disabled = false,
     className,
     classNames,
@@ -58,8 +59,12 @@ function SelectRoot({
     menuPlacement = "bottom-left",
     closeOnSelect = true,
 }: SelectProps) {
+    const t = useLocale().select;
     const [query, setQuery] = useState("");
     const [open, setOpen] = useState(false);
+    const resolvedPlaceholder = placeholder ?? t.placeholder;
+    const resolvedSearchPlaceholder = searchPlaceholder ?? t.searchPlaceholder;
+    const resolvedEmptyMessage = emptyMessage ?? t.emptyMessage;
     const selectedOption = useMemo(
         () => options.find((option) => option.value === value),
         [options, value],
@@ -81,12 +86,12 @@ function SelectRoot({
         () => ({
             value,
             selectedOption,
-            placeholder,
+            placeholder: resolvedPlaceholder,
             query,
             open,
             searchable,
-            searchPlaceholder,
-            emptyMessage,
+            searchPlaceholder: resolvedSearchPlaceholder,
+            emptyMessage: resolvedEmptyMessage,
             classNames,
             closeOnSelect,
             setQuery,
@@ -102,10 +107,10 @@ function SelectRoot({
             selectedOption,
             query,
             open,
-            placeholder,
+            resolvedPlaceholder,
             searchable,
-            searchPlaceholder,
-            emptyMessage,
+            resolvedSearchPlaceholder,
+            resolvedEmptyMessage,
             classNames,
             closeOnSelect,
             onChange,

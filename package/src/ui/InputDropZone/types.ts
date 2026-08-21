@@ -23,23 +23,23 @@ export type InputDropZoneProps = {
     emptyIcon?: ReactNode;
     /** Whether selected icon is enabled. */
     selectedIcon?: ReactNode;
-    /** Text used for the empty title. */
+    /** Text used for the empty title. Defaults to the `inputDropZone.emptyTitle` string from the active locale dictionary. */
     emptyTitle?: string;
-    /** Text used for the empty description. */
+    /** Text used for the empty description. Defaults to the `inputDropZone.emptyDescription` string from the active locale dictionary. */
     emptyDescription?: string;
-    /** Whether selected description is enabled. */
+    /** Whether selected description is enabled. Defaults to the `inputDropZone.selectedDescription` string from the active locale dictionary. */
     selectedDescription?: string;
-    /** Function used to clear label. */
+    /** Function used to clear label. Defaults to the `inputDropZone.clearLabel` string from the active locale dictionary. */
     clearLabel?: string;
-    /** Text used for the preview alt. */
+    /** Text used for the preview alt. Defaults to the `inputDropZone.previewAlt` string from the active locale dictionary. */
     previewAlt?: string;
-    /** Whether selected multiple description is enabled. */
+    /** Whether selected multiple description is enabled. Defaults to the `inputDropZone.selectedMultipleDescription` string from the active locale dictionary. */
     selectedMultipleDescription?: string;
-    /** Function used to clear all label. */
+    /** Function used to clear all label. Defaults to the `inputDropZone.clearAllLabel` string from the active locale dictionary. */
     clearAllLabel?: string;
     /** Content rendered for the file icon. */
     fileIcon?: ReactNode;
-    /** Text used for the uploaded file label. */
+    /** Text used for the uploaded file label. Defaults to the `inputDropZone.uploadedFileLabel` string from the active locale dictionary. */
     uploadedFileLabel?: string;
 };
 

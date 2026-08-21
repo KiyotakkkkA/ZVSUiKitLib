@@ -15,6 +15,7 @@ import {
     type TooltipPayloadEntry,
 } from "recharts";
 import { cn } from "../../lib/utils";
+import { useLocale } from "../../hooks/useLocale";
 import type { ChartSeries, ChartProps, DefaultTooltipProps } from "./types";
 
 const DEFAULT_HEIGHT = 280;
@@ -113,7 +114,7 @@ const ChartBase = ({
     activeDotRadius = 4,
 
     renderTooltip,
-    emptyState = "Нет данных",
+    emptyState,
 
     title,
     description,
@@ -124,6 +125,7 @@ const ChartBase = ({
 
     ...props
 }: ChartProps) => {
+    const t = useLocale().chart;
     const uid = useId();
 
     const hasData = data.length > 0 && series.length > 0;
@@ -367,7 +369,7 @@ const ChartBase = ({
                         className={cn(styles.s13, classNames?.empty)}
                         style={{ height }}
                     >
-                        {emptyState}
+                        {emptyState ?? t.emptyState}
                     </div>
                 )}
             </div>

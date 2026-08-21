@@ -17,6 +17,7 @@ import {
     type Ref,
 } from "react";
 import { cn } from "../../lib/utils";
+import { useLocale } from "../../hooks/useLocale";
 import type {
     DropdownContextValue,
     DropdownProps,
@@ -40,7 +41,7 @@ function useDropdownContext() {
 
     if (!context) {
         throw new Error(
-            "Dropdown.Trigger, Dropdown.Anchor, Dropdown.Menu, Dropdown.Item и Dropdown.Render должны использоваться внутри Dropdown.",
+            "Dropdown.Trigger, Dropdown.Anchor, Dropdown.Menu, Dropdown.Item and Dropdown.Render must be used inside Dropdown.",
         );
     }
 
@@ -283,7 +284,7 @@ function DropdownRoot({
 function DropdownTrigger({
     children,
     className,
-    placeholder = "Открыть",
+    placeholder,
     icon,
     rounded = "rounded-full",
     disabled: disabledProp,
@@ -299,6 +300,8 @@ function DropdownTrigger({
         setTriggerRef,
         ignoreNextTriggerClickRef,
     } = useDropdownContext();
+    const t = useLocale().dropdown;
+    const resolvedPlaceholder = placeholder ?? t.triggerPlaceholder;
 
     const isDisabled = disabled || disabledProp;
 
@@ -334,7 +337,9 @@ function DropdownTrigger({
             className={cn(styles.s1, styles.s2, className)}
             {...props}
         >
-            <span className={styles.s3}>{children ?? placeholder}</span>
+            <span className={styles.s3}>
+                {children ?? resolvedPlaceholder}
+            </span>
 
             {icon ?? (
                 <Icon

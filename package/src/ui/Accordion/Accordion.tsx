@@ -23,7 +23,7 @@ function useAccordionContext() {
 
     if (!context) {
         throw new Error(
-            "Accordion.Summary и Accordion.Content должны использоваться внутри Accordion.",
+            "Accordion.Summary and Accordion.Content must be used inside Accordion.",
         );
     }
 

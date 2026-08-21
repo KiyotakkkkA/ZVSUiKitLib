@@ -28,7 +28,7 @@ function useFloatingContext() {
 
     if (!context) {
         throw new Error(
-            "Floating.Trigger и Floating.Content должны использоваться внутри Floating.",
+            "Floating.Trigger and Floating.Content must be used inside Floating.",
         );
     }
 

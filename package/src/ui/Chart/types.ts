@@ -106,7 +106,7 @@ export type ChartProps = Omit<ComponentPropsWithoutRef<"div">, "children"> & {
     activeDotRadius?: number;
     /** Function used to render tooltip. */
     renderTooltip?: (props: ChartTooltipProps) => ReactNode;
-    /** The empty state used by the component. */
+    /** The empty state used by the component. Defaults to the `chart.emptyState` string from the active locale dictionary. */
     emptyState?: ReactNode;
     /** Text used for the title. */
     title?: ReactNode;

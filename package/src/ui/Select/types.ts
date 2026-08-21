@@ -31,13 +31,13 @@ export type SelectProps = {
     options: SelectOption[];
     /** The content rendered inside the component. */
     children: ReactNode;
-    /** Text used for the placeholder. */
+    /** Text used for the placeholder. Defaults to the `select.placeholder` string from the active locale dictionary. */
     placeholder?: string;
     /** Whether searchable is enabled. */
     searchable?: boolean;
-    /** Text used for the search placeholder. */
+    /** Text used for the search placeholder. Defaults to the `select.searchPlaceholder` string from the active locale dictionary. */
     searchPlaceholder?: string;
-    /** Text used for the empty message. */
+    /** Text used for the empty message. Defaults to the `select.emptyMessage` string from the active locale dictionary. */
     emptyMessage?: string;
     /** Whether disabled is enabled. */
     disabled?: boolean;

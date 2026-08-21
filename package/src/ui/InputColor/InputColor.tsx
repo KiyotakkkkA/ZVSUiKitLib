@@ -12,6 +12,7 @@ import {
     type PointerEvent,
 } from "react";
 import { cn } from "../../lib/utils";
+import { useLocale } from "../../hooks/useLocale";
 import type { InputColorProps, InputColorSize } from "./types";
 import { Dropdown } from "../Dropdown/Dropdown";
 
@@ -172,6 +173,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
         },
         ref,
     ) {
+        const t = useLocale().inputColor;
         const generatedId = useId();
         const inputId = id ?? generatedId;
         const triggerId = `${inputId}-trigger`;
@@ -264,7 +266,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
                         id={triggerId}
                         aria-label={
                             props["aria-label"] ??
-                            (typeof label === "string" ? label : "Выбрать цвет")
+                            (typeof label === "string" ? label : t.pick)
                         }
                         className={cn(
                             styles.s15,
@@ -325,7 +327,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
                                 style={{ backgroundColor: currentValue }}
                             />
                             <div className={styles.s26}>
-                                <p className={styles.s27}>Настройка цвета</p>
+                                <p className={styles.s27}>{t.title}</p>
                                 <p className={styles.s28}>{currentValue}</p>
                             </div>
                         </div>
@@ -423,7 +425,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
                                     max={360}
                                     step={1}
                                     value={Math.round(activeHue)}
-                                    aria-label="Цветовой тон"
+                                    aria-label={t.hue}
                                     onChange={(event) => {
                                         const nextHue = Number(
                                             event.target.value,
@@ -488,7 +490,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
                                     max={100}
                                     step={1}
                                     value={Math.round(alpha * 100)}
-                                    aria-label="Прозрачность цвета"
+                                    aria-label={t.alpha}
                                     onChange={(event) =>
                                         updateValue(
                                             withAlpha(
@@ -523,7 +525,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
                                             <button
                                                 key={`${preset}-${index}`}
                                                 type="button"
-                                                aria-label={`Выбрать цвет ${color}`}
+                                                aria-label={t.pickSwatch(color)}
                                                 aria-pressed={isSelected}
                                                 onClick={() =>
                                                     updateValue(color)

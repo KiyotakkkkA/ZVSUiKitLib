@@ -13,6 +13,7 @@ import {
     type ToastInput,
 } from "../lib/context";
 import { cn } from "../lib/utils";
+import { useLocale } from "../hooks/useLocale";
 import type { ColorVariantsBase } from "../ui";
 
 type ToastItem = {
@@ -186,6 +187,7 @@ const ToastCard = ({ item, onDone }: ToastCardProps) => {
 };
 
 export const ToastProvider = ({ children }: PropsWithChildren) => {
+    const t = useLocale().toasts;
     const [toasts, setToasts] = useState<ToastItem[]>([]);
 
     const removeToast = useCallback((id: string) => {
@@ -227,7 +229,7 @@ export const ToastProvider = ({ children }: PropsWithChildren) => {
             <div
                 role="region"
                 aria-live="polite"
-                aria-label="Notifications"
+                aria-label={t.regionLabel}
                 className={styles.viewport}
             >
                 {toasts.map((item) => (

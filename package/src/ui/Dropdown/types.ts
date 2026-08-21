@@ -52,7 +52,7 @@ export type DropdownProps = {
 };
 
 export type DropdownTriggerProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-    /** Renders fallback trigger content when no children are supplied. */
+    /** Renders fallback trigger content when no children are supplied. Defaults to the `dropdown.triggerPlaceholder` string from the active locale dictionary. */
     placeholder?: ReactNode;
     /** Replaces the default trailing chevron. */
     icon?: ReactNode;
