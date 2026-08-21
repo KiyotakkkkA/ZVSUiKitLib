@@ -34,7 +34,9 @@
 - **`LocaleProvider`, `useLocale`, `defaultDictionary` and `enDictionary`.**
   Every string the components render now comes from one dictionary. Without a
   provider the library falls back to the strings it always shipped with, so
-  existing apps are unaffected.
+  existing apps are unaffected. Components exported from `/server` cannot read
+  the provider — React context needs a client component — so they take the
+  string as a prop defaulting to `defaultDictionary`.
 - **`SizeVariants`**, a shared `"sm" | "md" | "lg"` scale. `Button` and `Badge`
   accept `size`; omitting it keeps their current appearance exactly.
 - **`Modal`**: `closeOnEscape` and `label`. **`SlidedPanel`**: `closeOnEscape`
@@ -69,5 +71,15 @@
 
 ### Changed
 
+- **The stylesheet ships inside a cascade layer, `@layer zvs-uikit`.** It used
+  to be unlayered, and unlayered CSS beats layered CSS whatever the source
+  order — so the library's rules won against Tailwind's `@layer utilities` and
+  every override needed `!important`. Inside its own layer the library loses to
+  Tailwind utilities and to plain unlayered app CSS, which is what a consumer
+  expects. Tailwind v4 projects should declare the order once:
+  `@layer zvs-uikit, theme, base, components, utilities;` above
+  `@import "tailwindcss"`. Tailwind v3 and non-Tailwind projects need nothing.
+  The `@property` rules Tailwind registers are hoisted out of the layer, since
+  registration inside `@layer` is not reliable across browsers.
 - **`shiki` no longer compiles all 24 grammars up front.** The highlighter
   starts empty and loads the requested grammar on demand.
