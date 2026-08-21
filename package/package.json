@@ -37,6 +37,16 @@
             "import": "./dist/index.js",
             "default": "./dist/index.js"
         },
+        "./chart": {
+            "types": "./dist/chart.d.ts",
+            "import": "./dist/chart.js",
+            "default": "./dist/chart.js"
+        },
+        "./code-view": {
+            "types": "./dist/code-view.d.ts",
+            "import": "./dist/code-view.js",
+            "default": "./dist/code-view.js"
+        },
         "./server": {
             "types": "./dist/server.d.ts",
             "import": "./dist/server.js",

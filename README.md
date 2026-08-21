@@ -16,6 +16,26 @@ export function Example() {
 }
 ```
 
+## Entry points
+
+| Entry point                             | Contents                                                |
+| --------------------------------------- | ------------------------------------------------------- |
+| `@kiyotakkkka/zvs-uikit-lib`            | Every component except `Chart` and `CodeView`.          |
+| `@kiyotakkkka/zvs-uikit-lib/chart`      | `Chart`. Pulls in `recharts`.                           |
+| `@kiyotakkkka/zvs-uikit-lib/code-view`  | `CodeView`. Pulls in `shiki`.                           |
+| `@kiyotakkkka/zvs-uikit-lib/server`     | Components safe to render on the server.                |
+| `@kiyotakkkka/zvs-uikit-lib/styles.css` | Optional explicit CSS entry.                            |
+
+`Chart` and `CodeView` are the only components with heavy third-party
+dependencies. They sit behind their own entry points so a project that does not
+use them never loads `recharts` or `shiki`:
+
+```tsx
+import { Button } from "@kiyotakkkka/zvs-uikit-lib";
+import { Chart } from "@kiyotakkkka/zvs-uikit-lib/chart";
+import { CodeView } from "@kiyotakkkka/zvs-uikit-lib/code-view";
+```
+
 ## Themes
 
 ```css
@@ -222,8 +242,8 @@ prop, theme switching remains in memory and does not write cookies.
 | `Breadcrumbs`    | Navigation trail for current page location.                               | [Breadcrumbs](package/src/docs/Breadcrumbs.md)       |
 | `Card`           | Container with optional header/body/footer sections.                      | [Card](package/src/docs/Card.md)                     |
 | `Carousel`       | Image or content carousel with navigation and optional auto-scroll.       | [Carousel](package/src/docs/Carousel.md)             |
-| `Chart`          | Line/bar chart with multiple series and custom styling based on Recharts. | [Chart](package/src/docs/Chart.md)                   |
-| `CodeView`       | Code block with syntax highlighting and copy button.                      | [CodeView](package/src/docs/CodeView.md)             |
+| `Chart`          | Line/bar chart with multiple series and custom styling based on Recharts. Imported from `/chart`. | [Chart](package/src/docs/Chart.md)                   |
+| `CodeView`       | Code block with syntax highlighting and copy button. Imported from `/code-view`. | [CodeView](package/src/docs/CodeView.md)             |
 | `DataDisplay`    | Compact list for displaying labeled data rows.                            | [DataDisplay](package/src/docs/DataDisplay.md)       |
 | `Pagination`     | List pagination with range summary and page-size selector.                | [Pagination](package/src/docs/Pagination.md)         |
 | `PrettyBR`       | Decorative horizontal divider with icon and label.                        | [PrettyBR](package/src/docs/PrettyBR.md)             |

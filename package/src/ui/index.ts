@@ -46,8 +46,6 @@ export * from "./InputDate";
 export * from "./InputDropZone";
 export * from "./InputPins";
 export * from "./Tabs";
-export * from "./Chart";
-export * from "./CodeView";
 export * from "./Text";
 export * from "./Heading";
 export * from "./Blockquote";

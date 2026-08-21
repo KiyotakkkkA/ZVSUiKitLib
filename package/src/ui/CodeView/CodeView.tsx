@@ -103,11 +103,12 @@ const notifyCache = (key: string) => {
 
 let highlighterPromise: ReturnType<typeof createHighlighter> | null = null;
 const themeLoadPromises = new Map<string, Promise<void>>();
+const languageLoadPromises = new Map<string, Promise<void>>();
 
 const getHighlighter = () => {
     highlighterPromise ??= createHighlighter({
         themes: [DEFAULT_THEME],
-        langs: SUPPORTED_LANGUAGES,
+        langs: [],
     });
     return highlighterPromise;
 };
@@ -129,6 +130,32 @@ const ensureThemeLoaded = async (
     }
 
     await promise;
+};
+
+const ensureLanguageLoaded = async (
+    highlighter: Awaited<ReturnType<typeof createHighlighter>>,
+    language: string,
+) => {
+    if (language === "plaintext") return;
+    if (!SUPPORTED_LANGUAGES.includes(language as BundledLanguage)) return;
+    if (highlighter.getLoadedLanguages().map(String).includes(language)) return;
+
+    let promise = languageLoadPromises.get(language);
+
+    if (!promise) {
+        promise = highlighter
+            .loadLanguage(language as BundledLanguage)
+            .finally(() => {
+                languageLoadPromises.delete(language);
+            });
+        languageLoadPromises.set(language, promise);
+    }
+
+    try {
+        await promise;
+    } catch {
+        // Fall through: highlightCode renders the block as plaintext.
+    }
 };
 
 const hashString = (str: string): string => {
@@ -180,6 +207,7 @@ const highlightCode = async ({
     try {
         const highlighter = await getHighlighter();
         await ensureThemeLoaded(highlighter, theme);
+        await ensureLanguageLoaded(highlighter, normalizedLanguage);
 
         const loaded = highlighter.getLoadedLanguages().map(String);
         const lang = loaded.includes(normalizedLanguage)
