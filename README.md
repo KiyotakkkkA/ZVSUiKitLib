@@ -45,28 +45,54 @@ import { CodeView } from "@kiyotakkkka/zvs-uikit-lib/code-view";
 <Button className="bg-red-500">Delete</Button>
 ```
 
-**Tailwind v4** puts its utilities in `@layer utilities`, so the two layers have
-to be ordered. Declare the order once, at the very top of the CSS entry that
-imports Tailwind:
+For that to hold, the layer has to sit in one specific place: **after Tailwind's
+`base`, before `utilities`.**
+
+### Tailwind v4 — this line is required
+
+Declare the layer order at the top of the CSS entry that imports Tailwind:
 
 ```css
-@layer zvs-uikit, theme, base, components, utilities;
+@layer theme, base, zvs-uikit, components, utilities;
 @import "tailwindcss";
 ```
 
-Layer order is fixed by where a layer name first appears, so this one line
-settles it no matter where the bundler places the library's stylesheet. Without
-it the outcome depends on that placement: if the library's CSS lands after
-Tailwind's, its layer sorts last and wins again.
+Both neighbours matter:
 
-**Tailwind v3** compiles its `@layer` directives away and emits unlayered CSS,
-which already beats the library's layer. Nothing to declare.
+- **`base` must come first.** It holds Tailwind's Preflight, which resets
+  `background-color`, `border-width` and `padding` on buttons and inputs. A
+  layer ordered before `base` loses to Preflight and the components render
+  stripped of their backgrounds, borders and padding.
+- **`utilities` must come last**, otherwise the library outranks your own
+  classes and `!important` is back.
 
-**No Tailwind:** your own unlayered CSS wins over the library's rules, so a
-plain stylesheet is enough to restyle a component.
+Layer order follows where a layer name first appears, so this line also removes
+any dependence on where the bundler places the library's stylesheet. Without it
+the result is decided by that placement, and both outcomes are wrong.
 
-To go the other way and let a specific library rule win, put your override in a
-layer declared before `zvs-uikit`, or leave that rule to the component.
+### Tailwind v3
+
+v3 compiles its `@layer` directives away and emits unlayered CSS — Preflight
+included. Unlayered CSS beats every layer, so Preflight would strip the
+components. Put Tailwind's own output into layers in your entry instead
+(needs `postcss-import`):
+
+```css
+@layer theme, base, zvs-uikit, components, utilities;
+@import "tailwindcss/base" layer(base);
+@import "tailwindcss/components" layer(components);
+@import "tailwindcss/utilities" layer(utilities);
+```
+
+### No Tailwind
+
+Nothing to declare — your own unlayered CSS wins over the library's layer, so a
+plain stylesheet is enough to restyle a component. One thing to watch: a global
+reset in `globals.css` is unlayered too, so it will also override the
+components. Wrap it in `@layer base` if that happens.
+
+To go the other way and let a library rule win over one of yours, put your
+override in a layer declared before `zvs-uikit`.
 
 ## Themes
 
