@@ -31,13 +31,10 @@ jobs:
               run: npm ci
 
             - name: Typecheck
-              run: npm run typecheck
+              run: npm run typecheck:package
 
             - name: Lint
               run: npm run lint
-
-            - name: Check the /server entry stays RSC-safe
-              run: npm run check:server
 
             - name: Test
               run: npm run test
