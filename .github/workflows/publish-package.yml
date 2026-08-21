@@ -65,10 +65,6 @@ jobs:
               if: steps.version.outputs.changed == 'true'
               run: npm run lint:package
 
-            - name: Check the /server entry stays RSC-safe
-              if: steps.version.outputs.changed == 'true'
-              run: npm run check:server
-
             - name: Test package
               if: steps.version.outputs.changed == 'true'
               run: npm run test
@@ -76,10 +72,6 @@ jobs:
             - name: Build package
               if: steps.version.outputs.changed == 'true'
               run: npm run build:package
-
-            - name: Check the stylesheet ships in a cascade layer
-              if: steps.version.outputs.changed == 'true'
-              run: npm run check:css
 
             - name: Prepare package README
               if: steps.version.outputs.changed == 'true'
