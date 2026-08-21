@@ -22,7 +22,7 @@ export function DemoDataDisplay() {
                     KiyotakkkkA
                 </DataDisplay.ItemTopSubTitle>
                 <DataDisplay.ItemContentIcon>
-                    <Icon icon="mdi:tune-variant" width={18} height={18} />
+                    <Icon icon="tune-variant" width={18} height={18} />
                 </DataDisplay.ItemContentIcon>
                 <DataDisplay.ItemContentDescription>
                     Responsible for this workspace.

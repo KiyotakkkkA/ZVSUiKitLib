@@ -32,7 +32,7 @@ export function SiteHeader() {
                     href="https://github.com/KiyotakkkkA/ZVSUiKitLib"
                     aria-label="Open GitHub repository"
                 >
-                    <Icon icon="mdi:github" />
+                    <Icon icon="github" />
                 </a>
                 <a
                     className="icon-link"

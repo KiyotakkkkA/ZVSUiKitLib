@@ -111,12 +111,12 @@ const options: SelectOption[] = [
     {
         value: "user",
         label: "User",
-        icon: <Icon icon="mdi:account" />,
+        icon: <Icon icon="account" />,
     },
     {
         value: "admin",
         label: "Admin",
-        icon: <Icon icon="mdi:shield-account" />,
+        icon: <Icon icon="shield-account" />,
         onClick: () => console.log("Admin selected"),
     },
 ];
