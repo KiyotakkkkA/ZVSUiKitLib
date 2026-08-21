@@ -57,6 +57,14 @@ jobs:
               if: steps.version.outputs.changed == 'true'
               run: npm ci
 
+            - name: Typecheck package
+              if: steps.version.outputs.changed == 'true'
+              run: npm run typecheck:package
+
+            - name: Lint package
+              if: steps.version.outputs.changed == 'true'
+              run: npm run lint:package
+
             - name: Build package
               if: steps.version.outputs.changed == 'true'
               run: npm run build:package
@@ -64,6 +72,10 @@ jobs:
             - name: Prepare package README
               if: steps.version.outputs.changed == 'true'
               run: sed 's#](package/#](#g' README.md > package/README.md
+
+            - name: Verify publishable package contents
+              if: steps.version.outputs.changed == 'true'
+              run: npm pack ./package --dry-run
 
             - name: Publish package
               if: steps.version.outputs.changed == 'true'
