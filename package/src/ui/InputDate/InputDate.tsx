@@ -28,6 +28,7 @@ export function InputDate({
     clearable = false,
 
     menuPlacement = "bottom-left",
+    ref,
     menuWidth = 300,
 
     className,
@@ -76,7 +77,7 @@ export function InputDate({
     }, [handleCalendarChange]);
 
     return (
-        <div className={cn(styles.s0, className)}>
+        <div ref={ref} className={cn(styles.s0, className)}>
             <Dropdown
                 className={styles.dropdown}
                 disabled={disabled}

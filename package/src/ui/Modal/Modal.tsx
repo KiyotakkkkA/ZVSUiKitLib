@@ -11,7 +11,7 @@ import { createPortal } from "react-dom";
 import { Icon } from "../_shared/icons";
 import { Button } from "../Button/Button";
 import { ScrollArea } from "../ScrollArea/ScrollArea";
-import { cn } from "../../lib/utils";
+import { cn, mergeRefs } from "../../lib/utils";
 import { usePortalContainer } from "../../hooks/usePortalContainer";
 import { useDialog } from "../../hooks/useDialog";
 import type { ModalProps, ModalSectionProps, ModalHeaderProps } from "./types";
@@ -80,6 +80,7 @@ function ModalRoot({
     closeOnOverlayClick = true,
     closeOnEscape = true,
     label,
+    ref,
     rounded = "rounded-4xl",
 }: ModalProps) {
     const portalContainer = usePortalContainer();
@@ -110,7 +111,7 @@ function ModalRoot({
                 value={{ onClose, titleId, registerTitle: setHasTitle }}
             >
                 <div
-                    ref={panelRef}
+                    ref={mergeRefs(panelRef, ref)}
                     role="dialog"
                     aria-modal
                     aria-label={hasTitle ? undefined : label}

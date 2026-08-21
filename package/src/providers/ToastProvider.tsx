@@ -6,7 +6,7 @@ import {
     useState,
     type PropsWithChildren,
 } from "react";
-import { Icon } from "../ui/_shared/icons";
+import { Icon, type IconName } from "../ui/_shared/icons";
 import {
     ToastContext,
     type ToastContextValue,
@@ -50,7 +50,7 @@ const makeToastId = () => {
 
 const toastStyles: Record<
     ColorVariantsBase,
-    { icon: string; accent: string; progress: string; border: string }
+    { icon: IconName; accent: string; progress: string; border: string }
 > = {
     primary: {
         icon: "information-outline",

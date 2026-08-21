@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from "react";
+import type { PropsWithChildren, Ref } from "react";
 import type {
     ButtonClassName,
     DivClassName,
@@ -6,6 +6,8 @@ import type {
 } from "../_shared/types";
 
 export type ModalProps = PropsWithChildren<{
+    /** Receives the dialog panel element. */
+    ref?: Ref<HTMLDivElement>;
     /** Whether open is enabled. */
     open: boolean;
     /** Callback invoked when close occurs. */

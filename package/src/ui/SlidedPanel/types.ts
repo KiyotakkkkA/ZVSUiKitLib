@@ -1,8 +1,10 @@
-import type { HTMLAttributes, PropsWithChildren } from "react";
+import type { HTMLAttributes, PropsWithChildren, Ref } from "react";
 
 export type SlidedPanelPlacement = "top" | "right" | "bottom" | "left";
 
 export type SlidedPanelProps = PropsWithChildren<{
+    /** Receives the panel `<section>` element. */
+    ref?: Ref<HTMLElement>;
     /** Whether open is enabled. */
     open: boolean;
     /** Callback invoked when close occurs. */

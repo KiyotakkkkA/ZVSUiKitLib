@@ -118,6 +118,7 @@ function DropdownRoot({
     menuWidth = 220,
     menuPlacement = "bottom-left",
     onOpenChange,
+    ref,
 }: DropdownProps) {
     const [open, setOpen] = useState(false);
     const [triggerElement, setTriggerElement] = useState<HTMLElement | null>(
@@ -272,7 +273,9 @@ function DropdownRoot({
 
     return (
         <DropdownContext.Provider value={contextValue}>
-            <div className={cn(styles.s0, className)}>{children}</div>
+            <div ref={ref} className={cn(styles.s0, className)}>
+                {children}
+            </div>
         </DropdownContext.Provider>
     );
 }

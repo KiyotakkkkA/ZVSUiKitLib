@@ -73,6 +73,7 @@ export function Calendar({
     weekStartsOn = 1,
     className,
     classNames,
+    ref,
     renderDay,
 }: CalendarProps) {
     const [innerValue, setInnerValue] = useState<CalendarDate>(defaultValue);
@@ -239,7 +240,7 @@ export function Calendar({
     }, [activeViewDate, maxDay]);
 
     return (
-        <div className={cn(styles.s0, className)}>
+        <div ref={ref} className={cn(styles.s0, className)}>
             <div className={cn(styles.s1, classNames?.header)}>
                 <Button
                     variant="secondary"

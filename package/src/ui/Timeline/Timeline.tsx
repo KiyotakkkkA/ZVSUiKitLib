@@ -7,8 +7,12 @@ import type {
     TimelineProps,
 } from "./types";
 
-function TimelineRoot({ children, className }: TimelineProps) {
-    return <div className={cn(styles.s0, className)}>{children}</div>;
+function TimelineRoot({ children, className, ref }: TimelineProps) {
+    return (
+        <div ref={ref} className={cn(styles.s0, className)}>
+            {children}
+        </div>
+    );
 }
 
 function TimelineItem({ children, icon, className }: TimelineItemProps) {

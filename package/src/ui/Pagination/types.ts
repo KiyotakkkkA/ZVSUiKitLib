@@ -1,6 +1,9 @@
+import type { Ref } from "react";
 export type PaginationPageItem = number | "dots";
 
 export type PaginationProps = {
+    /** Receives the pagination root element. */
+    ref?: Ref<HTMLDivElement>;
     /** The page used by the component. */
     page: number;
     /** The per page used by the component. */

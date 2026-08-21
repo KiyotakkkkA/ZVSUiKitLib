@@ -1,2 +1,2 @@
-import type { AnchorHTMLAttributes } from "react";
-export type LinkProps = AnchorHTMLAttributes<HTMLAnchorElement>;
+import type { ComponentPropsWithRef } from "react";
+export type LinkProps = ComponentPropsWithRef<"a">;

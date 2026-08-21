@@ -43,6 +43,7 @@ export const Pagination = ({
     onPageChange,
     onPerPageChange,
     perPageOptions = [10, 20, 50],
+    ref,
 }: PaginationProps) => {
     const normalizedLastPage = Math.max(lastPage, 1);
     const visiblePages = getVisiblePages(page, normalizedLastPage);
@@ -54,7 +55,7 @@ export const Pagination = ({
     }));
 
     return (
-        <div className={styles.s0}>
+        <div ref={ref} className={styles.s0}>
             <div className={styles.s1}>
                 {total > 0 ? (
                     <div className={styles.s2}>

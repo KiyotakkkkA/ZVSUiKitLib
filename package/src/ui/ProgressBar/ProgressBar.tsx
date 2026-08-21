@@ -21,12 +21,13 @@ export const ProgressBar = ({
     showValue = false,
     className,
     classNames,
+    ref,
 }: ProgressBarProps) => {
     const normalizedValue = Math.min(Math.max(value, 0), max);
     const percent = max === 0 ? 0 : Math.round((normalizedValue / max) * 100);
 
     return (
-        <div className={cn(styles.s7, className)}>
+        <div ref={ref} className={cn(styles.s7, className)}>
             {(label || showValue) && (
                 <div className={cn(styles.s8, classNames?.header)}>
                     {label && (

@@ -1,5 +1,5 @@
 import type React from "react";
-import type { HTMLAttributes, InputHTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, InputHTMLAttributes, ReactNode, Ref } from "react";
 import type {
     ButtonClassName,
     RoundVariants,
@@ -22,6 +22,8 @@ export type AutoFillSelectorProps = Omit<
     React.HTMLAttributes<HTMLDivElement>,
     "onChange"
 > & {
+    /** Receives the selector root element. */
+    ref?: Ref<HTMLDivElement>;
     /** The options used by the component. */
     options: AutoFillOption[];
     /** The value used by the component. */

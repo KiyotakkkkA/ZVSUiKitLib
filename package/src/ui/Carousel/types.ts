@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode, Ref } from "react";
 
 export type CarouselClassNames = {
     /** The nav used by the component. */
@@ -8,6 +8,8 @@ export type CarouselClassNames = {
 };
 
 export type CarouselProps = {
+    /** Receives the carousel `<section>` element. */
+    ref?: Ref<HTMLElement>;
     /** The content rendered inside the component. */
     children: ReactNode;
     /** CSS classes applied to the root element. */

@@ -9,7 +9,7 @@ import {
 } from "react";
 import { createPortal } from "react-dom";
 import { Icon } from "../_shared/icons";
-import { cn } from "../../lib/utils";
+import { cn, mergeRefs } from "../../lib/utils";
 import { usePortalContainer } from "../../hooks/usePortalContainer";
 import { useDialog } from "../../hooks/useDialog";
 import type {
@@ -79,6 +79,7 @@ function SlidedPanelRoot({
     closeOnOverlayClick = true,
     closeOnEscape = true,
     label,
+    ref,
     panelPlacement = "right",
 }: SlidedPanelProps) {
     const portalContainer = usePortalContainer();
@@ -115,7 +116,7 @@ function SlidedPanelRoot({
                 aria-hidden={!open}
             >
                 <section
-                    ref={panelRef}
+                    ref={mergeRefs(panelRef, ref)}
                     role="dialog"
                     aria-modal
                     aria-label={hasTitle ? undefined : label}

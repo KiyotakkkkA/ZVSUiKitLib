@@ -1,6 +1,8 @@
-import type { ReactNode } from "react";
+import type { ReactNode, Ref } from "react";
 
 export type InputDropZoneProps = {
+    /** Receives the drop zone root element. */
+    ref?: Ref<HTMLDivElement>;
     /** The file used by the component. */
     file?: File | null;
     /** The files used by the component. */

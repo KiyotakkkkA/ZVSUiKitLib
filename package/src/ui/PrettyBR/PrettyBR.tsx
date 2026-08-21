@@ -10,11 +10,12 @@ export const PrettyBR = (props: PrettyBRProps) => {
         size = 16,
         className,
         classNames,
+        ref,
     } = props;
     const resolvedIcon = icon ?? <Icon icon="script" />;
 
     return (
-        <div className={cn(styles.s0, className)}>
+        <div ref={ref} className={cn(styles.s0, className)}>
             <div className={cn(styles.s1, classNames?.divider)} />
             <span
                 className={cn(styles.s2, classNames?.icon)}

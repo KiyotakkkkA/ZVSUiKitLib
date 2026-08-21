@@ -35,6 +35,8 @@ export type DropdownContextValue = {
 };
 
 export type DropdownProps = {
+    /** Receives the dropdown root element. */
+    ref?: Ref<HTMLDivElement>;
     /** Renders the dropdown trigger, menu, and optional render-prop parts. */
     children: ReactNode;
     /** Applies CSS classes to the dropdown root wrapper. */

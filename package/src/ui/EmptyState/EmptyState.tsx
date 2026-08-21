@@ -9,9 +9,10 @@ export const EmptyState = ({
     action,
     className,
     classNames,
+    ref,
 }: EmptyStateProps) => {
     return (
-        <div className={cn(styles.s0, className)}>
+        <div ref={ref} className={cn(styles.s0, className)}>
             {icon && (
                 <div className={cn(styles.s1, classNames?.icon)}>{icon}</div>
             )}

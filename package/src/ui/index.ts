@@ -16,6 +16,7 @@ export * from "./InputRadioGroup";
 export * from "./InputCheckBox";
 export * from "./InputCheckBoxGroup";
 export * from "./EmptyState";
+export * from "./Field";
 export * from "./Loader";
 export * from "./Modal";
 export * from "./Select";

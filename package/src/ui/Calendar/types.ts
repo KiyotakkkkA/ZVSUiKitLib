@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode, Ref } from "react";
 import type {
     ButtonClassName,
     DivClassName,
@@ -42,6 +42,8 @@ export type CalendarClassNames = {
 };
 
 export type CalendarProps = {
+    /** Receives the calendar root element. */
+    ref?: Ref<HTMLDivElement>;
     /** The value used by the component. */
     value?: CalendarDate;
     /** The default value used by the component. */

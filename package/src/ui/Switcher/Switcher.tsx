@@ -1,6 +1,6 @@
 import styles from "./Switcher.module.css";
 import { useRef, type KeyboardEvent } from "react";
-import { cn } from "../../lib/utils";
+import { cn, mergeRefs } from "../../lib/utils";
 import type { SwitcherProps } from "./types";
 
 export const Switcher = ({
@@ -11,6 +11,7 @@ export const Switcher = ({
     className,
     classNames,
     rounded = "rounded-full",
+    ref,
 }: SwitcherProps) => {
     const groupRef = useRef<HTMLDivElement>(null);
 
@@ -58,7 +59,7 @@ export const Switcher = ({
 
     return (
         <div
-            ref={groupRef}
+            ref={mergeRefs(groupRef, ref)}
             className={cn(styles.s0, `zvs-${rounded}`, className)}
             role="radiogroup"
             aria-label={label}

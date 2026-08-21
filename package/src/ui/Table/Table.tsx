@@ -42,6 +42,7 @@ export function Table<T extends TableRecord>({
     data,
     columns,
     rowKey,
+    ref,
     caption,
     captionVisible = false,
     emptyMessage,
@@ -101,7 +102,7 @@ export function Table<T extends TableRecord>({
     }, []);
 
     return (
-        <table className={cn(styles.s0, classNames?.root)}>
+        <table ref={ref} className={cn(styles.s0, classNames?.root)}>
             {caption && (
                 <caption
                     className={cn(

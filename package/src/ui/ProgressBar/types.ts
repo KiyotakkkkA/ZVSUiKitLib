@@ -1,3 +1,4 @@
+import type { Ref } from "react";
 import type {
     ColorVariantsBase,
     DivClassName,
@@ -18,6 +19,8 @@ export type ProgressBarClassNames = {
 };
 
 export type ProgressBarProps = {
+    /** Receives the progress bar root element. */
+    ref?: Ref<HTMLDivElement>;
     /** The visual style variant applied to the component. */
     variant?: ColorVariantsBase;
     /** The value used by the component. */

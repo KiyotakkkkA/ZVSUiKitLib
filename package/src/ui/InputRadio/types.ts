@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ReactNode, Ref } from "react";
 import type {
     InputClassName,
     LabelClassName,
@@ -24,6 +24,8 @@ export type InputRadioClassNames = {
 };
 
 export type InputRadioProps = BaseInputProps & {
+    /** Receives the native radio input node. */
+    ref?: Ref<HTMLInputElement>;
     /** Controls whether the radio is selected. */
     checked?: boolean;
     /** Runs with the next selected state after user interaction. */

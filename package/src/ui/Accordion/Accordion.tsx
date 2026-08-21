@@ -34,6 +34,7 @@ function AccordionRoot({
     defaultOpen = false,
     className,
     children,
+    ref,
 }: AccordionProps) {
     const [isOpen, setIsOpen] = useState(defaultOpen);
     const contentId = useId();
@@ -43,7 +44,9 @@ function AccordionRoot({
         <AccordionContext.Provider
             value={{ isOpen, setIsOpen, contentId, summaryId }}
         >
-            <div className={cn(styles.s0, className)}>{children}</div>
+            <div ref={ref} className={cn(styles.s0, className)}>
+                {children}
+            </div>
         </AccordionContext.Provider>
     );
 }

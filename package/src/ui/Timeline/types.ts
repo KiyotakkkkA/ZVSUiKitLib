@@ -1,8 +1,12 @@
-import type { ReactNode } from "react";
+import type { ReactNode, Ref } from "react";
+
+import type { IconName } from "../_shared/icons";
 
 import type { DivClassName } from "../_shared/types";
 
 export type TimelineProps = {
+    /** Receives the timeline root element. */
+    ref?: Ref<HTMLDivElement>;
     /** The content rendered inside the component. */
     children: ReactNode;
     /** CSS classes applied to the root element. */
@@ -13,7 +17,7 @@ export type TimelineItemProps = {
     /** The content rendered inside the component. */
     children: ReactNode;
     /** Content rendered for the icon. */
-    icon: string;
+    icon: IconName;
     /** CSS classes applied to the root element. */
     className?: DivClassName;
 };

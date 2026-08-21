@@ -1,2 +1,2 @@
-import type { HTMLAttributes } from "react";
-export type QuoteProps = HTMLAttributes<HTMLQuoteElement>;
+import type { ComponentPropsWithRef } from "react";
+export type QuoteProps = ComponentPropsWithRef<"q">;

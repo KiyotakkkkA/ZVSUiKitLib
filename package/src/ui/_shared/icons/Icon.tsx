@@ -1,8 +1,10 @@
 import type { SVGProps } from "react";
 
+export type IconName = keyof typeof icons;
+
 export type IconProps = SVGProps<SVGSVGElement> & {
-    /** The local icon name, including the optional `` compatibility prefix. */
-    icon: string;
+    /** The name of one of the icons bundled with the library. */
+    icon: IconName;
     /** The rendered icon width. */
     width?: number | string;
     /** The rendered icon height. */
@@ -14,7 +16,7 @@ type IconDefinition = {
     fill?: boolean;
 };
 
-const icons: Record<string, IconDefinition> = {
+const icons = {
     account: {
         paths: ["M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8a7 7 0 0 1 14 0"],
     },
@@ -141,9 +143,9 @@ const icons: Record<string, IconDefinition> = {
     "tune-variant": {
         paths: ["M4 7h10m4 0h2M4 17h2m4 0h10", "M14 4v6M7 14v6"],
     },
-};
+} satisfies Record<string, IconDefinition>;
 
-const fallbackIcon = icons["information-outline"]!;
+const fallbackIcon: IconDefinition = icons["information-outline"];
 
 export function Icon({
     icon,
@@ -151,7 +153,7 @@ export function Icon({
     height = "1em",
     ...props
 }: IconProps) {
-    const definition = icons[icon] ?? fallbackIcon;
+    const definition: IconDefinition = icons[icon] ?? fallbackIcon;
 
     return (
         <svg

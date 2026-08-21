@@ -15,6 +15,7 @@ function CarouselRoot({
     loop = false,
     autoScroll = false,
     autoScrollTimeout = 5000,
+    ref,
 }: CarouselProps) {
     const slides = useMemo(() => Children.toArray(children), [children]);
     const [activeIndex, setActiveIndex] = useState(0);
@@ -79,6 +80,7 @@ function CarouselRoot({
 
     return (
         <section
+            ref={ref}
             className={cn(styles.s1, className)}
             aria-roledescription="carousel"
         >

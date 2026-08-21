@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, CSSProperties, ReactNode } from "react";
+import type { CSSProperties, ComponentPropsWithoutRef, ReactNode, Ref } from "react";
 import type { TooltipContentProps, TooltipValueType } from "recharts";
 
 import type { DivClassName, SpanClassName } from "../_shared/types";
@@ -68,6 +68,8 @@ export type ChartClassNames = {
 };
 
 export type ChartProps = Omit<ComponentPropsWithoutRef<"div">, "children"> & {
+    /** Receives the chart root element. */
+    ref?: Ref<HTMLDivElement>;
     /** The data used by the component. */
     data: ChartDataItem[];
     /** The series used by the component. */

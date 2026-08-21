@@ -1,3 +1,4 @@
+import type { Ref } from "react";
 import type {
     ButtonClassName,
     DivClassName,
@@ -17,6 +18,8 @@ export type SwitcherClassNames = {
 };
 
 export type SwitcherProps = {
+    /** Receives the radio group root element. */
+    ref?: Ref<HTMLDivElement>;
     /** The value used by the component. */
     value: string;
     /** The options used by the component. */

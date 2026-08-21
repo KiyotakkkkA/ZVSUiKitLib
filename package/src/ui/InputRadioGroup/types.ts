@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, ReactNode, Ref } from "react";
 import type { BooleanModel } from "../InputCheckBoxGroup";
 import type { Orientation } from "../_shared/types";
 
@@ -6,6 +6,8 @@ export type InputRadioGroupProps<T extends BooleanModel> = Omit<
     HTMLAttributes<HTMLDivElement>,
     "default" | "onChange"
 > & {
+    /** Receives the group root element. */
+    ref?: Ref<HTMLDivElement>;
     /** Maps each radio value to its selected state. */
     model: T;
     /** Runs with the model after the selected radio changes. */

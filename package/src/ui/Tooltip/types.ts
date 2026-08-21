@@ -1,9 +1,11 @@
-import type { ReactNode } from "react";
+import type { ReactNode, Ref } from "react";
 import type { PositionAnchor, RoundVariants } from "../_shared/types";
 
 import type { DivClassName } from "../_shared/types";
 
 export type TooltipProps = {
+    /** Receives the tooltip wrapper element. */
+    ref?: Ref<HTMLSpanElement>;
     /** The content rendered inside the component. */
     children: ReactNode;
     /** Text used for the label. */

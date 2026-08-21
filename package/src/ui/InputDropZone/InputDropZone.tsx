@@ -82,6 +82,7 @@ export const InputDropZone = ({
     clearAllLabel = "Удалить все файлы",
     fileIcon = <Icon icon="file-outline" />,
     uploadedFileLabel = "Загруженный файл",
+    ref,
 }: InputDropZoneProps) => {
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [isDragging, setIsDragging] = useState(false);
@@ -198,7 +199,7 @@ export const InputDropZone = ({
     };
 
     return (
-        <div className={styles.s0}>
+        <div ref={ref} className={styles.s0}>
             <button
                 type="button"
                 disabled={disabled}

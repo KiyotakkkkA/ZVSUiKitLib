@@ -1,7 +1,9 @@
-import type { Dispatch, PropsWithChildren, SetStateAction } from "react";
+import type { Dispatch, PropsWithChildren, Ref, SetStateAction } from "react";
 import type { ButtonClassName, DivClassName } from "../_shared/types";
 
 export type AccordionProps = PropsWithChildren<{
+    /** Receives the accordion root element. */
+    ref?: Ref<HTMLDivElement>;
     /** Sets the initial expanded state of the uncontrolled accordion. */
     defaultOpen?: boolean;
     /** Applies CSS classes to the accordion root element. */

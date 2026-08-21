@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ReactNode, Ref } from "react";
 
 import type {
     ButtonClassName,
@@ -20,6 +20,8 @@ export type TreeViewVirtualizationProps = {
 
 export type TreeViewProps = TreeViewVirtualizationProps &
     ComponentPropsWithoutRef<"div"> & {
+    /** Receives the tree root element. */
+    ref?: Ref<HTMLDivElement>;
         /** Renders the tree nodes inside the root tree container. */
         children: ReactNode;
     };

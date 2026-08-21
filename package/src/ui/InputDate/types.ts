@@ -1,3 +1,4 @@
+import type { Ref } from "react";
 import type { CalendarDate, CalendarProps } from "../Calendar/types";
 import type { PositionAnchor } from "../_shared/types";
 
@@ -23,6 +24,8 @@ export type InputDateClassNames = {
 };
 
 export type InputDateProps = {
+    /** Receives the date field root element. */
+    ref?: Ref<HTMLDivElement>;
     /** The value used by the component. */
     value?: CalendarDate;
     /** The default value used by the component. */

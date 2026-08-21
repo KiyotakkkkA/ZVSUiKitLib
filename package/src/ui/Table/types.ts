@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode, Ref } from "react";
 
 export type TableRecord = Record<string, unknown>;
 
@@ -68,6 +68,8 @@ export type SortState = {
 };
 
 export type TableProps<T extends TableRecord> = {
+    /** Receives the `<table>` element. */
+    ref?: Ref<HTMLTableElement>;
     /** The data used by the component. */
     data: T[];
     /** The columns used by the component. */

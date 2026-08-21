@@ -1,2 +1,2 @@
-import type { HTMLAttributes } from "react";
-export type KbdProps = HTMLAttributes<HTMLElement>;
+import type { ComponentPropsWithRef } from "react";
+export type KbdProps = ComponentPropsWithRef<"kbd">;

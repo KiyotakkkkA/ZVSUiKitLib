@@ -1,7 +1,9 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, ReactNode, Ref } from "react";
 import type { RoundVariants } from "../_shared/types";
 
 export type DataDisplayProps = HTMLAttributes<HTMLDivElement> & {
+    /** Receives the data display root element. */
+    ref?: Ref<HTMLDivElement>;
     /** The content rendered inside the component. */
     children: ReactNode;
     /** The bordered used by the component. */

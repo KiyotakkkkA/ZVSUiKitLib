@@ -1,2 +1,2 @@
-import type { HTMLAttributes } from "react";
-export type EmProps = HTMLAttributes<HTMLElement>;
+import type { ComponentPropsWithRef } from "react";
+export type EmProps = ComponentPropsWithRef<"em">;

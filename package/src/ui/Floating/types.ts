@@ -1,7 +1,9 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, ReactNode, Ref } from "react";
 import type { PositionAnchor, RoundVariants } from "../_shared/types";
 
 export type FloatingProps = {
+    /** Receives the floating root element. */
+    ref?: Ref<HTMLDivElement>;
     /** The content rendered inside the component. */
     children: ReactNode;
     /** Content rendered for the anchor. */

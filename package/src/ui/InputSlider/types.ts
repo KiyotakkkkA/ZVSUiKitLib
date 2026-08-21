@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes } from "react";
+import type { InputHTMLAttributes, Ref } from "react";
 
 import type {
     DivClassName,
@@ -25,6 +25,8 @@ export type InputSliderClassNames = {
 };
 
 export type InputSliderProps = BaseInputSliderProps & {
+    /** Receives the slider root element. */
+    ref?: Ref<HTMLDivElement>;
     /** Controls the current numeric slider value. */
     value: number;
     /** Runs with the next value while the slider changes. */

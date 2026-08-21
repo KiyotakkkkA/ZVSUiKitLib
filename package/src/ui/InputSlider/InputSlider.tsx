@@ -27,6 +27,7 @@ export const InputSlider = ({
     classNames,
     showValue = false,
     valueFormatter,
+    ref,
     ...props
 }: InputSliderProps) => {
     const trackRef = useRef<HTMLDivElement | null>(null);
@@ -63,6 +64,7 @@ export const InputSlider = ({
 
     return (
         <div
+            ref={ref}
             className={cn(
                 styles.s0,
                 disabled ? styles.s1 : styles.s2,

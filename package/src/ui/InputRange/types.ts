@@ -1,4 +1,4 @@
-import type { InputHTMLAttributes } from "react";
+import type { InputHTMLAttributes, Ref } from "react";
 
 import type {
     DivClassName,
@@ -29,6 +29,8 @@ export type InputRangeClassNames = {
 };
 
 export type InputRangeProps = BaseInputRangeProps & {
+    /** Receives the range root element. */
+    ref?: Ref<HTMLDivElement>;
     /** Controls the lower and upper selected boundaries. */
     value: InputRangeValue;
     /** Runs with the updated lower and upper boundaries. */

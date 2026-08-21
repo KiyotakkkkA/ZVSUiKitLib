@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes, ComponentPropsWithoutRef } from "react";
+import type { ButtonHTMLAttributes, ComponentPropsWithoutRef, Ref } from "react";
 
 import type {
     ButtonClassName,
@@ -32,6 +32,8 @@ export type TabsProps = Omit<
     ComponentPropsWithoutRef<"div">,
     "onChange" | "children"
 > & {
+    /** Receives the underlying `HTMLDivElement` node. */
+    ref?: Ref<HTMLDivElement>;
     /** The value used by the component. */
     value: string;
     /** Callback invoked when change occurs. */
