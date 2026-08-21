@@ -1,3 +1,4 @@
+import type { Ref } from "react";
 import type { CalendarDate, CalendarProps } from "../Calendar/types";
 import type { PositionAnchor } from "../_shared/types";
 
@@ -23,13 +24,15 @@ export type InputDateClassNames = {
 };
 
 export type InputDateProps = {
+    /** Receives the date field root element. */
+    ref?: Ref<HTMLDivElement>;
     /** The value used by the component. */
     value?: CalendarDate;
     /** The default value used by the component. */
     defaultValue?: CalendarDate;
     /** Callback invoked when change occurs. */
     onChange?: (date: CalendarDate) => void;
-    /** Text used for the placeholder. */
+    /** Text used for the placeholder. Defaults to the `inputDate.placeholder` string from the active locale dictionary. */
     placeholder?: string;
     /** The locale used by the component. */
     locale?: string;

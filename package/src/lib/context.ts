@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import type { ZvsDictionary } from "../locale/dictionary";
 import type { StyleThemePalette } from "../providers/StyleProvider";
 import type { ColorVariantsBase } from "../ui/_shared/types";
 
@@ -26,4 +27,5 @@ type StyleContextValue = {
 };
 
 export const StyleContext = createContext<StyleContextValue | null>(null);
+export const LocaleContext = createContext<ZvsDictionary | null>(null);
 export const ToastContext = createContext<ToastContextValue | null>(null);

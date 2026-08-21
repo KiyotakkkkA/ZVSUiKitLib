@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode, Ref } from "react";
 import type {
     InputClassName,
     LabelClassName,
@@ -17,6 +17,8 @@ export type InputCheckSlidedClassNames = {
 };
 
 export type InputCheckSlidedProps = {
+    /** Receives the native checkbox input node. */
+    ref?: Ref<HTMLInputElement>;
     /** Controls whether the switch is on. */
     checked: boolean;
     /** Runs with the next checked state after user interaction. */

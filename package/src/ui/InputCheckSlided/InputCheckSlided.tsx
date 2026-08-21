@@ -9,6 +9,7 @@ export const InputCheckSlided = ({
     className,
     classNames,
     children,
+    ref,
 }: InputCheckSlidedProps) => {
     return (
         <label
@@ -26,6 +27,7 @@ export const InputCheckSlided = ({
                 )}
             >
                 <input
+                    ref={ref}
                     type="checkbox"
                     role="switch"
                     checked={checked}

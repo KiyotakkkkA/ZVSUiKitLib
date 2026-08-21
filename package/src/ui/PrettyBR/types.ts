@@ -3,7 +3,7 @@ import type {
     ParagraphClassName,
     SvgClassName,
 } from "../_shared/types";
-import type { ReactNode } from "react";
+import type { ReactNode, Ref } from "react";
 
 type IconClassName = SvgClassName;
 
@@ -17,6 +17,8 @@ export type PrettyBRClassNames = {
 };
 
 export type PrettyBRProps = {
+    /** Receives the separator root element. */
+    ref?: Ref<HTMLDivElement>;
     /** Content rendered for the icon. */
     icon?: ReactNode;
     /** Text used for the label. */

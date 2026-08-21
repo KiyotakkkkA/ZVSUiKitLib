@@ -16,6 +16,29 @@ export function Example() {
 }
 ```
 
+See [CHANGELOG.md](CHANGELOG.md) for what changed in 7.0.0, including the
+breaking changes.
+
+## Entry points
+
+| Entry point                             | Contents                                                |
+| --------------------------------------- | ------------------------------------------------------- |
+| `@kiyotakkkka/zvs-uikit-lib`            | Every component except `Chart` and `CodeView`.          |
+| `@kiyotakkkka/zvs-uikit-lib/chart`      | `Chart`. Pulls in `recharts`.                           |
+| `@kiyotakkkka/zvs-uikit-lib/code-view`  | `CodeView`. Pulls in `shiki`.                           |
+| `@kiyotakkkka/zvs-uikit-lib/server`     | Components safe to render on the server.                |
+| `@kiyotakkkka/zvs-uikit-lib/styles.css` | Optional explicit CSS entry.                            |
+
+`Chart` and `CodeView` are the only components with heavy third-party
+dependencies. They sit behind their own entry points so a project that does not
+use them never loads `recharts` or `shiki`:
+
+```tsx
+import { Button } from "@kiyotakkkka/zvs-uikit-lib";
+import { Chart } from "@kiyotakkkka/zvs-uikit-lib/chart";
+import { CodeView } from "@kiyotakkkka/zvs-uikit-lib/code-view";
+```
+
 ## Themes
 
 ```css
@@ -163,6 +186,42 @@ prop, theme switching remains in memory and does not write cookies.
 
 ---
 
+## Localisation
+
+Every string the components render — placeholders, empty states, aria-labels —
+comes from one dictionary. Without a provider the library falls back to
+`defaultDictionary`, which holds the Russian strings the components have always
+shipped with, so nothing changes for an app that ignores this.
+
+To translate, wrap the tree in `LocaleProvider`. `enDictionary` ships with the
+package:
+
+```tsx
+"use client";
+
+import { LocaleProvider, enDictionary } from "@kiyotakkkka/zvs-uikit-lib";
+
+export function AppLocale({ children }: { children: React.ReactNode }) {
+    return <LocaleProvider base={enDictionary}>{children}</LocaleProvider>;
+}
+```
+
+Overrides are merged group by group, so a single string can be replaced without
+restating the rest:
+
+```tsx
+<LocaleProvider
+    base={enDictionary}
+    dictionary={{ select: { emptyMessage: "No matching options" } }}
+>
+    {children}
+</LocaleProvider>
+```
+
+`useLocale()` returns the resolved dictionary and works without a provider.
+Props such as `placeholder` still win over the dictionary wherever a component
+accepts them.
+
 ## Component Catalog & API
 
 <a id="readme-nav"></a>
@@ -186,6 +245,7 @@ prop, theme switching remains in memory and does not write cookies.
 | `Button`             | Base button with variants and shape options.                             | [Button](package/src/docs/Button.md)                         |
 | `Calendar`           | Date calendar with constraints and custom day rendering.                 | [Calendar](package/src/docs/Calendar.md)                     |
 | `InputBig`           | Multiline text input.                                                    | [InputBig](package/src/docs/InputBig.md)                     |
+| `Field`              | Label, description and error wrapper for any control.                    | [Field](package/src/docs/Field.md)                           |
 | `InputCheckBox`      | `true/false` checkbox control.                                           | [InputCheckBox](package/src/docs/InputCheckBox.md)           |
 | `InputCheckBoxGroup` | Connects checkbox controls to a shared boolean model.                    | [InputCheckBoxGroup](package/src/docs/InputCheckBoxGroup.md) |
 | `InputCheckSlided`   | `true/false` switch control.                                             | [InputCheckSlided](package/src/docs/InputCheckSlided.md)     |
@@ -222,8 +282,8 @@ prop, theme switching remains in memory and does not write cookies.
 | `Breadcrumbs`    | Navigation trail for current page location.                               | [Breadcrumbs](package/src/docs/Breadcrumbs.md)       |
 | `Card`           | Container with optional header/body/footer sections.                      | [Card](package/src/docs/Card.md)                     |
 | `Carousel`       | Image or content carousel with navigation and optional auto-scroll.       | [Carousel](package/src/docs/Carousel.md)             |
-| `Chart`          | Line/bar chart with multiple series and custom styling based on Recharts. | [Chart](package/src/docs/Chart.md)                   |
-| `CodeView`       | Code block with syntax highlighting and copy button.                      | [CodeView](package/src/docs/CodeView.md)             |
+| `Chart`          | Line/bar chart with multiple series and custom styling based on Recharts. Imported from `/chart`. | [Chart](package/src/docs/Chart.md)                   |
+| `CodeView`       | Code block with syntax highlighting and copy button. Imported from `/code-view`. | [CodeView](package/src/docs/CodeView.md)             |
 | `DataDisplay`    | Compact list for displaying labeled data rows.                            | [DataDisplay](package/src/docs/DataDisplay.md)       |
 | `Pagination`     | List pagination with range summary and page-size selector.                | [Pagination](package/src/docs/Pagination.md)         |
 | `PrettyBR`       | Decorative horizontal divider with icon and label.                        | [PrettyBR](package/src/docs/PrettyBR.md)             |
@@ -295,6 +355,7 @@ List of SSR-friendly components:
 | ----------- | --------------------------------------------------------------- | ------------------------------------------ | ----------------------------------------------------------------------------------- |
 | `useToasts` | Access toast context API. Works only inside `ToastProvider`.    | [useToasts](package/src/docs/useToasts.md) | `ToastContextValue` with: `push`, `normal`, `info`, `warning`, `success`, `danger`. |
 | `useStyle`  | Access style management API. Works only inside `StyleProvider`. | [useStyle](package/src/docs/useStyle.md)   | Object with method: `changeTheme(palette: StyleThemePalette) => void`.              |
+| `useLocale` | Read the active string dictionary. Works without a provider.    | —                                          | The resolved `ZvsDictionary`.                                                       |
 
 <a id="providers"></a>
 
@@ -304,3 +365,4 @@ List of SSR-friendly components:
 | --------------- | --------------------------------- |
 | `ToastProvider` | Global toast notifications stack. |
 | `StyleProvider` | Global style management.          |
+| `LocaleProvider` | Strings the components render.   |

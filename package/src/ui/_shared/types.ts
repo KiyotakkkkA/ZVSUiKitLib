@@ -14,6 +14,12 @@ export type SvgClassName = ElementClassName<"svg">;
 
 export type Orientation = "horizontal" | "vertical";
 
+/**
+ * The shared size scale. Components that accept a `size` use these three
+ * steps so a form can be made compact or roomy through one vocabulary.
+ */
+export type SizeVariants = "sm" | "md" | "lg";
+
 export type ColorVariantsBase =
     | "primary"
     | "secondary"

@@ -1,3 +1,4 @@
+import type { Ref } from "react";
 import type {
     ButtonClassName,
     DivClassName,
@@ -17,12 +18,16 @@ export type SwitcherClassNames = {
 };
 
 export type SwitcherProps = {
+    /** Receives the radio group root element. */
+    ref?: Ref<HTMLDivElement>;
     /** The value used by the component. */
     value: string;
     /** The options used by the component. */
     options: SwitcherOption[];
     /** Callback invoked when change occurs. */
     onChange: (value: string) => void;
+    /** Accessible name for the radio group. Defaults to the `switcher.label` string from the active locale dictionary. */
+    label?: string;
     /** CSS classes applied to the root element. */
     className?: DivClassName;
     /** CSS classes applied to the component slots. */

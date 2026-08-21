@@ -11,6 +11,14 @@ const docsDirectory = join(sourceDirectory, "docs");
 const uiDirectory = join(sourceDirectory, "ui");
 const preservedDocuments = new Set(["dict.md"]);
 const packageImport = "@kiyotakkkka/zvs-uikit-lib";
+const subpathImports = {
+    Chart: `${packageImport}/chart`,
+    CodeView: `${packageImport}/code-view`,
+};
+
+function importPathFor(componentName) {
+    return subpathImports[componentName] ?? packageImport;
+}
 
 function markdownCell(value) {
     return value
@@ -484,7 +492,7 @@ async function generateComponentDocument(markdownFile) {
         "## Import",
         "",
         "```tsx",
-        `import { ${componentName} } from "${packageImport}";`,
+        `import { ${componentName} } from "${importPathFor(componentName)}";`,
         "```",
         "",
         "## API",

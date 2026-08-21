@@ -1,6 +1,7 @@
 import styles from "./Calendar.module.css";
 import { useMemo, useState } from "react";
 import { cn } from "../../lib/utils";
+import { useLocale } from "../../hooks/useLocale";
 import type { CalendarDate, CalendarProps } from "./types";
 import { Dropdown } from "../Dropdown/Dropdown";
 import { ScrollArea } from "../ScrollArea/ScrollArea";
@@ -73,8 +74,10 @@ export function Calendar({
     weekStartsOn = 1,
     className,
     classNames,
+    ref,
     renderDay,
 }: CalendarProps) {
+    const t = useLocale().calendar;
     const [innerValue, setInnerValue] = useState<CalendarDate>(defaultValue);
     const [innerViewDate, setInnerViewDate] = useState<Date>(
         startOfMonth(defaultViewDate ?? value ?? defaultValue ?? new Date()),
@@ -239,7 +242,7 @@ export function Calendar({
     }, [activeViewDate, maxDay]);
 
     return (
-        <div className={cn(styles.s0, className)}>
+        <div ref={ref} className={cn(styles.s0, className)}>
             <div className={cn(styles.s1, classNames?.header)}>
                 <Button
                     variant="secondary"
@@ -263,7 +266,7 @@ export function Calendar({
                         <Dropdown.Trigger
                             rounded="rounded-lg"
                             className={styles.s4}
-                            aria-label="Выбрать месяц"
+                            aria-label={t.selectMonth}
                         >
                             <span className={styles.s5}>
                                 {monthOptions[activeViewDate.getMonth()]?.label}
@@ -300,7 +303,7 @@ export function Calendar({
                         <Dropdown.Trigger
                             rounded="rounded-lg"
                             className={styles.s9}
-                            aria-label="Выбрать год"
+                            aria-label={t.selectYear}
                         >
                             {activeViewDate.getFullYear()}
                         </Dropdown.Trigger>

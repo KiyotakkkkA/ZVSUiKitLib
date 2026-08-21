@@ -32,3 +32,15 @@
 .s7 {
     @apply inline-flex items-center border px-2 py-0.5 text-[11px] font-medium;
 }
+
+.sizeSm {
+    @apply px-1.5 py-0 text-[10px];
+}
+
+.sizeMd {
+    @apply px-2 py-0.5 text-xs;
+}
+
+.sizeLg {
+    @apply px-2.5 py-1 text-sm;
+}

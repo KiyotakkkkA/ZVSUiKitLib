@@ -1,4 +1,4 @@
-import type { SelectHTMLAttributes } from "react";
+import type { Ref, SelectHTMLAttributes } from "react";
 
 import type {
     DivClassName,
@@ -26,6 +26,8 @@ export type SelectNativeClassNames = {
 };
 
 export type SelectNativeProps = BaseSelectNativeProps & {
+    /** Receives the native select node. */
+    ref?: Ref<HTMLSelectElement>;
     /** The options used by the component. */
     options: SelectNativeOption[];
     /** Callback invoked when change occurs. */

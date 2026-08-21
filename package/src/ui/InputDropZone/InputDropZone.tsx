@@ -2,6 +2,7 @@ import styles from "./InputDropZone.module.css";
 import { Icon } from "../_shared/icons";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { cn } from "../../lib/utils";
+import { useLocale } from "../../hooks/useLocale";
 import type { InputDropZoneProps, SelectedFileItem } from "./types";
 
 const imageFileIcon = <Icon icon="file-image-outline" />;
@@ -73,16 +74,30 @@ export const InputDropZone = ({
     accept = "image/*",
     emptyIcon = <Icon icon="image-plus-outline" />,
     selectedIcon = <Icon icon="image-check-outline" />,
-    emptyTitle = "Перетащите картинку сюда",
-    emptyDescription = "или нажмите для выбора файла",
-    selectedDescription = "Файл будет загружен.",
-    clearLabel = "Удалить файл",
-    previewAlt = "Предпросмотр изображения вопроса",
-    selectedMultipleDescription = "Нажмите или перетащите файлы, чтобы добавить еще.",
-    clearAllLabel = "Удалить все файлы",
+    emptyTitle,
+    emptyDescription,
+    selectedDescription,
+    clearLabel,
+    previewAlt,
+    selectedMultipleDescription,
+    clearAllLabel,
     fileIcon = <Icon icon="file-outline" />,
-    uploadedFileLabel = "Загруженный файл",
+    uploadedFileLabel,
+    ref,
 }: InputDropZoneProps) => {
+    const t = useLocale().inputDropZone;
+    const texts = {
+        emptyTitle: emptyTitle ?? t.emptyTitle,
+        emptyDescription: emptyDescription ?? t.emptyDescription,
+        selectedDescription: selectedDescription ?? t.selectedDescription,
+        selectedReplaceHint: t.selectedReplaceHint,
+        selectedMultipleDescription:
+            selectedMultipleDescription ?? t.selectedMultipleDescription,
+        clearLabel: clearLabel ?? t.clearLabel,
+        clearAllLabel: clearAllLabel ?? t.clearAllLabel,
+        previewAlt: previewAlt ?? t.previewAlt,
+        uploadedFileLabel: uploadedFileLabel ?? t.uploadedFileLabel,
+    };
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [isDragging, setIsDragging] = useState(false);
     const selectedFiles = useMemo(() => {
@@ -105,8 +120,8 @@ export const InputDropZone = ({
             id: `preview-${url}-${index}`,
             name:
                 selectedPreviewUrls.length > 1
-                    ? `${uploadedFileLabel} ${index + 1}`
-                    : uploadedFileLabel,
+                    ? `${texts.uploadedFileLabel} ${index + 1}`
+                    : texts.uploadedFileLabel,
             previewSrc: url,
             icon: imageFileIcon,
             source: "preview" as const,
@@ -127,7 +142,7 @@ export const InputDropZone = ({
         filePreviewUrls,
         selectedFiles,
         selectedPreviewUrls,
-        uploadedFileLabel,
+        texts.uploadedFileLabel,
     ]);
     const hasSelection = selectedItems.length > 0;
     const isActiveDragging = isDragging && !disabled;
@@ -198,7 +213,7 @@ export const InputDropZone = ({
     };
 
     return (
-        <div className={styles.s0}>
+        <div ref={ref} className={styles.s0}>
             <button
                 type="button"
                 disabled={disabled}
@@ -254,7 +269,7 @@ export const InputDropZone = ({
                         <span className={styles.s6}>
                             <img
                                 src={selectedItems[0].previewSrc}
-                                alt={previewAlt}
+                                alt={texts.previewAlt}
                                 className={styles.s7}
                             />
                         </span>
@@ -263,8 +278,7 @@ export const InputDropZone = ({
                                 {selectedItems[0].name}
                             </span>
                             <span className={styles.s10}>
-                                Нажмите или перетащите новый файл, чтобы
-                                заменить текущий.
+                                {texts.selectedReplaceHint}
                             </span>
                         </span>
                     </span>
@@ -277,24 +291,24 @@ export const InputDropZone = ({
                             {selectedItems[0].name}
                         </span>
                         <span className={styles.s14}>
-                            {selectedDescription}
+                            {texts.selectedDescription}
                         </span>
                     </span>
                 ) : hasSelection ? (
                     <span className={styles.s15}>
                         <span className={styles.s16}>{selectedIcon}</span>
                         <span className={styles.s17}>
-                            Выбрано файлов: {selectedItems.length}
+                            {t.selectedCount(selectedItems.length)}
                         </span>
                         <span className={styles.s18}>
-                            {selectedMultipleDescription}
+                            {texts.selectedMultipleDescription}
                         </span>
                     </span>
                 ) : (
                     <span className={styles.s19}>
                         <span className={styles.s20}>{emptyIcon}</span>
-                        <span className={styles.s21}>{emptyTitle}</span>
-                        <span className={styles.s22}>{emptyDescription}</span>
+                        <span className={styles.s21}>{texts.emptyTitle}</span>
+                        <span className={styles.s22}>{texts.emptyDescription}</span>
                     </span>
                 )}
             </button>
@@ -307,7 +321,7 @@ export const InputDropZone = ({
                                 <span className={styles.s25}>
                                     <img
                                         src={item.previewSrc}
-                                        alt={`${previewAlt} ${item.index + 1}`}
+                                        alt={`${texts.previewAlt} ${item.index + 1}`}
                                         className={styles.s26}
                                     />
                                 </span>
@@ -321,7 +335,7 @@ export const InputDropZone = ({
                                 onClick={() => removeItem(item)}
                                 className={styles.s29}
                             >
-                                Удалить
+                                {t.removeLabel}
                             </button>
                         </div>
                     ))}
@@ -335,7 +349,7 @@ export const InputDropZone = ({
                     onClick={clearFiles}
                     className={styles.s30}
                 >
-                    {multiple ? clearAllLabel : clearLabel}
+                    {multiple ? texts.clearAllLabel : texts.clearLabel}
                 </button>
             )}
 

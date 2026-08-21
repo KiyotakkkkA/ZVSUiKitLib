@@ -1,14 +1,20 @@
-import type { HTMLAttributes, PropsWithChildren } from "react";
+import type { HTMLAttributes, PropsWithChildren, Ref } from "react";
 
 export type SlidedPanelPlacement = "top" | "right" | "bottom" | "left";
 
 export type SlidedPanelProps = PropsWithChildren<{
+    /** Receives the panel `<section>` element. */
+    ref?: Ref<HTMLElement>;
     /** Whether open is enabled. */
     open: boolean;
     /** Callback invoked when close occurs. */
     onClose: () => void;
     /** Function used to close on overlay click. */
     closeOnOverlayClick?: boolean;
+    /** Whether the Escape key closes the panel. */
+    closeOnEscape?: boolean;
+    /** Accessible name used when the panel renders no `SlidedPanel.Title`. */
+    label?: string;
     /** The screen edge from which the panel opens. */
     panelPlacement?: SlidedPanelPlacement;
     /** CSS classes applied to the root element. */

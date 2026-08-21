@@ -27,9 +27,10 @@ export function Tooltip({
     placement = "top-center",
     className,
     rounded = "rounded-full",
+    ref,
 }: TooltipProps) {
     return (
-        <span className={styles.s0}>
+        <span ref={ref} className={styles.s0}>
             {children}
             <span
                 role="tooltip"

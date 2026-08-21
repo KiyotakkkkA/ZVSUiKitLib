@@ -5,6 +5,7 @@ import type {
     InputClassName,
     LabelClassName,
     RoundVariants,
+    SizeVariants,
     SpanClassName,
 } from "../_shared/types";
 
@@ -12,8 +13,6 @@ type BaseInputColorProps = Omit<
     InputHTMLAttributes<HTMLInputElement>,
     "type" | "value" | "defaultValue" | "onChange" | "size" | "className"
 >;
-
-export type InputColorSize = "sm" | "md" | "lg";
 
 export type InputColorClassNames = {
     /** Text used for the label. */
@@ -66,7 +65,7 @@ export type InputColorProps = BaseInputColorProps & {
     /** Whether show value is enabled. */
     showValue?: boolean;
     /** The size preset applied to the color input trigger. */
-    size?: InputColorSize;
+    size?: SizeVariants;
     /** The palette presets used by the component. */
     palettePresets?: string[] | null;
     /** The value formatter used by the component. */

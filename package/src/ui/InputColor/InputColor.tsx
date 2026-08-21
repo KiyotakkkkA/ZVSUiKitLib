@@ -12,143 +12,38 @@ import {
     type PointerEvent,
 } from "react";
 import { cn } from "../../lib/utils";
-import type { InputColorProps, InputColorSize } from "./types";
+import { useLocale } from "../../hooks/useLocale";
+import {
+    clamp,
+    hexToAlpha,
+    hexToRgb,
+    hsvToHex,
+    parseHexColor,
+    rgbToHsv,
+    withAlpha,
+} from "../../lib/color";
+import type { InputColorProps } from "./types";
 import { Dropdown } from "../Dropdown/Dropdown";
+import type { SizeVariants } from "../_shared/types";
 
 const DEFAULT_COLOR = "#6366F1";
 
-const controlSizeClasses: Record<InputColorSize, string> = {
+const controlSizeClasses: Record<SizeVariants, string> = {
     sm: styles.s0,
     md: styles.s1,
     lg: styles.s2,
 };
 
-const pickerSizeClasses: Record<InputColorSize, string> = {
+const pickerSizeClasses: Record<SizeVariants, string> = {
     sm: styles.s3,
     md: styles.s4,
     lg: styles.s5,
 };
 
-const valueSizeClasses: Record<InputColorSize, string> = {
+const valueSizeClasses: Record<SizeVariants, string> = {
     sm: styles.s6,
     md: styles.s7,
     lg: styles.s8,
-};
-
-const clamp = (value: number, min: number, max: number) =>
-    Math.min(Math.max(value, min), max);
-
-const parseHexColor = (color?: string) => {
-    if (!color) return null;
-
-    const value = color.trim().replace(/^#/, "");
-    const expandedValue =
-        value.length === 3 || value.length === 4
-            ? value
-                  .split("")
-                  .map((character) => character.repeat(2))
-                  .join("")
-            : value;
-
-    if (!/^(?:[0-9a-f]{6}|[0-9a-f]{8})$/i.test(expandedValue)) return null;
-
-    const normalizedValue = expandedValue.toUpperCase();
-
-    if (normalizedValue.length === 8 && normalizedValue.endsWith("FF")) {
-        return `#${normalizedValue.slice(0, 6)}`;
-    }
-
-    return `#${normalizedValue}`;
-};
-
-const hexToRgb = (color: string) => ({
-    red: Number.parseInt(color.slice(1, 3), 16),
-    green: Number.parseInt(color.slice(3, 5), 16),
-    blue: Number.parseInt(color.slice(5, 7), 16),
-});
-
-const hexToAlpha = (color: string) =>
-    color.length === 9 ? Number.parseInt(color.slice(7, 9), 16) / 255 : 1;
-
-const withAlpha = (color: string, alpha: number) => {
-    const opaqueColor = color.slice(0, 7).toUpperCase();
-    const clampedAlpha = clamp(alpha, 0, 1);
-
-    if (clampedAlpha >= 1) return opaqueColor;
-
-    const alphaHex = Math.round(clampedAlpha * 255)
-        .toString(16)
-        .padStart(2, "0")
-        .toUpperCase();
-
-    return `${opaqueColor}${alphaHex}`;
-};
-
-const rgbToHsv = (red: number, green: number, blue: number) => {
-    const normalizedRed = red / 255;
-    const normalizedGreen = green / 255;
-    const normalizedBlue = blue / 255;
-    const max = Math.max(normalizedRed, normalizedGreen, normalizedBlue);
-    const min = Math.min(normalizedRed, normalizedGreen, normalizedBlue);
-    const delta = max - min;
-    let hue = 0;
-
-    if (delta !== 0) {
-        if (max === normalizedRed) {
-            hue = 60 * (((normalizedGreen - normalizedBlue) / delta) % 6);
-        } else if (max === normalizedGreen) {
-            hue = 60 * ((normalizedBlue - normalizedRed) / delta + 2);
-        } else {
-            hue = 60 * ((normalizedRed - normalizedGreen) / delta + 4);
-        }
-    }
-
-    if (hue < 0) hue += 360;
-
-    return {
-        hue,
-        saturation: max === 0 ? 0 : (delta / max) * 100,
-        brightness: max * 100,
-    };
-};
-
-const hsvToHex = (hue: number, saturation: number, brightness: number) => {
-    const normalizedSaturation = saturation / 100;
-    const normalizedBrightness = brightness / 100;
-    const chroma = normalizedBrightness * normalizedSaturation;
-    const secondary = chroma * (1 - Math.abs(((hue / 60) % 2) - 1));
-    const match = normalizedBrightness - chroma;
-    let red = 0;
-    let green = 0;
-    let blue = 0;
-
-    if (hue < 60) {
-        red = chroma;
-        green = secondary;
-    } else if (hue < 120) {
-        red = secondary;
-        green = chroma;
-    } else if (hue < 180) {
-        green = chroma;
-        blue = secondary;
-    } else if (hue < 240) {
-        green = secondary;
-        blue = chroma;
-    } else if (hue < 300) {
-        red = secondary;
-        blue = chroma;
-    } else {
-        red = chroma;
-        blue = secondary;
-    }
-
-    return `#${[red, green, blue]
-        .map((channel) =>
-            Math.round((channel + match) * 255)
-                .toString(16)
-                .padStart(2, "0"),
-        )
-        .join("")}`.toUpperCase();
 };
 
 export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
@@ -172,6 +67,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
         },
         ref,
     ) {
+        const t = useLocale().inputColor;
         const generatedId = useId();
         const inputId = id ?? generatedId;
         const triggerId = `${inputId}-trigger`;
@@ -264,7 +160,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
                         id={triggerId}
                         aria-label={
                             props["aria-label"] ??
-                            (typeof label === "string" ? label : "Выбрать цвет")
+                            (typeof label === "string" ? label : t.pick)
                         }
                         className={cn(
                             styles.s15,
@@ -325,7 +221,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
                                 style={{ backgroundColor: currentValue }}
                             />
                             <div className={styles.s26}>
-                                <p className={styles.s27}>Настройка цвета</p>
+                                <p className={styles.s27}>{t.title}</p>
                                 <p className={styles.s28}>{currentValue}</p>
                             </div>
                         </div>
@@ -423,7 +319,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
                                     max={360}
                                     step={1}
                                     value={Math.round(activeHue)}
-                                    aria-label="Цветовой тон"
+                                    aria-label={t.hue}
                                     onChange={(event) => {
                                         const nextHue = Number(
                                             event.target.value,
@@ -488,7 +384,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
                                     max={100}
                                     step={1}
                                     value={Math.round(alpha * 100)}
-                                    aria-label="Прозрачность цвета"
+                                    aria-label={t.alpha}
                                     onChange={(event) =>
                                         updateValue(
                                             withAlpha(
@@ -523,7 +419,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
                                             <button
                                                 key={`${preset}-${index}`}
                                                 type="button"
-                                                aria-label={`Выбрать цвет ${color}`}
+                                                aria-label={t.pickSwatch(color)}
                                                 aria-pressed={isSelected}
                                                 onClick={() =>
                                                     updateValue(color)

@@ -1,10 +1,12 @@
-import type { ComponentPropsWithoutRef, CSSProperties, ReactNode } from "react";
+import type { CSSProperties, ComponentPropsWithoutRef, ReactNode, Ref } from "react";
 import type { BundledLanguage, BundledTheme } from "shiki";
 
 export type CodeViewProps = Omit<
     ComponentPropsWithoutRef<"div">,
     "children"
 > & {
+    /** Receives the code view root element. */
+    ref?: Ref<HTMLDivElement>;
     /** The code used by the component. */
     code: string;
     /** The language used by the component. */

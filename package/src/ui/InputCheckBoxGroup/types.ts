@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, ReactNode, Ref } from "react";
 import type { Orientation } from "../_shared/types";
 
 export type BooleanModel = Record<string, boolean>;
@@ -7,6 +7,8 @@ export type InputCheckBoxGroupProps<T extends BooleanModel> = Omit<
     HTMLAttributes<HTMLDivElement>,
     "default" | "onChange"
 > & {
+    /** Receives the group root element. */
+    ref?: Ref<HTMLDivElement>;
     /** Maps each checkbox value to its checked state. */
     model: T;
     /** Runs with the updated checked-state model. */

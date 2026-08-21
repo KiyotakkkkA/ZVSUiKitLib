@@ -1,5 +1,5 @@
 import styles from "./InputSmall.module.css";
-import { Icon } from "../_shared/icons";
+import { Icon, type IconName } from "../_shared/icons";
 import {
     forwardRef,
     useImperativeHandle,
@@ -14,7 +14,7 @@ type PresetConfig = {
     type: InputSmallProps["type"];
     inputMode?: InputSmallProps["inputMode"];
     autoComplete?: string;
-    icon?: string;
+    icon?: IconName;
 };
 
 const presetConfig: Record<InputPreset, PresetConfig> = {

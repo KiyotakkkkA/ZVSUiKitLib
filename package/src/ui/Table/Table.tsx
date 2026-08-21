@@ -1,6 +1,7 @@
 import styles from "./Table.module.css";
 import { useCallback, useMemo, useState, type ReactNode } from "react";
 import { cn } from "../../lib/utils";
+import { nextSortState } from "../../lib/sorting";
 import type {
     SortState,
     TableColumn,
@@ -42,6 +43,10 @@ export function Table<T extends TableRecord>({
     data,
     columns,
     rowKey,
+    ref,
+    caption,
+    captionVisible = false,
+    emptyMessage,
     classNames,
 }: TableProps<T>) {
     const [sortState, setSortState] = useState<SortState>({
@@ -73,32 +78,26 @@ export function Table<T extends TableRecord>({
     }, [activeSortColumn, activeSortMode, data]);
 
     const toggleSortByColumn = useCallback((column: TableColumn<T>) => {
-        const sortModes = column.sortModes ?? [];
+        const modeKeys = (column.sortModes ?? []).map((mode) => mode.key);
 
-        if (sortModes.length === 0) {
-            return;
-        }
-
-        setSortState((current) => {
-            if (current.columnKey !== column.key || !current.modeKey) {
-                return { columnKey: column.key, modeKey: sortModes[0].key };
-            }
-
-            const currentIndex = sortModes.findIndex(
-                (mode) => mode.key === current.modeKey,
-            );
-            const nextMode = sortModes[currentIndex + 1];
-
-            if (!nextMode) {
-                return { columnKey: null, modeKey: null };
-            }
-
-            return { columnKey: column.key, modeKey: nextMode.key };
-        });
+        setSortState((current) =>
+            nextSortState(current, column.key, modeKeys),
+        );
     }, []);
 
     return (
-        <table className={cn(styles.s0, classNames?.root)}>
+        <table ref={ref} className={cn(styles.s0, classNames?.root)}>
+            {caption && (
+                <caption
+                    className={cn(
+                        !captionVisible && styles.visuallyHidden,
+                        classNames?.caption,
+                    )}
+                >
+                    {caption}
+                </caption>
+            )}
+
             <thead className={classNames?.header}>
                 <tr className={cn(styles.s1, classNames?.headerRow)}>
                     {columns.map((column) => {
@@ -123,6 +122,15 @@ export function Table<T extends TableRecord>({
                         return (
                             <th
                                 key={column.key}
+                                scope="col"
+                                aria-sort={
+                                    isSortable
+                                        ? isActive
+                                            ? (activeSortMode?.direction ??
+                                              "other")
+                                            : "none"
+                                        : undefined
+                                }
                                 className={cn(
                                     defaultHeaderCellClassName,
                                     classNames?.headerCell,
@@ -154,43 +162,57 @@ export function Table<T extends TableRecord>({
             </thead>
 
             <tbody className={classNames?.body}>
-                {sortedData.map((item, index) => (
-                    <tr
-                        key={resolveRowKey(rowKey, item, index)}
-                        className={cn(
-                            defaultRowClassName,
-                            classNames?.row,
-                            resolveClassName(
-                                classNames?.rowDynamic,
-                                item,
-                                index,
-                            ),
-                        )}
-                    >
-                        {columns.map((column) => (
-                            <td
-                                key={column.key}
-                                className={cn(
-                                    defaultCellClassName,
-                                    classNames?.cell,
-                                    column.className,
-                                    resolveClassName(
-                                        column.cellClassName,
-                                        item,
-                                        index,
-                                    ),
-                                )}
-                            >
-                                {column.render
-                                    ? column.render(item, index)
-                                    : (getColumnValue(
-                                          item,
-                                          column,
-                                      ) as ReactNode)}
-                            </td>
-                        ))}
+                {sortedData.length === 0 && emptyMessage ? (
+                    <tr className={cn(defaultRowClassName, classNames?.row)}>
+                        <td
+                            colSpan={columns.length}
+                            className={cn(
+                                defaultCellClassName,
+                                classNames?.empty,
+                            )}
+                        >
+                            {emptyMessage}
+                        </td>
                     </tr>
-                ))}
+                ) : (
+                    sortedData.map((item, index) => (
+                        <tr
+                            key={resolveRowKey(rowKey, item, index)}
+                            className={cn(
+                                defaultRowClassName,
+                                classNames?.row,
+                                resolveClassName(
+                                    classNames?.rowDynamic,
+                                    item,
+                                    index,
+                                ),
+                            )}
+                        >
+                            {columns.map((column) => (
+                                <td
+                                    key={column.key}
+                                    className={cn(
+                                        defaultCellClassName,
+                                        classNames?.cell,
+                                        column.className,
+                                        resolveClassName(
+                                            column.cellClassName,
+                                            item,
+                                            index,
+                                        ),
+                                    )}
+                                >
+                                    {column.render
+                                        ? column.render(item, index)
+                                        : (getColumnValue(
+                                              item,
+                                              column,
+                                          ) as ReactNode)}
+                                </td>
+                            ))}
+                        </tr>
+                    ))
+                )}
             </tbody>
         </table>
     );

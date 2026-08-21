@@ -9,10 +9,15 @@ const levelClasses: Record<HeadingLevel, string> = {
     5: styles.s4,
     6: styles.s5,
 };
-export function Heading({ level = 2, children, className }: HeadingProps) {
+export function Heading({
+    level = 2,
+    children,
+    className,
+    ref,
+}: HeadingProps) {
     const Tag = `h${level}` as const;
     return (
-        <Tag className={cn(styles.s6, levelClasses[level], className)}>
+        <Tag ref={ref} className={cn(styles.s6, levelClasses[level], className)}>
             {children}
         </Tag>
     );

@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, CSSProperties, ReactNode } from "react";
+import type { CSSProperties, ComponentPropsWithoutRef, ReactNode, Ref } from "react";
 import type { TooltipContentProps, TooltipValueType } from "recharts";
 
 import type { DivClassName, SpanClassName } from "../_shared/types";
@@ -68,6 +68,8 @@ export type ChartClassNames = {
 };
 
 export type ChartProps = Omit<ComponentPropsWithoutRef<"div">, "children"> & {
+    /** Receives the chart root element. */
+    ref?: Ref<HTMLDivElement>;
     /** The data used by the component. */
     data: ChartDataItem[];
     /** The series used by the component. */
@@ -104,7 +106,7 @@ export type ChartProps = Omit<ComponentPropsWithoutRef<"div">, "children"> & {
     activeDotRadius?: number;
     /** Function used to render tooltip. */
     renderTooltip?: (props: ChartTooltipProps) => ReactNode;
-    /** The empty state used by the component. */
+    /** The empty state used by the component. Defaults to the `chart.emptyState` string from the active locale dictionary. */
     emptyState?: ReactNode;
     /** Text used for the title. */
     title?: ReactNode;

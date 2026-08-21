@@ -1,6 +1,8 @@
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ReactNode, Ref } from "react";
 
 export type BreadcrumbsProps = ComponentPropsWithoutRef<"nav"> & {
+    /** Receives the breadcrumbs `<nav>` element. */
+    ref?: Ref<HTMLElement>;
     /** Replaces the separator rendered between breadcrumb items. */
     separator?: ReactNode;
     /** Renders breadcrumb navigation items. */

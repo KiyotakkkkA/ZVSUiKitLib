@@ -1,12 +1,12 @@
 import styles from "./Alert.module.css";
-import { Icon } from "../_shared/icons";
+import { Icon, type IconName } from "../_shared/icons";
 import { cn } from "../../lib/utils";
 import type { AlertProps } from "./types";
 import type { ColorVariantsBase } from "../..";
 
 const variantStyles: Record<
     ColorVariantsBase,
-    { box: string; icon: string; defaultIcon: string }
+    { box: string; icon: string; defaultIcon: IconName }
 > = {
     primary: {
         box: styles.primary,

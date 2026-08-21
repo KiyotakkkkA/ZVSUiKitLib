@@ -1,3 +1,4 @@
+import styles from "./ToastProvider.module.css";
 import {
     useCallback,
     useEffect,
@@ -5,12 +6,14 @@ import {
     useState,
     type PropsWithChildren,
 } from "react";
-import { Icon } from "../ui/_shared/icons";
+import { Icon, type IconName } from "../ui/_shared/icons";
 import {
     ToastContext,
     type ToastContextValue,
     type ToastInput,
 } from "../lib/context";
+import { cn } from "../lib/utils";
+import { useLocale } from "../hooks/useLocale";
 import type { ColorVariantsBase } from "../ui";
 
 type ToastItem = {
@@ -48,49 +51,49 @@ const makeToastId = () => {
 
 const toastStyles: Record<
     ColorVariantsBase,
-    { icon: string; accent: string; progress: string; border: string }
+    { icon: IconName; accent: string; progress: string; border: string }
 > = {
     primary: {
         icon: "information-outline",
-        accent: "text-main-800",
-        progress: "bg-main-800",
-        border: "border-transparent",
+        accent: styles.iconPrimary,
+        progress: styles.barPrimary,
+        border: styles.borderPrimary,
     },
     secondary: {
         icon: "information-outline",
-        accent: "text-main-200",
-        progress: "bg-main-500",
-        border: "border-main-600",
+        accent: styles.iconSecondary,
+        progress: styles.barSecondary,
+        border: styles.borderSecondary,
     },
     tertiary: {
         icon: "information-outline",
-        accent: "text-accent-light",
-        progress: "bg-accent-medium",
-        border: "border-accent-dark/70",
+        accent: styles.iconTertiary,
+        progress: styles.barTertiary,
+        border: styles.borderTertiary,
     },
     info: {
         icon: "information",
-        accent: "text-info-light",
-        progress: "bg-info-medium",
-        border: "border-info-dark/70",
+        accent: styles.iconInfo,
+        progress: styles.barInfo,
+        border: styles.borderInfo,
     },
     warning: {
         icon: "alert-outline",
-        accent: "text-warning-light",
-        progress: "bg-warning-medium",
-        border: "border-warning-dark/70",
+        accent: styles.iconWarning,
+        progress: styles.barWarning,
+        border: styles.borderWarning,
     },
     success: {
         icon: "check-circle-outline",
-        accent: "text-success-light",
-        progress: "bg-success-medium",
-        border: "border-success-dark/70",
+        accent: styles.iconSuccess,
+        progress: styles.barSuccess,
+        border: styles.borderSuccess,
     },
     danger: {
         icon: "close-circle-outline",
-        accent: "text-danger-light",
-        progress: "bg-danger-medium",
-        border: "border-danger-dark/70",
+        accent: styles.iconDanger,
+        progress: styles.barDanger,
+        border: styles.borderDanger,
     },
 };
 
@@ -133,13 +136,14 @@ const ToastCard = ({ item, onDone }: ToastCardProps) => {
 
     return (
         <div
-            className={`relative overflow-hidden rounded-xl border ${style.border} ${isPrimary ? "bg-main-100 text-main-800" : "bg-main-900 text-main-100"} px-4 py-3 shadow-xl transition-all duration-200 ${
-                entered
-                    ? "translate-x-0 opacity-100"
-                    : "translate-x-8 opacity-0"
-            }`}
+            className={cn(
+                styles.card,
+                style.border,
+                isPrimary ? styles.surfacePrimary : styles.surfaceDefault,
+                entered && styles.cardEntered,
+            )}
         >
-            <div className="flex items-start gap-2 pr-2">
+            <div className={styles.body}>
                 <Icon
                     icon={style.icon}
                     width="24"
@@ -147,11 +151,16 @@ const ToastCard = ({ item, onDone }: ToastCardProps) => {
                     className={style.accent}
                 />
 
-                <div className="min-w-0">
-                    <p className="text-sm font-semibold">{item.title}</p>
+                <div className={styles.content}>
+                    <p className={styles.title}>{item.title}</p>
                     {item.description && (
                         <p
-                            className={`mt-1 text-xs ${isPrimary ? "text-main-600" : "text-main-300"}`}
+                            className={cn(
+                                styles.description,
+                                isPrimary
+                                    ? styles.descriptionPrimary
+                                    : styles.descriptionDefault,
+                            )}
                         >
                             {item.description}
                         </p>
@@ -160,10 +169,13 @@ const ToastCard = ({ item, onDone }: ToastCardProps) => {
             </div>
 
             <div
-                className={`mt-3 h-1 w-full overflow-hidden rounded-full ${isPrimary ? "bg-main-300" : "bg-main-800"}`}
+                className={cn(
+                    styles.track,
+                    isPrimary ? styles.trackPrimary : styles.trackDefault,
+                )}
             >
                 <div
-                    className={`h-full ${style.progress}`}
+                    className={cn(styles.bar, style.progress)}
                     style={{
                         width: progressStarted ? "0%" : "100%",
                         transition: `width ${item.durationMs}ms linear`,
@@ -175,6 +187,7 @@ const ToastCard = ({ item, onDone }: ToastCardProps) => {
 };
 
 export const ToastProvider = ({ children }: PropsWithChildren) => {
+    const t = useLocale().toasts;
     const [toasts, setToasts] = useState<ToastItem[]>([]);
 
     const removeToast = useCallback((id: string) => {
@@ -216,8 +229,8 @@ export const ToastProvider = ({ children }: PropsWithChildren) => {
             <div
                 role="region"
                 aria-live="polite"
-                aria-label="Notifications"
-                className="pointer-events-none fixed bottom-4 right-4 z-70 flex w-90 max-w-[calc(100vw-2rem)] flex-col gap-2"
+                aria-label={t.regionLabel}
+                className={styles.viewport}
             >
                 {toasts.map((item) => (
                     <ToastCard key={item.id} item={item} onDone={removeToast} />

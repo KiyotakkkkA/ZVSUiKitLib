@@ -2,6 +2,7 @@ import styles from "./Pagination.module.css";
 import { Icon } from "../_shared/icons";
 import { Button } from "../Button/Button";
 import { Select } from "../Select/Select";
+import { useLocale } from "../../hooks/useLocale";
 import type { PaginationPageItem, PaginationProps } from "./types";
 
 const siblingCount = 1;
@@ -43,7 +44,9 @@ export const Pagination = ({
     onPageChange,
     onPerPageChange,
     perPageOptions = [10, 20, 50],
+    ref,
 }: PaginationProps) => {
+    const t = useLocale().pagination;
     const normalizedLastPage = Math.max(lastPage, 1);
     const visiblePages = getVisiblePages(page, normalizedLastPage);
     const isFirstPage = page <= 1;
@@ -54,26 +57,26 @@ export const Pagination = ({
     }));
 
     return (
-        <div className={styles.s0}>
+        <div ref={ref} className={styles.s0}>
             <div className={styles.s1}>
                 {total > 0 ? (
                     <div className={styles.s2}>
-                        <span className={styles.s3}>Показано </span>
+                        <span className={styles.s3}>{t.shownPrefix} </span>
                         <span className={styles.s4}>{from ?? 1}</span>
                         {" - "}
                         <span className={styles.s5}>{to ?? total}</span>
-                        <span className={styles.s6}> из </span>
+                        <span className={styles.s6}> {t.shownSeparator} </span>
                         <span className={styles.s7}>{total}</span>
                     </div>
                 ) : (
-                    "Нет записей"
+                    t.empty
                 )}
             </div>
 
             <div className={styles.s8}>
                 {onPerPageChange && (
                     <div className={styles.s9}>
-                        <span className={styles.s10}>На странице</span>
+                        <span className={styles.s10}>{t.perPage}</span>
                         <Select
                             value={String(perPage)}
                             disabled={disabled}
@@ -104,13 +107,13 @@ export const Pagination = ({
                     </div>
                 )}
 
-                <nav className={styles.s15} aria-label="Пагинация">
+                <nav className={styles.s15} aria-label={t.label}>
                     <Button
                         variant="secondary"
                         disabled={disabled || isFirstPage}
                         onClick={() => onPageChange(page - 1)}
                         className={styles.s16}
-                        title="Предыдущая страница"
+                        title={t.previousPage}
                     >
                         <Icon icon="chevron-left" width={20} height={20} />
                     </Button>
@@ -131,7 +134,7 @@ export const Pagination = ({
                                 disabled={disabled || visiblePage === page}
                                 onClick={() => onPageChange(visiblePage)}
                                 className={styles.s18}
-                                title={`Страница ${visiblePage}`}
+                                title={t.page(visiblePage)}
                             >
                                 {visiblePage}
                             </Button>
@@ -143,7 +146,7 @@ export const Pagination = ({
                         disabled={disabled || isLastPage}
                         onClick={() => onPageChange(page + 1)}
                         className={styles.s19}
-                        title="Следующая страница"
+                        title={t.nextPage}
                     >
                         <Icon icon="chevron-right" width={20} height={20} />
                     </Button>

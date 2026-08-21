@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode, Ref } from "react";
 import type { DivClassName } from "../_shared/types";
 
 export type EmptyStateClassNames = {
@@ -13,6 +13,8 @@ export type EmptyStateClassNames = {
 };
 
 export type EmptyStateProps = {
+    /** Receives the empty-state root element. */
+    ref?: Ref<HTMLDivElement>;
     /** Content rendered for the icon. */
     icon?: ReactNode;
     /** Text used for the title. */

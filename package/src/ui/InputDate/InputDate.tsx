@@ -2,6 +2,7 @@ import styles from "./InputDate.module.css";
 import { Icon } from "../_shared/icons";
 import { useCallback, useMemo, useState } from "react";
 import { cn } from "../../lib/utils";
+import { useLocale } from "../../hooks/useLocale";
 import { Calendar } from "../Calendar/Calendar";
 import { Dropdown } from "../Dropdown/Dropdown";
 import type { InputDateProps } from "./types";
@@ -12,7 +13,7 @@ export function InputDate({
     defaultValue = null,
     onChange,
 
-    placeholder = "Выберите дату",
+    placeholder,
     locale = "ru-RU",
     weekStartsOn = 1,
 
@@ -28,6 +29,7 @@ export function InputDate({
     clearable = false,
 
     menuPlacement = "bottom-left",
+    ref,
     menuWidth = 300,
 
     className,
@@ -35,6 +37,7 @@ export function InputDate({
 
     formatLabel,
 }: InputDateProps) {
+    const t = useLocale().inputDate;
     const [innerValue, setInnerValue] = useState<CalendarDate>(defaultValue);
 
     const isControlled = value !== undefined;
@@ -42,7 +45,7 @@ export function InputDate({
 
     const resolvedLabel = useMemo(() => {
         if (!selectedDate) {
-            return placeholder;
+            return placeholder ?? t.placeholder;
         }
 
         if (formatLabel) {
@@ -54,7 +57,7 @@ export function InputDate({
             month: "long",
             year: "numeric",
         });
-    }, [formatLabel, locale, placeholder, selectedDate]);
+    }, [formatLabel, locale, placeholder, selectedDate, t.placeholder]);
 
     const handleCalendarChange = useCallback(
         (nextDate: CalendarDate, closeMenu?: () => void) => {
@@ -76,7 +79,7 @@ export function InputDate({
     }, [handleCalendarChange]);
 
     return (
-        <div className={cn(styles.s0, className)}>
+        <div ref={ref} className={cn(styles.s0, className)}>
             <Dropdown
                 className={styles.dropdown}
                 disabled={disabled}
@@ -106,7 +109,7 @@ export function InputDate({
                                                 <span
                                                     role="button"
                                                     tabIndex={0}
-                                                    aria-label="Очистить дату"
+                                                    aria-label={t.clear}
                                                     className={cn(
                                                         styles.s5,
                                                         styles.s6,

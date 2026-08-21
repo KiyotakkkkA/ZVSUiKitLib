@@ -142,6 +142,7 @@ export const InputRange = ({
     showThumbLabels = true,
     valueFormatter,
     thumbLabels,
+    ref,
     ...props
 }: InputRangeProps) => {
     const trackRef = useRef<HTMLDivElement>(null);
@@ -228,6 +229,7 @@ export const InputRange = ({
 
     return (
         <div
+            ref={ref}
             className={cn(
                 styles.s10,
                 disabled ? styles.s11 : styles.s12,

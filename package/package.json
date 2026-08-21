@@ -19,7 +19,7 @@
         "directory": "package"
     },
     "private": false,
-    "version": "6.0.0",
+    "version": "7.0.0",
     "type": "module",
     "main": "./dist/index.js",
     "module": "./dist/index.js",
@@ -36,6 +36,16 @@
             "types": "./dist/index.d.ts",
             "import": "./dist/index.js",
             "default": "./dist/index.js"
+        },
+        "./chart": {
+            "types": "./dist/chart.d.ts",
+            "import": "./dist/chart.js",
+            "default": "./dist/chart.js"
+        },
+        "./code-view": {
+            "types": "./dist/code-view.d.ts",
+            "import": "./dist/code-view.js",
+            "default": "./dist/code-view.js"
         },
         "./server": {
             "types": "./dist/server.d.ts",
@@ -74,7 +84,8 @@
         "tailwindcss": "^4",
         "typescript": "~5.9.3",
         "typescript-eslint": "^8.48.0",
-        "vite": "^7.3.1"
+        "vite": "^7.3.1",
+        "vitest": "^3.2.4"
     },
     "overrides": {
         "vite": "^7.3.1"

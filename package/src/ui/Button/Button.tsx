@@ -1,8 +1,8 @@
 import styles from "./Button.module.css";
-import { forwardRef } from "react";
 import { cn } from "../../lib/utils";
 import { Loader } from "../Loader/Loader";
 import type { ButtonProps, ButtonVariants } from "./types";
+import type { SizeVariants } from "../_shared/types";
 
 const variants: Record<ButtonVariants, string> = {
     ghost: styles.ghost,
@@ -21,58 +21,59 @@ const variants: Record<ButtonVariants, string> = {
     "info-outline": styles.infoOutline,
 };
 
-export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
-    function Button(
-        {
-            children,
-            label,
-            loading = false,
-            loadingText,
-            variant = "secondary",
-            rounded = "rounded-full",
-            className,
-            classNames,
-            disabled,
-            ...props
-        }: ButtonProps,
-        ref,
-    ) {
-        const isDisabled = disabled || loading;
+const sizes: Record<SizeVariants, string> = {
+    sm: styles.sizeSm,
+    md: styles.sizeMd,
+    lg: styles.sizeLg,
+};
 
-        return (
-            <button
-                ref={ref}
-                type="button"
-                aria-label={label}
-                aria-busy={loading}
-                disabled={isDisabled}
-                className={cn(
-                    styles.s0,
-                    styles.s1,
-                    `zvs-${rounded}`,
-                    variant ? variants[variant] : "",
-                    className,
-                )}
-                {...props}
-            >
-                {loading ? (
-                    <>
-                        <Loader
-                            className={cn(
-                                styles.loaderIcon,
-                                classNames?.loaderIcon,
-                            )}
-                        />
-                        {loadingText && (
-                            <span className={classNames?.loaderText}>
-                                {loadingText}
-                            </span>
-                        )}
-                    </>
-                ) : (
-                    children
-                )}
-            </button>
-        );
-    },
-);
+export function Button({
+    children,
+    label,
+    loading = false,
+    loadingText,
+    variant = "secondary",
+    rounded = "rounded-full",
+    size,
+    className,
+    classNames,
+    disabled,
+    ref,
+    ...props
+}: ButtonProps) {
+    const isDisabled = disabled || loading;
+
+    return (
+        <button
+            ref={ref}
+            type="button"
+            aria-label={label}
+            aria-busy={loading}
+            disabled={isDisabled}
+            className={cn(
+                styles.s0,
+                styles.s1,
+                `zvs-${rounded}`,
+                size ? sizes[size] : "",
+                variant ? variants[variant] : "",
+                className,
+            )}
+            {...props}
+        >
+            {loading ? (
+                <>
+                    <Loader
+                        className={cn(styles.loaderIcon, classNames?.loaderIcon)}
+                    />
+                    {loadingText && (
+                        <span className={classNames?.loaderText}>
+                            {loadingText}
+                        </span>
+                    )}
+                </>
+            ) : (
+                children
+            )}
+        </button>
+    );
+}

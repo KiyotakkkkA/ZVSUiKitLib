@@ -30,7 +30,7 @@ export const componentProps: ComponentAPIDoc = {
                 defaultValue: "true",
             },
             size: {
-                type: "InputColorSize",
+                type: "SizeVariants",
                 description: "Trigger size.",
                 defaultValue: '"md"',
             },

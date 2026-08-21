@@ -19,6 +19,8 @@ const isExternal = (id: string) =>
         (pkgName) => id === pkgName || id.startsWith(`${pkgName}/`),
     );
 
+const CLIENT_ENTRIES = new Set(["index", "chart", "code-view"]);
+
 export default defineConfig({
     css: {
         modules: {
@@ -31,6 +33,8 @@ export default defineConfig({
         lib: {
             entry: {
                 index: resolve(__dirname, "src/index.ts"),
+                chart: resolve(__dirname, "src/chart.ts"),
+                "code-view": resolve(__dirname, "src/code-view.ts"),
                 server: resolve(__dirname, "src/server.ts"),
                 styles: resolve(__dirname, "src/styles.ts"),
             },
@@ -52,7 +56,7 @@ export default defineConfig({
             name: "preserve-client-boundary",
             enforce: "post",
             renderChunk(code, chunk) {
-                if (chunk.isEntry && chunk.name === "index") {
+                if (chunk.isEntry && CLIENT_ENTRIES.has(chunk.name)) {
                     return {
                         code: `"use client";\nimport "./zvs-uikit-lib.css";\n${code}`,
                         map: null,

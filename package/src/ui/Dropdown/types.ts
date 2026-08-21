@@ -35,6 +35,8 @@ export type DropdownContextValue = {
 };
 
 export type DropdownProps = {
+    /** Receives the dropdown root element. */
+    ref?: Ref<HTMLDivElement>;
     /** Renders the dropdown trigger, menu, and optional render-prop parts. */
     children: ReactNode;
     /** Applies CSS classes to the dropdown root wrapper. */
@@ -50,7 +52,7 @@ export type DropdownProps = {
 };
 
 export type DropdownTriggerProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-    /** Renders fallback trigger content when no children are supplied. */
+    /** Renders fallback trigger content when no children are supplied. Defaults to the `dropdown.triggerPlaceholder` string from the active locale dictionary. */
     placeholder?: ReactNode;
     /** Replaces the default trailing chevron. */
     icon?: ReactNode;

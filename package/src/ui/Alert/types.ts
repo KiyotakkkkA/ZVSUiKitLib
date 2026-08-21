@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ReactNode } from "react";
+import type { HTMLAttributes, ReactNode, Ref } from "react";
 import type {
     ColorVariantsBase,
     DivClassName,
@@ -19,6 +19,8 @@ export type AlertClassNames = {
 };
 
 export type AlertProps = HTMLAttributes<HTMLDivElement> & {
+    /** Receives the underlying `HTMLDivElement` node. */
+    ref?: Ref<HTMLDivElement>;
     /** Selects the alert color scheme and default status icon. */
     variant?: ColorVariantsBase;
     /** Renders an optional heading above the alert body. */

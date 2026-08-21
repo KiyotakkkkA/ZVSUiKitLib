@@ -11,6 +11,7 @@ import { Icon } from "../_shared/icons";
 import { Dropdown } from "../Dropdown/Dropdown";
 import { ScrollArea } from "../ScrollArea/ScrollArea";
 import { cn } from "../../lib/utils";
+import { useLocale } from "../../hooks/useLocale";
 import type {
     AutoFillSelectorProps,
     AutoFillSelectorTriggerProps,
@@ -32,7 +33,7 @@ function useAutoFillSelectorContext() {
 
     if (!context) {
         throw new Error(
-            "AutoFillSelector.Trigger, AutoFillSelector.Tags, AutoFillSelector.Input, AutoFillSelector.Menu, AutoFillSelector.Options и AutoFillSelector.Empty должны использоваться внутри AutoFillSelector.",
+            "AutoFillSelector.Trigger, AutoFillSelector.Tags, AutoFillSelector.Input, AutoFillSelector.Menu, AutoFillSelector.Options and AutoFillSelector.Empty must be used inside AutoFillSelector.",
         );
     }
 
@@ -179,6 +180,7 @@ function AutoFillSelectorTags({
 }: AutoFillSelectorTagsProps) {
     const { options, value, disabled, removeValue } =
         useAutoFillSelectorContext();
+    const t = useLocale().autoFillSelector;
 
     if (!value.length) {
         return null;
@@ -210,7 +212,7 @@ function AutoFillSelectorTags({
                                     event.stopPropagation();
                                     removeValue(item);
                                 }}
-                                aria-label="Удалить"
+                                aria-label={t.removeTag}
                             >
                                 <Icon
                                     icon="close"
@@ -229,15 +231,18 @@ function AutoFillSelectorTags({
 function AutoFillSelectorInput({
     rounded = "rounded-full",
     className,
-    placeholder = "Введите для поиска",
+    placeholder,
     onFocus,
     onKeyDown,
     ...props
 }: AutoFillSelectorInputProps) {
     const { value, query, setQuery, disabled, inputRef, removeValue } =
         useAutoFillSelectorContext();
+    const t = useLocale().autoFillSelector;
 
-    const inputPlaceholder = value.length ? "" : placeholder;
+    const inputPlaceholder = value.length
+        ? ""
+        : (placeholder ?? t.inputPlaceholder);
 
     return (
         <input

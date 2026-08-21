@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ReactNode, Ref } from "react";
 import type {
     InputClassName,
     LabelClassName,
@@ -24,6 +24,8 @@ export type InputCheckBoxClassNames = {
 };
 
 export type InputCheckBoxProps = BaseInputProps & {
+    /** Receives the native checkbox input node. */
+    ref?: Ref<HTMLInputElement>;
     /** Controls whether the checkbox is checked. */
     checked?: boolean;
     /** Runs with the next checked state after user interaction. */

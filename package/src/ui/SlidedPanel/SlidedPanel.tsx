@@ -3,13 +3,16 @@ import {
     createContext,
     useContext,
     useEffect,
-    type KeyboardEvent as ReactKeyboardEvent,
+    useId,
+    useState,
     type MouseEvent,
 } from "react";
 import { createPortal } from "react-dom";
 import { Icon } from "../_shared/icons";
-import { cn } from "../../lib/utils";
+import { cn, mergeRefs } from "../../lib/utils";
 import { usePortalContainer } from "../../hooks/usePortalContainer";
+import { useDialog } from "../../hooks/useDialog";
+import { useLocale } from "../../hooks/useLocale";
 import type {
     SlidedPanelProps,
     SlidedPanelHeaderProps,
@@ -49,14 +52,20 @@ const openPlacementClasses: Record<SlidedPanelPlacement, string> = {
     left: styles.s15,
 };
 
-const SlidedPanelContext = createContext<SlidedPanelContextValue | null>(null);
+const SlidedPanelContext = createContext<
+    (SlidedPanelContextValue & {
+        titleId: string;
+        registerTitle: (registered: boolean) => void;
+    })
+    | null
+>(null);
 
 function useSlidedPanelContext() {
     const context = useContext(SlidedPanelContext);
 
     if (!context) {
         throw new Error(
-            "SlidedPanel.Header, SlidedPanel.Title, SlidedPanel.Subtitle, SlidedPanel.Content и SlidedPanel.Footer должны использоваться внутри SlidedPanel.",
+            "SlidedPanel.Header, SlidedPanel.Title, SlidedPanel.Subtitle, SlidedPanel.Content and SlidedPanel.Footer must be used inside SlidedPanel.",
         );
     }
 
@@ -69,36 +78,22 @@ function SlidedPanelRoot({
     children,
     className,
     closeOnOverlayClick = true,
+    closeOnEscape = true,
+    label,
+    ref,
     panelPlacement = "right",
 }: SlidedPanelProps) {
     const portalContainer = usePortalContainer();
-
-    useEffect(() => {
-        if (!open) return;
-
-        const onEscape = (event: globalThis.KeyboardEvent) => {
-            if (event.key === "Escape") {
-                onClose();
-            }
-        };
-
-        window.addEventListener("keydown", onEscape);
-        return () => window.removeEventListener("keydown", onEscape);
-    }, [open, onClose]);
+    const titleId = useId();
+    const [hasTitle, setHasTitle] = useState(false);
+    const panelRef = useDialog<HTMLElement>({
+        open,
+        onClose,
+        closeOnEscape,
+    });
 
     const onOverlayClick = (event: MouseEvent<HTMLDivElement>) => {
         if (closeOnOverlayClick && event.target === event.currentTarget) {
-            onClose();
-        }
-    };
-
-    const onOverlayKeyDown = (event: ReactKeyboardEvent<HTMLDivElement>) => {
-        if (
-            closeOnOverlayClick &&
-            (event.key === "Enter" || event.key === " ") &&
-            event.target === event.currentTarget
-        ) {
-            event.preventDefault();
             onClose();
         }
     };
@@ -108,7 +103,9 @@ function SlidedPanelRoot({
     }
 
     return createPortal(
-        <SlidedPanelContext.Provider value={{ open, onClose }}>
+        <SlidedPanelContext.Provider
+            value={{ open, onClose, titleId, registerTitle: setHasTitle }}
+        >
             <div
                 className={cn(
                     styles.s16,
@@ -116,13 +113,16 @@ function SlidedPanelRoot({
                     open ? styles.s17 : styles.s18,
                 )}
                 onClick={onOverlayClick}
-                onKeyDown={onOverlayKeyDown}
-                tabIndex={-1}
-                aria-modal
-                role="dialog"
+                inert={!open}
                 aria-hidden={!open}
             >
                 <section
+                    ref={mergeRefs(panelRef, ref)}
+                    role="dialog"
+                    aria-modal
+                    aria-label={hasTitle ? undefined : label}
+                    aria-labelledby={hasTitle ? titleId : undefined}
+                    tabIndex={-1}
                     className={cn(
                         styles.s19,
                         styles.s20,
@@ -153,6 +153,7 @@ function SlidedPanelHeader({
     ...props
 }: SlidedPanelHeaderProps) {
     const { onClose } = useSlidedPanelContext();
+    const t = useLocale().slidedPanel;
 
     return (
         <header className={cn(styles.s23, className)} {...props}>
@@ -160,7 +161,7 @@ function SlidedPanelHeader({
 
             <button
                 type="button"
-                aria-label="Закрыть панель"
+                aria-label={t.close}
                 className={styles.s25}
                 onClick={onClose}
             >
@@ -173,10 +174,18 @@ function SlidedPanelHeader({
 function SlidedPanelTitle({
     className,
     children,
+    id,
     ...props
 }: SlidedPanelTitleProps) {
+    const { titleId, registerTitle } = useSlidedPanelContext();
+
+    useEffect(() => {
+        registerTitle(true);
+        return () => registerTitle(false);
+    }, [registerTitle]);
+
     return (
-        <p className={cn(styles.s26, className)} {...props}>
+        <p id={id ?? titleId} className={cn(styles.s26, className)} {...props}>
             {children}
         </p>
     );
