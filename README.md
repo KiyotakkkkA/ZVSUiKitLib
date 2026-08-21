@@ -16,6 +16,9 @@ export function Example() {
 }
 ```
 
+See [CHANGELOG.md](CHANGELOG.md) for what changed in 7.0.0, including the
+breaking changes.
+
 ## Entry points
 
 | Entry point                             | Contents                                                |
