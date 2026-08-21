@@ -16,18 +16,18 @@ export function Example() {
 }
 ```
 
-See [CHANGELOG.md](CHANGELOG.md) for what changed in 7.0.0, including the
+See [CHANGELOG.md](CHANGELOG.md) for what changed in 8.0.0, including the
 breaking changes.
 
 ## Entry points
 
-| Entry point                             | Contents                                                |
-| --------------------------------------- | ------------------------------------------------------- |
-| `@kiyotakkkka/zvs-uikit-lib`            | Every component except `Chart` and `CodeView`.          |
-| `@kiyotakkkka/zvs-uikit-lib/chart`      | `Chart`. Pulls in `recharts`.                           |
-| `@kiyotakkkka/zvs-uikit-lib/code-view`  | `CodeView`. Pulls in `shiki`.                           |
-| `@kiyotakkkka/zvs-uikit-lib/server`     | Components safe to render on the server.                |
-| `@kiyotakkkka/zvs-uikit-lib/styles.css` | Optional explicit CSS entry.                            |
+| Entry point                             | Contents                                       |
+| --------------------------------------- | ---------------------------------------------- |
+| `@kiyotakkkka/zvs-uikit-lib`            | Every component except `Chart` and `CodeView`. |
+| `@kiyotakkkka/zvs-uikit-lib/chart`      | `Chart`. Pulls in `recharts`.                  |
+| `@kiyotakkkka/zvs-uikit-lib/code-view`  | `CodeView`. Pulls in `shiki`.                  |
+| `@kiyotakkkka/zvs-uikit-lib/server`     | Components safe to render on the server.       |
+| `@kiyotakkkka/zvs-uikit-lib/styles.css` | Optional explicit CSS entry.                   |
 
 `Chart` and `CodeView` are the only components with heavy third-party
 dependencies. They sit behind their own entry points so a project that does not
@@ -276,23 +276,23 @@ accepts them.
 
 ### Components: Structure & Composition
 
-| Component        | Purpose                                                                   | Documentation                                        |
-| ---------------- | ------------------------------------------------------------------------- | ---------------------------------------------------- |
-| `Accordion`      | Expandable section with animated height.                                  | [Accordion](package/src/docs/Accordion.md)           |
-| `Breadcrumbs`    | Navigation trail for current page location.                               | [Breadcrumbs](package/src/docs/Breadcrumbs.md)       |
-| `Card`           | Container with optional header/body/footer sections.                      | [Card](package/src/docs/Card.md)                     |
-| `Carousel`       | Image or content carousel with navigation and optional auto-scroll.       | [Carousel](package/src/docs/Carousel.md)             |
+| Component        | Purpose                                                                                           | Documentation                                        |
+| ---------------- | ------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
+| `Accordion`      | Expandable section with animated height.                                                          | [Accordion](package/src/docs/Accordion.md)           |
+| `Breadcrumbs`    | Navigation trail for current page location.                                                       | [Breadcrumbs](package/src/docs/Breadcrumbs.md)       |
+| `Card`           | Container with optional header/body/footer sections.                                              | [Card](package/src/docs/Card.md)                     |
+| `Carousel`       | Image or content carousel with navigation and optional auto-scroll.                               | [Carousel](package/src/docs/Carousel.md)             |
 | `Chart`          | Line/bar chart with multiple series and custom styling based on Recharts. Imported from `/chart`. | [Chart](package/src/docs/Chart.md)                   |
-| `CodeView`       | Code block with syntax highlighting and copy button. Imported from `/code-view`. | [CodeView](package/src/docs/CodeView.md)             |
-| `DataDisplay`    | Compact list for displaying labeled data rows.                            | [DataDisplay](package/src/docs/DataDisplay.md)       |
-| `Pagination`     | List pagination with range summary and page-size selector.                | [Pagination](package/src/docs/Pagination.md)         |
-| `PrettyBR`       | Decorative horizontal divider with icon and label.                        | [PrettyBR](package/src/docs/PrettyBR.md)             |
-| `ResizablePanel` | Layout with resizable sidebar and content area.                           | [ResizablePanel](package/src/docs/ResizablePanel.md) |
-| `ScrollArea`     | Styled scroll container.                                                  | [ScrollArea](package/src/docs/ScrollArea.md)         |
-| `Separator`      | Horizontal/vertical separator.                                            | [Separator](package/src/docs/Separator.md)           |
-| `Table`          | Column-based table with per-column sorting modes.                         | [Table](package/src/docs/Table.md)                   |
-| `Timeline`       | Compound timeline for ordered events.                                     | [Timeline](package/src/docs/Timeline.md)             |
-| `TreeView`       | Hierarchical list with optional virtualization.                           | [TreeView](package/src/docs/TreeView.md)             |
+| `CodeView`       | Code block with syntax highlighting and copy button. Imported from `/code-view`.                  | [CodeView](package/src/docs/CodeView.md)             |
+| `DataDisplay`    | Compact list for displaying labeled data rows.                                                    | [DataDisplay](package/src/docs/DataDisplay.md)       |
+| `Pagination`     | List pagination with range summary and page-size selector.                                        | [Pagination](package/src/docs/Pagination.md)         |
+| `PrettyBR`       | Decorative horizontal divider with icon and label.                                                | [PrettyBR](package/src/docs/PrettyBR.md)             |
+| `ResizablePanel` | Layout with resizable sidebar and content area.                                                   | [ResizablePanel](package/src/docs/ResizablePanel.md) |
+| `ScrollArea`     | Styled scroll container.                                                                          | [ScrollArea](package/src/docs/ScrollArea.md)         |
+| `Separator`      | Horizontal/vertical separator.                                                                    | [Separator](package/src/docs/Separator.md)           |
+| `Table`          | Column-based table with per-column sorting modes.                                                 | [Table](package/src/docs/Table.md)                   |
+| `Timeline`       | Compound timeline for ordered events.                                                             | [Timeline](package/src/docs/Timeline.md)             |
+| `TreeView`       | Hierarchical list with optional virtualization.                                                   | [TreeView](package/src/docs/TreeView.md)             |
 
 ### Components: Status & Feedback
 
@@ -361,8 +361,8 @@ List of SSR-friendly components:
 
 ### Providers (@kiyotakkkka/zvs-uikit-lib)
 
-| Provider        | Purpose                           |
-| --------------- | --------------------------------- |
-| `ToastProvider` | Global toast notifications stack. |
-| `StyleProvider` | Global style management.          |
-| `LocaleProvider` | Strings the components render.   |
+| Provider         | Purpose                           |
+| ---------------- | --------------------------------- |
+| `ToastProvider`  | Global toast notifications stack. |
+| `StyleProvider`  | Global style management.          |
+| `LocaleProvider` | Strings the components render.    |
