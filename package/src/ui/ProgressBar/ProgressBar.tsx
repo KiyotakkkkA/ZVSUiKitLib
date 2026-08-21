@@ -1,16 +1,15 @@
-import styles from "./ProgressBar.module.css";
 import { cn } from "../../lib/utils";
 import type { ColorVariantsBase } from "../_shared/types";
 import type { ProgressBarProps } from "./types";
 
 const variantClasses: Record<ColorVariantsBase, string> = {
-    primary: styles.s0,
-    secondary: styles.s1,
-    tertiary: styles.s2,
-    success: styles.s3,
-    warning: styles.s4,
-    danger: styles.s5,
-    info: styles.s6,
+    primary: "bg-main-200",
+    secondary: "bg-main-700",
+    tertiary: "bg-accent-dark",
+    success: "bg-success-dark",
+    warning: "bg-warning-dark",
+    danger: "bg-danger-dark",
+    info: "bg-info-dark",
 };
 
 export const ProgressBar = ({
@@ -27,17 +26,17 @@ export const ProgressBar = ({
     const percent = max === 0 ? 0 : Math.round((normalizedValue / max) * 100);
 
     return (
-        <div ref={ref} className={cn(styles.s7, className)}>
+        <div ref={ref} className={cn("w-full", className)}>
             {(label || showValue) && (
-                <div className={cn(styles.s8, classNames?.header)}>
+                <div className={cn("mb-1.5 flex items-center justify-between gap-3", classNames?.header)}>
                     {label && (
-                        <span className={cn(styles.s9, classNames?.label)}>
+                        <span className={cn("truncate text-sm font-medium text-main-200", classNames?.label)}>
                             {label}
                         </span>
                     )}
 
                     {showValue && (
-                        <span className={cn(styles.s10, classNames?.value)}>
+                        <span className={cn("shrink-0 text-xs text-main-400", classNames?.value)}>
                             {percent}%
                         </span>
                     )}
@@ -49,11 +48,11 @@ export const ProgressBar = ({
                 aria-valuemin={0}
                 aria-valuemax={max}
                 aria-valuenow={normalizedValue}
-                className={cn(styles.s11, classNames?.track)}
+                className={cn("h-2 w-full overflow-hidden rounded-full bg-main-800", classNames?.track)}
             >
                 <div
                     className={cn(
-                        styles.s12,
+                        "h-full rounded-full transition-all duration-300",
                         variantClasses[variant],
                         classNames?.indicator,
                     )}

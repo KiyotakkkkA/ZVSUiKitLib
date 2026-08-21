@@ -1,4 +1,3 @@
-import styles from "./Modal.module.css";
 import {
     createContext,
     useContext,
@@ -44,15 +43,15 @@ function ModalHeader({
     }, [registerTitle]);
 
     return (
-        <div className={cn(styles.s0, className)}>
-            <div className={styles.s1} id={modalContext?.titleId}>
+        <div className={cn("flex items-center gap-3 border-b border-main-700/80 px-5 py-4", className)}>
+            <div className={"min-w-0 flex-1"} id={modalContext?.titleId}>
                 {children}
             </div>
 
             {showCloseButton && (
                 <Button
                     variant="secondary"
-                    className={cn(styles.s2, closeButtonClassName)}
+                    className={cn("h-8 w-8 border-main-600 bg-main-700/70 hover:bg-main-600/80", closeButtonClassName)}
                     onClick={modalContext?.onClose}
                     aria-label={closeButtonAriaLabel ?? t.close}
                 >
@@ -65,12 +64,12 @@ function ModalHeader({
 
 function ModalContent({ children, className }: ModalSectionProps) {
     return (
-        <ScrollArea className={cn(styles.s3, className)}>{children}</ScrollArea>
+        <ScrollArea className={cn("min-h-0 flex-1 px-5 py-5", className)}>{children}</ScrollArea>
     );
 }
 
 function ModalFooter({ children, className }: ModalSectionProps) {
-    return <div className={cn(styles.s4, className)}>{children}</div>;
+    return <div className={cn("flex items-center justify-end gap-2 border-t border-main-700/80 px-5 py-4", className)}>{children}</div>;
 }
 
 function ModalRoot({
@@ -106,7 +105,7 @@ function ModalRoot({
 
     return createPortal(
         <div
-            className={cn(styles.s5, overlayClassName)}
+            className={cn("fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 py-6 backdrop-blur-sm animate-zvs-fade-in motion-reduce:animate-none", overlayClassName)}
             onClick={onOverlayClick}
         >
             <ModalContext.Provider
@@ -120,9 +119,9 @@ function ModalRoot({
                     aria-labelledby={hasTitle ? titleId : undefined}
                     tabIndex={-1}
                     className={cn(
-                        styles.s6,
-                        `zvs-${rounded}`,
-                        styles.s7,
+                        "flex max-h-[88vh] w-full max-w-5xl flex-col border border-main-700/90",
+                        rounded,
+                        "bg-main-900/95 shadow-2xl animate-zvs-panel-in motion-reduce:animate-none",
                         className,
                     )}
                 >

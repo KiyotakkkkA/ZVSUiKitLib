@@ -1,6 +1,5 @@
 "use client";
 
-import styles from "./ResizablePanel.module.css";
 import {
     createContext,
     forwardRef,
@@ -125,7 +124,11 @@ const Root = forwardRef<HTMLDivElement, ResizablePanelProps>(function Root(
                 data-orientation={orientation}
                 data-resizing={resizing || undefined}
                 data-disabled={disabled || undefined}
-                className={cn(styles.root, className)}
+                className={cn(
+                    "flex min-h-0 min-w-0 overflow-hidden rounded-2xl border border-main-700/70 bg-main-900/50",
+                    "data-[orientation=vertical]:flex-col",
+                    className,
+                )}
             >
                 {children}
             </div>
@@ -141,7 +144,7 @@ const Sidebar = forwardRef<HTMLElement, ResizablePanelSidebarProps>(
                 {...props}
                 ref={ref}
                 id={id ?? sidebarId}
-                className={cn(styles.sidebar, className)}
+                className={cn("min-h-0 min-w-0 shrink-0 overflow-auto", className)}
                 style={{
                     ...(orientation === "horizontal"
                         ? { width: size }
@@ -161,7 +164,7 @@ const Content = forwardRef<HTMLElement, ResizablePanelContentProps>(
             <main
                 {...props}
                 ref={ref}
-                className={cn(styles.content, className)}
+                className={cn("min-h-0 min-w-0 flex-1 overflow-auto", className)}
             >
                 {children}
             </main>
@@ -255,7 +258,15 @@ const Handle = forwardRef<HTMLDivElement, ResizablePanelHandleProps>(
                 aria-disabled={panel.disabled || undefined}
                 data-orientation={panel.orientation}
                 data-resizing={panel.resizing || undefined}
-                className={cn(styles.handle, className)}
+                className={cn(
+                    "group relative flex shrink-0 touch-none items-center justify-center bg-main-900 outline-none transition-colors",
+                    "data-[orientation=horizontal]:w-2 data-[orientation=horizontal]:cursor-col-resize",
+                    "data-[orientation=vertical]:h-2 data-[orientation=vertical]:cursor-row-resize",
+                    "hover:bg-main-800/60 data-[resizing]:bg-main-800/60",
+                    "focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-main-400",
+                    "aria-disabled:cursor-not-allowed aria-disabled:opacity-50",
+                    className,
+                )}
                 onKeyDown={handleKeyDown}
                 onPointerDown={(event) => {
                     onPointerDown?.(event);
@@ -334,7 +345,15 @@ const Handle = forwardRef<HTMLDivElement, ResizablePanelHandleProps>(
                     panel.endResize();
                 }}
             >
-                <span className={styles.grip} aria-hidden="true" />
+                <span
+                    className={cn(
+                        "rounded-full bg-main-700 transition-colors duration-150",
+                        "group-data-[orientation=horizontal]:h-10 group-data-[orientation=horizontal]:w-px",
+                        "group-data-[orientation=vertical]:h-px group-data-[orientation=vertical]:w-10",
+                        "group-hover:bg-main-400 group-focus-visible:bg-main-400 group-data-[resizing]:bg-main-400",
+                    )}
+                    aria-hidden="true"
+                />
             </div>
         );
     },

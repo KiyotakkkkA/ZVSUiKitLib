@@ -1,5 +1,6 @@
-@layer theme, base, zvs-uikit, components, utilities;
 @import "tailwindcss";
+@import "@kiyotakkkka/zvs-uikit-lib/styles.css";
+@source "../../node_modules/@kiyotakkkka/zvs-uikit-lib/dist";
 
 @theme {
     --color-main-50: rgb(250 250 250);

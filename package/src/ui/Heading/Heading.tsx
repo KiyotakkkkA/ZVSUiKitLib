@@ -1,20 +1,23 @@
-import styles from "./Heading.module.css";
 import { cn } from "../../lib/utils";
 import type { HeadingLevel, HeadingProps } from "./types";
 const levelClasses: Record<HeadingLevel, string> = {
-    1: styles.s0,
-    2: styles.s1,
-    3: styles.s2,
-    4: styles.s3,
-    5: styles.s4,
-    6: styles.s5,
+    1: "text-5xl leading-[1.08] tracking-[-0.045em]",
+    2: "text-4xl leading-[1.12] tracking-[-0.035em]",
+    3: "text-3xl leading-tight tracking-[-0.025em]",
+    4: "text-2xl leading-tight tracking-[-0.02em]",
+    5: "text-xl leading-snug tracking-[-0.015em]",
+    6: "text-base leading-snug tracking-[-0.01em]",
 };
 export function Heading({ level = 2, children, className, ref }: HeadingProps) {
     const Tag = `h${level}` as const;
     return (
         <Tag
             ref={ref}
-            className={cn(styles.s6, levelClasses[level], className)}
+            className={cn(
+                "text-balance font-semibold text-main-100",
+                levelClasses[level],
+                className,
+            )}
         >
             {children}
         </Tag>

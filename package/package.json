@@ -1,12 +1,12 @@
 {
     "name": "@kiyotakkkka/zvs-uikit-lib",
-    "description": "Zero-config React UI kit with precompiled, isolated CSS Modules",
+    "description": "React UI kit built on Tailwind utilities, with accessible components, theming and SSR support",
     "keywords": [
         "react",
         "ui-kit",
         "component-library",
         "typescript",
-        "css-modules",
+        "tailwindcss",
         "vite",
         "recharts",
         "code-highlighting"
@@ -19,7 +19,7 @@
         "directory": "package"
     },
     "private": false,
-    "version": "8.0.5",
+    "version": "8.1.0",
     "type": "module",
     "main": "./dist/index.js",
     "module": "./dist/index.js",
@@ -52,8 +52,7 @@
             "import": "./dist/server.js",
             "default": "./dist/server.js"
         },
-        "./styles.css": "./dist/zvs-uikit-lib.css",
-        "./styles-layered.css": "./dist/zvs-uikit-lib.layered.css"
+        "./styles.css": "./dist/styles.css"
     },
     "files": [
         "dist"
@@ -62,7 +61,8 @@
         "@tanstack/react-virtual": "^3.13.23",
         "clsx": "^2.1.1",
         "recharts": "^3.8.1",
-        "shiki": "^4.0.2"
+        "shiki": "^4.0.2",
+        "tailwind-merge": "^3.3.1"
     },
     "peerDependencies": {
         "react": "^19.0.0",

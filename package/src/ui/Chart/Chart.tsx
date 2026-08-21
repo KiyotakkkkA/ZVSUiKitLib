@@ -1,4 +1,3 @@
-import styles from "./Chart.module.css";
 import { memo, useMemo, useCallback, useId } from "react";
 import {
     Area,
@@ -38,14 +37,14 @@ const DefaultTooltip = memo(
         if (!active || !payload?.length) return null;
 
         return (
-            <div className={cn(styles.s0, classNames?.tooltip)}>
+            <div className={cn("rounded-xl border border-main-700 bg-main-900/95 px-3 py-2 shadow-2xl shadow-black/30", classNames?.tooltip)}>
                 {label !== undefined && (
-                    <div className={cn(styles.s1, classNames?.tooltipLabel)}>
+                    <div className={cn("mb-1 text-xs font-medium text-main-400", classNames?.tooltipLabel)}>
                         {label}
                     </div>
                 )}
 
-                <div className={styles.s2}>
+                <div className={"space-y-1"}>
                     {payload.map((item: TooltipPayloadEntry) => {
                         const key = String(item.dataKey ?? item.name);
                         const value = Array.isArray(item.value)
@@ -56,18 +55,18 @@ const DefaultTooltip = memo(
                             <div
                                 key={key}
                                 className={cn(
-                                    styles.s3,
+                                    "flex items-center justify-between gap-4 text-sm",
                                     classNames?.tooltipRow,
                                 )}
                             >
-                                <div className={styles.s4}>
+                                <div className={"flex items-center gap-1.5"}>
                                     <span
-                                        className={styles.s5}
+                                        className={"inline-block h-2 w-2 shrink-0 rounded-full"}
                                         style={{ background: item.color }}
                                     />
                                     <span
                                         className={cn(
-                                            styles.s6,
+                                            "text-main-400",
                                             classNames?.tooltipKey,
                                         )}
                                     >
@@ -76,7 +75,7 @@ const DefaultTooltip = memo(
                                 </div>
                                 <span
                                     className={cn(
-                                        styles.s7,
+                                        "font-medium text-main-100",
                                         classNames?.tooltipValue,
                                     )}
                                 >
@@ -340,18 +339,18 @@ const ChartBase = ({
         <div
             {...props}
             style={style}
-            className={cn(styles.s8, className, classNames?.root)}
+            className={cn("min-w-0 rounded-2xl border border-main-700/70 bg-main-900/50 p-4", className, classNames?.root)}
         >
             {(title || description) && (
-                <div className={cn(styles.s9, classNames?.header)}>
+                <div className={cn("mb-4", classNames?.header)}>
                     {title && (
-                        <div className={cn(styles.s10, classNames?.title)}>
+                        <div className={cn("text-base font-semibold text-main-100", classNames?.title)}>
                             {title}
                         </div>
                     )}
                     {description && (
                         <div
-                            className={cn(styles.s11, classNames?.description)}
+                            className={cn("mt-1 text-sm text-main-400", classNames?.description)}
                         >
                             {description}
                         </div>
@@ -359,14 +358,14 @@ const ChartBase = ({
                 </div>
             )}
 
-            <div className={cn(styles.s12, classNames?.body)}>
+            <div className={cn("min-w-0 overflow-visible", classNames?.body)}>
                 {hasData ? (
                     <ResponsiveContainer width="100%" height={height}>
                         {chartContent}
                     </ResponsiveContainer>
                 ) : (
                     <div
-                        className={cn(styles.s13, classNames?.empty)}
+                        className={cn("flex items-center justify-center rounded-xl border border-dashed border-main-700 bg-main-900/40 text-sm text-main-500", classNames?.empty)}
                         style={{ height }}
                     >
                         {emptyState ?? t.emptyState}

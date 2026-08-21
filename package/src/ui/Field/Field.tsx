@@ -1,4 +1,3 @@
-import styles from "./Field.module.css";
 import { useId } from "react";
 import { cn } from "../../lib/utils";
 import type { FieldProps } from "./types";
@@ -31,18 +30,18 @@ export function Field({
             .join(" ") || undefined;
 
     return (
-        <div ref={ref} className={cn(styles.root, className)}>
+        <div ref={ref} className={cn("flex flex-col gap-1.5", className)}>
             {label && (
                 <label
                     htmlFor={controlId}
-                    className={cn(styles.label, classNames?.label)}
+                    className={cn("text-sm font-medium text-main-100", classNames?.label)}
                 >
                     {label}
                     {required && (
                         <span
                             aria-hidden
                             className={cn(
-                                styles.requiredMarker,
+                                "ml-1 text-danger-medium",
                                 classNames?.requiredMarker,
                             )}
                         >
@@ -55,13 +54,13 @@ export function Field({
             {description && (
                 <p
                     id={descriptionId}
-                    className={cn(styles.description, classNames?.description)}
+                    className={cn("text-xs text-main-400", classNames?.description)}
                 >
                     {description}
                 </p>
             )}
 
-            <div className={cn(styles.control, classNames?.control)}>
+            <div className={cn("flex flex-col", classNames?.control)}>
                 {children(
                     {
                         id: controlId,
@@ -77,7 +76,7 @@ export function Field({
                 <p
                     id={errorId}
                     role="alert"
-                    className={cn(styles.error, classNames?.error)}
+                    className={cn("text-xs text-danger-light", classNames?.error)}
                 >
                     {error}
                 </p>

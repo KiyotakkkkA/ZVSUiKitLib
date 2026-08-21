@@ -9,7 +9,6 @@ import {
     parseThemePalette,
     STYLE_THEME_COOKIE,
 } from "@kiyotakkkka/zvs-uikit-lib/server";
-import "@kiyotakkkka/zvs-uikit-lib/styles.css";
 import "./globals.css";
 
 const geistSans = Geist({

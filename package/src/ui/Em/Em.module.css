@@ -1,6 +1,0 @@
-@reference "tailwindcss";
-@reference "../theme.css";
-
-.s0 {
-    @apply italic text-main-100;
-}

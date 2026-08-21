@@ -1,4 +1,3 @@
-import styles from "./ToastProvider.module.css";
 import {
     useCallback,
     useEffect,
@@ -55,45 +54,45 @@ const toastStyles: Record<
 > = {
     primary: {
         icon: "information-outline",
-        accent: styles.iconPrimary,
-        progress: styles.barPrimary,
-        border: styles.borderPrimary,
+        accent: "text-main-800",
+        progress: "bg-main-800",
+        border: "border-transparent",
     },
     secondary: {
         icon: "information-outline",
-        accent: styles.iconSecondary,
-        progress: styles.barSecondary,
-        border: styles.borderSecondary,
+        accent: "text-main-200",
+        progress: "bg-main-500",
+        border: "border-main-600",
     },
     tertiary: {
         icon: "information-outline",
-        accent: styles.iconTertiary,
-        progress: styles.barTertiary,
-        border: styles.borderTertiary,
+        accent: "text-accent-light",
+        progress: "bg-accent-medium",
+        border: "border-accent-dark/70",
     },
     info: {
         icon: "information",
-        accent: styles.iconInfo,
-        progress: styles.barInfo,
-        border: styles.borderInfo,
+        accent: "text-info-light",
+        progress: "bg-info-medium",
+        border: "border-info-dark/70",
     },
     warning: {
         icon: "alert-outline",
-        accent: styles.iconWarning,
-        progress: styles.barWarning,
-        border: styles.borderWarning,
+        accent: "text-warning-light",
+        progress: "bg-warning-medium",
+        border: "border-warning-dark/70",
     },
     success: {
         icon: "check-circle-outline",
-        accent: styles.iconSuccess,
-        progress: styles.barSuccess,
-        border: styles.borderSuccess,
+        accent: "text-success-light",
+        progress: "bg-success-medium",
+        border: "border-success-dark/70",
     },
     danger: {
         icon: "close-circle-outline",
-        accent: styles.iconDanger,
-        progress: styles.barDanger,
-        border: styles.borderDanger,
+        accent: "text-danger-light",
+        progress: "bg-danger-medium",
+        border: "border-danger-dark/70",
     },
 };
 
@@ -137,13 +136,15 @@ const ToastCard = ({ item, onDone }: ToastCardProps) => {
     return (
         <div
             className={cn(
-                styles.card,
+                "relative overflow-hidden rounded-xl border px-4 py-3 shadow-xl",
+                "translate-x-8 opacity-0 transition-[transform,opacity] duration-200 ease-out",
+                "motion-reduce:translate-x-0 motion-reduce:opacity-100 motion-reduce:transition-none",
                 style.border,
-                isPrimary ? styles.surfacePrimary : styles.surfaceDefault,
-                entered && styles.cardEntered,
+                isPrimary ? "bg-main-100 text-main-800" : "bg-main-900 text-main-100",
+                entered && "translate-x-0 opacity-100",
             )}
         >
-            <div className={styles.body}>
+            <div className={"flex items-start gap-2 pr-2"}>
                 <Icon
                     icon={style.icon}
                     width="24"
@@ -151,15 +152,15 @@ const ToastCard = ({ item, onDone }: ToastCardProps) => {
                     className={style.accent}
                 />
 
-                <div className={styles.content}>
-                    <p className={styles.title}>{item.title}</p>
+                <div className={"min-w-0"}>
+                    <p className={"text-sm font-semibold"}>{item.title}</p>
                     {item.description && (
                         <p
                             className={cn(
-                                styles.description,
+                                "mt-1 text-xs",
                                 isPrimary
-                                    ? styles.descriptionPrimary
-                                    : styles.descriptionDefault,
+                                    ? "text-main-600"
+                                    : "text-main-300",
                             )}
                         >
                             {item.description}
@@ -170,12 +171,12 @@ const ToastCard = ({ item, onDone }: ToastCardProps) => {
 
             <div
                 className={cn(
-                    styles.track,
-                    isPrimary ? styles.trackPrimary : styles.trackDefault,
+                    "mt-3 h-1 w-full overflow-hidden rounded-full",
+                    isPrimary ? "bg-main-300" : "bg-main-800",
                 )}
             >
                 <div
-                    className={cn(styles.bar, style.progress)}
+                    className={cn("h-full motion-reduce:transition-none!", style.progress)}
                     style={{
                         width: progressStarted ? "0%" : "100%",
                         transition: `width ${item.durationMs}ms linear`,
@@ -230,7 +231,7 @@ export const ToastProvider = ({ children }: PropsWithChildren) => {
                 role="region"
                 aria-live="polite"
                 aria-label={t.regionLabel}
-                className={styles.viewport}
+                className="pointer-events-none fixed right-4 bottom-4 z-70 flex w-[22.5rem] max-w-[calc(100vw-2rem)] flex-col gap-2"
             >
                 {toasts.map((item) => (
                     <ToastCard key={item.id} item={item} onDone={removeToast} />

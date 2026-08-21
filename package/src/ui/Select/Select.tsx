@@ -1,6 +1,5 @@
 "use client";
 
-import styles from "./Select.module.css";
 
 import { Icon } from "../_shared/icons";
 import {
@@ -122,7 +121,7 @@ function SelectRoot({
     return (
         <SelectContext.Provider value={contextValue}>
             <Dropdown
-                className={cn(styles.s0, className)}
+                className={cn("w-72 max-w-full", className)}
                 menuWidth={menuWidth ?? "auto"}
                 menuPlacement={menuPlacement}
                 disabled={disabled}
@@ -275,7 +274,7 @@ function SelectMenu({
     };
 
     return (
-        <Dropdown.Menu rounded={rounded} className={cn(styles.s1, className)}>
+        <Dropdown.Menu rounded={rounded} className={cn("bg-main-800", className)}>
             {searchable && (
                 <InputSmall
                     ref={searchRef}
@@ -283,7 +282,7 @@ function SelectMenu({
                     value={query}
                     onChange={(event) => setQuery(event.target.value)}
                     placeholder={searchPlaceholder}
-                    className={cn(styles.s2, classNames?.search)}
+                    className={cn("h-8 w-full", classNames?.search)}
                     onKeyDown={(event) => {
                         if (event.key === "ArrowDown") {
                             event.preventDefault();
@@ -293,16 +292,16 @@ function SelectMenu({
                 />
             )}
 
-            <ScrollArea className={cn(styles.s3, searchable && styles.s4)}>
+            <ScrollArea className={cn("max-h-72", searchable && "mt-1.5")}>
                 <div
                     ref={listRef}
                     role="listbox"
                     aria-label={label}
                     onKeyDown={onKeyDown}
-                    className={styles.s5}
+                    className={"flex flex-col gap-1"}
                 >
                     {visibleOptionsCount === 0 ? (
-                        <p className={styles.s6}>{emptyMessage}</p>
+                        <p className={"px-3 py-2 text-sm text-main-500"}>{emptyMessage}</p>
                     ) : (
                         children
                     )}
@@ -335,20 +334,20 @@ function SelectOptionComponent({
             closeOnClick={context.closeOnSelect}
             icon={
                 active ? (
-                    <Icon icon="check" className={styles.s7} aria-hidden />
+                    <Icon icon="check" className={"text-main-200"} aria-hidden />
                 ) : (
                     icon
                 )
             }
             onClick={() => context.select(option)}
             className={cn(
-                styles.s8,
-                active ? styles.s9 : styles.s10,
-                rounded && `zvs-${rounded}`,
+                "min-w-0 cursor-pointer px-3 py-1.5",
+                active ? "bg-main-700/60 text-main-100" : "text-main-300",
+                rounded && rounded,
                 className,
             )}
         >
-            <span className={styles.s11}>{label}</span>
+            <span className={"truncate"}>{label}</span>
         </Dropdown.Item>
     );
 }

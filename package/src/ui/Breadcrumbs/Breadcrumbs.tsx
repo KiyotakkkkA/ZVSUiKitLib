@@ -1,4 +1,3 @@
-import styles from "./Breadcrumbs.module.css";
 import { Children, createContext, isValidElement, useContext } from "react";
 import { cn } from "../../lib/utils";
 import type {
@@ -34,15 +33,15 @@ const BreadcrumbsRoot = ({
         <BreadcrumbsContext.Provider value={{ separator }}>
             <nav
                 aria-label="Breadcrumb"
-                className={cn(styles.s0, className)}
+                className={cn("flex min-w-0 items-center", className)}
                 {...props}
             >
-                <ol className={styles.s1}>
+                <ol className={"flex min-w-0 items-center gap-1.5"}>
                     {items.map((child, index) => {
                         const isLast = index === items.length - 1;
 
                         return (
-                            <li key={index} className={styles.s2}>
+                            <li key={index} className={"flex min-w-0 items-center gap-1.5"}>
                                 {child}
 
                                 {!isLast && <BreadcrumbsSeparator />}
@@ -71,11 +70,11 @@ const BreadcrumbsNav = ({
             disabled={disabled || active}
             onClick={onClick}
             className={cn(
-                styles.s3,
-                styles.s4,
-                active ? styles.s5 : styles.s6,
-                disabled && styles.s7,
-                styles.s8,
+                "min-w-0 max-w-52 truncate rounded-lg px-2 py-1 text-sm",
+                "transition-colors duration-200",
+                active ? "cursor-default text-main-100" : "cursor-pointer text-main-400 hover:bg-main-700/60 hover:text-main-100",
+                disabled && "cursor-not-allowed opacity-60",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-300/50",
                 className,
             )}
         >
@@ -95,7 +94,7 @@ const BreadcrumbsSeparator = ({
         <span
             {...props}
             aria-hidden="true"
-            className={cn(styles.s9, className)}
+            className={cn("select-none text-sm text-main-500", className)}
         >
             {children ?? separator}
         </span>

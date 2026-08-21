@@ -1,4 +1,3 @@
-import styles from "./InputSlider.module.css";
 import { useMemo, useRef, type PointerEvent } from "react";
 import { cn } from "../../lib/utils";
 import type { InputSliderProps } from "./types";
@@ -66,14 +65,14 @@ export const InputSlider = ({
         <div
             ref={ref}
             className={cn(
-                styles.s0,
-                disabled ? styles.s1 : styles.s2,
+                "group inline-flex w-64 max-w-full items-center gap-3",
+                disabled ? "cursor-not-allowed opacity-60" : "cursor-pointer",
                 className,
             )}
         >
             <div
                 ref={trackRef}
-                className={styles.s3}
+                className={"relative h-6 w-full touch-none"}
                 onPointerDown={(event) => {
                     if (disabled) {
                         return;
@@ -120,24 +119,24 @@ export const InputSlider = ({
                     disabled={disabled}
                     onChange={(event) => onChange(Number(event.target.value))}
                     className={cn(
-                        styles.s4,
-                        disabled ? styles.s5 : styles.s6,
+                        "absolute inset-0 z-20 h-full w-full appearance-none bg-transparent opacity-0",
+                        disabled ? "cursor-not-allowed" : "cursor-pointer",
                         classNames?.input,
                     )}
                 />
 
-                <div className={cn(styles.s7, styles.s8, classNames?.track)}>
+                <div className={cn("absolute left-0 top-1/2 h-2 w-full -translate-y-1/2 overflow-hidden rounded-full border border-main-600 bg-main-800", "transition-colors duration-200", classNames?.track)}>
                     <div
-                        className={cn(styles.s9, classNames?.fill)}
+                        className={cn("h-full rounded-full bg-main-500/70 transition-colors duration-200", classNames?.fill)}
                         style={{ width: `${percent}%` }}
                     />
                 </div>
 
                 <span
                     className={cn(
-                        styles.s10,
-                        styles.s12,
-                        disabled && styles.s13,
+                        "pointer-events-none absolute top-1/2 z-10 h-4 w-4 -translate-x-1/2 -translate-y-1/2 rounded-full bg-main-100 shadow-sm",
+                        "group-focus-within:shadow-[0_0_0_2px_color-mix(in_srgb,var(--color-main-300)_60%,transparent)]",
+                        disabled && "bg-main-300",
                         classNames?.thumb,
                     )}
                     style={{ left: `${percent}%` }}
@@ -145,7 +144,7 @@ export const InputSlider = ({
             </div>
 
             {showValue && (
-                <span className={cn(styles.s15, classNames?.value)}>
+                <span className={cn("min-w-8 text-right text-sm text-main-300", classNames?.value)}>
                     {formattedValue}
                 </span>
             )}

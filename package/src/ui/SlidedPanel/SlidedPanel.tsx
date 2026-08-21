@@ -1,4 +1,3 @@
-import styles from "./SlidedPanel.module.css";
 import {
     createContext,
     useContext,
@@ -25,31 +24,31 @@ import type {
 } from "./types";
 
 const overlayPlacementClasses: Record<SlidedPanelPlacement, string> = {
-    top: styles.s0,
-    right: styles.s1,
-    bottom: styles.s2,
-    left: styles.s3,
+    top: "items-start",
+    right: "justify-end",
+    bottom: "items-end",
+    left: "justify-start",
 };
 
 const panelPlacementClasses: Record<SlidedPanelPlacement, string> = {
-    top: styles.s4,
-    right: styles.s5,
-    bottom: styles.s6,
-    left: styles.s7,
+    top: "h-96 w-full border-b border-main-600/70 shadow-[0_16px_60px_rgba(0,0,0,0.5)]",
+    right: "h-full w-96 border-l border-main-600/70 shadow-[-16px_0_60px_rgba(0,0,0,0.5)]",
+    bottom: "h-96 w-full border-t border-main-600/70 shadow-[0_-16px_60px_rgba(0,0,0,0.5)]",
+    left: "h-full w-96 border-r border-main-600/70 shadow-[16px_0_60px_rgba(0,0,0,0.5)]",
 };
 
 const closedPlacementClasses: Record<SlidedPanelPlacement, string> = {
-    top: styles.s8,
-    right: styles.s9,
-    bottom: styles.s10,
-    left: styles.s11,
+    top: "-translate-y-full",
+    right: "translate-x-full",
+    bottom: "translate-y-full",
+    left: "-translate-x-full",
 };
 
 const openPlacementClasses: Record<SlidedPanelPlacement, string> = {
-    top: styles.s12,
-    right: styles.s13,
-    bottom: styles.s14,
-    left: styles.s15,
+    top: "translate-y-0",
+    right: "translate-x-0",
+    bottom: "translate-y-0",
+    left: "translate-x-0",
 };
 
 const SlidedPanelContext = createContext<
@@ -108,9 +107,9 @@ function SlidedPanelRoot({
         >
             <div
                 className={cn(
-                    styles.s16,
+                    "fixed inset-0 z-50 flex bg-black/60 backdrop-blur-sm transition-opacity duration-260",
                     overlayPlacementClasses[panelPlacement],
-                    open ? styles.s17 : styles.s18,
+                    open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
                 )}
                 onClick={onOverlayClick}
                 inert={!open}
@@ -124,17 +123,17 @@ function SlidedPanelRoot({
                     aria-labelledby={hasTitle ? titleId : undefined}
                     tabIndex={-1}
                     className={cn(
-                        styles.s19,
-                        styles.s20,
+                        "flex flex-col overflow-hidden bg-main-900/95 backdrop-blur-md",
+                        "transition-all duration-260 ease-out",
                         panelPlacementClasses[panelPlacement],
                         open
                             ? cn(
                                   openPlacementClasses[panelPlacement],
-                                  styles.s21,
+                                  "opacity-100",
                               )
                             : cn(
                                   closedPlacementClasses[panelPlacement],
-                                  styles.s22,
+                                  "opacity-0",
                               ),
                         className,
                     )}
@@ -156,13 +155,13 @@ function SlidedPanelHeader({
     const t = useLocale().slidedPanel;
 
     return (
-        <header className={cn(styles.s23, className)} {...props}>
-            <div className={styles.s24}>{children}</div>
+        <header className={cn("flex items-center justify-between border-b border-main-700/70 bg-main-900/35 px-4 py-3", className)} {...props}>
+            <div className={"min-w-0 flex-1"}>{children}</div>
 
             <button
                 type="button"
                 aria-label={t.close}
-                className={styles.s25}
+                className={"ml-3 shrink-0 rounded-md p-1 text-main-300 transition-colors hover:bg-main-700/70 hover:text-main-100"}
                 onClick={onClose}
             >
                 <Icon icon="close" width={18} height={18} />
@@ -185,7 +184,7 @@ function SlidedPanelTitle({
     }, [registerTitle]);
 
     return (
-        <p id={id ?? titleId} className={cn(styles.s26, className)} {...props}>
+        <p id={id ?? titleId} className={cn("truncate text-base font-semibold text-main-100", className)} {...props}>
             {children}
         </p>
     );
@@ -197,7 +196,7 @@ function SlidedPanelSubtitle({
     ...props
 }: SlidedPanelSubtitleProps) {
     return (
-        <p className={cn(styles.s27, className)} {...props}>
+        <p className={cn("truncate text-xs text-main-400", className)} {...props}>
             {children}
         </p>
     );
@@ -209,7 +208,7 @@ function SlidedPanelContent({
     ...props
 }: SlidedPanelContentProps) {
     return (
-        <div className={cn(styles.s28, className)} {...props}>
+        <div className={cn("min-h-0 flex-1 p-4", className)} {...props}>
             {children}
         </div>
     );
@@ -221,7 +220,7 @@ function SlidedPanelFooter({
     ...props
 }: SlidedPanelFooterProps) {
     return (
-        <footer className={cn(styles.s29, className)} {...props}>
+        <footer className={cn("border-t border-main-700/70 px-4 py-3", className)} {...props}>
             {children}
         </footer>
     );
