@@ -1,8 +1,3 @@
-/**
- * The sort-state machine behind Table. Kept free of React so the cycle through
- * a column's sort modes can be tested on its own.
- */
-
 export type SortState = {
     /** The column key currently sorted, or null when unsorted. */
     columnKey: string | null;
@@ -12,11 +7,6 @@ export type SortState = {
 
 export const UNSORTED: SortState = { columnKey: null, modeKey: null };
 
-/**
- * Returns the state after clicking a column header. Clicking a new column
- * starts at its first mode; clicking the active column advances through its
- * modes and then returns to unsorted.
- */
 export const nextSortState = (
     current: SortState,
     columnKey: string,

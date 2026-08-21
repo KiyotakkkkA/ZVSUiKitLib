@@ -1,6 +1,6 @@
 ```tsx
 "use client";
-import { CodeView } from "@kiyotakkkka/zvs-uikit-lib";
+import { CodeView } from "@kiyotakkkka/zvs-uikit-lib/code-view";
 
 const code = `function sum(a, b) {\n  return a + b;\n}`;
 

@@ -1,6 +1,5 @@
 export type ZvsDictionary = {
     accordion: {
-        /** Fallback accessible name for a summary trigger. */
         toggle: string;
     };
     autoFillSelector: {
@@ -73,16 +72,10 @@ export type ZvsDictionary = {
     };
 };
 
-/** A dictionary where every group and every string is optional. */
 export type PartialZvsDictionary = {
     [Group in keyof ZvsDictionary]?: Partial<ZvsDictionary[Group]>;
 };
 
-/**
- * The strings the library falls back to when no LocaleProvider is mounted.
- * These are the values the components shipped with before the dictionary
- * existed, so an app that ignores localisation sees no change.
- */
 export const defaultDictionary: ZvsDictionary = {
     accordion: {
         toggle: "Развернуть",
@@ -159,7 +152,6 @@ export const defaultDictionary: ZvsDictionary = {
     },
 };
 
-/** An English dictionary, ready to pass to `LocaleProvider`. */
 export const enDictionary: ZvsDictionary = {
     accordion: {
         toggle: "Expand",
@@ -234,7 +226,6 @@ export const enDictionary: ZvsDictionary = {
     },
 };
 
-/** Merges partial overrides onto a base dictionary, group by group. */
 export const mergeDictionary = (
     base: ZvsDictionary,
     overrides?: PartialZvsDictionary,

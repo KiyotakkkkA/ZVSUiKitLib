@@ -5,7 +5,7 @@ const require = createRequire(import.meta.url);
 const rawLoaderPath = require.resolve("raw-loader");
 
 const nextConfig: NextConfig = {
-    allowedDevOrigins: ["172.18.0.1", "192.168.0.42"],
+    allowedDevOrigins: ["172.18.0.1", "192.168.0.42", "10.6.7.1"],
     experimental: {
         turbopackFileSystemCacheForDev: false,
     },

@@ -1,6 +1,6 @@
 "use client";
 
-import { CodeView } from "@kiyotakkkka/zvs-uikit-lib";
+import { CodeView } from "@kiyotakkkka/zvs-uikit-lib/code-view";
 import { cx } from "./utils";
 
 type CodeBlockProps = {

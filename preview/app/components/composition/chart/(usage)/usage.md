@@ -1,6 +1,6 @@
 ```tsx
 "use client";
-import { Chart } from "@kiyotakkkka/zvs-uikit-lib";
+import { Chart } from "@kiyotakkkka/zvs-uikit-lib/chart";
 
 const weeklyActivityData = [
     { date: "Mon", users: 120, requests: 340 },

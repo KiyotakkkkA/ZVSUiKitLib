@@ -73,11 +73,6 @@ export type UseDialogOptions = {
     lockScroll?: boolean;
 };
 
-/**
- * Wires the behaviour a modal surface owes its users: focus moves into the
- * dialog on open and back to the trigger on close, Tab cycles inside it, and
- * the page behind it stops scrolling.
- */
 export function useDialog<T extends HTMLElement>({
     open,
     onClose,

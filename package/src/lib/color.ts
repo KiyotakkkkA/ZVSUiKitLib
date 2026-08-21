@@ -1,8 +1,3 @@
-/**
- * Colour maths behind InputColor. Kept free of React so the conversions can be
- * tested on their own.
- */
-
 export const clamp = (value: number, min: number, max: number) =>
     Math.min(Math.max(value, min), max);
 
@@ -80,7 +75,11 @@ export const rgbToHsv = (red: number, green: number, blue: number) => {
     };
 };
 
-export const hsvToHex = (hue: number, saturation: number, brightness: number) => {
+export const hsvToHex = (
+    hue: number,
+    saturation: number,
+    brightness: number,
+) => {
     const normalizedSaturation = saturation / 100;
     const normalizedBrightness = brightness / 100;
     const chroma = normalizedBrightness * normalizedSaturation;
