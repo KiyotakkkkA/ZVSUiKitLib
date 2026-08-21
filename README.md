@@ -41,11 +41,6 @@ import { CodeView } from "@kiyotakkkka/zvs-uikit-lib/code-view";
 
 ## Overriding styles alongside Tailwind
 
-The library ships its stylesheet inside a cascade layer named `zvs-uikit`.
-Layered CSS always loses to unlayered CSS, and to any layer declared after it,
-so a plain `className` beats the component's own rules and `!important` is not
-needed:
-
 ```tsx
 <Button className="bg-red-500">Delete</Button>
 ```
