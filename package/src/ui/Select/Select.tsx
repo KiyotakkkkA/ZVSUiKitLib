@@ -1,6 +1,5 @@
 "use client";
 
-
 import { Icon } from "../_shared/icons";
 import {
     createContext,
@@ -274,7 +273,10 @@ function SelectMenu({
     };
 
     return (
-        <Dropdown.Menu rounded={rounded} className={cn("bg-main-800", className)}>
+        <Dropdown.Menu
+            rounded={rounded}
+            className={cn("bg-main-800", className)}
+        >
             {searchable && (
                 <InputSmall
                     ref={searchRef}
@@ -301,7 +303,9 @@ function SelectMenu({
                     className={"flex flex-col gap-1"}
                 >
                     {visibleOptionsCount === 0 ? (
-                        <p className={"px-3 py-2 text-sm text-main-500"}>{emptyMessage}</p>
+                        <p className={"px-3 py-2 text-sm text-main-500"}>
+                            {emptyMessage}
+                        </p>
                     ) : (
                         children
                     )}
@@ -334,7 +338,11 @@ function SelectOptionComponent({
             closeOnClick={context.closeOnSelect}
             icon={
                 active ? (
-                    <Icon icon="check" className={"text-main-200"} aria-hidden />
+                    <Icon
+                        icon="check"
+                        className={"text-main-200"}
+                        aria-hidden
+                    />
                 ) : (
                     icon
                 )

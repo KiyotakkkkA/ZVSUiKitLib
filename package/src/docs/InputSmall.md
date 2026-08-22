@@ -4,10 +4,10 @@
 
 - [Import](#import)
 - [API](#api)
-    - [InputPreset](#inputpreset)
-    - [InputPresets](#inputpresets)
-    - [InputSmall](#inputsmall)
-        - [InputSmallClassNames](#inputsmallclassnames)
+  - [InputPreset](#inputpreset)
+  - [InputPresets](#inputpresets)
+  - [InputSmall](#inputsmall)
+    - [InputSmallClassNames](#inputsmallclassnames)
 - [Example](#example)
 
 ## Import
@@ -34,23 +34,23 @@ type InputPresets = InputPreset;
 
 Extends: `InputHTMLAttributes<HTMLInputElement>`.
 
-| Property     | Type                                           | Default | Required | Description                                        |
-| ------------ | ---------------------------------------------- | ------- | -------- | -------------------------------------------------- |
-| `classNames` | `InputSmallClassNames`                         | -       | No       | CSS classes applied to the component slots.        |
-| `preset`     | `InputPresets`                                 | -       | No       | The preset used by the component.                  |
-| `onClear`    | `() => void`                                   | -       | No       | Callback invoked when clear occurs.                |
-| `rounded`    | [RoundVariants](./dict.md#roundvariants) \| "" | -       | No       | The border-radius preset applied to the component. |
+| Property | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `classNames` | `InputSmallClassNames` | - | No | CSS classes applied to the component slots. |
+| `preset` | `InputPresets` | - | No | The preset used by the component. |
+| `onClear` | `() => void` | - | No | Callback invoked when clear occurs. |
+| `rounded` | [RoundVariants](./dict.md#roundvariants) \| "" | - | No | The border-radius preset applied to the component. |
+
 
 ### InputSmallClassNames
 
-| Property         | Description                                |
-| ---------------- | ------------------------------------------ |
-| `input`          | The input element used by the component.   |
-| `icon`           | Content rendered for the icon.             |
-| `leadingIcon`    | Content rendered for the leading icon.     |
+| Property | Description |
+| --- | --- |
+| `input` | The input element used by the component. |
+| `icon` | Content rendered for the icon. |
+| `leadingIcon` | Content rendered for the leading icon. |
 | `trailingButton` | The trailing button used by the component. |
 
-## Example
 
 ```tsx
 "use client";

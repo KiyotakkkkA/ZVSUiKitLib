@@ -78,7 +78,10 @@ export function Tabs({
                 aria-label={label}
                 aria-orientation={orientation}
                 onKeyDown={onKeyDown}
-                className={cn("flex items-end gap-4 border-b border-main-700", classNames?.list)}
+                className={cn(
+                    "flex items-end gap-4 border-b border-main-700",
+                    classNames?.list,
+                )}
             >
                 {options.map((option, index) => {
                     const active = option.value === value;
@@ -99,7 +102,8 @@ export function Tabs({
                                 "relative -mb-px px-4 py-3 text-sm font-medium text-main-300 transition-colors",
                                 "hover:text-main-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-400/40",
                                 "disabled:cursor-not-allowed disabled:opacity-50",
-                                active && "border-b border-main-100 text-main-50",
+                                active &&
+                                    "border-b border-main-100 text-main-50",
                                 classNames?.tab,
                                 active && classNames?.activeTab,
                                 tabProps?.className,

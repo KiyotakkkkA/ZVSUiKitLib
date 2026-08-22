@@ -4,8 +4,8 @@
 
 - [Import](#import)
 - [API](#api)
-    - [InputPins](#inputpins)
-        - [InputPinsClassNames](#inputpinsclassnames)
+  - [InputPins](#inputpins)
+    - [InputPinsClassNames](#inputpinsclassnames)
 - [Example](#example)
 
 ## Import
@@ -20,25 +20,25 @@ import { InputPins } from "@kiyotakkkka/zvs-uikit-lib";
 
 Extends: `BaseInputPinsProps`.
 
-| Property     | Type                      | Default | Required | Description                                 |
-| ------------ | ------------------------- | ------- | -------- | ------------------------------------------- |
-| `value`      | `string`                  | -       | Yes      | The value used by the component.            |
-| `onChange`   | `(value: string) => void` | -       | Yes      | Callback invoked when change occurs.        |
-| `length`     | `number`                  | -       | No       | The length used by the component.           |
-| `label`      | `string`                  | -       | No       | Text used for the label.                    |
-| `disabled`   | `boolean`                 | -       | No       | Whether disabled is enabled.                |
-| `mask`       | `boolean`                 | -       | No       | The mask used by the component.             |
-| `className`  | `DivClassName`            | -       | No       | CSS classes applied to the root element.    |
-| `classNames` | `InputPinsClassNames`     | -       | No       | CSS classes applied to the component slots. |
+| Property | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `value` | `string` | - | Yes | The value used by the component. |
+| `onChange` | `(value: string) => void` | - | Yes | Callback invoked when change occurs. |
+| `length` | `number` | - | No | The length used by the component. |
+| `label` | `string` | - | No | Text used for the label. |
+| `disabled` | `boolean` | - | No | Whether disabled is enabled. |
+| `mask` | `boolean` | - | No | The mask used by the component. |
+| `className` | `DivClassName` | - | No | CSS classes applied to the root element. |
+| `classNames` | `InputPinsClassNames` | - | No | CSS classes applied to the component slots. |
+
 
 ### InputPinsClassNames
 
-| Property | Description                      |
-| -------- | -------------------------------- |
-| `group`  | The group used by the component. |
-| `input`  | The input used by the component. |
+| Property | Description |
+| --- | --- |
+| `group` | The group used by the component. |
+| `input` | The input used by the component. |
 
-## Example
 
 ```tsx
 "use client";

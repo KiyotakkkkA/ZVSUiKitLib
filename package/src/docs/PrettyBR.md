@@ -4,8 +4,8 @@
 
 - [Import](#import)
 - [API](#api)
-    - [PrettyBR](#prettybr)
-        - [PrettyBRClassNames](#prettybrclassnames)
+  - [PrettyBR](#prettybr)
+    - [PrettyBRClassNames](#prettybrclassnames)
 - [Example](#example)
 
 ## Import
@@ -18,24 +18,24 @@ import { PrettyBR } from "@kiyotakkkka/zvs-uikit-lib";
 
 ### PrettyBR
 
-| Property     | Type                  | Default | Required | Description                                 |
-| ------------ | --------------------- | ------- | -------- | ------------------------------------------- |
-| `ref`        | `Ref<HTMLDivElement>` | -       | No       | Receives the separator root element.        |
-| `icon`       | `ReactNode`           | -       | No       | Content rendered for the icon.              |
-| `label`      | `string`              | -       | No       | Text used for the label.                    |
-| `size`       | `number`              | -       | No       | The rendered icon size in pixels.           |
-| `className`  | `DivClassName`        | -       | No       | CSS classes applied to the root element.    |
-| `classNames` | `PrettyBRClassNames`  | -       | No       | CSS classes applied to the component slots. |
+| Property | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `ref` | `Ref<HTMLDivElement>` | - | No | Receives the separator root element. |
+| `icon` | `ReactNode` | - | No | Content rendered for the icon. |
+| `label` | `string` | - | No | Text used for the label. |
+| `size` | `number` | - | No | The rendered icon size in pixels. |
+| `className` | `DivClassName` | - | No | CSS classes applied to the root element. |
+| `classNames` | `PrettyBRClassNames` | - | No | CSS classes applied to the component slots. |
+
 
 ### PrettyBRClassNames
 
-| Property  | Description                        |
-| --------- | ---------------------------------- |
+| Property | Description |
+| --- | --- |
 | `divider` | The divider used by the component. |
-| `icon`    | Content rendered for the icon.     |
-| `label`   | Text used for the label.           |
+| `icon` | Content rendered for the icon. |
+| `label` | Text used for the label. |
 
-## Example
 
 ```tsx
 "use client";

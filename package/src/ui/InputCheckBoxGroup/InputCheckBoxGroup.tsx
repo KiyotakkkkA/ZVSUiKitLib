@@ -1,6 +1,5 @@
 "use client";
 
-
 import { useMemo, useState } from "react";
 import { cn } from "../../lib/utils";
 import type { BooleanModel, InputCheckBoxGroupProps } from "./types";
@@ -61,7 +60,9 @@ export function InputCheckBoxGroup<T extends BooleanModel>({
                 aria-disabled={disabled || undefined}
                 className={cn(
                     "flex gap-3",
-                    orientation === "vertical" ? "flex-col items-start" : "flex-row flex-wrap items-center",
+                    orientation === "vertical"
+                        ? "flex-col items-start"
+                        : "flex-row flex-wrap items-center",
                     className,
                 )}
             >

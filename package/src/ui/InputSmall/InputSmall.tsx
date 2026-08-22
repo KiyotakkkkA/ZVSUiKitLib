@@ -157,7 +157,8 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
                         "disabled:cursor-not-allowed disabled:opacity-60 read-only:cursor-not-allowed",
                         hasLeadingIcon && "pl-9",
                         hasTrailingAction && "pr-9",
-                        isSearchPreset && "[&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden",
+                        isSearchPreset &&
+                            "[&::-webkit-search-cancel-button]:hidden [&::-webkit-search-decoration]:hidden",
                         classNames?.input,
                     )}
                 />

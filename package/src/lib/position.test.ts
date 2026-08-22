@@ -47,6 +47,14 @@ describe("computeMenuPosition", () => {
         expect(position("bottom-center").left).toBe(140);
     });
 
+    it("puts a left-center placement beside the trigger", () => {
+        expect(position("left-center")).toEqual({ left: 8, top: 170 });
+    });
+
+    it("puts a right-center placement beside the trigger", () => {
+        expect(position("right-center")).toEqual({ left: 308, top: 170 });
+    });
+
     it("keeps the menu inside the viewport", () => {
         const offscreen = computeMenuPosition({
             trigger: { top: 10, right: 995, bottom: 40, left: 900, width: 95 },

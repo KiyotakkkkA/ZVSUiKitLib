@@ -168,7 +168,7 @@ export const overlayComponents: ComponentDocSection = {
             name: "SlidedPanel",
             summary: "Slide-in edge panel.",
         },
-        { slug: "tooltip", name: "Tooltip", summary: "Hover and focus label." },
+        { slug: "tooltip", name: "Tooltip", summary: "Hover label." },
     ],
 };
 

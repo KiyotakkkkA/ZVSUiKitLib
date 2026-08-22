@@ -53,6 +53,8 @@ export const positionAnchorDirective = enumValuesDirective({
         "top-left",
         "top-center",
         "top-right",
+        "left-center",
+        "right-center",
         "bottom-left",
         "bottom-center",
         "bottom-right",

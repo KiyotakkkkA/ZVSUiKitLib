@@ -19,7 +19,7 @@
         "directory": "package"
     },
     "private": false,
-    "version": "8.1.1",
+    "version": "8.2.0",
     "type": "module",
     "main": "./dist/index.js",
     "module": "./dist/index.js",

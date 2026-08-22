@@ -125,9 +125,18 @@ export const InputSlider = ({
                     )}
                 />
 
-                <div className={cn("absolute left-0 top-1/2 h-2 w-full -translate-y-1/2 overflow-hidden rounded-full border border-main-600 bg-main-800", "transition-colors duration-200", classNames?.track)}>
+                <div
+                    className={cn(
+                        "absolute left-0 top-1/2 h-2 w-full -translate-y-1/2 overflow-hidden rounded-full border border-main-600 bg-main-800",
+                        "transition-colors duration-200",
+                        classNames?.track,
+                    )}
+                >
                     <div
-                        className={cn("h-full rounded-full bg-main-500/70 transition-colors duration-200", classNames?.fill)}
+                        className={cn(
+                            "h-full rounded-full bg-main-500/70 transition-colors duration-200",
+                            classNames?.fill,
+                        )}
                         style={{ width: `${percent}%` }}
                     />
                 </div>
@@ -144,7 +153,12 @@ export const InputSlider = ({
             </div>
 
             {showValue && (
-                <span className={cn("min-w-8 text-right text-sm text-main-300", classNames?.value)}>
+                <span
+                    className={cn(
+                        "min-w-8 text-right text-sm text-main-300",
+                        classNames?.value,
+                    )}
+                >
                     {formattedValue}
                 </span>
             )}

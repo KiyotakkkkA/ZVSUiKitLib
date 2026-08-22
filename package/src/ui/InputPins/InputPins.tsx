@@ -234,7 +234,13 @@ export const InputPins = forwardRef<HTMLDivElement, InputPinsProps>(
         );
 
         return (
-            <div ref={ref} className={cn("inline-flex flex-col items-center gap-6", className)}>
+            <div
+                ref={ref}
+                className={cn(
+                    "inline-flex flex-col items-center gap-6",
+                    className,
+                )}
+            >
                 <div
                     role="group"
                     aria-label={label ?? "Pin input"}
@@ -265,7 +271,9 @@ export const InputPins = forwardRef<HTMLDivElement, InputPinsProps>(
                     ))}
                 </div>
 
-                {label && <span className={"text-sm text-main-300"}>{label}</span>}
+                {label && (
+                    <span className={"text-sm text-main-300"}>{label}</span>
+                )}
             </div>
         );
     },

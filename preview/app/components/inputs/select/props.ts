@@ -1,4 +1,7 @@
-import { roundVariantsDirective } from "@/_shared/directives";
+import {
+    positionAnchorDirective,
+    roundVariantsDirective,
+} from "@/_shared/directives";
 import type { ComponentAPIDoc } from "../../../../_shared/types";
 
 export const componentProps: ComponentAPIDoc = {
@@ -56,6 +59,7 @@ export const componentProps: ComponentAPIDoc = {
                 type: "PositionAnchor",
                 description: "Popup placement.",
                 defaultValue: '"bottom-left"',
+                directives: [positionAnchorDirective],
             },
             closeOnSelect: {
                 type: "boolean",

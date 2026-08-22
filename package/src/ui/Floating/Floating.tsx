@@ -1,6 +1,5 @@
 "use client";
 
-
 import { createContext, useContext, useMemo } from "react";
 import { cn } from "../../lib/utils";
 import type {
@@ -15,6 +14,8 @@ const panelPositionByAnchor: Record<PositionAnchor, string> = {
     "top-left": "bottom-full left-0 mb-2 origin-bottom-left",
     "top-center": "bottom-full left-1/2 mb-2 -translate-x-1/2 origin-bottom",
     "top-right": "bottom-full right-0 mb-2 origin-bottom-right",
+    "left-center": "top-1/2 right-full mr-2 -translate-y-1/2 origin-right",
+    "right-center": "top-1/2 left-full ml-2 -translate-y-1/2 origin-left",
     "bottom-left": "top-full left-0 mt-2 origin-top-left",
     "bottom-center": "top-full left-1/2 mt-2 -translate-x-1/2 origin-top",
     "bottom-right": "top-full right-0 mt-2 origin-top-right",
@@ -44,7 +45,10 @@ function FloatingRoot({
 
     return (
         <FloatingContext.Provider value={contextValue}>
-            <div className={cn("group relative inline-flex w-fit", className)} {...props}>
+            <div
+                className={cn("group relative inline-flex w-fit", className)}
+                {...props}
+            >
                 {children}
             </div>
         </FloatingContext.Provider>

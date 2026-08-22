@@ -56,26 +56,56 @@ export const Pagination = ({
     }));
 
     return (
-        <div ref={ref} className={"grid gap-2 sm:flex sm:items-center sm:justify-between sm:gap-3"}>
-            <div className={"rounded-md border border-main-700/70 bg-main-900/35 px-3 py-2 text-sm text-main-300 sm:border-0 sm:bg-transparent sm:px-0 sm:py-0"}>
+        <div
+            ref={ref}
+            className={
+                "grid gap-2 sm:flex sm:items-center sm:justify-between sm:gap-3"
+            }
+        >
+            <div
+                className={
+                    "rounded-md border border-main-700/70 bg-main-900/35 px-3 py-2 text-sm text-main-300 sm:border-0 sm:bg-transparent sm:px-0 sm:py-0"
+                }
+            >
                 {total > 0 ? (
                     <div className={"whitespace-nowrap"}>
-                        <span className={"hidden sm:inline"}>{t.shownPrefix} </span>
-                        <span className={"font-semibold text-main-50"}>{from ?? 1}</span>
+                        <span className={"hidden sm:inline"}>
+                            {t.shownPrefix}{" "}
+                        </span>
+                        <span className={"font-semibold text-main-50"}>
+                            {from ?? 1}
+                        </span>
                         {" - "}
-                        <span className={"font-semibold text-main-50"}>{to ?? total}</span>
-                        <span className={"text-main-400"}> {t.shownSeparator} </span>
-                        <span className={"font-semibold text-main-50"}>{total}</span>
+                        <span className={"font-semibold text-main-50"}>
+                            {to ?? total}
+                        </span>
+                        <span className={"text-main-400"}>
+                            {" "}
+                            {t.shownSeparator}{" "}
+                        </span>
+                        <span className={"font-semibold text-main-50"}>
+                            {total}
+                        </span>
                     </div>
                 ) : (
                     t.empty
                 )}
             </div>
 
-            <div className={"grid grid-cols-[1fr_auto] items-center gap-2 sm:flex sm:flex-row sm:items-center sm:gap-3"}>
+            <div
+                className={
+                    "grid grid-cols-[1fr_auto] items-center gap-2 sm:flex sm:flex-row sm:items-center sm:gap-3"
+                }
+            >
                 {onPerPageChange && (
-                    <div className={"flex min-w-0 items-center justify-between gap-2 rounded-md bg-main-900/35 text-sm text-main-300 sm:border-0 sm:bg-transparent sm:px-0 sm:py-0"}>
-                        <span className={"truncate hidden sm:inline"}>{t.perPage}</span>
+                    <div
+                        className={
+                            "flex min-w-0 items-center justify-between gap-2 rounded-md bg-main-900/35 text-sm text-main-300 sm:border-0 sm:bg-transparent sm:px-0 sm:py-0"
+                        }
+                    >
+                        <span className={"truncate hidden sm:inline"}>
+                            {t.perPage}
+                        </span>
                         <Select
                             value={String(perPage)}
                             disabled={disabled}
@@ -87,18 +117,24 @@ export const Pagination = ({
                         >
                             <Select.Trigger
                                 rounded="rounded"
-                                className={"h-8 w-16 border-main-700 bg-main-900 px-2 text-sm font-semibold sm:h-9"}
+                                className={
+                                    "h-8 w-16 border-main-700 bg-main-900 px-2 text-sm font-semibold sm:h-9"
+                                }
                             />
                             <Select.Menu
                                 rounded="rounded-lg"
-                                className={"border border-main-700 bg-main-900 text-main-100"}
+                                className={
+                                    "border border-main-700 bg-main-900 text-main-100"
+                                }
                             >
                                 {perPageSelectOptions.map((option) => (
                                     <Select.Option
                                         key={option.value}
                                         {...option}
                                         rounded="rounded-md"
-                                        className={"justify-center px-2 py-1 text-sm"}
+                                        className={
+                                            "justify-center px-2 py-1 text-sm"
+                                        }
                                     />
                                 ))}
                             </Select.Menu>
@@ -106,12 +142,19 @@ export const Pagination = ({
                     </div>
                 )}
 
-                <nav className={"flex items-center justify-end gap-1 rounded-md border border-main-700/70 bg-main-900/35 p-1 sm:border-0 sm:bg-transparent sm:p-0"} aria-label={t.label}>
+                <nav
+                    className={
+                        "flex items-center justify-end gap-1 rounded-md border border-main-700/70 bg-main-900/35 p-1 sm:border-0 sm:bg-transparent sm:p-0"
+                    }
+                    aria-label={t.label}
+                >
                     <Button
                         variant="secondary"
                         disabled={disabled || isFirstPage}
                         onClick={() => onPageChange(page - 1)}
-                        className={"flex size-8 items-center justify-center p-0 disabled:cursor-not-allowed disabled:opacity-50 sm:size-9"}
+                        className={
+                            "flex size-8 items-center justify-center p-0 disabled:cursor-not-allowed disabled:opacity-50 sm:size-9"
+                        }
                         title={t.previousPage}
                     >
                         <Icon icon="chevron-left" width={20} height={20} />
@@ -119,7 +162,12 @@ export const Pagination = ({
 
                     {visiblePages.map((visiblePage, index) =>
                         visiblePage === "dots" ? (
-                            <span key={`dots-${index}`} className={"flex size-8 items-center justify-center text-main-500 sm:size-9"}>
+                            <span
+                                key={`dots-${index}`}
+                                className={
+                                    "flex size-8 items-center justify-center text-main-500 sm:size-9"
+                                }
+                            >
                                 ...
                             </span>
                         ) : (
@@ -132,7 +180,9 @@ export const Pagination = ({
                                 }
                                 disabled={disabled || visiblePage === page}
                                 onClick={() => onPageChange(visiblePage)}
-                                className={"flex size-8 items-center justify-center p-0 text-sm font-bold disabled:cursor-default disabled:opacity-100 sm:size-9"}
+                                className={
+                                    "flex size-8 items-center justify-center p-0 text-sm font-bold disabled:cursor-default disabled:opacity-100 sm:size-9"
+                                }
                                 title={t.page(visiblePage)}
                             >
                                 {visiblePage}
@@ -144,7 +194,9 @@ export const Pagination = ({
                         variant="secondary"
                         disabled={disabled || isLastPage}
                         onClick={() => onPageChange(page + 1)}
-                        className={"flex size-8 items-center justify-center p-0 disabled:cursor-not-allowed disabled:opacity-50 sm:size-9"}
+                        className={
+                            "flex size-8 items-center justify-center p-0 disabled:cursor-not-allowed disabled:opacity-50 sm:size-9"
+                        }
                         title={t.nextPage}
                     >
                         <Icon icon="chevron-right" width={20} height={20} />

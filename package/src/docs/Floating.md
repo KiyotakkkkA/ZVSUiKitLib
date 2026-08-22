@@ -4,10 +4,10 @@
 
 - [Import](#import)
 - [API](#api)
-    - [Floating](#floating)
-    - [Floating.Trigger](#floatingtrigger)
-    - [Floating.Content](#floatingcontent)
-    - [FloatingContextValue](#floatingcontextvalue)
+  - [Floating](#floating)
+  - [Floating.Trigger](#floatingtrigger)
+  - [Floating.Content](#floatingcontent)
+  - [FloatingContextValue](#floatingcontextvalue)
 - [Example](#example)
 
 ## Import
@@ -22,11 +22,12 @@ import { Floating } from "@kiyotakkkka/zvs-uikit-lib";
 
 Extends: `HTMLAttributes<HTMLDivElement>`.
 
-| Property   | Type                                       | Default       | Required | Description                                |
-| ---------- | ------------------------------------------ | ------------- | -------- | ------------------------------------------ |
-| `ref`      | `Ref<HTMLDivElement>`                      | -             | No       | Receives the floating root element.        |
-| `children` | `ReactNode`                                | -             | Yes      | The content rendered inside the component. |
-| `anchor`   | [PositionAnchor](./dict.md#positionanchor) | `"top-right"` | No       | Content rendered for the anchor.           |
+| Property | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `ref` | `Ref<HTMLDivElement>` | - | No | Receives the floating root element. |
+| `children` | `ReactNode` | - | Yes | The content rendered inside the component. |
+| `anchor` | [PositionAnchor](./dict.md#positionanchor) | `"top-right"` | No | Content rendered for the anchor. |
+
 
 ### Floating.Trigger
 
@@ -38,17 +39,17 @@ type FloatingTriggerProps = HTMLAttributes<HTMLDivElement>;
 
 Extends: `HTMLAttributes<HTMLDivElement>`.
 
-| Property  | Type                                           | Default        | Required | Description                                        |
-| --------- | ---------------------------------------------- | -------------- | -------- | -------------------------------------------------- |
-| `rounded` | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-lg"` | No       | The border-radius preset applied to the component. |
+| Property | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `rounded` | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-lg"` | No | The border-radius preset applied to the component. |
+
 
 ### FloatingContextValue
 
-| Property | Type                                       | Default | Required | Description                      |
-| -------- | ------------------------------------------ | ------- | -------- | -------------------------------- |
-| `anchor` | [PositionAnchor](./dict.md#positionanchor) | -       | Yes      | Content rendered for the anchor. |
+| Property | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `anchor` | [PositionAnchor](./dict.md#positionanchor) | - | Yes | Content rendered for the anchor. |
 
-## Example
 
 ```tsx
 "use client";

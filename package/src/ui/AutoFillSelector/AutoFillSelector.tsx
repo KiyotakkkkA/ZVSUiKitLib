@@ -124,7 +124,13 @@ function AutoFillSelectorRoot({
 
     return (
         <AutoFillSelectorContext.Provider value={contextValue}>
-            <div className={cn("relative w-72 max-w-full min-w-0 overflow-hidden", className)} {...props}>
+            <div
+                className={cn(
+                    "relative w-72 max-w-full min-w-0 overflow-hidden",
+                    className,
+                )}
+                {...props}
+            >
                 <Dropdown
                     className={"w-full"}
                     disabled={disabled}
@@ -186,7 +192,13 @@ function AutoFillSelectorTags({
     }
 
     return (
-        <div className={cn("flex min-w-0 max-w-full flex-wrap items-center gap-1", className)} {...props}>
+        <div
+            className={cn(
+                "flex min-w-0 max-w-full flex-wrap items-center gap-1",
+                className,
+            )}
+            {...props}
+        >
             {value.map((item) => {
                 const option = options.find((opt) => opt.value === item);
 
@@ -206,7 +218,10 @@ function AutoFillSelectorTags({
                         {!disabled && (
                             <button
                                 type="button"
-                                className={cn("shrink-0 text-main-400 transition-colors hover:text-main-100", tagRemoveClassName)}
+                                className={cn(
+                                    "shrink-0 text-main-400 transition-colors hover:text-main-100",
+                                    tagRemoveClassName,
+                                )}
                                 onClick={(event) => {
                                     event.stopPropagation();
                                     removeValue(item);
@@ -265,7 +280,11 @@ function AutoFillSelectorInput({
                     removeValue(value[value.length - 1]);
                 }
             }}
-            className={cn("min-w-20 flex-1 bg-transparent px-0.5 py-0.5 text-sm text-main-100 placeholder:text-main-500 outline-none", rounded, className)}
+            className={cn(
+                "min-w-20 flex-1 bg-transparent px-0.5 py-0.5 text-sm text-main-100 placeholder:text-main-500 outline-none",
+                rounded,
+                className,
+            )}
             {...props}
         />
     );
@@ -281,7 +300,10 @@ function AutoFillSelectorMenu({
         <Dropdown.Menu
             aria-multiselectable
             rounded={rounded}
-            className={cn("border-main-700 bg-main-800 p-1 shadow-lg", className)}
+            className={cn(
+                "border-main-700 bg-main-800 p-1 shadow-lg",
+                className,
+            )}
             {...props}
         >
             <ScrollArea orientation="vertical" className={"max-h-64"}>
@@ -339,13 +361,18 @@ function AutoFillSelectorOptions({
                         }}
                         className={cn(
                             `w-full min-w-0 items-center gap-2 px-4 py-1.5`,
-                            isSelected ? "bg-main-700/60 text-main-100" : "text-main-300 hover:bg-main-700/40 hover:text-main-100",
+                            isSelected
+                                ? "bg-main-700/60 text-main-100"
+                                : "text-main-300 hover:bg-main-700/40 hover:text-main-100",
                             optionClassName,
                         )}
                     >
                         <span className={"min-w-0 flex-1"}>
                             <span
-                                className={cn("block truncate font-medium", optionLabelClassName)}
+                                className={cn(
+                                    "block truncate font-medium",
+                                    optionLabelClassName,
+                                )}
                             >
                                 {option.label}
                             </span>
@@ -380,7 +407,10 @@ function AutoFillSelectorEmpty({
     }
 
     return (
-        <div className={cn("px-3 py-2 text-sm text-main-500", className)} {...props}>
+        <div
+            className={cn("px-3 py-2 text-sm text-main-500", className)}
+            {...props}
+        >
             {children}
         </div>
     );

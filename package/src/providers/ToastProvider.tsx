@@ -140,7 +140,9 @@ const ToastCard = ({ item, onDone }: ToastCardProps) => {
                 "translate-x-8 opacity-0 transition-[transform,opacity] duration-200 ease-out",
                 "motion-reduce:translate-x-0 motion-reduce:opacity-100 motion-reduce:transition-none",
                 style.border,
-                isPrimary ? "bg-main-100 text-main-800" : "bg-main-900 text-main-100",
+                isPrimary
+                    ? "bg-main-100 text-main-800"
+                    : "bg-main-900 text-main-100",
                 entered && "translate-x-0 opacity-100",
             )}
         >
@@ -158,9 +160,7 @@ const ToastCard = ({ item, onDone }: ToastCardProps) => {
                         <p
                             className={cn(
                                 "mt-1 text-xs",
-                                isPrimary
-                                    ? "text-main-600"
-                                    : "text-main-300",
+                                isPrimary ? "text-main-600" : "text-main-300",
                             )}
                         >
                             {item.description}
@@ -176,7 +176,10 @@ const ToastCard = ({ item, onDone }: ToastCardProps) => {
                 )}
             >
                 <div
-                    className={cn("h-full motion-reduce:transition-none!", style.progress)}
+                    className={cn(
+                        "h-full motion-reduce:transition-none!",
+                        style.progress,
+                    )}
                     style={{
                         width: progressStarted ? "0%" : "100%",
                         transition: `width ${item.durationMs}ms linear`,

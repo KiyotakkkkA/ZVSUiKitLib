@@ -1,6 +1,5 @@
 "use client";
 
-
 import {
     forwardRef,
     useId,
@@ -119,7 +118,8 @@ export const InputBig = forwardRef<HTMLTextAreaElement, InputBigProps>(
                         "text-sm leading-6 text-main-100 placeholder:text-main-500 outline-none transition-[border-color,box-shadow,background-color]",
                         "border-main-700 hover:border-main-600 focus:border-main-500 focus:ring-2 focus:ring-main-500/20",
                         "disabled:cursor-not-allowed disabled:opacity-60 read-only:cursor-default read-only:bg-main-800/60",
-                        error && "border-danger-medium/70 focus:border-danger-medium focus:ring-danger-medium/20",
+                        error &&
+                            "border-danger-medium/70 focus:border-danger-medium focus:ring-danger-medium/20",
                         autoResize ? "resize-none" : "resize-y",
                         classNames?.textarea,
                     )}
@@ -127,7 +127,12 @@ export const InputBig = forwardRef<HTMLTextAreaElement, InputBigProps>(
                 />
 
                 {(message || showCount) && (
-                    <div className={cn("mt-1.5 flex min-w-0 items-start justify-between gap-3 text-xs", classNames?.footer)}>
+                    <div
+                        className={cn(
+                            "mt-1.5 flex min-w-0 items-start justify-between gap-3 text-xs",
+                            classNames?.footer,
+                        )}
+                    >
                         {message ? (
                             <p
                                 id={messageId}

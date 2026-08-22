@@ -9,7 +9,8 @@ import type {
     TableRecord,
 } from "./types";
 
-const defaultHeaderCellClassName = "px-5 py-3 text-xs font-bold uppercase tracking-wide text-main-300";
+const defaultHeaderCellClassName =
+    "px-5 py-3 text-xs font-bold uppercase tracking-wide text-main-300";
 const defaultRowClassName = "border-b border-main-800 last:border-b-0";
 const defaultCellClassName = "px-5 py-4 text-sm text-main-300";
 
@@ -83,7 +84,10 @@ export function Table<T extends TableRecord>({
     }, []);
 
     return (
-        <table ref={ref} className={cn("w-full border-collapse text-left", classNames?.root)}>
+        <table
+            ref={ref}
+            className={cn("w-full border-collapse text-left", classNames?.root)}
+        >
             {caption && (
                 <caption
                     className={cn(
@@ -96,7 +100,12 @@ export function Table<T extends TableRecord>({
             )}
 
             <thead className={classNames?.header}>
-                <tr className={cn("border-b border-main-700 bg-main-800/80", classNames?.headerRow)}>
+                <tr
+                    className={cn(
+                        "border-b border-main-700 bg-main-800/80",
+                        classNames?.headerRow,
+                    )}
+                >
                     {columns.map((column) => {
                         const isSortable = Boolean(column.sortModes?.length);
                         const isActive = sortState.columnKey === column.key;
@@ -140,7 +149,9 @@ export function Table<T extends TableRecord>({
                                         type="button"
                                         className={cn(
                                             "inline-flex w-full items-center gap-1.5 rounded-md px-1 py-0.5 text-left transition-colors duration-150",
-                                            isActive ? "text-main-100" : "text-main-300 hover:text-main-100",
+                                            isActive
+                                                ? "text-main-100"
+                                                : "text-main-300 hover:text-main-100",
                                             classNames?.sortButton,
                                         )}
                                         onClick={() =>

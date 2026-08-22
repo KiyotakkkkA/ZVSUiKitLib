@@ -4,9 +4,9 @@
 
 - [Import](#import)
 - [API](#api)
-    - [Carousel](#carousel)
-        - [CarouselClassNames](#carouselclassnames)
-    - [Carousel.Image](#carouselimage)
+  - [Carousel](#carousel)
+    - [CarouselClassNames](#carouselclassnames)
+  - [Carousel.Image](#carouselimage)
 - [Example](#example)
 
 ## Import
@@ -19,31 +19,32 @@ import { Carousel } from "@kiyotakkkka/zvs-uikit-lib";
 
 ### Carousel
 
-| Property            | Type                 | Default | Required | Description                                    |
-| ------------------- | -------------------- | ------- | -------- | ---------------------------------------------- |
-| `ref`               | `Ref<HTMLElement>`   | -       | No       | Receives the carousel \`<section>\` element.   |
-| `children`          | `ReactNode`          | -       | Yes      | The content rendered inside the component.     |
-| `className`         | `string`             | -       | No       | CSS classes applied to the root element.       |
-| `classNames`        | `CarouselClassNames` | -       | No       | CSS classes applied to the component slots.    |
-| `loop`              | `boolean`            | `false` | No       | Whether loop is enabled.                       |
-| `autoScroll`        | `boolean`            | `false` | No       | The auto scroll used by the component.         |
-| `autoScrollTimeout` | `number`             | `5000`  | No       | The auto scroll timeout used by the component. |
+| Property | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `ref` | `Ref<HTMLElement>` | - | No | Receives the carousel \`<section>\` element. |
+| `children` | `ReactNode` | - | Yes | The content rendered inside the component. |
+| `className` | `string` | - | No | CSS classes applied to the root element. |
+| `classNames` | `CarouselClassNames` | - | No | CSS classes applied to the component slots. |
+| `loop` | `boolean` | `false` | No | Whether loop is enabled. |
+| `autoScroll` | `boolean` | `false` | No | The auto scroll used by the component. |
+| `autoScrollTimeout` | `number` | `5000` | No | The auto scroll timeout used by the component. |
+
 
 ### CarouselClassNames
 
-| Property | Description                      |
-| -------- | -------------------------------- |
-| `nav`    | The nav used by the component.   |
-| `links`  | The links used by the component. |
+| Property | Description |
+| --- | --- |
+| `nav` | The nav used by the component. |
+| `links` | The links used by the component. |
+
 
 ### Carousel.Image
 
-| Property    | Type        | Default | Required | Description                                |
-| ----------- | ----------- | ------- | -------- | ------------------------------------------ |
-| `children`  | `ReactNode` | -       | Yes      | The content rendered inside the component. |
-| `className` | `string`    | -       | No       | CSS classes applied to the root element.   |
+| Property | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `children` | `ReactNode` | - | Yes | The content rendered inside the component. |
+| `className` | `string` | - | No | CSS classes applied to the root element. |
 
-## Example
 
 ```tsx
 "use client";

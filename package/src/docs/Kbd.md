@@ -4,7 +4,7 @@
 
 - [Import](#import)
 - [API](#api)
-    - [Kbd](#kbd)
+  - [Kbd](#kbd)
 - [Example](#example)
 
 ## Import
@@ -20,8 +20,6 @@ import { Kbd } from "@kiyotakkkka/zvs-uikit-lib";
 ```ts
 type KbdProps = ComponentPropsWithRef<"kbd">;
 ```
-
-## Example
 
 ```tsx
 import { Kbd } from "@kiyotakkkka/zvs-uikit-lib";

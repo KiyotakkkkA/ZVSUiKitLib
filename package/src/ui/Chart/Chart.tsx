@@ -37,9 +37,19 @@ const DefaultTooltip = memo(
         if (!active || !payload?.length) return null;
 
         return (
-            <div className={cn("rounded-xl border border-main-700 bg-main-900/95 px-3 py-2 shadow-2xl shadow-black/30", classNames?.tooltip)}>
+            <div
+                className={cn(
+                    "rounded-xl border border-main-700 bg-main-900/95 px-3 py-2 shadow-2xl shadow-black/30",
+                    classNames?.tooltip,
+                )}
+            >
                 {label !== undefined && (
-                    <div className={cn("mb-1 text-xs font-medium text-main-400", classNames?.tooltipLabel)}>
+                    <div
+                        className={cn(
+                            "mb-1 text-xs font-medium text-main-400",
+                            classNames?.tooltipLabel,
+                        )}
+                    >
                         {label}
                     </div>
                 )}
@@ -61,7 +71,9 @@ const DefaultTooltip = memo(
                             >
                                 <div className={"flex items-center gap-1.5"}>
                                     <span
-                                        className={"inline-block h-2 w-2 shrink-0 rounded-full"}
+                                        className={
+                                            "inline-block h-2 w-2 shrink-0 rounded-full"
+                                        }
                                         style={{ background: item.color }}
                                     />
                                     <span
@@ -339,18 +351,30 @@ const ChartBase = ({
         <div
             {...props}
             style={style}
-            className={cn("min-w-0 rounded-2xl border border-main-700/70 bg-main-900/50 p-4", className, classNames?.root)}
+            className={cn(
+                "min-w-0 rounded-2xl border border-main-700/70 bg-main-900/50 p-4",
+                className,
+                classNames?.root,
+            )}
         >
             {(title || description) && (
                 <div className={cn("mb-4", classNames?.header)}>
                     {title && (
-                        <div className={cn("text-base font-semibold text-main-100", classNames?.title)}>
+                        <div
+                            className={cn(
+                                "text-base font-semibold text-main-100",
+                                classNames?.title,
+                            )}
+                        >
                             {title}
                         </div>
                     )}
                     {description && (
                         <div
-                            className={cn("mt-1 text-sm text-main-400", classNames?.description)}
+                            className={cn(
+                                "mt-1 text-sm text-main-400",
+                                classNames?.description,
+                            )}
                         >
                             {description}
                         </div>
@@ -365,7 +389,10 @@ const ChartBase = ({
                     </ResponsiveContainer>
                 ) : (
                     <div
-                        className={cn("flex items-center justify-center rounded-xl border border-dashed border-main-700 bg-main-900/40 text-sm text-main-500", classNames?.empty)}
+                        className={cn(
+                            "flex items-center justify-center rounded-xl border border-dashed border-main-700 bg-main-900/40 text-sm text-main-500",
+                            classNames?.empty,
+                        )}
                         style={{ height }}
                     >
                         {emptyState ?? t.emptyState}

@@ -97,13 +97,20 @@ const Thumb = ({
                 aria-valuenow={value}
                 onChange={(e) => onChange(index, Number(e.target.value))}
                 onKeyDown={handleKeyDown}
-                className={cn("pointer-events-none absolute inset-0 h-full w-full appearance-none bg-transparent opacity-0", inputClassName)}
+                className={cn(
+                    "pointer-events-none absolute inset-0 h-full w-full appearance-none bg-transparent opacity-0",
+                    inputClassName,
+                )}
             />
 
             {showLabel && (
                 <span
                     aria-hidden="true"
-                    className={cn("pointer-events-none absolute bottom-full mb-1.5", "whitespace-nowrap text-xs text-main-300", labelClassName)}
+                    className={cn(
+                        "pointer-events-none absolute bottom-full mb-1.5",
+                        "whitespace-nowrap text-xs text-main-300",
+                        labelClassName,
+                    )}
                     style={{
                         left: `${percent}%`,
                         transform: `translateX(clamp(0%, calc(-1 * ${percent}%), -100%))`,
@@ -256,7 +263,10 @@ export const InputRange = ({
                         )}
                     >
                         <div
-                            className={cn("absolute h-full rounded-full bg-main-500/70 transition-colors duration-200", classNames?.fill)}
+                            className={cn(
+                                "absolute h-full rounded-full bg-main-500/70 transition-colors duration-200",
+                                classNames?.fill,
+                            )}
                             style={{
                                 left: `${startPercent}%`,
                                 width: `${endPercent - startPercent}%`,

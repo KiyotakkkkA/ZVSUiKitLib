@@ -109,7 +109,9 @@ function SlidedPanelRoot({
                 className={cn(
                     "fixed inset-0 z-50 flex bg-black/60 backdrop-blur-sm transition-opacity duration-260",
                     overlayPlacementClasses[panelPlacement],
-                    open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
+                    open
+                        ? "pointer-events-auto opacity-100"
+                        : "pointer-events-none opacity-0",
                 )}
                 onClick={onOverlayClick}
                 inert={!open}
@@ -155,13 +157,21 @@ function SlidedPanelHeader({
     const t = useLocale().slidedPanel;
 
     return (
-        <header className={cn("flex items-center justify-between border-b border-main-700/70 bg-main-900/35 px-4 py-3", className)} {...props}>
+        <header
+            className={cn(
+                "flex items-center justify-between border-b border-main-700/70 bg-main-900/35 px-4 py-3",
+                className,
+            )}
+            {...props}
+        >
             <div className={"min-w-0 flex-1"}>{children}</div>
 
             <button
                 type="button"
                 aria-label={t.close}
-                className={"ml-3 shrink-0 rounded-md p-1 text-main-300 transition-colors hover:bg-main-700/70 hover:text-main-100"}
+                className={
+                    "ml-3 shrink-0 rounded-md p-1 text-main-300 transition-colors hover:bg-main-700/70 hover:text-main-100"
+                }
                 onClick={onClose}
             >
                 <Icon icon="close" width={18} height={18} />
@@ -184,7 +194,14 @@ function SlidedPanelTitle({
     }, [registerTitle]);
 
     return (
-        <p id={id ?? titleId} className={cn("truncate text-base font-semibold text-main-100", className)} {...props}>
+        <p
+            id={id ?? titleId}
+            className={cn(
+                "truncate text-base font-semibold text-main-100",
+                className,
+            )}
+            {...props}
+        >
             {children}
         </p>
     );
@@ -196,7 +213,10 @@ function SlidedPanelSubtitle({
     ...props
 }: SlidedPanelSubtitleProps) {
     return (
-        <p className={cn("truncate text-xs text-main-400", className)} {...props}>
+        <p
+            className={cn("truncate text-xs text-main-400", className)}
+            {...props}
+        >
             {children}
         </p>
     );
@@ -220,7 +240,10 @@ function SlidedPanelFooter({
     ...props
 }: SlidedPanelFooterProps) {
     return (
-        <footer className={cn("border-t border-main-700/70 px-4 py-3", className)} {...props}>
+        <footer
+            className={cn("border-t border-main-700/70 px-4 py-3", className)}
+            {...props}
+        >
             {children}
         </footer>
     );

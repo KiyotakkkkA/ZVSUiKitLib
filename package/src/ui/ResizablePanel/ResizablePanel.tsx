@@ -144,7 +144,10 @@ const Sidebar = forwardRef<HTMLElement, ResizablePanelSidebarProps>(
                 {...props}
                 ref={ref}
                 id={id ?? sidebarId}
-                className={cn("min-h-0 min-w-0 shrink-0 overflow-auto", className)}
+                className={cn(
+                    "min-h-0 min-w-0 shrink-0 overflow-auto",
+                    className,
+                )}
                 style={{
                     ...(orientation === "horizontal"
                         ? { width: size }
@@ -164,7 +167,10 @@ const Content = forwardRef<HTMLElement, ResizablePanelContentProps>(
             <main
                 {...props}
                 ref={ref}
-                className={cn("min-h-0 min-w-0 flex-1 overflow-auto", className)}
+                className={cn(
+                    "min-h-0 min-w-0 flex-1 overflow-auto",
+                    className,
+                )}
             >
                 {children}
             </main>

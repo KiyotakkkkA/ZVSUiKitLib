@@ -4,8 +4,8 @@
 
 - [Import](#import)
 - [API](#api)
-    - [PaginationPageItem](#paginationpageitem)
-    - [Pagination](#pagination)
+  - [PaginationPageItem](#paginationpageitem)
+  - [Pagination](#pagination)
 - [Example](#example)
 
 ## Import
@@ -24,21 +24,20 @@ type PaginationPageItem = number | "dots";
 
 ### Pagination
 
-| Property          | Type                        | Default        | Required | Description                                   |
-| ----------------- | --------------------------- | -------------- | -------- | --------------------------------------------- |
-| `ref`             | `Ref<HTMLDivElement>`       | -              | No       | Receives the pagination root element.         |
-| `page`            | `number`                    | -              | Yes      | The page used by the component.               |
-| `perPage`         | `number`                    | -              | Yes      | The per page used by the component.           |
-| `total`           | `number`                    | -              | Yes      | The total used by the component.              |
-| `lastPage`        | `number`                    | -              | Yes      | The last page used by the component.          |
-| `from`            | `number \| null`            | -              | No       | The from used by the component.               |
-| `to`              | `number \| null`            | -              | No       | The to used by the component.                 |
-| `disabled`        | `boolean`                   | `false`        | No       | Whether disabled is enabled.                  |
-| `onPageChange`    | `(page: number) => void`    | -              | Yes      | Callback invoked when page change occurs.     |
-| `onPerPageChange` | `(perPage: number) => void` | -              | No       | Callback invoked when per page change occurs. |
-| `perPageOptions`  | `number[]`                  | `[10, 20, 50]` | No       | The per page options used by the component.   |
+| Property | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `ref` | `Ref<HTMLDivElement>` | - | No | Receives the pagination root element. |
+| `page` | `number` | - | Yes | The page used by the component. |
+| `perPage` | `number` | - | Yes | The per page used by the component. |
+| `total` | `number` | - | Yes | The total used by the component. |
+| `lastPage` | `number` | - | Yes | The last page used by the component. |
+| `from` | `number \| null` | - | No | The from used by the component. |
+| `to` | `number \| null` | - | No | The to used by the component. |
+| `disabled` | `boolean` | `false` | No | Whether disabled is enabled. |
+| `onPageChange` | `(page: number) => void` | - | Yes | Callback invoked when page change occurs. |
+| `onPerPageChange` | `(perPage: number) => void` | - | No | Callback invoked when per page change occurs. |
+| `perPageOptions` | `number[]` | `[10, 20, 50]` | No | The per page options used by the component. |
 
-## Example
 
 ```tsx
 "use client";

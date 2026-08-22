@@ -155,7 +155,9 @@ export function InputDate({
                                 <span
                                     className={cn(
                                         "min-w-0 truncate text-left text-sm",
-                                        selectedDate ? "text-main-100" : "text-main-400",
+                                        selectedDate
+                                            ? "text-main-100"
+                                            : "text-main-400",
                                         classNames?.value,
                                     )}
                                 >
@@ -165,7 +167,10 @@ export function InputDate({
 
                             <Dropdown.Menu
                                 role="dialog"
-                                className={cn("z-40 rounded-xl border border-main-700 bg-main-900 p-0 shadow-2xl", classNames?.menu)}
+                                className={cn(
+                                    "z-40 rounded-xl border border-main-700 bg-main-900 p-0 shadow-2xl",
+                                    classNames?.menu,
+                                )}
                             >
                                 <Calendar
                                     value={selectedDate}

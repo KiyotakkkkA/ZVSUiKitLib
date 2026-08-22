@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { mkdir, readFile, readdir, rm, writeFile } from "node:fs/promises";
+import { mkdir, readFile, readdir, writeFile } from "node:fs/promises";
 import { basename, dirname, extname, join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import * as ts from "typescript";
@@ -9,7 +9,6 @@ const scriptDirectory = dirname(fileURLToPath(import.meta.url));
 const sourceDirectory = resolve(process.argv[2] ?? join(scriptDirectory, ".."));
 const docsDirectory = join(sourceDirectory, "docs");
 const uiDirectory = join(sourceDirectory, "ui");
-const preservedDocuments = new Set(["dict.md"]);
 const packageImport = "@kiyotakkkka/zvs-uikit-lib";
 const subpathImports = {
     Chart: `${packageImport}/chart`,
@@ -431,8 +430,11 @@ function exportedTypeAliases(sourceFile) {
 }
 
 async function generateComponentDocument(markdownFile) {
-    const componentName = basename(markdownFile, ".md");
     const componentDirectory = dirname(markdownFile);
+    const componentName =
+        basename(markdownFile) === "example.md"
+            ? basename(componentDirectory)
+            : basename(markdownFile, ".md");
     const typesFile = join(componentDirectory, "types.ts");
     const example = (await readFile(markdownFile, "utf8")).trim();
     const typesSource = await readFile(typesFile, "utf8");
@@ -574,21 +576,6 @@ function titleFromMarkdown(markdown, fallback) {
     return markdown.match(/^#\s+(.+)$/m)?.[1]?.trim() ?? fallback;
 }
 
-async function clearGeneratedDocuments() {
-    const entries = await readdir(docsDirectory, { withFileTypes: true });
-
-    await Promise.all(
-        entries
-            .filter(
-                (entry) =>
-                    entry.isFile() &&
-                    extname(entry.name) === ".md" &&
-                    !preservedDocuments.has(entry.name),
-            )
-            .map((entry) => rm(join(docsDirectory, entry.name))),
-    );
-}
-
 async function generateSharedTypeDictionary() {
     const sharedTypesFile = join(uiDirectory, "_shared", "types.ts");
     const sourceText = await readFile(sharedTypesFile, "utf8");
@@ -626,14 +613,18 @@ async function generateSharedTypeDictionary() {
 
 async function main() {
     await mkdir(docsDirectory, { recursive: true });
-    await clearGeneratedDocuments();
 
     const sourceFiles = await findMarkdownFiles(sourceDirectory);
     const documents = [];
     const seenNames = new Map();
 
     for (const sourceFile of sourceFiles.sort()) {
-        const outputName = basename(sourceFile);
+        const relativeToUi = relative(uiDirectory, sourceFile);
+        const isComponent =
+            relativeToUi !== "" && !relativeToUi.startsWith("..");
+        const outputName = isComponent
+            ? `${basename(dirname(sourceFile))}.md`
+            : basename(sourceFile);
         const previousSource = seenNames.get(outputName);
 
         if (previousSource) {
@@ -643,9 +634,6 @@ async function main() {
         }
 
         seenNames.set(outputName, sourceFile);
-        const relativeToUi = relative(uiDirectory, sourceFile);
-        const isComponent =
-            relativeToUi !== "" && !relativeToUi.startsWith("..");
         const markdown = normalizeDocument(
             isComponent
                 ? await generateComponentDocument(sourceFile)
@@ -653,13 +641,19 @@ async function main() {
                       await readFile(sourceFile, "utf8"),
                   ),
         );
-        await writeFile(join(docsDirectory, outputName), markdown);
         documents.push({
             name: titleFromMarkdown(markdown, basename(outputName, ".md")),
             outputName,
             sourceFile,
+            markdown,
         });
     }
+
+    await Promise.all(
+        documents.map(({ outputName, markdown }) =>
+            writeFile(join(docsDirectory, outputName), markdown),
+        ),
+    );
 
     await writeFile(
         join(docsDirectory, "dict.md"),

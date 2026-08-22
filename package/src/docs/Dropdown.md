@@ -4,13 +4,13 @@
 
 - [Import](#import)
 - [API](#api)
-    - [DropdownContextValue](#dropdowncontextvalue)
-    - [Dropdown](#dropdown)
-    - [Dropdown.Trigger](#dropdowntrigger)
-    - [Dropdown.Anchor](#dropdownanchor)
-    - [Dropdown.Menu](#dropdownmenu)
-    - [Dropdown.Item](#dropdownitem)
-    - [Dropdown.Render](#dropdownrender)
+  - [DropdownContextValue](#dropdowncontextvalue)
+  - [Dropdown](#dropdown)
+  - [Dropdown.Trigger](#dropdowntrigger)
+  - [Dropdown.Anchor](#dropdownanchor)
+  - [Dropdown.Menu](#dropdownmenu)
+  - [Dropdown.Item](#dropdownitem)
+  - [Dropdown.Render](#dropdownrender)
 - [Example](#example)
 
 ## Import
@@ -23,75 +23,80 @@ import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib";
 
 ### DropdownContextValue
 
-| Property                    | Type                                       | Default | Required | Description                                                                          |
-| --------------------------- | ------------------------------------------ | ------- | -------- | ------------------------------------------------------------------------------------ |
-| `open`                      | `boolean`                                  | -       | Yes      | Indicates whether the popup menu is open.                                            |
-| `disabled`                  | `boolean`                                  | -       | Yes      | Indicates whether the dropdown trigger is disabled.                                  |
-| `menuId`                    | `string`                                   | -       | Yes      | Identifies the popup menu for ARIA relationships.                                    |
-| `toggleOpen`                | `() => void`                               | -       | Yes      | Opens the menu when closed and closes it when open.                                  |
-| `openMenu`                  | `() => void`                               | -       | Yes      | Opens the popup menu.                                                                |
-| `close`                     | `() => void`                               | -       | Yes      | Closes the popup menu.                                                               |
-| `setTriggerRef`             | `Ref<HTMLElement>`                         | -       | Yes      | Receives the dropdown trigger element.                                               |
-| `setMenuRef`                | `Ref<HTMLDivElement>`                      | -       | Yes      | Receives the popup menu element.                                                     |
-| `ignoreNextTriggerClickRef` | `MutableRefObject<boolean>`                | -       | Yes      | Tracks whether the next trigger click must be ignored after an external open action. |
-| `menuPlacement`             | [PositionAnchor](./dict.md#positionanchor) | -       | Yes      | Specifies the preferred popup position relative to the trigger.                      |
+| Property | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `open` | `boolean` | - | Yes | Indicates whether the popup menu is open. |
+| `disabled` | `boolean` | - | Yes | Indicates whether the dropdown trigger is disabled. |
+| `menuId` | `string` | - | Yes | Identifies the popup menu for ARIA relationships. |
+| `toggleOpen` | `() => void` | - | Yes | Opens the menu when closed and closes it when open. |
+| `openMenu` | `() => void` | - | Yes | Opens the popup menu. |
+| `close` | `() => void` | - | Yes | Closes the popup menu. |
+| `setTriggerRef` | `Ref<HTMLElement>` | - | Yes | Receives the dropdown trigger element. |
+| `setMenuRef` | `Ref<HTMLDivElement>` | - | Yes | Receives the popup menu element. |
+| `ignoreNextTriggerClickRef` | `MutableRefObject<boolean>` | - | Yes | Tracks whether the next trigger click must be ignored after an external open action. |
+| `menuPlacement` | [PositionAnchor](./dict.md#positionanchor) | - | Yes | Specifies the preferred popup position relative to the trigger. |
+
 
 ### Dropdown
 
-| Property        | Type                                       | Default         | Required | Description                                                         |
-| --------------- | ------------------------------------------ | --------------- | -------- | ------------------------------------------------------------------- |
-| `ref`           | `Ref<HTMLDivElement>`                      | -               | No       | Receives the dropdown root element.                                 |
-| `children`      | `ReactNode`                                | -               | Yes      | Renders the dropdown trigger, menu, and optional render-prop parts. |
-| `className`     | `DivClassName`                             | -               | No       | Applies CSS classes to the dropdown root wrapper.                   |
-| `disabled`      | `boolean`                                  | `false`         | No       | Prevents the dropdown from opening through its trigger.             |
-| `menuWidth`     | `number \| string`                         | `220`           | No       | Sets the popup width; \`"auto"\` matches the trigger width.         |
-| `menuPlacement` | [PositionAnchor](./dict.md#positionanchor) | `"bottom-left"` | No       | Specifies the preferred popup position relative to the trigger.     |
-| `onOpenChange`  | `(open: boolean) => void`                  | -               | No       | Runs whenever the popup open state changes.                         |
+| Property | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `ref` | `Ref<HTMLDivElement>` | - | No | Receives the dropdown root element. |
+| `children` | `ReactNode` | - | Yes | Renders the dropdown trigger, menu, and optional render-prop parts. |
+| `className` | `DivClassName` | - | No | Applies CSS classes to the dropdown root wrapper. |
+| `disabled` | `boolean` | `false` | No | Prevents the dropdown from opening through its trigger. |
+| `menuWidth` | `number \| string` | `220` | No | Sets the popup width; \`"auto"\` matches the trigger width. |
+| `menuPlacement` | [PositionAnchor](./dict.md#positionanchor) | `"bottom-left"` | No | Specifies the preferred popup position relative to the trigger. |
+| `onOpenChange` | `(open: boolean) => void` | - | No | Runs whenever the popup open state changes. |
+
 
 ### Dropdown.Trigger
 
 Extends: `ButtonHTMLAttributes<HTMLButtonElement>`.
 
-| Property      | Type                                           | Default          | Required | Description                                                                                                                                               |
-| ------------- | ---------------------------------------------- | ---------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `placeholder` | `ReactNode`                                    | -                | No       | Renders fallback trigger content when no children are supplied. Defaults to the \`dropdown.triggerPlaceholder\` string from the active locale dictionary. |
-| `icon`        | `ReactNode`                                    | -                | No       | Replaces the default trailing chevron.                                                                                                                    |
-| `rounded`     | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-full"` | No       | Selects the trigger button border radius.                                                                                                                 |
+| Property | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `placeholder` | `ReactNode` | - | No | Renders fallback trigger content when no children are supplied. Defaults to the \`dropdown.triggerPlaceholder\` string from the active locale dictionary. |
+| `icon` | `ReactNode` | - | No | Replaces the default trailing chevron. |
+| `rounded` | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-full"` | No | Selects the trigger button border radius. |
+
 
 ### Dropdown.Anchor
 
 Extends: `HTMLAttributes<HTMLDivElement>`.
 
-| Property           | Type         | Default | Required | Description                                                              |
-| ------------------ | ------------ | ------- | -------- | ------------------------------------------------------------------------ |
-| `focusInputOnOpen` | `() => void` | -       | No       | Runs after the anchor opens the menu, typically to focus a nested input. |
+| Property | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `focusInputOnOpen` | `() => void` | - | No | Runs after the anchor opens the menu, typically to focus a nested input. |
+
 
 ### Dropdown.Menu
 
 Extends: `HTMLAttributes<HTMLDivElement>`.
 
-| Property  | Type                                           | Default         | Required | Description                           |
-| --------- | ---------------------------------------------- | --------------- | -------- | ------------------------------------- |
-| `rounded` | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-4xl"` | No       | Selects the popup menu border radius. |
+| Property | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `rounded` | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-4xl"` | No | Selects the popup menu border radius. |
+
 
 ### Dropdown.Item
 
 Extends: `ButtonHTMLAttributes<HTMLButtonElement>`.
 
-| Property       | Type                                           | Default         | Required | Description                                                          |
-| -------------- | ---------------------------------------------- | --------------- | -------- | -------------------------------------------------------------------- |
-| `closeOnClick` | `boolean`                                      | `true`          | No       | Closes the popup after the item click unless the event is prevented. |
-| `active`       | `boolean`                                      | `false`         | No       | Applies the active item appearance.                                  |
-| `icon`         | `ReactNode`                                    | -               | No       | Renders a leading icon inside the menu item.                         |
-| `rounded`      | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-3xl"` | No       | Selects the border radius for the menu item.                         |
+| Property | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `closeOnClick` | `boolean` | `true` | No | Closes the popup after the item click unless the event is prevented. |
+| `active` | `boolean` | `false` | No | Applies the active item appearance. |
+| `icon` | `ReactNode` | - | No | Renders a leading icon inside the menu item. |
+| `rounded` | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-3xl"` | No | Selects the border radius for the menu item. |
+
 
 ### Dropdown.Render
 
-| Property   | Type                                                                                                                                                                                                                                                                              | Default | Required | Description                                                |
-| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | -------- | ---------------------------------------------------------- |
-| `children` | `(args: { /** Indicates whether the popup menu is open. */ open: boolean; /** Closes the popup menu. */ close: () => void; /** Opens the menu when closed and closes it when open. */ toggleOpen: () => void; /** Opens the popup menu. */ openMenu: () => void; }) => ReactNode` | -       | Yes      | Receives the current dropdown state and control functions. |
+| Property | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `children` | `(args: { /** Indicates whether the popup menu is open. */ open: boolean; /** Closes the popup menu. */ close: () => void; /** Opens the menu when closed and closes it when open. */ toggleOpen: () => void; /** Opens the popup menu. */ openMenu: () => void; }) => ReactNode` | - | Yes | Receives the current dropdown state and control functions. |
 
-## Example
 
 ```tsx
 "use client";

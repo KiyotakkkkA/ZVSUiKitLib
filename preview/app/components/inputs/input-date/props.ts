@@ -1,4 +1,5 @@
 import type { ComponentAPIDoc } from "../../../../_shared/types";
+import { positionAnchorDirective } from "../../../../_shared/directives";
 
 export const componentProps: ComponentAPIDoc = {
     root: {
@@ -72,6 +73,7 @@ export const componentProps: ComponentAPIDoc = {
                 type: "PositionAnchor",
                 description: "Popup placement.",
                 defaultValue: '"bottom-left"',
+                directives: [positionAnchorDirective],
             },
             menuWidth: {
                 type: "number",

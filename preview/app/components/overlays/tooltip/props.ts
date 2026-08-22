@@ -7,7 +7,7 @@ export const tooltipProps: ComponentAPIDoc = {
     root: {
         name: "Tooltip",
         description:
-            "Small hover and focus label attached to one wrapped trigger.",
+            "Small hover label attached to one wrapped trigger.",
         props: {
             children: {
                 type: "ReactNode",

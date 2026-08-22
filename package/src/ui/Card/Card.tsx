@@ -16,7 +16,12 @@ function CardRoot({
 }: CardProps) {
     return (
         <section
-            className={cn("border border-main-700/70 bg-main-900/55", rounded, "text-main-100", className)}
+            className={cn(
+                "border border-main-700/70 bg-main-900/55",
+                rounded,
+                "text-main-100",
+                className,
+            )}
             {...props}
         >
             {children}
@@ -26,7 +31,10 @@ function CardRoot({
 
 function CardHeader({ className, children, ...props }: CardHeaderProps) {
     return (
-        <header className={cn("border-b border-main-700/70 px-4 py-3", className)} {...props}>
+        <header
+            className={cn("border-b border-main-700/70 px-4 py-3", className)}
+            {...props}
+        >
             {children}
         </header>
     );
@@ -58,7 +66,10 @@ function CardContent({ className, children, ...props }: CardContentProps) {
 
 function CardFooter({ className, children, ...props }: CardFooterProps) {
     return (
-        <footer className={cn("border-t border-main-700/70 px-4 py-3", className)} {...props}>
+        <footer
+            className={cn("border-t border-main-700/70 px-4 py-3", className)}
+            {...props}
+        >
             {children}
         </footer>
     );

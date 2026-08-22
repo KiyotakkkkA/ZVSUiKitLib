@@ -41,7 +41,10 @@ const BreadcrumbsRoot = ({
                         const isLast = index === items.length - 1;
 
                         return (
-                            <li key={index} className={"flex min-w-0 items-center gap-1.5"}>
+                            <li
+                                key={index}
+                                className={"flex min-w-0 items-center gap-1.5"}
+                            >
                                 {child}
 
                                 {!isLast && <BreadcrumbsSeparator />}
@@ -72,7 +75,9 @@ const BreadcrumbsNav = ({
             className={cn(
                 "min-w-0 max-w-52 truncate rounded-lg px-2 py-1 text-sm",
                 "transition-colors duration-200",
-                active ? "cursor-default text-main-100" : "cursor-pointer text-main-400 hover:bg-main-700/60 hover:text-main-100",
+                active
+                    ? "cursor-default text-main-100"
+                    : "cursor-pointer text-main-400 hover:bg-main-700/60 hover:text-main-100",
                 disabled && "cursor-not-allowed opacity-60",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-300/50",
                 className,

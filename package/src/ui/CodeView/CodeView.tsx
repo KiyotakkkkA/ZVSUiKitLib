@@ -260,7 +260,11 @@ const CodeViewDefaultActions = memo(() => {
 
     if (!copyable && !downloadable) return null;
 
-    const btnClass = cn("inline-flex h-7 items-center justify-center gap-1 rounded-lg px-2 text-xs", "text-main-400 transition-colors hover:bg-main-800 hover:text-main-50", "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-300/50");
+    const btnClass = cn(
+        "inline-flex h-7 items-center justify-center gap-1 rounded-lg px-2 text-xs",
+        "text-main-400 transition-colors hover:bg-main-800 hover:text-main-50",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-300/50",
+    );
 
     return (
         <div className={"flex shrink-0 items-center gap-1"}>
@@ -399,7 +403,10 @@ const CodeViewRoot = ({
             <div
                 {...props}
                 id={props.id ?? generatedId}
-                className={cn("overflow-hidden rounded-xl border border-main-700 bg-main-900", className)}
+                className={cn(
+                    "overflow-hidden rounded-xl border border-main-700 bg-main-900",
+                    className,
+                )}
             >
                 {children ?? (
                     <>
@@ -423,16 +430,30 @@ const CodeViewHeader = ({
     const { language, fileName, defaultActions } = useCodeView();
 
     return (
-        <div {...props} className={cn("flex min-h-10 items-center justify-between gap-3 border-b border-main-700 bg-main-900 px-3 py-2", className)}>
+        <div
+            {...props}
+            className={cn(
+                "flex min-h-10 items-center justify-between gap-3 border-b border-main-700 bg-main-900 px-3 py-2",
+                className,
+            )}
+        >
             <div className={"flex min-w-0 items-center gap-2"}>
                 {showLanguage && (
-                    <span className={cn("shrink-0 rounded-md bg-main-800 px-1.5 py-0.5 text-[11px] font-medium uppercase tracking-wide text-main-400")}>
+                    <span
+                        className={cn(
+                            "shrink-0 rounded-md bg-main-800 px-1.5 py-0.5 text-[11px] font-medium uppercase tracking-wide text-main-400",
+                        )}
+                    >
                         {language.toUpperCase()}
                     </span>
                 )}
 
                 {showFileName && fileName && (
-                    <span className={cn("min-w-0 truncate text-xs text-main-400")}>{fileName}</span>
+                    <span
+                        className={cn("min-w-0 truncate text-xs text-main-400")}
+                    >
+                        {fileName}
+                    </span>
                 )}
 
                 {children}
@@ -454,7 +475,13 @@ const CodeViewContent = ({
     if (isLoading) {
         return (
             <div {...props} className={cn("p-3", className)}>
-                {loadingFallback ?? <div className={cn("h-20 w-full animate-pulse rounded-lg bg-main-800")} />}
+                {loadingFallback ?? (
+                    <div
+                        className={cn(
+                            "h-20 w-full animate-pulse rounded-lg bg-main-800",
+                        )}
+                    />
+                )}
             </div>
         );
     }
@@ -462,7 +489,12 @@ const CodeViewContent = ({
     return (
         <div
             {...props}
-            className={cn("text-main-50", "[&_pre]:m-0 [&_pre]:bg-transparent [&_pre]:p-0", "[&_pre]:text-xs [&_pre]:leading-relaxed", "[&_code]:font-mono")}
+            className={cn(
+                "text-main-50",
+                "[&_pre]:m-0 [&_pre]:bg-transparent [&_pre]:p-0",
+                "[&_pre]:text-xs [&_pre]:leading-relaxed",
+                "[&_code]:font-mono",
+            )}
         >
             <ScrollArea
                 orientation="both"

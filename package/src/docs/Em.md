@@ -4,7 +4,7 @@
 
 - [Import](#import)
 - [API](#api)
-    - [Em](#em)
+  - [Em](#em)
 - [Example](#example)
 
 ## Import
@@ -20,8 +20,6 @@ import { Em } from "@kiyotakkkka/zvs-uikit-lib";
 ```ts
 type EmProps = ComponentPropsWithRef<"em">;
 ```
-
-## Example
 
 ```tsx
 import { Em } from "@kiyotakkkka/zvs-uikit-lib";

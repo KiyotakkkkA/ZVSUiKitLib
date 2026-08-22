@@ -4,7 +4,7 @@
 
 - [Import](#import)
 - [API](#api)
-    - [Strong](#strong)
+  - [Strong](#strong)
 - [Example](#example)
 
 ## Import
@@ -20,8 +20,6 @@ import { Strong } from "@kiyotakkkka/zvs-uikit-lib";
 ```ts
 type StrongProps = ComponentPropsWithRef<"strong">;
 ```
-
-## Example
 
 ```tsx
 import { Strong } from "@kiyotakkkka/zvs-uikit-lib";

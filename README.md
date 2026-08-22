@@ -372,7 +372,6 @@ List of SSR-friendly components:
 - ScrollArea
 - Separator
 - Skeleton
-- Tooltip
 - Text
 - Heading
 - Blockquote

@@ -4,7 +4,7 @@
 
 - [Import](#import)
 - [API](#api)
-    - [Link](#link)
+  - [Link](#link)
 - [Example](#example)
 
 ## Import
@@ -20,8 +20,6 @@ import { Link } from "@kiyotakkkka/zvs-uikit-lib";
 ```ts
 type LinkProps = ComponentPropsWithRef<"a">;
 ```
-
-## Example
 
 ```tsx
 import { Link } from "@kiyotakkkka/zvs-uikit-lib";

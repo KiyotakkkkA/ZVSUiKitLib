@@ -48,7 +48,13 @@ export function SelectNative({
                     </option>
                 ))}
             </select>
-            <Icon icon="chevron-down" className={"pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-main-400"} aria-hidden />
+            <Icon
+                icon="chevron-down"
+                className={
+                    "pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-main-400"
+                }
+                aria-hidden
+            />
         </div>
     );
 }

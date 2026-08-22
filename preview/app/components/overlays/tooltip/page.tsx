@@ -11,7 +11,7 @@ import usage from "./(usage)/usage.md";
 import { tooltipProps } from "./props";
 export const metadata: Metadata = {
     title: "Tooltip",
-    description: "Hover and focus label.",
+    description: "Hover label.",
 };
 export default function Page() {
     return (
@@ -27,13 +27,13 @@ export default function Page() {
                 <SectionOverview.Title>Tooltip</SectionOverview.Title>
                 <SectionOverview.Description>
                     Add concise contextual help that appears when a wrapped
-                    control is hovered or focused.
+                    control is hovered.
                 </SectionOverview.Description>
             </SectionOverview>
             <SectionPreview
                 nav={{
                     id: "hover-label",
-                    headerTitle: "Hover and focus label",
+                    headerTitle: "Hover label",
                     navTitle: "Tooltip",
                 }}
             >

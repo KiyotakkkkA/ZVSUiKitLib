@@ -68,7 +68,11 @@ export function Alert({
             {...props}
         >
             <span
-                className={cn("mt-0.5 shrink-0", variantStyle.icon, classNames?.icon)}
+                className={cn(
+                    "mt-0.5 shrink-0",
+                    variantStyle.icon,
+                    classNames?.icon,
+                )}
             >
                 {icon ?? (
                     <Icon
@@ -80,7 +84,14 @@ export function Alert({
             </span>
             <div className={cn("min-w-0", classNames?.content)}>
                 {title && (
-                    <p className={cn("text-sm font-semibold", classNames?.title)}>{title}</p>
+                    <p
+                        className={cn(
+                            "text-sm font-semibold",
+                            classNames?.title,
+                        )}
+                    >
+                        {title}
+                    </p>
                 )}
                 {children && (
                     <div className={cn("text-sm opacity-95", classNames?.body)}>

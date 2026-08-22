@@ -43,7 +43,12 @@ function ModalHeader({
     }, [registerTitle]);
 
     return (
-        <div className={cn("flex items-center gap-3 border-b border-main-700/80 px-5 py-4", className)}>
+        <div
+            className={cn(
+                "flex items-center gap-3 border-b border-main-700/80 px-5 py-4",
+                className,
+            )}
+        >
             <div className={"min-w-0 flex-1"} id={modalContext?.titleId}>
                 {children}
             </div>
@@ -51,7 +56,10 @@ function ModalHeader({
             {showCloseButton && (
                 <Button
                     variant="secondary"
-                    className={cn("h-8 w-8 border-main-600 bg-main-700/70 hover:bg-main-600/80", closeButtonClassName)}
+                    className={cn(
+                        "h-8 w-8 border-main-600 bg-main-700/70 hover:bg-main-600/80",
+                        closeButtonClassName,
+                    )}
                     onClick={modalContext?.onClose}
                     aria-label={closeButtonAriaLabel ?? t.close}
                 >
@@ -64,12 +72,23 @@ function ModalHeader({
 
 function ModalContent({ children, className }: ModalSectionProps) {
     return (
-        <ScrollArea className={cn("min-h-0 flex-1 px-5 py-5", className)}>{children}</ScrollArea>
+        <ScrollArea className={cn("min-h-0 flex-1 px-5 py-5", className)}>
+            {children}
+        </ScrollArea>
     );
 }
 
 function ModalFooter({ children, className }: ModalSectionProps) {
-    return <div className={cn("flex items-center justify-end gap-2 border-t border-main-700/80 px-5 py-4", className)}>{children}</div>;
+    return (
+        <div
+            className={cn(
+                "flex items-center justify-end gap-2 border-t border-main-700/80 px-5 py-4",
+                className,
+            )}
+        >
+            {children}
+        </div>
+    );
 }
 
 function ModalRoot({
@@ -105,7 +124,10 @@ function ModalRoot({
 
     return createPortal(
         <div
-            className={cn("fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 py-6 backdrop-blur-sm animate-zvs-fade-in motion-reduce:animate-none", overlayClassName)}
+            className={cn(
+                "fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4 py-6 backdrop-blur-sm animate-zvs-fade-in motion-reduce:animate-none",
+                overlayClassName,
+            )}
             onClick={onOverlayClick}
         >
             <ModalContext.Provider

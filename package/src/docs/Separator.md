@@ -4,7 +4,7 @@
 
 - [Import](#import)
 - [API](#api)
-    - [Separator](#separator)
+  - [Separator](#separator)
 - [Example](#example)
 
 ## Import
@@ -19,12 +19,11 @@ import { Separator } from "@kiyotakkkka/zvs-uikit-lib";
 
 Extends: `HTMLAttributes<HTMLDivElement>`.
 
-| Property      | Type                                 | Default        | Required | Description                                               |
-| ------------- | ------------------------------------ | -------------- | -------- | --------------------------------------------------------- |
-| `ref`         | `Ref<HTMLDivElement>`                | -              | No       | Receives the underlying \`HTMLDivElement\` node.          |
-| `orientation` | [Orientation](./dict.md#orientation) | `"horizontal"` | No       | The direction in which the component content is arranged. |
+| Property | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `ref` | `Ref<HTMLDivElement>` | - | No | Receives the underlying \`HTMLDivElement\` node. |
+| `orientation` | [Orientation](./dict.md#orientation) | `"horizontal"` | No | The direction in which the component content is arranged. |
 
-## Example
 
 ```tsx
 "use client";

@@ -11,7 +11,9 @@ export function Separator({
             role="separator"
             aria-orientation={orientation}
             className={cn(
-                orientation === "horizontal" ? "h-px w-full bg-main-700/70" : "h-full w-px bg-main-700/70",
+                orientation === "horizontal"
+                    ? "h-px w-full bg-main-700/70"
+                    : "h-full w-px bg-main-700/70",
                 className,
             )}
             {...props}

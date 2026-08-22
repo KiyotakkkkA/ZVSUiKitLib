@@ -61,7 +61,10 @@ const VirtualizedChildrenList = ({
                         ref={virtualizer.measureElement}
                         data-index={virtualItem.index}
                         role="none"
-                        className={cn("absolute left-0 top-0 w-full pb-1", classNames?.item)}
+                        className={cn(
+                            "absolute left-0 top-0 w-full pb-1",
+                            classNames?.item,
+                        )}
                         style={{
                             transform: `translateY(${virtualItem.start}px)`,
                         }}
@@ -84,7 +87,14 @@ const TreeViewBase = ({
     ...props
 }: TreeViewProps) => {
     return (
-        <div {...props} role="tree" className={cn("min-w-0 rounded-2xl border border-main-700/70 bg-main-900/50 p-3", className)}>
+        <div
+            {...props}
+            role="tree"
+            className={cn(
+                "min-w-0 rounded-2xl border border-main-700/70 bg-main-900/50 p-3",
+                className,
+            )}
+        >
             {virtualized ? (
                 <VirtualizedChildrenList
                     height={height}
@@ -165,7 +175,12 @@ const TreeViewCatalog = ({
                     )}
                 />
 
-                <span className={cn("shrink-0 text-main-300", classNames?.folderIcon)}>
+                <span
+                    className={cn(
+                        "shrink-0 text-main-300",
+                        classNames?.folderIcon,
+                    )}
+                >
                     {isOpen
                         ? (openIcon ??
                           icon ?? (
@@ -184,12 +199,22 @@ const TreeViewCatalog = ({
                           ))}
                 </span>
 
-                <span className={cn("min-w-0 flex-1 truncate text-sm font-medium", classNames?.title)}>
+                <span
+                    className={cn(
+                        "min-w-0 flex-1 truncate text-sm font-medium",
+                        classNames?.title,
+                    )}
+                >
                     {title}
                 </span>
 
                 {rightSlot && (
-                    <span className={cn("ml-auto shrink-0 text-main-400", classNames?.rightSlot)}>
+                    <span
+                        className={cn(
+                            "ml-auto shrink-0 text-main-400",
+                            classNames?.rightSlot,
+                        )}
+                    >
                         {rightSlot}
                     </span>
                 )}
@@ -212,7 +237,10 @@ const TreeViewCatalog = ({
                 ) : (
                     <div
                         role="group"
-                        className={cn("mt-1 space-y-1 pl-7", classNames?.nested)}
+                        className={cn(
+                            "mt-1 space-y-1 pl-7",
+                            classNames?.nested,
+                        )}
                     >
                         {children}
                     </div>
@@ -249,7 +277,9 @@ const TreeViewElement = ({
             className={cn(
                 "flex w-full min-w-0 cursor-pointer items-center gap-2 rounded-lg px-2 py-1.5 text-left",
                 "transition-colors duration-200",
-                selected ? "bg-main-700/70 text-main-100" : "text-main-300 hover:bg-main-800/50 hover:text-main-100",
+                selected
+                    ? "bg-main-700/70 text-main-100"
+                    : "text-main-300 hover:bg-main-800/50 hover:text-main-100",
                 disabled && "cursor-not-allowed opacity-60",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-300/50",
                 className,
@@ -272,7 +302,12 @@ const TreeViewElement = ({
                 {children ?? (
                     <>
                         {label && (
-                            <span className={cn("block truncate text-sm font-medium", classNames?.label)}>
+                            <span
+                                className={cn(
+                                    "block truncate text-sm font-medium",
+                                    classNames?.label,
+                                )}
+                            >
                                 {label}
                             </span>
                         )}
@@ -293,7 +328,12 @@ const TreeViewElement = ({
             </span>
 
             {rightSlot && (
-                <span className={cn("ml-auto shrink-0 text-main-500", classNames?.rightSlot)}>
+                <span
+                    className={cn(
+                        "ml-auto shrink-0 text-main-500",
+                        classNames?.rightSlot,
+                    )}
+                >
                     {rightSlot}
                 </span>
             )}

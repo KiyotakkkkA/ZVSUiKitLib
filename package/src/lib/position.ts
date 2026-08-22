@@ -50,19 +50,28 @@ export const computeMenuPosition = ({
     gap: number;
     padding: number;
 }) => {
-    const isTopPlacement = placement.startsWith("top");
-    const isRightPlacement = placement.endsWith("right");
-    const isCenterPlacement = placement.endsWith("center");
+    const isLeftSide = placement === "left-center";
+    const isRightSide = placement === "right-center";
+    const isTopSide = placement.startsWith("top");
+    const isRightAligned = placement.endsWith("right");
+    const isCenterAligned = placement.endsWith("center");
 
-    const preferredLeft = isCenterPlacement
-        ? trigger.left + (trigger.width - menu.width) / 2
-        : isRightPlacement
-          ? trigger.right - menu.width
-          : trigger.left;
+    const preferredLeft = isLeftSide
+        ? trigger.left - menu.width - gap
+        : isRightSide
+          ? trigger.right + gap
+          : isCenterAligned
+            ? trigger.left + (trigger.width - menu.width) / 2
+            : isRightAligned
+              ? trigger.right - menu.width
+              : trigger.left;
 
-    const preferredTop = isTopPlacement
-        ? trigger.top - menu.height - gap
-        : trigger.bottom + gap;
+    const preferredTop =
+        isLeftSide || isRightSide
+            ? trigger.top + (trigger.bottom - trigger.top - menu.height) / 2
+            : isTopSide
+              ? trigger.top - menu.height - gap
+              : trigger.bottom + gap;
 
     return {
         left: clamp(

@@ -10,7 +10,6 @@ export * from "./SelectNative";
 export * from "./ScrollArea";
 export * from "./Separator";
 export * from "./Skeleton";
-export * from "./Tooltip";
 export * from "./Text";
 export * from "./Heading";
 export * from "./Blockquote";

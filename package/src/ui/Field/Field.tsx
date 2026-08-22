@@ -34,7 +34,10 @@ export function Field({
             {label && (
                 <label
                     htmlFor={controlId}
-                    className={cn("text-sm font-medium text-main-100", classNames?.label)}
+                    className={cn(
+                        "text-sm font-medium text-main-100",
+                        classNames?.label,
+                    )}
                 >
                     {label}
                     {required && (
@@ -54,7 +57,10 @@ export function Field({
             {description && (
                 <p
                     id={descriptionId}
-                    className={cn("text-xs text-main-400", classNames?.description)}
+                    className={cn(
+                        "text-xs text-main-400",
+                        classNames?.description,
+                    )}
                 >
                     {description}
                 </p>
@@ -76,7 +82,10 @@ export function Field({
                 <p
                     id={errorId}
                     role="alert"
-                    className={cn("text-xs text-danger-light", classNames?.error)}
+                    className={cn(
+                        "text-xs text-danger-light",
+                        classNames?.error,
+                    )}
                 >
                     {error}
                 </p>

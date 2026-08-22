@@ -4,9 +4,9 @@
 
 - [Import](#import)
 - [API](#api)
-    - [TextTone](#texttone)
-    - [TextSize](#textsize)
-    - [Text](#text)
+  - [TextTone](#texttone)
+  - [TextSize](#textsize)
+  - [Text](#text)
 - [Example](#example)
 
 ## Import
@@ -33,13 +33,12 @@ type TextSize = "sm" | "md" | "lg";
 
 Extends: `HTMLAttributes<HTMLParagraphElement>`.
 
-| Property | Type                        | Default     | Required | Description                                            |
-| -------- | --------------------------- | ----------- | -------- | ------------------------------------------------------ |
-| `ref`    | `Ref<HTMLParagraphElement>` | -           | No       | Receives the underlying \`HTMLParagraphElement\` node. |
-| `tone`   | `TextTone`                  | `"default"` | No       | Selects the text contrast and color treatment.         |
-| `size`   | `TextSize`                  | `"md"`      | No       | Selects the text font size and line height.            |
+| Property | Type | Default | Required | Description |
+| --- | --- | --- | --- | --- |
+| `ref` | `Ref<HTMLParagraphElement>` | - | No | Receives the underlying \`HTMLParagraphElement\` node. |
+| `tone` | `TextTone` | `"default"` | No | Selects the text contrast and color treatment. |
+| `size` | `TextSize` | `"md"` | No | Selects the text font size and line height. |
 
-## Example
 
 ```tsx
 import { Text } from "@kiyotakkkka/zvs-uikit-lib";

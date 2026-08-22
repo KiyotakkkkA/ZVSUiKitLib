@@ -4,7 +4,7 @@
 
 - [Import](#import)
 - [API](#api)
-    - [Quote](#quote)
+  - [Quote](#quote)
 - [Example](#example)
 
 ## Import
@@ -20,8 +20,6 @@ import { Quote } from "@kiyotakkkka/zvs-uikit-lib";
 ```ts
 type QuoteProps = ComponentPropsWithRef<"q">;
 ```
-
-## Example
 
 ```tsx
 import { Quote } from "@kiyotakkkka/zvs-uikit-lib";
