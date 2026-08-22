@@ -47,7 +47,7 @@ module.exports = {
 };
 ```
 
-And after add this line to the global css file
+</details>
 
 ## Entry points
 
