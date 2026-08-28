@@ -85,6 +85,16 @@ export function DocsSearch() {
                 <span>Search docs</span>
                 <Kbd>⌘ K</Kbd>
             </button>
+            <button
+                type="button"
+                className="icon-link search-trigger-mobile"
+                onClick={openSearch}
+                aria-haspopup="dialog"
+                aria-expanded={open}
+                aria-label="Search docs"
+            >
+                <Icon icon="material-symbols:search" />
+            </button>
             <Modal
                 open={open}
                 onClose={closeSearch}

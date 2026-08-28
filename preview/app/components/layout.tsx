@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
 import {
     compositionComponents,
@@ -10,6 +9,7 @@ import {
 import { SiteHeader } from "../ui/site-header";
 import { SidebarScrollArea } from "../molecules/sidebar-scroll-area";
 import { SidebarNavigationSection } from "../molecules";
+import { SidebarIntroLink } from "../molecules/sidebar-intro-link";
 
 export default function ComponentsLayout({
     children,
@@ -26,7 +26,7 @@ export default function ComponentsLayout({
                             <span className="sidebar-label">
                                 Getting started
                             </span>
-                            <Link href="/">Introduction</Link>
+                            <SidebarIntroLink />
                         </div>
                         <div className="sidebar-section">
                             <span className="sidebar-label">Components</span>

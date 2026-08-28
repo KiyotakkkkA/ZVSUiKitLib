@@ -3,6 +3,16 @@
 import Link from "next/link";
 import { Icon } from "@iconify/react";
 import { SiteHeader } from "./ui/site-header";
+import { SiteFooter } from "./ui/site-footer";
+import { componentDocSections } from "./lib/components";
+
+const categoryIcons: Record<string, string> = {
+    Inputs: "material-symbols:toggle-on-outline-rounded",
+    Overlays: "material-symbols:layers-outline-rounded",
+    Composition: "material-symbols:widgets-outline-rounded",
+    Feedback: "material-symbols:notifications-outline-rounded",
+    Typography: "material-symbols:text-fields-rounded",
+};
 
 const features = [
     {
@@ -55,7 +65,7 @@ export default function Home() {
                         <div className="hero-actions">
                             <Link
                                 className="button button-primary"
-                                href="/components/input-small"
+                                href="/components/inputs/auto-fill-selector"
                             >
                                 Explore components{" "}
                                 <Icon icon="material-symbols:arrow-right-alt-rounded" />
@@ -166,7 +176,71 @@ export default function Home() {
                         ))}
                     </div>
                 </section>
+
+                <section className="showcase">
+                    <div className="section-heading">
+                        <span className="section-index">[02]</span>
+                        <div>
+                            <p>THE LIBRARY</p>
+                            <h2>Browse by category.</h2>
+                        </div>
+                        <p>
+                            48+ components across five categories, each typed,
+                            documented, and ready to compose.
+                        </p>
+                    </div>
+                    <div className="showcase-grid">
+                        {componentDocSections.map((section) => (
+                            <Link
+                                key={section.prefix}
+                                href={`/components/${section.prefix}/${section.components[0].slug}`}
+                                className="showcase-card"
+                            >
+                                <Icon
+                                    icon={
+                                        categoryIcons[section.title] ??
+                                        "material-symbols:widgets-outline-rounded"
+                                    }
+                                />
+                                <Icon
+                                    className="arrow"
+                                    icon="material-symbols:arrow-outward-rounded"
+                                />
+                                <h3>{section.title}</h3>
+                                <p>{section.components[0].summary}</p>
+                                <span>
+                                    {section.components.length} components
+                                </span>
+                            </Link>
+                        ))}
+                    </div>
+                </section>
+
+                <section className="closing-cta">
+                    <h2>Ready to build with less noise?</h2>
+                    <p>
+                        Install the package, import what you need, and ship a
+                        cohesive interface today.
+                    </p>
+                    <div className="hero-actions">
+                        <Link
+                            className="button button-primary"
+                            href="/components/inputs/auto-fill-selector"
+                        >
+                            Explore components{" "}
+                            <Icon icon="material-symbols:arrow-right-alt-rounded" />
+                        </Link>
+                        <a
+                            className="button button-secondary"
+                            href="https://github.com/KiyotakkkkA/ZVSUiKitLib"
+                        >
+                            View on GitHub
+                        </a>
+                    </div>
+                </section>
             </main>
+
+            <SiteFooter />
         </div>
     );
 }

@@ -1,6 +1,7 @@
 import { Children, Fragment, isValidElement, type ReactNode } from "react";
 import type { SectionNavigation } from "./types";
 import { cx } from "./utils";
+import { PageNavigation } from "./page-navigation";
 
 type DocumentationPageProps = {
     children: ReactNode;
@@ -64,7 +65,10 @@ export function DocumentationPage({
 
     return (
         <>
-            <main className={cx("docs-content", className)}>{children}</main>
+            <main className={cx("docs-content", className)}>
+                {children}
+                <PageNavigation />
+            </main>
             <aside className="toc-sidebar">
                 <div>
                     <span className="sidebar-label">On this page</span>

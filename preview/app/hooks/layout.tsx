@@ -1,7 +1,8 @@
-import Link from "next/link";
 import type { ReactNode } from "react";
 import { SidebarScrollArea } from "../molecules/sidebar-scroll-area";
 import { SiteHeader } from "../ui/site-header";
+import { SidebarIntroLink } from "../molecules/sidebar-intro-link";
+import { HooksNav } from "../molecules/hooks-nav";
 
 export default function HooksLayout({ children }: { children: ReactNode }) {
     return (
@@ -14,14 +15,11 @@ export default function HooksLayout({ children }: { children: ReactNode }) {
                             <span className="sidebar-label">
                                 Getting started
                             </span>
-                            <Link href="/">Introduction</Link>
+                            <SidebarIntroLink />
                         </div>
                         <div className="sidebar-section">
                             <span className="sidebar-label">Hooks</span>
-                            <nav className="component-nav" aria-label="Hooks">
-                                <Link href="/hooks/use-style">useStyle</Link>
-                                <Link href="/hooks/use-toasts">useToasts</Link>
-                            </nav>
+                            <HooksNav />
                         </div>
                     </div>
                 </SidebarScrollArea>

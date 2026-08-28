@@ -1,8 +1,30 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Icon } from "@iconify/react";
 import { DocsSearch } from "./docs-search";
 
 export function SiteHeader() {
+    const pathname = usePathname();
+    const [open, setOpen] = useState(false);
+    const [openedPathname, setOpenedPathname] = useState(pathname);
+
+    if (pathname !== openedPathname) {
+        setOpenedPathname(pathname);
+        setOpen(false);
+    }
+
+    useEffect(() => {
+        if (!open) return;
+
+        document.body.style.overflow = "hidden";
+        return () => {
+            document.body.style.overflow = "";
+        };
+    }, [open]);
+
     return (
         <header className="site-header">
             <Link href="/" className="brand" aria-label="ZVS UI home">
@@ -32,7 +54,7 @@ export function SiteHeader() {
                     href="https://github.com/KiyotakkkkA/ZVSUiKitLib"
                     aria-label="Open GitHub repository"
                 >
-                    <Icon icon="github" />
+                    <Icon icon="simple-icons:github" />
                 </a>
                 <a
                     className="icon-link"
@@ -41,7 +63,52 @@ export function SiteHeader() {
                 >
                     <Icon icon="simple-icons:npm" />
                 </a>
+                <button
+                    type="button"
+                    className="icon-link menu-trigger"
+                    aria-label={open ? "Close menu" : "Open menu"}
+                    aria-expanded={open}
+                    aria-controls="mobile-nav"
+                    onClick={() => setOpen((value) => !value)}
+                >
+                    <Icon
+                        icon={
+                            open
+                                ? "material-symbols:close-rounded"
+                                : "material-symbols:menu-rounded"
+                        }
+                    />
+                </button>
             </div>
+
+            <div
+                id="mobile-nav"
+                className={open ? "mobile-nav mobile-nav-open" : "mobile-nav"}
+            >
+                <nav aria-label="Mobile navigation">
+                    <Link href="/">Overview</Link>
+                    <Link href="/components/inputs/auto-fill-selector">
+                        Components
+                    </Link>
+                    <Link href="/hooks/use-style">Hooks</Link>
+                </nav>
+                <div className="mobile-nav-actions">
+                    <a href="https://github.com/KiyotakkkkA/ZVSUiKitLib">
+                        <Icon icon="simple-icons:github" /> GitHub
+                    </a>
+                    <a href="https://www.npmjs.com/package/@kiyotakkkka/zvs-uikit-lib">
+                        <Icon icon="simple-icons:npm" /> NPM
+                    </a>
+                </div>
+            </div>
+            {open && (
+                <button
+                    type="button"
+                    className="mobile-nav-backdrop"
+                    aria-label="Close menu"
+                    onClick={() => setOpen(false)}
+                />
+            )}
         </header>
     );
 }

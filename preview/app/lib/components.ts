@@ -281,3 +281,24 @@ export const componentDocSections = [
     feedbackComponents,
     typographyComponents,
 ] as const;
+
+export type HookDoc = {
+    slug: string;
+    name: string;
+    summary: string;
+};
+
+export const hookDocs: HookDoc[] = [
+    {
+        slug: "use-style",
+        name: "useStyle",
+        summary:
+            "Replace the main and semantic color palettes across the entire application at runtime.",
+    },
+    {
+        slug: "use-toasts",
+        name: "useToasts",
+        summary:
+            "Push accessible, timed notifications from anywhere inside ToastProvider.",
+    },
+];
