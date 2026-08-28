@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Icon } from "@iconify/react";
+import { Icon } from "../icons";
 
 const columns = [
     {
@@ -73,13 +73,13 @@ export function SiteFooter() {
                         href="https://github.com/KiyotakkkkA/ZVSUiKitLib"
                         aria-label="GitHub"
                     >
-                        <Icon icon="simple-icons:github" />
+                        <Icon icon="github" />
                     </a>
                     <a
                         href="https://www.npmjs.com/package/@kiyotakkkka/zvs-uikit-lib"
                         aria-label="NPM"
                     >
-                        <Icon icon="simple-icons:npm" />
+                        <Icon icon="npm" />
                     </a>
                 </div>
             </div>

@@ -15,13 +15,18 @@ export function SelectNative({
     ...props
 }: SelectNativeProps) {
     const hasPlaceholder = placeholder !== undefined;
+    const isControlled = value !== undefined;
 
     return (
         <div className={cn("relative inline-flex min-w-40", className)}>
             <select
                 {...props}
-                value={value}
-                defaultValue={defaultValue ?? (hasPlaceholder ? "" : undefined)}
+                {...(isControlled
+                    ? { value }
+                    : {
+                          defaultValue:
+                              defaultValue ?? (hasPlaceholder ? "" : undefined),
+                      })}
                 disabled={disabled}
                 onChange={(event) => onChange?.(event.target.value)}
                 className={cn(

@@ -418,7 +418,7 @@ function DropdownMenu({
             popover="auto"
             data-placement={menuPlacement}
             className={cn(
-                "zvs-popover fixed z-60 isolate overflow-hidden border border-main-700 bg-main-800 p-1.5 shadow-xl",
+                "zvs-popover fixed z-60 isolate flex flex-col gap-0.5 overflow-hidden border border-main-700 bg-main-800 p-1.5 shadow-xl",
                 rounded,
                 "max-w-[calc(100vw-1rem)]",
                 className,

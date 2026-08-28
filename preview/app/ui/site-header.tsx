@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Icon } from "@iconify/react";
+import { Icon } from "../icons";
 import { DocsSearch } from "./docs-search";
 
 export function SiteHeader() {
@@ -54,14 +54,14 @@ export function SiteHeader() {
                     href="https://github.com/KiyotakkkkA/ZVSUiKitLib"
                     aria-label="Open GitHub repository"
                 >
-                    <Icon icon="simple-icons:github" />
+                    <Icon icon="github" />
                 </a>
                 <a
                     className="icon-link"
                     href="https://www.npmjs.com/package/@kiyotakkkka/zvs-uikit-lib"
                     aria-label="Open NPM repository"
                 >
-                    <Icon icon="simple-icons:npm" />
+                    <Icon icon="npm" />
                 </a>
                 <button
                     type="button"
@@ -71,13 +71,7 @@ export function SiteHeader() {
                     aria-controls="mobile-nav"
                     onClick={() => setOpen((value) => !value)}
                 >
-                    <Icon
-                        icon={
-                            open
-                                ? "material-symbols:close-rounded"
-                                : "material-symbols:menu-rounded"
-                        }
-                    />
+                    <Icon icon={open ? "close" : "menu"} />
                 </button>
             </div>
 
@@ -94,10 +88,10 @@ export function SiteHeader() {
                 </nav>
                 <div className="mobile-nav-actions">
                     <a href="https://github.com/KiyotakkkkA/ZVSUiKitLib">
-                        <Icon icon="simple-icons:github" /> GitHub
+                        <Icon icon="github" /> GitHub
                     </a>
                     <a href="https://www.npmjs.com/package/@kiyotakkkka/zvs-uikit-lib">
-                        <Icon icon="simple-icons:npm" /> NPM
+                        <Icon icon="npm" /> NPM
                     </a>
                 </div>
             </div>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Icon } from "@iconify/react";
+import { Icon } from "../icons";
 import { componentDocSections, hookDocs } from "../lib/components";
 
 type FlatEntry = {
@@ -45,7 +45,7 @@ export function PageNavigation() {
         <nav className="page-nav" aria-label="Page navigation">
             {previous ? (
                 <Link href={previous.href} className="page-nav-link prev">
-                    <Icon icon="material-symbols:arrow-left-alt-rounded" />
+                    <Icon icon="arrow-left" />
                     <span>
                         <em>Previous</em>
                         {previous.title}
@@ -60,7 +60,7 @@ export function PageNavigation() {
                         <em>Next</em>
                         {next.title}
                     </span>
-                    <Icon icon="material-symbols:arrow-right-alt-rounded" />
+                    <Icon icon="arrow-right" />
                 </Link>
             ) : (
                 <span />

@@ -63,7 +63,7 @@ export const Switcher = ({
         <div
             ref={mergeRefs(groupRef, ref)}
             className={cn(
-                "inline-flex items-center gap-1 border border-main-700/70 bg-main-900/55 p-1",
+                "inline-flex w-fit items-center gap-1 border border-main-700/70 bg-main-900/55 p-1",
                 rounded,
                 className,
             )}

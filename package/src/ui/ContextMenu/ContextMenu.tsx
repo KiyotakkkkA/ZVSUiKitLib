@@ -30,7 +30,7 @@ import type {
 const CONTEXT_MENU_VIEWPORT_PADDING = 8;
 
 const contentClassName =
-    "min-w-40 rounded-lg border border-main-700/80 bg-main-900/95 p-1 text-main-100 shadow-xl shadow-black/35 backdrop-blur-xl";
+    "flex min-w-40 flex-col gap-0.5 rounded-lg border border-main-700/80 bg-main-900/95 p-1 text-main-100 shadow-xl shadow-black/35 backdrop-blur-xl";
 
 const itemClassName =
     "flex min-h-7 w-full items-center gap-2 rounded-md px-2 py-1 text-left text-sm leading-5 transition-colors duration-150 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-40";

@@ -23,7 +23,8 @@ export const componentProps: ComponentAPIDoc = {
             },
             children: {
                 type: "ReactNode",
-                description: "Select.Trigger and Select.Menu.",
+                description:
+                    "Select.Trigger and Select.Menu. Omit entirely to render the default Trigger + Menu + Options composition.",
             },
             placeholder: {
                 type: "string",
@@ -105,7 +106,7 @@ export const componentProps: ComponentAPIDoc = {
             props: {
                 children: {
                     type: "ReactNode",
-                    description: "Mapped Select.Options.",
+                    description: "Typically Select.Options, or manual Select.Option elements.",
                 },
                 className: {
                     type: "string",
@@ -120,8 +121,26 @@ export const componentProps: ComponentAPIDoc = {
             },
         },
         {
+            name: "Options",
+            description:
+                "Renders every entry from the root options array, reading them from the attached Select context so they never need to be listed twice.",
+            props: {
+                className: {
+                    type: "string",
+                    description: "Classes applied to every rendered option.",
+                },
+                rounded: {
+                    type: "RoundVariants",
+                    description: "Border radius applied to every rendered option.",
+                    defaultValue: '"rounded-full"',
+                    directives: [roundVariantsDirective],
+                },
+            },
+        },
+        {
             name: "Option",
-            description: "Public Select.Option compound part.",
+            description:
+                "Single option, for cases that need custom per-item rendering instead of Select.Options.",
             props: {
                 value: {
                     type: "string",

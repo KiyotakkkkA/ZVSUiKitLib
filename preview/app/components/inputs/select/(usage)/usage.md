@@ -1,7 +1,6 @@
 ```tsx
 "use client";
-import { Icon } from "@iconify/react";
-import { Select, type SelectOption } from "@kiyotakkkka/zvs-uikit-lib";
+import { Icon, Select, type SelectOption } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 
 const options: SelectOption[] = [
@@ -29,28 +28,14 @@ export function DemoSelect() {
                 options={options}
                 searchable
                 placeholder="Select role"
-            >
-                <Select.Trigger />
-                <Select.Menu>
-                    {options.map((option) => (
-                        <Select.Option key={option.value} {...option} />
-                    ))}
-                </Select.Menu>
-            </Select>
+            />
             <Select
                 value="user"
                 onChange={() => {}}
                 options={options}
                 disabled
                 placeholder="Select role"
-            >
-                <Select.Trigger />
-                <Select.Menu>
-                    {options.map((option) => (
-                        <Select.Option key={option.value} {...option} />
-                    ))}
-                </Select.Menu>
-            </Select>
+            />
         </div>
     );
 }

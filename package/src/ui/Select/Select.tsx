@@ -21,6 +21,7 @@ import type {
     SelectMenuProps,
     SelectOption,
     SelectOptionProps,
+    SelectOptionsProps,
     SelectProps,
     SelectTriggerProps,
 } from "./types";
@@ -82,6 +83,7 @@ function SelectRoot({
 
     const contextValue = useMemo<SelectContextValue>(
         () => ({
+            options,
             value,
             selectedOption,
             placeholder: resolvedPlaceholder,
@@ -101,6 +103,7 @@ function SelectRoot({
             visibleOptionsCount,
         }),
         [
+            options,
             value,
             selectedOption,
             query,
@@ -130,7 +133,14 @@ function SelectRoot({
                     if (!nextOpen) setQuery("");
                 }}
             >
-                {children}
+                {children ?? (
+                    <>
+                        <SelectTrigger />
+                        <SelectMenu>
+                            <SelectOptions />
+                        </SelectMenu>
+                    </>
+                )}
             </Dropdown>
         </SelectContext.Provider>
     );
@@ -360,8 +370,26 @@ function SelectOptionComponent({
     );
 }
 
+function SelectOptions({ className, rounded }: SelectOptionsProps) {
+    const { options } = useSelectContext();
+
+    return (
+        <>
+            {options.map((option) => (
+                <SelectOptionComponent
+                    key={option.value}
+                    {...option}
+                    className={className}
+                    rounded={rounded}
+                />
+            ))}
+        </>
+    );
+}
+
 export const Select = Object.assign(SelectRoot, {
     Trigger: SelectTrigger,
     Menu: SelectMenu,
     Option: SelectOptionComponent,
+    Options: SelectOptions,
 });

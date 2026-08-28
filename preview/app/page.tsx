@@ -1,17 +1,17 @@
 "use client";
 
 import Link from "next/link";
-import { Icon } from "@iconify/react";
+import { Icon, type IconName } from "./icons";
 import { SiteHeader } from "./ui/site-header";
 import { SiteFooter } from "./ui/site-footer";
 import { componentDocSections } from "./lib/components";
 
-const categoryIcons: Record<string, string> = {
-    Inputs: "material-symbols:toggle-on-outline-rounded",
-    Overlays: "material-symbols:layers-outline-rounded",
-    Composition: "material-symbols:widgets-outline-rounded",
-    Feedback: "material-symbols:notifications-outline-rounded",
-    Typography: "material-symbols:text-fields-rounded",
+const categoryIcons: Record<string, IconName> = {
+    Inputs: "input-field",
+    Overlays: "layers",
+    Composition: "widgets",
+    Feedback: "bell",
+    Typography: "text-lines",
 };
 
 const features = [
@@ -68,7 +68,7 @@ export default function Home() {
                                 href="/components/inputs/auto-fill-selector"
                             >
                                 Explore components{" "}
-                                <Icon icon="material-symbols:arrow-right-alt-rounded" />
+                                <Icon icon="arrow-right" />
                             </Link>
                             <a
                                 className="button button-secondary"
@@ -83,7 +83,7 @@ export default function Home() {
                         >
                             <span>$</span>
                             <code>npm i @kiyotakkkka/zvs-uikit-lib</code>
-                            <Icon icon="material-symbols:content-copy" />
+                            <Icon icon="copy" />
                         </div>
                     </div>
 
@@ -169,7 +169,7 @@ export default function Home() {
                                 className="feature-card"
                             >
                                 <span>{feature.number}</span>
-                                <Icon icon="material-symbols:check-small-rounded" />
+                                <Icon icon="check" />
                                 <h3>{feature.title}</h3>
                                 <p>{feature.text}</p>
                             </article>
@@ -199,13 +199,10 @@ export default function Home() {
                                 <Icon
                                     icon={
                                         categoryIcons[section.title] ??
-                                        "material-symbols:widgets-outline-rounded"
+                                        "widgets"
                                     }
                                 />
-                                <Icon
-                                    className="arrow"
-                                    icon="material-symbols:arrow-outward-rounded"
-                                />
+                                <Icon className="arrow" icon="arrow-outward" />
                                 <h3>{section.title}</h3>
                                 <p>{section.components[0].summary}</p>
                                 <span>
@@ -228,7 +225,7 @@ export default function Home() {
                             href="/components/inputs/auto-fill-selector"
                         >
                             Explore components{" "}
-                            <Icon icon="material-symbols:arrow-right-alt-rounded" />
+                            <Icon icon="arrow-right" />
                         </Link>
                         <a
                             className="button button-secondary"

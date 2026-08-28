@@ -19,7 +19,7 @@ export function DemoAutoFillSelectorNoDesc() {
                 <AutoFillSelector.Input placeholder="Select technologies" />
             </AutoFillSelector.Trigger>
 
-            <AutoFillSelector.Menu>
+            <AutoFillSelector.Menu rounded="rounded-3xl">
                 <AutoFillSelector.Options />
                 <AutoFillSelector.Empty />
             </AutoFillSelector.Menu>

@@ -1,7 +1,6 @@
 ```tsx
 "use client";
-import { Icon } from "@iconify/react";
-import { ContextMenu } from "@kiyotakkkka/zvs-uikit-lib";
+import { ContextMenu, Icon } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoContextMenu() {
     return (
@@ -12,7 +11,7 @@ export function DemoContextMenu() {
             <ContextMenu.Content>
                 <ContextMenu.Label>File</ContextMenu.Label>
                 <ContextMenu.Item
-                    leftSlot={<Icon icon="material-symbols:folder-open-outline" />}
+                    leftSlot={<Icon icon="folder-open-outline" />}
                     rightSlot={<span className="text-xs">⌘O</span>}
                     onClick={() => console.log("Open")}
                 >
@@ -27,7 +26,7 @@ export function DemoContextMenu() {
                 </ContextMenu.Sub>
                 <ContextMenu.Separator />
                 <ContextMenu.ItemDanger
-                    leftSlot={<Icon icon="material-symbols:delete-outline" />}
+                    leftSlot={<Icon icon="trash-can-outline" />}
                 >
                     Delete
                 </ContextMenu.ItemDanger>

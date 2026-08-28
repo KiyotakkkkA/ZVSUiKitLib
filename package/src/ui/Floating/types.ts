@@ -1,4 +1,4 @@
-import type { HTMLAttributes, ReactNode, Ref } from "react";
+import type { HTMLAttributes, ReactNode, Ref, RefObject } from "react";
 import type { PositionAnchor, RoundVariants } from "../_shared/types";
 
 export type FloatingProps = {
@@ -20,4 +20,10 @@ export type FloatingContentProps = HTMLAttributes<HTMLDivElement> & {
 export type FloatingContextValue = {
     /** Content rendered for the anchor. */
     anchor: PositionAnchor;
+    /** Whether the panel is currently visible. */
+    open: boolean;
+    /** Receives the floating root element used to position the panel. */
+    rootRef: RefObject<HTMLDivElement | null>;
+    /** Reports hover/focus state changes from the portaled panel. */
+    setContentActive: (active: boolean) => void;
 };

@@ -1,6 +1,5 @@
 "use client";
-import { Icon } from "@iconify/react";
-import { Dropdown } from "@kiyotakkkka/zvs-uikit-lib";
+import { Dropdown, Icon } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoDropdown() {
     return (
@@ -9,16 +8,14 @@ export function DemoDropdown() {
                 <Dropdown.Trigger>Actions</Dropdown.Trigger>
                 <Dropdown.Menu>
                     <Dropdown.Item
-                        icon={<Icon icon="material-symbols:edit-outline" />}
+                        icon={<Icon icon="pencil-outline" />}
                         active
                         onClick={() => console.log("Rename")}
                     >
                         Rename
                     </Dropdown.Item>
                     <Dropdown.Item
-                        icon={
-                            <Icon icon="material-symbols:content-copy-outline" />
-                        }
+                        icon={<Icon icon="content-copy" />}
                         onClick={() => console.log("Duplicate")}
                     >
                         Duplicate

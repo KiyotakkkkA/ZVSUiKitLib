@@ -1,7 +1,6 @@
 ```tsx
 "use client";
-import { Icon } from "@iconify/react";
-import { Select, type SelectOption } from "@kiyotakkkka/zvs-uikit-lib";
+import { Icon, Select, type SelectOption } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 
 const options: SelectOption[] = [
@@ -28,14 +27,18 @@ export function DemoSelect() {
             options={options}
             searchable
             placeholder="Select role"
-        >
-            <Select.Trigger />
-            <Select.Menu>
-                {options.map((option) => (
-                    <Select.Option key={option.value} {...option} />
-                ))}
-            </Select.Menu>
-        </Select>
+        />
     );
 }
+```
+
+Need custom rendering? Pass explicit children to take full control:
+
+```tsx
+<Select value={role} onChange={setRole} options={options}>
+    <Select.Trigger />
+    <Select.Menu>
+        <Select.Options />
+    </Select.Menu>
+</Select>
 ```

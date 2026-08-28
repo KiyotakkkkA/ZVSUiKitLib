@@ -1,6 +1,5 @@
 "use client";
-import { Icon } from "@iconify/react";
-import { TreeView } from "@kiyotakkkka/zvs-uikit-lib";
+import { Icon, TreeView } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 
 export function DemoTreeView() {
@@ -10,7 +9,7 @@ export function DemoTreeView() {
         <TreeView className="w-full max-w-sm">
             <TreeView.Catalog title="Frontend" defaultOpen>
                 <TreeView.Element
-                    icon={<Icon icon="react" />}
+                    icon={<Icon icon="script" />}
                     label="React"
                     description="UI library"
                     selected={selected === "react"}
@@ -20,7 +19,7 @@ export function DemoTreeView() {
                     }
                 />
                 <TreeView.Element
-                    icon={<Icon icon="language-typescript" />}
+                    icon={<Icon icon="file-outline" />}
                     label="TypeScript"
                     selected={selected === "typescript"}
                     onClick={() => setSelected("typescript")}
@@ -28,7 +27,7 @@ export function DemoTreeView() {
             </TreeView.Catalog>
             <TreeView.Catalog title="Backend">
                 <TreeView.Element
-                    icon={<Icon icon="nodejs" />}
+                    icon={<Icon icon="package-variant-closed" />}
                     label="Node.js"
                     disabled
                     description="Locked by admin"

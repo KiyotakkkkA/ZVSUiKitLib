@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { componentDocSections } from "../lib/components";
-import { Icon } from "@iconify/react";
+import { Icon } from "../icons";
 import { Kbd, Modal, ScrollArea, InputSmall } from "@kiyotakkkka/zvs-uikit-lib";
 
 const searchItems = componentDocSections.flatMap((section) =>
@@ -81,7 +81,7 @@ export function DocsSearch() {
                 aria-haspopup="dialog"
                 aria-expanded={open}
             >
-                <Icon icon="material-symbols:search" />
+                <Icon icon="search" />
                 <span>Search docs</span>
                 <Kbd>⌘ K</Kbd>
             </button>
@@ -93,7 +93,7 @@ export function DocsSearch() {
                 aria-expanded={open}
                 aria-label="Search docs"
             >
-                <Icon icon="material-symbols:search" />
+                <Icon icon="search" />
             </button>
             <Modal
                 open={open}

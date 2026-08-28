@@ -29,8 +29,8 @@ export type SelectProps = {
     onChange: (value: string) => void;
     /** The options used by the component. */
     options: SelectOption[];
-    /** The content rendered inside the component. */
-    children: ReactNode;
+    /** Select.Trigger and Select.Menu. Omit to render the default Trigger + Menu + Options composition. */
+    children?: ReactNode;
     /** Text used for the placeholder. Defaults to the `select.placeholder` string from the active locale dictionary. */
     placeholder?: string;
     /** Whether searchable is enabled. */
@@ -78,7 +78,16 @@ export type SelectOptionProps = SelectOption & {
     rounded?: RoundVariants | "";
 };
 
+export type SelectOptionsProps = {
+    /** CSS classes applied to each rendered option. */
+    className?: string;
+    /** The border-radius preset applied to each rendered option. */
+    rounded?: RoundVariants | "";
+};
+
 export type SelectContextValue = {
+    /** The option source registered on the root, used by Select.Options. */
+    options: SelectOption[];
     /** The value used by the component. */
     value: string;
     /** Whether selected option is enabled. */

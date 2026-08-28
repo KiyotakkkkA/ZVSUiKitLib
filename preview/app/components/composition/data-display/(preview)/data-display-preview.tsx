@@ -1,6 +1,5 @@
 "use client";
-import { Icon } from "@iconify/react";
-import { DataDisplay } from "@kiyotakkkka/zvs-uikit-lib";
+import { DataDisplay, Icon } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoDataDisplay() {
     return (
