@@ -1,5 +1,7 @@
 "use client";
+import { Icon } from "@iconify/react";
 import { ContextMenu } from "@kiyotakkkka/zvs-uikit-lib";
+
 export function DemoContextMenu() {
     return (
         <ContextMenu>
@@ -8,7 +10,11 @@ export function DemoContextMenu() {
             </ContextMenu.Trigger>
             <ContextMenu.Content>
                 <ContextMenu.Label>File</ContextMenu.Label>
-                <ContextMenu.Item onClick={() => console.log("Open")}>
+                <ContextMenu.Item
+                    leftSlot={<Icon icon="material-symbols:folder-open-outline" />}
+                    rightSlot={<span className="text-xs">⌘O</span>}
+                    onClick={() => console.log("Open")}
+                >
                     Open
                 </ContextMenu.Item>
                 <ContextMenu.Sub fixable>
@@ -19,7 +25,11 @@ export function DemoContextMenu() {
                     </ContextMenu.SubContent>
                 </ContextMenu.Sub>
                 <ContextMenu.Separator />
-                <ContextMenu.ItemDanger>Delete</ContextMenu.ItemDanger>
+                <ContextMenu.ItemDanger
+                    leftSlot={<Icon icon="material-symbols:delete-outline" />}
+                >
+                    Delete
+                </ContextMenu.ItemDanger>
             </ContextMenu.Content>
         </ContextMenu>
     );

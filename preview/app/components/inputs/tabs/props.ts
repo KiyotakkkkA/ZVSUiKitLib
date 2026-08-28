@@ -15,7 +15,18 @@ export const componentProps: ComponentAPIDoc = {
             },
             options: {
                 type: "TabOption[]",
-                description: "Tab items.",
+                description:
+                    "Tab items. Each option accepts value, label, and an optional disabled flag.",
+            },
+            orientation: {
+                type: "Orientation",
+                description:
+                    "Arrow-key navigation axis for the tab list.",
+                defaultValue: '"horizontal"',
+            },
+            label: {
+                type: "string",
+                description: "Accessible name for the tab list.",
             },
             className: {
                 type: "string",

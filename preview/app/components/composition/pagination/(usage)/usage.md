@@ -12,20 +12,33 @@ export function PaginationPreview() {
     const to = Math.min(page * perPage, total);
 
     return (
-        <Pagination
-            page={page}
-            perPage={perPage}
-            total={total}
-            lastPage={lastPage}
-            from={from}
-            to={to}
-            onPageChange={setPage}
-            onPerPageChange={(nextPerPage) => {
-                setPerPage(nextPerPage);
-                setPage(1);
-            }}
-            perPageOptions={[10, 20, 50, 100]}
-        />
+        <div className="w-full space-y-6">
+            <Pagination
+                page={page}
+                perPage={perPage}
+                total={total}
+                lastPage={lastPage}
+                from={from}
+                to={to}
+                onPageChange={setPage}
+                onPerPageChange={(nextPerPage) => {
+                    setPerPage(nextPerPage);
+                    setPage(1);
+                }}
+                perPageOptions={[10, 20, 50, 100]}
+            />
+            <Pagination
+                page={1}
+                perPage={10}
+                total={137}
+                lastPage={14}
+                from={1}
+                to={10}
+                onPageChange={() => {}}
+                onPerPageChange={() => {}}
+                disabled
+            />
+        </div>
     );
 }
 ```

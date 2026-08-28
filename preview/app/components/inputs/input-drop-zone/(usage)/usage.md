@@ -9,15 +9,23 @@ export function MultipleInputDropZonePreview() {
     const [previewUrls, setPreviewUrls] = useState<string[]>([]);
 
     return (
-        <InputDropZone
-            multiple
-            files={files}
-            previewUrls={previewUrls}
-            onFilesChange={(nextFiles, nextPreviewUrls) => {
-                setFiles(nextFiles);
-                setPreviewUrls(nextPreviewUrls);
-            }}
-        />
+        <div className="flex flex-wrap items-start gap-8">
+            <InputDropZone
+                multiple
+                files={files}
+                previewUrls={previewUrls}
+                onFilesChange={(nextFiles, nextPreviewUrls) => {
+                    setFiles(nextFiles);
+                    setPreviewUrls(nextPreviewUrls);
+                }}
+            />
+            <InputDropZone
+                disabled
+                files={[]}
+                previewUrls={[]}
+                onFilesChange={() => {}}
+            />
+        </div>
     );
 }
 ```

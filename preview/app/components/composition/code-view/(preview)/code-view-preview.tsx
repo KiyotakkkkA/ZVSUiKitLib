@@ -10,6 +10,7 @@ export function DemoCodeView() {
             language="javascript"
             fileName="sum.js"
             maxContentHeight={260}
+            downloadable
             onCopy={() => console.log("Code copied!")}
         />
     );

@@ -1,5 +1,6 @@
 import { Children, isValidElement } from "react";
 import { CodeBlock } from "./code-block";
+import { PreviewTabs } from "./preview-tabs";
 import { SectionHeader } from "./section-header";
 import type { SectionProps, SlotProps } from "./types";
 import { cx, normalizeCode } from "./utils";
@@ -23,7 +24,7 @@ function Code({ className, children, label = "example.tsx" }: CodeProps) {
 
     return (
         <CodeBlock
-            className={cx("rounded-t-none border-t-0", className)}
+            className={cx("rounded-none border-0", className)}
             code={normalizeCode(children)}
             fileName={label}
             language="tsx"
@@ -33,14 +34,14 @@ function Code({ className, children, label = "example.tsx" }: CodeProps) {
 
 function SectionPreviewRoot({ className, children, nav }: SectionProps) {
     const slots = Children.toArray(children);
-    const hasComponent = slots.some(
+    const componentSlot = slots.find(
         (child) => isValidElement(child) && child.type === Component,
     );
-    const hasCode = slots.some(
+    const codeSlot = slots.find(
         (child) => isValidElement(child) && child.type === Code,
     );
 
-    if (hasCode && !hasComponent) {
+    if (codeSlot && !componentSlot) {
         throw new TypeError(
             "SectionPreview.Code must be used with SectionPreview.Component.",
         );
@@ -49,14 +50,7 @@ function SectionPreviewRoot({ className, children, nav }: SectionProps) {
     return (
         <section id={nav.id} className={cx("docs-section", className)}>
             <SectionHeader nav={nav} />
-            <div
-                className={cx(
-                    "section-preview-content",
-                    hasCode && "section-preview-content--with-code",
-                )}
-            >
-                {children}
-            </div>
+            <PreviewTabs preview={componentSlot} code={codeSlot} />
         </section>
     );
 }

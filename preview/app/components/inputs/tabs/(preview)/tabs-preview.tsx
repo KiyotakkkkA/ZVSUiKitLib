@@ -12,6 +12,7 @@ export function DemoTabs() {
             options={[
                 { value: "account", label: "Account" },
                 { value: "documents", label: "Documents" },
+                { value: "billing", label: "Billing", disabled: true },
             ]}
         />
     );

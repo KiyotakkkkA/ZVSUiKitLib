@@ -18,11 +18,18 @@ export function TextPreview() {
                     dense interfaces.
                 </Text>
             </div>
-            <div className="grid gap-3 md:grid-cols-[6rem_1fr]">
+            <div className="grid gap-3 border-b border-main-700/70 pb-6 md:grid-cols-[6rem_1fr]">
                 <span className="font-mono text-xs text-main-500">Muted</span>
                 <Text size="sm" tone="muted">
                     Supporting text clarifies context, constraints, or the
                     result of an action.
+                </Text>
+            </div>
+            <div className="grid gap-3 md:grid-cols-[6rem_1fr]">
+                <span className="font-mono text-xs text-main-500">Subtle</span>
+                <Text size="sm" tone="subtle">
+                    Subtle text recedes further for timestamps and low-priority
+                    hints.
                 </Text>
             </div>
         </div>

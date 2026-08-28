@@ -21,19 +21,35 @@ export function DemoSelect() {
     const [role, setRole] = useState("user");
 
     return (
-        <Select
-            value={role}
-            onChange={setRole}
-            options={options}
-            searchable
-            placeholder="Select role"
-        >
-            <Select.Trigger />
-            <Select.Menu>
-                {options.map((option) => (
-                    <Select.Option key={option.value} {...option} />
-                ))}
-            </Select.Menu>
-        </Select>
+        <div className="flex flex-wrap items-start gap-8">
+            <Select
+                value={role}
+                onChange={setRole}
+                options={options}
+                searchable
+                placeholder="Select role"
+            >
+                <Select.Trigger />
+                <Select.Menu>
+                    {options.map((option) => (
+                        <Select.Option key={option.value} {...option} />
+                    ))}
+                </Select.Menu>
+            </Select>
+            <Select
+                value="user"
+                onChange={() => {}}
+                options={options}
+                disabled
+                placeholder="Select role"
+            >
+                <Select.Trigger />
+                <Select.Menu>
+                    {options.map((option) => (
+                        <Select.Option key={option.value} {...option} />
+                    ))}
+                </Select.Menu>
+            </Select>
+        </div>
     );
 }
