@@ -4,8 +4,8 @@
 
 - [Import](#import)
 - [API](#api)
-  - [HeadingLevel](#headinglevel)
-  - [Heading](#heading)
+    - [HeadingLevel](#headinglevel)
+    - [Heading](#heading)
 - [Example](#example)
 
 ## Import
@@ -24,13 +24,12 @@ type HeadingLevel = 1 | 2 | 3 | 4 | 5 | 6;
 
 ### Heading
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `ref` | `Ref<HTMLHeadingElement>` | - | No | Receives the rendered heading element. |
-| `level` | `HeadingLevel` | `2` | No | Selects the semantic heading element from \`h1\` through \`h6\`. |
-| `children` | `ReactNode` | - | Yes | Renders the heading content. |
-| `className` | `string` | - | No | Applies CSS classes to the heading element. |
-
+| Property    | Type                      | Default | Required | Description                                                      |
+| ----------- | ------------------------- | ------- | -------- | ---------------------------------------------------------------- |
+| `ref`       | `Ref<HTMLHeadingElement>` | -       | No       | Receives the rendered heading element.                           |
+| `level`     | `HeadingLevel`            | `2`     | No       | Selects the semantic heading element from \`h1\` through \`h6\`. |
+| `children`  | `ReactNode`               | -       | Yes      | Renders the heading content.                                     |
+| `className` | `string`                  | -       | No       | Applies CSS classes to the heading element.                      |
 
 ```tsx
 import { Heading } from "@kiyotakkkka/zvs-uikit-lib";

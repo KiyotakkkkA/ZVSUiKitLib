@@ -4,17 +4,17 @@
 
 - [Import](#import)
 - [API](#api)
-  - [ContextMenuState](#contextmenustate)
-  - [ContextMenu](#contextmenu)
-  - [ContextMenu.Trigger](#contextmenutrigger)
-  - [ContextMenu.Content](#contextmenucontent)
-  - [ContextMenu.Item](#contextmenuitem)
-  - [ContextMenu.ItemDanger](#contextmenuitemdanger)
-  - [ContextMenu.Label](#contextmenulabel)
-  - [ContextMenu.Separator](#contextmenuseparator)
-  - [ContextMenu.Sub](#contextmenusub)
-  - [ContextMenu.SubTrigger](#contextmenusubtrigger)
-  - [ContextMenu.SubContent](#contextmenusubcontent)
+    - [ContextMenuState](#contextmenustate)
+    - [ContextMenu](#contextmenu)
+    - [ContextMenu.Trigger](#contextmenutrigger)
+    - [ContextMenu.Content](#contextmenucontent)
+    - [ContextMenu.Item](#contextmenuitem)
+    - [ContextMenu.ItemDanger](#contextmenuitemdanger)
+    - [ContextMenu.Label](#contextmenulabel)
+    - [ContextMenu.Separator](#contextmenuseparator)
+    - [ContextMenu.Sub](#contextmenusub)
+    - [ContextMenu.SubTrigger](#contextmenusubtrigger)
+    - [ContextMenu.SubContent](#contextmenusubcontent)
 - [Example](#example)
 
 ## Import
@@ -27,49 +27,44 @@ import { ContextMenu } from "@kiyotakkkka/zvs-uikit-lib";
 
 ### ContextMenuState
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `open` | `boolean` | - | Yes | Whether open is enabled. |
-| `x` | `number` | - | Yes | The x used by the component. |
-| `y` | `number` | - | Yes | The y used by the component. |
-
+| Property | Type      | Default | Required | Description                  |
+| -------- | --------- | ------- | -------- | ---------------------------- |
+| `open`   | `boolean` | -       | Yes      | Whether open is enabled.     |
+| `x`      | `number`  | -       | Yes      | The x used by the component. |
+| `y`      | `number`  | -       | Yes      | The y used by the component. |
 
 ### ContextMenu
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `children` | `ReactNode` | - | Yes | The content rendered inside the component. |
-
+| Property   | Type        | Default | Required | Description                                |
+| ---------- | ----------- | ------- | -------- | ------------------------------------------ |
+| `children` | `ReactNode` | -       | Yes      | The content rendered inside the component. |
 
 ### ContextMenu.Trigger
 
 Extends: `ComponentPropsWithoutRef<"div">`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `children` | `ReactNode` | - | Yes | The content rendered inside the component. |
-| `disabled` | `boolean` | `false` | No | Whether disabled is enabled. |
-
+| Property   | Type        | Default | Required | Description                                |
+| ---------- | ----------- | ------- | -------- | ------------------------------------------ |
+| `children` | `ReactNode` | -       | Yes      | The content rendered inside the component. |
+| `disabled` | `boolean`   | `false` | No       | Whether disabled is enabled.               |
 
 ### ContextMenu.Content
 
 Extends: `ComponentPropsWithoutRef<"div">`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `children` | `ReactNode` | - | Yes | The content rendered inside the component. |
-
+| Property   | Type        | Default | Required | Description                                |
+| ---------- | ----------- | ------- | -------- | ------------------------------------------ |
+| `children` | `ReactNode` | -       | Yes      | The content rendered inside the component. |
 
 ### ContextMenu.Item
 
 Extends: `ComponentPropsWithoutRef<"button">`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `inset` | `boolean` | - | No | The inset used by the component. |
-| `leftSlot` | `ReactNode` | - | No | The left slot used by the component. |
-| `rightSlot` | `ReactNode` | - | No | The right slot used by the component. |
-
+| Property    | Type        | Default | Required | Description                           |
+| ----------- | ----------- | ------- | -------- | ------------------------------------- |
+| `inset`     | `boolean`   | -       | No       | The inset used by the component.      |
+| `leftSlot`  | `ReactNode` | -       | No       | The left slot used by the component.  |
+| `rightSlot` | `ReactNode` | -       | No       | The right slot used by the component. |
 
 ### ContextMenu.ItemDanger
 
@@ -81,10 +76,9 @@ type ContextMenuItemDangerProps = ContextMenuItemProps;
 
 Extends: `ComponentPropsWithoutRef<"div">`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `inset` | `boolean` | `false` | No | The inset used by the component. |
-
+| Property | Type      | Default | Required | Description                      |
+| -------- | --------- | ------- | -------- | -------------------------------- |
+| `inset`  | `boolean` | `false` | No       | The inset used by the component. |
 
 ### ContextMenu.Separator
 
@@ -94,34 +88,31 @@ type ContextMenuSeparatorProps = ComponentPropsWithoutRef<"div">;
 
 ### ContextMenu.Sub
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `children` | `ReactNode` | - | Yes | The content rendered inside the component. |
-| `fixable` | `boolean` | `false` | No | The fixable used by the component. |
-| `closeDelay` | `number` | `140` | No | Function used to close delay. |
-| `className` | `DivClassName` | - | No | CSS classes applied to the root element. |
-
+| Property     | Type           | Default | Required | Description                                |
+| ------------ | -------------- | ------- | -------- | ------------------------------------------ |
+| `children`   | `ReactNode`    | -       | Yes      | The content rendered inside the component. |
+| `fixable`    | `boolean`      | `false` | No       | The fixable used by the component.         |
+| `closeDelay` | `number`       | `140`   | No       | Function used to close delay.              |
+| `className`  | `DivClassName` | -       | No       | CSS classes applied to the root element.   |
 
 ### ContextMenu.SubTrigger
 
 Extends: `ComponentPropsWithoutRef<"button">`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `inset` | `boolean` | `false` | No | The inset used by the component. |
-| `leftSlot` | `ReactNode` | - | No | The left slot used by the component. |
-| `rightSlot` | `ReactNode` | - | No | The right slot used by the component. |
-
+| Property    | Type        | Default | Required | Description                           |
+| ----------- | ----------- | ------- | -------- | ------------------------------------- |
+| `inset`     | `boolean`   | `false` | No       | The inset used by the component.      |
+| `leftSlot`  | `ReactNode` | -       | No       | The left slot used by the component.  |
+| `rightSlot` | `ReactNode` | -       | No       | The right slot used by the component. |
 
 ### ContextMenu.SubContent
 
 Extends: `ComponentPropsWithoutRef<"div">`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `children` | `ReactNode` | - | Yes | The content rendered inside the component. |
-| `sideOffset` | `number` | `4` | No | The side offset used by the component. |
-
+| Property     | Type        | Default | Required | Description                                |
+| ------------ | ----------- | ------- | -------- | ------------------------------------------ |
+| `children`   | `ReactNode` | -       | Yes      | The content rendered inside the component. |
+| `sideOffset` | `number`    | `4`     | No       | The side offset used by the component.     |
 
 ```tsx
 "use client";

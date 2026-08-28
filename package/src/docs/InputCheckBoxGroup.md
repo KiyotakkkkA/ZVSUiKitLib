@@ -4,8 +4,8 @@
 
 - [Import](#import)
 - [API](#api)
-  - [BooleanModel](#booleanmodel)
-  - [InputCheckBoxGroup](#inputcheckboxgroup)
+    - [BooleanModel](#booleanmodel)
+    - [InputCheckBoxGroup](#inputcheckboxgroup)
 - [Example](#example)
 
 ## Import
@@ -26,17 +26,16 @@ type BooleanModel = Record<string, boolean>;
 
 Extends: `Omit< HTMLAttributes<HTMLDivElement>, "default" \| "onChange" >`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `ref` | `Ref<HTMLDivElement>` | - | No | Receives the group root element. |
-| `model` | `T` | - | Yes | Maps each checkbox value to its checked state. |
-| `onModelChange` | `(model: T) => void` | - | Yes | Runs with the updated checked-state model. |
-| `default` | `Extract<keyof T, string>` | - | No | Selects the model key checked when no key is currently active. |
-| `multiple` | `boolean` | `true` | No | Allows more than one model entry to be checked at once. |
-| `orientation` | [Orientation](./dict.md#orientation) | `"horizontal"` | No | Sets the horizontal or vertical layout of the checkboxes. |
-| `disabled` | `boolean` | `false` | No | Disables every checkbox in the group. |
-| `children` | `ReactNode` | - | Yes | Renders the grouped checkbox controls. |
-
+| Property        | Type                                 | Default        | Required | Description                                                    |
+| --------------- | ------------------------------------ | -------------- | -------- | -------------------------------------------------------------- |
+| `ref`           | `Ref<HTMLDivElement>`                | -              | No       | Receives the group root element.                               |
+| `model`         | `T`                                  | -              | Yes      | Maps each checkbox value to its checked state.                 |
+| `onModelChange` | `(model: T) => void`                 | -              | Yes      | Runs with the updated checked-state model.                     |
+| `default`       | `Extract<keyof T, string>`           | -              | No       | Selects the model key checked when no key is currently active. |
+| `multiple`      | `boolean`                            | `true`         | No       | Allows more than one model entry to be checked at once.        |
+| `orientation`   | [Orientation](./dict.md#orientation) | `"horizontal"` | No       | Sets the horizontal or vertical layout of the checkboxes.      |
+| `disabled`      | `boolean`                            | `false`        | No       | Disables every checkbox in the group.                          |
+| `children`      | `ReactNode`                          | -              | Yes      | Renders the grouped checkbox controls.                         |
 
 ```tsx
 "use client";

@@ -4,12 +4,12 @@
 
 - [Import](#import)
 - [API](#api)
-  - [ResizablePanelOrientation](#resizablepanelorientation)
-  - [ResizablePanelContextValue](#resizablepanelcontextvalue)
-  - [ResizablePanel](#resizablepanel)
-  - [ResizablePanelSidebarProps](#resizablepanelsidebarprops)
-  - [ResizablePanelContentProps](#resizablepanelcontentprops)
-  - [ResizablePanelHandleProps](#resizablepanelhandleprops)
+    - [ResizablePanelOrientation](#resizablepanelorientation)
+    - [ResizablePanelContextValue](#resizablepanelcontextvalue)
+    - [ResizablePanel](#resizablepanel)
+    - [ResizablePanelSidebarProps](#resizablepanelsidebarprops)
+    - [ResizablePanelContentProps](#resizablepanelcontentprops)
+    - [ResizablePanelHandleProps](#resizablepanelhandleprops)
 - [Example](#example)
 
 ## Import
@@ -28,68 +28,63 @@ type ResizablePanelOrientation = "horizontal" | "vertical";
 
 ### ResizablePanelContextValue
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `size` | `number` | - | Yes | No description provided. |
-| `minSize` | `number` | - | Yes | No description provided. |
-| `maxSize` | `number` | - | Yes | No description provided. |
-| `defaultSize` | `number` | - | Yes | No description provided. |
-| `keyboardStep` | `number` | - | Yes | No description provided. |
-| `orientation` | `ResizablePanelOrientation` | - | Yes | No description provided. |
-| `disabled` | `boolean` | - | Yes | No description provided. |
-| `resizing` | `boolean` | - | Yes | No description provided. |
-| `sidebarId` | `string` | - | Yes | No description provided. |
-| `resizeTo` | `(size: number) => number` | - | Yes | No description provided. |
-| `startResize` | `() => void` | - | Yes | No description provided. |
-| `endResize` | `() => void` | - | Yes | No description provided. |
-
+| Property       | Type                        | Default | Required | Description              |
+| -------------- | --------------------------- | ------- | -------- | ------------------------ |
+| `size`         | `number`                    | -       | Yes      | No description provided. |
+| `minSize`      | `number`                    | -       | Yes      | No description provided. |
+| `maxSize`      | `number`                    | -       | Yes      | No description provided. |
+| `defaultSize`  | `number`                    | -       | Yes      | No description provided. |
+| `keyboardStep` | `number`                    | -       | Yes      | No description provided. |
+| `orientation`  | `ResizablePanelOrientation` | -       | Yes      | No description provided. |
+| `disabled`     | `boolean`                   | -       | Yes      | No description provided. |
+| `resizing`     | `boolean`                   | -       | Yes      | No description provided. |
+| `sidebarId`    | `string`                    | -       | Yes      | No description provided. |
+| `resizeTo`     | `(size: number) => number`  | -       | Yes      | No description provided. |
+| `startResize`  | `() => void`                | -       | Yes      | No description provided. |
+| `endResize`    | `() => void`                | -       | Yes      | No description provided. |
 
 ### ResizablePanel
 
 Extends: `ComponentPropsWithoutRef<"div">`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `children` | `ReactNode` | - | Yes | No description provided. |
-| `size` | `number` | - | No | Controlled primary panel size in pixels. |
-| `defaultSize` | `number` | - | No | Initial uncontrolled primary panel size in pixels. |
-| `minSize` | `number` | - | No | No description provided. |
-| `maxSize` | `number` | - | No | No description provided. |
-| `orientation` | `ResizablePanelOrientation` | - | No | No description provided. |
-| `keyboardStep` | `number` | - | No | No description provided. |
-| `disabled` | `boolean` | - | No | No description provided. |
-| `onSizeChange` | `(size: number) => void` | - | No | No description provided. |
-| `onResizeStart` | `(size: number) => void` | - | No | No description provided. |
-| `onResizeEnd` | `(size: number) => void` | - | No | No description provided. |
-
+| Property        | Type                        | Default | Required | Description                                        |
+| --------------- | --------------------------- | ------- | -------- | -------------------------------------------------- |
+| `children`      | `ReactNode`                 | -       | Yes      | No description provided.                           |
+| `size`          | `number`                    | -       | No       | Controlled primary panel size in pixels.           |
+| `defaultSize`   | `number`                    | -       | No       | Initial uncontrolled primary panel size in pixels. |
+| `minSize`       | `number`                    | -       | No       | No description provided.                           |
+| `maxSize`       | `number`                    | -       | No       | No description provided.                           |
+| `orientation`   | `ResizablePanelOrientation` | -       | No       | No description provided.                           |
+| `keyboardStep`  | `number`                    | -       | No       | No description provided.                           |
+| `disabled`      | `boolean`                   | -       | No       | No description provided.                           |
+| `onSizeChange`  | `(size: number) => void`    | -       | No       | No description provided.                           |
+| `onResizeStart` | `(size: number) => void`    | -       | No       | No description provided.                           |
+| `onResizeEnd`   | `(size: number) => void`    | -       | No       | No description provided.                           |
 
 ### ResizablePanelSidebarProps
 
 Extends: `ComponentPropsWithoutRef<"aside">`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `children` | `ReactNode` | - | Yes | No description provided. |
-
+| Property   | Type        | Default | Required | Description              |
+| ---------- | ----------- | ------- | -------- | ------------------------ |
+| `children` | `ReactNode` | -       | Yes      | No description provided. |
 
 ### ResizablePanelContentProps
 
 Extends: `ComponentPropsWithoutRef<"main">`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `children` | `ReactNode` | - | Yes | No description provided. |
-
+| Property   | Type        | Default | Required | Description              |
+| ---------- | ----------- | ------- | -------- | ------------------------ |
+| `children` | `ReactNode` | -       | Yes      | No description provided. |
 
 ### ResizablePanelHandleProps
 
 Extends: `ComponentPropsWithoutRef<"div">`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `aria-label` | `string` | - | No | No description provided. |
-| `resetOnDoubleClick` | `boolean` | - | No | Restores defaultSize when the handle is double-clicked. |
-
+| Property             | Type      | Default | Required | Description                                             |
+| -------------------- | --------- | ------- | -------- | ------------------------------------------------------- |
+| `aria-label`         | `string`  | -       | No       | No description provided.                                |
+| `resetOnDoubleClick` | `boolean` | -       | No       | Restores defaultSize when the handle is double-clicked. |
 
 ```tsx
 import { ResizablePanel } from "@kiyotakkkka/zvs-uikit-lib";

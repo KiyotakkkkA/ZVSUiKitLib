@@ -4,7 +4,7 @@
 
 - [Import](#import)
 - [API](#api)
-  - [Strong](#strong)
+    - [Strong](#strong)
 - [Example](#example)
 
 ## Import

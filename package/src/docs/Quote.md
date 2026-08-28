@@ -4,7 +4,7 @@
 
 - [Import](#import)
 - [API](#api)
-  - [Quote](#quote)
+    - [Quote](#quote)
 - [Example](#example)
 
 ## Import

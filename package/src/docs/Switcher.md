@@ -4,9 +4,9 @@
 
 - [Import](#import)
 - [API](#api)
-  - [SwitcherOption](#switcheroption)
-  - [Switcher](#switcher)
-    - [SwitcherClassNames](#switcherclassnames)
+    - [SwitcherOption](#switcheroption)
+    - [Switcher](#switcher)
+        - [SwitcherClassNames](#switcherclassnames)
 - [Example](#example)
 
 ## Import
@@ -19,32 +19,29 @@ import { Switcher } from "@kiyotakkkka/zvs-uikit-lib";
 
 ### SwitcherOption
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `value` | `string` | - | Yes | The value used by the component. |
-| `label` | `string` | - | Yes | Text used for the label. |
-
+| Property | Type     | Default | Required | Description                      |
+| -------- | -------- | ------- | -------- | -------------------------------- |
+| `value`  | `string` | -       | Yes      | The value used by the component. |
+| `label`  | `string` | -       | Yes      | Text used for the label.         |
 
 ### Switcher
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `ref` | `Ref<HTMLDivElement>` | - | No | Receives the radio group root element. |
-| `value` | `string` | - | Yes | The value used by the component. |
-| `options` | `SwitcherOption[]` | - | Yes | The options used by the component. |
-| `onChange` | `(value: string) => void` | - | Yes | Callback invoked when change occurs. |
-| `label` | `string` | - | No | Accessible name for the radio group. Defaults to the \`switcher.label\` string from the active locale dictionary. |
-| `className` | `DivClassName` | - | No | CSS classes applied to the root element. |
-| `classNames` | `SwitcherClassNames` | - | No | CSS classes applied to the component slots. |
-| `rounded` | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-full"` | No | The border-radius preset applied to the component. |
-
+| Property     | Type                                           | Default          | Required | Description                                                                                                       |
+| ------------ | ---------------------------------------------- | ---------------- | -------- | ----------------------------------------------------------------------------------------------------------------- |
+| `ref`        | `Ref<HTMLDivElement>`                          | -                | No       | Receives the radio group root element.                                                                            |
+| `value`      | `string`                                       | -                | Yes      | The value used by the component.                                                                                  |
+| `options`    | `SwitcherOption[]`                             | -                | Yes      | The options used by the component.                                                                                |
+| `onChange`   | `(value: string) => void`                      | -                | Yes      | Callback invoked when change occurs.                                                                              |
+| `label`      | `string`                                       | -                | No       | Accessible name for the radio group. Defaults to the \`switcher.label\` string from the active locale dictionary. |
+| `className`  | `DivClassName`                                 | -                | No       | CSS classes applied to the root element.                                                                          |
+| `classNames` | `SwitcherClassNames`                           | -                | No       | CSS classes applied to the component slots.                                                                       |
+| `rounded`    | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-full"` | No       | The border-radius preset applied to the component.                                                                |
 
 ### SwitcherClassNames
 
-| Property | Description |
-| --- | --- |
-| `tab` | The tab used by the component. |
-
+| Property | Description                    |
+| -------- | ------------------------------ |
+| `tab`    | The tab used by the component. |
 
 ```tsx
 "use client";

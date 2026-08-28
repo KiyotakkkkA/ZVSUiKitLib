@@ -4,9 +4,9 @@
 
 - [Import](#import)
 - [API](#api)
-  - [ButtonVariants](#buttonvariants)
-  - [Button](#button)
-    - [ButtonClassNames](#buttonclassnames)
+    - [ButtonVariants](#buttonvariants)
+    - [Button](#button)
+        - [ButtonClassNames](#buttonclassnames)
 - [Example](#example)
 
 ## Import
@@ -27,26 +27,24 @@ type ButtonVariants = ColorVariantsBase | ColorVariantOutline | "ghost";
 
 Extends: `ButtonHTMLAttributes<HTMLButtonElement>`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `ref` | `Ref<HTMLButtonElement>` | - | No | Receives the underlying \`<button>\` node. |
-| `children` | `ReactNode` | - | Yes | Renders the normal button content. |
-| `label` | `string` | - | No | Provides an accessible label when the visible content is insufficient. |
-| `loading` | `boolean` | `false` | No | Disables the button and displays its loading state. |
-| `loadingText` | `string` | - | No | Replaces the button content while loading. |
-| `variant` | `ButtonVariants \| ""` | `"secondary"` | No | Selects the button color and emphasis style. |
-| `rounded` | `RoundVariants \| ""` | `"rounded-full"` | No | Selects the button border radius. |
-| `size` | `SizeVariants` | - | No | Selects the button padding and text size on the shared size scale. |
-| `classNames` | `ButtonClassNames` | - | No | Applies CSS classes to the button loading slots. |
-
+| Property      | Type                     | Default          | Required | Description                                                            |
+| ------------- | ------------------------ | ---------------- | -------- | ---------------------------------------------------------------------- |
+| `ref`         | `Ref<HTMLButtonElement>` | -                | No       | Receives the underlying \`<button>\` node.                             |
+| `children`    | `ReactNode`              | -                | Yes      | Renders the normal button content.                                     |
+| `label`       | `string`                 | -                | No       | Provides an accessible label when the visible content is insufficient. |
+| `loading`     | `boolean`                | `false`          | No       | Disables the button and displays its loading state.                    |
+| `loadingText` | `string`                 | -                | No       | Replaces the button content while loading.                             |
+| `variant`     | `ButtonVariants \| ""`   | `"secondary"`    | No       | Selects the button color and emphasis style.                           |
+| `rounded`     | `RoundVariants \| ""`    | `"rounded-full"` | No       | Selects the button border radius.                                      |
+| `size`        | `SizeVariants`           | -                | No       | Selects the button padding and text size on the shared size scale.     |
+| `classNames`  | `ButtonClassNames`       | -                | No       | Applies CSS classes to the button loading slots.                       |
 
 ### ButtonClassNames
 
-| Property | Description |
-| --- | --- |
-| `loaderIcon` | Applies CSS classes to the loading spinner. |
+| Property     | Description                                    |
+| ------------ | ---------------------------------------------- |
+| `loaderIcon` | Applies CSS classes to the loading spinner.    |
 | `loaderText` | Applies CSS classes to the loading-state text. |
-
 
 ```tsx
 "use client";

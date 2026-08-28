@@ -4,10 +4,10 @@
 
 - [Import](#import)
 - [API](#api)
-  - [Breadcrumbs](#breadcrumbs)
-  - [Breadcrumbs.Nav](#breadcrumbsnav)
-  - [Breadcrumbs.Separator](#breadcrumbsseparator)
-  - [BreadcrumbsContextValue](#breadcrumbscontextvalue)
+    - [Breadcrumbs](#breadcrumbs)
+    - [Breadcrumbs.Nav](#breadcrumbsnav)
+    - [Breadcrumbs.Separator](#breadcrumbsseparator)
+    - [BreadcrumbsContextValue](#breadcrumbscontextvalue)
 - [Example](#example)
 
 ## Import
@@ -22,38 +22,34 @@ import { Breadcrumbs } from "@kiyotakkkka/zvs-uikit-lib";
 
 Extends: `ComponentPropsWithoutRef<"nav">`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `ref` | `Ref<HTMLElement>` | - | No | Receives the breadcrumbs \`<nav>\` element. |
-| `separator` | `ReactNode` | `"/"` | No | Replaces the separator rendered between breadcrumb items. |
-| `children` | `ReactNode` | - | Yes | Renders breadcrumb navigation items. |
-
+| Property    | Type               | Default | Required | Description                                               |
+| ----------- | ------------------ | ------- | -------- | --------------------------------------------------------- |
+| `ref`       | `Ref<HTMLElement>` | -       | No       | Receives the breadcrumbs \`<nav>\` element.               |
+| `separator` | `ReactNode`        | `"/"`   | No       | Replaces the separator rendered between breadcrumb items. |
+| `children`  | `ReactNode`        | -       | Yes      | Renders breadcrumb navigation items.                      |
 
 ### Breadcrumbs.Nav
 
 Extends: `Omit< ComponentPropsWithoutRef<"button">, "children" >`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `label` | `ReactNode` | - | Yes | Renders the breadcrumb item label. |
-| `active` | `boolean` | `false` | No | Marks the item as the current page and disables its button. |
-
+| Property | Type        | Default | Required | Description                                                 |
+| -------- | ----------- | ------- | -------- | ----------------------------------------------------------- |
+| `label`  | `ReactNode` | -       | Yes      | Renders the breadcrumb item label.                          |
+| `active` | `boolean`   | `false` | No       | Marks the item as the current page and disables its button. |
 
 ### Breadcrumbs.Separator
 
 Extends: `ComponentPropsWithoutRef<"span">`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `children` | `ReactNode` | - | No | Replaces the separator inherited from the breadcrumbs root. |
-
+| Property   | Type        | Default | Required | Description                                                 |
+| ---------- | ----------- | ------- | -------- | ----------------------------------------------------------- |
+| `children` | `ReactNode` | -       | No       | Replaces the separator inherited from the breadcrumbs root. |
 
 ### BreadcrumbsContextValue
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `separator` | `ReactNode` | - | Yes | Stores the separator shared by nested breadcrumb parts. |
-
+| Property    | Type        | Default | Required | Description                                             |
+| ----------- | ----------- | ------- | -------- | ------------------------------------------------------- |
+| `separator` | `ReactNode` | -       | Yes      | Stores the separator shared by nested breadcrumb parts. |
 
 ```tsx
 "use client";

@@ -4,7 +4,7 @@
 
 - [Import](#import)
 - [API](#api)
-  - [Kbd](#kbd)
+    - [Kbd](#kbd)
 - [Example](#example)
 
 ## Import

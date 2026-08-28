@@ -4,12 +4,12 @@
 
 - [Import](#import)
 - [API](#api)
-  - [Card](#card)
-  - [Card.Header](#cardheader)
-  - [Card.Title](#cardtitle)
-  - [Card.Subtitle](#cardsubtitle)
-  - [Card.Content](#cardcontent)
-  - [Card.Footer](#cardfooter)
+    - [Card](#card)
+    - [Card.Header](#cardheader)
+    - [Card.Title](#cardtitle)
+    - [Card.Subtitle](#cardsubtitle)
+    - [Card.Content](#cardcontent)
+    - [Card.Footer](#cardfooter)
 - [Example](#example)
 
 ## Import
@@ -24,11 +24,10 @@ import { Card } from "@kiyotakkkka/zvs-uikit-lib";
 
 Extends: `HTMLAttributes<HTMLElement>`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `ref` | `Ref<HTMLElement>` | - | No | Receives the card \`<section>\` element. |
-| `rounded` | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-lg"` | No | Selects the card container border radius. |
-
+| Property  | Type                                           | Default        | Required | Description                               |
+| --------- | ---------------------------------------------- | -------------- | -------- | ----------------------------------------- |
+| `ref`     | `Ref<HTMLElement>`                             | -              | No       | Receives the card \`<section>\` element.  |
+| `rounded` | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-lg"` | No       | Selects the card container border radius. |
 
 ### Card.Header
 

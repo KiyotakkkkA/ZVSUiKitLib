@@ -4,9 +4,9 @@
 
 - [Import](#import)
 - [API](#api)
-  - [SkeletonRadius](#skeletonradius)
-  - [SkeletonTone](#skeletontone)
-  - [Skeleton](#skeleton)
+    - [SkeletonRadius](#skeletonradius)
+    - [SkeletonTone](#skeletontone)
+    - [Skeleton](#skeleton)
 - [Example](#example)
 
 ## Import
@@ -33,13 +33,12 @@ type SkeletonTone = "default" | "subtle" | "strong";
 
 Extends: `HTMLAttributes<HTMLDivElement>`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `ref` | `Ref<HTMLDivElement>` | - | No | Receives the underlying \`HTMLDivElement\` node. |
-| `animated` | `boolean` | `true` | No | The animated used by the component. |
-| `rounded` | `SkeletonRadius` | `"md"` | No | The border-radius preset applied to the component. |
-| `tone` | `SkeletonTone` | `"default"` | No | The color tone applied to the component. |
-
+| Property   | Type                  | Default     | Required | Description                                        |
+| ---------- | --------------------- | ----------- | -------- | -------------------------------------------------- |
+| `ref`      | `Ref<HTMLDivElement>` | -           | No       | Receives the underlying \`HTMLDivElement\` node.   |
+| `animated` | `boolean`             | `true`      | No       | The animated used by the component.                |
+| `rounded`  | `SkeletonRadius`      | `"md"`      | No       | The border-radius preset applied to the component. |
+| `tone`     | `SkeletonTone`        | `"default"` | No       | The color tone applied to the component.           |
 
 ```tsx
 "use client";

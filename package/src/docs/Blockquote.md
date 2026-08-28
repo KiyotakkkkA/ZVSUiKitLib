@@ -4,7 +4,7 @@
 
 - [Import](#import)
 - [API](#api)
-  - [Blockquote](#blockquote)
+    - [Blockquote](#blockquote)
 - [Example](#example)
 
 ## Import
@@ -19,11 +19,10 @@ import { Blockquote } from "@kiyotakkkka/zvs-uikit-lib";
 
 Extends: `HTMLAttributes<HTMLQuoteElement>`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `ref` | `Ref<HTMLQuoteElement>` | - | No | Receives the underlying \`HTMLQuoteElement\` node. |
-| `cite` | `ReactNode` | - | No | Renders the quotation attribution below the quoted content. |
-
+| Property | Type                    | Default | Required | Description                                                 |
+| -------- | ----------------------- | ------- | -------- | ----------------------------------------------------------- |
+| `ref`    | `Ref<HTMLQuoteElement>` | -       | No       | Receives the underlying \`HTMLQuoteElement\` node.          |
+| `cite`   | `ReactNode`             | -       | No       | Renders the quotation attribution below the quoted content. |
 
 ```tsx
 import { Blockquote } from "@kiyotakkkka/zvs-uikit-lib";

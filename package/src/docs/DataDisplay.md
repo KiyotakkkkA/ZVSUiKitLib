@@ -4,15 +4,15 @@
 
 - [Import](#import)
 - [API](#api)
-  - [DataDisplay](#datadisplay)
-  - [DataDisplay.Item](#datadisplayitem)
-  - [DataDisplay.ItemTopTitle](#datadisplayitemtoptitle)
-  - [DataDisplay.ItemTopSubTitle](#datadisplayitemtopsubtitle)
-  - [DataDisplay.ItemTopBadge](#datadisplayitemtopbadge)
-  - [DataDisplay.ItemContentTitle](#datadisplayitemcontenttitle)
-  - [DataDisplay.ItemContentDescription](#datadisplayitemcontentdescription)
-  - [DataDisplay.ItemContentIcon](#datadisplayitemcontenticon)
-  - [DataDisplay.ItemContentBadge](#datadisplayitemcontentbadge)
+    - [DataDisplay](#datadisplay)
+    - [DataDisplay.Item](#datadisplayitem)
+    - [DataDisplay.ItemTopTitle](#datadisplayitemtoptitle)
+    - [DataDisplay.ItemTopSubTitle](#datadisplayitemtopsubtitle)
+    - [DataDisplay.ItemTopBadge](#datadisplayitemtopbadge)
+    - [DataDisplay.ItemContentTitle](#datadisplayitemcontenttitle)
+    - [DataDisplay.ItemContentDescription](#datadisplayitemcontentdescription)
+    - [DataDisplay.ItemContentIcon](#datadisplayitemcontenticon)
+    - [DataDisplay.ItemContentBadge](#datadisplayitemcontentbadge)
 - [Example](#example)
 
 ## Import
@@ -27,85 +27,76 @@ import { DataDisplay } from "@kiyotakkkka/zvs-uikit-lib";
 
 Extends: `HTMLAttributes<HTMLDivElement>`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `ref` | `Ref<HTMLDivElement>` | - | No | Receives the data display root element. |
-| `children` | `ReactNode` | - | Yes | The content rendered inside the component. |
-| `bordered` | `boolean` | `true` | No | The bordered used by the component. |
-| `rounded` | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-lg"` | No | The border-radius preset applied to the component. |
-
+| Property   | Type                                           | Default        | Required | Description                                        |
+| ---------- | ---------------------------------------------- | -------------- | -------- | -------------------------------------------------- |
+| `ref`      | `Ref<HTMLDivElement>`                          | -              | No       | Receives the data display root element.            |
+| `children` | `ReactNode`                                    | -              | Yes      | The content rendered inside the component.         |
+| `bordered` | `boolean`                                      | `true`         | No       | The bordered used by the component.                |
+| `rounded`  | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-lg"` | No       | The border-radius preset applied to the component. |
 
 ### DataDisplay.Item
 
 Extends: `HTMLAttributes<HTMLDivElement>`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `children` | `ReactNode` | - | Yes | The content rendered inside the component. |
-
+| Property   | Type        | Default | Required | Description                                |
+| ---------- | ----------- | ------- | -------- | ------------------------------------------ |
+| `children` | `ReactNode` | -       | Yes      | The content rendered inside the component. |
 
 ### DataDisplay.ItemTopTitle
 
 Extends: `HTMLAttributes<HTMLDivElement>`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `children` | `ReactNode` | - | Yes | The content rendered inside the component. |
-
+| Property   | Type        | Default | Required | Description                                |
+| ---------- | ----------- | ------- | -------- | ------------------------------------------ |
+| `children` | `ReactNode` | -       | Yes      | The content rendered inside the component. |
 
 ### DataDisplay.ItemTopSubTitle
 
 Extends: `HTMLAttributes<HTMLDivElement>`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `children` | `ReactNode` | - | Yes | The content rendered inside the component. |
-
+| Property   | Type        | Default | Required | Description                                |
+| ---------- | ----------- | ------- | -------- | ------------------------------------------ |
+| `children` | `ReactNode` | -       | Yes      | The content rendered inside the component. |
 
 ### DataDisplay.ItemTopBadge
 
 Extends: `HTMLAttributes<HTMLDivElement>`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `children` | `ReactNode` | - | Yes | The content rendered inside the component. |
-
+| Property   | Type        | Default | Required | Description                                |
+| ---------- | ----------- | ------- | -------- | ------------------------------------------ |
+| `children` | `ReactNode` | -       | Yes      | The content rendered inside the component. |
 
 ### DataDisplay.ItemContentTitle
 
 Extends: `HTMLAttributes<HTMLDivElement>`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `children` | `ReactNode` | - | Yes | The content rendered inside the component. |
-
+| Property   | Type        | Default | Required | Description                                |
+| ---------- | ----------- | ------- | -------- | ------------------------------------------ |
+| `children` | `ReactNode` | -       | Yes      | The content rendered inside the component. |
 
 ### DataDisplay.ItemContentDescription
 
 Extends: `HTMLAttributes<HTMLDivElement>`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `children` | `ReactNode` | - | Yes | The content rendered inside the component. |
-
+| Property   | Type        | Default | Required | Description                                |
+| ---------- | ----------- | ------- | -------- | ------------------------------------------ |
+| `children` | `ReactNode` | -       | Yes      | The content rendered inside the component. |
 
 ### DataDisplay.ItemContentIcon
 
 Extends: `HTMLAttributes<HTMLDivElement>`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `children` | `ReactNode` | - | Yes | The content rendered inside the component. |
-
+| Property   | Type        | Default | Required | Description                                |
+| ---------- | ----------- | ------- | -------- | ------------------------------------------ |
+| `children` | `ReactNode` | -       | Yes      | The content rendered inside the component. |
 
 ### DataDisplay.ItemContentBadge
 
 Extends: `HTMLAttributes<HTMLDivElement>`.
 
-| Property | Type | Default | Required | Description |
-| --- | --- | --- | --- | --- |
-| `children` | `ReactNode` | - | Yes | The content rendered inside the component. |
-
+| Property   | Type        | Default | Required | Description                                |
+| ---------- | ----------- | ------- | -------- | ------------------------------------------ |
+| `children` | `ReactNode` | -       | Yes      | The content rendered inside the component. |
 
 ```tsx
 "use client";

@@ -24,7 +24,8 @@ type SizeVariants = "sm" | "md" | "lg";
 ## ColorVariantsBase
 
 ```ts
-type ColorVariantsBase = | "primary"
+type ColorVariantsBase =
+    | "primary"
     | "secondary"
     | "tertiary"
     | "success"
@@ -36,7 +37,8 @@ type ColorVariantsBase = | "primary"
 ## ColorVariantOutline
 
 ```ts
-type ColorVariantOutline = | "primary-outline"
+type ColorVariantOutline =
+    | "primary-outline"
     | "tertiary-outline"
     | "success-outline"
     | "warning-outline"
@@ -47,7 +49,8 @@ type ColorVariantOutline = | "primary-outline"
 ## PositionAnchor
 
 ```ts
-type PositionAnchor = | "top-left"
+type PositionAnchor =
+    | "top-left"
     | "top-center"
     | "top-right"
     | "left-center"
@@ -60,7 +63,8 @@ type PositionAnchor = | "top-left"
 ## RoundVariants
 
 ```ts
-type RoundVariants = | "rounded-none"
+type RoundVariants =
+    | "rounded-none"
     | "rounded-sm"
     | "rounded"
     | "rounded-md"
