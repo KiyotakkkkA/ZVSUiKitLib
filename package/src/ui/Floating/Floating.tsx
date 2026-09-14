@@ -145,9 +145,15 @@ function FloatingContent({
         setPosition(
             computeMenuPosition({
                 trigger: trigger.getBoundingClientRect(),
-                menu: { width: content.offsetWidth, height: content.offsetHeight },
+                menu: {
+                    width: content.offsetWidth,
+                    height: content.offsetHeight,
+                },
                 placement: anchor,
-                viewport: { width: window.innerWidth, height: window.innerHeight },
+                viewport: {
+                    width: window.innerWidth,
+                    height: window.innerHeight,
+                },
                 gap: FLOATING_GAP,
                 padding: 8,
             }),
@@ -171,7 +177,13 @@ function FloatingContent({
             {...props}
             ref={contentRef}
             popover="manual"
-            style={{ color: "inherit", ...style, inset: "auto", margin: 0, ...position }}
+            style={{
+                color: "inherit",
+                ...style,
+                inset: "auto",
+                margin: 0,
+                ...position,
+            }}
             className={cn(
                 "fixed z-9999 isolate overflow-hidden border border-main-700/80",
                 rounded,

@@ -8,13 +8,19 @@ describe("observeAnchor", () => {
         let nextFrame: FrameRequestCallback = () => {};
         const cancel = vi.fn();
         const remove = vi.fn();
-        vi.stubGlobal("requestAnimationFrame", (callback: FrameRequestCallback) => {
-            nextFrame = callback;
-            return 42;
-        });
+        vi.stubGlobal(
+            "requestAnimationFrame",
+            (callback: FrameRequestCallback) => {
+                nextFrame = callback;
+                return 42;
+            },
+        );
         vi.stubGlobal("cancelAnimationFrame", cancel);
         vi.stubGlobal("ResizeObserver", undefined);
-        vi.stubGlobal("window", { addEventListener: vi.fn(), removeEventListener: remove });
+        vi.stubGlobal("window", {
+            addEventListener: vi.fn(),
+            removeEventListener: remove,
+        });
         const rect = { left: 100, top: 200, width: 150, height: 40 };
         const trigger = { getBoundingClientRect: () => rect } as HTMLElement;
         const content = {
@@ -39,26 +45,49 @@ describe("observeAnchor", () => {
 
     it("hides a manual overlay when its containing popover closes", () => {
         let nextFrame: FrameRequestCallback = () => {};
-        vi.stubGlobal("requestAnimationFrame", (callback: FrameRequestCallback) => {
-            nextFrame = callback;
-            return 1;
-        });
+        vi.stubGlobal(
+            "requestAnimationFrame",
+            (callback: FrameRequestCallback) => {
+                nextFrame = callback;
+                return 1;
+            },
+        );
         vi.stubGlobal("cancelAnimationFrame", vi.fn());
         vi.stubGlobal("ResizeObserver", undefined);
-        vi.stubGlobal("window", { addEventListener: vi.fn(), removeEventListener: vi.fn() });
+        vi.stubGlobal("window", {
+            addEventListener: vi.fn(),
+            removeEventListener: vi.fn(),
+        });
         let parentOpen = true;
         let childOpen = true;
-        const parent = { hasAttribute: () => true, matches: () => parentOpen, parentElement: null };
+        const parent = {
+            hasAttribute: () => true,
+            matches: () => parentOpen,
+            parentElement: null,
+        };
         const trigger = {
             closest: () => parent,
             getClientRects: () => [{}],
-            getBoundingClientRect: () => ({ left: 100, top: 200, width: 150, height: 40 }),
+            getBoundingClientRect: () => ({
+                left: 100,
+                top: 200,
+                width: 150,
+                height: 40,
+            }),
         } as unknown as HTMLElement;
-        const hide = vi.fn(() => { childOpen = false; });
-        const show = vi.fn(() => { childOpen = true; });
+        const hide = vi.fn(() => {
+            childOpen = false;
+        });
+        const show = vi.fn(() => {
+            childOpen = true;
+        });
         const content = {
-            getAttribute: () => "manual", matches: () => childOpen,
-            hidePopover: hide, showPopover: show, offsetWidth: 100, offsetHeight: 40,
+            getAttribute: () => "manual",
+            matches: () => childOpen,
+            hidePopover: hide,
+            showPopover: show,
+            offsetWidth: 100,
+            offsetHeight: 40,
         } as unknown as HTMLElement;
         const cleanup = observeAnchor(trigger, content, vi.fn());
         parentOpen = false;

@@ -1,6 +1,18 @@
 # Changelog
 
-## [8.1.0]
+## [8.4.0]
+
+### Added
+
+- **`InputCheckSlided` color variants:** `primary`, `secondary` (default),
+  `tertiary`, `success`, `warning`, `danger`, and `info`;
+
+### Changed
+
+- **Migrated library icons to `@mdi/js`**, replacing hardcoded SVG
+  paths with named imports while preserving existing icon names and props.
+  `@mdi/js` is a development dependency; only the selected icon paths are
+  bundled, with no runtime dependency on the icon package.
 
 ### Fixed
 

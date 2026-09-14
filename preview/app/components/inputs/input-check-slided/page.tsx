@@ -7,7 +7,9 @@ import {
     SectionPreview,
 } from "../../../molecules";
 import { DemoInputCheckSlided } from "./(preview)/input-check-slided-preview";
+import { DemoInputCheckSlidedVariants } from "./(preview)/input-check-slided-variants-preview";
 import usage from "./(usage)/usage.md";
+import variantsUsage from "./(usage)/variants.md";
 import { componentProps } from "./props";
 
 export const metadata: Metadata = {
@@ -42,6 +44,20 @@ export default function Page() {
                 </SectionPreview.Component>
                 <SectionPreview.Code label="InputCheckSlidedExample.tsx">
                     {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "variants",
+                    headerTitle: "Switch color variants",
+                    navTitle: "Variants",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoInputCheckSlidedVariants />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="InputCheckSlidedVariants.tsx">
+                    {variantsUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

@@ -194,7 +194,11 @@ function DropdownRoot({
         menuElement.style.visibility = "";
 
         if (triggerElement) {
-            return observeAnchor(triggerElement, menuElement, updateMenuPosition);
+            return observeAnchor(
+                triggerElement,
+                menuElement,
+                updateMenuPosition,
+            );
         }
     }, [open, updateMenuPosition, triggerElement]);
 

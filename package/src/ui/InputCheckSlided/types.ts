@@ -1,5 +1,6 @@
 import type { ReactNode, Ref } from "react";
 import type {
+    ColorVariantsBase,
     InputClassName,
     LabelClassName,
     SpanClassName,
@@ -33,4 +34,6 @@ export type InputCheckSlidedProps = {
     className?: LabelClassName;
     /** Applies CSS classes to the switch slots. */
     classNames?: InputCheckSlidedClassNames;
+    /** Selects the checked switch color scheme. Defaults to "secondary". */
+    variant?: ColorVariantsBase;
 };

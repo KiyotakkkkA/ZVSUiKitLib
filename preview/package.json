@@ -9,6 +9,7 @@
         "react-dom": "19.2.4"
     },
     "devDependencies": {
+        "@mdi/js": "^7.4.47",
         "@tailwindcss/postcss": "^4",
         "@types/node": "^20",
         "@types/react": "^19",

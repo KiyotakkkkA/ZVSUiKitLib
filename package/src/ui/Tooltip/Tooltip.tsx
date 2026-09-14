@@ -58,14 +58,22 @@ export function Tooltip({
 
         if (!trigger || !tooltip) return;
 
-        setPosition(computeMenuPosition({
-            trigger: trigger.getBoundingClientRect(),
-            menu: { width: tooltip.offsetWidth, height: tooltip.offsetHeight },
-            placement,
-            viewport: { width: window.innerWidth, height: window.innerHeight },
-            gap: TOOLTIP_GAP,
-            padding: 8,
-        }));
+        setPosition(
+            computeMenuPosition({
+                trigger: trigger.getBoundingClientRect(),
+                menu: {
+                    width: tooltip.offsetWidth,
+                    height: tooltip.offsetHeight,
+                },
+                placement,
+                viewport: {
+                    width: window.innerWidth,
+                    height: window.innerHeight,
+                },
+                gap: TOOLTIP_GAP,
+                padding: 8,
+            }),
+        );
     }, [placement]);
 
     useLayoutEffect(() => {

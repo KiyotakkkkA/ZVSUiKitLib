@@ -1,5 +1,40 @@
 import { cn } from "../../lib/utils";
+import type { ColorVariantsBase } from "../_shared/types";
 import type { InputCheckSlidedProps } from "./types";
+
+const variantStyles: Record<
+    ColorVariantsBase,
+    { control: string; thumb: string }
+> = {
+    primary: {
+        control: "border-main-100 bg-main-100",
+        thumb: "bg-main-900",
+    },
+    secondary: {
+        control: "border-main-600 bg-main-500/70",
+        thumb: "bg-main-100",
+    },
+    tertiary: {
+        control: "border-accent-medium bg-accent-medium",
+        thumb: "bg-main-900",
+    },
+    success: {
+        control: "border-success-medium bg-success-medium",
+        thumb: "bg-main-100",
+    },
+    warning: {
+        control: "border-warning-medium bg-warning-medium",
+        thumb: "bg-main-900",
+    },
+    danger: {
+        control: "border-danger-medium bg-danger-medium",
+        thumb: "bg-main-100",
+    },
+    info: {
+        control: "border-info-medium bg-info-medium",
+        thumb: "bg-main-100",
+    },
+};
 
 export const InputCheckSlided = ({
     checked,
@@ -9,7 +44,10 @@ export const InputCheckSlided = ({
     classNames,
     children,
     ref,
+    variant = "secondary",
 }: InputCheckSlidedProps) => {
+    const variantStyle = variantStyles[variant];
+
     return (
         <label
             className={cn(
@@ -20,8 +58,10 @@ export const InputCheckSlided = ({
         >
             <span
                 className={cn(
-                    "relative inline-flex h-6 w-11 shrink-0 items-center rounded-full border border-main-600 transition-colors duration-200",
-                    checked ? "bg-main-500/70" : "bg-main-800",
+                    "relative inline-flex h-6 w-11 shrink-0 items-center rounded-full border transition-colors duration-200",
+                    checked
+                        ? variantStyle.control
+                        : "border-main-600 bg-main-800",
                     classNames?.control,
                 )}
             >
@@ -36,7 +76,8 @@ export const InputCheckSlided = ({
                 />
                 <span
                     className={cn(
-                        "inline-block h-4 w-4 transform rounded-full bg-main-100 transition-transform duration-200",
+                        "inline-block h-4 w-4 transform rounded-full transition-[transform,background-color] duration-200",
+                        checked ? variantStyle.thumb : "bg-main-100",
                         "peer-focus-visible:shadow-[0_0_0_2px_var(--color-main-800),0_0_0_4px_color-mix(in_srgb,var(--color-main-300)_50%,transparent)]",
                         checked ? "translate-x-6" : "translate-x-1",
                         classNames?.thumb,
