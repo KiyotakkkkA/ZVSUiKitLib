@@ -16,8 +16,10 @@ export function Example() {
 }
 ```
 
-See [CHANGELOG.md](CHANGELOG.md) for what changed in 8.0.0, including the
-breaking changes.
+## Updates
+
+- See 8.0.0 version update notes in [8.0.0 CHANGELOG](changelogs/CHANGELOG_8_0_0.md).
+- See 8.4.0 version update notes in [8.4.0 CHANGELOG](changelogs/CHANGELOG_8_4_0.md).
 
 ### Configure Tailwind scanning
 
