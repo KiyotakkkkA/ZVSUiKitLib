@@ -1,7 +1,7 @@
 import type { PositionAnchor } from "../ui/_shared/types";
 
 /**
- * Geometry behind the Dropdown popup. Kept free of the DOM so the placement
+ * Geometry shared by anchored overlays. Kept free of the DOM so the placement
  * and viewport clamping can be tested on their own.
  */
 
@@ -30,7 +30,7 @@ export const clamp = (value: number, min: number, max: number) => {
 };
 
 /**
- * Returns the page coordinates for a popup of `menu` size anchored to
+ * Returns the viewport coordinates for a fixed popup of `menu` size anchored to
  * `trigger`, kept `padding` away from the edges of `viewport`. When the popup
  * is larger than the space available the `min` edge wins, so it is never
  * pushed off the top or the left.

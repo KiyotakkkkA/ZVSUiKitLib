@@ -7,9 +7,9 @@ import {
     useState,
     type CSSProperties,
 } from "react";
-import { createPortal } from "react-dom";
 import type { PositionAnchor } from "../..";
-import { usePortalContainer } from "../../hooks/usePortalContainer";
+import { observeAnchor } from "../../lib/observeAnchor";
+import { computeMenuPosition } from "../../lib/position";
 import { cn } from "../../lib/utils";
 import type { TooltipProps } from "./types";
 
@@ -38,7 +38,6 @@ export function Tooltip({
     const [position, setPosition] = useState<CSSProperties>();
     const triggerRef = useRef<HTMLSpanElement | null>(null);
     const tooltipRef = useRef<HTMLSpanElement | null>(null);
-    const portalContainer = usePortalContainer();
 
     const setTriggerRef = useCallback(
         (node: HTMLSpanElement | null) => {
@@ -59,56 +58,27 @@ export function Tooltip({
 
         if (!trigger || !tooltip) return;
 
-        const triggerRect = trigger.getBoundingClientRect();
-        const tooltipRect = tooltip.getBoundingClientRect();
-        const [side, alignment] = placement.split("-");
-
-        let left = triggerRect.left;
-        let top = triggerRect.top;
-
-        if (side === "left") {
-            left = triggerRect.left - tooltipRect.width - TOOLTIP_GAP;
-            top += (triggerRect.height - tooltipRect.height) / 2;
-        } else if (side === "right") {
-            left = triggerRect.right + TOOLTIP_GAP;
-            top += (triggerRect.height - tooltipRect.height) / 2;
-        } else if (alignment === "center") {
-            left += (triggerRect.width - tooltipRect.width) / 2;
-        } else if (alignment === "right") {
-            left = triggerRect.right - tooltipRect.width;
-        }
-
-        if (side === "top") {
-            top = triggerRect.top - tooltipRect.height - TOOLTIP_GAP;
-        } else if (side === "bottom") {
-            top = triggerRect.bottom + TOOLTIP_GAP;
-        }
-
-        setPosition({ left, top });
+        setPosition(computeMenuPosition({
+            trigger: trigger.getBoundingClientRect(),
+            menu: { width: tooltip.offsetWidth, height: tooltip.offsetHeight },
+            placement,
+            viewport: { width: window.innerWidth, height: window.innerHeight },
+            gap: TOOLTIP_GAP,
+            padding: 8,
+        }));
     }, [placement]);
 
     useLayoutEffect(() => {
-        if (!visible) return;
-
-        updatePosition();
-
-        window.addEventListener("resize", updatePosition);
-        window.addEventListener("scroll", updatePosition, true);
-
-        const resizeObserver =
-            typeof ResizeObserver === "undefined"
-                ? null
-                : new ResizeObserver(updatePosition);
-
-        if (triggerRef.current) resizeObserver?.observe(triggerRef.current);
-        if (tooltipRef.current) resizeObserver?.observe(tooltipRef.current);
-
-        return () => {
-            window.removeEventListener("resize", updatePosition);
-            window.removeEventListener("scroll", updatePosition, true);
-            resizeObserver?.disconnect();
-        };
-    }, [portalContainer, updatePosition, visible]);
+        const tooltip = tooltipRef.current;
+        const trigger = triggerRef.current;
+        if (!tooltip || !trigger) return;
+        if (!visible) {
+            if (tooltip.matches(":popover-open")) tooltip.hidePopover();
+            return;
+        }
+        if (!tooltip.matches(":popover-open")) tooltip.showPopover();
+        return observeAnchor(trigger, tooltip, updatePosition);
+    }, [updatePosition, visible]);
 
     return (
         <span
@@ -118,34 +88,37 @@ export function Tooltip({
             onMouseLeave={() => setVisible(false)}
         >
             {children}
-            {portalContainer &&
-                createPortal(
-                    <span
-                        ref={tooltipRef}
-                        role="tooltip"
-                        style={position}
-                        className={cn(
-                            "pointer-events-none fixed z-9999 max-w-xs whitespace-nowrap",
-                            rounded,
-                            "bg-main-100 px-2.5 py-1.5 text-xs font-medium text-main-900 shadow-lg",
-                            "transition-opacity duration-150",
-                            visible && position
-                                ? "visible opacity-100"
-                                : "invisible opacity-0",
-                            className,
-                        )}
-                    >
-                        {label}
-                        <span
-                            className={cn(
-                                "absolute h-2 w-2 rotate-45 rounded-[1px] bg-main-100",
-                                arrowPositionByPlacement[placement],
-                            )}
-                            aria-hidden
-                        />
-                    </span>,
-                    portalContainer,
+            <span
+                ref={tooltipRef}
+                popover="manual"
+                role="tooltip"
+                style={{
+                    inset: "auto",
+                    margin: 0,
+                    overflow: "visible",
+                    border: 0,
+                    ...position,
+                }}
+                className={cn(
+                    "pointer-events-none fixed z-9999 max-w-xs whitespace-nowrap",
+                    rounded,
+                    "bg-main-100 px-2.5 py-1.5 text-xs font-medium text-main-900 shadow-lg",
+                    "transition-opacity duration-150",
+                    visible && position
+                        ? "visible opacity-100"
+                        : "invisible opacity-0",
+                    className,
                 )}
+            >
+                {label}
+                <span
+                    className={cn(
+                        "absolute h-2 w-2 rotate-45 rounded-[1px] bg-main-100",
+                        arrowPositionByPlacement[placement],
+                    )}
+                    aria-hidden
+                />
+            </span>
         </span>
     );
 }

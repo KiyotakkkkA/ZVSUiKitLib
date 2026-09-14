@@ -17,6 +17,7 @@ import {
 import { cn } from "../../lib/utils";
 import { useLocale } from "../../hooks/useLocale";
 import { computeMenuPosition } from "../../lib/position";
+import { observeAnchor } from "../../lib/observeAnchor";
 import type {
     DropdownContextValue,
     DropdownProps,
@@ -192,32 +193,9 @@ function DropdownRoot({
 
         menuElement.style.visibility = "";
 
-        const onViewportChange = () => {
-            updateMenuPosition();
-        };
-
-        window.addEventListener("resize", onViewportChange);
-        window.addEventListener("scroll", onViewportChange, true);
-
-        let resizeObserver: ResizeObserver | null = null;
-
-        if (typeof ResizeObserver !== "undefined") {
-            resizeObserver = new ResizeObserver(() => {
-                updateMenuPosition();
-            });
-
-            resizeObserver.observe(menuElement);
-
-            if (triggerElement) {
-                resizeObserver.observe(triggerElement);
-            }
+        if (triggerElement) {
+            return observeAnchor(triggerElement, menuElement, updateMenuPosition);
         }
-
-        return () => {
-            window.removeEventListener("resize", onViewportChange);
-            window.removeEventListener("scroll", onViewportChange, true);
-            resizeObserver?.disconnect();
-        };
     }, [open, updateMenuPosition, triggerElement]);
 
     const contextValue = useMemo<DropdownContextValue>(

@@ -31,6 +31,19 @@ describe("clamp", () => {
 });
 
 describe("computeMenuPosition", () => {
+    it.each([
+        ["top-left", 100, 92],
+        ["top-center", 140, 92],
+        ["top-right", 180, 92],
+        ["bottom-left", 100, 248],
+        ["bottom-center", 140, 248],
+        ["bottom-right", 180, 248],
+        ["left-center", 8, 170],
+        ["right-center", 308, 170],
+    ] as const)("supports %s for all anchored overlays", (anchor, left, top) => {
+        expect(position(anchor)).toEqual({ left, top });
+    });
+
     it("puts a bottom placement below the trigger", () => {
         expect(position("bottom-left")).toEqual({ left: 100, top: 248 });
     });
