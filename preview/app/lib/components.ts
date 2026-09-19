@@ -290,12 +290,6 @@ export type HookDoc = {
 
 export const hookDocs: HookDoc[] = [
     {
-        slug: "use-style",
-        name: "useStyle",
-        summary:
-            "Replace the main and semantic color palettes across the entire application at runtime.",
-    },
-    {
         slug: "use-toasts",
         name: "useToasts",
         summary:

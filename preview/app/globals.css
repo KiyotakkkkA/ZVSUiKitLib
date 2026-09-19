@@ -13,9 +13,9 @@
     --color-main-700: rgb(64 64 64);
     --color-main-800: rgb(28 28 28);
     --color-main-900: rgb(14 14 14);
-    --color-accent-light: #d8ff8d;
-    --color-accent-medium: #b7f34a;
-    --color-accent-dark: #8fc52b;
+    --color-accent-light: #d9e7fb;
+    --color-accent-medium: #b6d2f5;
+    --color-accent-dark: #85aad6;
     --color-danger-light: #fca5a5;
     --color-danger-medium: #ef4444;
     --color-danger-dark: #b91c1c;
@@ -1270,7 +1270,11 @@ input {
 }
 
 .page-nav-link:hover {
-    border-color: color-mix(in srgb, var(--color-accent-medium) 40%, transparent);
+    border-color: color-mix(
+        in srgb,
+        var(--color-accent-medium) 40%,
+        transparent
+    );
     background: color-mix(in srgb, var(--color-main-50) 3%, transparent);
     transform: translateY(-1px);
 }

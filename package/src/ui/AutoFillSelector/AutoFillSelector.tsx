@@ -32,7 +32,7 @@ function useAutoFillSelectorContext() {
 
     if (!context) {
         throw new Error(
-            "AutoFillSelector.Trigger, AutoFillSelector.Tags, AutoFillSelector.Input, AutoFillSelector.Menu, AutoFillSelector.Options and AutoFillSelector.Empty must be used inside AutoFillSelector.",
+            "AutoFillSelector compound components must be used inside AutoFillSelector.",
         );
     }
 
@@ -55,25 +55,29 @@ function AutoFillSelectorRoot({
 
     const selectedSet = useMemo(() => new Set(value), [value]);
 
+    const searchableOptions = useMemo(
+        () =>
+            options.map((option) => ({
+                option,
+                searchText: [option.label, option.description, option.value]
+                    .filter(Boolean)
+                    .join(" ")
+                    .toLocaleLowerCase(),
+            })),
+        [options],
+    );
+
     const filteredOptions = useMemo(() => {
-        const normalized = query.trim().toLowerCase();
+        const normalized = query.trim().toLocaleLowerCase();
 
         if (!normalized) {
             return options;
         }
 
-        return options.filter((option) => {
-            const label = option.label.toLowerCase();
-            const description = option.description?.toLowerCase() ?? "";
-            const valueText = option.value.toLowerCase();
-
-            return (
-                label.includes(normalized) ||
-                description.includes(normalized) ||
-                valueText.includes(normalized)
-            );
-        });
-    }, [options, query]);
+        return searchableOptions
+            .filter(({ searchText }) => searchText.includes(normalized))
+            .map(({ option }) => option);
+    }, [options, query, searchableOptions]);
 
     const toggleValue = useCallback(
         (nextValue: string) => {
@@ -125,14 +129,11 @@ function AutoFillSelectorRoot({
     return (
         <AutoFillSelectorContext.Provider value={contextValue}>
             <div
-                className={cn(
-                    "relative w-72 max-w-full min-w-0 overflow-hidden",
-                    className,
-                )}
+                className={cn("relative w-72 max-w-full min-w-0", className)}
                 {...props}
             >
                 <Dropdown
-                    className={"w-full"}
+                    className="w-full"
                     disabled={disabled}
                     menuWidth={menuWidth}
                     onOpenChange={(open) => {
@@ -162,9 +163,15 @@ function AutoFillSelectorTrigger({
         <Dropdown.Anchor
             focusInputOnOpen={() => inputRef.current?.focus()}
             className={cn(
-                "flex min-h-9 w-full min-w-0 max-w-full flex-wrap items-center gap-1 border border-main-700",
-                "overflow-hidden bg-main-800 px-2 py-1 text-sm text-main-100 outline-none transition-colors duration-200",
-                "hover:border-main-600 focus-within:border-main-500 focus-within:ring-2 focus-within:ring-inset focus-within:ring-main-500/20",
+                "flex min-h-9 w-full min-w-0 max-w-full flex-wrap items-center gap-1",
+                "border border-main-700 bg-main-800 px-2 py-1",
+                "text-sm text-main-100 outline-none",
+                "transition-colors duration-200",
+                "hover:border-main-600",
+                "focus-within:border-main-500",
+                "focus-within:ring-2",
+                "focus-within:ring-inset",
+                "focus-within:ring-main-500/20",
                 rounded,
                 disabled ? "cursor-not-allowed opacity-60" : "cursor-text",
                 className,
@@ -185,33 +192,35 @@ function AutoFillSelectorTags({
 }: AutoFillSelectorTagsProps) {
     const { options, value, disabled, removeValue } =
         useAutoFillSelectorContext();
+
     const t = useLocale().autoFillSelector;
+
+    const optionsMap = useMemo(
+        () => new Map(options.map((option) => [option.value, option])),
+        [options],
+    );
 
     if (!value.length) {
         return null;
     }
 
     return (
-        <div
-            className={cn(
-                "flex min-w-0 max-w-full flex-wrap items-center gap-1",
-                className,
-            )}
-            {...props}
-        >
+        <div className={cn("contents", className)} {...props}>
             {value.map((item) => {
-                const option = options.find((opt) => opt.value === item);
+                const option = optionsMap.get(item);
 
                 return (
                     <span
                         key={item}
                         className={cn(
-                            "inline-flex min-w-0 max-w-28 items-center gap-1 bg-main-700 px-1.5 py-0.5 text-xs text-main-100",
+                            "inline-flex min-w-0 max-w-[min(12rem,80%)] shrink-0 items-center gap-1",
+                            "border border-main-700 bg-main-700/60",
+                            "px-2 py-0.5 text-xs text-main-100",
                             rounded,
                             tagClassName,
                         )}
                     >
-                        <span className={"min-w-0 truncate"}>
+                        <span className="min-w-0 truncate">
                             {option?.label ?? item}
                         </span>
 
@@ -219,7 +228,9 @@ function AutoFillSelectorTags({
                             <button
                                 type="button"
                                 className={cn(
-                                    "shrink-0 text-main-400 transition-colors hover:text-main-100",
+                                    "flex shrink-0 items-center justify-center",
+                                    "text-main-400 transition-colors",
+                                    "hover:text-main-100",
                                     tagRemoveClassName,
                                 )}
                                 onClick={(event) => {
@@ -230,7 +241,7 @@ function AutoFillSelectorTags({
                             >
                                 <Icon
                                     icon="close"
-                                    className={"h-3.5 w-3.5"}
+                                    className="h-3.5 w-3.5"
                                     aria-hidden
                                 />
                             </button>
@@ -252,6 +263,7 @@ function AutoFillSelectorInput({
 }: AutoFillSelectorInputProps) {
     const { value, query, setQuery, disabled, inputRef, removeValue } =
         useAutoFillSelectorContext();
+
     const t = useLocale().autoFillSelector;
 
     const inputPlaceholder = value.length
@@ -274,14 +286,20 @@ function AutoFillSelectorInput({
             onKeyDown={(event) => {
                 onKeyDown?.(event);
 
-                if (event.defaultPrevented) return;
+                if (event.defaultPrevented) {
+                    return;
+                }
 
                 if (event.key === "Backspace" && !query && value.length) {
                     removeValue(value[value.length - 1]);
                 }
             }}
             className={cn(
-                "min-w-20 flex-1 bg-transparent px-0.5 py-0.5 text-sm text-main-100 placeholder:text-main-500 outline-none",
+                "min-w-24 grow basis-24",
+                "bg-transparent px-0.5 py-0.5",
+                "text-sm text-main-100",
+                "placeholder:text-main-500",
+                "outline-none",
                 rounded,
                 className,
             )}
@@ -306,7 +324,7 @@ function AutoFillSelectorMenu({
             )}
             {...props}
         >
-            <ScrollArea orientation="vertical" className={"max-h-64"}>
+            <ScrollArea orientation="vertical" className="max-h-64">
                 {children}
             </ScrollArea>
         </Dropdown.Menu>
@@ -336,8 +354,8 @@ function AutoFillSelectorOptions({
 
                 return (
                     <Dropdown.Item
-                        rounded={rounded}
                         key={option.value}
+                        rounded={rounded}
                         active={isSelected}
                         closeOnClick={false}
                         icon={
@@ -357,17 +375,20 @@ function AutoFillSelectorOptions({
                         onClick={() => {
                             toggleValue(option.value);
                             setQuery("");
-                            inputRef.current?.focus();
+
+                            requestAnimationFrame(() => {
+                                inputRef.current?.focus();
+                            });
                         }}
                         className={cn(
-                            `w-full min-w-0 items-center gap-2 px-4 py-1.5`,
+                            "w-full min-w-0 items-center gap-2 px-4 py-1.5",
                             isSelected
                                 ? "bg-main-700/60 text-main-100"
                                 : "text-main-300 hover:bg-main-700/40 hover:text-main-100",
                             optionClassName,
                         )}
                     >
-                        <span className={"min-w-0 flex-1"}>
+                        <span className="min-w-0 flex-1">
                             <span
                                 className={cn(
                                     "block truncate font-medium",

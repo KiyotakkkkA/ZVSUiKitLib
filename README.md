@@ -108,113 +108,54 @@ import { CodeView } from "@kiyotakkkka/zvs-uikit-lib/code-view";
 }
 ```
 
-### Runtime theme with `StyleProvider`
+### Runtime theme with CSS variables
 
-Use `StyleProvider` when the palette can change at runtime. A
-`StyleThemePalette` is a complete, type-safe palette. Spreading
-`defaultThemePalette` is the easiest way to customize only selected groups
-while retaining valid values for all other tokens.
+Themes are controlled natively by CSS. Define each palette as a selector and
+switch themes by changing an attribute on the root element:
+
+```css
+:root,
+:root[data-theme="default"] {
+    --color-main-50: #fafafa;
+    --color-main-500: #737373;
+    --color-accent-medium: #b7f34a;
+}
+
+:root[data-theme="rose"] {
+    --color-main-50: #fff7ed;
+    --color-main-500: #f97316;
+    --color-accent-medium: #f43f5e;
+}
+```
 
 ```tsx
-"use client";
+import { Button } from "@kiyotakkkka/zvs-uikit-lib";
 
-import type { ReactNode } from "react";
-import {
-    Button,
-    StyleProvider,
-    defaultThemePalette,
-    useStyle,
-    type StyleThemePalette,
-} from "@kiyotakkkka/zvs-uikit-lib";
-
-const roseTheme: StyleThemePalette = {
-    ...defaultThemePalette,
-    main: {
-        50: "#fff7ed",
-        100: "#ffedd5",
-        200: "#fed7aa",
-        300: "#fdba74",
-        400: "#fb923c",
-        500: "#f97316",
-        600: "#ea580c",
-        700: "#9a3412",
-        800: "#431407",
-        900: "#1c0a04",
-    },
-    accent: {
-        light: "#fda4af",
-        medium: "#f43f5e",
-        dark: "#be123c",
-    },
-};
-
-function ThemeControls() {
-    const { changeTheme, resetTheme } = useStyle();
-
+export function ThemeControls() {
     return (
         <>
-            <Button onClick={() => changeTheme(roseTheme)}>Rose theme</Button>
-            <Button variant="secondary" onClick={resetTheme}>
+            <Button
+                onClick={() => {
+                    document.documentElement.dataset.theme = "rose";
+                }}
+            >
+                Rose theme
+            </Button>
+            <Button
+                variant="secondary"
+                onClick={() => {
+                    document.documentElement.dataset.theme = "default";
+                }}
+            >
                 Reset
             </Button>
         </>
     );
 }
-
-export function AppTheme({ children }: { children: ReactNode }) {
-    return (
-        <StyleProvider>
-            <ThemeControls />
-            {children}
-        </StyleProvider>
-    );
-}
 ```
 
-`useStyle()` returns the current `palette`, `changeTheme(palette)`, and
-`resetTheme()`. It must be used below `StyleProvider`.
-
-### Persistence and SSR
-
-Pass `cookies` to persist runtime changes in the `zvs-theme` cookie. For an SSR
-render without a theme flash, read the palette on the server, apply its CSS
-variables to `<html>`, and pass the same value to `initialPalette`.
-
-```tsx
-import type { CSSProperties, ReactNode } from "react";
-import { cookies } from "next/headers";
-import { StyleProvider } from "@kiyotakkkka/zvs-uikit-lib";
-import {
-    defaultThemePalette,
-    getThemeVariables,
-    parseThemePalette,
-    STYLE_THEME_COOKIE,
-} from "@kiyotakkkka/zvs-uikit-lib/server";
-
-export default async function RootLayout({
-    children,
-}: {
-    children: ReactNode;
-}) {
-    const cookieStore = await cookies();
-    const palette =
-        parseThemePalette(cookieStore.get(STYLE_THEME_COOKIE)?.value) ??
-        defaultThemePalette;
-
-    return (
-        <html style={getThemeVariables(palette) as CSSProperties}>
-            <body>
-                <StyleProvider initialPalette={palette} cookies>
-                    {children}
-                </StyleProvider>
-            </body>
-        </html>
-    );
-}
-```
-
-`cookies` also accepts `{ name, maxAge, path, sameSite, secure }`. Without this
-prop, theme switching remains in memory and does not write cookies.
+The same CSS selectors work during SSR, so the initial theme is available
+without a provider or a client-side theme API.
 
 ---
 
@@ -388,11 +329,10 @@ List of SSR-friendly components:
 
 ### Hooks (@kiyotakkkka/zvs-uikit-lib)
 
-| Hook        | Purpose                                                         | Documentation                              | Returns                                                                             |
-| ----------- | --------------------------------------------------------------- | ------------------------------------------ | ----------------------------------------------------------------------------------- |
-| `useToasts` | Access toast context API. Works only inside `ToastProvider`.    | [useToasts](package/src/docs/useToasts.md) | `ToastContextValue` with: `push`, `normal`, `info`, `warning`, `success`, `danger`. |
-| `useStyle`  | Access style management API. Works only inside `StyleProvider`. | [useStyle](package/src/docs/useStyle.md)   | Object with method: `changeTheme(palette: StyleThemePalette) => void`.              |
-| `useLocale` | Read the active string dictionary. Works without a provider.    | —                                          | The resolved `ZvsDictionary`.                                                       |
+| Hook        | Purpose                                                      | Documentation                              | Returns                                                                             |
+| ----------- | ------------------------------------------------------------ | ------------------------------------------ | ----------------------------------------------------------------------------------- |
+| `useToasts` | Access toast context API. Works only inside `ToastProvider`. | [useToasts](package/src/docs/useToasts.md) | `ToastContextValue` with: `push`, `normal`, `info`, `warning`, `success`, `danger`. |
+| `useLocale` | Read the active string dictionary. Works without a provider. | —                                          | The resolved `ZvsDictionary`.                                                       |
 
 <a id="providers"></a>
 
@@ -401,5 +341,4 @@ List of SSR-friendly components:
 | Provider         | Purpose                           |
 | ---------------- | --------------------------------- |
 | `ToastProvider`  | Global toast notifications stack. |
-| `StyleProvider`  | Global style management.          |
 | `LocaleProvider` | Strings the components render.    |

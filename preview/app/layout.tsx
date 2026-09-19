@@ -1,14 +1,6 @@
-import type { CSSProperties } from "react";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { cookies } from "next/headers";
-import { StyleProvider, ToastProvider } from "@kiyotakkkka/zvs-uikit-lib";
-import {
-    defaultThemePalette,
-    getThemeVariables,
-    parseThemePalette,
-    STYLE_THEME_COOKIE,
-} from "@kiyotakkkka/zvs-uikit-lib/server";
+import { ToastProvider } from "@kiyotakkkka/zvs-uikit-lib";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -35,22 +27,14 @@ export default async function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const cookieStore = await cookies();
-    const initialPalette =
-        parseThemePalette(cookieStore.get(STYLE_THEME_COOKIE)?.value) ??
-        defaultThemePalette;
-
     return (
         <html
             lang="ru"
             data-scroll-behavior="smooth"
             className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-            style={getThemeVariables(initialPalette) as CSSProperties}
         >
             <body>
-                <StyleProvider initialPalette={initialPalette} cookies>
-                    <ToastProvider>{children}</ToastProvider>
-                </StyleProvider>
+                <ToastProvider>{children}</ToastProvider>
             </body>
         </html>
     );

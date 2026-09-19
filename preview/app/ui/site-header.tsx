@@ -44,7 +44,7 @@ export function SiteHeader() {
                 <Link href="/components/inputs/auto-fill-selector">
                     Components
                 </Link>
-                <Link href="/hooks/use-style">Hooks</Link>
+                <Link href="/hooks/use-toasts">Hooks</Link>
             </nav>
 
             <div className="header-actions">
@@ -84,7 +84,7 @@ export function SiteHeader() {
                     <Link href="/components/inputs/auto-fill-selector">
                         Components
                     </Link>
-                    <Link href="/hooks/use-style">Hooks</Link>
+                    <Link href="/hooks/use-toasts">Hooks</Link>
                 </nav>
                 <div className="mobile-nav-actions">
                     <a href="https://github.com/KiyotakkkkA/ZVSUiKitLib">

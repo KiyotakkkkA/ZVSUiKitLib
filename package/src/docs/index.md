@@ -2,7 +2,6 @@
 
 ## Table of contents
 
-- [useStyle](./useStyle.md)
 - [useToasts](./useToasts.md)
 - [Accordion](./Accordion.md)
 - [Alert](./Alert.md)
@@ -66,7 +65,6 @@
 
 | API                  | Documentation                                    | Source                             |
 | -------------------- | ------------------------------------------------ | ---------------------------------- |
-| `useStyle`           | [useStyle.md](./useStyle.md)                     | `hooks/useStyle.md`                |
 | `useToasts`          | [useToasts.md](./useToasts.md)                   | `hooks/useToasts.md`               |
 | `Accordion`          | [Accordion.md](./Accordion.md)                   | `ui/Accordion/example.md`          |
 | `Alert`              | [Alert.md](./Alert.md)                           | `ui/Alert/example.md`              |

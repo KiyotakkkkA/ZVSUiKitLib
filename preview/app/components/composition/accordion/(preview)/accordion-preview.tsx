@@ -11,9 +11,8 @@ export function DemoAccordion() {
                     </span>
                 </Accordion.Summary>
                 <Accordion.Content>
-                    A precise React component library for teams who care
-                    about craft, speed, and a design system that stays out
-                    of the way.
+                    A precise React component library for teams who care about
+                    craft, speed, and a design system that stays out of the way.
                 </Accordion.Content>
             </Accordion>
             <Accordion className="py-3">
@@ -23,8 +22,8 @@ export function DemoAccordion() {
                     </span>
                 </Accordion.Summary>
                 <Accordion.Content>
-                    Yes, every component is a separate ESM export so unused
-                    code never reaches your bundle.
+                    Yes, every component is a separate ESM export so unused code
+                    never reaches your bundle.
                 </Accordion.Content>
             </Accordion>
             <Accordion className="py-3">
@@ -35,7 +34,7 @@ export function DemoAccordion() {
                 </Accordion.Summary>
                 <Accordion.Content>
                     Yes, colors and radii are driven by CSS variables you can
-                    override at runtime with useStyle.
+                    override at runtime.
                 </Accordion.Content>
             </Accordion>
         </div>
