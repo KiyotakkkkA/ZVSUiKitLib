@@ -6,8 +6,12 @@ import {
     SectionOverview,
     SectionPreview,
 } from "../../../molecules";
-import { DemoContextMenu } from "./(preview)/context-menu-preview";
-import usage from "./(usage)/usage.md";
+import { DemoContextMenuEditor } from "./(preview)/context-menu-editor-preview";
+import { DemoContextMenuFiles } from "./(preview)/context-menu-files-preview";
+import { DemoContextMenuTable } from "./(preview)/context-menu-table-preview";
+import editorUsage from "./(usage)/editor.md";
+import filesUsage from "./(usage)/files.md";
+import tableUsage from "./(usage)/table.md";
 import { contextMenuProps } from "./props";
 
 export const metadata: Metadata = {
@@ -34,16 +38,44 @@ export default function Page() {
             </SectionOverview>
             <SectionPreview
                 nav={{
-                    id: "interactive-menu",
-                    headerTitle: "Interactive context menu",
-                    navTitle: "Context menu",
+                    id: "file-manager",
+                    headerTitle: "File manager actions",
+                    navTitle: "Files",
                 }}
             >
                 <SectionPreview.Component>
-                    <DemoContextMenu />
+                    <DemoContextMenuFiles />
                 </SectionPreview.Component>
-                <SectionPreview.Code label="ContextMenuExample.tsx">
-                    {usage}
+                <SectionPreview.Code label="ContextMenuFiles.tsx">
+                    {filesUsage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "table-rows",
+                    headerTitle: "Table row actions",
+                    navTitle: "Table rows",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoContextMenuTable />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="ContextMenuTable.tsx">
+                    {tableUsage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "editor",
+                    headerTitle: "Editor with shortcuts and disabled trigger",
+                    navTitle: "Editor",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoContextMenuEditor />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="ContextMenuEditor.tsx">
+                    {editorUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

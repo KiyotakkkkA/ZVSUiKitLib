@@ -13,5 +13,16 @@
 
 ### Changed
 
+- **Breaking: `Switcher` is now a compound component.** Replace `<Switcher value options onChange />` with `<Switcher.Root model onModelChange>` and one `<Switcher.Option value>` per option. Options take any children (icons, badges, counters), plus `disabled`, `aria-label` and `className`; `rounded` stays on `Switcher.Root` and is applied to every option. `options`, `SwitcherOption` and `classNames.tab` were removed — style an option with its own `className`.
+
+  ```tsx
+  // before
+  <Switcher value={tab} onChange={setTab} options={[{ value: "all", label: "All" }]} />
+  // after
+  <Switcher.Root model={tab} onModelChange={setTab}>
+      <Switcher.Option value="all">All</Switcher.Option>
+  </Switcher.Root>
+  ```
+
 - **Base field form-factor is now square-rounded.** The default `rounded` value changed from `"rounded-full"` to `"rounded-lg"` for `Button`, `InputSmall`, `InputColor`, `Select` (including its search field), `SelectNative`, `AutoFillSelector`, `Dropdown` trigger, `Switcher` and `Tooltip`. Pass `rounded="rounded-full"` to keep the previous pill shape.
 - **Menus and options follow the new form-factor.** `Dropdown.Menu`, `Select.Menu` and `AutoFillSelector.Menu` default to `"rounded-xl"` (was `"rounded-4xl"` / `"rounded-3xl"`); `Dropdown.Item`, `Select.Option` and `AutoFillSelector.Options` default to `"rounded-md"` (was `"rounded-3xl"` / `"rounded-lg"`); `AutoFillSelector.Trigger` defaults to `"rounded-lg"` (was `"rounded-2xl"`). `Calendar` (and the `InputDate` popover that renders it) uses a `rounded-xl` panel with `rounded-md` day cells and navigation buttons.

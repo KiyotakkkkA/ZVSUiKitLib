@@ -4,18 +4,14 @@ import { Switcher } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 
 export function DemoSwitcher() {
-    const [tab, setTab] = useState("all");
+    const [period, setPeriod] = useState("week");
 
     return (
-        <Switcher
-            value={tab}
-            onChange={setTab}
-            options={[
-                { value: "all", label: "All" },
-                { value: "active", label: "Active" },
-                { value: "done", label: "Done" },
-            ]}
-        />
+        <Switcher.Root model={period} onModelChange={setPeriod}>
+            <Switcher.Option value="day">Day</Switcher.Option>
+            <Switcher.Option value="week">Week</Switcher.Option>
+            <Switcher.Option value="month">Month</Switcher.Option>
+        </Switcher.Root>
     );
 }
 ```

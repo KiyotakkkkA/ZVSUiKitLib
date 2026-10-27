@@ -4,9 +4,8 @@
 
 - [Import](#import)
 - [API](#api)
-    - [SwitcherOption](#switcheroption)
-    - [Switcher](#switcher)
-        - [SwitcherClassNames](#switcherclassnames)
+    - [Switcher.Root](#switcherroot)
+    - [Switcher.Option](#switcheroption)
 - [Example](#example)
 
 ## Import
@@ -17,31 +16,29 @@ import { Switcher } from "@kiyotakkkka/zvs-uikit-lib";
 
 ## API
 
-### SwitcherOption
+### Switcher.Root
 
-| Property | Type     | Default | Required | Description                      |
-| -------- | -------- | ------- | -------- | -------------------------------- |
-| `value`  | `string` | -       | Yes      | The value used by the component. |
-| `label`  | `string` | -       | Yes      | Text used for the label.         |
+Renders a `radiogroup` and stores the selected option in `model`. Arrow keys, `Home` and `End` move the selection between enabled options.
 
-### Switcher
+| Property        | Type                                           | Default        | Required | Description                                                                                                       |
+| --------------- | ---------------------------------------------- | -------------- | -------- | ----------------------------------------------------------------------------------------------------------------- |
+| `ref`           | `Ref<HTMLDivElement>`                          | -              | No       | Receives the radio group root element.                                                                            |
+| `model`         | `string`                                       | -              | Yes      | The value of the currently selected option.                                                                       |
+| `onModelChange` | `(value: string) => void`                      | -              | Yes      | Callback invoked with the value of the option that was picked.                                                    |
+| `label`         | `string`                                       | -              | No       | Accessible name for the radio group. Defaults to the \`switcher.label\` string from the active locale dictionary. |
+| `rounded`       | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-lg"` | No       | The border-radius preset applied to the root and every option.                                                    |
+| `className`     | `DivClassName`                                 | -              | No       | CSS classes applied to the root element.                                                                          |
+| `children`      | `ReactNode`                                    | -              | Yes      | Renders the `Switcher.Option` elements.                                                                           |
 
-| Property     | Type                                           | Default          | Required | Description                                                                                                       |
-| ------------ | ---------------------------------------------- | ---------------- | -------- | ----------------------------------------------------------------------------------------------------------------- |
-| `ref`        | `Ref<HTMLDivElement>`                          | -                | No       | Receives the radio group root element.                                                                            |
-| `value`      | `string`                                       | -                | Yes      | The value used by the component.                                                                                  |
-| `options`    | `SwitcherOption[]`                             | -                | Yes      | The options used by the component.                                                                                |
-| `onChange`   | `(value: string) => void`                      | -                | Yes      | Callback invoked when change occurs.                                                                              |
-| `label`      | `string`                                       | -                | No       | Accessible name for the radio group. Defaults to the \`switcher.label\` string from the active locale dictionary. |
-| `className`  | `DivClassName`                                 | -                | No       | CSS classes applied to the root element.                                                                          |
-| `classNames` | `SwitcherClassNames`                           | -                | No       | CSS classes applied to the component slots.                                                                       |
-| `rounded`    | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-lg"` | No       | The border-radius preset applied to the component.                                                                |
+### Switcher.Option
 
-### SwitcherClassNames
-
-| Property | Description                    |
-| -------- | ------------------------------ |
-| `tab`    | The tab used by the component. |
+| Property     | Type              | Default | Required | Description                                                 |
+| ------------ | ----------------- | ------- | -------- | ----------------------------------------------------------- |
+| `value`      | `string`          | -       | Yes      | The value written to the root `model` when this option is picked. |
+| `disabled`   | `boolean`         | `false` | No       | Disables picking this option.                               |
+| `aria-label` | `string`          | -       | No       | Accessible name, for options that render only an icon.      |
+| `className`  | `ButtonClassName` | -       | No       | CSS classes applied to the option button.                   |
+| `children`   | `ReactNode`       | -       | Yes      | Content rendered inside the option: text, icons, badges.    |
 
 ```tsx
 "use client";
@@ -49,18 +46,14 @@ import { Switcher } from "@kiyotakkkka/zvs-uikit-lib";
 import { useState } from "react";
 
 export function DemoSwitcher() {
-    const [tab, setTab] = useState("all");
+    const [period, setPeriod] = useState("week");
 
     return (
-        <Switcher
-            value={tab}
-            onChange={setTab}
-            options={[
-                { value: "all", label: "All" },
-                { value: "active", label: "Active" },
-                { value: "done", label: "Done" },
-            ]}
-        />
+        <Switcher.Root model={period} onModelChange={setPeriod}>
+            <Switcher.Option value="day">Day</Switcher.Option>
+            <Switcher.Option value="week">Week</Switcher.Option>
+            <Switcher.Option value="month">Month</Switcher.Option>
+        </Switcher.Root>
     );
 }
 ```
