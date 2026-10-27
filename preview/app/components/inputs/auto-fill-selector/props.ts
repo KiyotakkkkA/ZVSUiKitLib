@@ -98,7 +98,7 @@ export const autoFillSelectorProps: ComponentAPIDoc = {
                 },
                 rounded: {
                     type: roundedType,
-                    defaultValue: '"rounded-full"',
+                    defaultValue: '"rounded-lg"',
                     description: "Border radius classes.",
                     directives: [roundVariantsDirective],
                 },
@@ -119,7 +119,7 @@ export const autoFillSelectorProps: ComponentAPIDoc = {
                 },
                 rounded: {
                     type: roundedType,
-                    defaultValue: '"rounded-full"',
+                    defaultValue: '"rounded-lg"',
                     description: "Border radius classes.",
                     directives: [roundVariantsDirective],
                 },
@@ -173,7 +173,7 @@ export const autoFillSelectorProps: ComponentAPIDoc = {
                 },
                 rounded: {
                     type: roundedType,
-                    defaultValue: '"rounded-full"',
+                    defaultValue: '"rounded-lg"',
                     description: "Border radius classes.",
                     directives: [roundVariantsDirective],
                 },

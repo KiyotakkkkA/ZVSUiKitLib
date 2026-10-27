@@ -5,17 +5,37 @@ import {
     useId,
     useRef,
     useState,
+    type Dispatch,
+    type SetStateAction,
 } from "react";
 import { Icon } from "../_shared/icons";
+import { useAccordionGroup } from "../AccordionGroup/context";
 import { cn } from "../../lib/utils";
 import type {
     AccordionContentProps,
     AccordionContextValue,
+    AccordionPreset,
     AccordionProps,
     AccordionSummaryProps,
 } from "./types";
 
 const AccordionContext = createContext<AccordionContextValue | null>(null);
+
+const presetClasses: Record<
+    AccordionPreset,
+    { root: string; summary: string; content: string }
+> = {
+    solid: {
+        root: "rounded-xl border border-main-700/70 bg-main-900/50",
+        summary: "px-2.5 py-2",
+        content: "border-t border-main-700/70 px-2.5 py-2",
+    },
+    ghost: {
+        root: "rounded-lg",
+        summary: "px-1 py-1",
+        content: "px-1 pb-1.5 pt-0.5",
+    },
+};
 
 function useAccordionContext() {
     const context = useContext(AccordionContext);
@@ -31,24 +51,36 @@ function useAccordionContext() {
 
 function AccordionRoot({
     defaultOpen = false,
+    preset = "solid",
     className,
     children,
     ref,
 }: AccordionProps) {
-    const [isOpen, setIsOpen] = useState(defaultOpen);
+    const [isOpen, setLocalOpen] = useState(defaultOpen);
     const contentId = useId();
     const summaryId = useId();
+    const group = useAccordionGroup();
+
+    useEffect(() => {
+        if (!group) return;
+
+        return group.register(contentId, () => setLocalOpen(false));
+    }, [group, contentId]);
+
+    const setIsOpen: Dispatch<SetStateAction<boolean>> = (action) => {
+        const next = typeof action === "function" ? action(isOpen) : action;
+
+        setLocalOpen(next);
+        if (next) group?.notifyOpen(contentId);
+    };
 
     return (
         <AccordionContext.Provider
-            value={{ isOpen, setIsOpen, contentId, summaryId }}
+            value={{ isOpen, setIsOpen, contentId, summaryId, preset }}
         >
             <div
                 ref={ref}
-                className={cn(
-                    "rounded-xl border border-main-700/70 bg-main-900/50",
-                    className,
-                )}
+                className={cn(presetClasses[preset].root, className)}
             >
                 {children}
             </div>
@@ -57,7 +89,8 @@ function AccordionRoot({
 }
 
 function AccordionSummary({ className, children }: AccordionSummaryProps) {
-    const { isOpen, setIsOpen, contentId, summaryId } = useAccordionContext();
+    const { isOpen, setIsOpen, contentId, summaryId, preset } =
+        useAccordionContext();
 
     return (
         <button
@@ -66,7 +99,8 @@ function AccordionSummary({ className, children }: AccordionSummaryProps) {
             aria-expanded={isOpen}
             aria-controls={contentId}
             className={cn(
-                "flex w-full cursor-pointer items-center justify-between gap-2 px-2.5 py-2 text-left",
+                "flex w-full cursor-pointer items-center justify-between gap-2 text-left",
+                presetClasses[preset].summary,
                 className,
             )}
             onClick={() => setIsOpen((prev) => !prev)}
@@ -86,7 +120,7 @@ function AccordionSummary({ className, children }: AccordionSummaryProps) {
 }
 
 function AccordionContent({ className, children }: AccordionContentProps) {
-    const { isOpen, contentId, summaryId } = useAccordionContext();
+    const { isOpen, contentId, summaryId, preset } = useAccordionContext();
     const contentRef = useRef<HTMLDivElement>(null);
     const [contentHeight, setContentHeight] = useState(0);
 
@@ -121,10 +155,7 @@ function AccordionContent({ className, children }: AccordionContentProps) {
         >
             <div
                 ref={contentRef}
-                className={cn(
-                    "border-t border-main-700/70 px-2.5 py-2",
-                    className,
-                )}
+                className={cn(presetClasses[preset].content, className)}
             >
                 {children}
             </div>

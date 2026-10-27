@@ -24,7 +24,7 @@ import { Tooltip } from "@kiyotakkkka/zvs-uikit-lib";
 | `label`     | `ReactNode`                                    | -                | Yes      | Text used for the label.                           |
 | `placement` | [PositionAnchor](./dict.md#positionanchor)     | `"top-center"`   | No       | The content position relative to its trigger.      |
 | `className` | `DivClassName`                                 | -                | No       | CSS classes applied to the root element.           |
-| `rounded`   | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-full"` | No       | The border-radius preset applied to the component. |
+| `rounded`   | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-lg"` | No       | The border-radius preset applied to the component. |
 
 ```tsx
 "use client";

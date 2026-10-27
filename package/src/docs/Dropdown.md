@@ -56,7 +56,7 @@ Extends: `ButtonHTMLAttributes<HTMLButtonElement>`.
 | ------------- | ---------------------------------------------- | ---------------- | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `placeholder` | `ReactNode`                                    | -                | No       | Renders fallback trigger content when no children are supplied. Defaults to the \`dropdown.triggerPlaceholder\` string from the active locale dictionary. |
 | `icon`        | `ReactNode`                                    | -                | No       | Replaces the default trailing chevron.                                                                                                                    |
-| `rounded`     | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-full"` | No       | Selects the trigger button border radius.                                                                                                                 |
+| `rounded`     | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-lg"` | No       | Selects the trigger button border radius.                                                                                                                 |
 
 ### Dropdown.Anchor
 

@@ -6,8 +6,10 @@ import {
     SectionOverview,
     SectionPreview,
 } from "../../../molecules";
-import { DemoTooltip } from "./(preview)/tooltip-preview";
-import usage from "./(usage)/usage.md";
+import { DemoTooltipPlacements } from "./(preview)/tooltip-placements-preview";
+import { DemoTooltipRounded } from "./(preview)/tooltip-rounded-preview";
+import placementsUsage from "./(usage)/placements.md";
+import roundedUsage from "./(usage)/rounded.md";
 import { tooltipProps } from "./props";
 export const metadata: Metadata = {
     title: "Tooltip",
@@ -32,16 +34,30 @@ export default function Page() {
             </SectionOverview>
             <SectionPreview
                 nav={{
-                    id: "hover-label",
-                    headerTitle: "Hover label",
-                    navTitle: "Tooltip",
+                    id: "placements",
+                    headerTitle: "All placements",
+                    navTitle: "Placements",
                 }}
             >
                 <SectionPreview.Component>
-                    <DemoTooltip />
+                    <DemoTooltipPlacements />
                 </SectionPreview.Component>
-                <SectionPreview.Code label="TooltipExample.tsx">
-                    {usage}
+                <SectionPreview.Code label="TooltipPlacements.tsx">
+                    {placementsUsage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "rounded",
+                    headerTitle: "Border radius presets",
+                    navTitle: "Rounded",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoTooltipRounded />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="TooltipRounded.tsx">
+                    {roundedUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

@@ -25,6 +25,7 @@ export * from "./Dropdown";
 export * from "./Floating";
 export * from "./Tooltip";
 export * from "./Accordion";
+export * from "./AccordionGroup";
 export * from "./AutoFillSelector";
 export * from "./TreeView";
 export * from "./Switcher";

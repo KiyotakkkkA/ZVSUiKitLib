@@ -148,7 +148,7 @@ function SelectRoot({
 
 function SelectTrigger({
     className,
-    rounded = "rounded-full",
+    rounded = "rounded-lg",
 }: SelectTriggerProps) {
     const { selectedOption, placeholder } = useSelectContext();
 
@@ -290,7 +290,7 @@ function SelectMenu({
             {searchable && (
                 <InputSmall
                     ref={searchRef}
-                    rounded="rounded-full"
+                    rounded="rounded-lg"
                     value={query}
                     onChange={(event) => setQuery(event.target.value)}
                     placeholder={searchPlaceholder}
@@ -331,7 +331,7 @@ function SelectOptionComponent({
     icon,
     onClick,
     className,
-    rounded = "rounded-full",
+    rounded = "rounded-lg",
 }: SelectOptionProps) {
     const context = useSelectContext();
     const option = { value, label, icon, onClick };

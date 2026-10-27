@@ -61,7 +61,7 @@ Extends: `HTMLAttributes<HTMLDivElement>`.
 
 | Property             | Type                                     | Default          | Required | Description                                        |
 | -------------------- | ---------------------------------------- | ---------------- | -------- | -------------------------------------------------- |
-| `rounded`            | [RoundVariants](./dict.md#roundvariants) | `"rounded-full"` | No       | The border-radius preset applied to the component. |
+| `rounded`            | [RoundVariants](./dict.md#roundvariants) | `"rounded-lg"` | No       | The border-radius preset applied to the component. |
 | `tagClassName`       | `SpanClassName`                          | -                | No       | CSS classes applied to the tag element.            |
 | `tagRemoveClassName` | `ButtonClassName`                        | -                | No       | CSS classes applied to the tag remove element.     |
 
@@ -71,7 +71,7 @@ Extends: `Omit< InputHTMLAttributes<HTMLInputElement>, "value" \| "onChange" \| 
 
 | Property  | Type                                     | Default          | Required | Description                                        |
 | --------- | ---------------------------------------- | ---------------- | -------- | -------------------------------------------------- |
-| `rounded` | [RoundVariants](./dict.md#roundvariants) | `"rounded-full"` | No       | The border-radius preset applied to the component. |
+| `rounded` | [RoundVariants](./dict.md#roundvariants) | `"rounded-lg"` | No       | The border-radius preset applied to the component. |
 
 ### AutoFillSelector.Menu
 

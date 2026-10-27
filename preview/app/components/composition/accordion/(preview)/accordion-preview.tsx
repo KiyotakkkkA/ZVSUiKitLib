@@ -3,7 +3,7 @@ import { Accordion } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoAccordion() {
     return (
-        <div className="w-full max-w-md divide-y divide-main-700/70">
+        <div className="flex w-full max-w-md flex-col gap-3">
             <Accordion defaultOpen className="py-3">
                 <Accordion.Summary className="text-main-100">
                     <span className="text-sm font-semibold">

@@ -132,7 +132,7 @@ export const componentProps: ComponentAPIDoc = {
                 rounded: {
                     type: "RoundVariants",
                     description: "Border radius applied to every rendered option.",
-                    defaultValue: '"rounded-full"',
+                    defaultValue: '"rounded-lg"',
                     directives: [roundVariantsDirective],
                 },
             },
@@ -165,7 +165,7 @@ export const componentProps: ComponentAPIDoc = {
                 rounded: {
                     type: "RoundVariants",
                     description: "Option border radius.",
-                    defaultValue: '"rounded-full"',
+                    defaultValue: '"rounded-lg"',
                     directives: [roundVariantsDirective],
                 },
             },

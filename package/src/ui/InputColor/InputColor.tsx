@@ -47,7 +47,7 @@ const valueSizeClasses: Record<SizeVariants, string> = {
 export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
     function InputColor(
         {
-            rounded = "rounded-full",
+            rounded = "rounded-lg",
             value,
             defaultValue = DEFAULT_COLOR,
             onChange,

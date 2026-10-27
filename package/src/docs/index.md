@@ -4,6 +4,7 @@
 
 - [useToasts](./useToasts.md)
 - [Accordion](./Accordion.md)
+- [AccordionGroup](./AccordionGroup.md)
 - [Alert](./Alert.md)
 - [AutoFillSelector](./AutoFillSelector.md)
 - [Badge](./Badge.md)
@@ -67,6 +68,7 @@
 | -------------------- | ------------------------------------------------ | ---------------------------------- |
 | `useToasts`          | [useToasts.md](./useToasts.md)                   | `hooks/useToasts.md`               |
 | `Accordion`          | [Accordion.md](./Accordion.md)                   | `ui/Accordion/example.md`          |
+| `AccordionGroup`     | [AccordionGroup.md](./AccordionGroup.md)         | `ui/AccordionGroup/example.md`     |
 | `Alert`              | [Alert.md](./Alert.md)                           | `ui/Alert/example.md`              |
 | `AutoFillSelector`   | [AutoFillSelector.md](./AutoFillSelector.md)     | `ui/AutoFillSelector/example.md`   |
 | `Badge`              | [Badge.md](./Badge.md)                           | `ui/Badge/example.md`              |

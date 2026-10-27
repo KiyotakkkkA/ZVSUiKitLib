@@ -243,7 +243,7 @@ function DropdownTrigger({
     className,
     placeholder,
     icon,
-    rounded = "rounded-full",
+    rounded = "rounded-lg",
     disabled: disabledProp,
     onClick,
     onPointerDown,

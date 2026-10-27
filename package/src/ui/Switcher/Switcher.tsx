@@ -10,7 +10,7 @@ export const Switcher = ({
     label,
     className,
     classNames,
-    rounded = "rounded-full",
+    rounded = "rounded-lg",
     ref,
 }: SwitcherProps) => {
     const t = useLocale().switcher;

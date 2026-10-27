@@ -12,6 +12,7 @@ export function DemoSwitcher() {
                 <span className="font-mono text-xs text-main-500">Pill</span>
                 <Switcher
                     value={tab}
+                    rounded="rounded-full"
                     onChange={setTab}
                     options={[
                         { value: "all", label: "All" },

@@ -11,7 +11,7 @@ export function SelectNative({
     value,
     defaultValue,
     disabled,
-    rounded = "rounded-full",
+    rounded = "rounded-lg",
     ...props
 }: SelectNativeProps) {
     const hasPlaceholder = placeholder !== undefined;

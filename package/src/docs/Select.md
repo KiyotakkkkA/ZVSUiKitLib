@@ -61,7 +61,7 @@ import { Select } from "@kiyotakkkka/zvs-uikit-lib";
 | Property    | Type                                           | Default          | Required | Description                                        |
 | ----------- | ---------------------------------------------- | ---------------- | -------- | -------------------------------------------------- |
 | `className` | `string`                                       | -                | No       | CSS classes applied to the root element.           |
-| `rounded`   | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-full"` | No       | The border-radius preset applied to the component. |
+| `rounded`   | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-lg"` | No       | The border-radius preset applied to the component. |
 
 ### Select.Menu
 
@@ -79,7 +79,7 @@ Extends: `SelectOption`.
 | Property    | Type                                           | Default          | Required | Description                                        |
 | ----------- | ---------------------------------------------- | ---------------- | -------- | -------------------------------------------------- |
 | `className` | `string`                                       | -                | No       | CSS classes applied to the root element.           |
-| `rounded`   | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-full"` | No       | The border-radius preset applied to the component. |
+| `rounded`   | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-lg"` | No       | The border-radius preset applied to the component. |
 
 ### Select.Options
 

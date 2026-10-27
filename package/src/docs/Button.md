@@ -35,7 +35,7 @@ Extends: `ButtonHTMLAttributes<HTMLButtonElement>`.
 | `loading`     | `boolean`                | `false`          | No       | Disables the button and displays its loading state.                    |
 | `loadingText` | `string`                 | -                | No       | Replaces the button content while loading.                             |
 | `variant`     | `ButtonVariants \| ""`   | `"secondary"`    | No       | Selects the button color and emphasis style.                           |
-| `rounded`     | `RoundVariants \| ""`    | `"rounded-full"` | No       | Selects the button border radius.                                      |
+| `rounded`     | `RoundVariants \| ""`    | `"rounded-lg"` | No       | Selects the button border radius.                                      |
 | `size`        | `SizeVariants`           | -                | No       | Selects the button padding and text size on the shared size scale.     |
 | `classNames`  | `ButtonClassNames`       | -                | No       | Applies CSS classes to the button loading slots.                       |
 

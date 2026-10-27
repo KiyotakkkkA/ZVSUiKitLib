@@ -184,7 +184,7 @@ function AutoFillSelectorTrigger({
 }
 
 function AutoFillSelectorTags({
-    rounded = "rounded-full",
+    rounded = "rounded-lg",
     className,
     tagClassName,
     tagRemoveClassName,
@@ -254,7 +254,7 @@ function AutoFillSelectorTags({
 }
 
 function AutoFillSelectorInput({
-    rounded = "rounded-full",
+    rounded = "rounded-lg",
     className,
     placeholder,
     onFocus,

@@ -6,7 +6,9 @@ import {
     SectionOverview,
     SectionPreview,
 } from "../../../molecules";
+import { DemoAccordionGhost } from "./(preview)/accordion-ghost-preview";
 import { DemoAccordion } from "./(preview)/accordion-preview";
+import ghostUsage from "./(usage)/ghost.md";
 import usage from "./(usage)/usage.md";
 import { componentProps } from "./props";
 
@@ -44,6 +46,20 @@ export default function Page() {
                 </SectionPreview.Component>
                 <SectionPreview.Code label="AccordionExample.tsx">
                     {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "ghost",
+                    headerTitle: "Ghost preset",
+                    navTitle: "Ghost",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoAccordionGhost />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="AccordionGhost.tsx">
+                    {ghostUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

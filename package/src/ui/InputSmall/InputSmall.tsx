@@ -63,7 +63,7 @@ export const InputSmall = forwardRef<HTMLInputElement, InputSmallProps>(
             onClear,
             disabled,
             readOnly,
-            rounded = "rounded-full",
+            rounded = "rounded-lg",
             ...props
         },
         forwardedRef,

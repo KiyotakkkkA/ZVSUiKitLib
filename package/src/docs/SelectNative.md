@@ -35,7 +35,7 @@ Extends: `BaseSelectNativeProps`.
 | `options`     | `SelectNativeOption[]`                         | -                | Yes      | The options used by the component.                 |
 | `onChange`    | `(value: string) => void`                      | -                | No       | Callback invoked when change occurs.               |
 | `placeholder` | `string`                                       | -                | No       | Text used for the placeholder.                     |
-| `rounded`     | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-full"` | No       | The border-radius preset applied to the component. |
+| `rounded`     | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-lg"` | No       | The border-radius preset applied to the component. |
 | `className`   | `DivClassName`                                 | -                | No       | CSS classes applied to the root element.           |
 | `classNames`  | `SelectNativeClassNames`                       | -                | No       | CSS classes applied to the component slots.        |
 

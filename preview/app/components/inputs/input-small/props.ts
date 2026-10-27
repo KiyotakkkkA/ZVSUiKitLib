@@ -23,7 +23,7 @@ export const componentProps: ComponentAPIDoc = {
             rounded: {
                 type: "RoundVariants",
                 description: "Border radius shape.",
-                defaultValue: '"rounded-full"',
+                defaultValue: '"rounded-lg"',
                 directives: [roundVariantsDirective],
             },
             className: {

@@ -31,7 +31,7 @@ export function Tooltip({
     label,
     placement = "top-center",
     className,
-    rounded = "rounded-full",
+    rounded = "rounded-lg",
     ref,
 }: TooltipProps) {
     const [visible, setVisible] = useState(false);

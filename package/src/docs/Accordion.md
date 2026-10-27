@@ -20,11 +20,12 @@ import { Accordion } from "@kiyotakkkka/zvs-uikit-lib";
 
 ### Accordion
 
-| Property      | Type                  | Default | Required | Description                                                    |
-| ------------- | --------------------- | ------- | -------- | -------------------------------------------------------------- |
-| `ref`         | `Ref<HTMLDivElement>` | -       | No       | Receives the accordion root element.                           |
-| `defaultOpen` | `boolean`             | `false` | No       | Sets the initial expanded state of the uncontrolled accordion. |
-| `className`   | `DivClassName`        | -       | No       | Applies CSS classes to the accordion root element.             |
+| Property      | Type                  | Default   | Required | Description                                                                         |
+| ------------- | --------------------- | --------- | -------- | ----------------------------------------------------------------------------------- |
+| `ref`         | `Ref<HTMLDivElement>` | -         | No       | Receives the accordion root element.                                                |
+| `defaultOpen` | `boolean`             | `false`   | No       | Sets the initial expanded state of the uncontrolled accordion.                      |
+| `preset`      | `"solid" \| "ghost"`  | `"solid"` | No       | Selects borders and paddings: `solid` is bordered, `ghost` is borderless and compact. |
+| `className`   | `DivClassName`        | -         | No       | Applies CSS classes to the accordion root element.                                  |
 
 ### Accordion.Summary
 
@@ -46,6 +47,7 @@ import { Accordion } from "@kiyotakkkka/zvs-uikit-lib";
 | `setIsOpen` | `Dispatch<SetStateAction<boolean>>` | -       | Yes      | Updates the accordion expanded state.                          |
 | `contentId` | `string`                            | -       | Yes      | Identifies the collapsible content region.                     |
 | `summaryId` | `string`                            | -       | Yes      | Identifies the summary trigger that labels the content region. |
+| `preset`    | `"solid" \| "ghost"`                | -       | Yes      | The preset selected on the accordion root.                     |
 
 ```tsx
 "use client";

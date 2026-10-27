@@ -35,7 +35,7 @@ import { Switcher } from "@kiyotakkkka/zvs-uikit-lib";
 | `label`      | `string`                                       | -                | No       | Accessible name for the radio group. Defaults to the \`switcher.label\` string from the active locale dictionary. |
 | `className`  | `DivClassName`                                 | -                | No       | CSS classes applied to the root element.                                                                          |
 | `classNames` | `SwitcherClassNames`                           | -                | No       | CSS classes applied to the component slots.                                                                       |
-| `rounded`    | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-full"` | No       | The border-radius preset applied to the component.                                                                |
+| `rounded`    | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-lg"` | No       | The border-radius preset applied to the component.                                                                |
 
 ### SwitcherClassNames
 

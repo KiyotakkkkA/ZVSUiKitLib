@@ -10,6 +10,12 @@ export const componentProps: ComponentAPIDoc = {
                 description: "Initial expanded state.",
                 defaultValue: "false",
             },
+            preset: {
+                type: '"solid" | "ghost"',
+                description:
+                    "Bordered with regular paddings, or borderless and compact.",
+                defaultValue: '"solid"',
+            },
             className: {
                 type: "string",
                 description: "Additional classes.",

@@ -41,7 +41,7 @@ export function Button({
     loading = false,
     loadingText,
     variant = "secondary",
-    rounded = "rounded-full",
+    rounded = "rounded-lg",
     size,
     className,
     classNames,

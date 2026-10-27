@@ -182,6 +182,11 @@ export const compositionComponents: ComponentDocSection = {
             summary: "Expandable section with animated height.",
         },
         {
+            slug: "accordion-group",
+            name: "AccordionGroup",
+            summary: "Accordions that share an open mode.",
+        },
+        {
             slug: "breadcrumbs",
             name: "Breadcrumbs",
             summary: "Navigation trail for the current page.",
