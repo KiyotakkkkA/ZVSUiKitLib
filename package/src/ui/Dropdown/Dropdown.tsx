@@ -387,7 +387,7 @@ function DropdownAnchor({
 function DropdownMenu({
     children,
     className,
-    rounded = "rounded-4xl",
+    rounded = "rounded-xl",
     ...props
 }: DropdownMenuProps) {
     const { menuId, setMenuRef, menuPlacement } = useDropdownContext();
@@ -421,7 +421,7 @@ function DropdownItem({
     onClick,
     onKeyDown,
     type = "button",
-    rounded = "rounded-3xl",
+    rounded = "rounded-md",
     ...props
 }: DropdownItemProps) {
     const { close } = useDropdownContext();

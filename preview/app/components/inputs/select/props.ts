@@ -95,7 +95,7 @@ export const componentProps: ComponentAPIDoc = {
                 rounded: {
                     type: "RoundVariants",
                     description: "Trigger border radius.",
-                    defaultValue: '"rounded-2xl"',
+                    defaultValue: '"rounded-lg"',
                     directives: [roundVariantsDirective],
                 },
             },
@@ -115,7 +115,7 @@ export const componentProps: ComponentAPIDoc = {
                 rounded: {
                     type: "RoundVariants",
                     description: "Popup border radius.",
-                    defaultValue: '"rounded-4xl"',
+                    defaultValue: '"rounded-xl"',
                     directives: [roundVariantsDirective],
                 },
             },
@@ -132,7 +132,7 @@ export const componentProps: ComponentAPIDoc = {
                 rounded: {
                     type: "RoundVariants",
                     description: "Border radius applied to every rendered option.",
-                    defaultValue: '"rounded-lg"',
+                    defaultValue: '"rounded-md"',
                     directives: [roundVariantsDirective],
                 },
             },
@@ -165,7 +165,7 @@ export const componentProps: ComponentAPIDoc = {
                 rounded: {
                     type: "RoundVariants",
                     description: "Option border radius.",
-                    defaultValue: '"rounded-lg"',
+                    defaultValue: '"rounded-md"',
                     directives: [roundVariantsDirective],
                 },
             },

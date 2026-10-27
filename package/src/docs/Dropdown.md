@@ -72,7 +72,7 @@ Extends: `HTMLAttributes<HTMLDivElement>`.
 
 | Property  | Type                                           | Default         | Required | Description                           |
 | --------- | ---------------------------------------------- | --------------- | -------- | ------------------------------------- |
-| `rounded` | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-4xl"` | No       | Selects the popup menu border radius. |
+| `rounded` | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-xl"` | No       | Selects the popup menu border radius. |
 
 ### Dropdown.Item
 
@@ -83,7 +83,7 @@ Extends: `ButtonHTMLAttributes<HTMLButtonElement>`.
 | `closeOnClick` | `boolean`                                      | `true`          | No       | Closes the popup after the item click unless the event is prevented. |
 | `active`       | `boolean`                                      | `false`         | No       | Applies the active item appearance.                                  |
 | `icon`         | `ReactNode`                                    | -               | No       | Renders a leading icon inside the menu item.                         |
-| `rounded`      | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-3xl"` | No       | Selects the border radius for the menu item.                         |
+| `rounded`      | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-md"` | No       | Selects the border radius for the menu item.                         |
 
 ### Dropdown.Render
 

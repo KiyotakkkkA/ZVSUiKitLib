@@ -168,7 +168,7 @@ function SelectMenu({
     children,
     className,
     label,
-    rounded = "rounded-3xl",
+    rounded = "rounded-xl",
 }: SelectMenuProps) {
     const {
         query,
@@ -290,7 +290,7 @@ function SelectMenu({
             {searchable && (
                 <InputSmall
                     ref={searchRef}
-                    rounded="rounded-lg"
+                    rounded="rounded-md"
                     value={query}
                     onChange={(event) => setQuery(event.target.value)}
                     placeholder={searchPlaceholder}
@@ -331,7 +331,7 @@ function SelectOptionComponent({
     icon,
     onClick,
     className,
-    rounded = "rounded-lg",
+    rounded = "rounded-md",
 }: SelectOptionProps) {
     const context = useSelectContext();
     const option = { value, label, icon, onClick };

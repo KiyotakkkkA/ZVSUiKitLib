@@ -70,7 +70,7 @@ import { Select } from "@kiyotakkkka/zvs-uikit-lib";
 | `children`  | `ReactNode`                                    | -               | Yes      | The content rendered inside the component.         |
 | `label`     | `string`                                       | -               | No       | Accessible name for the option list.               |
 | `className` | `DivClassName`                                 | -               | No       | CSS classes applied to the root element.           |
-| `rounded`   | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-3xl"` | No       | The border-radius preset applied to the component. |
+| `rounded`   | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-xl"` | No       | The border-radius preset applied to the component. |
 
 ### Select.Option
 
@@ -79,7 +79,7 @@ Extends: `SelectOption`.
 | Property    | Type                                           | Default          | Required | Description                                        |
 | ----------- | ---------------------------------------------- | ---------------- | -------- | -------------------------------------------------- |
 | `className` | `string`                                       | -                | No       | CSS classes applied to the root element.           |
-| `rounded`   | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-lg"` | No       | The border-radius preset applied to the component. |
+| `rounded`   | [RoundVariants](./dict.md#roundvariants) \| "" | `"rounded-md"` | No       | The border-radius preset applied to the component. |
 
 ### Select.Options
 

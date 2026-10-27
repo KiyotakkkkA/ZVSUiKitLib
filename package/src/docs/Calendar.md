@@ -52,6 +52,8 @@ type CalendarDate = Date | null;
 | `showOutsideDays`  | `boolean`                             | `true`    | No       | Whether show outside days is enabled.          |
 | `locale`           | `string`                              | `"ru-RU"` | No       | The locale used by the component.              |
 | `weekStartsOn`     | `0 \| 1 \| 2 \| 3 \| 4 \| 5 \| 6`     | `1`       | No       | The week starts on used by the component.      |
+| `enableTime`       | `boolean`                             | `false`   | No       | Shows the hours and minutes selection block to the right of the days grid. |
+| `minuteStep`       | `number`                              | `1`       | No       | The minutes interval offered by the time block. |
 | `className`        | `DivClassName`                        | -         | No       | CSS classes applied to the root element.       |
 | `classNames`       | `CalendarClassNames`                  | -         | No       | CSS classes applied to the component slots.    |
 | `renderDay`        | `(meta: DayMeta) => ReactNode`        | -         | No       | Function used to render day.                   |
@@ -69,6 +71,7 @@ type CalendarDate = Date | null;
 | `weekday`     | The weekday used by the component.      |
 | `days`        | The days used by the component.         |
 | `day`         | The day used by the component.          |
+| `time`        | The time selection block shown when `enableTime` is set. |
 
 ```tsx
 import { Calendar } from "@kiyotakkkka/zvs-uikit-lib";

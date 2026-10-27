@@ -9,6 +9,9 @@ export type ZvsDictionary = {
     calendar: {
         selectMonth: string;
         selectYear: string;
+        time: string;
+        hours: string;
+        minutes: string;
     };
     chart: {
         emptyState: string;
@@ -24,6 +27,14 @@ export type ZvsDictionary = {
         alpha: string;
     };
     inputDate: {
+        placeholder: string;
+        clear: string;
+    };
+    inputDatetime: {
+        placeholder: string;
+        clear: string;
+    };
+    inputTime: {
         placeholder: string;
         clear: string;
     };
@@ -87,6 +98,9 @@ export const defaultDictionary: ZvsDictionary = {
     calendar: {
         selectMonth: "Выбрать месяц",
         selectYear: "Выбрать год",
+        time: "Время",
+        hours: "Часы",
+        minutes: "Минуты",
     },
     chart: {
         emptyState: "Нет данных",
@@ -104,6 +118,14 @@ export const defaultDictionary: ZvsDictionary = {
     inputDate: {
         placeholder: "Выберите дату",
         clear: "Очистить дату",
+    },
+    inputDatetime: {
+        placeholder: "Выберите дату и время",
+        clear: "Очистить дату и время",
+    },
+    inputTime: {
+        placeholder: "Выберите время",
+        clear: "Очистить время",
     },
     inputDropZone: {
         emptyTitle: "Перетащите картинку сюда",
@@ -163,6 +185,9 @@ export const enDictionary: ZvsDictionary = {
     calendar: {
         selectMonth: "Select month",
         selectYear: "Select year",
+        time: "Time",
+        hours: "Hours",
+        minutes: "Minutes",
     },
     chart: {
         emptyState: "No data",
@@ -180,6 +205,14 @@ export const enDictionary: ZvsDictionary = {
     inputDate: {
         placeholder: "Pick a date",
         clear: "Clear date",
+    },
+    inputDatetime: {
+        placeholder: "Pick a date and time",
+        clear: "Clear date and time",
+    },
+    inputTime: {
+        placeholder: "Pick a time",
+        clear: "Clear time",
     },
     inputDropZone: {
         emptyTitle: "Drop an image here",

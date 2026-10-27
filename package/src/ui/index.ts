@@ -45,6 +45,8 @@ export * from "./Pagination";
 export * from "./Calendar";
 export * from "./Carousel";
 export * from "./InputDate";
+export * from "./InputDatetime";
+export * from "./InputTime";
 export * from "./InputDropZone";
 export * from "./InputPins";
 export * from "./Tabs";

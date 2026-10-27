@@ -31,6 +31,7 @@
 - [InputCheckSlided](./InputCheckSlided.md)
 - [InputColor](./InputColor.md)
 - [InputDate](./InputDate.md)
+- [InputDatetime](./InputDatetime.md)
 - [InputDropZone](./InputDropZone.md)
 - [InputPins](./InputPins.md)
 - [InputRadioGroup](./InputRadioGroup.md)
@@ -38,6 +39,7 @@
 - [InputRange](./InputRange.md)
 - [InputSlider](./InputSlider.md)
 - [InputSmall](./InputSmall.md)
+- [InputTime](./InputTime.md)
 - [Kbd](./Kbd.md)
 - [Link](./Link.md)
 - [Loader](./Loader.md)
@@ -95,6 +97,7 @@
 | `InputCheckSlided`   | [InputCheckSlided.md](./InputCheckSlided.md)     | `ui/InputCheckSlided/example.md`   |
 | `InputColor`         | [InputColor.md](./InputColor.md)                 | `ui/InputColor/example.md`         |
 | `InputDate`          | [InputDate.md](./InputDate.md)                   | `ui/InputDate/example.md`          |
+| `InputDatetime`      | [InputDatetime.md](./InputDatetime.md)           | `ui/InputDatetime/example.md`      |
 | `InputDropZone`      | [InputDropZone.md](./InputDropZone.md)           | `ui/InputDropZone/example.md`      |
 | `InputPins`          | [InputPins.md](./InputPins.md)                   | `ui/InputPins/example.md`          |
 | `InputRadioGroup`    | [InputRadioGroup.md](./InputRadioGroup.md)       | `ui/InputRadioGroup/example.md`    |
@@ -102,6 +105,7 @@
 | `InputRange`         | [InputRange.md](./InputRange.md)                 | `ui/InputRange/example.md`         |
 | `InputSlider`        | [InputSlider.md](./InputSlider.md)               | `ui/InputSlider/example.md`        |
 | `InputSmall`         | [InputSmall.md](./InputSmall.md)                 | `ui/InputSmall/example.md`         |
+| `InputTime`          | [InputTime.md](./InputTime.md)                   | `ui/InputTime/example.md`          |
 | `Kbd`                | [Kbd.md](./Kbd.md)                               | `ui/Kbd/example.md`                |
 | `Link`               | [Link.md](./Link.md)                             | `ui/Link/example.md`               |
 | `Loader`             | [Loader.md](./Loader.md)                         | `ui/Loader/example.md`             |

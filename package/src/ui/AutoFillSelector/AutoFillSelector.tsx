@@ -152,7 +152,7 @@ function AutoFillSelectorRoot({
 }
 
 function AutoFillSelectorTrigger({
-    rounded = "rounded-2xl",
+    rounded = "rounded-lg",
     className,
     children,
     ...props
@@ -311,7 +311,7 @@ function AutoFillSelectorInput({
 function AutoFillSelectorMenu({
     className,
     children,
-    rounded = "rounded-4xl",
+    rounded = "rounded-xl",
     ...props
 }: AutoFillSelectorMenuProps) {
     return (
@@ -332,7 +332,7 @@ function AutoFillSelectorMenu({
 }
 
 function AutoFillSelectorOptions({
-    rounded = "rounded-3xl",
+    rounded = "rounded-md",
     className,
     optionClassName,
     optionLabelClassName,

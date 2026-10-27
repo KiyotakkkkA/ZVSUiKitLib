@@ -61,6 +61,16 @@ export const inputComponents: ComponentDocSection = {
             summary: "Date input with calendar popup.",
         },
         {
+            slug: "input-datetime",
+            name: "InputDatetime",
+            summary: "Date and time input with calendar popup.",
+        },
+        {
+            slug: "input-time",
+            name: "InputTime",
+            summary: "Time input with hours and minutes popup.",
+        },
+        {
             slug: "input-drop-zone",
             name: "InputDropZone",
             summary: "File drop zone with previews.",

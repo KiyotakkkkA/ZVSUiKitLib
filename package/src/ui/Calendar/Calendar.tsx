@@ -5,6 +5,7 @@ import type { CalendarDate, CalendarProps } from "./types";
 import { Dropdown } from "../Dropdown/Dropdown";
 import { ScrollArea } from "../ScrollArea/ScrollArea";
 import { Button } from "../Button/Button";
+import { TimeColumns, formatTime } from "../_shared/TimeColumns";
 
 function startOfDay(date: Date) {
     return new Date(date.getFullYear(), date.getMonth(), date.getDate());
@@ -71,6 +72,8 @@ export function Calendar({
     showOutsideDays = true,
     locale = "ru-RU",
     weekStartsOn = 1,
+    enableTime = false,
+    minuteStep = 1,
     className,
     classNames,
     ref,
@@ -96,6 +99,23 @@ export function Calendar({
         }
 
         onChange?.(next);
+    };
+
+    const selectDay = (day: Date) => {
+        if (!enableTime || !selectedDate) {
+            setSelectedDate(day);
+            return;
+        }
+
+        const next = new Date(day);
+        next.setHours(selectedDate.getHours(), selectedDate.getMinutes());
+        setSelectedDate(next);
+    };
+
+    const selectTime = (hours: number, minutes: number) => {
+        const next = new Date(selectedDate ?? today);
+        next.setHours(hours, minutes, 0, 0);
+        setSelectedDate(next);
     };
 
     const setViewMonth = (next: Date) => {
@@ -244,237 +264,302 @@ export function Calendar({
         <div
             ref={ref}
             className={cn(
-                "w-full max-w-[20rem] rounded-2xl border border-main-700/70 bg-main-900/55 p-3.5",
+                "w-full max-w-[20rem] rounded-xl border border-main-700/70 bg-main-900/55 p-3.5",
+                enableTime && "flex max-w-[28rem] gap-3",
                 className,
             )}
         >
-            <div
-                className={cn(
-                    "grid grid-cols-[auto_1fr_auto] items-center gap-2",
-                    classNames?.header,
-                )}
-            >
-                <Button
-                    variant="secondary"
-                    className={cn(
-                        "h-8 w-8 rounded-lg p-0 transition-transform duration-150 hover:scale-105",
-                        classNames?.navButton,
-                    )}
-                    onClick={() =>
-                        setViewMonth(
-                            new Date(
-                                activeViewDate.getFullYear(),
-                                activeViewDate.getMonth() - 1,
-                                1,
-                            ),
-                        )
-                    }
-                    disabled={!canGoPrev}
-                >
-                    {"<"}
-                </Button>
-
+            <div className={cn(enableTime && "min-w-0 flex-1")}>
                 <div
                     className={cn(
-                        "flex min-w-0 items-center justify-center gap-1",
-                        classNames?.selectors,
+                        "grid grid-cols-[auto_1fr_auto] items-center gap-2",
+                        classNames?.header,
                     )}
                 >
-                    <Dropdown menuWidth={208} menuPlacement="bottom-left">
-                        <Dropdown.Trigger
-                            rounded="rounded-lg"
-                            className={
-                                "h-8 min-w-0 hover:border-transparent bg-transparent border-transparent px-2 text-sm font-semibold capitalize text-main-100 hover:bg-main-700/35"
-                            }
-                            aria-label={t.selectMonth}
-                        >
-                            <span className={"truncate"}>
-                                {monthOptions[activeViewDate.getMonth()]?.label}
-                            </span>
-                        </Dropdown.Trigger>
-                        <Dropdown.Menu
-                            className={
-                                "grid grid-cols-3 gap-1 border-main-700 bg-main-800/95 p-2 shadow-2xl shadow-black/30 backdrop-blur"
-                            }
-                        >
-                            {monthOptions.map((month) => (
-                                <Dropdown.Item
-                                    key={month.value}
-                                    active={
-                                        month.value ===
-                                        activeViewDate.getMonth()
-                                    }
-                                    className={"text-center px-2 capitalize"}
-                                    onClick={() =>
-                                        setViewMonth(
-                                            new Date(
-                                                activeViewDate.getFullYear(),
-                                                month.value,
-                                                1,
-                                            ),
-                                        )
-                                    }
-                                >
-                                    {month.label}
-                                </Dropdown.Item>
-                            ))}
-                        </Dropdown.Menu>
-                    </Dropdown>
+                    <Button
+                        variant="secondary"
+                        className={cn(
+                            "h-8 w-8 rounded-md p-0 transition-transform duration-150 hover:scale-105",
+                            classNames?.navButton,
+                        )}
+                        onClick={() =>
+                            setViewMonth(
+                                new Date(
+                                    activeViewDate.getFullYear(),
+                                    activeViewDate.getMonth() - 1,
+                                    1,
+                                ),
+                            )
+                        }
+                        disabled={!canGoPrev}
+                    >
+                        {"<"}
+                    </Button>
 
-                    <span
-                        className={"h-4 w-px shrink-0 bg-main-700"}
-                        aria-hidden
-                    />
-
-                    <Dropdown menuWidth={152} menuPlacement="bottom-right">
-                        <Dropdown.Trigger
-                            rounded="rounded-lg"
-                            className={
-                                "h-8 hover:border-transparent border-transparent bg-transparent px-2 text-sm font-semibold tabular-nums text-main-100 hover:bg-main-700/35"
-                            }
-                            aria-label={t.selectYear}
-                        >
-                            {activeViewDate.getFullYear()}
-                        </Dropdown.Trigger>
-                        <Dropdown.Menu
-                            className={
-                                "border-main-700 bg-main-800/95 p-2 shadow-2xl shadow-black/30 backdrop-blur"
-                            }
-                        >
-                            <ScrollArea
-                                showScrollbar={false}
+                    <div
+                        className={cn(
+                            "flex min-w-0 items-center justify-center gap-1",
+                            classNames?.selectors,
+                        )}
+                    >
+                        <Dropdown menuWidth={208} menuPlacement="bottom-left">
+                            <Dropdown.Trigger
+                                rounded="rounded-lg"
                                 className={
-                                    "max-h-60 grid grid-cols-2 gap-1 min-w-32"
+                                    "h-8 min-w-0 hover:border-transparent bg-transparent border-transparent px-2 text-sm font-semibold capitalize text-main-100 hover:bg-main-700/35"
+                                }
+                                aria-label={t.selectMonth}
+                            >
+                                <span className={"truncate"}>
+                                    {
+                                        monthOptions[activeViewDate.getMonth()]
+                                            ?.label
+                                    }
+                                </span>
+                            </Dropdown.Trigger>
+                            <Dropdown.Menu
+                                className={
+                                    "grid grid-cols-3 gap-1 border-main-700 bg-main-800/95 p-2 shadow-2xl shadow-black/30 backdrop-blur"
                                 }
                             >
-                                {yearOptions.map((year) => (
+                                {monthOptions.map((month) => (
                                     <Dropdown.Item
-                                        key={year}
+                                        key={month.value}
                                         active={
-                                            year ===
-                                            activeViewDate.getFullYear()
+                                            month.value ===
+                                            activeViewDate.getMonth()
                                         }
-                                        className={"text-center tabular-nums"}
+                                        className={
+                                            "text-center px-2 capitalize"
+                                        }
                                         onClick={() =>
                                             setViewMonth(
                                                 new Date(
-                                                    year,
-                                                    activeViewDate.getMonth(),
+                                                    activeViewDate.getFullYear(),
+                                                    month.value,
                                                     1,
                                                 ),
                                             )
                                         }
                                     >
-                                        {year}
+                                        {month.label}
                                     </Dropdown.Item>
                                 ))}
-                            </ScrollArea>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                            </Dropdown.Menu>
+                        </Dropdown>
+
+                        <span
+                            className={"h-4 w-px shrink-0 bg-main-700"}
+                            aria-hidden
+                        />
+
+                        <Dropdown menuWidth={152} menuPlacement="bottom-right">
+                            <Dropdown.Trigger
+                                rounded="rounded-lg"
+                                className={
+                                    "h-8 hover:border-transparent border-transparent bg-transparent px-2 text-sm font-semibold tabular-nums text-main-100 hover:bg-main-700/35"
+                                }
+                                aria-label={t.selectYear}
+                            >
+                                {activeViewDate.getFullYear()}
+                            </Dropdown.Trigger>
+                            <Dropdown.Menu
+                                className={
+                                    "border-main-700 bg-main-800/95 p-2 shadow-2xl shadow-black/30 backdrop-blur"
+                                }
+                            >
+                                <ScrollArea
+                                    showScrollbar={false}
+                                    className={
+                                        "max-h-60 grid grid-cols-2 gap-1 min-w-32"
+                                    }
+                                >
+                                    {yearOptions.map((year) => (
+                                        <Dropdown.Item
+                                            key={year}
+                                            active={
+                                                year ===
+                                                activeViewDate.getFullYear()
+                                            }
+                                            className={
+                                                "text-center tabular-nums"
+                                            }
+                                            onClick={() =>
+                                                setViewMonth(
+                                                    new Date(
+                                                        year,
+                                                        activeViewDate.getMonth(),
+                                                        1,
+                                                    ),
+                                                )
+                                            }
+                                        >
+                                            {year}
+                                        </Dropdown.Item>
+                                    ))}
+                                </ScrollArea>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </div>
+
+                    <Button
+                        variant="secondary"
+                        className={cn(
+                            "h-8 w-8 rounded-md p-0 transition-transform duration-150 hover:scale-105",
+                            classNames?.navButton,
+                        )}
+                        onClick={() =>
+                            setViewMonth(
+                                new Date(
+                                    activeViewDate.getFullYear(),
+                                    activeViewDate.getMonth() + 1,
+                                    1,
+                                ),
+                            )
+                        }
+                        disabled={!canGoNext}
+                    >
+                        {">"}
+                    </Button>
                 </div>
 
-                <Button
-                    variant="secondary"
+                <div
                     className={cn(
-                        "h-8 w-8 rounded-lg p-0 transition-transform duration-150 hover:scale-105",
-                        classNames?.navButton,
+                        "mt-3 grid grid-cols-7",
+                        classNames?.weekdays,
                     )}
-                    onClick={() =>
-                        setViewMonth(
-                            new Date(
-                                activeViewDate.getFullYear(),
-                                activeViewDate.getMonth() + 1,
-                                1,
-                            ),
-                        )
-                    }
-                    disabled={!canGoNext}
                 >
-                    {">"}
-                </Button>
-            </div>
-
-            <div className={cn("mt-3 grid grid-cols-7", classNames?.weekdays)}>
-                {weekdayLabels.map((label) => (
-                    <span
-                        key={label}
-                        className={cn(
-                            "text-center text-xs capitalize text-main-400",
-                            classNames?.weekday,
-                        )}
-                    >
-                        {label}
-                    </span>
-                ))}
-            </div>
-
-            <div
-                className={cn("mt-2 grid grid-cols-7 gap-1", classNames?.days)}
-            >
-                {dayCells.map((day) => {
-                    if (!showOutsideDays && !day.isCurrentMonth) {
-                        return (
-                            <span
-                                key={day.date.toISOString()}
-                                className={"h-8 rounded-lg"}
-                                aria-hidden
-                            />
-                        );
-                    }
-
-                    return (
-                        <button
-                            key={day.date.toISOString()}
-                            type="button"
+                    {weekdayLabels.map((label) => (
+                        <span
+                            key={label}
                             className={cn(
-                                "h-8 rounded-lg border border-transparent text-sm transition-all duration-150 ease-out",
-                                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-400/70",
-                                day.isCurrentMonth
-                                    ? "text-main-100"
-                                    : "text-main-500",
-                                day.isToday &&
-                                    !day.isSelected &&
-                                    "border-main-400/80 bg-main-700/35 font-semibold text-main-50",
-                                day.isSelected &&
-                                    "bg-main-100 font-semibold text-main-900",
-                                day.isToday &&
-                                    day.isSelected &&
-                                    "ring-2 ring-main-400/75 ring-offset-1 ring-offset-main-900",
-                                !day.isSelected &&
-                                    !day.isDisabled &&
-                                    "hover:bg-main-700/30",
-                                day.isDisabled &&
-                                    "cursor-not-allowed opacity-35",
-                                typeof classNames?.day === "function"
-                                    ? classNames.day(day)
-                                    : classNames?.day,
+                                "text-center text-xs capitalize text-main-400",
+                                classNames?.weekday,
                             )}
-                            onClick={() => {
-                                if (day.isDisabled) {
-                                    return;
-                                }
-
-                                if (
-                                    allowDeselect &&
-                                    selectedDay &&
-                                    isSameDay(day.date, selectedDay)
-                                ) {
-                                    setSelectedDate(null);
-                                    return;
-                                }
-
-                                setSelectedDate(day.date);
-                            }}
-                            disabled={day.isDisabled}
-                            aria-pressed={day.isSelected}
-                            aria-current={day.isToday ? "date" : undefined}
-                            aria-label={day.date.toLocaleDateString(locale)}
                         >
-                            {renderDay ? renderDay(day) : day.date.getDate()}
-                        </button>
-                    );
-                })}
+                            {label}
+                        </span>
+                    ))}
+                </div>
+
+                <div
+                    className={cn(
+                        "mt-2 grid grid-cols-7 gap-1",
+                        classNames?.days,
+                    )}
+                >
+                    {dayCells.map((day) => {
+                        if (!showOutsideDays && !day.isCurrentMonth) {
+                            return (
+                                <span
+                                    key={day.date.toISOString()}
+                                    className={"h-8 rounded-md"}
+                                    aria-hidden
+                                />
+                            );
+                        }
+
+                        return (
+                            <button
+                                key={day.date.toISOString()}
+                                type="button"
+                                className={cn(
+                                    "h-8 rounded-md border border-transparent text-sm transition-all duration-150 ease-out",
+                                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-400/70",
+                                    day.isCurrentMonth
+                                        ? "text-main-100"
+                                        : "text-main-500",
+                                    day.isToday &&
+                                        !day.isSelected &&
+                                        "border-main-400/80 bg-main-700/35 font-semibold text-main-50",
+                                    day.isSelected &&
+                                        "bg-main-100 font-semibold text-main-900",
+                                    day.isToday &&
+                                        day.isSelected &&
+                                        "ring-2 ring-main-400/75 ring-offset-1 ring-offset-main-900",
+                                    !day.isSelected &&
+                                        !day.isDisabled &&
+                                        "hover:bg-main-700/30",
+                                    day.isDisabled &&
+                                        "cursor-not-allowed opacity-35",
+                                    typeof classNames?.day === "function"
+                                        ? classNames.day(day)
+                                        : classNames?.day,
+                                )}
+                                onClick={() => {
+                                    if (day.isDisabled) {
+                                        return;
+                                    }
+
+                                    if (
+                                        allowDeselect &&
+                                        selectedDay &&
+                                        isSameDay(day.date, selectedDay)
+                                    ) {
+                                        setSelectedDate(null);
+                                        return;
+                                    }
+
+                                    selectDay(day.date);
+                                }}
+                                disabled={day.isDisabled}
+                                aria-pressed={day.isSelected}
+                                aria-current={day.isToday ? "date" : undefined}
+                                aria-label={day.date.toLocaleDateString(locale)}
+                            >
+                                {renderDay
+                                    ? renderDay(day)
+                                    : day.date.getDate()}
+                            </button>
+                        );
+                    })}
+                </div>
             </div>
+
+            {enableTime && (
+                <div
+                    className={cn(
+                        "flex w-28 shrink-0 flex-col border-l border-main-700/70 pl-3",
+                        classNames?.time,
+                    )}
+                >
+                    <div
+                        className={
+                            "flex h-8 shrink-0 items-center justify-between px-1 text-xs"
+                        }
+                    >
+                        <span className={"text-main-400"}>{t.time}</span>
+                        <span
+                            className={
+                                "font-semibold tabular-nums text-main-100"
+                            }
+                        >
+                            {selectedDate
+                                ? formatTime(
+                                      selectedDate.getHours(),
+                                      selectedDate.getMinutes(),
+                                  )
+                                : "--:--"}
+                        </span>
+                    </div>
+                    <div className={"relative mt-3 min-h-40 flex-1"}>
+                        <TimeColumns
+                            hours={
+                                selectedDate ? selectedDate.getHours() : null
+                            }
+                            minutes={
+                                selectedDate ? selectedDate.getMinutes() : null
+                            }
+                            minuteStep={minuteStep}
+                            onChange={selectTime}
+                            hoursLabel={t.hours}
+                            minutesLabel={t.minutes}
+                            className={"absolute inset-0 grid-rows-1"}
+                            columnClassName={"max-h-none p-0"}
+                        />
+                    </div>
+                </div>
+            )}
         </div>
     );
 }

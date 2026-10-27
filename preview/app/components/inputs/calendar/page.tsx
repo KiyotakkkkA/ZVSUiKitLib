@@ -7,6 +7,8 @@ import {
     SectionPreview,
 } from "../../../molecules";
 import { DemoCalendar } from "./(preview)/calendar-preview";
+import { DemoCalendarTime } from "./(preview)/calendar-time-preview";
+import timeUsage from "./(usage)/time.md";
 import usage from "./(usage)/usage.md";
 import { componentProps } from "./props";
 
@@ -42,6 +44,20 @@ export default function Page() {
                 </SectionPreview.Component>
                 <SectionPreview.Code label="CalendarExample.tsx">
                     {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "with-time",
+                    headerTitle: "Calendar with time selection",
+                    navTitle: "With time",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoCalendarTime />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="CalendarTime.tsx">
+                    {timeUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

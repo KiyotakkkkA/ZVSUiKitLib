@@ -39,6 +39,8 @@ export type CalendarClassNames = {
     days?: DivClassName;
     /** The day used by the component. */
     day?: ButtonClassName | ((meta: DayMeta) => ButtonClassName | undefined);
+    /** The time selection block shown when `enableTime` is set. */
+    time?: DivClassName;
 };
 
 export type CalendarProps = {
@@ -70,6 +72,10 @@ export type CalendarProps = {
     locale?: string;
     /** The week starts on used by the component. */
     weekStartsOn?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
+    /** Shows the hours and minutes selection block to the right of the days grid. */
+    enableTime?: boolean;
+    /** The minutes interval offered by the time block. */
+    minuteStep?: number;
     /** CSS classes applied to the root element. */
     className?: DivClassName;
     /** CSS classes applied to the component slots. */

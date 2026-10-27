@@ -61,6 +61,17 @@ export const componentProps: ComponentAPIDoc = {
                 description: "First day of week.",
                 defaultValue: "1",
             },
+            enableTime: {
+                type: "boolean",
+                description:
+                    "Shows the hours and minutes block to the right of the days grid.",
+                defaultValue: "false",
+            },
+            minuteStep: {
+                type: "number",
+                description: "Minutes interval offered by the time block.",
+                defaultValue: "1",
+            },
             className: {
                 type: "string",
                 description: "Root classes.",
@@ -105,6 +116,11 @@ export const componentProps: ComponentAPIDoc = {
                         type: "string",
                         description:
                             "Day button classes or (meta) => className function.",
+                    },
+                    time: {
+                        type: "string",
+                        description:
+                            "Time block classes (shown with enableTime).",
                     },
                 },
             },
