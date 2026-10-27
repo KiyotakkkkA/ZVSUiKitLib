@@ -1,6 +1,7 @@
 import { Icon } from "../_shared/icons";
 import { Children, useCallback, useEffect, useMemo, useState } from "react";
 import { cn } from "../../lib/utils";
+import { useLocale } from "../../hooks/useLocale";
 import type { CarouselImageProps, CarouselProps } from "./types";
 
 function CarouselImage({ children, className }: CarouselImageProps) {
@@ -22,7 +23,9 @@ function CarouselRoot({
     autoScrollTimeout = 5000,
     ref,
 }: CarouselProps) {
+    const t = useLocale().carousel;
     const slides = useMemo(() => Children.toArray(children), [children]);
+    const [paused, setPaused] = useState(false);
     const [activeIndex, setActiveIndex] = useState(0);
     const slidesCount = slides.length;
     const maxSlideIndex = Math.max(slidesCount - 1, 0);
@@ -65,7 +68,7 @@ function CarouselRoot({
     }, [loop, maxSlideIndex]);
 
     useEffect(() => {
-        if (!autoScroll || !hasMultipleSlides) {
+        if (!autoScroll || !hasMultipleSlides || paused) {
             return;
         }
 
@@ -78,6 +81,7 @@ function CarouselRoot({
         autoScrollTimeout,
         goToNext,
         hasMultipleSlides,
+        paused,
     ]);
 
     const isPreviousDisabled = !loop && activeSlideIndex === 0;
@@ -87,10 +91,29 @@ function CarouselRoot({
         <section
             ref={ref}
             className={cn(
-                "relative overflow-hidden rounded-lg bg-slate-950 text-white",
+                "relative overflow-hidden rounded-lg bg-main-900 text-main-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-300/50",
                 className,
             )}
             aria-roledescription="carousel"
+            aria-label={t.label}
+            tabIndex={hasMultipleSlides ? 0 : undefined}
+            onMouseEnter={() => setPaused(true)}
+            onMouseLeave={() => setPaused(false)}
+            onFocus={() => setPaused(true)}
+            onBlur={(event) => {
+                if (!event.currentTarget.contains(event.relatedTarget)) {
+                    setPaused(false);
+                }
+            }}
+            onKeyDown={(event) => {
+                if (event.key === "ArrowLeft") {
+                    event.preventDefault();
+                    goToPrevious();
+                } else if (event.key === "ArrowRight") {
+                    event.preventDefault();
+                    goToNext();
+                }
+            }}
         >
             <div
                 className={
@@ -108,7 +131,7 @@ function CarouselRoot({
                         className={
                             "group absolute inset-y-0 left-0 flex w-16 cursor-pointer items-center justify-start pl-4 text-white transition disabled:pointer-events-none disabled:opacity-45"
                         }
-                        aria-label="Previous slide"
+                        aria-label={t.previous}
                         disabled={isPreviousDisabled}
                         onClick={goToPrevious}
                     >
@@ -128,7 +151,7 @@ function CarouselRoot({
                         className={
                             "group absolute inset-y-0 right-0 flex w-16 cursor-pointer items-center justify-end pr-4 text-white transition disabled:pointer-events-none disabled:opacity-45"
                         }
-                        aria-label="Next slide"
+                        aria-label={t.next}
                         disabled={isNextDisabled}
                         onClick={goToNext}
                     >
@@ -159,7 +182,7 @@ function CarouselRoot({
                                         ? "bg-white"
                                         : "bg-white/45",
                                 )}
-                                aria-label={`Go to slide ${index + 1}`}
+                                aria-label={t.goTo(index + 1)}
                                 aria-current={
                                     activeSlideIndex === index
                                         ? "true"

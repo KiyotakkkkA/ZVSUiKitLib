@@ -8,6 +8,10 @@ import {
 } from "../../../molecules";
 import { CarouselPreview } from "./(preview)/carousel-preview";
 import usage from "./(usage)/usage.md";
+import { DemoCarouselGallery } from "./(preview)/carousel-gallery-preview";
+import carouselGalleryPreviewUsage from "./(usage)/carousel-gallery-preview.md";
+import { DemoCarouselTestimonials } from "./(preview)/carousel-testimonials-preview";
+import carouselTestimonialsPreviewUsage from "./(usage)/carousel-testimonials-preview.md";
 import { componentProps } from "./props";
 
 export const metadata: Metadata = {
@@ -44,6 +48,34 @@ export default function Page() {
                 </SectionPreview.Component>
                 <SectionPreview.Code label="CarouselExample.tsx">
                     {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "gallery",
+                    headerTitle: "Product gallery",
+                    navTitle: "Gallery",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoCarouselGallery />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="CarouselGallery.tsx">
+                    {carouselGalleryPreviewUsage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "testimonials",
+                    headerTitle: "Testimonials with autoplay",
+                    navTitle: "Testimonials",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoCarouselTestimonials />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="CarouselTestimonials.tsx">
+                    {carouselTestimonialsPreviewUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

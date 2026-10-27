@@ -1,5 +1,12 @@
-import { Children, createContext, isValidElement, useContext } from "react";
+import {
+    Children,
+    createContext,
+    isValidElement,
+    useContext,
+    type ComponentPropsWithoutRef,
+} from "react";
 import { cn } from "../../lib/utils";
+import { useLocale } from "../../hooks/useLocale";
 import type {
     BreadcrumbsProps,
     BreadcrumbsNavProps,
@@ -27,12 +34,13 @@ const BreadcrumbsRoot = ({
     className,
     ...props
 }: BreadcrumbsProps) => {
+    const t = useLocale().breadcrumbs;
     const items = Children.toArray(children).filter(isValidElement);
 
     return (
         <BreadcrumbsContext.Provider value={{ separator }}>
             <nav
-                aria-label="Breadcrumb"
+                aria-label={t.label}
                 className={cn("flex min-w-0 items-center", className)}
                 {...props}
             >
@@ -61,10 +69,43 @@ const BreadcrumbsNav = ({
     label,
     active = false,
     disabled,
+    href,
+    target,
+    rel,
     className,
     onClick,
     ...props
 }: BreadcrumbsNavProps) => {
+    const classes = cn(
+        "min-w-0 max-w-52 truncate rounded-lg px-2 py-1 text-sm",
+        "transition-colors duration-200",
+        active
+            ? "cursor-default text-main-100"
+            : "cursor-pointer text-main-400 hover:bg-main-700/60 hover:text-main-100",
+        disabled && "pointer-events-none cursor-not-allowed opacity-60",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-300/50",
+        className,
+    );
+
+    if (href !== undefined) {
+        const isInert = active || disabled;
+
+        return (
+            <a
+                {...(props as ComponentPropsWithoutRef<"a">)}
+                href={isInert ? undefined : href}
+                target={isInert ? undefined : target}
+                rel={isInert ? undefined : rel}
+                aria-current={active ? "page" : undefined}
+                aria-disabled={disabled || undefined}
+                onClick={isInert ? undefined : onClick}
+                className={cn("block", classes)}
+            >
+                {label}
+            </a>
+        );
+    }
+
     return (
         <button
             {...props}
@@ -72,16 +113,7 @@ const BreadcrumbsNav = ({
             aria-current={active ? "page" : undefined}
             disabled={disabled || active}
             onClick={onClick}
-            className={cn(
-                "min-w-0 max-w-52 truncate rounded-lg px-2 py-1 text-sm",
-                "transition-colors duration-200",
-                active
-                    ? "cursor-default text-main-100"
-                    : "cursor-pointer text-main-400 hover:bg-main-700/60 hover:text-main-100",
-                disabled && "cursor-not-allowed opacity-60",
-                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-main-300/50",
-                className,
-            )}
+            className={classes}
         >
             {label}
         </button>

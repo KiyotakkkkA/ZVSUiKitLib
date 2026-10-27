@@ -8,6 +8,12 @@ import {
 } from "../../../molecules";
 import { DemoCard } from "./(preview)/card-preview";
 import usage from "./(usage)/usage.md";
+import { DemoCardPricing } from "./(preview)/card-pricing-preview";
+import cardPricingPreviewUsage from "./(usage)/card-pricing-preview.md";
+import { DemoCardStats } from "./(preview)/card-stats-preview";
+import cardStatsPreviewUsage from "./(usage)/card-stats-preview.md";
+import { DemoCardForm } from "./(preview)/card-form-preview";
+import cardFormPreviewUsage from "./(usage)/card-form-preview.md";
 import { componentProps } from "./props";
 
 export const metadata: Metadata = {
@@ -44,6 +50,48 @@ export default function Page() {
                 </SectionPreview.Component>
                 <SectionPreview.Code label="CardExample.tsx">
                     {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "pricing",
+                    headerTitle: "Pricing plans",
+                    navTitle: "Pricing",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoCardPricing />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="CardPricing.tsx">
+                    {cardPricingPreviewUsage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "stats",
+                    headerTitle: "Stats cards",
+                    navTitle: "Stats",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoCardStats />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="CardStats.tsx">
+                    {cardStatsPreviewUsage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "form",
+                    headerTitle: "Settings form card",
+                    navTitle: "Form",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoCardForm />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="CardForm.tsx">
+                    {cardFormPreviewUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

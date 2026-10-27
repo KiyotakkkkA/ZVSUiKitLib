@@ -2,6 +2,9 @@ export type ZvsDictionary = {
     accordion: {
         toggle: string;
     };
+    breadcrumbs: {
+        label: string;
+    };
     autoFillSelector: {
         inputPlaceholder: string;
         removeTag: string;
@@ -13,8 +16,20 @@ export type ZvsDictionary = {
         hours: string;
         minutes: string;
     };
+    carousel: {
+        label: string;
+        previous: string;
+        next: string;
+        goTo: (slide: number) => string;
+    };
     chart: {
         emptyState: string;
+    };
+    codeView: {
+        copy: string;
+        copyLabel: string;
+        download: string;
+        downloadLabel: string;
     };
     dropdown: {
         triggerPlaceholder: string;
@@ -91,6 +106,9 @@ export const defaultDictionary: ZvsDictionary = {
     accordion: {
         toggle: "Развернуть",
     },
+    breadcrumbs: {
+        label: "Навигационная цепочка",
+    },
     autoFillSelector: {
         inputPlaceholder: "Введите для поиска",
         removeTag: "Удалить",
@@ -102,8 +120,20 @@ export const defaultDictionary: ZvsDictionary = {
         hours: "Часы",
         minutes: "Минуты",
     },
+    carousel: {
+        label: "Карусель",
+        previous: "Предыдущий слайд",
+        next: "Следующий слайд",
+        goTo: (slide) => `Перейти к слайду ${slide}`,
+    },
     chart: {
         emptyState: "Нет данных",
+    },
+    codeView: {
+        copy: "Копировать",
+        copyLabel: "Копировать код",
+        download: "Скачать",
+        downloadLabel: "Скачать код",
     },
     dropdown: {
         triggerPlaceholder: "Открыть",
@@ -178,6 +208,9 @@ export const enDictionary: ZvsDictionary = {
     accordion: {
         toggle: "Expand",
     },
+    breadcrumbs: {
+        label: "Breadcrumb",
+    },
     autoFillSelector: {
         inputPlaceholder: "Type to search",
         removeTag: "Remove",
@@ -189,8 +222,20 @@ export const enDictionary: ZvsDictionary = {
         hours: "Hours",
         minutes: "Minutes",
     },
+    carousel: {
+        label: "Carousel",
+        previous: "Previous slide",
+        next: "Next slide",
+        goTo: (slide) => `Go to slide ${slide}`,
+    },
     chart: {
         emptyState: "No data",
+    },
+    codeView: {
+        copy: "Copy",
+        copyLabel: "Copy code",
+        download: "Download",
+        downloadLabel: "Download code",
     },
     dropdown: {
         triggerPlaceholder: "Open",

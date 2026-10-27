@@ -13,6 +13,11 @@
 
 ### Changed
 
+- **Breaking: `Timeline.Item` `icon` is now a `ReactNode`.** Every `icon` prop in the kit takes a node; `Timeline.Item` was the last one that took an icon name. Replace `icon="check"` with `icon={<Icon icon="check" />}` — any node works, e.g. a step number or an avatar. `TableSortMode.icon` is typed as `ReactNode` too (strings still work).
+- **`Breadcrumbs.Nav` can render a link.** Pass `href` (plus optional `target` / `rel`) to get an `<a>` instead of a `<button>`; `active` and `disabled` links drop their `href`. `onClick` is now typed `MouseEventHandler<HTMLElement>`.
+- **`Carousel` follows the theme and is keyboard friendly.** The root uses theme tokens instead of hardcoded `slate`/`white`, autoplay pauses while the carousel is hovered or focused, and `ArrowLeft` / `ArrowRight` switch slides when it has focus.
+- **Localized labels for `Carousel`, `CodeView` and `Breadcrumbs`.** New dictionary groups `carousel` (`label`, `previous`, `next`, `goTo`), `codeView` (`copy`, `copyLabel`, `download`, `downloadLabel`) and `breadcrumbs` (`label`) replace the hardcoded English strings.
+
 - **Breaking: `Switcher` is now a compound component.** Replace `<Switcher value options onChange />` with `<Switcher.Root model onModelChange>` and one `<Switcher.Option value>` per option. Options take any children (icons, badges, counters), plus `disabled`, `aria-label` and `className`; `rounded` stays on `Switcher.Root` and is applied to every option. `options`, `SwitcherOption` and `classNames.tab` were removed — style an option with its own `className`.
 
   ```tsx

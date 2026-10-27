@@ -36,7 +36,7 @@ type TableClassNameResolver = string | ((item: T, index: number) => string);
 
 | Property    | Type                                               | Default | Required | Description                                                           |
 | ----------- | -------------------------------------------------- | ------- | -------- | --------------------------------------------------------------------- |
-| `icon`      | `string`                                           | -       | Yes      | Content rendered for the icon.                                        |
+| `icon`      | `ReactNode`                                         | -       | Yes      | Content rendered for the icon.                                        |
 | `key`       | `string`                                           | -       | Yes      | The key identifier.                                                   |
 | `sortFn`    | `(left: T, right: T, columnKey: string) => number` | -       | Yes      | The sort fn used by the component.                                    |
 | `direction` | `"ascending" \| "descending" \| "other"`           | -       | No       | The direction reported to assistive technology through \`aria-sort\`. |

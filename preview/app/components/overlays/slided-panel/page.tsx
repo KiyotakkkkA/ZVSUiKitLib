@@ -8,6 +8,12 @@ import {
 } from "../../../molecules";
 import { DemoSlidedPanel } from "./(preview)/slided-panel-preview";
 import usage from "./(usage)/usage.md";
+import { DemoSlidedPanelFilters } from "./(preview)/slided-panel-filters-preview";
+import slidedPanelFiltersPreviewUsage from "./(usage)/slided-panel-filters-preview.md";
+import { DemoSlidedPanelCart } from "./(preview)/slided-panel-cart-preview";
+import slidedPanelCartPreviewUsage from "./(usage)/slided-panel-cart-preview.md";
+import { DemoSlidedPanelNav } from "./(preview)/slided-panel-nav-preview";
+import slidedPanelNavPreviewUsage from "./(usage)/slided-panel-nav-preview.md";
 import { slidedPanelProps } from "./props";
 export const metadata: Metadata = {
     title: "SlidedPanel",
@@ -42,6 +48,48 @@ export default function Page() {
                 </SectionPreview.Component>
                 <SectionPreview.Code label="SlidedPanelExample.tsx">
                     {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "filters",
+                    headerTitle: "Filters panel",
+                    navTitle: "Filters",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoSlidedPanelFilters />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="SlidedPanelFilters.tsx">
+                    {slidedPanelFiltersPreviewUsage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "cart",
+                    headerTitle: "Cart drawer",
+                    navTitle: "Cart",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoSlidedPanelCart />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="SlidedPanelCart.tsx">
+                    {slidedPanelCartPreviewUsage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "mobile-nav",
+                    headerTitle: "Mobile navigation",
+                    navTitle: "Mobile nav",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoSlidedPanelNav />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="SlidedPanelNav.tsx">
+                    {slidedPanelNavPreviewUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

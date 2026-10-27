@@ -8,6 +8,8 @@ import {
 } from "../../../molecules";
 import { ChartPreview } from "./(preview)/chart-preview";
 import usage from "./(usage)/usage.md";
+import { DemoChartDashboard } from "./(preview)/chart-dashboard-preview";
+import chartDashboardPreviewUsage from "./(usage)/chart-dashboard-preview.md";
 import { componentProps } from "./props";
 
 export const metadata: Metadata = {
@@ -44,6 +46,20 @@ export default function Page() {
                 </SectionPreview.Component>
                 <SectionPreview.Code label="ChartExample.tsx">
                     {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "dashboard",
+                    headerTitle: "KPI dashboard",
+                    navTitle: "Dashboard",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoChartDashboard />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="ChartDashboard.tsx">
+                    {chartDashboardPreviewUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

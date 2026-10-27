@@ -8,6 +8,10 @@ import {
 } from "../../../molecules";
 import { DemoModal } from "./(preview)/modal-preview";
 import usage from "./(usage)/usage.md";
+import { DemoModalDelete } from "./(preview)/modal-delete-preview";
+import modalDeletePreviewUsage from "./(usage)/modal-delete-preview.md";
+import { DemoModalInvite } from "./(preview)/modal-invite-preview";
+import modalInvitePreviewUsage from "./(usage)/modal-invite-preview.md";
 import { modalProps } from "./props";
 export const metadata: Metadata = {
     title: "Modal",
@@ -42,6 +46,34 @@ export default function Page() {
                 </SectionPreview.Component>
                 <SectionPreview.Code label="ModalExample.tsx">
                     {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "delete",
+                    headerTitle: "Delete confirmation",
+                    navTitle: "Delete",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoModalDelete />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="ModalDelete.tsx">
+                    {modalDeletePreviewUsage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "invite",
+                    headerTitle: "Invite form",
+                    navTitle: "Invite",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoModalInvite />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="ModalInvite.tsx">
+                    {modalInvitePreviewUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

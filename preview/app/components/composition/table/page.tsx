@@ -8,6 +8,8 @@ import {
 } from "../../../molecules";
 import { TablePreview } from "./(preview)/table-preview";
 import usage from "./(usage)/usage.md";
+import { DemoTableUsers } from "./(preview)/table-users-preview";
+import tableUsersPreviewUsage from "./(usage)/table-users-preview.md";
 import { componentProps } from "./props";
 
 export const metadata: Metadata = {
@@ -44,6 +46,20 @@ export default function Page() {
                 </SectionPreview.Component>
                 <SectionPreview.Code label="TableExample.tsx">
                     {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "users",
+                    headerTitle: "Team members with search and actions",
+                    navTitle: "Users",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoTableUsers />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="TableUsers.tsx">
+                    {tableUsersPreviewUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

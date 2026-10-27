@@ -8,6 +8,10 @@ import {
 } from "../../../molecules";
 import { DemoScrollArea } from "./(preview)/scroll-area-preview";
 import usage from "./(usage)/usage.md";
+import { DemoScrollAreaChat } from "./(preview)/scroll-area-chat-preview";
+import scrollAreaChatPreviewUsage from "./(usage)/scroll-area-chat-preview.md";
+import { DemoScrollAreaChips } from "./(preview)/scroll-area-chips-preview";
+import scrollAreaChipsPreviewUsage from "./(usage)/scroll-area-chips-preview.md";
 import { componentProps } from "./props";
 
 export const metadata: Metadata = {
@@ -44,6 +48,34 @@ export default function Page() {
                 </SectionPreview.Component>
                 <SectionPreview.Code label="ScrollAreaExample.tsx">
                     {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "chat",
+                    headerTitle: "Chat messages",
+                    navTitle: "Chat",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoScrollAreaChat />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="ScrollAreaChat.tsx">
+                    {scrollAreaChatPreviewUsage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "chips",
+                    headerTitle: "Horizontal chips",
+                    navTitle: "Chips",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoScrollAreaChips />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="ScrollAreaChips.tsx">
+                    {scrollAreaChipsPreviewUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

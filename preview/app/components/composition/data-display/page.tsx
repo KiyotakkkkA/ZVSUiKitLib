@@ -8,6 +8,10 @@ import {
 } from "../../../molecules";
 import { DemoDataDisplay } from "./(preview)/data-display-preview";
 import usage from "./(usage)/usage.md";
+import { DemoDataDisplayOrder } from "./(preview)/data-display-order-preview";
+import dataDisplayOrderPreviewUsage from "./(usage)/data-display-order-preview.md";
+import { DemoDataDisplayServer } from "./(preview)/data-display-server-preview";
+import dataDisplayServerPreviewUsage from "./(usage)/data-display-server-preview.md";
 import { componentProps } from "./props";
 
 export const metadata: Metadata = {
@@ -44,6 +48,34 @@ export default function Page() {
                 </SectionPreview.Component>
                 <SectionPreview.Code label="DataDisplayExample.tsx">
                     {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "order",
+                    headerTitle: "Order summary",
+                    navTitle: "Order",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoDataDisplayOrder />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="DataDisplayOrder.tsx">
+                    {dataDisplayOrderPreviewUsage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "server",
+                    headerTitle: "Server details",
+                    navTitle: "Server",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoDataDisplayServer />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="DataDisplayServer.tsx">
+                    {dataDisplayServerPreviewUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

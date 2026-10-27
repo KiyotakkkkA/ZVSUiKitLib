@@ -35,7 +35,11 @@ Extends: `Omit< ComponentPropsWithoutRef<"button">, "children" >`.
 | Property | Type        | Default | Required | Description                                                 |
 | -------- | ----------- | ------- | -------- | ----------------------------------------------------------- |
 | `label`  | `ReactNode` | -       | Yes      | Renders the breadcrumb item label.                          |
-| `active` | `boolean`   | `false` | No       | Marks the item as the current page and disables its button. |
+| `active` | `boolean`   | `false` | No       | Marks the item as the current page and disables it.         |
+| `href`   | `string`    | -       | No       | Renders the item as an `<a>` link to this URL instead of a button. |
+| `target` | `HTMLAttributeAnchorTarget` | - | No | The link target, used together with `href`. |
+| `rel`    | `string`    | -       | No       | The link relationship, used together with `href`. |
+| `onClick` | `MouseEventHandler<HTMLElement>` | - | No | Runs when the item is clicked. |
 
 ### Breadcrumbs.Separator
 

@@ -1,4 +1,10 @@
-import type { ComponentPropsWithoutRef, ReactNode, Ref } from "react";
+import type {
+    ComponentPropsWithoutRef,
+    HTMLAttributeAnchorTarget,
+    MouseEventHandler,
+    ReactNode,
+    Ref,
+} from "react";
 
 export type BreadcrumbsProps = ComponentPropsWithoutRef<"nav"> & {
     /** Receives the breadcrumbs `<nav>` element. */
@@ -11,12 +17,20 @@ export type BreadcrumbsProps = ComponentPropsWithoutRef<"nav"> & {
 
 export type BreadcrumbsNavProps = Omit<
     ComponentPropsWithoutRef<"button">,
-    "children"
+    "children" | "onClick"
 > & {
     /** Renders the breadcrumb item label. */
     label: ReactNode;
-    /** Marks the item as the current page and disables its button. */
+    /** Marks the item as the current page and disables it. */
     active?: boolean;
+    /** Renders the item as an `<a>` link to this URL instead of a button. */
+    href?: string;
+    /** The link target, used together with `href`. */
+    target?: HTMLAttributeAnchorTarget;
+    /** The link relationship, used together with `href`. */
+    rel?: string;
+    /** Runs when the item is clicked. */
+    onClick?: MouseEventHandler<HTMLElement>;
 };
 
 export type BreadcrumbsSeparatorProps = ComponentPropsWithoutRef<"span"> & {

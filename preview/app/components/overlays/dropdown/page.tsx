@@ -8,6 +8,10 @@ import {
 } from "../../../molecules";
 import { DemoDropdown } from "./(preview)/dropdown-preview";
 import usage from "./(usage)/usage.md";
+import { DemoDropdownAccount } from "./(preview)/dropdown-account-preview";
+import dropdownAccountPreviewUsage from "./(usage)/dropdown-account-preview.md";
+import { DemoDropdownSort } from "./(preview)/dropdown-sort-preview";
+import dropdownSortPreviewUsage from "./(usage)/dropdown-sort-preview.md";
 import { dropdownProps } from "./props";
 export const metadata: Metadata = {
     title: "Dropdown",
@@ -42,6 +46,34 @@ export default function Page() {
                 </SectionPreview.Component>
                 <SectionPreview.Code label="DropdownExample.tsx">
                     {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "account",
+                    headerTitle: "Account menu",
+                    navTitle: "Account",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoDropdownAccount />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="DropdownAccount.tsx">
+                    {dropdownAccountPreviewUsage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "sort",
+                    headerTitle: "Sort selector",
+                    navTitle: "Sort",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoDropdownSort />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="DropdownSort.tsx">
+                    {dropdownSortPreviewUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

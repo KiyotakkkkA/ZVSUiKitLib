@@ -10,7 +10,9 @@ type CodeProps = SlotProps & { label?: string };
 function Component({ className, children }: SlotProps) {
     return (
         <div className={cx("demo-stage", className)}>
-            <div>{children}</div>
+            <div className="flex w-full min-w-0 justify-center">
+                {children}
+            </div>
         </div>
     );
 }

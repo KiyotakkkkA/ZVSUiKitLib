@@ -8,6 +8,10 @@ import {
 } from "../../../molecules";
 import { DemoSeparator } from "./(preview)/separator-preview";
 import usage from "./(usage)/usage.md";
+import { DemoSeparatorLogin } from "./(preview)/separator-login-preview";
+import separatorLoginPreviewUsage from "./(usage)/separator-login-preview.md";
+import { DemoSeparatorToolbar } from "./(preview)/separator-toolbar-preview";
+import separatorToolbarPreviewUsage from "./(usage)/separator-toolbar-preview.md";
 import { componentProps } from "./props";
 
 export const metadata: Metadata = {
@@ -44,6 +48,34 @@ export default function Page() {
                 </SectionPreview.Component>
                 <SectionPreview.Code label="SeparatorExample.tsx">
                     {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "login",
+                    headerTitle: "Sign-in card",
+                    navTitle: "Sign-in",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoSeparatorLogin />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="SeparatorLogin.tsx">
+                    {separatorLoginPreviewUsage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "toolbar",
+                    headerTitle: "Toolbar and stats",
+                    navTitle: "Toolbar",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoSeparatorToolbar />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="SeparatorToolbar.tsx">
+                    {separatorToolbarPreviewUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

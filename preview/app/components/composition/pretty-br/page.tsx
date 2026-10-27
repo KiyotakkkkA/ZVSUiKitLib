@@ -8,6 +8,8 @@ import {
 } from "../../../molecules";
 import { DemoPrettyBR } from "./(preview)/pretty-br-preview";
 import usage from "./(usage)/usage.md";
+import { DemoPrettyBRForm } from "./(preview)/pretty-br-form-preview";
+import prettyBrFormPreviewUsage from "./(usage)/pretty-br-form-preview.md";
 import { componentProps } from "./props";
 
 export const metadata: Metadata = {
@@ -44,6 +46,20 @@ export default function Page() {
                 </SectionPreview.Component>
                 <SectionPreview.Code label="PrettyBRExample.tsx">
                     {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "form-sections",
+                    headerTitle: "Form sections",
+                    navTitle: "Form",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoPrettyBRForm />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="PrettyBRForm.tsx">
+                    {prettyBrFormPreviewUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

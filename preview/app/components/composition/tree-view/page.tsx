@@ -8,6 +8,10 @@ import {
 } from "../../../molecules";
 import { DemoTreeView } from "./(preview)/tree-view-preview";
 import usage from "./(usage)/usage.md";
+import { DemoTreeViewExplorer } from "./(preview)/tree-view-explorer-preview";
+import treeViewExplorerPreviewUsage from "./(usage)/tree-view-explorer-preview.md";
+import { DemoTreeViewDocsNav } from "./(preview)/tree-view-docs-nav-preview";
+import treeViewDocsNavPreviewUsage from "./(usage)/tree-view-docs-nav-preview.md";
 import { componentProps } from "./props";
 
 export const metadata: Metadata = {
@@ -44,6 +48,34 @@ export default function Page() {
                 </SectionPreview.Component>
                 <SectionPreview.Code label="TreeViewExample.tsx">
                     {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "explorer",
+                    headerTitle: "File explorer",
+                    navTitle: "Explorer",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoTreeViewExplorer />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="TreeViewExplorer.tsx">
+                    {treeViewExplorerPreviewUsage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "docs-nav",
+                    headerTitle: "Docs sidebar",
+                    navTitle: "Docs nav",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoTreeViewDocsNav />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="TreeViewDocsNav.tsx">
+                    {treeViewDocsNavPreviewUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

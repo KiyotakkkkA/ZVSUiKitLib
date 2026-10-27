@@ -8,6 +8,10 @@ import {
 } from "../../../molecules";
 import { PaginationPreview } from "./(preview)/pagination-preview";
 import usage from "./(usage)/usage.md";
+import { DemoPaginationTable } from "./(preview)/pagination-table-preview";
+import paginationTablePreviewUsage from "./(usage)/pagination-table-preview.md";
+import { DemoPaginationCompact } from "./(preview)/pagination-compact-preview";
+import paginationCompactPreviewUsage from "./(usage)/pagination-compact-preview.md";
 import { componentProps } from "./props";
 
 export const metadata: Metadata = {
@@ -44,6 +48,34 @@ export default function Page() {
                 </SectionPreview.Component>
                 <SectionPreview.Code label="PaginationExample.tsx">
                     {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "with-table",
+                    headerTitle: "Paginated table",
+                    navTitle: "With table",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoPaginationTable />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="PaginationTable.tsx">
+                    {paginationTablePreviewUsage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "compact",
+                    headerTitle: "Without page size",
+                    navTitle: "Compact",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoPaginationCompact />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="PaginationCompact.tsx">
+                    {paginationCompactPreviewUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

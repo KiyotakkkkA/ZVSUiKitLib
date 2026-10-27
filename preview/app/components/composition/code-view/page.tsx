@@ -8,6 +8,10 @@ import {
 } from "../../../molecules";
 import { DemoCodeView } from "./(preview)/code-view-preview";
 import usage from "./(usage)/usage.md";
+import { DemoCodeViewInstall } from "./(preview)/code-view-install-preview";
+import codeViewInstallPreviewUsage from "./(usage)/code-view-install-preview.md";
+import { DemoCodeViewFile } from "./(preview)/code-view-file-preview";
+import codeViewFilePreviewUsage from "./(usage)/code-view-file-preview.md";
 import { componentProps } from "./props";
 
 export const metadata: Metadata = {
@@ -44,6 +48,34 @@ export default function Page() {
                 </SectionPreview.Component>
                 <SectionPreview.Code label="CodeViewExample.tsx">
                     {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "install",
+                    headerTitle: "Install command",
+                    navTitle: "Install",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoCodeViewInstall />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="CodeViewInstall.tsx">
+                    {codeViewInstallPreviewUsage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "file",
+                    headerTitle: "Source file with custom actions",
+                    navTitle: "File",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoCodeViewFile />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="CodeViewFile.tsx">
+                    {codeViewFilePreviewUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

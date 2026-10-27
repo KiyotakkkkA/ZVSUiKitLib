@@ -16,6 +16,7 @@ import {
 } from "shiki";
 import { cn } from "../../lib/utils";
 import { ScrollArea } from "../ScrollArea/ScrollArea";
+import { useLocale } from "../../hooks/useLocale";
 import type {
     CodeViewContentProps,
     CodeViewContextValue,
@@ -257,6 +258,7 @@ const useCodeView = (): CodeViewContextValue => {
 
 const CodeViewDefaultActions = memo(() => {
     const { copyable, downloadable, copyCode, downloadCode } = useCodeView();
+    const t = useLocale().codeView;
 
     if (!copyable && !downloadable) return null;
 
@@ -271,24 +273,24 @@ const CodeViewDefaultActions = memo(() => {
             {downloadable && (
                 <button
                     type="button"
-                    aria-label="Download code"
+                    aria-label={t.downloadLabel}
                     className={btnClass}
                     onClick={downloadCode}
                 >
                     <Icon icon="download" width={14} height={14} />
-                    <span className={"hidden sm:inline"}>Download</span>
+                    <span className={"hidden sm:inline"}>{t.download}</span>
                 </button>
             )}
 
             {copyable && (
                 <button
                     type="button"
-                    aria-label="Copy code"
+                    aria-label={t.copyLabel}
                     className={btnClass}
                     onClick={() => void copyCode()}
                 >
                     <Icon icon="content-copy" width={14} height={14} />
-                    <span className={"hidden sm:inline"}>Copy</span>
+                    <span className={"hidden sm:inline"}>{t.copy}</span>
                 </button>
             )}
         </div>

@@ -23,7 +23,7 @@ export const componentProps: ComponentAPIDoc = {
     compound: [
         {
             name: "Nav",
-            description: "Button breadcrumb item.",
+            description: "Breadcrumb item: a button, or a link when href is passed.",
             props: {
                 label: {
                     type: "ReactNode",
@@ -34,8 +34,20 @@ export const componentProps: ComponentAPIDoc = {
                     description: "Marks the current non-interactive item.",
                     defaultValue: "false",
                 },
+                href: {
+                    type: "string",
+                    description: "Renders the item as an <a> link instead of a button.",
+                },
+                target: {
+                    type: "HTMLAttributeAnchorTarget",
+                    description: "Link target, used together with href.",
+                },
+                rel: {
+                    type: "string",
+                    description: "Link relationship, used together with href.",
+                },
                 onClick: {
-                    type: "MouseEventHandler<HTMLButtonElement>",
+                    type: "MouseEventHandler<HTMLElement>",
                     description: "Handles navigation.",
                 },
                 className: {

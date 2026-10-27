@@ -32,7 +32,7 @@ import { Timeline } from "@kiyotakkkka/zvs-uikit-lib";
 | Property    | Type           | Default | Required | Description                                |
 | ----------- | -------------- | ------- | -------- | ------------------------------------------ |
 | `children`  | `ReactNode`    | -       | Yes      | The content rendered inside the component. |
-| `icon`      | `IconName`     | -       | Yes      | Content rendered for the icon.             |
+| `icon`      | `ReactNode`    | -       | Yes      | Content rendered for the icon.             |
 | `className` | `DivClassName` | -       | No       | CSS classes applied to the root element.   |
 
 ### Timeline.ItemTitle
@@ -58,12 +58,12 @@ import { Timeline } from "@kiyotakkkka/zvs-uikit-lib";
 
 ```tsx
 "use client";
-import { Timeline } from "@kiyotakkkka/zvs-uikit-lib";
+import { Icon, Timeline } from "@kiyotakkkka/zvs-uikit-lib";
 
 export function DemoTimeline() {
     return (
         <Timeline>
-            <Timeline.Item icon="package-variant-closed">
+            <Timeline.Item icon={<Icon icon="package-variant-closed" />}>
                 <Timeline.ItemTitle>Product Shipped</Timeline.ItemTitle>
                 <Timeline.ItemSubTitle>13th May 2021</Timeline.ItemSubTitle>
                 <Timeline.ItemContent>
@@ -72,7 +72,7 @@ export function DemoTimeline() {
                 </Timeline.ItemContent>
             </Timeline.Item>
 
-            <Timeline.Item icon="check">
+            <Timeline.Item icon={<Icon icon="check" />}>
                 <Timeline.ItemTitle>Order Confirmed</Timeline.ItemTitle>
                 <Timeline.ItemSubTitle>18th May 2021</Timeline.ItemSubTitle>
             </Timeline.Item>

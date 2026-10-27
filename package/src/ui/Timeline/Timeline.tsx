@@ -1,4 +1,3 @@
-import { Icon } from "../_shared/icons";
 import { cn } from "../../lib/utils";
 import type {
     TimelineItemProps,
@@ -25,10 +24,10 @@ function TimelineItem({ children, icon, className }: TimelineItemProps) {
         >
             <span
                 className={
-                    "relative z-10 mt-1 flex h-5 w-5 translate-x-2 items-center justify-center rounded-full bg-main-50 text-main-900"
+                    "relative z-10 mt-1 flex h-5 w-5 translate-x-2 items-center justify-center overflow-hidden rounded-full bg-main-50 text-[13px] text-main-900"
                 }
             >
-                <Icon icon={icon} width={13} height={13} aria-hidden />
+                {icon}
             </span>
             <div className={"min-w-0"}>{children}</div>
         </div>

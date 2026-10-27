@@ -7,7 +7,7 @@ export type TableClassNameResolver<T> =
 
 export type TableSortMode<T extends TableRecord> = {
     /** Content rendered for the icon. */
-    icon: string;
+    icon: ReactNode;
     /** The key identifier. */
     key: string;
     /** The sort fn used by the component. */

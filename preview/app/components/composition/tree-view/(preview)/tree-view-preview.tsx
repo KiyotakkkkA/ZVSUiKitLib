@@ -6,7 +6,7 @@ export function DemoTreeView() {
     const [selected, setSelected] = useState("react");
 
     return (
-        <TreeView className="w-full max-w-sm">
+        <TreeView className="w-full max-w-md">
             <TreeView.Catalog title="Frontend" defaultOpen>
                 <TreeView.Element
                     icon={<Icon icon="script" />}

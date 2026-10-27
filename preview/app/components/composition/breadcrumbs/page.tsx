@@ -8,6 +8,10 @@ import {
 } from "../../../molecules";
 import { BreadcrumbsPreview } from "./(preview)/breadcrumbs-preview";
 import usage from "./(usage)/usage.md";
+import { DemoBreadcrumbsLinks } from "./(preview)/breadcrumbs-links-preview";
+import breadcrumbsLinksPreviewUsage from "./(usage)/breadcrumbs-links-preview.md";
+import { DemoBreadcrumbsHeader } from "./(preview)/breadcrumbs-header-preview";
+import breadcrumbsHeaderPreviewUsage from "./(usage)/breadcrumbs-header-preview.md";
 import { componentProps } from "./props";
 
 export const metadata: Metadata = {
@@ -44,6 +48,34 @@ export default function Page() {
                 </SectionPreview.Component>
                 <SectionPreview.Code label="BreadcrumbsExample.tsx">
                     {usage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "links",
+                    headerTitle: "Links, icons and truncation",
+                    navTitle: "Links",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoBreadcrumbsLinks />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="BreadcrumbsLinks.tsx">
+                    {breadcrumbsLinksPreviewUsage}
+                </SectionPreview.Code>
+            </SectionPreview>
+            <SectionPreview
+                nav={{
+                    id: "page-header",
+                    headerTitle: "Page header",
+                    navTitle: "Page header",
+                }}
+            >
+                <SectionPreview.Component>
+                    <DemoBreadcrumbsHeader />
+                </SectionPreview.Component>
+                <SectionPreview.Code label="BreadcrumbsHeader.tsx">
+                    {breadcrumbsHeaderPreviewUsage}
                 </SectionPreview.Code>
             </SectionPreview>
             <SectionAPI

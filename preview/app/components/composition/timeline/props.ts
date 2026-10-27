@@ -21,8 +21,8 @@ export const componentProps: ComponentAPIDoc = {
             description: "Timeline event row.",
             props: {
                 icon: {
-                    type: "string",
-                    description: "Local icon name.",
+                    type: "ReactNode",
+                    description: "Marker content: an icon, avatar, number or any node.",
                 },
                 className: {
                     type: "string",
