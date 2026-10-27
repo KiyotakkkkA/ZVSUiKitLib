@@ -3,7 +3,8 @@ import { cn } from "../../lib/utils";
 import { useLocale } from "../../hooks/useLocale";
 import { Dropdown } from "../Dropdown/Dropdown";
 import { PickerTrigger } from "../_shared/PickerTrigger";
-import { TimeColumns, formatTime, parseTime } from "../_shared/TimeColumns";
+import { TimeColumns } from "../_shared/TimeColumns";
+import { formatTime, parseTime } from "../_shared/time";
 import type { InputTimeProps, TimeValue } from "./types";
 
 export function InputTime({

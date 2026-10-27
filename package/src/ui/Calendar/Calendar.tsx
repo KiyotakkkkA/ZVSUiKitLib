@@ -5,7 +5,8 @@ import type { CalendarDate, CalendarProps } from "./types";
 import { Dropdown } from "../Dropdown/Dropdown";
 import { ScrollArea } from "../ScrollArea/ScrollArea";
 import { Button } from "../Button/Button";
-import { TimeColumns, formatTime } from "../_shared/TimeColumns";
+import { TimeColumns } from "../_shared/TimeColumns";
+import { formatTime } from "../_shared/time";
 
 function startOfDay(date: Date) {
     return new Date(date.getFullYear(), date.getMonth(), date.getDate());

@@ -151,7 +151,7 @@ function SwitcherOption({
     );
 }
 
-export const Switcher = {
+export const Switcher = Object.assign(SwitcherRoot, {
     Root: SwitcherRoot,
     Option: SwitcherOption,
-};
+});
