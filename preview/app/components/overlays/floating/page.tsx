@@ -27,7 +27,7 @@ export default function Page() {
                 <SectionOverview.Title>Floating</SectionOverview.Title>
                 <SectionOverview.Description>
                     Reveal a flexible panel when its attached trigger is hovered
-                    or focused.
+                    or focused, and click the trigger to pin it open.
                 </SectionOverview.Description>
             </SectionOverview>
             <SectionPreview

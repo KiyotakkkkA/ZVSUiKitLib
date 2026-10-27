@@ -4,6 +4,7 @@ import {
     createContext,
     useCallback,
     useContext,
+    useEffect,
     useLayoutEffect,
     useMemo,
     useRef,
@@ -42,6 +43,7 @@ function useFloatingContext() {
 function FloatingRoot({
     children,
     anchor = "top-right",
+    fixOnClick = true,
     className,
     ref,
     onMouseEnter,
@@ -52,8 +54,29 @@ function FloatingRoot({
 }: FloatingProps) {
     const [triggerActive, setTriggerActive] = useState(false);
     const [contentActive, setContentActive] = useState(false);
+    const [pinned, setFixed] = useState(false);
     const rootRef = useRef<HTMLDivElement>(null);
-    const open = triggerActive || contentActive;
+    const fixed = fixOnClick && pinned;
+    const open = fixed || triggerActive || contentActive;
+
+    useEffect(() => {
+        if (!fixed) return;
+
+        const handlePointerDown = (event: PointerEvent) => {
+            if (rootRef.current?.contains(event.target as Node)) return;
+            setFixed(false);
+        };
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === "Escape") setFixed(false);
+        };
+
+        document.addEventListener("pointerdown", handlePointerDown);
+        document.addEventListener("keydown", handleKeyDown);
+        return () => {
+            document.removeEventListener("pointerdown", handlePointerDown);
+            document.removeEventListener("keydown", handleKeyDown);
+        };
+    }, [fixed]);
 
     const setRootRef = useCallback(
         (node: HTMLDivElement | null) => {
@@ -72,16 +95,20 @@ function FloatingRoot({
         () => ({
             anchor,
             open,
+            fixed,
+            fixOnClick,
             rootRef: rootRef as RefObject<HTMLDivElement | null>,
             setContentActive,
+            setFixed,
         }),
-        [anchor, open],
+        [anchor, open, fixed, fixOnClick],
     );
 
     return (
         <FloatingContext.Provider value={contextValue}>
             <div
                 ref={setRootRef}
+                data-fixed={fixed || undefined}
                 className={cn("relative inline-flex w-fit", className)}
                 onMouseEnter={(event: MouseEvent<HTMLDivElement>) => {
                     onMouseEnter?.(event);
@@ -110,12 +137,22 @@ function FloatingRoot({
 function FloatingTrigger({
     children,
     className,
+    onClick,
     ...props
 }: FloatingTriggerProps) {
-    useFloatingContext();
+    const { fixOnClick, setFixed } = useFloatingContext();
 
     return (
-        <div className={cn("inline-flex w-fit", className)} {...props}>
+        <div
+            className={cn("inline-flex w-fit", className)}
+            onClick={(event: MouseEvent<HTMLDivElement>) => {
+                onClick?.(event);
+                if (fixOnClick && !event.defaultPrevented) {
+                    setFixed((current) => !current);
+                }
+            }}
+            {...props}
+        >
             {children}
         </div>
     );

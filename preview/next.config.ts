@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
     allowedDevOrigins: [
         "172.18.0.1",
         "192.168.0.42",
-        "10.6.7.1",
+        "10.33.0.2",
         "100.98.3.154",
     ],
     experimental: {

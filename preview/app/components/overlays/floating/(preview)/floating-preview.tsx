@@ -20,6 +20,14 @@ export function DemoFloating() {
                     Action tooltip
                 </Floating.Content>
             </Floating>
+            <Floating anchor="bottom-center" fixOnClick={false}>
+                <Floating.Trigger>
+                    <Button variant="secondary">Hover only</Button>
+                </Floating.Trigger>
+                <Floating.Content className="text-sm">
+                    Not pinnable
+                </Floating.Content>
+            </Floating>
         </div>
     );
 }

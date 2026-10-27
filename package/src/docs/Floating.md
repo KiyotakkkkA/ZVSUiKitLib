@@ -22,11 +22,12 @@ import { Floating } from "@kiyotakkkka/zvs-uikit-lib";
 
 Extends: `HTMLAttributes<HTMLDivElement>`.
 
-| Property   | Type                                       | Default       | Required | Description                                |
-| ---------- | ------------------------------------------ | ------------- | -------- | ------------------------------------------ |
-| `ref`      | `Ref<HTMLDivElement>`                      | -             | No       | Receives the floating root element.        |
-| `children` | `ReactNode`                                | -             | Yes      | The content rendered inside the component. |
-| `anchor`   | [PositionAnchor](./dict.md#positionanchor) | `"top-right"` | No       | Content rendered for the anchor.           |
+| Property     | Type                                       | Default       | Required | Description                                                                                         |
+| ------------ | ------------------------------------------ | ------------- | -------- | --------------------------------------------------------------------------------------------------- |
+| `ref`        | `Ref<HTMLDivElement>`                      | -             | No       | Receives the floating root element.                                                                 |
+| `children`   | `ReactNode`                                | -             | Yes      | The content rendered inside the component.                                                          |
+| `anchor`     | [PositionAnchor](./dict.md#positionanchor) | `"top-right"` | No       | Content rendered for the anchor.                                                                    |
+| `fixOnClick` | `boolean`                                  | `true`        | No       | Clicking the trigger pins the panel open until the next trigger click, an outside click, or Escape. |
 
 ### Floating.Trigger
 
@@ -48,8 +49,11 @@ Extends: `HTMLAttributes<HTMLDivElement>`.
 | ------------------ | ------------------------------------------ | ------- | -------- | -------------------------------------------------------------- |
 | `anchor`           | [PositionAnchor](./dict.md#positionanchor) | -       | Yes      | Content rendered for the anchor.                               |
 | `open`             | `boolean`                                  | -       | Yes      | Whether the panel is currently visible.                        |
+| `fixed`            | `boolean`                                  | -       | Yes      | Whether the panel is pinned open by a trigger click.           |
+| `fixOnClick`       | `boolean`                                  | -       | Yes      | Whether clicking the trigger pins the panel open.              |
 | `rootRef`          | `RefObject<HTMLDivElement \| null>`        | -       | Yes      | Receives the floating root element used to position the panel. |
 | `setContentActive` | `(active: boolean) => void`                | -       | Yes      | Reports hover/focus state changes from the portaled panel.     |
+| `setFixed`         | `Dispatch<SetStateAction<boolean>>`        | -       | Yes      | Updates the pinned state of the panel.                         |
 
 ```tsx
 "use client";

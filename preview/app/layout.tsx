@@ -31,9 +31,10 @@ export default async function RootLayout({
         <html
             lang="ru"
             data-scroll-behavior="smooth"
+            suppressHydrationWarning
             className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
         >
-            <body>
+            <body suppressHydrationWarning>
                 <ToastProvider>{children}</ToastProvider>
             </body>
         </html>

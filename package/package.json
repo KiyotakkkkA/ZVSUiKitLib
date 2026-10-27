@@ -55,7 +55,8 @@
         "./styles.css": "./dist/styles.css"
     },
     "files": [
-        "dist"
+        "dist",
+        "changelogs"
     ],
     "dependencies": {
         "@tanstack/react-virtual": "^3.13.23",

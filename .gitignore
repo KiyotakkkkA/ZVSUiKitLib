@@ -9,6 +9,7 @@ lerna-debug.log*
 
 node_modules
 package/.docs-tmp
+package/changelogs
 dist
 dist-ssr
 *.local

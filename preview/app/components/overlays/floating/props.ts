@@ -19,6 +19,12 @@ export const floatingProps: ComponentAPIDoc = {
                 description: "Panel position relative to the trigger.",
                 directives: [positionAnchorDirective],
             },
+            fixOnClick: {
+                type: "boolean",
+                defaultValue: "true",
+                description:
+                    "Pins the panel open on trigger click until the trigger is clicked again, an outside click, or Escape.",
+            },
             className: { type: "string", description: "Root wrapper classes." },
         },
     },
@@ -26,7 +32,7 @@ export const floatingProps: ComponentAPIDoc = {
         {
             name: "Trigger",
             description:
-                "Hover and focus trigger wrapper accepting native div attributes.",
+                "Hover, focus and click trigger wrapper accepting native div attributes.",
             props: {
                 children: {
                     type: "ReactNode",
@@ -40,7 +46,7 @@ export const floatingProps: ComponentAPIDoc = {
         },
         {
             name: "Content",
-            description: "Panel revealed by trigger hover or focus-within.",
+            description: "Panel revealed by trigger hover, focus-within, or a pinning click.",
             props: {
                 children: { type: "ReactNode", description: "Panel content." },
                 className: { type: "string", description: "Panel classes." },
