@@ -4,18 +4,6 @@
 npm i @kiyotakkkka/zvs-uikit-lib
 ```
 
-```tsx
-import { Button, Text } from "@kiyotakkkka/zvs-uikit-lib";
-
-export function Example() {
-    return (
-        <Button>
-            <Text>Ready</Text>
-        </Button>
-    );
-}
-```
-
 ## Updates
 
 - See 8.0.0 version update notes in [8.0.0 CHANGELOG](changelogs/CHANGELOG_8_0_0.md).
@@ -130,32 +118,6 @@ switch themes by changing an attribute on the root element:
 }
 ```
 
-```tsx
-import { Button } from "@kiyotakkkka/zvs-uikit-lib";
-
-export function ThemeControls() {
-    return (
-        <>
-            <Button
-                onClick={() => {
-                    document.documentElement.dataset.theme = "rose";
-                }}
-            >
-                Rose theme
-            </Button>
-            <Button
-                variant="secondary"
-                onClick={() => {
-                    document.documentElement.dataset.theme = "default";
-                }}
-            >
-                Reset
-            </Button>
-        </>
-    );
-}
-```
-
 The same CSS selectors work during SSR, so the initial theme is available
 without a provider or a client-side theme API.
 
@@ -220,112 +182,88 @@ walking the import graph of that entry point.
 
 ### Components: Input & Form Controls
 
-| Component            | Purpose                                                                  | Documentation                                                |
-| -------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------ |
-| `AutoFillSelector`   | Multi-select with search/autocomplete.                                   | [AutoFillSelector](package/src/docs/AutoFillSelector.md)     |
-| `Button`             | Base button with variants and shape options.                             | [Button](package/src/docs/Button.md)                         |
-| `Calendar`           | Date calendar with constraints and custom day rendering.                 | [Calendar](package/src/docs/Calendar.md)                     |
-| `InputBig`           | Multiline text input.                                                    | [InputBig](package/src/docs/InputBig.md)                     |
-| `Field`              | Label, description and error wrapper for any control.                    | [Field](package/src/docs/Field.md)                           |
-| `InputCheckBox`      | `true/false` checkbox control.                                           | [InputCheckBox](package/src/docs/InputCheckBox.md)           |
-| `InputCheckBoxGroup` | Connects checkbox controls to a shared boolean model.                    | [InputCheckBoxGroup](package/src/docs/InputCheckBoxGroup.md) |
-| `InputCheckSlided`   | `true/false` switch control.                                             | [InputCheckSlided](package/src/docs/InputCheckSlided.md)     |
-| `InputColor`         | Custom color picker with optional preset palette.                        | [InputColor](package/src/docs/InputColor.md)                 |
-| `InputDate`          | Date input with calendar popup.                                          | [InputDate](package/src/docs/InputDate.md)                   |
-| `InputDropZone`      | File drop zone with previews and single/multiple modes.                  | [InputDropZone](package/src/docs/InputDropZone.md)           |
-| `InputPins`          | Segmented input for PIN, OTP, or short confirmation codes.               | [InputPins](package/src/docs/InputPins.md)                   |
-| `InputRadio`         | Radio control for selecting one option from a group.                     | [InputRadio](package/src/docs/InputRadio.md)                 |
-| `InputRadioGroup`    | Connects radio controls to an exclusive boolean model.                   | [InputRadioGroup](package/src/docs/InputRadioGroup.md)       |
-| `InputRange`         | Controlled range input for selecting a pair of numeric boundaries.       | [InputRange](package/src/docs/InputRange.md)                 |
-| `InputSlider`        | Numeric range slider with optional value label.                          | [InputSlider](package/src/docs/InputSlider.md)               |
-| `InputSmall`         | Single-line input with password visibility toggle for `type="password"`. | [InputSmall](package/src/docs/InputSmall.md)                 |
-| `Select`             | Single-value select control with options and optional search.            | [Select](package/src/docs/Select.md)                         |
-| `SelectNative`       | Styled native select control.                                            | [SelectNative](package/src/docs/SelectNative.md)             |
-| `Switcher`           | Segmented switch between options.                                        | [Switcher](package/src/docs/Switcher.md)                     |
-| `Tabs`               | Line-style tabs for switching between related views.                     | [Tabs](package/src/docs/Tabs.md)                             |
+| Component            | Purpose                                                                  | Documentation                                                | SSR |
+| -------------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------ | --- |
+| `AutoFillSelector`   | Multi-select with search/autocomplete.                                   | [AutoFillSelector](package/src/docs/AutoFillSelector.md)     | No  |
+| `Button`             | Base button with variants and shape options.                             | [Button](package/src/docs/Button.md)                         | Yes |
+| `Calendar`           | Date calendar with constraints and custom day rendering.                 | [Calendar](package/src/docs/Calendar.md)                     | No  |
+| `InputBig`           | Multiline text input.                                                    | [InputBig](package/src/docs/InputBig.md)                     | No  |
+| `Field`              | Label, description and error wrapper for any control.                    | [Field](package/src/docs/Field.md)                           | No  |
+| `InputCheckBox`      | `true/false` checkbox control.                                           | [InputCheckBox](package/src/docs/InputCheckBox.md)           | No  |
+| `InputCheckBoxGroup` | Connects checkbox controls to a shared boolean model.                    | [InputCheckBoxGroup](package/src/docs/InputCheckBoxGroup.md) | No  |
+| `InputCheckSlided`   | `true/false` switch control.                                             | [InputCheckSlided](package/src/docs/InputCheckSlided.md)     | No  |
+| `InputColor`         | Custom color picker with optional preset palette.                        | [InputColor](package/src/docs/InputColor.md)                 | No  |
+| `InputDate`          | Date input with calendar popup.                                          | [InputDate](package/src/docs/InputDate.md)                   | No  |
+| `InputDatetime`      | Date and time input with calendar popup.                                 | [InputDatetime](package/src/docs/InputDatetime.md)           | No  |
+| `InputDropZone`      | File drop zone with previews and single/multiple modes.                  | [InputDropZone](package/src/docs/InputDropZone.md)           | No  |
+| `InputPins`          | Segmented input for PIN, OTP, or short confirmation codes.               | [InputPins](package/src/docs/InputPins.md)                   | No  |
+| `InputRadio`         | Radio control for selecting one option from a group.                     | [InputRadio](package/src/docs/InputRadio.md)                 | No  |
+| `InputRadioGroup`    | Connects radio controls to an exclusive boolean model.                   | [InputRadioGroup](package/src/docs/InputRadioGroup.md)       | No  |
+| `InputRange`         | Controlled range input for selecting a pair of numeric boundaries.       | [InputRange](package/src/docs/InputRange.md)                 | No  |
+| `InputSlider`        | Numeric range slider with optional value label.                          | [InputSlider](package/src/docs/InputSlider.md)               | No  |
+| `InputSmall`         | Single-line input with password visibility toggle for `type="password"`. | [InputSmall](package/src/docs/InputSmall.md)                 | No  |
+| `InputTime`          | Time input with hour and minute selection.                               | [InputTime](package/src/docs/InputTime.md)                   | No  |
+| `Select`             | Single-value select control with options and optional search.            | [Select](package/src/docs/Select.md)                         | No  |
+| `SelectNative`       | Styled native select control.                                            | [SelectNative](package/src/docs/SelectNative.md)             | Yes |
+| `Switcher`           | Segmented switch between options.                                        | [Switcher](package/src/docs/Switcher.md)                     | No  |
+| `Tabs`               | Line-style tabs for switching between related views.                     | [Tabs](package/src/docs/Tabs.md)                             | No  |
 
 ### Components: Overlays
 
-| Component     | Purpose                                            | Documentation                                  |
-| ------------- | -------------------------------------------------- | ---------------------------------------------- |
-| `ContextMenu` | Right-click menu with items and submenus.          | [ContextMenu](package/src/docs/ContextMenu.md) |
-| `Dropdown`    | Generic dropdown popup container.                  | [Dropdown](package/src/docs/Dropdown.md)       |
-| `Floating`    | Hover/focus floating panel attached to an element. | [Floating](package/src/docs/Floating.md)       |
-| `Modal`       | Modal dialog window.                               | [Modal](package/src/docs/Modal.md)             |
-| `SlidedPanel` | Slide-in edge panel with four placements.          | [SlidedPanel](package/src/docs/SlidedPanel.md) |
-| `Tooltip`     | Small hover/focus label attached to an element.    | [Tooltip](package/src/docs/Tooltip.md)         |
+| Component     | Purpose                                            | Documentation                                  | SSR |
+| ------------- | -------------------------------------------------- | ---------------------------------------------- | --- |
+| `ContextMenu` | Right-click menu with items and submenus.          | [ContextMenu](package/src/docs/ContextMenu.md) | No  |
+| `Dropdown`    | Generic dropdown popup container.                  | [Dropdown](package/src/docs/Dropdown.md)       | No  |
+| `Floating`    | Hover/focus floating panel attached to an element. | [Floating](package/src/docs/Floating.md)       | No  |
+| `Modal`       | Modal dialog window.                               | [Modal](package/src/docs/Modal.md)             | No  |
+| `SlidedPanel` | Slide-in edge panel with four placements.          | [SlidedPanel](package/src/docs/SlidedPanel.md) | No  |
+| `Tooltip`     | Small hover/focus label attached to an element.    | [Tooltip](package/src/docs/Tooltip.md)         | No  |
 
 ### Components: Structure & Composition
 
-| Component        | Purpose                                                                                           | Documentation                                        |
-| ---------------- | ------------------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| `Accordion`      | Expandable section with animated height.                                                          | [Accordion](package/src/docs/Accordion.md)           |
-| `Breadcrumbs`    | Navigation trail for current page location.                                                       | [Breadcrumbs](package/src/docs/Breadcrumbs.md)       |
-| `Card`           | Container with optional header/body/footer sections.                                              | [Card](package/src/docs/Card.md)                     |
-| `Carousel`       | Image or content carousel with navigation and optional auto-scroll.                               | [Carousel](package/src/docs/Carousel.md)             |
-| `Chart`          | Line/bar chart with multiple series and custom styling based on Recharts. Imported from `/chart`. | [Chart](package/src/docs/Chart.md)                   |
-| `CodeView`       | Code block with syntax highlighting and copy button. Imported from `/code-view`.                  | [CodeView](package/src/docs/CodeView.md)             |
-| `DataDisplay`    | Compact list for displaying labeled data rows.                                                    | [DataDisplay](package/src/docs/DataDisplay.md)       |
-| `Pagination`     | List pagination with range summary and page-size selector.                                        | [Pagination](package/src/docs/Pagination.md)         |
-| `PrettyBR`       | Decorative horizontal divider with icon and label.                                                | [PrettyBR](package/src/docs/PrettyBR.md)             |
-| `ResizablePanel` | Layout with resizable sidebar and content area.                                                   | [ResizablePanel](package/src/docs/ResizablePanel.md) |
-| `ScrollArea`     | Styled scroll container.                                                                          | [ScrollArea](package/src/docs/ScrollArea.md)         |
-| `Separator`      | Horizontal/vertical separator.                                                                    | [Separator](package/src/docs/Separator.md)           |
-| `Table`          | Column-based table with per-column sorting modes.                                                 | [Table](package/src/docs/Table.md)                   |
-| `Timeline`       | Compound timeline for ordered events.                                                             | [Timeline](package/src/docs/Timeline.md)             |
-| `TreeView`       | Hierarchical list with optional virtualization.                                                   | [TreeView](package/src/docs/TreeView.md)             |
+| Component        | Purpose                                                                                           | Documentation                                        | SSR |
+| ---------------- | ------------------------------------------------------------------------------------------------- | ---------------------------------------------------- | --- |
+| `Accordion`      | Expandable section with animated height.                                                          | [Accordion](package/src/docs/Accordion.md)           | No  |
+| `AccordionGroup` | Groups accordions with single or multiple open sections.                                          | [AccordionGroup](package/src/docs/AccordionGroup.md) | No  |
+| `Breadcrumbs`    | Navigation trail for current page location.                                                       | [Breadcrumbs](package/src/docs/Breadcrumbs.md)       | No  |
+| `Card`           | Container with optional header/body/footer sections.                                              | [Card](package/src/docs/Card.md)                     | Yes |
+| `Carousel`       | Image or content carousel with navigation and optional auto-scroll.                               | [Carousel](package/src/docs/Carousel.md)             | No  |
+| `Chart`          | Line/bar chart with multiple series and custom styling based on Recharts. Imported from `/chart`. | [Chart](package/src/docs/Chart.md)                   | No  |
+| `CodeView`       | Code block with syntax highlighting and copy button. Imported from `/code-view`.                  | [CodeView](package/src/docs/CodeView.md)             | No  |
+| `DataDisplay`    | Compact list for displaying labeled data rows.                                                    | [DataDisplay](package/src/docs/DataDisplay.md)       | Yes |
+| `Pagination`     | List pagination with range summary and page-size selector.                                        | [Pagination](package/src/docs/Pagination.md)         | No  |
+| `PrettyBR`       | Decorative horizontal divider with icon and label.                                                | [PrettyBR](package/src/docs/PrettyBR.md)             | No  |
+| `ResizablePanel` | Layout with resizable sidebar and content area.                                                   | [ResizablePanel](package/src/docs/ResizablePanel.md) | No  |
+| `ScrollArea`     | Styled scroll container.                                                                          | [ScrollArea](package/src/docs/ScrollArea.md)         | Yes |
+| `Separator`      | Horizontal/vertical separator.                                                                    | [Separator](package/src/docs/Separator.md)           | Yes |
+| `Table`          | Column-based table with per-column sorting modes.                                                 | [Table](package/src/docs/Table.md)                   | No  |
+| `Timeline`       | Compound timeline for ordered events.                                                             | [Timeline](package/src/docs/Timeline.md)             | No  |
+| `TreeView`       | Hierarchical list with optional virtualization.                                                   | [TreeView](package/src/docs/TreeView.md)             | No  |
 
 ### Components: Status & Feedback
 
-| Component     | Purpose                                           | Documentation                                  |
-| ------------- | ------------------------------------------------- | ---------------------------------------------- |
-| `Alert`       | Alert/notification block.                         | [Alert](package/src/docs/Alert.md)             |
-| `Badge`       | Compact status indicator.                         | [Badge](package/src/docs/Badge.md)             |
-| `EmptyState`  | Placeholder for empty or first-run states.        | [EmptyState](package/src/docs/EmptyState.md)   |
-| `Loader`      | Loading spinner.                                  | [Loader](package/src/docs/Loader.md)           |
-| `ProgressBar` | Progress indicator with optional label and value. | [ProgressBar](package/src/docs/ProgressBar.md) |
-| `Skeleton`    | Placeholder block for loading content.            | [Skeleton](package/src/docs/Skeleton.md)       |
+| Component     | Purpose                                           | Documentation                                  | SSR |
+| ------------- | ------------------------------------------------- | ---------------------------------------------- | --- |
+| `Alert`       | Alert/notification block.                         | [Alert](package/src/docs/Alert.md)             | Yes |
+| `Badge`       | Compact status indicator.                         | [Badge](package/src/docs/Badge.md)             | Yes |
+| `EmptyState`  | Placeholder for empty or first-run states.        | [EmptyState](package/src/docs/EmptyState.md)   | Yes |
+| `Loader`      | Loading spinner.                                  | [Loader](package/src/docs/Loader.md)           | Yes |
+| `ProgressBar` | Progress indicator with optional label and value. | [ProgressBar](package/src/docs/ProgressBar.md) | Yes |
+| `Skeleton`    | Placeholder block for loading content.            | [Skeleton](package/src/docs/Skeleton.md)       | Yes |
 
 ### Components: Typography
 
-| Component    | Purpose                                    | Documentation                                |
-| ------------ | ------------------------------------------ | -------------------------------------------- |
-| `Text`       | Body and supporting text.                  | [Text](package/src/docs/Text.md)             |
-| `Heading`    | Semantic heading scale.                    | [Heading](package/src/docs/Heading.md)       |
-| `Blockquote` | Block quotation with optional attribution. | [Blockquote](package/src/docs/Blockquote.md) |
-| `Code`       | Inline and block code treatment.           | [Code](package/src/docs/Code.md)             |
-| `Em`         | Semantic stress emphasis.                  | [Em](package/src/docs/Em.md)                 |
-| `Kbd`        | Keyboard input token.                      | [Kbd](package/src/docs/Kbd.md)               |
-| `Link`       | Styled semantic anchor.                    | [Link](package/src/docs/Link.md)             |
-| `Quote`      | Inline semantic quotation.                 | [Quote](package/src/docs/Quote.md)           |
-| `Strong`     | Semantic importance.                       | [Strong](package/src/docs/Strong.md)         |
-
-While using Next.js you can import some components like SSR-friendly from `@kiyotakkkka/zvs-uikit-lib/server`:
-
-List of SSR-friendly components:
-
-- Alert
-- Badge
-- Button
-- Card
-- DataDisplay
-- EmptyState
-- InputBig
-- Loader
-- ProgressBar
-- SelectNative
-- ScrollArea
-- Separator
-- Skeleton
-- Text
-- Heading
-- Blockquote
-- Code
-- Em
-- Kbd
-- Link
-- Quote
-- Strong
+| Component    | Purpose                                    | Documentation                                | SSR |
+| ------------ | ------------------------------------------ | -------------------------------------------- | --- |
+| `Text`       | Body and supporting text.                  | [Text](package/src/docs/Text.md)             | Yes |
+| `Heading`    | Semantic heading scale.                    | [Heading](package/src/docs/Heading.md)       | Yes |
+| `Blockquote` | Block quotation with optional attribution. | [Blockquote](package/src/docs/Blockquote.md) | Yes |
+| `Code`       | Inline and block code treatment.           | [Code](package/src/docs/Code.md)             | Yes |
+| `Em`         | Semantic stress emphasis.                  | [Em](package/src/docs/Em.md)                 | Yes |
+| `Kbd`        | Keyboard input token.                      | [Kbd](package/src/docs/Kbd.md)               | Yes |
+| `Link`       | Styled semantic anchor.                    | [Link](package/src/docs/Link.md)             | Yes |
+| `Quote`      | Inline semantic quotation.                 | [Quote](package/src/docs/Quote.md)           | Yes |
+| `Strong`     | Semantic importance.                       | [Strong](package/src/docs/Strong.md)         | Yes |
 
 <a id="hooks"></a>
 
