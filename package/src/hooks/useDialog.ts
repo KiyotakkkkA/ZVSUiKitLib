@@ -29,6 +29,8 @@ const getFocusable = (container: HTMLElement) =>
             isVisible(element),
     );
 
+const dialogStack: object[] = [];
+
 let scrollLockCount = 0;
 let restoreOverflow = "";
 let restorePaddingRight = "";
@@ -80,6 +82,11 @@ export function useDialog<T extends HTMLElement>({
     lockScroll = true,
 }: UseDialogOptions) {
     const containerRef = useRef<T | null>(null);
+    const optionsRef = useRef({ onClose, closeOnEscape });
+
+    useEffect(() => {
+        optionsRef.current = { onClose, closeOnEscape };
+    }, [onClose, closeOnEscape]);
 
     useEffect(() => {
         const container = containerRef.current;
@@ -110,10 +117,15 @@ export function useDialog<T extends HTMLElement>({
 
         if (!open || !container) return;
 
+        const entry = {};
+        dialogStack.push(entry);
+
         const onKeyDown = (event: KeyboardEvent) => {
-            if (closeOnEscape && event.key === "Escape") {
+            if (dialogStack[dialogStack.length - 1] !== entry) return;
+
+            if (optionsRef.current.closeOnEscape && event.key === "Escape") {
                 event.stopPropagation();
-                onClose();
+                optionsRef.current.onClose();
                 return;
             }
 
@@ -150,8 +162,11 @@ export function useDialog<T extends HTMLElement>({
         };
 
         document.addEventListener("keydown", onKeyDown, true);
-        return () => document.removeEventListener("keydown", onKeyDown, true);
-    }, [open, onClose, closeOnEscape]);
+        return () => {
+            document.removeEventListener("keydown", onKeyDown, true);
+            dialogStack.splice(dialogStack.indexOf(entry), 1);
+        };
+    }, [open]);
 
     return containerRef;
 }

@@ -50,6 +50,15 @@ type ContextMenuContextValue = {
 
 const ContextMenuContext = createContext<ContextMenuContextValue | null>(null);
 
+const setAtDepth = (ids: string[], depth: number, id: string) => {
+    const next = ids.slice(0, depth);
+    next[depth] = id;
+    return next;
+};
+
+const dropAtDepth = (ids: string[], depth: number, id: string) =>
+    ids[depth] === id ? ids.slice(0, depth) : ids;
+
 const useContextMenu = () => {
     const context = useContext(ContextMenuContext);
 
@@ -69,58 +78,49 @@ const ContextMenuRoot = ({ children }: ContextMenuProps) => {
         y: 0,
     });
 
-    const [activeSubIds, setActiveSubIds] = useState<string[]>([]);
-    const [pinnedSubIds, setPinnedSubIds] = useState<string[]>([]);
+    const [subs, setSubs] = useState<{ active: string[]; pinned: string[] }>(
+        { active: [], pinned: [] },
+    );
+    const activeSubIds = subs.active;
+    const pinnedSubIds = subs.pinned;
 
     const close = useCallback(() => {
         setState((prev) => ({ ...prev, open: false }));
-        setActiveSubIds([]);
-        setPinnedSubIds([]);
+        setSubs({ active: [], pinned: [] });
     }, []);
 
     const openSubId = useCallback((id: string, depth: number) => {
-        setActiveSubIds((prev) => {
-            const next = prev.slice(0, depth);
-            next[depth] = id;
-            return next;
-        });
+        setSubs((prev) => ({
+            ...prev,
+            active: setAtDepth(prev.active, depth, id),
+        }));
     }, []);
 
     const closeSubId = useCallback((id: string, depth: number) => {
-        setActiveSubIds((prev) => {
-            if (prev[depth] !== id) return prev;
-            return prev.slice(0, depth);
-        });
+        setSubs((prev) => {
+            if (prev.active[depth] !== id && prev.pinned[depth] !== id) {
+                return prev;
+            }
 
-        setPinnedSubIds((prev) => {
-            if (prev[depth] !== id) return prev;
-            return prev.slice(0, depth);
+            return {
+                active: dropAtDepth(prev.active, depth, id),
+                pinned: dropAtDepth(prev.pinned, depth, id),
+            };
         });
     }, []);
 
     const togglePinnedSubId = useCallback((id: string, depth: number) => {
-        setPinnedSubIds((prev) => {
-            const isPinned = prev[depth] === id;
-
-            if (isPinned) {
-                setActiveSubIds((activePrev) => {
-                    if (activePrev[depth] !== id) return activePrev;
-                    return activePrev.slice(0, depth);
-                });
-
-                return prev.slice(0, depth);
-            }
-
-            setActiveSubIds((activePrev) => {
-                const next = activePrev.slice(0, depth);
-                next[depth] = id;
-                return next;
-            });
-
-            const next = prev.slice(0, depth);
-            next[depth] = id;
-            return next;
-        });
+        setSubs((prev) =>
+            prev.pinned[depth] === id
+                ? {
+                      active: dropAtDepth(prev.active, depth, id),
+                      pinned: prev.pinned.slice(0, depth),
+                  }
+                : {
+                      active: setAtDepth(prev.active, depth, id),
+                      pinned: setAtDepth(prev.pinned, depth, id),
+                  },
+        );
     }, []);
 
     const value = useMemo(

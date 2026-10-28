@@ -29,7 +29,7 @@ function resolveRowKey<T extends TableRecord>(
 ) {
     return typeof rowKey === "function"
         ? rowKey(item, index)
-        : String(item[rowKey] ?? "");
+        : String(item[rowKey] ?? index);
 }
 
 function getColumnValue<T extends TableRecord>(
@@ -76,6 +76,26 @@ export function Table<T extends TableRecord>({
             activeSortMode.sortFn(left, right, activeSortColumn.key),
         );
     }, [activeSortColumn, activeSortMode, data]);
+
+    const rowClassName = useMemo(
+        () => cn(defaultRowClassName, classNames?.row),
+        [classNames?.row],
+    );
+
+    const cellClassNames = useMemo(
+        () =>
+            columns.map((column) =>
+                cn(
+                    defaultCellClassName,
+                    classNames?.cell,
+                    column.className,
+                    typeof column.cellClassName === "function"
+                        ? undefined
+                        : column.cellClassName,
+                ),
+            ),
+        [columns, classNames?.cell],
+    );
 
     const toggleSortByColumn = useCallback((column: TableColumn<T>) => {
         const modeKeys = (column.sortModes ?? []).map((mode) => mode.key);
@@ -186,29 +206,34 @@ export function Table<T extends TableRecord>({
                     sortedData.map((item, index) => (
                         <tr
                             key={resolveRowKey(rowKey, item, index)}
-                            className={cn(
-                                defaultRowClassName,
-                                classNames?.row,
-                                resolveClassName(
-                                    classNames?.rowDynamic,
-                                    item,
-                                    index,
-                                ),
-                            )}
+                            className={
+                                classNames?.rowDynamic
+                                    ? cn(
+                                          rowClassName,
+                                          resolveClassName(
+                                              classNames.rowDynamic,
+                                              item,
+                                              index,
+                                          ),
+                                      )
+                                    : rowClassName
+                            }
                         >
-                            {columns.map((column) => (
+                            {columns.map((column, columnIndex) => (
                                 <td
                                     key={column.key}
-                                    className={cn(
-                                        defaultCellClassName,
-                                        classNames?.cell,
-                                        column.className,
-                                        resolveClassName(
-                                            column.cellClassName,
-                                            item,
-                                            index,
-                                        ),
-                                    )}
+                                    className={
+                                        typeof column.cellClassName ===
+                                        "function"
+                                            ? cn(
+                                                  cellClassNames[columnIndex],
+                                                  column.cellClassName(
+                                                      item,
+                                                      index,
+                                                  ),
+                                              )
+                                            : cellClassNames[columnIndex]
+                                    }
                                 >
                                     {column.render
                                         ? column.render(item, index)

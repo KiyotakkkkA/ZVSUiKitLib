@@ -3,6 +3,7 @@ import {
     useContext,
     useEffect,
     useId,
+    useMemo,
     useState,
     type MouseEvent,
 } from "react";
@@ -111,6 +112,11 @@ function ModalRoot({
         onClose,
         closeOnEscape,
     });
+    const mergedRef = useMemo(() => mergeRefs(panelRef, ref), [panelRef, ref]);
+    const contextValue = useMemo(
+        () => ({ onClose, titleId, registerTitle: setHasTitle }),
+        [onClose, titleId],
+    );
 
     if (!open || !portalContainer) {
         return null;
@@ -130,11 +136,9 @@ function ModalRoot({
             )}
             onClick={onOverlayClick}
         >
-            <ModalContext.Provider
-                value={{ onClose, titleId, registerTitle: setHasTitle }}
-            >
+            <ModalContext.Provider value={contextValue}>
                 <div
-                    ref={mergeRefs(panelRef, ref)}
+                    ref={mergedRef}
                     role="dialog"
                     aria-modal
                     aria-label={hasTitle ? undefined : label}

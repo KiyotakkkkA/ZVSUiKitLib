@@ -6,6 +6,9 @@ import type { InputDropZoneProps, SelectedFileItem } from "./types";
 
 const imageFileIcon = <Icon icon="file-image-outline" />;
 
+const EMPTY_FILES: File[] = [];
+const EMPTY_PREVIEW_URLS: string[] = [];
+
 const getAcceptRules = (accept: string) => {
     return accept
         .split(",")
@@ -64,8 +67,8 @@ const getFileIcon = (file: File, fallbackIcon: ReactNode) => {
 
 export const InputDropZone = ({
     file = null,
-    files = [],
-    previewUrls = [],
+    files = EMPTY_FILES,
+    previewUrls = EMPTY_PREVIEW_URLS,
     onChange,
     onFilesChange,
     multiple = false,
@@ -229,8 +232,13 @@ export const InputDropZone = ({
 
                     setIsDragging(true);
                 }}
-                onDragLeave={() => {
-                    if (!disabled) {
+                onDragLeave={(event) => {
+                    if (
+                        !disabled &&
+                        !event.currentTarget.contains(
+                            event.relatedTarget as Node | null,
+                        )
+                    ) {
                         setIsDragging(false);
                     }
                 }}

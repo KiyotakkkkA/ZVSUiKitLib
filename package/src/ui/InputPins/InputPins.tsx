@@ -3,6 +3,7 @@ import {
     memo,
     useCallback,
     useId,
+    useMemo,
     useRef,
     type ClipboardEvent,
     type FocusEvent,
@@ -114,10 +115,24 @@ export const InputPins = forwardRef<HTMLDivElement, InputPinsProps>(
         const inputRefs = useRef<Array<HTMLInputElement | null>>([]);
         const groupId = useId();
 
-        const normalizedValue = value.slice(0, length);
-        const values = Array.from(
-            { length },
-            (_, index) => normalizedValue[index]?.trim() ?? "",
+        const values = useMemo(() => {
+            const normalizedValue = value.slice(0, length);
+
+            return Array.from(
+                { length },
+                (_, index) => normalizedValue[index]?.trim() ?? "",
+            );
+        }, [value, length]);
+
+        const inputRefSetters = useMemo(
+            () =>
+                Array.from(
+                    { length },
+                    (_, index) => (node: HTMLInputElement | null) => {
+                        inputRefs.current[index] = node;
+                    },
+                ),
+            [length],
         );
 
         const focusInput = useCallback((index: number) => {
@@ -264,9 +279,7 @@ export const InputPins = forwardRef<HTMLDivElement, InputPinsProps>(
                             onCellChange={handleCellChange}
                             onCellKeyDown={handleCellKeyDown}
                             onCellPaste={handleCellPaste}
-                            inputRef={(node) => {
-                                inputRefs.current[index] = node;
-                            }}
+                            inputRef={inputRefSetters[index]}
                         />
                     ))}
                 </div>

@@ -3,6 +3,7 @@ import {
     useContext,
     useEffect,
     useId,
+    useMemo,
     useState,
     type MouseEvent,
 } from "react";
@@ -90,6 +91,11 @@ function SlidedPanelRoot({
         onClose,
         closeOnEscape,
     });
+    const mergedRef = useMemo(() => mergeRefs(panelRef, ref), [panelRef, ref]);
+    const contextValue = useMemo(
+        () => ({ open, onClose, titleId, registerTitle: setHasTitle }),
+        [open, onClose, titleId],
+    );
 
     const onOverlayClick = (event: MouseEvent<HTMLDivElement>) => {
         if (closeOnOverlayClick && event.target === event.currentTarget) {
@@ -102,9 +108,7 @@ function SlidedPanelRoot({
     }
 
     return createPortal(
-        <SlidedPanelContext.Provider
-            value={{ open, onClose, titleId, registerTitle: setHasTitle }}
-        >
+        <SlidedPanelContext.Provider value={contextValue}>
             <div
                 className={cn(
                     "fixed inset-0 z-50 flex bg-black/60 backdrop-blur-sm transition-opacity duration-260",
@@ -118,7 +122,7 @@ function SlidedPanelRoot({
                 aria-hidden={!open}
             >
                 <section
-                    ref={mergeRefs(panelRef, ref)}
+                    ref={mergedRef}
                     role="dialog"
                     aria-modal
                     aria-label={hasTitle ? undefined : label}

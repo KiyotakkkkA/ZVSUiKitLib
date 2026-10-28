@@ -95,7 +95,7 @@ export const InputColor = forwardRef<HTMLInputElement, InputColorProps>(
 
             const normalizedValue = parseHexColor(nextValue);
 
-            if (!normalizedValue) return;
+            if (!normalizedValue || normalizedValue === currentValue) return;
 
             const { red, green, blue } = hexToRgb(normalizedValue);
             const nextHsv = rgbToHsv(red, green, blue);

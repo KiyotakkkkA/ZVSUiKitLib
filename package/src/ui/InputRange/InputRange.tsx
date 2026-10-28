@@ -183,11 +183,14 @@ export const InputRange = ({
                 safeMax,
             );
 
-            onChange(
+            const nextValue: InputRangeValue =
                 index === 0
                     ? [Math.min(snapped, end), end]
-                    : [start, Math.max(snapped, start)],
-            );
+                    : [start, Math.max(snapped, start)];
+
+            if (nextValue[0] === start && nextValue[1] === end) return;
+
+            onChange(nextValue);
         },
         [start, end, safeMin, safeMax, step, onChange],
     );

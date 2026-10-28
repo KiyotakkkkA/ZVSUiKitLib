@@ -76,12 +76,21 @@ const htmlCache = new Map<string, string>();
 const htmlCacheListeners = new Map<string, Set<() => void>>();
 const pendingRequests = new Set<string>();
 
-const setHtmlCache = (key: string, value: string) => {
-    if (htmlCache.size >= MAX_CACHE_SIZE) {
-        const oldest = htmlCache.keys().next().value;
-        if (oldest) htmlCache.delete(oldest);
+const trimHtmlCache = () => {
+    if (htmlCache.size <= MAX_CACHE_SIZE) return;
+
+    for (const key of htmlCache.keys()) {
+        if (htmlCacheListeners.has(key)) continue;
+
+        htmlCache.delete(key);
+        if (htmlCache.size <= MAX_CACHE_SIZE) return;
     }
+};
+
+const setHtmlCache = (key: string, value: string) => {
+    htmlCache.delete(key);
     htmlCache.set(key, value);
+    trimHtmlCache();
 };
 
 const subscribeToCache = (key: string, listener: () => void) => {
@@ -90,10 +99,19 @@ const subscribeToCache = (key: string, listener: () => void) => {
     }
     htmlCacheListeners.get(key)!.add(listener);
 
+    const cached = htmlCache.get(key);
+    if (cached !== undefined) {
+        htmlCache.delete(key);
+        htmlCache.set(key, cached);
+    }
+
     return () => {
         const listeners = htmlCacheListeners.get(key);
         listeners?.delete(listener);
-        if (listeners?.size === 0) htmlCacheListeners.delete(key);
+        if (listeners?.size === 0) {
+            htmlCacheListeners.delete(key);
+            trimHtmlCache();
+        }
     };
 };
 
@@ -109,6 +127,9 @@ const getHighlighter = () => {
     highlighterPromise ??= createHighlighter({
         themes: [DEFAULT_THEME],
         langs: [],
+    }).catch((error: unknown) => {
+        highlighterPromise = null;
+        throw error;
     });
     return highlighterPromise;
 };
@@ -158,16 +179,8 @@ const ensureLanguageLoaded = async (
     }
 };
 
-const hashString = (str: string): string => {
-    let hash = 5381;
-    for (let i = 0; i < str.length; i++) {
-        hash = (hash * 33) ^ str.charCodeAt(i);
-    }
-    return (hash >>> 0).toString(36);
-};
-
 const makeCacheKey = (theme: string, lang: string, code: string) =>
-    hashString(`${theme}:${lang}:${code}`);
+    `${theme}\u0000${lang}\u0000${code}`;
 
 const escapeHtml = (value: string) =>
     value.replace(/[&<>"']/g, (char) => HTML_ENTITIES[char]);
@@ -175,19 +188,21 @@ const escapeHtml = (value: string) =>
 const toFallbackHtml = (code: string) =>
     `<pre class="shiki"><code>${escapeHtml(code)}</code></pre>`;
 
-const langNormCache = new Map<string, string>();
-
 const normalizeLanguage = (language?: BundledLanguage): string => {
     const raw = String(language ?? "")
         .trim()
         .toLowerCase();
 
-    if (langNormCache.has(raw)) return langNormCache.get(raw)!;
-
-    const result = (LANGUAGE_ALIASES[raw] ?? raw) || "plaintext";
-    langNormCache.set(raw, result);
-    return result;
+    return (LANGUAGE_ALIASES[raw] ?? raw) || "plaintext";
 };
+
+const SHIKI_TRANSFORMERS = [
+    {
+        pre(node: { properties: Record<string, unknown> }) {
+            delete node.properties.style;
+        },
+    },
+];
 
 const highlightCode = async ({
     cacheKey,
@@ -217,23 +232,7 @@ const highlightCode = async ({
         const html = await highlighter.codeToHtml(code, {
             lang,
             theme,
-            transformers: [
-                {
-                    pre(node) {
-                        delete node.properties.style;
-                        node.properties.class = cn(
-                            String(node.properties.class ?? ""),
-                            "",
-                        );
-                    },
-                    code(node) {
-                        node.properties.class = cn(
-                            String(node.properties.class ?? ""),
-                            "",
-                        );
-                    },
-                },
-            ],
+            transformers: SHIKI_TRANSFORMERS,
         });
 
         setHtmlCache(cacheKey, html);

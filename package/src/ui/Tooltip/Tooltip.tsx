@@ -94,6 +94,8 @@ export function Tooltip({
             className={"relative inline-flex w-fit"}
             onMouseEnter={() => setVisible(true)}
             onMouseLeave={() => setVisible(false)}
+            onFocus={() => setVisible(true)}
+            onBlur={() => setVisible(false)}
         >
             {children}
             <span

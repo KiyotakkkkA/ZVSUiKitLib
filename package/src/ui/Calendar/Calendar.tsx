@@ -34,17 +34,11 @@ function toDayKey(date: Date) {
     return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`;
 }
 
-function getYearRange(minDate?: Date, maxDate?: Date) {
-    const currentYear = new Date().getFullYear();
-    const baseFrom = 1900;
-    const baseTo = currentYear;
-
-    const constrainedFrom = minDate
-        ? Math.max(baseFrom, minDate.getFullYear())
-        : baseFrom;
-    const constrainedTo = maxDate
-        ? Math.min(baseTo, maxDate.getFullYear())
-        : baseTo;
+function getYearRange(viewYear: number, minYear?: number, maxYear?: number) {
+    const constrainedFrom = minYear ?? Math.min(1900, viewYear);
+    const constrainedTo =
+        maxYear ??
+        Math.max(new Date().getFullYear(), viewYear, constrainedFrom);
 
     if (constrainedFrom > constrainedTo) {
         return {
@@ -89,10 +83,18 @@ export function Calendar({
     const selectedDate = value !== undefined ? value : innerValue;
     const activeViewDate = startOfMonth(viewDate ?? innerViewDate);
 
-    const minDay = minDate ? startOfDay(minDate) : null;
-    const maxDay = maxDate ? startOfDay(maxDate) : null;
+    const viewYear = activeViewDate.getFullYear();
+    const viewMonth = activeViewDate.getMonth();
+
     const selectedDay = selectedDate ? startOfDay(selectedDate) : null;
     const today = startOfDay(new Date());
+
+    const minTime = minDate ? startOfDay(minDate).getTime() : null;
+    const maxTime = maxDate ? startOfDay(maxDate).getTime() : null;
+    const selectedTime = selectedDate
+        ? startOfDay(selectedDate).getTime()
+        : null;
+    const todayTime = today.getTime();
 
     const setSelectedDate = (next: CalendarDate) => {
         if (value === undefined) {
@@ -151,9 +153,12 @@ export function Calendar({
         [monthFormatter],
     );
 
+    const minYear = minDate?.getFullYear();
+    const maxYear = maxDate?.getFullYear();
+
     const yearRange = useMemo(
-        () => getYearRange(minDate, maxDate),
-        [minDate, maxDate],
+        () => getYearRange(viewYear, minYear, maxYear),
+        [viewYear, minYear, maxYear],
     );
 
     const yearOptions = useMemo(
@@ -178,10 +183,6 @@ export function Calendar({
         [weekdayFormatter, weekStartsOn],
     );
 
-    const monthStart = startOfMonth(activeViewDate);
-    const startOffset = (monthStart.getDay() - weekStartsOn + 7) % 7;
-    const gridStart = addDays(monthStart, -startOffset);
-
     const disabledDateSet = useMemo(() => {
         if (!Array.isArray(disabledDates)) {
             return null;
@@ -190,76 +191,56 @@ export function Calendar({
         return new Set(disabledDates.map((item) => toDayKey(startOfDay(item))));
     }, [disabledDates]);
 
-    const dayCells = useMemo(
-        () =>
-            Array.from({ length: 42 }, (_, index) => {
-                const date = startOfDay(addDays(gridStart, index));
-                const isCurrentMonth =
-                    date.getMonth() === activeViewDate.getMonth();
-                const isToday = isSameDay(date, today);
-                const isSelected = selectedDay
-                    ? isSameDay(date, selectedDay)
-                    : false;
+    const dayCells = useMemo(() => {
+        const monthStart = new Date(viewYear, viewMonth, 1);
+        const startOffset = (monthStart.getDay() - weekStartsOn + 7) % 7;
+        const gridStart = addDays(monthStart, -startOffset);
 
-                const isOutOfRange =
-                    (minDay && date < minDay) ||
-                    (maxDay && date > maxDay) ||
-                    false;
+        return Array.from({ length: 42 }, (_, index) => {
+            const date = startOfDay(addDays(gridStart, index));
+            const time = date.getTime();
+            const isCurrentMonth = date.getMonth() === viewMonth;
+            const isToday = time === todayTime;
+            const isSelected = time === selectedTime;
 
-                const isDisabledByProp =
-                    typeof disabledDates === "function"
-                        ? disabledDates(date)
-                        : disabledDateSet
-                          ? disabledDateSet.has(toDayKey(date))
-                          : false;
+            const isOutOfRange =
+                (minTime !== null && time < minTime) ||
+                (maxTime !== null && time > maxTime);
 
-                return {
-                    date,
-                    isToday,
-                    isSelected,
-                    isCurrentMonth,
-                    isDisabled: Boolean(isOutOfRange || isDisabledByProp),
-                };
-            }),
-        [
-            activeViewDate,
-            disabledDates,
-            disabledDateSet,
-            gridStart,
-            maxDay,
-            minDay,
-            selectedDay,
-            today,
-        ],
-    );
+            const isDisabledByProp =
+                typeof disabledDates === "function"
+                    ? disabledDates(date)
+                    : disabledDateSet
+                      ? disabledDateSet.has(toDayKey(date))
+                      : false;
 
-    const canGoPrev = useMemo(() => {
-        if (!minDay) {
-            return true;
-        }
+            return {
+                date,
+                isToday,
+                isSelected,
+                isCurrentMonth,
+                isDisabled: Boolean(isOutOfRange || isDisabledByProp),
+            };
+        });
+    }, [
+        viewYear,
+        viewMonth,
+        weekStartsOn,
+        todayTime,
+        selectedTime,
+        minTime,
+        maxTime,
+        disabledDates,
+        disabledDateSet,
+    ]);
 
-        const prevMonthEnd = new Date(
-            activeViewDate.getFullYear(),
-            activeViewDate.getMonth(),
-            0,
-        );
+    const canGoPrev =
+        minTime === null ||
+        new Date(viewYear, viewMonth, 0).getTime() >= minTime;
 
-        return startOfDay(prevMonthEnd) >= minDay;
-    }, [activeViewDate, minDay]);
-
-    const canGoNext = useMemo(() => {
-        if (!maxDay) {
-            return true;
-        }
-
-        const nextMonthStart = new Date(
-            activeViewDate.getFullYear(),
-            activeViewDate.getMonth() + 1,
-            1,
-        );
-
-        return startOfDay(nextMonthStart) <= maxDay;
-    }, [activeViewDate, maxDay]);
+    const canGoNext =
+        maxTime === null ||
+        new Date(viewYear, viewMonth + 1, 1).getTime() <= maxTime;
 
     return (
         <div

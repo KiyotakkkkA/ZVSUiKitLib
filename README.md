@@ -10,6 +10,7 @@ npm i @kiyotakkkka/zvs-uikit-lib
 - See 8.4.0 version update notes in [8.4.0 CHANGELOG](changelogs/CHANGELOG_8_4_0.md).
 - See 8.5.0 version update notes in [8.5.0 CHANGELOG](changelogs/CHANGELOG_8_5_0.md).
 - See 8.6.0 version update notes in [8.6.0 CHANGELOG](changelogs/CHANGELOG_8_6_0.md).
+- See 8.6.2 version update notes in [8.6.2 CHANGELOG](changelogs/CHANGELOG_8_6_2.md).
 
 ### Configure Tailwind scanning
 

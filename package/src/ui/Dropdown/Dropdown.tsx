@@ -154,9 +154,19 @@ function DropdownRoot({
         setOpen((current) => !current);
     }, [disabled]);
 
+    const onOpenChangeRef = useRef(onOpenChange);
+    const reportedOpenRef = useRef(open);
+
     useEffect(() => {
-        onOpenChange?.(open);
-    }, [onOpenChange, open]);
+        onOpenChangeRef.current = onOpenChange;
+    }, [onOpenChange]);
+
+    useEffect(() => {
+        if (reportedOpenRef.current === open) return;
+
+        reportedOpenRef.current = open;
+        onOpenChangeRef.current?.(open);
+    }, [open]);
 
     useEffect(() => {
         return () => {
@@ -390,7 +400,12 @@ function DropdownMenu({
     rounded = "rounded-xl",
     ...props
 }: DropdownMenuProps) {
-    const { menuId, setMenuRef, menuPlacement } = useDropdownContext();
+    const { open, menuId, setMenuRef, menuPlacement } = useDropdownContext();
+    const [hasOpened, setHasOpened] = useState(open);
+
+    if (open && !hasOpened) {
+        setHasOpened(true);
+    }
 
     return (
         <div
@@ -407,7 +422,7 @@ function DropdownMenu({
             )}
             {...props}
         >
-            {children}
+            {hasOpened ? children : null}
         </div>
     );
 }

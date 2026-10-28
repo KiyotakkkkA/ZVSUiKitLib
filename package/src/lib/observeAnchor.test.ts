@@ -39,8 +39,41 @@ describe("observeAnchor", () => {
         expect(update).toHaveBeenCalledTimes(2);
         cleanup();
         expect(cancel).toHaveBeenCalledWith(42);
-        expect(remove).toHaveBeenCalledWith("scroll", update, true);
-        expect(remove).toHaveBeenCalledWith("resize", update);
+        expect(remove).toHaveBeenCalledWith(
+            "scroll",
+            expect.any(Function),
+            true,
+        );
+        expect(remove).toHaveBeenCalledWith("resize", expect.any(Function));
+    });
+
+    it("ignores scroll and resize events that do not move the anchor", () => {
+        const listeners = new Map<string, () => void>();
+        vi.stubGlobal("requestAnimationFrame", () => 1);
+        vi.stubGlobal("cancelAnimationFrame", vi.fn());
+        vi.stubGlobal("ResizeObserver", undefined);
+        vi.stubGlobal("window", {
+            addEventListener: (type: string, listener: () => void) =>
+                listeners.set(type, listener),
+            removeEventListener: vi.fn(),
+        });
+        const rect = { left: 0, top: 0, width: 100, height: 20 };
+        const trigger = { getBoundingClientRect: () => rect } as HTMLElement;
+        const content = {
+            offsetWidth: 200,
+            offsetHeight: 80,
+            getAttribute: () => "auto",
+        } as unknown as HTMLElement;
+        const update = vi.fn();
+        const cleanup = observeAnchor(trigger, content, update);
+        listeners.get("scroll")?.();
+        listeners.get("resize")?.();
+        expect(update).toHaveBeenCalledTimes(1);
+        rect.top = 50;
+        listeners.get("scroll")?.();
+        listeners.get("scroll")?.();
+        expect(update).toHaveBeenCalledTimes(2);
+        cleanup();
     });
 
     it("hides a manual overlay when its containing popover closes", () => {

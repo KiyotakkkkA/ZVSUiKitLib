@@ -1,8 +1,10 @@
 import {
     createContext,
+    useCallback,
     useContext,
     useEffect,
     useId,
+    useMemo,
     useRef,
     useState,
     type Dispatch,
@@ -67,17 +69,24 @@ function AccordionRoot({
         return group.register(contentId, () => setLocalOpen(false));
     }, [group, contentId]);
 
-    const setIsOpen: Dispatch<SetStateAction<boolean>> = (action) => {
-        const next = typeof action === "function" ? action(isOpen) : action;
+    const setIsOpen: Dispatch<SetStateAction<boolean>> = useCallback(
+        (action) => {
+            const next =
+                typeof action === "function" ? action(isOpen) : action;
 
-        setLocalOpen(next);
-        if (next) group?.notifyOpen(contentId);
-    };
+            setLocalOpen(next);
+            if (next) group?.notifyOpen(contentId);
+        },
+        [isOpen, group, contentId],
+    );
+
+    const contextValue = useMemo(
+        () => ({ isOpen, setIsOpen, contentId, summaryId, preset }),
+        [isOpen, setIsOpen, contentId, summaryId, preset],
+    );
 
     return (
-        <AccordionContext.Provider
-            value={{ isOpen, setIsOpen, contentId, summaryId, preset }}
-        >
+        <AccordionContext.Provider value={contextValue}>
             <div
                 ref={ref}
                 className={cn(presetClasses[preset].root, className)}
@@ -140,7 +149,7 @@ function AccordionContent({ className, children }: AccordionContentProps) {
         observer.observe(el);
 
         return () => observer.disconnect();
-    }, [isOpen]);
+    }, []);
 
     return (
         <div

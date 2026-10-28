@@ -5,6 +5,13 @@ export function observeAnchor(
 ) {
     let frame = 0;
     let previous = "";
+    const measure = () => {
+        const rect = trigger.getBoundingClientRect();
+        const geometry = `${rect.left},${rect.top},${rect.width},${rect.height},${content.offsetWidth},${content.offsetHeight}`;
+        if (geometry === previous) return;
+        previous = geometry;
+        update();
+    };
     const tick = () => {
         if (content.getAttribute("popover") === "manual") {
             let ancestor = trigger.closest<HTMLElement>("[popover], dialog");
@@ -29,27 +36,22 @@ export function observeAnchor(
             }
             if (!content.matches(":popover-open")) content.showPopover();
         }
-        const rect = trigger.getBoundingClientRect();
-        const geometry = `${rect.left},${rect.top},${rect.width},${rect.height},${content.offsetWidth},${content.offsetHeight}`;
-        if (geometry !== previous) {
-            previous = geometry;
-            update();
-        }
+        measure();
         frame = requestAnimationFrame(tick);
     };
     const resizeObserver =
         typeof ResizeObserver === "undefined"
             ? null
-            : new ResizeObserver(update);
+            : new ResizeObserver(measure);
     resizeObserver?.observe(trigger);
     resizeObserver?.observe(content);
-    window.addEventListener("resize", update);
-    window.addEventListener("scroll", update, true);
+    window.addEventListener("resize", measure);
+    window.addEventListener("scroll", measure, true);
     tick();
     return () => {
         cancelAnimationFrame(frame);
         resizeObserver?.disconnect();
-        window.removeEventListener("resize", update);
-        window.removeEventListener("scroll", update, true);
+        window.removeEventListener("resize", measure);
+        window.removeEventListener("scroll", measure, true);
     };
 }
